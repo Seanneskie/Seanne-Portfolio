@@ -201,3 +201,53 @@ p {
     margin-bottom: 1rem;
     color: #555;
 }
+
+#credentials {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    text-align: left;
+}
+
+#credentials h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #333;
+    padding-bottom: 0.5rem;
+    color: #333;
+}
+
+#certificates-container {
+    transition: max-height 0.3s ease;
+    overflow: hidden;
+}
+
+.certificate {
+    padding: 1rem;
+    border: 1px solid #ddd;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+}
+
+.certificate-img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+}
+
+.extra-certificate {
+    display: none;
+}
+
+#show-more-btn {
+    display: none;
+    margin-top: 1rem;
+}
+
+#show-more-btn.show {
+    display: block;
+}

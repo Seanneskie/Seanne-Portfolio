@@ -32,3 +32,22 @@ document.addEventListener("DOMContentLoaded", function() {
         sectionObserver.observe(section);
     });
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+    const certificates = document.querySelectorAll('.certificate');
+    const showMoreBtn = document.getElementById('show-more-btn');
+    const extraCertificates = document.querySelectorAll('.extra-certificate');
+
+    if (certificates.length > 5) {
+        showMoreBtn.classList.add('show');
+    }
+
+    showMoreBtn.addEventListener('click', function() {
+        extraCertificates.forEach(cert => {
+            cert.style.display = 'block';
+        });
+        // Remove max-height to ensure all certificates are visible
+        document.getElementById('certificates-container').style.maxHeight = 'none';
+        showMoreBtn.style.display = 'none';
+    });
+});
