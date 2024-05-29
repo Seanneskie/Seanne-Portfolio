@@ -32,22 +32,45 @@ document.addEventListener("DOMContentLoaded", function() {
         sectionObserver.observe(section);
     });
 });
-
 document.addEventListener("DOMContentLoaded", function() {
-    const certificates = document.querySelectorAll('.certificate');
-    const showMoreBtn = document.getElementById('show-more-btn');
-    const extraCertificates = document.querySelectorAll('.extra-certificate');
+    const timelineContainer = document.getElementById('timeline-container');
+    
+    // Horizontal scroll with mouse wheel
+    timelineContainer.addEventListener('wheel', function(event) {
+        if (event.deltaY > 0) {
+            timelineContainer.scrollLeft += 100;
+        } else {
+            timelineContainer.scrollLeft -= 100;
+        }
+    });
 
-    if (certificates.length > 5) {
-        showMoreBtn.classList.add('show');
-    }
+    // Drag to scroll functionality
+    let isDown = false;
+    let startX;
+    let scrollLeft;
 
-    showMoreBtn.addEventListener('click', function() {
-        extraCertificates.forEach(cert => {
-            cert.style.display = 'block';
-        });
-        // Remove max-height to ensure all certificates are visible
-        document.getElementById('certificates-container').style.maxHeight = 'none';
-        showMoreBtn.style.display = 'none';
+    timelineContainer.addEventListener('mousedown', (e) => {
+        isDown = true;
+        timelineContainer.classList.add('active');
+        startX = e.pageX - timelineContainer.offsetLeft;
+        scrollLeft = timelineContainer.scrollLeft;
+    });
+
+    timelineContainer.addEventListener('mouseleave', () => {
+        isDown = false;
+        timelineContainer.classList.remove('active');
+    });
+
+    timelineContainer.addEventListener('mouseup', () => {
+        isDown = false;
+        timelineContainer.classList.remove('active');
+    });
+
+    timelineContainer.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - timelineContainer.offsetLeft;
+        const walk = (x - startX) * 2; // scroll-fast
+        timelineContainer.scrollLeft = scrollLeft - walk;
     });
 });

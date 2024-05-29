@@ -219,17 +219,58 @@ p {
     color: #333;
 }
 
-#certificates-container {
-    transition: max-height 0.3s ease;
-    overflow: hidden;
+#timeline-container {
+    overflow-x: auto;
+    padding-bottom: 1rem;
 }
 
-.certificate {
+.timeline {
+    display: flex;
+    position: relative;
+    padding: 2rem 0;
+    list-style: none;
+    white-space: nowrap;
+}
+
+.timeline-item {
+    display: inline-block;
+    width: 300px;
+    position: relative;
+    margin-right: 2rem;
+    text-align: center;
+}
+
+.timeline-item .circle {
+    width: 20px;
+    height: 20px;
+    background-color: #333;
+    border-radius: 50%;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    position: relative;
+}
+
+.timeline-item .circle:hover {
+    background-color: #ddd;
+}
+
+.timeline-item .content {
+    display: none;
+    text-align: center;
     padding: 1rem;
     border: 1px solid #ddd;
-    margin-bottom: 1rem;
     border-radius: 4px;
     background-color: #f9f9f9;
+    white-space: normal;
+}
+
+.timeline-item:hover .content {
+    display: block;
+}
+
+.timeline-item .timeline-label {
+    margin-bottom: 1rem;
+    font-weight: bold;
 }
 
 .certificate-img {
@@ -239,15 +280,14 @@ p {
     border-radius: 4px;
 }
 
-.extra-certificate {
-    display: none;
+
+#timeline-container {
+    overflow-x: auto;
+
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
 }
 
-#show-more-btn {
-    display: none;
-    margin-top: 1rem;
-}
-
-#show-more-btn.show {
-    display: block;
+#timeline-container::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome */
 }
