@@ -6,7 +6,7 @@ body {
 }
 
 header {
-    background-color: #333;
+    background-color: #001f4d;
     color: white;
     padding: 1rem 0;
     text-align: center;
@@ -16,14 +16,29 @@ header {
     animation: fadeInDown 2s;
 }
 
+@keyframes bluePalette {
+    0% { background-color: #001f4d; } /* Dark Blue */
+    25% { background-color: #003366; } /* Midnight Blue */
+    50% { background-color: #004c99; } /* Deep Blue */
+    75% { background-color: #66a3ff; } /* Sky Blue */
+    100% { background-color: #b3d9ff; } /* Light Sky Blue */
+}
+  
+@keyframes bluePaletteMovement {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+  
 .banner {
-    background-image: url('star.jpeg');
-    background-size: cover;
-    background-position: center;
+    background: linear-gradient(90deg, #001f4d, #003366, #004c99, #66a3ff, #b3d9ff);
+    background-size: 400% 400%;
+    animation: bluePaletteMovement 15s ease infinite, bluePalette 10s ease infinite;
     color: white;
     padding: 4rem 0;
     text-align: center;
 }
+
 
 .blockquote {
     background: rgba(0, 0, 0, 0.5);
