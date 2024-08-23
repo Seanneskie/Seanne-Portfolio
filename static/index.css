@@ -418,8 +418,8 @@ p {
 
 .progress-bar {
     height: 100%; /* Ensure the progress bar fills the container */
-    font-size: 1rem; /* Smaller text within the bar */
-    padding: 3px; /* Reduce padding for better fit */
+    font-size: 0.75rem; /* Smaller text within the bar */
+    padding: 2px; /* Reduce padding for better fit */
     color: #000; /* Text color for readability */
 }
 
