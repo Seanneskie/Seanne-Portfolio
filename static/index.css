@@ -382,25 +382,46 @@ p {
 
 /* CTF Progress Section Styles */
 #ctf {
-    padding: 20px;
+    padding: 15px;
     font-family: Arial, sans-serif;
 }
 
 #ctf h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+/* Grid Layout for Progress Categories */
+#ctf .progress-category {
     margin-bottom: 30px;
 }
 
-.progress-category {
-    margin-bottom: 40px;
+/* Two-column grid layout */
+#ctf .progress-category-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two equal-width columns */
+    gap: 20px; /* Space between columns */
+}
+
+.progress-category h5 {
+    font-size: 1rem;
+    margin-bottom: 8px;
 }
 
 .progress-bar-background {
     background-color: #f3f3f3;
     border-radius: 5px;
     overflow: hidden;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
+    height: 10px; /* Reduce height of the progress bar */
 }
 
+.progress-bar {
+    height: 100%; /* Ensure the progress bar fills the container */
+    font-size: 0.75rem; /* Smaller text within the bar */
+    padding: 2px; /* Reduce padding for better fit */
+    color: #000; /* Text color for readability */
+}
 
 /* Individual Progress Bar Colors */
 #overall-progress {
@@ -429,6 +450,82 @@ p {
 
 #forensics-progress {
     background-color: #ffd1a9; /* Light pastel orange */
+}
+
+.progress-category article p {
+    font-size: 0.875rem; /* Reduce text size in the article */
+    margin-top: 5px;
+}
+
+/* Adjusted color gradients */
+#js-progress {
+    background: linear-gradient(90deg, #f0db4f, #f7df1e); /* JavaScript: Yellow gradient */
+}
+
+#python-progress {
+    background: linear-gradient(90deg, #306998, #4b8bbe); /* Python: Blue to light blue gradient */
+}
+
+#php-progress {
+    background: linear-gradient(90deg, #4f5b93, #8993be); /* PHP: Purple gradient */
+}
+
+
+/* Color gradients based on coding language colors */
+#html-progress {
+    background: linear-gradient(90deg, #e44d26, #f16529); /* HTML: Orange gradient */
+}
+
+#css-progress {
+    background: linear-gradient(90deg, #264de4, #2965f1); /* CSS: Blue gradient */
+}
+
+#react-progress {
+    background: linear-gradient(90deg, #61dafb, #21a1f1); /* React: Cyan gradient */
+}
+
+#django-progress {
+    background: linear-gradient(90deg, #092e20, #2c5234); /* Django: Dark green gradient */
+    color: white;
+}
+
+/* Color gradients for database management skills */
+#sql-progress {
+    background: linear-gradient(90deg, #00758f, #00a3e0); /* SQL: Teal to blue gradient */
+}
+
+#postgres-progress {
+    background: linear-gradient(90deg, #336791, #5294e2); /* PostgreSQL: Dark blue to light blue gradient */
+}
+
+#mongodb-progress {
+    background: linear-gradient(90deg, #4db33d, #239a3b); /* MongoDB: Light green to dark green gradient */
+}
+
+/* Color gradient for Bootstrap */
+#bootstrap-progress {
+    background: linear-gradient(90deg, #563d7c, #7952b3); /* Bootstrap: Dark purple to light purple gradient */
+    color: white;
+}
+
+/* Color gradients for Diagrams and Modeling skills */
+#uml-progress {
+    background: linear-gradient(90deg, #ff5722, #ff8a65); /* UML: Orange gradient */
+}
+
+#dfd-progress {
+    background: linear-gradient(90deg, #607d8b, #78909c); /* Dataflow Diagrams: Gray-blue gradient */
+}
+
+#figma-progress {
+    background: linear-gradient(90deg, #0acf83, #a259ff); /* Figma: Green to purple gradient */
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 767.98px) {
+    #ctf .progress-category-container {
+        grid-template-columns: 1fr; /* Switch to a single column on smaller screens */
+    }
 }
 
 
