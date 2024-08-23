@@ -16,28 +16,30 @@ header {
     animation: fadeInDown 2s;
 }
 
-@keyframes bluePalette {
-    0% { background-color: #001f4d; } /* Dark Blue */
-    25% { background-color: #003366; } /* Midnight Blue */
-    50% { background-color: #004c99; } /* Deep Blue */
-    75% { background-color: #66a3ff; } /* Sky Blue */
-    100% { background-color: #b3d9ff; } /* Light Sky Blue */
+@keyframes darkerPastelPalette {
+    0% { background-color: #8aa2c8; } /* Darker Pastel Blue */
+    25% { background-color: #a3b8d9; } /* Muted Sky Blue */
+    50% { background-color: #b8cfe2; } /* Soft Steel Blue */
+    75% { background-color: #cbdde6; } /* Pale Blue Gray */
+    100% { background-color: #dce7f0; } /* Light Mist Blue */
 }
   
-@keyframes bluePaletteMovement {
+@keyframes darkerPastelPaletteMovement {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
   
 .banner {
-    background: linear-gradient(90deg, #001f4d, #003366, #004c99, #66a3ff, #b3d9ff);
+    background: linear-gradient(90deg, #8aa2c8, #a3b8d9, #b8cfe2, #cbdde6, #dce7f0);
     background-size: 400% 400%;
-    animation: bluePaletteMovement 15s ease infinite, bluePalette 10s ease infinite;
-    color: white;
+    animation: darkerPastelPaletteMovement 15s ease infinite, darkerPastelPalette 10s ease infinite;
+    color: #2a2a2a; /* Darker gray for better contrast */
     padding: 4rem 0;
     text-align: center;
 }
+
+
 
 
 .blockquote {
@@ -181,9 +183,28 @@ section h2 {
 }
 
 .progress-bar {
-    background-color: #333;
+    background-color: #B4B4B8;
     transition: width 0.6s ease;
 }
+
+
+.progress-bar.easy-ctf{
+    background-color: #98D8AA;
+    transition: width 0.6s ease;
+}
+
+
+.progress-bar.medium-ctf{
+    background-color: #F7D060;
+    transition: width 0.6s ease;
+}
+
+
+.progress-bar.hard-ctf{
+    background-color: #FF6D60;
+    transition: width 0.6s ease;
+}
+
 
 .card-title {
     margin-bottom: 1.5rem;
@@ -305,4 +326,158 @@ p {
 
 #timeline-container::-webkit-scrollbar {
     display: none;  /* Safari and Chrome */
+}
+
+
+.animated-navbar {
+    background-color: #003366; /* Initial Dark Blue */
+    overflow: hidden;
+}
+
+@keyframes bgColorChange {
+    0% { background-color: #001f4d; }    /* Dark Blue */
+    25% { background-color: #003366; }   /* Midnight Blue */
+    50% { background-color: #004c99; }   /* Deep Blue */
+    75% { background-color: #66a3ff; }   /* Sky Blue */
+    100% { background-color: #b3d9ff; }  /* Light Sky Blue */
+}
+
+
+.projects-gallery {
+    padding: 40px 0;
+    background-color: #f8f9fa;
+    overflow: hidden; /* Hide overflowing content */
+    position: relative;
+}
+
+.projects-gallery .row {
+    display: flex;
+    transition: transform 0.5s linear;
+    overflow-x: scroll;
+    padding: 0.5rem;
+}
+
+
+
+
+.projects-gallery .card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.projects-gallery .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.projects-gallery .btn-secondary {
+    background-color: #8aa2c8;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.projects-gallery .btn-secondary:hover {
+    background-color: #003366;
+}
+
+
+/* CTF Progress Section Styles */
+#ctf {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+#ctf h2 {
+    margin-bottom: 30px;
+}
+
+.progress-category {
+    margin-bottom: 40px;
+}
+
+.progress-bar-background {
+    background-color: #f3f3f3;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+
+/* Individual Progress Bar Colors */
+#overall-progress {
+    background-color: #aec6ff; /* Light pastel blue */
+}
+
+#web-exploitation-progress {
+    background-color: #b0e57c; /* Light pastel green */
+}
+
+#reverse-engineering-progress {
+    background-color: #ffecb3; /* Light pastel yellow */
+}
+
+#cryptography-progress {
+    background-color: #a2d5f2; /* Light pastel cyan */
+}
+
+#general-skills-progress {
+    background-color: #d4d4dc; /* Light pastel gray */
+}
+
+#binary-exploitation-progress {
+    background-color: #f9b2b2; /* Light pastel red */
+}
+
+#forensics-progress {
+    background-color: #ffd1a9; /* Light pastel orange */
+}
+
+
+article {
+    font-size: 16px;
+    color: #555;
+    margin-top: 10px;
+}
+
+
+
+
+/* Responsive Design */
+@media (max-width: 767.98px) {
+    .projects-gallery .row {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .projects-gallery .col-md-4 {
+        width: 100%;
+        margin-bottom: 1.5rem;
+    }
+    
+    .card {
+        margin-bottom: 2rem;
+        width: 80vw;
+        font-size: small;
+    }
+
+     
+
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .projects-gallery .col-md-4 {
+        flex: 0 0 48%;
+        max-width: 48%;
+        margin-bottom: 2rem;
+    }
+    
+    .projects-gallery .row {
+        justify-content: space-between;
+    }
+}
+
+@media (min-width: 992px) {
+    .projects-gallery .col-md-4 {
+        flex: 0 0 32%;
+        max-width: 32%;
+    }
 }

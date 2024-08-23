@@ -14,23 +14,23 @@
     <link href="static/index.css" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #001f4d;">
-            <a class="navbar-brand font-weight-bold" style="font-family: Helvetica, sans-serif !important"href="#">Seanne's Portfolio</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link" href="#personal-info">Personal Info</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#certificates">Certificates</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#seminars">Seminars</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#achievements">Achievements</a></li>
-                </ul>   
-            </div>
-        </nav>
-    </header>
+    <nav class="navbar navbar-expand-lg navbar-dark animated-navbar">
+        <a class="navbar-brand font-weight-bold" style="font-family: Helvetica, sans-serif !important" href="#">Seanne's Portfolio</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="#personal-info">Personal Info</a></li>
+                <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                <li class="nav-item"><a class="nav-link" href="#certificates">Certificates</a></li>
+                <li class="nav-item"><a class="nav-link" href="#seminars">Seminars</a></li>
+                <li class="nav-item"><a class="nav-link" href="#achievements">Achievements</a></li>
+            </ul>   
+        </div>
+    </nav>
+    
+
     
     <div class="banner">
         <blockquote class="blockquote text-center">
@@ -44,7 +44,7 @@
         </blockquote>
     </div>
 
-    <div class="container content">
+    <div class="col-lg-12 content">
         <section id="personal-info" class="row">
             <div class="col-md-4 mb-3">
                 <div class="card">
@@ -70,6 +70,9 @@
                             </a>
                             <a href="https://github.com/Seanneskie" target="_blank">
                                 <img src="static/github.png" alt="GitHub">
+                            </a>
+                            <a href="https://leetcode.com/u/seanneskie32/" target="_blank">
+                                <img src="static/leet.png" alt="GitHub">
                             </a>
                             <a href="static/canete_resume.pdf" class="mt-3" target="_blank" download>
                                 <img src="static/pdf.png" alt="Resume">
@@ -139,6 +142,12 @@
                                     <div class="progress-bar" role="progressbar" style="width: 70%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">70%</div>
                                 </div>
                             </div>
+                            <div class="skill">
+                                <p>NoSQL - MongoDB </p>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">50%</div>
+                                </div>
+                            </div>
                             <p><strong>CSS Frameworks</strong></p>
                             <div class="skill">
                                 <p>Bootsrap 4.0 and 5.0 </p>
@@ -161,6 +170,44 @@
                                     <div class="progress-bar" role="progressbar" style="width: 70%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">70%</div>
                                 </div>
                             </div>
+
+                            <p><strong>CTF Progress</strong></p>
+                            <div class="skill">
+                                <p>Pico CTF - Easy</p>
+                                <div class="progress">
+                                    <div class="progress-bar easy-ctf" role="progressbar" style="width: 98%;" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100">62 of 63  Easy</div>
+                                </div>
+                                <br>
+                                <p>Pico CTF - Medium</p>
+                                <div class="progress">
+                                    <div class="progress-bar medium-ctf" role="progressbar" style="width: 60%;" aria-valuenow="19" aria-valuemin="0" aria-valuemax="100">37 of 194 Medium</div>
+                                </div>
+                                <br>
+                                <p>Pico CTF - Hard</p>
+                                <div class="progress">
+                                    <div class="progress-bar hard-ctf" role="progressbar" style="width: 50%;" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100">2 of 120 Hard </div>
+                                </div>
+                            </div>
+
+
+                            <p><strong>LeetCode</strong></p>
+                            <div class="skill">
+                                <p>LeetCode - Easy</p>
+                                <div class="progress">
+                                    <div class="progress-bar easy-ctf" role="progressbar" style="width: 40%;" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100">6 of 820  Easy</div>
+                                </div>
+                                <br>
+                                <p>LeetCode - Medium</p>
+                                <div class="progress">
+                                    <div class="progress-bar medium-ctf" role="progressbar" style="width: 40%;" aria-valuenow="19" aria-valuemin="0" aria-valuemax="100">4 of 1711 Medium</div>
+                                </div>
+                                <br>
+                                <p>LeetCode - Hard</p>
+                                <div class="progress">
+                                    <div class="progress-bar hard-ctf" role="progressbar" style="width: 40%;" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100">0 of 732 Hard </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                     
@@ -175,37 +222,54 @@
                     </p>
                 </section>
                 
-
-                <section id="projects">
-                    <h2>Projects</h2>
+                <section id="projects" class="projects-gallery">
+                    <h2 class="text-center">Projects</h2>
                     <div class="row">
-                        <div class="col-md-4 mb-2">
-                            <div class="card">
+                        <div class="col-md-4 mb-4">
+                            <div class="card h-100">
                                 <div class="card-body">
                                     <h5 class="card-title">AI Coin Detector</h5>
                                     <p class="card-text">Made with Django and GTM. A requirement in Introduction to AI course.</p>
                                     <p class="card-text"><strong>Collaborators:</strong> Kimberly Baylon, Jeric Aminola, Bridget Jose, Azlan Tomindug</p>
-                                    <a href="https://github.com/Seanneskie/AI-coin-detector-django" target="_blank" class="btn btn-secondary">View on GitHub</a>
+                                    <div class="mt-auto">
+                                        <a href="https://github.com/Seanneskie/AI-coin-detector-django" target="_blank" class="btn btn-secondary">View on GitHub</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4 mb-2">
-                            <div class="card">
+                        <div class="col-md-4 mb-4">
+                            <div class="card h-100">
                                 <div class="card-body">
-                                    <h5 class="card-title">Advance Database Project - CNSM  Website </h5>
-                                    <p class="card-text">Made using MERN Stack. A final requirement in Advance Database Course </p>
-                                    <p class="card-text"><strong>Collaborators:</strong> Database Major Batch of 2021-2025</p>
-                                    <a href="https://github.com/Seanneskie/project2" target="_blank" class="btn btn-secondary">View on GitHub</a>
+                                    <h5 class="card-title">NoSQL Project - MERN Stack Website</h5>
+                                    <p class="card-text">Made using MERN Stack. A final requirement in NoSQL Course.</p>
+                                    <p class="card-text"><strong>Collaborators:</strong>None</p>
+                                    <div class="mt-auto">
+                                        <a href="https://github.com/Seanneskie/MERN-STACK---Software" target="_blank" class="btn btn-secondary">View on GitHub</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4 mb-2">
-                            <div class="card">
+                        <div class="col-md-4 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Advance Database Project - CNSM Website</h5>
+                                    <p class="card-text">Made using MERN Stack. A final requirement in Advance Database Course.</p>
+                                    <p class="card-text"><strong>Collaborators:</strong> Database Major Batch of 2021-2025</p>
+                                    <div class="mt-auto">
+                                        <a href="https://github.com/Seanneskie/advDB-CNSM-Website" target="_blank" class="btn btn-secondary">View on GitHub</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card h-100">
                                 <div class="card-body">
                                     <h5 class="card-title">Bitcoin Analysis App</h5>
-                                    <p class="card-text">A Bitcoin Prediction and Descriptive Analysis. Made with Django and Python Modules</p>
-                                    <p class="card-text"><strong>Collaborators:</strong> None </p>
-                                    <a href="https://github.com/Seanneskie/bigdata" target="_blank" class="btn btn-secondary">View on GitHub</a>
+                                    <p class="card-text">A Bitcoin Prediction and Descriptive Analysis. Made with Django and Python Modules.</p>
+                                    <p class="card-text"><strong>Collaborators:</strong> None</p>
+                                    <div class="mt-auto">
+                                        <a href="https://github.com/Seanneskie/bigdata" target="_blank" class="btn btn-secondary align-self-end">View on GitHub</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -221,7 +285,7 @@
                                 <p class="timeline-label">August 2024</p>
                                 <div class="content">
                                    <div class="card-body">
-                                        <img src="static/web-dev." alt="Certificate 1" class="certificate-img">
+                                        <img src="static/web-dev.png" alt="Certificate 1" class="certificate-img">
                                         <p><strong>Web Development - Solo Learn</strong></p>
                                         <p>Date: August 2024</p>
                                    </div>
@@ -385,7 +449,90 @@
 
                 </section>
 
-            
+                <!-- CTF Progress Section -->
+                <!-- CTF Progress Section -->
+                <section id="ctf">
+                    <h2>CTF Progress</h2>
+                    
+                    <!-- Overall Progress -->
+                    <div class="progress-category">
+                        <h5>Overall Progress</h5>
+                        <div class="progress-bar-background">
+                            <div id="overall-progress" class="progress-bar" style="width: 50%;"> 101 of 377</div>
+                        </div>
+                        <article>
+                            <p>Overall progress combines all the categories, showing how much of the CTF has been completed. Current focus areas are Web Exploitation and Forensics.</p>
+                        </article>
+                    </div>
+
+                    <!-- Web Exploitation Progress -->
+                    <div class="progress-category">
+                        <h5>Web Exploitation</h5>
+                        <div class="progress-bar-background">
+                            <div id="web-exploitation-progress" class="progress-bar" style="width: 40%;">19 of 54</div>
+                        </div>
+                        <article>
+                            <p>Solved various web-based challenges, including SQL injection, cross-site scripting (XSS), and authentication bypasses. Remaining tasks involve advanced session management exploitation.</p>
+                        </article>
+                    </div>
+
+                    <!-- Reverse Engineering Progress -->
+                    <div class="progress-category">
+                        <h5>Reverse Engineering</h5>
+                        <div class="progress-bar-background">
+                            <div id="reverse-engineering-progress" class="progress-bar" style="width: 30%;">11 of 83</div>
+                        </div>
+                        <article>
+                            <p>Solved basic binary analysis challenges. Next, we'll tackle more complex disassembly and decryption tasks.</p>
+                        </article>
+                    </div>
+
+                    <!-- Cryptography Progress -->
+                    <div class="progress-category">
+                        <h5>Cryptography</h5>
+                        <div class="progress-bar-background">
+                            <div id="cryptography-progress" class="progress-bar" style="width: 30%;">9 of 62</div>
+                        </div>
+                        <article>
+                            <p>Completed challenges involving basic ciphers and hashing. Upcoming tasks focus on RSA and elliptic curve cryptography.</p>
+                        </article>
+                    </div>
+
+                    <!-- General Skills Progress -->
+                    <div class="progress-category">
+                        <h5>General Skills</h5>
+                        <div class="progress-bar-background">
+                            <div id="general-skills-progress" class="progress-bar" style="width: 70%;">39 of 52</div>
+                        </div>
+                        <article>
+                            <p>Mastered command-line tools, scripting, and basic network scanning. Preparing for advanced topics.</p>
+                        </article>
+                    </div>
+
+                    <!-- Binary Exploitation Progress -->
+                    <div class="progress-category">
+                        <h5>Binary Exploitation</h5>
+                        <div class="progress-bar-background">
+                            <div id="binary-exploitation-progress" class="progress-bar" style="width: 20%;">5 of 54</div>
+                        </div>
+                        <article>
+                            <p>Solved buffer overflow challenges. Next steps involve format string vulnerabilities and return-oriented programming (ROP).</p>
+                        </article>
+                    </div>
+
+                    <!-- Forensics Progress -->
+                    <div class="progress-category">
+                        <h5>Forensics</h3>
+                        <div class="progress-bar-background">
+                            <div id="forensics-progress" class="progress-bar" style="width: 40%;">18 of 65 </div>
+                        </div>
+                        <article>
+                            <p>Handled tasks involving file carving, memory dumps, and network traffic analysis. Remaining challenges focus on advanced image forensics.</p>
+                        </article>
+                    </div>
+                </section>
+
+
             </div>
         </section>
     </div>
@@ -395,5 +542,6 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="static/index.js"></script>
+    
 </body>
 </html>
