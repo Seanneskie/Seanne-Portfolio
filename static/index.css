@@ -521,6 +521,31 @@ p {
     background: linear-gradient(90deg, #0acf83, #a259ff); /* Figma: Green to purple gradient */
 }
 
+
+/* Data Analysis Progress Bar Gradient */
+#data-analysis-progress {
+    background: linear-gradient(90deg, #6a1b9a, #ab47bc); /* Purple gradient */
+}
+
+/* Data Visualization Progress Bar Gradient */
+#data-visualization-progress {
+    background: linear-gradient(90deg, #ff6f00, #ff8f00); /* Orange gradient */
+}
+
+/* Weka Progress Bar Gradient */
+#weka-progress {
+    background: linear-gradient(90deg, #0288d1, #03a9f4); /* Blue gradient */
+}
+
+/* Tableau Progress Bar Gradient */
+#tableau-progress {
+    background: linear-gradient(90deg, #8bc34a, #aed581); /* Green gradient */
+}
+
+/* Excel Progress Bar Gradient */
+#excel-progress {
+    background: linear-gradient(90deg, #388e3c, #4caf50); /* Dark Green gradient */
+}
 /* Responsive Design for Smaller Screens */
 @media (max-width: 767.98px) {
     #ctf .progress-category-container {
