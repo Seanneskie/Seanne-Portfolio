@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="static/base.css" rel="stylesheet">
+    <link href="static/index.css" rel="stylesheet">
 </head>
 <body>
     <div class="cover">
@@ -54,7 +54,8 @@
                 <p class="card-text"><strong>Junior High School:</strong> GSC SPED Integrated School - A.Y 2015 - 2019 </p>
                 <p class="card-text"><strong>Elementary:</strong> The Heritage Academy of the Philippines - A.Y 2009 - 2015 </p>
             </div>
-           
+
+        
         </div>
 
         <div class="social-links">
@@ -78,13 +79,15 @@
             </a>
         </div>
     </section>
-    
-    <section id="background"  data-aos="fade-right" data-aos-duration="800" data-aos-delay="100">
+
+    <section id="background" data-aos="fade-right" data-aos-duration="800" data-aos-delay="100">
         <h2>Background</h2>
         <p>
-            Hello! I am Seanne, I am an undergraduate student at Mindanao State University, General Santos City. I am pursuing a Bachelor of Science in Information Technology with a major in Databases. My goal and dream is to become a fullstack developer. I mainly develop  in Django for web applications.
+            Hello! I am Seanne, I am an undergraduate student at Mindanao State University, General Santos City. I am pursuing a Bachelor of Science in Information Technology with a major in Databases. My goal and dream is to become a fullstack developer. I mainly develop in Django for web applications.
         </p>
+        <button class="hire-me"onclick="openGmail()">Hire Me</button>
     </section>
+    
 
     <section id="projects" data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
         <h2>Projects</h2>
@@ -609,6 +612,35 @@
         });
 
     </script>
+        <script>
+            function openGmail() {
+                const email = "seanecanete32@gmail.com";
+                const subject = "Job Offer for Seanne Cañete";
+                const body = `Dear Seanne,
     
+    We are pleased to inform you that after careful consideration, we would like to extend an offer for you to join our team as [Job Title] at [Company Name].
+    
+    We believe your skills and experience are a perfect fit for our organization, and we are excited to have you contribute to our projects. Please find the details of the offer below:
+    
+    - Position: [Job Title]
+    - Start Date: [Start Date]
+    - Salary: [Salary Details]
+    - Other Benefits: [Benefits]
+    
+    If you accept this offer, please reply to this email with your confirmation. We look forward to welcoming you to our team.
+    
+    Best regards,
+    [Hiring Manager's Name]
+    [Company Name]`;
+    
+                const mailtoLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    
+                const confirmSend = confirm(`Are you sure you want to send this job offer email to ${email}?`);
+                
+                if (confirmSend) {
+                    window.open(mailtoLink, '_blank');
+                }
+            }
+        </script>
 </body>
 </html>
