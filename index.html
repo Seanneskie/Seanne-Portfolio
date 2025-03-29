@@ -21,7 +21,7 @@
 
    
 </head>
-<body>
+<body style="width: 100vw; overflow-x: hidden;">
     <div class="cover">
         <div class="intro-message">
             <h1 style="font-size: 64px;">Dev Portfolio</h1>
@@ -37,6 +37,7 @@
             <li><a href="#certificates">Certificates</a></li>
             <li><a href="#seminar">Seminar</a></li>
             <li><a href="#achievements">Achievements</a></li>
+            <li><a href="#work-experiences">Work Experiences</a></li>
             <li><a href="#progress">Progress</a></li>
         </ul>
     </div>
@@ -234,7 +235,7 @@
                             <li><i class="fab fa-html5"></i> HTML</li>
                             <li><i class="fab fa-css3-alt"></i> CSS</li>
                             <li><i class="fab fa-css3-alt"></i> Bootstrap 4.0 and 5.0</li>
-                        
+                            <li><i class="fab fa-css3-alt"></i> Tailwind CSS</li>
                         </ul>
                     </div>
                     <div>
@@ -250,6 +251,7 @@
                         <ul>
                             <li><i class="fas fa-code"></i> Django</li>
                             <li><i class="fab fa-js"></i> React</li>
+                            <li><i class="fab fa-ts"></i> NextJS 15</li>
                         </ul>
                     </div>
                 </div>
@@ -339,6 +341,15 @@
                         </ul>
                     </div>
                     <div>
+                        <h3>React Component Libraries</h3>
+                        <ul>
+                            <li><i class="fas fa-cube"></i> ShadCN</li>
+                            <li><i class="fas fa-layer-group"></i> Material UI</li>
+                            <li><i class="fas fa-icons"></i> HeroIcons</li>
+                        </ul>
+                    </div>
+                    
+                    <div>
                         <h3>Wireframing/Diagrams</h3>
                         <ul>
                             <li><i class="fas fa-paint-brush"></i> UML Diagrams</li>
@@ -377,7 +388,11 @@
             </div>
         </div>
     </section>
-    
+    <!-- Modal Dialog -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImg">
+    </div>
     <section id="certificates" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
         <h2>Certificates</h2>
         <p class="description"> Certificates that I received in my career.</p>
@@ -386,8 +401,8 @@
                 <h3>Coding for Data</h3>
                 <p class="details-placeholder"> Coding is an important part of data analysis, and can be used in a variety of ways.<br>
                     Date: October 2024</p>
-                <a href="static/gemini.png" target="_blank" class="view-image">View Image</a>
-            </li>
+                    <a href="static/gemini.png" class="view-image">View Image</a>
+                </li>
             <li class="certificate">
                 <h3>Intro to C</h3>
                 <p class="details-placeholder"> C is a general-purpose programming language. It was created in the 1970s by Dennis Ritchie and remains very widely used and influential.<br>
@@ -543,7 +558,27 @@
         <strong>Hack4Gov3 – National Finals | October 2024 </strong>
         <p>4th Place</p>
     </section>
-    
+    <section id="work-experiences" class="container-fluid" data-aos="fade-right" data-aos-duration="800" data-aos-delay="200">
+        <h2 class="mb-4" style="color: var(--text);">Work Experiences</h2>
+        
+        <div class="card mb-3" style="background-color: var(--obsidian); color: var(--text); border: none;">
+            <div class="card-body">
+            <h5 class="card-title font-weight-bold">TSP Marine Industries – Vessel Inventory Management System (VIMS)</h5>
+            <h6 class="card-subtitle mb-2" style="color: var(--charcoal);">Next.js 15, React, ShadCN, Supabase, Tailwind CSS, Vercel</h6>
+            <p class="card-text">Developed a modern Vessel Inventory Management System to streamline inventory tracking and management for TSP Marine Industries. Deployed seamlessly via Vercel for production use.</p>
+            </div>
+        </div>
+        
+        <div class="card mb-3" style="background-color: var(--obsidian); color: var(--text); border: none;">
+            <div class="card-body">
+            <h5 class="card-title font-weight-bold">CEMCDO – Cooperative Profiling & Fund Utilization System (as an OJT)</h5>
+            <h6 class="card-subtitle mb-2" style="color: var(--charcoal);">Django, Tailwind CSS, Supabase, PostgreSQL, Render, OpenPyXL</h6>
+            <p class="card-text">Built a full-stack system for cooperative profiling and fund utilization tracking, complete with Excel report generation using OpenPyXL and live deployment via Render.</p>
+            </div>
+        </div>
+    </section>
+      
+      
     <section id="progress" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
         <h2>Progress</h2>
         <div class="tabs">
@@ -708,7 +743,9 @@
         });
 
     </script>
-        <script>
+    <script src="js/image-modal.js"></script>
+
+    <script>
             function openGmail() {
                 const email = "seanecanete32@gmail.com";
                 const subject = "Job Offer for Seanne Cañete";
