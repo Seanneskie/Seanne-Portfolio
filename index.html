@@ -42,542 +42,104 @@
         </ul>
     </div>
     
-    <section id="profile" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+    <!-- index.html -->
+    <div id="profile"></div>
+    <script>
+    fetch("sections/profile.html")
+        .then(response => response.text())
+        .then(data => document.getElementById("profile").innerHTML = data);
+    </script>
 
-        <div class="profile-container">
-            <div class="profile-image">
-                <img src="static/profile.jpg" alt="Profile Picture">
-            </div>
-            <div class="profile-content">
-                <h2>Profile</h2>
-                <p class="card-text"><strong>Name:</strong> Seanne Cañete</p>
-                <p class="card-text"><strong>Email:</strong> seannecanete32@gmail.com</p>
-                <p class="card-text"><strong>Phone:</strong> +63 936 943 5635</p>
-                <p class="card-text"><strong>Address:</strong> General Santos City, Philippines</p>
-            </div>
-            <div class="educ-bg">
-                <h2>Education</h2>
-                <p class="card-text"><strong>Tertiary:</strong> Mindanao State University - A.Y 2021 - 2025 </p>
-                <p class="card-text"><strong>Senior High School:</strong> Mindanao State University - A.Y 2019 - 2021 </p>
-                <p class="card-text"><strong>Junior High School:</strong> GSC SPED Integrated School - A.Y 2015 - 2019 </p>
-                <p class="card-text"><strong>Elementary:</strong> The Heritage Academy of the Philippines - A.Y 2009 - 2015 </p>
-            </div>
+    <div id="projects"></div>
 
-        
-        </div>
+    <script>
+    fetch("sections/projects.html")
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("projects").innerHTML = data;
 
-        <div class="social-links">
-            <a href="https://www.facebook.com/seanne.canete.7/" target="_blank">
-                <img src="static/facebook.png" alt="Facebook">
-            </a>
-            <a href="https://x.com/Seanneskie" target="_blank">
-                <img src="static/X.png" alt="Twitter">
-            </a>
-            <a href="https://www.linkedin.com/in/seanne-ca%C3%B1ete-8b09322a1/" target="_blank">
-                <img src="static/linkedn.png" alt="LinkedIn">
-            </a>
-            <a href="https://github.com/Seanneskie" target="_blank">
-                <img src="static/github.png" alt="GitHub">
-            </a>
-            <a href="https://leetcode.com/u/seanneskie32/" target="_blank">
-                <img src="static/leet.png" alt="GitHub">
-            </a>
-            <a href="static/canete_resume.pdf"  target="_blank" download>
-                <img src="static/pdf.png" alt="Resume">
-            </a>
-        </div>
-    </section>
+            const cardsPerPage = 3;
+            const projectCards = document.querySelectorAll("#projectCards .project-card");
+            const paginationContainer = document.getElementById("projectPagination");
+            let currentPage = 1;
 
-    <section id="background" data-aos="fade-right" data-aos-duration="800" data-aos-delay="100">
-        <h2>Background</h2>
-        <p>
-            Hello! I am Seanne, I am an undergraduate student at Mindanao State University, General Santos City. I am pursuing a Bachelor of Science in Information Technology with a major in Databases. My goal and dream is to become a fullstack developer. I mainly develop in Django for web applications.
-        </p>
-        <button class="hire-me"onclick="openGmail()">Hire Me</button>
-    </section>
-    
+            function renderPage(page) {
+                const start = (page - 1) * cardsPerPage;
+                const end = start + cardsPerPage;
 
-    <section id="projects" data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
-        <h2>Projects</h2>
-        <p>Showcasing various web and mobile applications, built using modern technologies like React, Node.js, and Python.</p>
-        <div class="project-container">
-            <div class="project-card"> <!-- AI  Project -->
-                <div class="project-card-header">
-                    <img src="static/ai.png" alt="Coin Detector Image" class="project-card-image">
-                    <h5>AI Coin Detector</h5>
-                </div>
-                
-                <div class="project-description">
-                    <p>
-                        Made with Django and GTM. A requirement in Introduction to AI course.
-                    </p>
-                    <p>
-                        <strong>Collaborators:</strong> Kimberly Baylon, Jeric Aminola, Bridget Jose, Azlan Tomindug
-                    </p>
-                </div>
-                <div class="project-footer">
-                    <a href="https://github.com/Seanneskie/AI-coin-detector-django" target="_blank" class="btn btn-secondary">View on GitHub</a>
-                </div>
-            </div>
+                projectCards.forEach((card, index) => {
+                    card.style.display = index >= start && index < end ? "flex" : "none";
+                });
 
+                // Update pagination controls
+                paginationContainer.innerHTML = "";
 
-            <div class="project-card"> <!-- NoSQL project -->
-                <div class="project-card-header">
-                    <img src="static/Mern.png" alt="Image" class="project-card-image">
-                    <h5>NoSQL Project - MERN Stack Website</h5>
-                </div>
-                
-                <div class="project-description">
-                    <p>
-                        Made using MERN Stack. A final requirement in NoSQL Course.
-                    </p>
-                   
-                </div>
-                <div class="project-footer">
-                    <a href="https://github.com/Seanneskie/MERN-STACK---Software" target="_blank" class="btn btn-secondary">View on GitHub</a>
-                </div>
-            </div>
-            <div class="project-card"> <!-- CNSM Website-->
-                <div class="project-card-header">
-                    <img src="static/Mern.png" alt="CNSM Image" class="project-card-image">
-                    <h5>Advance Database Project - CNSM Website</h5>
-                </div>
-                
-                <div class="project-description">
-                    <p>
-                        Made using MERN Stack. A final requirement in Advance Database Course.
-                    </p>
-                    <p>
-                        <strong>Collaborators:</strong> Database Major Batch of 2021-2025
-                    </p>
-                </div>
-                <div class="project-footer">
-                    <a href="https://github.com/Seanneskie/advDB-CNSM-Website" target="_blank" class="btn btn-secondary">View on GitHub</a>
-                </div>
-            </div>
-            <div class="project-card"> <!-- Analysis App -->
-                <div class="project-card-header">
-                    <img src="static/django.png" alt="Analysis Image" class="project-card-image">
-                    <h5>Bitcoin Analysis App</h5>
-                </div>
-                
-                <div class="project-description">
-                    <p>
-                        A Bitcoin Prediction and Descriptive Analysis. Made with Django and Python Modules.
-                    </p>
-                   
-                </div>
-                <div class="project-footer">
-                    <a href="https://github.com/Seanneskie/bigdata" target="_blank" class="btn btn-secondary align-self-end">View on GitHub</a>
-                </div>
-            </div>
-            <div class="project-card">
-                <div class="project-card-header">
-                    <img src="static/php.png" alt="PHP Image" class="project-card-image">
-                    <h5>PMS - PHP Project (Unfinished)</h5>
-                </div>
-                
-                <div class="project-description">
-                    <p>
-                        A Payroll Management System made using PHP.
-                    </p>
-                </div>
-                <div class="project-footer">
-                    <a href="https://github.com/Seanneskie/Information-System" target="_blank" class="btn btn-secondary align-self-end">View on GitHub</a>
-                </div>
-            </div>
-            <div class="project-card"> <!-- Capstone App -->
-                <div class="project-card-header">
-                    <img src="static/django.png" alt="Coin Detector Image" class="project-card-image">
-                    <h5>Digital Freelancer Profiling App</h5>
-                </div>
-                
-                <div class="project-description">
-                    <p>
-                        A Digital Freelancer Profiling System for Capstone requirement. Made with Django and Python Modules.
-                    </p>
-                    <p>
-                        <strong>Collaborators:</strong> Kimberly Baylon, Bridget Jose, Azlan Tomindug
-                    </p>
-                </div>
-                <div class="project-footer">
-                    <a href="https://github.com/Seanneskie/capstone-app-profile" target="_blank" class="btn btn-secondary align-self-end">View on GitHub</a>
-                </div>
-            </div>
-            <div class="project-card"> <!-- Capstone App -->
-                <div class="project-card-header">
-                    <img src="static/django.png" alt="Coin Detector Image" class="project-card-image">
-                    <h5>CEMCDO App</h5>
-                </div>
-                
-                <div class="project-description">
-                    <p>
-                        A system made for CEMCDO, currently composed of Fund Utilization and Cooperative Profiling of General Santos City. Made with Django and Python Modules.
-                    </p>
-                    <p>
-                        <strong>Collaborators:</strong> Kimberly Baylon, Bridget Jose, Azlan Tomindug, Francheska Mei Besana
-                    </p>
-                </div>
-                <div class="project-footer">
-                    <a href="https://cemcdo-demo.onrender.com/" target="_blank" class="btn btn-secondary align-self-end">View Site</a>
-                </div>
-            </div>
+                const totalPages = Math.ceil(projectCards.length / cardsPerPage);
 
-            <div class="project-card"> <!-- Capstone App -->
-                <div class="project-card-header">
-                    <img src="static/mern.png" alt="Coin Detector Image" class="project-card-image">
-                    <h5>VIMS - Vessel Inventory Management System </h5>
-                </div>
-                
-                <div class="project-description">
-                    <p>
-                        An Inventory Management System for TSP Marine Industries to manage vessel inventory in the open seas. Made with NextJS and React.
-                    </p>
-                    <p>
-                        <strong>Collaborators:</strong> TSP Marine - IT Division
-                    </p>
-                </div>
-                <div class="project-footer">
-                    <a href="#" target="_blank" class="btn btn-secondary align-self-end disabled" disabled>View Site</a>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <section id="skills" data-aos="fade-right" data-aos-duration="800" data-aos-delay="100">
-        <h2>Skills</h2>
-        <p>I have experience with these technologies.</p>
-        <div class="skills-container">
-            <div class="tabs">
-                <button class="tablinks" onclick="openCategory(event, 'Programming')">Programming</button>
-                <button class="tablinks" onclick="openCategory(event, 'Data Analysis')">Working with Data</button>
-                <button class="tablinks" onclick="openCategory(event, 'CTF')">CTF</button>
-                <button class="tablinks" onclick="openCategory(event, 'UI/UX')">UI/UX</button>
-                <button class="tablinks" onclick="openCategory(event, 'Other Skill')">Other Skills</button>
-            </div>
+                for (let i = 1; i <= totalPages; i++) {
+                    const btn = document.createElement("button");
+                    btn.textContent = i;
+                    btn.className = "btn btn-sm mx-1 " + (i === page ? "btn-primary" : "btn-outline-secondary");
+                    btn.onclick = () => {
+                        currentPage = i;
+                        renderPage(currentPage);
+                    };
+                    paginationContainer.appendChild(btn);
+                }
+            }
 
-            <div id="Programming" class="tabcontent" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
-                <div class="side-by-side">
-                    <div>
-                        <h3>Programming</h3>
-                        <ul>
-                            <li><i class="fas fa-code"></i>Python</li>
-                            <li><i class="fab fa-js"></i>JavaScript</li>
-                            <li><i class="fas fa-code"></i>PHP<li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3>Web Development</h3>
-                        <ul>
-                            <li><i class="fab fa-html5"></i> HTML</li>
-                            <li><i class="fab fa-css3-alt"></i> CSS</li>
-                            <li><i class="fab fa-css3-alt"></i> Bootstrap 4.0 and 5.0</li>
-                            <li><i class="fab fa-css3-alt"></i> Tailwind CSS</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3>AI Technology</h3>
-                        <ul>
-                            <li><i class="fas fa-code"></i> Google Teachable Machine</li>
-                            <li><i class="fas fa-code"></i> Tensorflow</li>
-                            <li><i class="fas fa-code"></i> OpenCV</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3>Frameworks</h3>
-                        <ul>
-                            <li><i class="fas fa-code"></i> Django</li>
-                            <li><i class="fab fa-js"></i> React</li>
-                            <li><i class="fab fa-ts"></i> NextJS 15</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            
+            renderPage(currentPage);
+        });
+    </script>
 
-            <div id="Data Analysis" class="tabcontent" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
-                <div class="side-by-side">
-                    <div>
-                        <h3>Skills</h3>
-                        <ul>
-                            <li><i class="fas fa-chart-line"></i> Data Analysis Skill</li>
-                            <li><i class="fas fa-chart-pie"></i> Data Visualization</li>
-                            <li><i class="fas fa-chart-pie"></i> Data Storytelling</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3>Tools</h3>
-                        <ul>
-                            <li><i class="fas fa-database"></i> Weka</li>
-                            <li><i class="fas fa-table"></i> Tableau</li>
-                            <li><i class="fas fa-table"></i> Jamovi</li>
-                            <li><i class="fas fa-file-excel"></i> Excel</li>
-                            <li><i class="fas fa-database"></i> PGAdmin4</li>
-                            <li><i class="fas fa-database"></i> Dbeaver</li>
-                            <li><i class="fas fa-table"></i> Google Looker Studio</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3>Used in App Development</h3>
-                        <ul>
-                            <li><i class="fab fa-js"></i> ChartJS</li>
-                            <li><i class="fas fa-code"></i> Matplotlib</li>
-                            <li><i class="fas fa-code"></i> Seaborn</li>
-                            <li><i class="fas fa-code"></i> Tensorflow</li>
-                            <li><i class="fas fa-code"></i> SciKit Learn</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3>Databases</h3>
-                        <ul>
-                            <li><i class="fas fa-database"></i> MySQL</li>
-                            <li><i class="fas fa-database"></i> PostgreSQL</li>
-                            <li><i class="fas fa-database"></i> MongoDB</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            
-            
-            <div id="CTF" class="tabcontent" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
-                <div class="side-by-side">
-                    <div>
-                        <h3>Categories</h3>
-                        <ul>
-                            <li><i class="fas fa-code"></i> Forensics</li>
-                            <li><i class="fas fa-code"></i> Reverse Engineering</li>
-                            <li><i class="fas fa-code"></i> OSINT</li>
-                            <li><i class="fas fa-code"></i> Malware Analysis</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3>Tools used</h3>
-                        <ul>
-                            <li><i class="fas fa-code"></i> Kali Linux</li>
-                            <li><i class="fas fa-code"></i> Binwalk </li>
-                            <li><i class="fas fa-code"></i> Hexedit</li>
-                            <li><i class="fas fa-code"></i> Autopsy</li>
-                            <li><i class="fas fa-code"></i> Hindsight</li>
-                            <li><i class="fas fa-code"></i> Ghidra</li>
-                            <li><i class="fas fa-code"></i> x64Dbg</li>
-                        </ul>
-                    </div>
-                </div>
+    <div id="skills"></div>
 
-                
-            </div>
+    <script>
+        fetch("sections/skills.html")
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("skills").innerHTML = data;
 
-            <div id="UI/UX" class="tabcontent" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
-                <div class="side-by-side">
-                    <div>
-                        <h3>UI/UX</h3>
-                        <ul>
-                            <li><i class="fab fa-figma"></i> Figma</li>
-                            <li><i class="fab fa-figma"></i> Canva</li>
-                            <li><i class="fas fa-code"></i> Visio</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3>React Component Libraries</h3>
-                        <ul>
-                            <li><i class="fas fa-cube"></i> ShadCN</li>
-                            <li><i class="fas fa-layer-group"></i> Material UI</li>
-                            <li><i class="fas fa-icons"></i> HeroIcons</li>
-                        </ul>
-                    </div>
-                    
-                    <div>
-                        <h3>Wireframing/Diagrams</h3>
-                        <ul>
-                            <li><i class="fas fa-paint-brush"></i> UML Diagrams</li>
-                            <li><i class="fas fa-paint-brush"></i> Draw.io</li>
-                            <li><i class="fas fa-paint-brush"></i> Sketch</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div id="Other Skill" class="tabcontent" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
-                <div class="side-by-side">
-                        <div>
-                            <h3>DevOps</h3>
-                            <ul>
-                                <li><i class="fab fa-git-alt"></i> Git</li>
-                                <li><i class="fab fa-docker"></i> Docker</li>
-                                <li><i class="fas fa-cloud"></i> Google Cloud</li>
-                                <li><i class="fas fa-cloud"></i> Render</li>
-                                
-                            </ul>
-                        </div>
-                        <div>
-                            <h3>Other</h3>
-                            <ul>
-                                <li><i class="fas fa-code"></i> Linux Commands</li>
-                                <li><i class="fas fa-code"></i> Powershell Commands</li>
-                                <li><i class="fas fa-code"></i> Markdown Language</li>
-                                <li><i class="fas fa-file"></i> Project Documentation</li>
-                                <li><i class="fas fa-file"></i> x86-64 Assembly Language (studying) </li>
-                            </ul>
-                        </div>
-                
-                </div>
-                    
-                    
-            </div>
-        </div>
-    </section>
-    <!-- Modal Dialog -->
+                // Run after content is injected
+                function openSkillsTab(evt, categoryName) {
+                    const skillsSection = document.querySelector("#skills");
+                    const tabContents = skillsSection.querySelectorAll(".tabcontent");
+                    const tabLinks = skillsSection.querySelectorAll(".tablinks");
+
+                    tabContents.forEach((tab) => {
+                        tab.style.display = "none";
+                    });
+
+                    tabLinks.forEach((tab) => {
+                        tab.classList.remove("active");
+                    });
+
+                    const targetTab = skillsSection.querySelector(`#${CSS.escape(categoryName)}`);
+                    if (targetTab) {
+                        targetTab.style.display = "block";
+                        evt.currentTarget.classList.add("active");
+                    }
+                }
+
+                // Set global reference so inline onclicks work
+                window.openSkillsTab = openSkillsTab;
+
+                // Auto-open first tab
+                const firstSkillsTab = document.querySelector("#skills .tablinks");
+                if (firstSkillsTab) firstSkillsTab.click();
+            });
+    </script>
     <div id="imageModal" class="modal">
         <span class="close">&times;</span>
         <img class="modal-content" id="modalImg">
     </div>
-    <section id="certificates" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
-        <h2>Certificates</h2>
-        <p class="description"> Certificates that I received in my career.</p>
-        <ul>
-            <li class="certificate">
-                <h3>Coding for Data</h3>
-                <p class="details-placeholder"> Coding is an important part of data analysis, and can be used in a variety of ways.<br>
-                    Date: October 2024</p>
-                    <a href="static/coding_for_data.jpg" class="view-image">View Image</a>
-                </li>
-            <li class="certificate">
-                <h3>Intro to C</h3>
-                <p class="details-placeholder"> C is a general-purpose programming language. It was created in the 1970s by Dennis Ritchie and remains very widely used and influential.<br>
-                    Date: October 2024</p>
-                <a href="static/intro_to_c.jpg" target="_blank" class="view-image">View Image</a>
-            </li>
-            <li class="certificate">
-                <h3>Gemini for end-to-end SDLC - Google Cloud</h3>
-                <p class="details-placeholder"> I learned how to develop and build a web application, fix errors in the application, develop tests, and query data with the help of Gemini AI.<br>
-                    Date: September 2024</p>
-                <a href="static/gemini.png" target="_blank" class="view-image">View Image</a>
-            </li>
-            <li class="certificate">
-                <h3>LFC108 Cybersecurity Essentials - Linux Foundations</h3>
-                <p class="details-placeholder">Cybersecurity Essentials include the fundamental and core skills to protect sensitive data and organizational security <br>
-                    Date: September 2024</p>
-                <a href="static/linuxcyber.png" target="_blank" class="view-image">View Image</a>
-            </li>
-            <li class="certificate">
-                <h3>Frontend for Beginners - Solo Learn</h3>
-                <p class="details-placeholder">Front-end web development is the development of the graphical user interface of a website through the use of HTML, CSS, and JavaScript so users can view and interact with that website. <br>
-                    Date: September 2024</p>
-                <a href="static/frontend.png" target="_blank" class="view-image">View Image</a>
-            </li>
-            <li class="certificate">
-                <h3>Web Development - Solo Learn</h3>
-                <p class="details-placeholder">Web development is the work involved in developing a website for the Internet or an intranet. <br>
-                    Date: August 2024</p>
-                <a href="static/web-dev.png" target="_blank" class="view-image">View Image</a>
-            </li>
-            <li class="certificate">
-                <h3>Digital Transformation with Google Cloud</h3>
-                <p class="details-placeholder">This course provides an overview of the types of opportunities and challenges that companies often encounter in their digital transformation journey. <br>
-                    Date: February 1, 2024</p>
-                <a href="static/googlecloud-1.png" target="_blank" class="view-image">View Image</a>
-            </li>
-            <li class="certificate">
-                <h3>Python Core - Solo Learn</h3>
-                <p class="details-placeholder">Python is a high-level, general-purpose programming language. Its design philosophy emphasizes code readability with the use of significant indentation. <br>
-                    Date: December 2023</p>
-                <a href="static/python-2.png" target="_blank" class="view-image">View Image</a>
-            </li>
-            <li class="certificate">
-                <h3>Foundations of Geographic Information System</h3>
-                <p class="details-placeholder">A Geographic Information System (GIS) is a computer system that analyzes and displays geographically referenced information. <br>
-                    Date: October 2023</p>
-                <a href="static/cert-placeholder.jpeg" target="_blank" class="view-image">View Image</a>
-            </li>
-            <li class="certificate">
-                <h3>Intel OpenVINO Training</h3>
-                <p class="details-placeholder">OpenVINO is an open-source software toolkit for optimizing and deploying deep learning models. <br>
-                    Date: September 2022</p>
-                <a href="static/cert-placeholder.jpeg" target="_blank" class="view-image">View Image</a>
-            </li>
-            
-            <li class="certificate">
-                <h3>Python for Beginners- Solo Learn</h3>
-                <p class="details-placeholder">Python is a high-level, general-purpose programming language. Its design philosophy emphasizes code readability with the use of significant indentation. <br>
-                    Date: August 2022</p>
-                <a href="static/python-1.png" target="_blank" class="view-image">View Image</a>
-            </li>
+    <div id="certificates"></div>
+    <script>
+    fetch("sections/certificates.html")
+        .then(response => response.text())
+        .then(data => document.getElementById("certificates").innerHTML = data);
+    </script>
 
-
-
-        </ul>
-        <h2 id="seminar">Seminars and Workshops</h2>
-        <p class="description"> Seminars and workshops that I attended in my career.</p>
-        <ul>
-            <li class="certificate">
-                <h3>Workshop #1 Design Thinking Workshop | BPI DATA Wave 2024</h3>
-                <p class="details-placeholder">Design Thinking Workshop of BPI DATA Wave <br>
-                    Date: September 2024</p>
-            </li>
-            <li class="certificate">
-                <h3>Decode 2024</h3>
-                <p class="details-placeholder">The Philippines' Largest Cybersecurity Conference. <br>
-                    Date: June 2024</p>
-            </li>
-            <li class="certificate">
-                <h3>Animation Industry Roadshow</h3>
-                <p class="details-placeholder">Animation is a filmmaking technique by which still images are manipulated to create moving images.<br>
-                    Date: June 2024</p>
-            </li>
-            <li class="certificate">
-                <h3>Capacity Building on the Full Usage of the Marine Biodiversity Website </h3>
-                <p class="details-placeholder">TIt is a project under the Applied Biodiversity ReseArch for Holistic Advancements in Mindanao (ABRAHAM) Program which oversees projects assessing and documenting the reef fish diversity in Davao Region and the Sulu Archipelago<br>
-                    Date: September 2023</p>
-            </li>
-            <li class="certificate">
-                <h3>No more code chaos: Git Good and Stay Organized </h3>
-                <p class="details-placeholder">Campus DevCon 2023 <br>
-                    Date: May 2023</p>
-                <a href="static/sem4.png" target="_blank" class="view-image">View Image</a>
-            </li>
-
-            <li class="certificate">
-                <h3>Revolutionizing the Future: Exploring the Power of AI Tools and their Impact  </h3>
-                <p class="details-placeholder">Campus DevCon 2023 <br>
-                    Date: May 2023</p>
-                <a href="static/sem1.png" target="_blank" class="view-image">View Image</a>
-            </li>
-            <li class="certificate">
-                <h3>Introduction to Cybersecurity: Building Awareness in Today’s Digital World </h3>
-                <p class="details-placeholder">Campus DevCon 2023 <br>
-                    Date: May 2023</p>
-                <a href="static/sem2.png" target="_blank" class="view-image">View Image</a>
-            </li>
-
-            <li class="certificate">
-                <h3>Your Path in Technopreneurship</h3>
-                <p class="details-placeholder">Campus DevCon 2023 <br>
-                    Date: May 2023</p>
-                <a href="static/sem3.png" target="_blank" class="view-image">View Image</a>
-            </li>
-            <li class="certificate">
-                <h3>DevSecOps for Starters  </h3>
-                <p class="details-placeholder">Campus DevCon 2023 <br>
-                    Date: May 2023</p>
-                <a href="static/sem5.png" target="_blank" class="view-image">View Image</a>
-            </li>
-            <li class="certificate">
-                <h3>Careers in Cloud Computing </h3>
-                <p class="details-placeholder">Campus DevCon 2023 <br>
-                    Date: May 2023</p>
-                <a href="static/sem7.png" target="_blank" class="view-image">View Image</a>
-            </li>
-            
-            <li class="certificate">
-                <h3>Your Path in Technopreneurship</h3>
-                <p class="details-placeholder">Campus DevCon 2023 <br>
-                    Date: May 2023</p>
-                <a href="static/sem6.png" target="_blank" class="view-image">View Image</a>
-            </li>
-         
-            
-        </ul>
-    </section>
-    
     
     <section id="achievements" data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
         <h2>Achievements</h2>
@@ -720,14 +282,6 @@
             mirror: false, // Whether elements should animate out while scrolling past them
         });
     </script>
-     <script>
-        window.onload = function() {
-             // Trigger the click event for the button with id 'tab2-tab'
-             document.getElementById("tab2-tab").click();
-         };
- 
- 
-     </script>
     <script>
         function openCategory(evt, categoryName) {
             var i, tabcontent, tablinks;
@@ -755,6 +309,7 @@
         });
 
     </script>
+    
     <script>
         function openTab(evt, tabName) {
             // Get all elements with class="tabcontent" and hide them
@@ -811,6 +366,6 @@
                     window.open(mailtoLink, '_blank');
                 }
             }
-        </script>
+    </script>
 </body>
 </html>

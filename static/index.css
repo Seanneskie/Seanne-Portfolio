@@ -741,3 +741,55 @@ body {
 .close:hover {
   color: #f1f1f1;
 }
+
+
+/* Grid Layout */
+.certificate-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* Card Style */
+.certificate-card {
+    background-color: var(--charcoal);
+    color: var(--text);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.certificate-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+/* Headings */
+.certificate-card h3 {
+    margin-top: 0;
+    color: white;
+}
+
+/* Description text */
+.details-placeholder {
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+    color: var(--text);
+}
+
+/* View Image Button */
+.view-image {
+    display: inline-block;
+    margin-top: 10px;
+    color: #4ea3f1;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.view-image:hover {
+    color: white;
+    text-decoration: underline;
+}
