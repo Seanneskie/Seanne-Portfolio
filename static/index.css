@@ -880,28 +880,3 @@ body {
     color: white;
     text-decoration: underline;
 }
-
-/* Certificate filter styles */
-.filter-container {
-    margin: 20px 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.filter-container input[type="text"] {
-    padding: 6px 10px;
-    border-radius: 4px;
-    border: 1px solid #555;
-    background-color: var(--onyx);
-    color: var(--text);
-}
-
-.tag-container label {
-    margin-right: 10px;
-    font-size: 0.9rem;
-}
-
-.tag-container input {
-    margin-right: 4px;
-}

@@ -139,12 +139,6 @@
         .then(response => response.text())
         .then(data => document.getElementById("certificates").innerHTML = data);
     </script>
-<div id="seminar-section"></div>
-<script>
-fetch("sections/seminars.html")
-    .then(response => response.text())
-    .then(data => document.getElementById("seminar-section").innerHTML = data);
-</script>
 
     
     <section id="achievements" data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
@@ -425,7 +419,6 @@ fetch("sections/seminars.html")
 
     </script>
     <script src="js/image-modal.js"></script>
-    <script src="js/certificates.js"></script>
 
     <script>
             function openGmail() {
