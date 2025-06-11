@@ -479,6 +479,46 @@ p {
     font-weight: bold;
 }
 
+/* Progress bar styling */
+.progress-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.progress-item {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.progress-item span {
+    white-space: nowrap;
+}
+
+progress {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 20px;
+}
+
+progress::-webkit-progress-bar {
+    background-color: var(--coal);
+    border-radius: 10px;
+}
+
+progress::-webkit-progress-value {
+    background-color: var(--charcoal);
+    border-radius: 10px;
+}
+
+progress::-moz-progress-bar {
+    background-color: var(--charcoal);
+    border-radius: 10px;
+}
+
 /* Links Section */
 .links {
     display: flex;
