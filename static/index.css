@@ -880,3 +880,44 @@ body {
     color: white;
     text-decoration: underline;
 }
+
+.project-tags .tag {
+    display: inline-block;
+    font-size: 0.85rem;
+    padding: 4px 10px;
+    border-radius: 12px;
+    margin: 3px 4px;
+    color: white;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+/* Different colors based on index */
+.project-tags .tag:nth-child(1) {
+    background-color: #007bff; /* Blue */
+}
+.project-tags .tag:nth-child(2) {
+    background-color: #28a745; /* Green */
+}
+.project-tags .tag:nth-child(3) {
+    background-color: #17a2b8; /* Teal */
+}
+.project-tags .tag:nth-child(4) {
+    background-color: #6f42c1; /* Purple */
+}
+.project-tags .tag:nth-child(5) {
+    background-color: #fd7e14; /* Orange */
+}
+.project-tags .tag:nth-child(6) {
+    background-color: #dc3545; /* Red */
+}
+.project-tags .tag:nth-child(7) {
+    background-color: #20c997; /* Emerald */
+}
+
+/* You can add more if needed */
+
+.project-tags .tag:hover {
+    opacity: 0.8;
+    cursor: default;
+}
