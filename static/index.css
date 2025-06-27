@@ -915,6 +915,27 @@ body {
     background-color: #20c997; /* Emerald */
 }
 
+.project-tags .tag:nth-child(8) {
+    background-color: #6610f2; /* Indigo */
+}
+.project-tags .tag:nth-child(9) {
+    background-color: #e83e8c; /* Pink */
+}
+.project-tags .tag:nth-child(10) {
+    background-color: #ffc107; /* Amber */
+}
+.project-tags .tag:nth-child(11) {
+    background-color: #6c757d; /* Gray */
+}
+.project-tags .tag:nth-child(12) {
+    background-color: #343a40; /* Dark */
+}
+.project-tags .tag:nth-child(13) {
+    background-color: #39c0ed; /* Sky Blue */
+}
+.project-tags .tag:nth-child(14) {
+    background-color: #b21f2d; /* Crimson */
+}
 /* You can add more if needed */
 
 .project-tags .tag:hover {

@@ -1,16 +1,382 @@
 <!-- ai-coin-detector.html -->
-<html>
-<head>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AI Coin Detector - Project Details</title>
-    <link href="../static/index.css" rel="stylesheet">
-</head>
-<body>
-    <div class="project-detail-page">
-        <h1>AI Coin Detector</h1>
-        <img src="../static/ai.png" alt="AI Coin Detector" style="max-width: 500px;">
-        <p>Made with Django and GTM. A requirement in Introduction to AI course.</p>
-        <p><strong>Collaborators:</strong> Kimberly Baylon, Jeric Aminola, Bridget Jose, Azlan Tomindug</p>
-        <a href="https://github.com/Seanneskie/AI-coin-detector-django" target="_blank">GitHub Link</a>
-    </div>
-</body>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- AOS Animation CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+    />
+
+    <!-- Custom CSS -->
+    <link href="../static/index.css" rel="stylesheet" />
+  </head>
+  <body
+    style="
+      background-color: var(--obsidian);
+      color: var(--text);
+      font-family: 'Open Sans', sans-serif;
+    "
+  >
+    <!-- Navigation -->
+    <nav
+      class="d-flex justify-content-between align-items-center p-3"
+      style="background-color: var(--sable)"
+    >
+      <a href="/" class="btn btn-light">← Go Back</a>
+      <h1 class="text-white m-0">AI Coin Detector</h1>
+      <span></span>
+    </nav>
+
+    <!-- Project Content -->
+    <section
+      style="background-color: var(--charcoal)"
+      class="container-fluid"
+      data-aos="fade-up"
+      data-aos-duration="800"
+    >
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center">
+          <div class="container-fluid d-flex flex-row">
+            <img
+              src="../static/ai.png"
+              alt="AI Coin Detector Screenshot"
+              class="img-fluid rounded shadow"
+              style="max-width: 350px; height: auto"
+            />
+            <div
+              class="mt-2"
+              style="background-color: var(--text); margin-bottom: 0"
+            >
+              <p class="lead">
+                <strong>Overview:</strong><br />
+                This AI Coin Detector was developed using Django and Google
+                Teachable Machine (GTM) as a requirement for the
+                <em>Introduction to AI</em> course.
+              </p>
+              <p>
+                <strong>Collaborators:</strong><br />
+                Kimberly Baylon, Jeric Aminola, Bridget Jose, Azlan Tomindug
+              </p>
+              <a
+                href="https://github.com/Seanneskie/AI-coin-detector-django"
+                target="_blank"
+                class="btn btn-outline-light btn-secondary btn-lg mt-3"
+              >
+                <i class="fab fa-github"></i> View on GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <h1 style="color: var(--charcoal)">Introduction</h1>
+        <p>
+          In the expanding field of artificial intelligence (AI), the creation
+          of accessible, real-world applications demonstrates the rapid growth
+          and incorporation of AI technology into our daily lives. The project
+          presented herein uses Google's Teachable Machine (GTM), an innovative
+          tool aimed at promoting machine learning skills, to create a web
+          application that functions as a coin detector and counter. This
+          program focuses on detecting and counting Philippine Peso coins in
+          denominations of 1, 5, 10, and 20 Pesos, as well as the 25 centavo
+          coin. Using GTM-facilitated image recognition technology, this project
+          aims to provide a practical solution for quickly identifying and
+          summing the total value of a collection of coins, thereby simplifying
+          financial transactions and educational purposes related to currency
+          recognition and management.
+        </p>
+        <strong style="color: var(--charcoal)">Statement of the Problem</strong>
+        <p>
+          The new series of Philippine peso coins are designed to be more
+          identical to each other, which can be challenging for people with
+          visual impairments to distinguish. An AI coin detection system can
+          help these individuals by accurately identifying the value of coins
+          through images or video samples, thereby enhancing their accessibility
+          and convenience in daily transactions (Alon et al., 2021).
+        </p>
+        <strong style="color: var(--charcoal)">Significance</strong>
+        <p>
+          The significance of this project lies not only in its practical
+          application but also in its educational value. It provides a realistic
+          example of how machine learning algorithms may be taught and deployed
+          to deal with specific, daily problems. The usage of Philippine Peso
+          coins as the subject matter gives the project specific context, making
+          it more relevant to users in the Philippines. Through this project, we
+          aim to demonstrate Teachable Machine's potential for closing the gap
+          between complex AI technologies and end-users, allowing individuals
+          without significant technical understanding in AI to develop powerful,
+          machine learning-based apps. This documentation will go over the whole
+          development process, from concept to implementation, showcasing the
+          creative approach and technology utilized to create an AI-powered tool
+          that improves human connection with the digital world.
+        </p>
+      </div>
+      <div class="container">
+        <h1 style="color: var(--charcoal)">Rationale</h1>
+        <p>
+          The rationale behind developing a Philippine coin detection AI lies in
+          its potential to improve efficiency, accuracy, accessibility,
+          security, and innovation in various financial applications. In
+          addition, It aims to solve the issue of time efficiency in coin
+          counting by utilizing camera sensors while maintaining high accuracy.
+          Moreover, a key use case in the industry involves integrating coin
+          detection AI into self-service kiosks or vending machines.
+        </p>
+      </div>
+      <div class="container">
+        <h1 style="color: var(--charcoal)">Data Collection and Preparation</h1>
+        <strong style="color: var(--charcoal)">Data Collection</strong>
+        <p>
+          The dataset used for the AI coin detection system, specifically for
+          the Philippine peso, consists of legal tender coins that are accepted
+          as payment for goods and services. This dataset is composed of
+          close-up photos of the coins, taken by the group, and includes both
+          the front and back faces of each coin.
+        </p>
+        <p>
+          The use of close-up photos is particularly important as it allows for
+          detailed analysis of the coin's features, which are crucial for
+          accurate detection and classification. This method is supported by
+          research and development in the field of computer vision, where object
+          detection models have been successfully applied to identify and track
+          various coin types in real-time, even under challenging lighting
+          conditions and diverse orientations (Detect & Classify Coins Using
+          Computer Vision, 2023)
+        </p>
+        <p>
+          The inclusion of both front and back faces of the coins in the dataset
+          is a strategic decision that addresses a common challenge in coin
+          detection systems. By training the model on images of both sides of
+          the coins, the system can better recognize and classify coins
+          regardless of their orientation. This is a critical aspect of the coin
+          detection process, as coins can be presented in various orientations
+          during transactions.
+        </p>
+        <p>Right below are the classification of the coins used as dataset:</p>
+        <ul style="color: #555">
+          <li><p>25-Cents Coin Photos</p></li>
+          <li><p>1-Peso Coin Photos</p></li>
+          <li><p>5-Peso Coin Photos</p></li>
+          <li><p>10-Peso Coin Photos</p></li>
+          <li><p>20-Peso Coin Photos</p></li>
+        </ul>
+        <strong style="color: var(--charcoal)">Training and Testing</strong>
+        <p>
+          The training set was composed of coins numbering at least a 100 of
+          samples as long as it is possible for the group to collect. Moreover,
+          the number of sample data is still varying due to the lack of
+          resources. Nevertheless, it is made sure that the training set coin
+          samples were not used in the testing set, the testing set was made
+          sure to be composed of coins that are not in the testing set or were
+          taken in a different angle or lighting. Lastly, after the testing, the
+          testing set is also added to the training set.
+        </p>
+      </div>
+      <div class="container">
+        <h1 style="color: var(--charcoal)">Model Development</h1>
+        <strong style="color: var(--charcoal)">Architecture and Setup</strong>
+        <p>
+          The setup used for training Teachable Model was the default setup of
+          teachable model. The classes in the image model were 10 and will be
+          discussed in Table 1. Model Classes. In addition, the setup will be
+          displayed in Table 2. Model Setup.
+        </p>
+        <div class="table-responsive">
+          <p><strong>Table 1. Model Classes</strong></p>
+          <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+              <tr>
+                <th>Class Name</th>
+                <th>Value (PHP)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1 PESO - Front</td>
+                <td>1</td>
+              </tr>
+              <tr>
+                <td>1 PESO - Back</td>
+                <td>1</td>
+              </tr>
+              <tr>
+                <td>5 PESO - Front</td>
+                <td>5</td>
+              </tr>
+              <tr>
+                <td>5 PESO - Back</td>
+                <td>5</td>
+              </tr>
+              <tr>
+                <td>10 PESO - Front</td>
+                <td>10</td>
+              </tr>
+              <tr>
+                <td>10 PESO - Back</td>
+                <td>10</td>
+              </tr>
+              <tr>
+                <td>20 PESO - Front</td>
+                <td>20</td>
+              </tr>
+              <tr>
+                <td>20 PESO - Back</td>
+                <td>20</td>
+              </tr>
+              <tr>
+                <td>25 CENTS - Front</td>
+                <td>0.25</td>
+              </tr>
+              <tr>
+                <td>25 CENTS - Back</td>
+                <td>0.25</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          The setup for training for the model was default as tweaking the setup
+          can be detrimental to the result of the model as small changes to
+          numbers can impact the accuracy of the model. With that in mind, the
+          group has decided to keep on default. In addition, By comparing the
+          performance of more sophisticated models against the default model, it
+          becomes possible to assess whether the efforts are truly improving the
+          predictive power or just adding unnecessary complexity (How, 2024).
+        </p>
+        <div class="table-responsive">
+          <p><strong>Table 2. Model Setup</strong></p>
+          <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+              <tr>
+                <th>Options</th>
+                <th>Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Epochs</td>
+                <td>80</td>
+              </tr>
+              <tr>
+                <td>Batch Size</td>
+                <td>16</td>
+              </tr>
+              <tr>
+                <td>Learning Rate</td>
+                <td>0.00102</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="container">
+        <h1 style="color: var(--charcoal)">Training and Evaluation</h1>
+        <strong style="color: var(--charcoal)"
+          >Training Processes and Challenges</strong
+        >
+        <p>
+          The training process started after the collection of the 50 sample
+          sets of each coin in the model classes. In addition, the testing lasts
+          for 3 months and is still currently on-going. Amidst the testing, the
+          group encountered challenges such as lack of resources for specific
+          classes of coin such as the 20-Peso Coin, 10-Peso Coin and
+          25-centavos. In addition, there is a lot of sample data for 1-peso and
+          5-peso coin casting to split and adjust the sample data for these
+          classes of coins.
+        </p>
+        <p>
+          Another challenge is the low accuracy in the detection rate, the model
+          seems to detect almost every silver coin or if the lighting is bright
+          to be a 1-Peso coin with a very high confidence level ranging from
+          90-100% of confidence value. In addition, the factors that seemed to
+          affect the accuracy were the large amount of sample which was then
+          splitted, the lighting of the image, and the AI seems to detect the
+          silver-colored coins as 1-Peso Coin.
+        </p>
+        <p>
+          To address the challenges with low accuracy in detecting silver coins
+          as 1-Peso coins, especially in bright lighting conditions, consider
+          capturing close-up shots of the coins with a clear background. This
+          approach can help the model focus on the specific features of each
+          coin, potentially improving its ability to differentiate between
+          different types of coins. Additionally, ensure that the lighting
+          conditions are consistent across all images to reduce the impact of
+          lighting on the model's performance.
+        </p>
+        <strong style="color: var(--charcoal)">Evaluation</strong>
+        <p>
+          For testing the model, we used past data of the first model test to
+          compare to the current model testing but only by remembering what were
+          the challenges and problems. If the problem is solved it will be
+          checked. Nevertheless, this causes confusion in the long term and the
+          group has decided to use test plans to record the results which are
+          displayed in Appendix A, Test Plans.
+        </p>
+        <p>
+          In these test plans, the group used sample data and counted how many
+          the model can detect correctly with a confidence level of at least 60
+          or 70%. If the model couldn’t reach 60%, it will be counted as a
+          failure. In addition, the confidence level and also the decision if
+          pass or fail is included in Appendix A. Test Plans.
+        </p>
+        <p>
+          The group didn’t use any baseline or benchmark model from the internet
+          but nonetheless used the previous model as the benchmark model for
+          improving the current performance of the model.
+        </p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-row">
+          <div class="footer-col">
+            <h5>Quick Links</h5>
+            <ul class="footer-links">
+              <li><a href="index.html#profile">Portfolio</a></li>
+              <li><a href="datatables.html">DataTables Demo</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h5>Follow Me</h5>
+            <a href="#" class="social-link">
+              <i class="fab fa-facebook"></i> Facebook
+            </a>
+            <a href="#" class="social-link">
+              <i class="fab fa-twitter"></i> Twitter
+            </a>
+            <a href="#" class="social-link">
+              <i class="fab fa-linkedin"></i> LinkedIn
+            </a>
+          </div>
+        </div>
+        <div class="footer-copy">
+          <p>&copy; 2024 Seanneskie. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS and AOS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+  </body>
 </html>
