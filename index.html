@@ -35,6 +35,7 @@
             <li><a href="#projects">Projects</a></li>
             <li><a href="#skills">Skills</a></li>
             <li><a href="#certificates">Certificates</a></li>
+            <li><a href="#courses">Courses</a></li>
             <li><a href="#seminar">Seminar</a></li>
             <li><a href="#achievements">Achievements</a></li>
             <li><a href="#work-experiences">Work Experiences</a></li>
@@ -140,7 +141,15 @@
         .then(data => document.getElementById("certificates").innerHTML = data);
     </script>
 
-    
+    <div id="courses"></div>
+    <script>
+    fetch("sections/courses.html")
+        .then(response => response.text())
+        .then(data => document.getElementById("courses").innerHTML = data);
+    </script>
+
+
+
     <div id="achievements"></div>
     <script>
     fetch("sections/achievements.html")
