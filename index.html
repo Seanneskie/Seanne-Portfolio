@@ -35,6 +35,7 @@
             <li><a href="#projects">Projects</a></li>
             <li><a href="#skills">Skills</a></li>
             <li><a href="#certificates">Certificates</a></li>
+            <li><a href="#courses">Courses</a></li>
             <li><a href="#seminar">Seminar</a></li>
             <li><a href="#achievements">Achievements</a></li>
             <li><a href="#work-experiences">Work Experiences</a></li>
@@ -140,54 +141,19 @@
         .then(data => document.getElementById("certificates").innerHTML = data);
     </script>
 
-    
-    <section id="achievements" data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
-        <h2>Achievements</h2>
-        <ul class="timeline">
-            <li>
-                <i class="fas fa-trophy"></i>
-                <div class="achievement-content">
-                    <strong>JITS IT Week 2023 - Hackathon | January 2023</strong>
-                    <p>Champion</p>
-                </div>
-            </li>
-            <li>
-                <i class="fas fa-trophy"></i>
-                <div class="achievement-content">
-                    <strong>JITS IT Week 2024 - Hackathon | April 2024</strong>
-                    <p>Champion</p>
-                </div>
-            </li>
-            <li>
-                <i class="fas fa-award"></i>
-                <div class="achievement-content">
-                    <strong>Hack4Gov3 – Region 12 Qualifier | August 2024</strong>
-                    <p>Champion &amp; Excellence Awardee</p>
-                </div>
-            </li>
-            <li>
-                <i class="fas fa-medal"></i>
-                <div class="achievement-content">
-                    <strong>Trend Micro – Trend University CTF Qualifier | August 2024</strong>
-                    <p>1st Place</p>
-                </div>
-            </li>
-            <li>
-                <i class="fas fa-medal"></i>
-                <div class="achievement-content">
-                    <strong>Trend Micro – Trend University CTF Finals | September 2024</strong>
-                    <p>4th Place</p>
-                </div>
-            </li>
-            <li>
-                <i class="fas fa-flag-checkered"></i>
-                <div class="achievement-content">
-                    <strong>Hack4Gov3 – National Finals | October 2024</strong>
-                    <p>4th Place</p>
-                </div>
-            </li>
-        </ul>
-    </section>
+    <div id="courses"></div>
+    <script>
+    fetch("sections/courses.html")
+        .then(response => response.text())
+        .then(data => document.getElementById("courses").innerHTML = data);
+    </script>
+
+    <div id="achievements"></div>
+    <script>
+    fetch("sections/achievements.html")
+        .then(response => response.text())
+        .then(data => document.getElementById("achievements").innerHTML = data);
+    </script>
     <section id="work-experiences" class="container-fluid" data-aos="fade-right" data-aos-duration="800" data-aos-delay="200">
         <h2 class="mb-4" style="color: var(--text);">Work Experiences</h2>
         
