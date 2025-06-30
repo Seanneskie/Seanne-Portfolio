@@ -1,322 +1,380 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portfolio</title>
-    <meta name="description" content="Seanneskie's Portfolio">
-    <meta name="author" content="Seanneskie">
-    <link rel="icon" type="image/png" href="static/favicon-32x32.png">
+    <meta name="description" content="Seanneskie's Portfolio" />
+    <meta name="author" content="Seanneskie" />
+    <link rel="icon" type="image/png" href="static/favicon-32x32.png" />
     <!-- Bootstrap CSS -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
 
     <!-- Animation Scripts -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-    
-    <!-- FontAwesome Icons -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    
-    <!-- Custom CSS -->
-    <link href="static/index.css" rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+    />
 
-   
-</head>
-<body style="width: 100vw; overflow-x: hidden;">
+    <!-- FontAwesome Icons -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Custom CSS -->
+    <link href="static/index.css" rel="stylesheet" />
+  </head>
+  <body style="width: 100vw; overflow-x: hidden">
     <div class="cover">
-        <div class="intro-message">
-            <h1 style="font-size: 64px;">Dev Portfolio</h1>
-            <p>I'm a passionate developer building innovative solutions.</p>
-        </div>
+      <div class="intro-message">
+        <h1 style="font-size: 64px">Dev Portfolio</h1>
+        <p>I'm a passionate developer building innovative solutions.</p>
+      </div>
     </div>
-    
+
     <div class="links">
-        <ul>
-            <li><a href="#profile">Profile</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#certificates">Certificates</a></li>
-            <li><a href="#courses">Courses</a></li>
-            <li><a href="#seminar">Seminar</a></li>
-            <li><a href="#achievements">Achievements</a></li>
-            <li><a href="#work-experiences">Work Experiences</a></li>
-            <li><a href="#progress">Progress</a></li>
-        </ul>
+      <ul>
+        <li><a href="#profile">Profile</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#certificates">Certificates</a></li>
+        <li><a href="#courses">Courses</a></li>
+        <li><a href="#seminar">Seminar</a></li>
+        <li><a href="#achievements">Achievements</a></li>
+        <li><a href="#work-experiences">Work Experiences</a></li>
+        <li><a href="#progress">Progress</a></li>
+      </ul>
     </div>
-    
+
     <!-- index.html -->
     <div id="profile"></div>
     <script>
-    fetch("sections/profile.html")
-        .then(response => response.text())
-        .then(data => document.getElementById("profile").innerHTML = data);
+      fetch("sections/profile.html")
+        .then((response) => response.text())
+        .then((data) => (document.getElementById("profile").innerHTML = data));
     </script>
 
     <div id="projects"></div>
 
     <script>
-    fetch("sections/projects.html")
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById("projects").innerHTML = data;
+      fetch("sections/projects.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("projects").innerHTML = data;
 
-            const cardsPerPage = 3;
-            const projectCards = document.querySelectorAll("#projectCards .project-card");
-            const paginationContainer = document.getElementById("projectPagination");
-            let currentPage = 1;
+          const cardsPerPage = 3;
+          const projectCards = document.querySelectorAll(
+            "#projectCards .project-card"
+          );
+          const paginationContainer =
+            document.getElementById("projectPagination");
+          let currentPage = 1;
 
-            function renderPage(page) {
-                const start = (page - 1) * cardsPerPage;
-                const end = start + cardsPerPage;
+          function renderPage(page) {
+            const start = (page - 1) * cardsPerPage;
+            const end = start + cardsPerPage;
 
-                projectCards.forEach((card, index) => {
-                    card.style.display = index >= start && index < end ? "flex" : "none";
-                });
+            projectCards.forEach((card, index) => {
+              card.style.display =
+                index >= start && index < end ? "flex" : "none";
+            });
 
-                // Update pagination controls
-                paginationContainer.innerHTML = "";
+            // Update pagination controls
+            paginationContainer.innerHTML = "";
 
-                const totalPages = Math.ceil(projectCards.length / cardsPerPage);
+            const totalPages = Math.ceil(projectCards.length / cardsPerPage);
 
-                for (let i = 1; i <= totalPages; i++) {
-                    const btn = document.createElement("button");
-                    btn.textContent = i;
-                    btn.className = "btn btn-sm mx-1 " + (i === page ? "btn-primary" : "btn-outline-secondary");
-                    btn.onclick = () => {
-                        currentPage = i;
-                        renderPage(currentPage);
-                    };
-                    paginationContainer.appendChild(btn);
-                }
+            for (let i = 1; i <= totalPages; i++) {
+              const btn = document.createElement("button");
+              btn.textContent = i;
+              btn.className =
+                "btn btn-sm mx-1 " +
+                (i === page ? "btn-primary" : "btn-outline-secondary");
+              btn.onclick = () => {
+                currentPage = i;
+                renderPage(currentPage);
+              };
+              paginationContainer.appendChild(btn);
             }
+          }
 
-            renderPage(currentPage);
+          renderPage(currentPage);
         });
     </script>
 
     <div id="skills"></div>
 
     <script>
-        fetch("sections/skills.html")
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById("skills").innerHTML = data;
+      fetch("sections/skills.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("skills").innerHTML = data;
 
-                // Run after content is injected
-                function openSkillsTab(evt, categoryName) {
-                    const skillsSection = document.querySelector("#skills");
-                    const tabContents = skillsSection.querySelectorAll(".tabcontent");
-                    const tabLinks = skillsSection.querySelectorAll(".tablinks");
+          // Run after content is injected
+          function openSkillsTab(evt, categoryName) {
+            const skillsSection = document.querySelector("#skills");
+            const tabContents = skillsSection.querySelectorAll(".tabcontent");
+            const tabLinks = skillsSection.querySelectorAll(".tablinks");
 
-                    tabContents.forEach((tab) => {
-                        tab.style.display = "none";
-                    });
-
-                    tabLinks.forEach((tab) => {
-                        tab.classList.remove("active");
-                    });
-
-                    const targetTab = skillsSection.querySelector(`#${CSS.escape(categoryName)}`);
-                    if (targetTab) {
-                        targetTab.style.display = "block";
-                        evt.currentTarget.classList.add("active");
-                    }
-                }
-
-                // Set global reference so inline onclicks work
-                window.openSkillsTab = openSkillsTab;
-
-                // Auto-open first tab
-                const firstSkillsTab = document.querySelector("#skills .tablinks");
-                if (firstSkillsTab) firstSkillsTab.click();
+            tabContents.forEach((tab) => {
+              tab.style.display = "none";
             });
+
+            tabLinks.forEach((tab) => {
+              tab.classList.remove("active");
+            });
+
+            const targetTab = skillsSection.querySelector(
+              `#${CSS.escape(categoryName)}`
+            );
+            if (targetTab) {
+              targetTab.style.display = "block";
+              evt.currentTarget.classList.add("active");
+            }
+          }
+
+          // Set global reference so inline onclicks work
+          window.openSkillsTab = openSkillsTab;
+
+          // Auto-open first tab
+          const firstSkillsTab = document.querySelector("#skills .tablinks");
+          if (firstSkillsTab) firstSkillsTab.click();
+        });
     </script>
     <div id="imageModal" class="modal">
-        <span class="close">&times;</span>
-        <img class="modal-content" id="modalImg" alt="Certificate image">
+      <span class="close">&times;</span>
+      <img class="modal-content" id="modalImg" alt="Certificate image" />
     </div>
     <div id="certificates"></div>
     <script>
-    fetch("sections/certificates.html")
-        .then(response => response.text())
-        .then(data => document.getElementById("certificates").innerHTML = data);
+      fetch("sections/certificates.html")
+        .then((response) => response.text())
+        .then(
+          (data) => (document.getElementById("certificates").innerHTML = data)
+        );
     </script>
 
     <div id="courses"></div>
     <script>
-    fetch("sections/courses.html")
-        .then(response => response.text())
-        .then(data => document.getElementById("courses").innerHTML = data);
+      fetch("sections/courses.html")
+        .then((response) => response.text())
+        .then((data) => (document.getElementById("courses").innerHTML = data));
     </script>
-
-
 
     <div id="achievements"></div>
     <script>
-    fetch("sections/achievements.html")
-        .then(response => response.text())
-        .then(data => document.getElementById("achievements").innerHTML = data);
+      fetch("sections/achievements.html")
+        .then((response) => response.text())
+        .then(
+          (data) => (document.getElementById("achievements").innerHTML = data)
+        );
     </script>
-    <section id="work-experiences" class="container-fluid" data-aos="fade-right" data-aos-duration="800" data-aos-delay="200">
-        <h2 class="mb-4" style="color: var(--text);">Work Experiences</h2>
-        
-        <div class="card mb-3" style="background-color: var(--obsidian); color: var(--text); border: none;">
-            <div class="card-body">
-            <h5 class="card-title font-weight-bold">TSP Marine Industries – Vessel Inventory Management System (VIMS)</h5>
-            <h6 class="card-subtitle mb-2" style="color: var(--charcoal);">Next.js 15, React, ShadCN, Supabase, Tailwind CSS, Vercel</h6>
-            <p class="card-text">Developed a modern Vessel Inventory Management System to streamline inventory tracking and management for TSP Marine Industries. Deployed seamlessly via Vercel for production use.</p>
-            </div>
+    <section
+      id="work-experiences"
+      class="container-fluid"
+      data-aos="fade-right"
+      data-aos-duration="800"
+      data-aos-delay="200"
+    >
+      <h2 class="mb-4" style="color: var(--text)">Work Experiences</h2>
+
+      <div
+        class="card mb-3"
+        style="
+          background-color: var(--obsidian);
+          color: var(--text);
+          border: none;
+        "
+      >
+        <div class="card-body">
+          <h5 class="card-title font-weight-bold">
+            TSP Marine Industries – Vessel Inventory Management System (VIMS)
+          </h5>
+          <h6 class="card-subtitle mb-2" style="color: var(--charcoal)">
+            Next.js 15, React, ShadCN, Supabase, Tailwind CSS, Vercel
+          </h6>
+          <p class="card-text">
+            Developed a modern Vessel Inventory Management System to streamline
+            inventory tracking and management for TSP Marine Industries.
+            Deployed seamlessly via Vercel for production use.
+          </p>
         </div>
-        
-        <div class="card mb-3" style="background-color: var(--obsidian); color: var(--text); border: none;">
-            <div class="card-body">
-            <h5 class="card-title font-weight-bold">CEMCDO – Cooperative Profiling & Fund Utilization System (as an OJT)</h5>
-            <h6 class="card-subtitle mb-2" style="color: var(--charcoal);">Django, Tailwind CSS, Supabase, PostgreSQL, Render, OpenPyXL</h6>
-            <p class="card-text">Built a full-stack system for cooperative profiling and fund utilization tracking, complete with Excel report generation using OpenPyXL and live deployment via Render.</p>
-            </div>
+      </div>
+
+      <div
+        class="card mb-3"
+        style="
+          background-color: var(--obsidian);
+          color: var(--text);
+          border: none;
+        "
+      >
+        <div class="card-body">
+          <h5 class="card-title font-weight-bold">
+            CEMCDO – Cooperative Profiling & Fund Utilization System (as an OJT)
+          </h5>
+          <h6 class="card-subtitle mb-2" style="color: var(--charcoal)">
+            Django, Tailwind CSS, Supabase, PostgreSQL, Render, OpenPyXL
+          </h6>
+          <p class="card-text">
+            Built a full-stack system for cooperative profiling and fund
+            utilization tracking, complete with Excel report generation using
+            OpenPyXL and live deployment via Render.
+          </p>
         </div>
+      </div>
     </section>
-      
-      
-    <section id="progress" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
-        <h2>Progress</h2>
-        <div class="tabs">
-            <button class="tablinks" onclick="openTab(event, 'capture')">Online Scores</button>
-            <button class="tablinks" onclick="openTab(event, 'other')">Progress</button>
+
+    <section
+      id="progress"
+      data-aos="fade-up"
+      data-aos-duration="800"
+      data-aos-delay="200"
+    >
+      <h2>Progress</h2>
+      <div class="tabs">
+        <button class="tablinks" onclick="openTab(event, 'capture')">
+          Online Scores
+        </button>
+        <button class="tablinks" onclick="openTab(event, 'other')">
+          Progress
+        </button>
+      </div>
+
+      <div id="capture" class="tabcontent">
+        <div class="side-by-side">
+          <div>
+            <h3>PicoCTF</h3>
+            <ul class="progress-list">
+              <li class="progress-item">
+                <span>Easy</span>
+                <progress value="62" max="62"></progress>
+                <span class="progress-text">62/62</span>
+              </li>
+              <li class="progress-item">
+                <span>Medium</span>
+                <progress value="99" max="194"></progress>
+                <span class="progress-text">99/194</span>
+              </li>
+              <li class="progress-item">
+                <span>Hard</span>
+                <progress value="11" max="120"></progress>
+                <span class="progress-text">11/120</span>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3>HackTheBox</h3>
+            <ul class="progress-list">
+              <li class="progress-item">
+                <span>Machines</span>
+                <progress value="0" max="100"></progress>
+                <span class="progress-text">0%</span>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3>LeetCode</h3>
+            <ul class="progress-list">
+              <li class="progress-item">
+                <span>Easy</span>
+                <progress value="6" max="820"></progress>
+                <span class="progress-text">6/820</span>
+              </li>
+              <li class="progress-item">
+                <span>Medium</span>
+                <progress value="4" max="1711"></progress>
+                <span class="progress-text">4/1711</span>
+              </li>
+              <li class="progress-item">
+                <span>Hard</span>
+                <progress value="0" max="732"></progress>
+                <span class="progress-text">0/732</span>
+              </li>
+            </ul>
+          </div>
         </div>
-    
-        <div id="capture" class="tabcontent">
-            <div class="side-by-side">
-                <div>
-                    <h3>PicoCTF</h3>
-                    <ul class="progress-list">
-                        <li class="progress-item">
-                            <span>Easy</span>
-                            <progress value="62" max="62"></progress>
-                            <span class="progress-text">62/62</span>
-                        </li>
-                        <li class="progress-item">
-                            <span>Medium</span>
-                            <progress value="99" max="194"></progress>
-                            <span class="progress-text">99/194</span>
-                        </li>
-                        <li class="progress-item">
-                            <span>Hard</span>
-                            <progress value="11" max="120"></progress>
-                            <span class="progress-text">11/120</span>
-                        </li>
-                    </ul>
-                </div>
-                <div>
-                    <h3>HackTheBox</h3>
-                    <ul class="progress-list">
-                        <li class="progress-item">
-                            <span>Machines</span>
-                            <progress value="0" max="100"></progress>
-                            <span class="progress-text">0%</span>
-                        </li>
-                    </ul>
-                </div>
-                <div>
-                    <h3>LeetCode</h3>
-                    <ul class="progress-list">
-                        <li class="progress-item">
-                            <span>Easy</span>
-                            <progress value="6" max="820"></progress>
-                            <span class="progress-text">6/820</span>
-                        </li>
-                        <li class="progress-item">
-                            <span>Medium</span>
-                            <progress value="4" max="1711"></progress>
-                            <span class="progress-text">4/1711</span>
-                        </li>
-                        <li class="progress-item">
-                            <span>Hard</span>
-                            <progress value="0" max="732"></progress>
-                            <span class="progress-text">0/732</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+      </div>
+
+      <div id="other" class="tabcontent">
+        <div class="side-by-side">
+          <div>
+            <h3><i class="fas fa-project-diagram"></i> Project Progress</h3>
+            <ul class="progress-list">
+              <li class="progress-item">
+                <span>Unfinished/Dropped</span>
+                <progress value="2" max="8"></progress>
+                <span class="progress-text">2/8</span>
+              </li>
+              <li class="progress-item">
+                <span>In Progress</span>
+                <progress value="2" max="8"></progress>
+                <span class="progress-text">2/8</span>
+              </li>
+              <li class="progress-item">
+                <span>Finished</span>
+                <progress value="4" max="8"></progress>
+                <span class="progress-text">4/8</span>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3><i class="fas fa-laptop-code"></i> Online Courses</h3>
+            <ul class="progress-list">
+              <li class="progress-item">
+                <span>Unfinished/Dropped</span>
+                <progress value="0" max="5"></progress>
+                <span class="progress-text">0/5</span>
+              </li>
+              <li class="progress-item">
+                <span>In Progress</span>
+                <progress value="1" max="5"></progress>
+                <span class="progress-text">1/5</span>
+              </li>
+              <li class="progress-item">
+                <span>Finished</span>
+                <progress value="4" max="5"></progress>
+                <span class="progress-text">4/5</span>
+              </li>
+            </ul>
+          </div>
         </div>
-    
-        <div id="other" class="tabcontent">
-            <div class="side-by-side">
-                <div>
-                    <h3><i class="fas fa-project-diagram"></i> Project Progress</h3>
-                    <ul class="progress-list">
-                        <li class="progress-item">
-                            <span>Unfinished/Dropped</span>
-                            <progress value="2" max="8"></progress>
-                            <span class="progress-text">2/8</span>
-                        </li>
-                        <li class="progress-item">
-                            <span>In Progress</span>
-                            <progress value="2" max="8"></progress>
-                            <span class="progress-text">2/8</span>
-                        </li>
-                        <li class="progress-item">
-                            <span>Finished</span>
-                            <progress value="4" max="8"></progress>
-                            <span class="progress-text">4/8</span>
-                        </li>
-                    </ul>
-                </div>
-                <div>
-                    <h3><i class="fas fa-laptop-code"></i> Online Courses</h3>
-                    <ul class="progress-list">
-                        <li class="progress-item">
-                            <span>Unfinished/Dropped</span>
-                            <progress value="0" max="5"></progress>
-                            <span class="progress-text">0/5</span>
-                        </li>
-                        <li class="progress-item">
-                            <span>In Progress</span>
-                            <progress value="1" max="5"></progress>
-                            <span class="progress-text">1/5</span>
-                        </li>
-                        <li class="progress-item">
-                            <span>Finished</span>
-                            <progress value="4" max="5"></progress>
-                            <span class="progress-text">4/5</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+      </div>
     </section>
     <footer class="footer">
-        <div class="container">
-            <div class="footer-row">
-                <div class="footer-col">
-                    <h5>Quick Links</h5>
-                    <ul class="footer-links">
-                        <li><a href="index.html#profile">Portfolio</a></li>
-                        <li><a href="datatables.html">DataTables Demo</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h5>Follow Me</h5>
-                    <a href="#" class="social-link">
-                        <i class="fab fa-facebook"></i> Facebook
-                    </a>
-                    <a href="#" class="social-link">
-                        <i class="fab fa-twitter"></i> Twitter
-                    </a>
-                    <a href="#" class="social-link">
-                        <i class="fab fa-linkedin"></i> LinkedIn
-                    </a>
-                </div>
-            </div>
-            <div class="footer-copy">
-                <p>&copy; 2024 Seanneskie. All rights reserved.</p>
-            </div>
+      <div class="container">
+        <div class="footer-row">
+          <div class="footer-col">
+            <h5>Quick Links</h5>
+            <ul class="footer-links">
+              <li><a href="index.html#profile">Portfolio</a></li>
+              <li><a href="datatables.html">DataTables Demo</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h5>Follow Me</h5>
+            <a href="#" class="social-link">
+              <i class="fab fa-facebook"></i> Facebook
+            </a>
+            <a href="#" class="social-link">
+              <i class="fab fa-twitter"></i> Twitter
+            </a>
+            <a href="#" class="social-link">
+              <i class="fab fa-linkedin"></i> LinkedIn
+            </a>
+          </div>
         </div>
+        <div class="footer-copy">
+          <p>&copy; 2024 Seanneskie. All rights reserved.</p>
+        </div>
+      </div>
     </footer>
-    
-    <!-- FontAwesome for icons -->
-    
-   
 
+    <!-- FontAwesome for icons -->
 
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -324,75 +382,73 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
-        AOS.init({
-            offset: 120, // Offset from the original trigger point
-            delay: 0, // Delay before the animation starts
-            duration: 800, // Duration of animation
-            easing: 'ease', // Easing function
-            once: true, // Whether animation should happen only once - while scrolling down
-            mirror: false, // Whether elements should animate out while scrolling past them
-        });
+      AOS.init({
+        offset: 120, // Offset from the original trigger point
+        delay: 0, // Delay before the animation starts
+        duration: 800, // Duration of animation
+        easing: "ease", // Easing function
+        once: true, // Whether animation should happen only once - while scrolling down
+        mirror: false, // Whether elements should animate out while scrolling past them
+      });
     </script>
     <script>
-        function openCategory(evt, categoryName) {
-            var i, tabcontent, tablinks;
+      function openCategory(evt, categoryName) {
+        var i, tabcontent, tablinks;
 
-            // Hide all tab content by default
-            tabcontent = document.getElementsByClassName("tabcontent");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-            }
-
-            // Remove the active class from all tabs
-            tablinks = document.getElementsByClassName("tablinks");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
-
-            // Show the current tab and add the active class to the button that opened it
-            document.getElementById(categoryName).style.display = "block";
-            evt.currentTarget.className += " active";
+        // Hide all tab content by default
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
         }
 
-        // Open the first tab by default
-        document.addEventListener("DOMContentLoaded", function() {
-            document.querySelector(".tabs button").click();
-        });
+        // Remove the active class from all tabs
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
 
+        // Show the current tab and add the active class to the button that opened it
+        document.getElementById(categoryName).style.display = "block";
+        evt.currentTarget.className += " active";
+      }
+
+      // Open the first tab by default
+      document.addEventListener("DOMContentLoaded", function () {
+        document.querySelector(".tabs button").click();
+      });
     </script>
-    
+
     <script>
-        function openTab(evt, tabName) {
-            // Get all elements with class="tabcontent" and hide them
-            var tabcontent = document.getElementsByClassName("tabcontent");
-            for (var i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-            }
-
-            // Get all elements with class="tablinks" and remove the class "active"
-            var tablinks = document.getElementsByClassName("tablinks");
-            for (var i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
-
-            // Show the current tab and add an "active" class to the button that opened the tab
-            document.getElementById(tabName).style.display = "block";
-            evt.currentTarget.className += " active";
+      function openTab(evt, tabName) {
+        // Get all elements with class="tabcontent" and hide them
+        var tabcontent = document.getElementsByClassName("tabcontent");
+        for (var i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
         }
 
-        // Set default open tab
-        document.addEventListener("DOMContentLoaded", function() {
-            document.querySelector(".tablinks").click();
-        });
+        // Get all elements with class="tablinks" and remove the class "active"
+        var tablinks = document.getElementsByClassName("tablinks");
+        for (var i = 0; i < tablinks.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
 
+        // Show the current tab and add an "active" class to the button that opened the tab
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+      }
+
+      // Set default open tab
+      document.addEventListener("DOMContentLoaded", function () {
+        document.querySelector(".tablinks").click();
+      });
     </script>
     <script src="js/image-modal.js"></script>
 
     <script>
-            function openGmail() {
-                const email = "seanecanete32@gmail.com";
-                const subject = "Job Offer for Seanne Cañete";
-                const body = `Dear Seanne,
+      function openGmail() {
+        const email = "seanecanete32@gmail.com";
+        const subject = "Job Offer for Seanne Cañete";
+        const body = `Dear Seanne,
     
     We are pleased to inform you that after careful consideration, we would like to extend an offer for you to join our team as [Job Title] at [Company Name].
     
@@ -408,15 +464,19 @@
     Best regards,
     [Hiring Manager's Name]
     [Company Name]`;
-    
-                const mailtoLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    
-                const confirmSend = confirm(`Are you sure you want to send this job offer email to ${email}?`);
-                
-                if (confirmSend) {
-                    window.open(mailtoLink, '_blank');
-                }
-            }
+
+        const mailtoLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
+          email
+        )}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+        const confirmSend = confirm(
+          `Are you sure you want to send this job offer email to ${email}?`
+        );
+
+        if (confirmSend) {
+          window.open(mailtoLink, "_blank");
+        }
+      }
     </script>
-</body>
+  </body>
 </html>
