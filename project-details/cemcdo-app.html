@@ -58,11 +58,14 @@
             <div class="mt-2" style="background-color: var(--text); margin-bottom: 0">
               <p class="lead">
                 <strong>Overview:</strong><br />
-                This is a placeholder overview for CEMCDO App.
+                A comprehensive fund utilization and cooperative profiling
+                system for the City Economic Management and Cooperative
+                Development Office of General Santos City.
               </p>
               <p>
                 <strong>Collaborators:</strong><br />
-                Placeholder Collaborators
+                Azlan Tomindug, Kimberly Baylon, Bridget Jose, Francheska
+                Besana, Seanne Cañete
               </p>
             </div>
           </div>
@@ -71,12 +74,133 @@
     </section>
     <section>
       <div class="container">
-        <h1 style="color: var(--charcoal)">Introduction</h1>
-        <p>Placeholder introduction text for CEMCDO App.</p>
+        <h2 style="color: var(--charcoal)">Project Overview</h2>
+        <p>
+          The CEMCDO web application supports cooperative databanking,
+          division&ndash;level financial management and fund augmentation with
+          role&ndash;based access.
+        </p>
+        <ul>
+          <li>Transparent tracking of budgets, expenses and reports</li>
+          <li>Management of obligation and purchase requests</li>
+          <li>Fund transfers, amendments and augmentations</li>
+          <li>Profiling of cooperatives with asset and product tracking</li>
+          <li>Dashboards for administrators, officers and cooperatives</li>
+        </ul>
       </div>
+
       <div class="container">
-        <h1 style="color: var(--charcoal)">Details</h1>
-        <p>More details about this project will be provided soon.</p>
+        <h2 style="color: var(--charcoal)">Core Modules</h2>
+
+        <h3>Authentication &amp; User Roles</h3>
+        <ul>
+          <li>Super Admin manages accounts, roles and logs</li>
+          <li>Division officers handle their financial tools</li>
+          <li>Cooperatives view profiles, assets and reports</li>
+        </ul>
+
+        <h3>Fund Utilization</h3>
+        <ul>
+          <li>Dashboard of accounts, budgets and charts</li>
+          <li>Division account budgeting and performance</li>
+          <li>Transaction tracking for income and expenses</li>
+          <li>Appropriations and year&ndash;wise allocations</li>
+          <li>Fund augmentations and amendments</li>
+          <li>Excel or PDF reporting</li>
+        </ul>
+
+        <h3>Obligation &amp; Purchase Requests</h3>
+        <ul>
+          <li>Register obligations with payee and documents</li>
+          <li>Purchase requests with itemization and attachments</li>
+          <li>Approval flow and exportable records</li>
+        </ul>
+
+        <h3>Cooperative Profiling</h3>
+        <p><strong>Super Admin</strong></p>
+        <ul>
+          <li>Manages reference data and coop accounts</li>
+          <li>CRUD on geographic data</li>
+        </ul>
+        <p><strong>Coop Officer</strong></p>
+        <ul>
+          <li>Dashboard with map view and notifications</li>
+          <li>Profile management and asset tracking</li>
+          <li>Generate reports and manage members</li>
+        </ul>
+
+        <h3>Reports &amp; Analytics</h3>
+        <ul>
+          <li>Export Excel reports for funds and coop data</li>
+          <li>Visualization of budgets and transaction trends</li>
+        </ul>
+      </div>
+
+      <div class="container">
+        <h2 style="color: var(--charcoal)">Tech Stack</h2>
+        <table class="table table-bordered">
+          <tbody>
+            <tr><th>Backend</th><td>Django (Python)</td></tr>
+            <tr><th>Frontend</th><td>HTML, CSS, JavaScript, Bootstrap</td></tr>
+            <tr><th>Visualization</th><td>Chart.js, Plotly.js</td></tr>
+            <tr><th>Data Processing</th><td>Pandas, OpenPyXL</td></tr>
+            <tr><th>Storage</th><td>PostgreSQL</td></tr>
+            <tr><th>Deployment</th><td>Render.com</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="container">
+        <h2 style="color: var(--charcoal)">Directory Structure</h2>
+        <pre><code>cemcdo-app/
+├── cemcdo/
+│   ├── templates/
+│   ├── static/
+│   ├── models.py
+│   ├── views.py
+│   └── urls.py
+├── media/
+├── manage.py
+└── requirements.txt</code></pre>
+      </div>
+
+      <div class="container">
+        <h2 style="color: var(--charcoal)">Key Links</h2>
+        <p>
+          Live Demo:
+          <a href="https://cemcdo-demo.onrender.com" target="_blank"
+            >https://cemcdo-demo.onrender.com</a>
+        </p>
+        <p>Login Roles: Super Admin, Division Officer, Cooperative</p>
+      </div>
+
+      <div class="container">
+        <h2 style="color: var(--charcoal)">Support</h2>
+        <ul>
+          <li>seannecanete32@gmail.com</li>
+          <li>azlan.tomindug@msugensan.edu.ph</li>
+          <li>kimberlybaylon@gmail.com</li>
+        </ul>
+      </div>
+
+      <div class="container">
+        <h2 style="color: var(--charcoal)">Future Improvements</h2>
+        <ul>
+          <li>Add mobile responsiveness</li>
+          <li>Real-time notifications with WebSockets</li>
+          <li>KPI dashboards for cooperatives</li>
+          <li>Advanced chart filtering</li>
+          <li>Audit logs per action</li>
+        </ul>
+      </div>
+
+      <div class="container">
+        <h2 style="color: var(--charcoal)">Contributors</h2>
+        <p>Mindanao State University &ndash; General Santos IT Interns</p>
+        <p>
+          Azlan Tomindug, Kimberly Baylon, Bridget Jose, Francheska Besana,
+          Seanne Cañete
+        </p>
       </div>
     </section>
 
