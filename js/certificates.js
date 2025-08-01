@@ -3,27 +3,49 @@ function initCertificates() {
   const filterContainer = document.getElementById('certificateFilters');
   const cardsContainer = document.getElementById('certificateCards');
   const paginationContainer = document.getElementById('certificatePagination');
-  if (!searchInput || !filterContainer || !cardsContainer) return;
+  if (!searchInput || !filterContainer || !cardsContainer || !window.certificateData) return;
 
-  const cards = Array.from(cardsContainer.querySelectorAll('.certificate-card'));
+  // Build card elements from data
+  const cards = window.certificateData.map(data => {
+    const card = document.createElement('div');
+    card.className = 'certificate-card';
+    card.dataset.tags = data.skills.join(',');
 
-  // Build unique tag list
-  const tagSet = new Set();
-  cards.forEach(card => {
-    const tags = (card.dataset.tags || '').split(',').map(t => t.trim()).filter(Boolean);
-    tags.forEach(t => tagSet.add(t));
-    if (tags.length) {
+    const title = document.createElement('h3');
+    title.textContent = data.title;
+    card.appendChild(title);
+
+    const desc = document.createElement('p');
+    desc.className = 'details-placeholder';
+    desc.textContent = data.desc;
+    card.appendChild(desc);
+
+    if (data.skills && data.skills.length) {
       const tagContainer = document.createElement('div');
       tagContainer.className = 'project-tags';
-      tags.forEach(t => {
+      data.skills.forEach(t => {
         const span = document.createElement('span');
         span.className = 'tag';
         span.textContent = t;
         tagContainer.appendChild(span);
       });
-      card.insertBefore(tagContainer, card.querySelector('a'));
+      card.appendChild(tagContainer);
     }
+
+    const link = document.createElement('a');
+    link.href = data.link;
+    link.target = '_blank';
+    link.className = 'view-image';
+    link.textContent = 'View Certificate';
+    card.appendChild(link);
+
+    cardsContainer.appendChild(card);
+    return card;
   });
+
+  // Build unique skill list
+  const tagSet = new Set();
+  window.certificateData.forEach(c => c.skills.forEach(t => tagSet.add(t)));
 
   // Render tag filters
   tagSet.forEach(tag => {
