@@ -122,6 +122,7 @@
 
             tabContents.forEach((tab) => {
               tab.style.display = "none";
+              tab.classList.remove("active");
             });
 
             tabLinks.forEach((tab) => {
@@ -133,6 +134,8 @@
             );
             if (targetTab) {
               targetTab.style.display = "block";
+              // allow CSS transition to play
+              setTimeout(() => targetTab.classList.add("active"), 10);
               evt.currentTarget.classList.add("active");
             }
           }
