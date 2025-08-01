@@ -58,11 +58,11 @@
             <div class="mt-2" style="background-color: var(--text); margin-bottom: 0">
               <p class="lead">
                 <strong>Overview:</strong><br />
-                This is a placeholder overview for Albany Airbnb Dashboard.
+                An interactive dashboard built with HTML, CSS, and JavaScript to explore Airbnb listings in Albany, NY. It visualizes prices, availability, and guest sentiment through charts and maps.
               </p>
               <p>
                 <strong>Collaborators:</strong><br />
-                Placeholder Collaborators
+                Solo project for ITD112 - Data Analysis and Visualization
               </p>
             </div>
           </div>
@@ -72,11 +72,115 @@
     <section>
       <div class="container">
         <h1 style="color: var(--charcoal)">Introduction</h1>
-        <p>Placeholder introduction text for Albany Airbnb Dashboard.</p>
+        <p>Using data from InsideAirbnb, this project presents local rental trends and review sentiment in an accessible way. Users can inspect average prices, availability, and neighborhood statistics.</p>
       </div>
       <div class="container">
         <h1 style="color: var(--charcoal)">Details</h1>
-        <p>More details about this project will be provided soon.</p>
+        <p>Features include clustered maps, summary cards, radar charts, and availability calendars that let users compare listings and explore pricing differences across Albany neighborhoods.</p>
+      </div>
+      <div class="container">
+        <h1 style="color: var(--charcoal)">Objectives</h1>
+        <ul style="color: var(--text)">
+          <li>Develop an interactive dashboard using the Albany Airbnb dataset.</li>
+          <li>Visualize listing distribution with heatmaps and clustered maps.</li>
+          <li>Display key averages through summary cards.</li>
+          <li>Compare single listings against overall metrics.</li>
+          <li>Analyze sentiment, pricing, and neighborhood trends.</li>
+        </ul>
+      </div>
+      <div class="container">
+        <h1 style="color: var(--charcoal)">Dashboard Features</h1>
+        <ul style="color: var(--text)">
+          <li><strong>Clustered Map with Popups:</strong> explore listings without clutter.</li>
+          <li><strong>Interactive Icons & Legends:</strong> quickly identify property types.</li>
+          <li><strong>Summary Cards:</strong> show average price, bedrooms, bathrooms and beds.</li>
+          <li><strong>Radar Chart and Tables:</strong> compare a selected property to dataset averages.</li>
+          <li><strong>Gantt & Line Charts:</strong> reveal availability over time.</li>
+          <li><strong>Boxplots by Neighborhood:</strong> understand ward price differences.</li>
+        </ul>
+      </div>
+      <div class="container">
+        <h1 style="color: var(--charcoal)">Insights and Findings</h1>
+        <ul style="color: var(--text)">
+          <li><strong>Sentiment Analysis:</strong> guest reviews are overwhelmingly positive.</li>
+          <li><strong>Price Distribution:</strong> most listings fall between $51 and $150.</li>
+          <li><strong>Neighborhood Trends:</strong> some wards command higher prices than others.</li>
+          <li><strong>Event Impact:</strong> spikes in bookings occur during local events.</li>
+        </ul>
+      </div>
+      <div class="container">
+        <h1 style="color: var(--charcoal)">Technologies Used</h1>
+        <div class="table-responsive">
+          <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+              <tr>
+                <th>Category</th>
+                <th>Tools/Frameworks</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Frontend</td>
+                <td>HTML5, CSS3 (Custom + Bootstrap 4), JavaScript</td>
+              </tr>
+              <tr>
+                <td>Visualization</td>
+                <td>Chart.js, Google Charts, Plotly (optional)</td>
+              </tr>
+              <tr>
+                <td>Animation/UX</td>
+                <td>AOS (Animate On Scroll)</td>
+              </tr>
+              <tr>
+                <td>Data Processing</td>
+                <td>Pandas, Seaborn, Matplotlib</td>
+              </tr>
+              <tr>
+                <td>Fonts & Icons</td>
+                <td>Google Fonts, Font Awesome</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="container">
+        <h1 style="color: var(--charcoal)">Folder Structure</h1>
+        <pre style="background-color: var(--coal); color: var(--text); padding: 10px">
+albany-airbnb-dashboard/
+├── index.html              # Main dashboard file
+├── static/
+│   ├── index.css           # Custom styles
+│   ├── *.png / *.jpg       # Icons, charts, profile, and modal images
+│   ├── *.pdf               # Resume or documentation files
+├── js/
+│   ├── image-modal.js      # Modal handling script
+│   └── ...                 # (Optional) Other helper scripts
+        </pre>
+      </div>
+      <div class="container">
+        <h1 style="color: var(--charcoal)">Usage Tips</h1>
+        <ul style="color: var(--text)">
+          <li>Use the clustered map to zoom in on specific neighborhoods.</li>
+          <li>Hover on the radar chart to compare a property with the average.</li>
+          <li>Check the calendar views to spot popular booking dates.</li>
+        </ul>
+      </div>
+      <div class="container">
+        <h1 style="color: var(--charcoal)">Dataset Source</h1>
+        <p>
+          Data is sourced from
+          <a href="http://insideairbnb.com/get-the-data.html" target="_blank"
+            >Inside Airbnb</a
+          > and processed with Python's Pandas library before visualization.
+        </p>
+      </div>
+      <div class="container">
+        <h1 style="color: var(--charcoal)">How to Run</h1>
+        <ol style="color: var(--text)">
+          <li>Clone this repository.</li>
+          <li>Open <code>albany-airbnb-dashboard/index.html</code> in your browser.</li>
+        </ol>
+        <p>Interact with the map, cards, and charts to explore the data.</p>
       </div>
     </section>
 
