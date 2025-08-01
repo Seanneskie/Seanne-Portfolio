@@ -13,7 +13,8 @@
 /* Example usage in your project */
 body {
     background-color: var(--obsidian);
-    color: var(--coal);
+    /* Improved contrast for better readability */
+    color: var(--text);
     font-family: 'Open Sans', sans-serif;
     margin: 0;
     padding: 0;
