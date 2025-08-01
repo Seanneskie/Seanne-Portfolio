@@ -13,7 +13,8 @@
 /* Example usage in your project */
 body {
     background-color: var(--obsidian);
-    color: var(--coal);
+    /* Improved contrast for better readability */
+    color: var(--text);
     font-family: 'Open Sans', sans-serif;
     margin: 0;
     padding: 0;
@@ -278,9 +279,15 @@ p {
 /* Tab content styling */
 .tabcontent {
     display: none;
+    opacity: 0;
     padding: 20px;
     border-top: none;
     color: white;
+    transition: opacity 0.5s ease;
+}
+
+.tabcontent.active {
+    opacity: 1;
 }
 
 /* Flexbox for side-by-side layout */
@@ -323,11 +330,23 @@ p {
 .tabcontent ul li {
     padding: 8px 0;
     font-size: 18px;
+    transition: transform 0.3s, color 0.3s;
+    cursor: pointer;
+}
+
+.tabcontent ul li:hover {
+    transform: translateX(5px);
+    color: var(--text);
 }
 
 .tabcontent ul li i {
     margin-right: 10px;
     color: var(--text);
+    transition: transform 0.3s;
+}
+
+.tabcontent ul li:hover i {
+    transform: scale(1.2);
 }
 
 /* Media Queries for Responsive Design */
@@ -839,6 +858,11 @@ body {
   box-shadow: 0 0 10px #000;
 }
 
+#modalIframe {
+  width: 80%;
+  height: 80vh;
+}
+
 .close {
   position: absolute;
   top: 30px;
@@ -903,6 +927,16 @@ body {
 .view-image:hover {
     color: white;
     text-decoration: underline;
+}
+
+.certificate-controls {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#certificateFilters label {
+    margin-right: 8px;
+    color: var(--text);
 }
 
 .project-tags .tag {
