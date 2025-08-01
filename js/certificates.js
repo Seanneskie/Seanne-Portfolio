@@ -61,7 +61,8 @@ function initCertificates() {
   });
 
   let currentPage = 1;
-  const cardsPerPage = 6;
+  // Number of certificate cards displayed per page
+  const cardsPerPage = 8;
 
   function getFilteredCards() {
     const query = searchInput.value.toLowerCase();
