@@ -858,6 +858,11 @@ body {
   box-shadow: 0 0 10px #000;
 }
 
+#modalIframe {
+  width: 80%;
+  height: 80vh;
+}
+
 .close {
   position: absolute;
   top: 30px;
@@ -922,6 +927,16 @@ body {
 .view-image:hover {
     color: white;
     text-decoration: underline;
+}
+
+.certificate-controls {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#certificateFilters label {
+    margin-right: 8px;
+    color: var(--text);
 }
 
 .project-tags .tag {

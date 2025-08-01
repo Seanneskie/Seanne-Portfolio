@@ -151,14 +151,17 @@
     <div id="imageModal" class="modal">
       <span class="close">&times;</span>
       <img class="modal-content" id="modalImg" alt="Certificate image" />
+      <iframe id="modalIframe" class="modal-content" style="display: none" frameborder="0"></iframe>
     </div>
     <div id="certificates"></div>
+    <script src="js/certificates.js"></script>
     <script>
       fetch("sections/certificates.html")
         .then((response) => response.text())
-        .then(
-          (data) => (document.getElementById("certificates").innerHTML = data)
-        );
+        .then((data) => {
+          document.getElementById("certificates").innerHTML = data;
+          if (typeof initCertificates === "function") initCertificates();
+        });
     </script>
 
     <div id="courses"></div>
