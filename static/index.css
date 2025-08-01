@@ -278,9 +278,15 @@ p {
 /* Tab content styling */
 .tabcontent {
     display: none;
+    opacity: 0;
     padding: 20px;
     border-top: none;
     color: white;
+    transition: opacity 0.5s ease;
+}
+
+.tabcontent.active {
+    opacity: 1;
 }
 
 /* Flexbox for side-by-side layout */
@@ -323,11 +329,23 @@ p {
 .tabcontent ul li {
     padding: 8px 0;
     font-size: 18px;
+    transition: transform 0.3s, color 0.3s;
+    cursor: pointer;
+}
+
+.tabcontent ul li:hover {
+    transform: translateX(5px);
+    color: var(--text);
 }
 
 .tabcontent ul li i {
     margin-right: 10px;
     color: var(--text);
+    transition: transform 0.3s;
+}
+
+.tabcontent ul li:hover i {
+    transform: scale(1.2);
 }
 
 /* Media Queries for Responsive Design */
