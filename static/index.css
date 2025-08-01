@@ -562,6 +562,7 @@ p {
 
 #progress {
     background-color: var(--onyx);
+    color: var(--text);
 }
 
 #progress h2{
@@ -585,12 +586,15 @@ p {
 
 .progress-item span {
     white-space: nowrap;
+    color: var(--text);
 }
 
 progress {
     -webkit-appearance: none;
     appearance: none;
-    width: 100%;
+    flex: 1;
+    width: auto;
+    min-width: 0;
     height: 20px;
 }
 
