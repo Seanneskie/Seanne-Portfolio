@@ -32,12 +32,14 @@ function initCertificates() {
       card.appendChild(tagContainer);
     }
 
-    const link = document.createElement('a');
-    link.href = data.link;
-    link.target = '_blank';
-    link.className = 'view-image';
-    link.textContent = 'View Certificate';
-    card.appendChild(link);
+    if (data.link) {
+      const link = document.createElement('a');
+      link.href = data.link;
+      link.target = '_blank';
+      link.className = 'view-image';
+      link.textContent = 'View Certificate';
+      card.appendChild(link);
+    }
 
     cardsContainer.appendChild(card);
     return card;
