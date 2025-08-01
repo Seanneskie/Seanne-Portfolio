@@ -1,5 +1,5 @@
 // Display progress in a "current/total (percent%)" format for clarity
-document.addEventListener('DOMContentLoaded', function () {
+function updateProgress() {
   document.querySelectorAll('.progress-item').forEach(function (item) {
     const bar = item.querySelector('progress');
     const text = item.querySelector('.progress-text');
@@ -11,4 +11,10 @@ document.addEventListener('DOMContentLoaded', function () {
     // Always show both the raw value and percentage for readability
     text.textContent = `${bar.value}/${bar.max} (${percent}%)`;
   });
-});
+}
+
+if (document.readyState !== 'loading') {
+  updateProgress();
+} else {
+  document.addEventListener('DOMContentLoaded', updateProgress);
+}
