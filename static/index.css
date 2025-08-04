@@ -10,6 +10,17 @@
     --text: #ccd0cf;
 }
 
+/* Simple fade and slide animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
 /* Example usage in your project */
 body {
     background-color: var(--obsidian);
@@ -36,6 +47,7 @@ body {
     position: relative;
     color: white; /* Text color */
     text-align: center;
+    animation: fadeIn 1.5s ease-in-out;
 }
 
 .cover::before {
@@ -58,6 +70,20 @@ body {
 
 .intro-message p{
     color: #ccc;
+}
+
+.intro-message h1{
+    font-size: 4rem;
+}
+
+@media (max-width: 600px) {
+    .intro-message h1 {
+        font-size: 2.5rem;
+    }
+
+    .intro-message p {
+        font-size: 1rem;
+    }
 }
 
 
@@ -619,6 +645,7 @@ progress::-moz-progress-bar {
     justify-content: center;
     padding: 20px;
     background-color: var(--charcoal);
+    animation: slideDown 1s ease-in-out;
 }
 
 
@@ -628,6 +655,7 @@ progress::-moz-progress-bar {
     list-style: none;
     padding: 0;
     margin: 0;
+    flex-wrap: wrap;
 }
 
 .links li {
