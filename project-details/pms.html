@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PMS - PHP Project (Unfinished) - Project Details</title>
+    <title>Desktop Payroll Management System - Project Details</title>
 
     <!-- Bootstrap CSS -->
     <link
@@ -35,7 +35,7 @@
       style="background-color: var(--sable)"
     >
       <a href="https://seanneskie.github.io/Seanne-Portfolio/" class="btn btn-light">← Go Back</a>
-      <h1 class="text-white m-0">PMS - PHP Project (Unfinished)</h1>
+      <h1 class="text-white m-0">Desktop Payroll Management System</h1>
       <span></span>
     </nav>
 
@@ -50,19 +50,20 @@
         <div class="col-lg-8 text-center">
           <div class="container-fluid d-flex flex-row">
             <img
-              src="../static/php.png"
-              alt="PMS - PHP Project (Unfinished) Screenshot"
+              src="../static/python-2.png"
+              alt="Desktop Payroll Management System screenshot"
               class="img-fluid rounded shadow"
               style="max-width: 350px; height: auto"
             />
             <div class="mt-2" style="background-color: var(--text); margin-bottom: 0">
               <p class="lead">
                 <strong>Overview:</strong><br />
-                This is a placeholder overview for PMS - PHP Project (Unfinished).
+                Desktop application pairing a FastAPI backend with an Electron
+                desktop shell to manage employees, payroll periods and reports.
               </p>
               <p>
                 <strong>Collaborators:</strong><br />
-                Placeholder Collaborators
+                Solo Project
               </p>
             </div>
           </div>
@@ -72,11 +73,27 @@
     <section>
       <div class="container">
         <h1 style="color: var(--charcoal)">Introduction</h1>
-        <p>Placeholder introduction text for PMS - PHP Project (Unfinished).</p>
+        <p>
+          A desktop payroll management system combining a Python FastAPI backend
+          and an Electron-powered front end for a seamless Windows application.
+        </p>
       </div>
       <div class="container">
         <h1 style="color: var(--charcoal)">Details</h1>
-        <p>More details about this project will be provided soon.</p>
+        <p>
+          The backend leverages SQLite via SQLAlchemy for data models covering
+          salary grades, employees, allowances, deductions and incentives.
+          Jinja2 templates with Tailwind-generated CSS render the interface,
+          while Electron launches the compiled FastAPI service and displays the
+          UI in a desktop window. Node scripts build assets, compile the backend
+          with PyInstaller and bundle everything using pkg, producing a
+          self-contained executable.
+        </p>
+        <p>
+          Key features include payroll generation, incentive and bonus
+          calculations, thirteenth-month pay, action logging and dashboard
+          summaries for recent activities and reports.
+        </p>
       </div>
     </section>
 
