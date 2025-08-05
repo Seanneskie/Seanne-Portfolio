@@ -1,3 +1,4 @@
+/* ====================== Variables & Fonts ====================== */
 /* Importing Open Sans font */
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
 
@@ -10,7 +11,7 @@
     --text: #ccd0cf;
 }
 
-/* Simple fade and slide animations */
+/* ====================== Animations ====================== */
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
@@ -21,7 +22,7 @@
     to { transform: translateY(0); opacity: 1; }
 }
 
-/* Example usage in your project */
+/* ====================== Global Styles ====================== */
 body {
     background-color: var(--obsidian);
     /* Improved contrast for better readability */
@@ -35,7 +36,7 @@ body {
 
 
 
-/* Cover Section */
+/* ====================== Cover Section ====================== */
 .cover {
     background-image: url('bg_2.jpg');
     background-size: cover;
@@ -90,7 +91,7 @@ body {
 
 
 
-/* General Section Styling */
+/* ====================== General Section Styling ====================== */
 section {
     padding: 60px 20px;
     background-color: white;
@@ -109,11 +110,13 @@ p {
 }
 
 
-/* Specific Section Styling */
+/* ====================== Section Styles ====================== */
+/* Profile Section */
 #profile {
     background-color: transparent;
 }
 
+/* Projects Section */
 #projects {
     background-color: var(--coal);
 }
@@ -128,6 +131,7 @@ p {
 }
 
 
+/* Work Experiences Section */
 #work-experiences {
     background-color: var(--obsidian);
     width: 100%;
@@ -145,6 +149,7 @@ p {
 
 
 
+/* ====================== Components ====================== */
 /* Project Container */
 .project-container {
     display: grid;
@@ -200,7 +205,7 @@ p {
 /* Project Description */
 .project-description {
     font-size: 1rem;
-    color: #555;
+    color: var(--text);
     margin-bottom: 20px;
 }
 
@@ -210,7 +215,7 @@ p {
     text-align: right;
 }
 
-/* Responsive Adjustments */
+/* ====================== Responsive Design ====================== */
 @media (max-width: 768px) {
     .project-container {
         grid-template-columns: 1fr;
@@ -232,6 +237,8 @@ p {
     
 }
 
+/* ====================== Additional Section Styles ====================== */
+/* Background Section */
 #background {
     text-align: right;
     background-color: var(--onyx);
@@ -249,7 +256,7 @@ p {
 }
 
 
-/* Base styles for the skills section */
+/* Skills Section */
 #skills {
     background-color: var(--onyx);
     text-align: center; /* Changed to center-align text for smaller screens */
@@ -415,11 +422,13 @@ p {
 }
 
 
+/* Certificates Section */
 #certificates {
     background-color: var(--coal);
     padding: 20px;
 }
 
+/* Courses Section */
 #courses {
     background-color: var(--coal);
     padding: 20px;
@@ -525,6 +534,7 @@ p {
 
 
 
+/* Achievements Section */
 #achievements {
     background-color: var(--onyx);
 }
@@ -586,6 +596,7 @@ p {
 }
 
 
+/* Progress Section */
 #progress {
     background-color: var(--onyx);
     color: var(--text);
@@ -639,31 +650,12 @@ progress::-moz-progress-bar {
     border-radius: 10px;
 }
 
-/* Links Section */
-.links {
-    display: flex;
-    justify-content: center;
-    padding: 20px;
+/* Navbar */
+.navbar {
     background-color: var(--charcoal);
-    animation: slideDown 1s ease-in-out;
 }
 
-
-
-.links ul {
-    display: flex;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    flex-wrap: wrap;
-}
-
-.links li {
-    margin: 0 15px;
-}
-
-.links a {
-    text-decoration: none;
+.navbar-nav .nav-link {
     color: #fafafa;
     font-weight: 600;
     padding: 10px 15px;
@@ -671,24 +663,11 @@ progress::-moz-progress-bar {
     border-radius: 5px;
 }
 
-.links a:hover {
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
     background-color: #fafafa;
     color: var(--onyx);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-/* Responsive design for smaller screens */
-@media (max-width: 768px) {
-    .links ul {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .links li {
-        margin: 10px 0;
-    }
-
-    
 }
 
 
@@ -744,13 +723,15 @@ progress::-moz-progress-bar {
     align-items: center;
 }
 
-.social-links a img {
-    width: 3rem; /* Adjust size as needed */
-    height: 3rem; /* Keep aspect ratio consistent */
-    transition: transform 0.3s ease; /* Smooth hover effect */
+.social-links a i {
+    font-size: 3rem; /* Icon size */
+    color: var(--text); /* Icon color */
+    transition: color 0.3s ease, transform 0.3s ease; /* Smooth hover effect */
+    display: inline-block;
 }
 
-.social-links a img:hover {
+.social-links a i:hover {
+    color: #ffffff; /* Change color on hover */
     transform: scale(1.1); /* Slightly enlarges the icon on hover */
 }
 

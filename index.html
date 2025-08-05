@@ -45,18 +45,36 @@
       </div>
     </div>
 
-    <div class="links" data-aos="fade-up">
-      <ul>
-        <li><a href="#profile">Profile</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#certificates">Certificates</a></li>
-        <li><a href="#courses">Courses</a></li>
-        <li><a href="#achievements">Achievements</a></li>
-        <li><a href="#work-experiences">Work Experiences</a></li>
-        <!-- <li><a href="#progress">Progress</a></li> -->
-      </ul>
-    </div>
+    <nav
+      id="mainNav"
+      class="navbar navbar-expand-lg navbar-dark"
+      style="background-color: var(--charcoal)"
+      data-aos="fade-up"
+    >
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="#profile">Profile</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#certificates">Certificates</a></li>
+          <li class="nav-item"><a class="nav-link" href="#courses">Courses</a></li>
+          <li class="nav-item"><a class="nav-link" href="#achievements">Achievements</a></li>
+          <li class="nav-item"><a class="nav-link" href="#work-experiences">Work Experiences</a></li>
+          <!-- <li class="nav-item"><a class="nav-link" href="#progress">Progress</a></li> -->
+        </ul>
+      </div>
+    </nav>
 
       <!-- index.html -->
       <div id="profile"></div>
@@ -388,6 +406,9 @@
         once: true, // Whether animation should happen only once - while scrolling down
         mirror: false, // Whether elements should animate out while scrolling past them
       });
+    </script>
+    <script>
+      $('body').scrollspy({ target: '#mainNav', offset: 70 });
     </script>
     <script>
       function openCategory(evt, categoryName) {
