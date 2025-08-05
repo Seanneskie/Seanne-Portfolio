@@ -33,10 +33,11 @@
       rel="stylesheet"
     />
 
-    <!-- Custom CSS -->
-    <link href="static/index.css" rel="stylesheet" />
-  </head>
-  <body data-spy="scroll" data-target="#mainNav" data-offset="70" style="width: 100vw; overflow-x: hidden">
+      <!-- Custom CSS -->
+      <link href="static/index.css" rel="stylesheet" />
+      <script src="js/section-loader.js"></script>
+    </head>
+    <body style="width: 100vw; overflow-x: hidden">
     <div class="cover">
       <div class="intro-message" data-aos="fade-down">
         <h1>Dev Portfolio</h1>
@@ -75,22 +76,16 @@
       </div>
     </nav>
 
-    <!-- index.html -->
-    <div id="profile"></div>
-    <script>
-      fetch("sections/profile.html")
-        .then((response) => response.text())
-        .then((data) => (document.getElementById("profile").innerHTML = data));
-    </script>
+      <!-- index.html -->
+      <div id="profile"></div>
+      <script>
+        loadSection('profile', 'sections/profile.html');
+      </script>
 
-    <div id="projects"></div>
+      <div id="projects"></div>
 
-    <script>
-      fetch("sections/projects.html")
-        .then((response) => response.text())
-        .then((data) => {
-          document.getElementById("projects").innerHTML = data;
-
+      <script>
+        loadSection('projects', 'sections/projects.html', () => {
           const cardsPerPage = 3;
           const projectCards = document.querySelectorAll(
             "#projectCards .project-card"
@@ -129,16 +124,12 @@
 
           renderPage(currentPage);
         });
-    </script>
+      </script>
 
-    <div id="skills"></div>
+      <div id="skills"></div>
 
-    <script>
-      fetch("sections/skills.html")
-        .then((response) => response.text())
-        .then((data) => {
-          document.getElementById("skills").innerHTML = data;
-
+      <script>
+        loadSection('skills', 'sections/skills.html', () => {
           // Run after content is injected
           function openSkillsTab(evt, categoryName) {
             const skillsSection = document.querySelector("#skills");
@@ -172,39 +163,30 @@
           const firstSkillsTab = document.querySelector("#skills .tablinks");
           if (firstSkillsTab) firstSkillsTab.click();
         });
-    </script>
+      </script>
     <div id="imageModal" class="modal">
       <span class="close">&times;</span>
       <img class="modal-content" id="modalImg" alt="Certificate image" />
       <iframe id="modalIframe" class="modal-content" style="display: none" frameborder="0"></iframe>
     </div>
-    <div id="certificates"></div>
-    <script src="js/certificates-data.js"></script>
-    <script src="js/certificates.js"></script>
-    <script>
-      fetch("sections/certificates.html")
-        .then((response) => response.text())
-        .then((data) => {
-          document.getElementById("certificates").innerHTML = data;
+      <div id="certificates"></div>
+      <script src="js/certificates-data.js"></script>
+      <script src="js/certificates.js"></script>
+      <script>
+        loadSection('certificates', 'sections/certificates.html', () => {
           if (typeof initCertificates === "function") initCertificates();
         });
-    </script>
+      </script>
 
-    <div id="courses"></div>
-    <script>
-      fetch("sections/courses.html")
-        .then((response) => response.text())
-        .then((data) => (document.getElementById("courses").innerHTML = data));
-    </script>
+      <div id="courses"></div>
+      <script>
+        loadSection('courses', 'sections/courses.html');
+      </script>
 
-    <div id="achievements"></div>
-    <script>
-      fetch("sections/achievements.html")
-        .then((response) => response.text())
-        .then(
-          (data) => (document.getElementById("achievements").innerHTML = data)
-        );
-    </script>
+      <div id="achievements"></div>
+      <script>
+        loadSection('achievements', 'sections/achievements.html');
+      </script>
     <section
       id="work-experiences"
       class="container-fluid"
