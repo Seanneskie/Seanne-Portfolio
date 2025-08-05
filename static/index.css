@@ -205,7 +205,7 @@ p {
 /* Project Description */
 .project-description {
     font-size: 1rem;
-    color: #555;
+    color: var(--text);
     margin-bottom: 20px;
 }
 
