@@ -1,0 +1,216 @@
+[
+  {
+    "title": "AI Coin Detector",
+    "image": "static/ai.png",
+    "alt": "Coin Detector Image",
+    "description": "Made with Django and GTM. A requirement in Introduction to AI course.",
+    "collaborators": "Kimberly Baylon, Jeric Aminola, Bridget Jose, Azlan Tomindug",
+    "tags": [
+      "AI",
+      "Django",
+      "OpenCV",
+      "Google Teachable Machine",
+      "School Project",
+      "Python",
+      "TensorFlow"
+    ],
+    "github": "https://github.com/Seanneskie/AI-coin-detector-django",
+    "details": "project-details/ai-coin-detector.html"
+  },
+  {
+    "title": "NoSQL Project - MERN Stack Website",
+    "image": "static/Mern.png",
+    "alt": "MERN Stack Image",
+    "description": "Made using MERN Stack. A final requirement in NoSQL Course.",
+    "tags": [
+      "MongoDB",
+      "ReactJS",
+      "ExpressJS",
+      "JavaScript",
+      "School Project",
+      "NoSQL Databases"
+    ],
+    "github": "https://github.com/Seanneskie/MERN-STACK---Software",
+    "details": "project-details/nosql-project.html"
+  },
+  {
+    "title": "Advance Database Project - CNSM Website",
+    "image": "static/Mern.png",
+    "alt": "CNSM Image",
+    "description": "Made using MERN Stack. A final requirement in Advance Database Course.",
+    "collaborators": "Database Major Batch of 2021-2025",
+    "tags": [
+      "MongoDB",
+      "ReactJS",
+      "ExpressJS",
+      "JavaScript",
+      "School Project",
+      "NoSQL Databases",
+      "GitHub"
+    ],
+    "github": "https://github.com/Seanneskie/advDB-CNSM-Website",
+    "details": "project-details/cnsm-website.html"
+  },
+  {
+    "title": "Bitcoin Analysis App",
+    "image": "static/django.png",
+    "alt": "Analysis Image",
+    "description": "A Bitcoin Prediction and Descriptive Analysis. Made with Django and Python Modules.",
+    "tags": [
+      "Python",
+      "Kaggle",
+      "ChartJS",
+      "Django",
+      "Pandas",
+      "MatPlotLib",
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "github": "https://github.com/Seanneskie/bigdata",
+    "details": "project-details/bitcoin-analysis-app.html"
+  },
+  {
+    "title": "Desktop Payroll Management System",
+    "image": "static/python-2.png",
+    "alt": "Desktop Payroll Management System Image",
+    "description": "FastAPI-powered payroll management backend bundled with an Electron desktop shell.",
+    "tags": [
+      "Python",
+      "FastAPI",
+      "Electron",
+      "SQLAlchemy",
+      "SQLite",
+      "Tailwind CSS"
+    ],
+    "github": "https://github.com/Seanneskie/desktop-payroll-management-system",
+    "details": "project-details/pms.html"
+  },
+  {
+    "title": "Digital Freelancer Profiling App",
+    "image": "static/django.png",
+    "alt": "Digital Freelancer Profiling App Image",
+    "description": "A Digital Freelancer Profiling System for Capstone requirement. Made with Django and Python Modules.",
+    "collaborators": "Kimberly Baylon, Bridget Jose, Azlan Tomindug",
+    "tags": [
+      "Django",
+      "Python",
+      "Capstone Project",
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "github": "https://github.com/Seanneskie/capstone-app-profile",
+    "details": "project-details/digital-freelancer-profiling-app.html"
+  },
+  {
+    "title": "CEMCDO App",
+    "image": "static/django.png",
+    "alt": "CEMCDO App Image",
+    "description": "A system made for CEMCDO, currently composed of Fund Utilization and Cooperative Profiling of General Santos City. Made with Django and Python Modules.",
+    "collaborators": "Kimberly Baylon, Bridget Jose, Azlan Tomindug, Francheska Mei Besana",
+    "tags": [
+      "Django",
+      "Python",
+      "Government",
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "github": "https://cemcdo-demo.onrender.com/",
+    "githubText": "View Site",
+    "details": "project-details/cemcdo-app.html"
+  },
+  {
+    "title": "VIMS - Vessel Inventory Management System",
+    "image": "static/next.png",
+    "alt": "VIMS Image",
+    "description": "An Inventory Management System for TSP Marine Industries to manage vessel inventory in the open seas. Made with NextJS and React.",
+    "collaborators": "TSP Marine - IT Division",
+    "tags": [
+      "NextJS",
+      "ReactJS",
+      "Inventory",
+      "JavaScript",
+      "HTML",
+      "CSS"
+    ],
+    "githubText": "View Site",
+    "githubDisabled": true,
+    "details": "project-details/vims.html"
+  },
+  {
+    "title": "Laravel Itinerary Planner",
+    "image": "static/php.png",
+    "alt": "Laravel Itinerary Planner Image",
+    "description": "Full-stack travel planning app with interactive maps, budgeting, and exportable itineraries.",
+    "tags": [
+      "Laravel",
+      "PHP",
+      "MySQL",
+      "Tailwind CSS",
+      "Alpine.js",
+      "Leaflet",
+      "Chart.js",
+      "Excel Export",
+      "PDF Export"
+    ],
+    "github": "https://github.com/Seanneskie/itinerary-planner",
+    "details": "project-details/itinerary-planner.html"
+  },
+  {
+    "title": "Albany Airbnb Dashboard",
+    "image": "static/django.png",
+    "alt": "Albany Airbnb Dashboard Image",
+    "description": "Interactive dashboard analyzing Airbnb listings, pricing, and guest sentiment.",
+    "tags": [
+      "Pandas",
+      "Data Visualization",
+      "Chart.js",
+      "Leaflet",
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Front-End",
+      "School Project",
+      "Python"
+    ],
+    "githubDisabled": true,
+    "details": "project-details/albany-airbnb-dashboard.html"
+  },
+  {
+    "title": "McDonald's Sentiment Analysis",
+    "image": "static/django.png",
+    "alt": "McDonald's Sentiment Analysis Image",
+    "description": "Sentiment analysis of over 33,000 McDonald's Google reviews using Python.",
+    "tags": [
+      "NLTK",
+      "VADER",
+      "Orange",
+      "Python",
+      "Sentiment Analysis",
+      "Data Visualization",
+      "Pandas",
+      "Machine Learning",
+      "Google Reviews",
+      "Data Mining"
+    ],
+    "githubDisabled": true,
+    "details": "project-details/mcdonalds-sentiment-analysis.html"
+  },
+  {
+    "title": "AI-Powered Email Generator",
+    "image": "static/ai.png",
+    "alt": "AI-Powered Email Generator Image",
+    "description": "Django and LangChain app that drafts polished emails using LLMs and OpenRouter.",
+    "tags": [
+      "Django",
+      "LangChain",
+      "OpenRouter",
+      "LLM",
+      "Python"
+    ],
+    "github": "https://github.com/Seanneskie/langchain-project-va-assist",
+    "details": "project-details/ai-powered-email-generator.html"
+  }
+]

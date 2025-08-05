@@ -67,51 +67,15 @@
 
     <div id="projects"></div>
 
-    <script>
-      fetch("sections/projects.html")
-        .then((response) => response.text())
-        .then((data) => {
-          document.getElementById("projects").innerHTML = data;
-
-          const cardsPerPage = 3;
-          const projectCards = document.querySelectorAll(
-            "#projectCards .project-card"
-          );
-          const paginationContainer =
-            document.getElementById("projectPagination");
-          let currentPage = 1;
-
-          function renderPage(page) {
-            const start = (page - 1) * cardsPerPage;
-            const end = start + cardsPerPage;
-
-            projectCards.forEach((card, index) => {
-              card.style.display =
-                index >= start && index < end ? "flex" : "none";
-            });
-
-            // Update pagination controls
-            paginationContainer.innerHTML = "";
-
-            const totalPages = Math.ceil(projectCards.length / cardsPerPage);
-
-            for (let i = 1; i <= totalPages; i++) {
-              const btn = document.createElement("button");
-              btn.textContent = i;
-              btn.className =
-                "btn btn-sm mx-1 " +
-                (i === page ? "btn-primary" : "btn-outline-secondary");
-              btn.onclick = () => {
-                currentPage = i;
-                renderPage(currentPage);
-              };
-              paginationContainer.appendChild(btn);
-            }
-          }
-
-          renderPage(currentPage);
-        });
-    </script>
+      <script src="js/projects.js"></script>
+      <script>
+        fetch("sections/projects.html")
+          .then((response) => response.text())
+          .then((data) => {
+            document.getElementById("projects").innerHTML = data;
+            if (typeof initProjects === "function") initProjects();
+          });
+      </script>
 
     <div id="skills"></div>
 
