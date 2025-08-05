@@ -723,13 +723,15 @@ progress::-moz-progress-bar {
     align-items: center;
 }
 
-.social-links a img {
-    width: 3rem; /* Adjust size as needed */
-    height: 3rem; /* Keep aspect ratio consistent */
-    transition: transform 0.3s ease; /* Smooth hover effect */
+.social-links a i {
+    font-size: 3rem; /* Icon size */
+    color: var(--text); /* Icon color */
+    transition: color 0.3s ease, transform 0.3s ease; /* Smooth hover effect */
+    display: inline-block;
 }
 
-.social-links a img:hover {
+.social-links a i:hover {
+    color: #ffffff; /* Change color on hover */
     transform: scale(1.1); /* Slightly enlarges the icon on hover */
 }
 
