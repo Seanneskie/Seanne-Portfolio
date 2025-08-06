@@ -2,7 +2,7 @@
   {
     "company": "TSP Marine Industries",
     "project": "Vessel Inventory Management System (VIMS)",
-    "period": "",
+    "period": "November 2024 – June 2025",
     "tech": [
       "Next.js 15",
       "TypeScript",
@@ -22,7 +22,7 @@
   {
     "company": "CEMCDO",
     "project": "Cooperative Profiling & Fund Utilization System",
-    "period": "OJT",
+    "period": "January 2025 – April 2025",
     "tech": [
       "Django",
       "Tailwind CSS",
@@ -42,7 +42,7 @@
   {
     "company": "COTSEYE",
     "project": "Crowd mapping for Crown of Thorns (COTS) Monitoring",
-    "period": "May 2024 – Aug 2024",
+    "period": "May 2024 – August 2024",
     "tech": [
       "Django",
       "Python",

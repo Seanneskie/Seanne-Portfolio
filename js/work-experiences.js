@@ -19,6 +19,14 @@ function initWorkExperiences() {
         title.textContent = `${exp.company} – ${exp.project}`;
         header.appendChild(title);
 
+        if (exp.period) {
+          const period = document.createElement('p');
+          period.className = 'card-subtitle mb-2';
+          period.style.color = 'var(--text)';
+          period.textContent = exp.period;
+          header.appendChild(period);
+        }
+
         if (exp.tech && exp.tech.length) {
           const tech = document.createElement('p');
           tech.className = 'card-subtitle mb-2 fw-bold fst-italic';
