@@ -167,38 +167,9 @@
 
     <script>
       loadSection("skills", "sections/skills.html", () => {
-        // Run after content is injected
-        function openSkillsTab(evt, categoryName) {
-          const skillsSection = document.querySelector("#skills");
-          const tabContents = skillsSection.querySelectorAll(".tabcontent");
-          const tabLinks = skillsSection.querySelectorAll(".tablinks");
-
-          tabContents.forEach((tab) => {
-            tab.style.display = "none";
-            tab.classList.remove("active");
-          });
-
-          tabLinks.forEach((tab) => {
-            tab.classList.remove("active");
-          });
-
-          const targetTab = skillsSection.querySelector(
-            `#${CSS.escape(categoryName)}`
-          );
-          if (targetTab) {
-            targetTab.style.display = "block";
-            // allow CSS transition to play
-            setTimeout(() => targetTab.classList.add("active"), 10);
-            evt.currentTarget.classList.add("active");
-          }
-        }
-
-        // Set global reference so inline onclicks work
-        window.openSkillsTab = openSkillsTab;
-
-        // Auto-open first tab
-        const firstSkillsTab = document.querySelector("#skills .tablinks");
-        if (firstSkillsTab) firstSkillsTab.click();
+        const script = document.createElement("script");
+        script.src = "js/skills.js";
+        document.body.appendChild(script);
       });
     </script>
     <div id="imageModal" class="modal">
