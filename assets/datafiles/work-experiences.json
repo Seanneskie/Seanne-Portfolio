@@ -1,0 +1,56 @@
+[
+  {
+    "company": "TSP Marine Industries",
+    "project": "Vessel Inventory Management System (VIMS)",
+    "period": "",
+    "tech": [
+      "Next.js 15",
+      "TypeScript",
+      "ShadCN",
+      "Supabase",
+      "Tailwind CSS",
+      "GitHub Actions"
+    ],
+    "summary": "Built and deployed a cloud-native inventory platform that gives eight vessel crews real-time visibility into onboard supplies, reducing resupply planning time by 40% and cutting stock-related downtime from ~5 hrs to ~1 hr per month.",
+    "highlights": [
+      "Role-based access controls govern sensitive actions like PDF generation.",
+      "One-click requisition-slip PDFs via jsPDF and autoTable.",
+      "Offline-first sync logic caches transactions and reconciles on reconnect.",
+      "CI/CD pipeline (lint → test → static export) auto-deploys to GitHub Pages."
+    ]
+  },
+  {
+    "company": "CEMCDO",
+    "project": "Cooperative Profiling & Fund Utilization System",
+    "period": "OJT",
+    "tech": [
+      "Django",
+      "Tailwind CSS",
+      "PostgreSQL",
+      "Supabase",
+      "OpenPyXL",
+      "Render"
+    ],
+    "summary": "Delivered a full-stack portal that centralises cooperative records, automates fund utilisation, and generates board-ready Excel reports—cutting manual prep time by 50% while driving ledger error rates below 1%.",
+    "highlights": [
+      "Designed a fully-normalised schema with FK enforcement and audit trails.",
+      "Reusable OpenPyXL helpers produce multi-sheet spreadsheets with charts.",
+      "Draft-transaction subsystem reused across four divisions via REST API.",
+      "GitHub Actions runs lint, pytest + coverage, Docker builds, then zero-downtime deploys on Render."
+    ]
+  },
+  {
+    "company": "COTSEYE",
+    "project": "Crowd mapping for Crown of Thorns (COTS) Monitoring",
+    "period": "May 2024 – Aug 2024",
+    "tech": [
+      "Django",
+      "Python",
+      "JavaScript",
+      "HTML",
+      "CSS"
+    ],
+    "summary": "Developed a scalable web app to monitor Crown of Thorns outbreaks in Sarangani Bay, enhancing marine conservation efforts and enabling faster response through real-time community reporting.",
+    "highlights": []
+  }
+]
