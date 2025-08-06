@@ -11,6 +11,16 @@
     --text: #ccd0cf;
 }
 
+/* Light theme overrides */
+.light-theme {
+    --coal: #f5f5f5;
+    --obsidian: #ffffff;
+    --onyx: #eaeaea;
+    --charcoal: #dddddd;
+    --sable: #fafafa;
+    --text: #333333;
+}
+
 /* ====================== Animations ====================== */
 @keyframes fadeIn {
     from { opacity: 0; }
