@@ -1,0 +1,227 @@
+[
+  {
+    "id": "Programming",
+    "label": "Programming",
+    "groups": [
+      {
+        "title": "Programming",
+        "items": [
+          {"icon": "devicon-python-plain colored", "name": "Python"},
+          {"icon": "devicon-javascript-plain colored", "name": "JavaScript"},
+          {"icon": "devicon-php-plain colored", "name": "PHP"},
+          {"icon": "devicon-typescript-plain colored", "name": "TypeScript"}
+        ]
+      },
+      {
+        "title": "Web Development",
+        "items": [
+          {"icon": "devicon-html5-plain colored", "name": "HTML"},
+          {"icon": "devicon-css3-plain colored", "name": "CSS"},
+          {"icon": "devicon-bootstrap-plain colored", "name": "Bootstrap 4.0 and 5.0"},
+          {"icon": "devicon-tailwindcss-original colored", "name": "Tailwind CSS"},
+          {"icon": "devicon-jinja-plain colored", "name": "Jinja2"}
+        ]
+      },
+      {
+        "title": "AI Technology",
+        "items": [
+          {"icon": "fas fa-robot", "name": "Google Teachable Machine"},
+          {"icon": "devicon-tensorflow-original colored", "name": "TensorFlow"},
+          {"icon": "devicon-opencv-plain colored", "name": "OpenCV"},
+          {"icon": "fas fa-link", "name": "LangChain"},
+          {"icon": "fas fa-brain", "name": "Deep Learning"},
+          {"icon": "fas fa-smile", "name": "VADER Sentiment Analysis"},
+          {"icon": "fas fa-circle", "name": "Orange"}
+        ]
+      },
+      {
+        "title": "Frameworks",
+        "items": [
+          {"icon": "devicon-django-plain colored", "name": "Django"},
+          {"icon": "devicon-react-original colored", "name": "React"},
+          {"icon": "devicon-nextjs-plain", "name": "Next.js 15"},
+          {"icon": "devicon-nodejs-plain colored", "name": "Node.js"},
+          {"icon": "devicon-fastapi-plain colored", "name": "FastAPI"},
+          {"icon": "devicon-electron-original colored", "name": "Electron"},
+          {"icon": "devicon-sqlalchemy-plain colored", "name": "SQLAlchemy"},
+          {"icon": "devicon-angularjs-plain colored", "name": "AngularJS"},
+          {"icon": "devicon-alpinejs-original colored", "name": "Alpine.js"},
+          {"icon": "devicon-laravel-plain colored", "name": "Laravel"},
+          {"icon": "fas fa-map", "name": "Leaflet"}
+        ]
+      }
+    ]
+  },
+  {
+    "id": "DataAnalysis",
+    "label": "Working with Data",
+    "groups": [
+      {
+        "title": "Skills",
+        "items": [
+          {"icon": "fas fa-chart-line", "name": "Data Analysis Skill"},
+          {"icon": "fas fa-chart-pie", "name": "Data Visualization"},
+          {"icon": "fas fa-lightbulb", "name": "Data Storytelling"},
+          {"icon": "fas fa-database", "name": "SQL"}
+        ]
+      },
+      {
+        "title": "Tools",
+        "items": [
+          {"icon": "fas fa-cogs", "name": "Weka"},
+          {"icon": "fas fa-chart-bar", "name": "Tableau"},
+          {"icon": "fas fa-chart-bar", "name": "Jamovi"},
+          {"icon": "fas fa-file-excel", "name": "Excel"},
+          {"icon": "devicon-postgresql-plain colored", "name": "PGAdmin4"},
+          {"icon": "fas fa-database", "name": "DBeaver"},
+          {"icon": "fas fa-chart-area", "name": "Google Looker Studio"},
+          {"icon": "fas fa-briefcase", "name": "Business Intelligence (BI)"}
+        ]
+      },
+      {
+        "title": "Used in App Development",
+        "items": [
+          {"icon": "devicon-javascript-plain colored", "name": "Chart.js"},
+          {"icon": "devicon-python-plain colored", "name": "Pandas"},
+          {"icon": "devicon-python-plain colored", "name": "Matplotlib"},
+          {"icon": "devicon-python-plain colored", "name": "Seaborn"},
+          {"icon": "devicon-tensorflow-original colored", "name": "TensorFlow"},
+          {"icon": "devicon-python-plain colored", "name": "Scikit-learn"}
+        ]
+      },
+      {
+        "title": "Databases",
+        "items": [
+          {"icon": "devicon-mysql-plain colored", "name": "MySQL"},
+          {"icon": "devicon-postgresql-plain colored", "name": "PostgreSQL"},
+          {"icon": "devicon-mongodb-plain colored", "name": "MongoDB"},
+          {"icon": "devicon-sqlite-plain colored", "name": "SQLite"}
+        ]
+      }
+    ]
+  },
+  {
+    "id": "CTF",
+    "label": "CTF",
+    "groups": [
+      {
+        "title": "Categories",
+        "items": [
+          {"icon": "fas fa-code", "name": "Forensics"},
+          {"icon": "fas fa-code", "name": "Reverse Engineering"},
+          {"icon": "fas fa-code", "name": "OSINT"},
+          {"icon": "fas fa-code", "name": "Malware Analysis"}
+        ]
+      },
+      {
+        "title": "Tools used",
+        "items": [
+          {"icon": "fas fa-code", "name": "Kali Linux"},
+          {"icon": "fas fa-code", "name": "Binwalk"},
+          {"icon": "fas fa-code", "name": "Hexedit"},
+          {"icon": "fas fa-code", "name": "Autopsy"},
+          {"icon": "fas fa-code", "name": "Hindsight"},
+          {"icon": "fas fa-code", "name": "Ghidra"},
+          {"icon": "fas fa-code", "name": "x64Dbg"}
+        ]
+      }
+    ]
+  },
+  {
+    "id": "UIUX",
+    "label": "UI/UX",
+    "groups": [
+      {
+        "title": "UI/UX",
+        "items": [
+          {"icon": "fab fa-figma", "name": "Figma"},
+          {"icon": "fab fa-figma", "name": "Canva"},
+          {"icon": "fas fa-code", "name": "Visio"}
+        ]
+      },
+      {
+        "title": "React Component Libraries",
+        "items": [
+          {"icon": "fas fa-cube", "name": "ShadCN"},
+          {"icon": "fas fa-layer-group", "name": "Material UI"},
+          {"icon": "fas fa-icons", "name": "HeroIcons"}
+        ]
+      },
+      {
+        "title": "Wireframing/Diagrams",
+        "items": [
+          {"icon": "fas fa-paint-brush", "name": "UML Diagrams"},
+          {"icon": "fas fa-paint-brush", "name": "Draw.io"},
+          {"icon": "fas fa-paint-brush", "name": "Sketch"}
+        ]
+      }
+    ]
+  },
+  {
+    "id": "OtherSkill",
+    "label": "Other Skills",
+    "groups": [
+      {
+        "title": "DevOps",
+        "items": [
+          {"icon": "devicon-git-plain colored", "name": "Git"},
+          {"icon": "devicon-docker-plain colored", "name": "Docker"},
+          {"icon": "devicon-vitejs-plain colored", "name": "Vite"},
+          {"icon": "devicon-googlecloud-plain colored", "name": "Google Cloud"},
+          {"icon": "fas fa-cloud-upload-alt", "name": "Render"},
+          {"icon": "devicon-vercel-plain colored", "name": "Vercel"}
+        ]
+      },
+      {
+        "title": "Command Line & Process",
+        "items": [
+          {"icon": "devicon-linux-plain colored", "name": "Linux Commands"},
+          {"icon": "fas fa-terminal", "name": "PowerShell Commands"},
+          {"icon": "fab fa-markdown", "name": "Markdown Language"},
+          {"icon": "fas fa-file-alt", "name": "Project Documentation"},
+          {"icon": "fas fa-project-diagram", "name": "Software Development Life Cycle (SDLC)"}
+        ]
+      },
+      {
+        "title": "Development",
+        "items": [
+          {"icon": "fas fa-code", "name": "Front-End Development"},
+          {"icon": "fas fa-server", "name": "Back-End Development"},
+          {"icon": "fas fa-comments", "name": "Chatbot Development"},
+          {"icon": "fas fa-database", "name": "Database Administration"}
+        ]
+      },
+      {
+        "title": "AI & Prompting",
+        "items": [
+          {"icon": "fas fa-lightbulb", "name": "AI Prompting"},
+          {"icon": "fas fa-terminal", "name": "Prompt Engineering"},
+          {"icon": "fas fa-brain", "name": "Generative AI"}
+        ]
+      },
+      {
+        "title": "Specialized",
+        "items": [
+          {"icon": "fas fa-globe", "name": "Geographic Information System (GIS)"},
+          {"icon": "fas fa-microchip", "name": "x86-64 Assembly Language (studying)"}
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SoftSkills",
+    "label": "Soft Skills",
+    "groups": [
+      {
+        "title": "General Abilities",
+        "items": [
+          {"icon": "fas fa-lightbulb", "name": "Creative Problem Solving"},
+          {"icon": "fas fa-chart-line", "name": "Analytical Skills"},
+          {"icon": "fas fa-keyboard", "name": "Clerical Skills"},
+          {"icon": "fas fa-sort-numeric-up", "name": "Numerical Analysis"},
+          {"icon": "fas fa-database", "name": "Database Administration"}
+        ]
+      }
+    ]
+  }
+]
