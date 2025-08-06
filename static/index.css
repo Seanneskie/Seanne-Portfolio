@@ -60,7 +60,7 @@ body {
     justify-content: center;
     align-items: center;
     position: relative;
-    color: white; /* Text color */
+    color: var(--text-hover); /* Text color */
     text-align: center;
     animation: fadeIn 1.5s ease-in-out;
 }
@@ -141,7 +141,7 @@ p {
 
 #projects h2{
     font-size: 48px;
-    color: white;
+    color: var(--text-hover);
 }
 
 
@@ -159,7 +159,7 @@ p {
 }
 
 .blog-post h3 {
-    color: white;
+    color: var(--text-hover);
     margin-top: 0;
 }
 
@@ -183,7 +183,7 @@ p {
 
 #work-experiences h2{
     font-size: 48px;
-    color: white;
+    color: var(--text-hover);
 }
 
 
@@ -193,7 +193,7 @@ p {
 
 #testimonials h2{
     font-size: 48px;
-    color: white;
+    color: var(--text-hover);
 }
 
 /* ====================== Components ====================== */
@@ -328,7 +328,7 @@ p {
 #background {
     text-align: right;
     background-color: var(--onyx);
-    color: white;
+    color: var(--text-hover);
 }
 
 #background p{
@@ -338,7 +338,7 @@ p {
 
 #background h2{
     font-size: 48px;
-    color: white;
+    color: var(--text-hover);
 }
 
 
@@ -351,7 +351,7 @@ p {
 
 #skills h2 {
     font-size: 48px;
-    color: white;
+    color: var(--text-hover);
     margin-bottom: 10px;
 }
 
@@ -376,7 +376,7 @@ p {
 
 .tabs button {
     background-color: var(--onyx);
-    color: white;
+    color: var(--text-hover);
     border: none;
     outline: none;
     cursor: pointer;
@@ -401,7 +401,7 @@ p {
     opacity: 0;
     padding: 20px;
     border-top: none;
-    color: white;
+    color: var(--text-hover);
     transition: opacity 0.5s ease;
 }
 
@@ -523,7 +523,7 @@ p {
 #courses h2 {
     text-align: center;
     font-size: 48px;
-    color: white;
+    color: var(--text-hover);
     margin-bottom: 10px;
 }
 
@@ -545,7 +545,7 @@ p {
 
 #certificates h2 {
     font-size: 48px;
-    color: white;
+    color: var(--text-hover);
     margin-bottom: 10px;
 }
 
@@ -578,7 +578,7 @@ p {
 #certificates h3 {
     margin: 0;
     font-size: 1.5em;
-    color: white;
+    color: var(--text-hover);
 }
 
 .details-placeholder {
@@ -626,7 +626,7 @@ p {
 }
 
 #achievements h2, #achievements strong{
-    color: white;
+    color: var(--text-hover);
     font-weight: bold;
 }
 
@@ -666,7 +666,7 @@ p {
     height: 18px;
     border-radius: 50%;
     background: var(--charcoal);
-    color: white;
+    color: var(--text-hover);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -689,7 +689,7 @@ p {
 }
 
 #progress h2{
-    color: white;
+    color: var(--text-hover);
     font-weight: bold;
 }
 
@@ -787,7 +787,7 @@ progress::-moz-progress-bar {
 
 .profile-container h2, .profile-container strong{
    font-weight: bold;
-   color: white;
+   color: var(--text-hover);
 }
 
 .profile-image img {
@@ -839,7 +839,7 @@ progress::-moz-progress-bar {
 .hire-me {
     background-color: transparent; /* Clear background */
     border: 2px solid white; /* White border */
-    color: white; /* White text */
+    color: var(--text-hover); /* White text */
     padding: 10px 20px; /* Padding for the button */
     font-size: 16px; /* Font size */
     cursor: pointer; /* Change cursor on hover */
@@ -996,7 +996,7 @@ progress::-moz-progress-bar {
 /* Headings */
 .certificate-card h3 {
     margin-top: 0;
-    color: white;
+    color: var(--text-hover);
 }
 
 /* Description text */
@@ -1017,7 +1017,7 @@ progress::-moz-progress-bar {
 }
 
 .view-image:hover {
-    color: white;
+    color: var(--text-hover);
     text-decoration: underline;
 }
 
@@ -1037,7 +1037,7 @@ progress::-moz-progress-bar {
     padding: 4px 10px;
     border-radius: 12px;
     margin: 3px 4px;
-    color: white;
+    color: var(--text-hover);
     font-weight: bold;
     transition: background-color 0.3s ease;
 }
