@@ -125,6 +125,9 @@
           }
 
           renderPage(currentPage);
+          const filterScript = document.createElement('script');
+          filterScript.src = 'js/project-filter.js';
+          document.body.appendChild(filterScript);
         });
       </script>
 
