@@ -1099,6 +1099,7 @@ progress::-moz-progress-bar {
     color: var(--text);
     padding: 1.5rem;
     border-radius: 0.5rem;
+}
 
 /* ====================== Contact Section ====================== */
 #contact {
