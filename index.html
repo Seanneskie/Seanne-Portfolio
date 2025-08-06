@@ -8,9 +8,18 @@
       name="description"
       content="Portfolio of Seanne Cañete, a full-stack developer skilled in Python, Django, JavaScript, React, and data analysis."
     />
-    <meta name="keywords" content="Seanne Cañete, full-stack developer, Python, Django, JavaScript, React, databases, data analysis, web development" />
-    <meta property="og:title" content="Seanne Cañete | Full-stack Developer Portfolio" />
-    <meta property="og:description" content="Portfolio of Seanne Cañete, showcasing full-stack development skills in Python, Django, JavaScript, React, and data analysis." />
+    <meta
+      name="keywords"
+      content="Seanne Cañete, full-stack developer, Python, Django, JavaScript, React, databases, data analysis, web development"
+    />
+    <meta
+      property="og:title"
+      content="Seanne Cañete | Full-stack Developer Portfolio"
+    />
+    <meta
+      property="og:description"
+      content="Portfolio of Seanne Cañete, showcasing full-stack development skills in Python, Django, JavaScript, React, and data analysis."
+    />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="static/profile.jpg" />
     <meta name="author" content="Seanneskie" />
@@ -33,11 +42,11 @@
       rel="stylesheet"
     />
 
-      <!-- Custom CSS -->
-      <link href="static/index.css" rel="stylesheet" />
-      <script src="js/section-loader.js"></script>
-    </head>
-    <body style="width: 100vw; overflow-x: hidden">
+    <!-- Custom CSS -->
+    <link href="static/index.css" rel="stylesheet" />
+    <script src="js/section-loader.js"></script>
+  </head>
+  <body style="width: 100vw; overflow-x: hidden">
     <div class="cover">
       <div class="intro-message" data-aos="fade-down">
         <h1>Dev Portfolio</h1>
@@ -62,214 +71,298 @@
       >
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+      <div
+        class="collapse navbar-collapse justify-content-center"
+        id="navbarNav"
+      >
         <ul class="navbar-nav">
-          <li class="nav-item"><a class="nav-link" href="#profile">Profile</a></li>
-          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
-          <li class="nav-item"><a class="nav-link" href="#certificates">Certificates</a></li>
-          <li class="nav-item"><a class="nav-link" href="#courses">Courses</a></li>
-          <li class="nav-item"><a class="nav-link" href="#achievements">Achievements</a></li>
+          <li class="nav-item">
+            <a class="nav-link" href="#profile">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#projects">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#skills">Skills</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#certificates">Certificates</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#courses">Courses</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#achievements">Achievements</a>
+          </li>
           <li class="nav-item"><a class="nav-link" href="#blog">Blog</a></li>
-          <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
-          <li class="nav-item"><a class="nav-link" href="#work-experiences">Work Experiences</a></li>
+          <li class="nav-item">
+            <a class="nav-link" href="#testimonials">Testimonials</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#work-experiences">Work Experiences</a>
+          </li>
           <!-- <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li> -->
           <!-- <li class="nav-item"><a class="nav-link" href="#progress">Progress</a></li> -->
         </ul>
       </div>
-      <button id="theme-toggle" class="btn btn-outline-light ml-auto">Toggle Theme</button>
+      <button id="theme-toggle" class="btn btn-outline-light ml-auto">
+        Toggle Theme
+      </button>
     </nav>
 
-      <!-- index.html -->
-      <div id="profile"></div>
-      <script>
-        loadSection('profile', 'sections/profile.html');
-      </script>
+    <!-- index.html -->
+    <div id="profile"></div>
+    <script>
+      loadSection("profile", "sections/profile.html");
+    </script>
 
-      <div id="projects"></div>
+    <div id="projects"></div>
 
-      <script>
-        loadSection('projects', 'sections/projects.html', () => {
-          const cardsPerPage = 3;
-          const projectCards = document.querySelectorAll(
-            "#projectCards .project-card"
+    <script>
+      loadSection("projects", "sections/projects.html", () => {
+        const cardsPerPage = 3;
+        const projectCards = document.querySelectorAll(
+          "#projectCards .project-card"
+        );
+        const paginationContainer =
+          document.getElementById("projectPagination");
+        let currentPage = 1;
+
+        function renderPage(page) {
+          const start = (page - 1) * cardsPerPage;
+          const end = start + cardsPerPage;
+
+          projectCards.forEach((card, index) => {
+            card.style.display =
+              index >= start && index < end ? "flex" : "none";
+          });
+
+          // Update pagination controls
+          paginationContainer.innerHTML = "";
+
+          const totalPages = Math.ceil(projectCards.length / cardsPerPage);
+
+          for (let i = 1; i <= totalPages; i++) {
+            const btn = document.createElement("button");
+            btn.textContent = i;
+            btn.className =
+              "btn btn-sm mx-1 " +
+              (i === page ? "btn-primary" : "btn-outline-secondary");
+            btn.onclick = () => {
+              currentPage = i;
+              renderPage(currentPage);
+            };
+            paginationContainer.appendChild(btn);
+          }
+        }
+
+        renderPage(currentPage);
+        const filterScript = document.createElement("script");
+        filterScript.src = "js/project-filter.js";
+        document.body.appendChild(filterScript);
+      });
+    </script>
+
+    <div id="skills"></div>
+
+    <script>
+      loadSection("skills", "sections/skills.html", () => {
+        // Run after content is injected
+        function openSkillsTab(evt, categoryName) {
+          const skillsSection = document.querySelector("#skills");
+          const tabContents = skillsSection.querySelectorAll(".tabcontent");
+          const tabLinks = skillsSection.querySelectorAll(".tablinks");
+
+          tabContents.forEach((tab) => {
+            tab.style.display = "none";
+            tab.classList.remove("active");
+          });
+
+          tabLinks.forEach((tab) => {
+            tab.classList.remove("active");
+          });
+
+          const targetTab = skillsSection.querySelector(
+            `#${CSS.escape(categoryName)}`
           );
-          const paginationContainer =
-            document.getElementById("projectPagination");
-          let currentPage = 1;
-
-          function renderPage(page) {
-            const start = (page - 1) * cardsPerPage;
-            const end = start + cardsPerPage;
-
-            projectCards.forEach((card, index) => {
-              card.style.display =
-                index >= start && index < end ? "flex" : "none";
-            });
-
-            // Update pagination controls
-            paginationContainer.innerHTML = "";
-
-            const totalPages = Math.ceil(projectCards.length / cardsPerPage);
-
-            for (let i = 1; i <= totalPages; i++) {
-              const btn = document.createElement("button");
-              btn.textContent = i;
-              btn.className =
-                "btn btn-sm mx-1 " +
-                (i === page ? "btn-primary" : "btn-outline-secondary");
-              btn.onclick = () => {
-                currentPage = i;
-                renderPage(currentPage);
-              };
-              paginationContainer.appendChild(btn);
-            }
+          if (targetTab) {
+            targetTab.style.display = "block";
+            // allow CSS transition to play
+            setTimeout(() => targetTab.classList.add("active"), 10);
+            evt.currentTarget.classList.add("active");
           }
+        }
 
-          renderPage(currentPage);
-          const filterScript = document.createElement('script');
-          filterScript.src = 'js/project-filter.js';
-          document.body.appendChild(filterScript);
-        });
-      </script>
+        // Set global reference so inline onclicks work
+        window.openSkillsTab = openSkillsTab;
 
-      <div id="skills"></div>
-
-      <script>
-        loadSection('skills', 'sections/skills.html', () => {
-          // Run after content is injected
-          function openSkillsTab(evt, categoryName) {
-            const skillsSection = document.querySelector("#skills");
-            const tabContents = skillsSection.querySelectorAll(".tabcontent");
-            const tabLinks = skillsSection.querySelectorAll(".tablinks");
-
-            tabContents.forEach((tab) => {
-              tab.style.display = "none";
-              tab.classList.remove("active");
-            });
-
-            tabLinks.forEach((tab) => {
-              tab.classList.remove("active");
-            });
-
-            const targetTab = skillsSection.querySelector(
-              `#${CSS.escape(categoryName)}`
-            );
-            if (targetTab) {
-              targetTab.style.display = "block";
-              // allow CSS transition to play
-              setTimeout(() => targetTab.classList.add("active"), 10);
-              evt.currentTarget.classList.add("active");
-            }
-          }
-
-          // Set global reference so inline onclicks work
-          window.openSkillsTab = openSkillsTab;
-
-          // Auto-open first tab
-          const firstSkillsTab = document.querySelector("#skills .tablinks");
-          if (firstSkillsTab) firstSkillsTab.click();
-        });
-      </script>
+        // Auto-open first tab
+        const firstSkillsTab = document.querySelector("#skills .tablinks");
+        if (firstSkillsTab) firstSkillsTab.click();
+      });
+    </script>
     <div id="imageModal" class="modal">
       <span class="close">&times;</span>
       <img class="modal-content" id="modalImg" alt="Certificate image" />
-      <iframe id="modalIframe" class="modal-content" style="display: none" frameborder="0"></iframe>
+      <iframe
+        id="modalIframe"
+        class="modal-content"
+        style="display: none"
+        frameborder="0"
+      ></iframe>
     </div>
-      <div id="certificates"></div>
-      <script src="js/certificates-data.js"></script>
-      <script src="js/certificates.js"></script>
-      <script>
-        loadSection('certificates', 'sections/certificates.html', () => {
-          if (typeof initCertificates === "function") initCertificates();
-        });
-      </script>
+    <div id="certificates"></div>
+    <script src="js/certificates-data.js"></script>
+    <script src="js/certificates.js"></script>
+    <script>
+      loadSection("certificates", "sections/certificates.html", () => {
+        if (typeof initCertificates === "function") initCertificates();
+      });
+    </script>
 
-      <div id="courses"></div>
-      <script>
-        loadSection('courses', 'sections/courses.html');
-      </script>
+    <div id="courses"></div>
+    <script>
+      loadSection("courses", "sections/courses.html");
+    </script>
 
+    <div id="blog"></div>
+    <script src="js/blog.js"></script>
+    <script>
+      loadSection("blog", "sections/blog.html", () => {
+        if (typeof loadBlogPosts === "function") loadBlogPosts();
+      });
+    </script>
+    <div id="achievements"></div>
+    <script>
+      loadSection("achievements", "sections/achievements.html");
+    </script>
+    <div id="testimonials"></div>
+    <!-- <div id="contactSection"></div> -->
 
-        <div id="blog"></div>
-        <script src="js/blog.js"></script>
-        <script>
-          loadSection('blog', 'sections/blog.html', () => {
-            if (typeof loadBlogPosts === "function") loadBlogPosts();
-          });
-        </script>
-      <div id="achievements"></div>
-      <script>
-        loadSection('achievements', 'sections/achievements.html');
-      </script>
-      <div id="testimonials"></div>
-      <!-- <div id="contactSection"></div> -->
+    <script src="js/testimonials.js"></script>
+    <script>
+      // Load Testimonials Section
+      loadSection("testimonials", "sections/testimonials.html", () => {
+        if (typeof initTestimonials === "function") initTestimonials();
+      });
 
-      <script src="js/testimonials.js"></script>
-      <script>
-        // Load Testimonials Section
-        loadSection('testimonials', 'sections/testimonials.html', () => {
-          if (typeof initTestimonials === "function") initTestimonials();
-        });
+      // Load Contact Section (disabled)
+      // loadSection('contactSection', 'sections/contact.html');
+    </script>
 
-        // Load Contact Section (disabled)
-        // loadSection('contactSection', 'sections/contact.html');
-      </script>
-
-  <section
-    id="work-experiences"
-    class="container-fluid"
-    data-aos="fade-right"
-    data-aos-duration="800"
-    data-aos-delay="200"
-  >
-    <h2 class="mb-4" style="color: var(--text)">Work Experiences</h2>
-
-    <!-- VIMS -->
-    <div
-      class="card mb-3"
-      style="background-color: var(--obsidian); color: var(--text); border: none;"
+    <section
+      id="work-experiences"
+      class="container-fluid"
+      data-aos="fade-right"
+      data-aos-duration="800"
+      data-aos-delay="200"
     >
-      <div class="card-body">
-        <h5 class="card-title font-weight-bold">
-          TSP Marine Industries – Vessel Inventory Management System (VIMS)
-        </h5>
-        <h6 class="card-subtitle mb-2" style="color: var(--text)">
-          Next.js 15, React, ShadCN, Supabase, Tailwind CSS, Vercel
-        </h6>
-        <p class="card-text">
-          Spearheaded the end-to-end build of a cloud-native Vessel Inventory
-          Management System that gives deck crews <strong>real-time visibility</strong> into
-          onboard supplies, auto-flags low stock, and cuts resupply planning time
-          by <strong>≈40&nbsp;%</strong>. Delivered a production-ready, responsive app in six
-          months and deployed seamlessly on Vercel.
-        </p>
-      </div>
-    </div>
+      <h2 class="mb-4" style="color: var(--text)">Work Experiences</h2>
 
-    <!-- CEMCDO -->
-    <div
-      class="card mb-3"
-      style="background-color: var(--obsidian); color: var(--text); border: none;"
-    >
-      <div class="card-body">
-        <h5 class="card-title font-weight-bold">
-          CEMCDO – Cooperative Profiling &amp; Fund Utilization System (OJT)
-        </h5>
-        <h6 class="card-subtitle mb-2" style="color: var(--text)">
-          Django, Tailwind CSS, Supabase, PostgreSQL, Render, OpenPyXL
-        </h6>
-        <p class="card-text">
-          Delivered a full-stack portal that centralizes cooperative profiles, automates
-          fund-utilization tracking, and generates board-ready Excel summaries with one
-          click. The system cut manual processing time by <strong>50 %</strong> and
-          streamlined financial oversight for city officials, all with zero-downtime
-          deployments on Render.
-        </p>
-      </div>
-    </div>
-  </section>
+      <!-- VIMS -->
+      <article
+        class="card mb-3"
+        style="
+          background-color: var(--obsidian);
+          color: var(--text);
+          border: none;
+        "
+      >
+        <header class="card-body">
+          <h3 class="card-title font-weight-bold">
+            TSP Marine Industries – Vessel Inventory Management System (VIMS)
+          </h3>
+          <p
+            class="card-subtitle mb-2 fw-bold fst-italic"
+            style="color: var(--text)"
+          >
+            <span class="visually-hidden">Tech stack:</span>
+            Next.js&nbsp;15 · TypeScript · ShadCN · Supabase · Tailwind CSS ·
+            GitHub Actions
+          </p>
+        </header>
 
+        <div class="px-3 pb-3">
+          <p class="card-text">
+            Built and deployed a cloud-native inventory platform that gives
+            eight vessel crews <strong>real-time visibility</strong> into
+            onboard supplies, reducing resupply planning time by
+            <strong>≈40&nbsp;%</strong> and stock-related downtime
+            from&nbsp;~5&nbsp;hrs to&nbsp;≈1&nbsp;hr per month.
+          </p>
+
+          <ul class="mb-0">
+            <li>
+              Role-based access controls govern sensitive actions like PDF
+              generation.
+            </li>
+            <li>
+              One-click requisition-slip PDFs via <code>jsPDF</code> +
+              <code>autoTable</code>.
+            </li>
+            <li>
+              Offline-first sync logic caches transactions and reconciles on
+              reconnect.
+            </li>
+            <li>
+              CI/CD pipeline (lint → test → static export) auto-deploys to
+              GitHub Pages.
+            </li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- CEMCDO -->
+      <article
+        class="card mb-3"
+        style="
+          background-color: var(--obsidian);
+          color: var(--text);
+          border: none;
+        "
+      >
+        <header class="card-body">
+          <h3 class="card-title font-weight-bold">
+            CEMCDO – Cooperative Profiling & Fund Utilization System (OJT)
+          </h3>
+          <p
+            class="card-subtitle mb-2 fw-bold fst-italic"
+            style="color: var(--text)"
+          >
+            <span class="visually-hidden">Tech stack:</span>
+            Django · Tailwind CSS · PostgreSQL · Supabase · OpenPyXL · Render
+          </p>
+        </header>
+
+        <div class="px-3 pb-3">
+          <p class="card-text">
+            Delivered a full-stack portal that centralises cooperative records,
+            automates fund utilisation, and generates board-ready Excel reports—
+            cutting manual prep time by <strong>50&nbsp;%</strong> while driving
+            ledger error rates below 1 %.
+          </p>
+
+          <ul class="mb-0">
+            <li>
+              Designed a fully-normalised schema with FK enforcement and audit
+              trails.
+            </li>
+            <li>
+              Reusable OpenPyXL helpers produce multi-sheet spreadsheets with
+              charts.
+            </li>
+            <li>
+              Draft-transaction subsystem reused across four divisions via REST
+              API.
+            </li>
+            <li>
+              GitHub Actions runs lint, pytest + coverage, Docker builds, then
+              zero-downtime deploys on Render.
+            </li>
+          </ul>
+        </div>
+      </article>
+    </section>
 
     <!--
     <section
@@ -436,7 +529,7 @@
       });
     </script>
     <script>
-      $('body').scrollspy({ target: '#mainNav', offset: 70 });
+      $("body").scrollspy({ target: "#mainNav", offset: 70 });
     </script>
     <script>
       function openCategory(evt, categoryName) {
