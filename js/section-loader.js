@@ -8,6 +8,10 @@ function loadSection(id, path, callback) {
         if (typeof callback === 'function') {
           callback();
         }
+        if (typeof window.applyBootstrapTheme === 'function') {
+          const savedTheme = localStorage.getItem('theme') || 'dark';
+          window.applyBootstrapTheme(savedTheme);
+        }
       }
     })
     .catch((error) => console.error(`Error loading ${path}:`, error));
