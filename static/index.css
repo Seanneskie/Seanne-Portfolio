@@ -1013,3 +1013,11 @@ body {
     opacity: 0.8;
     cursor: default;
 }
+
+/* Testimonials */
+.testimonial-item {
+    background-color: var(--obsidian);
+    color: var(--text);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+}
