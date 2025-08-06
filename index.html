@@ -212,12 +212,8 @@
           if (typeof initTestimonials === "function") initTestimonials();
         });
 
-        // Load Contact Section
-        loadSection('contactSection', 'sections/contact.html', () => {
-          const script = document.createElement('script');
-          script.src = 'js/contact.js';
-          document.body.appendChild(script);
-        });
+        // Load Contact Section (disabled)
+        loadSection('contactSection', 'sections/contact.html');
       </script>
 
     <section
