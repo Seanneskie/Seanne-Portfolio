@@ -9,6 +9,8 @@
     --charcoal: #36454F;
     --sable: #051229;
     --text: #ccd0cf;
+    --text-dark: #0F0F0F;
+    --text-hover: #ffffff;
 }
 
 /* Light theme overrides */
@@ -19,6 +21,8 @@
     --charcoal: #dddddd;
     --sable: #fafafa;
     --text: #333333;
+    --text-dark: #0F0F0F;
+    --text-hover: #000000;
 }
 
 /* ====================== Animations ====================== */
@@ -80,7 +84,7 @@ body {
 }
 
 .intro-message p{
-    color: #ccc;
+    color: var(--text);
 }
 
 .intro-message h1{
@@ -161,7 +165,7 @@ p {
 
 .blog-date {
     font-size: 0.9rem;
-    color: #aaa;
+    color: var(--text);
     margin-bottom: 10px;
 }
 
@@ -256,7 +260,7 @@ p {
 .project-card-header h5 {
     font-size: 1.5rem;
     margin-bottom: 10px;
-    color: #eee;
+    color: var(--text);
     font-weight: bold;
 }
 
@@ -729,8 +733,9 @@ progress::-moz-progress-bar {
     background-color: var(--charcoal);
 }
 
+
 .navbar-nav .nav-link {
-    color: #fafafa;
+    color: var(--text);
     font-weight: 600;
     padding: 10px 15px;
     transition: background-color 0.3s ease, color 0.3s ease;
@@ -740,7 +745,7 @@ progress::-moz-progress-bar {
 .navbar-nav .nav-link:hover,
 .navbar-nav .nav-link.active {
     background-color: #fafafa;
-    color: var(--onyx);
+    color: var(--text-dark);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -805,7 +810,7 @@ progress::-moz-progress-bar {
 }
 
 .social-links a i:hover {
-    color: #ffffff; /* Change color on hover */
+    color: var(--text-hover); /* Change color on hover */
     transform: scale(1.1); /* Slightly enlarges the icon on hover */
 }
 
@@ -856,16 +861,8 @@ progress::-moz-progress-bar {
     .floating-image {
         position: static; /* Remove absolute positioning */
         margin-top: 20px;
-    }
 }
-
-
-
-
-body {
-    font-family: Arial, sans-serif;
 }
-
 
 
 .footer-row {
@@ -882,7 +879,7 @@ body {
 
 .footer h5 {
     margin-bottom: 15px;
-    color: var(--charcoal);
+    color: var(--text);
 }
 
 .footer-links {
@@ -900,7 +897,7 @@ body {
 }
 
 .footer-links a:hover {
-    color: var(--charcoal);
+    color: var(--text-hover);
 }
 
 .social-link {
@@ -911,14 +908,14 @@ body {
 }
 
 .social-link:hover {
-    color: var(--charcoal);
+    color: var(--text-hover);
 }
 
 .footer-copy {
     text-align: center;
     margin-top: 20px;
     font-size: 0.9em;
-    color: var(--charcoal);
+    color: var(--text);
 }
 
 .footer-copy p {
