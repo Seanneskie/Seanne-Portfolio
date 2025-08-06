@@ -1013,3 +1013,41 @@ body {
     opacity: 0.8;
     cursor: default;
 }
+
+/* ====================== Contact Section ====================== */
+#contact {
+    background-color: var(--coal);
+    color: var(--text);
+    padding: 60px 20px;
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-form .form-control {
+    background-color: var(--obsidian);
+    border: 1px solid var(--charcoal);
+    color: var(--text);
+}
+
+.contact-form .form-control:focus {
+    border-color: var(--sable);
+    box-shadow: none;
+}
+
+.contact-form button {
+    background-color: var(--sable);
+    border: none;
+}
+
+.contact-form button:hover {
+    background-color: var(--charcoal);
+}
+
+@media (max-width: 576px) {
+    .contact-form {
+        padding: 0 10px;
+    }
+}
