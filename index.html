@@ -250,119 +250,13 @@
       // loadSection('contactSection', 'sections/contact.html');
     </script>
 
-    <section
-      id="work-experiences"
-      class="container-fluid"
-      data-aos="fade-right"
-      data-aos-duration="800"
-      data-aos-delay="200"
-    >
-      <h2 class="mb-4" style="color: var(--text)">Work Experiences</h2>
-
-      <!-- VIMS -->
-      <article
-        class="card mb-3"
-        style="
-          background-color: var(--obsidian);
-          color: var(--text);
-          border: none;
-        "
-      >
-        <header class="card-body">
-          <h3 class="card-title font-weight-bold">
-            TSP Marine Industries – Vessel Inventory Management System (VIMS)
-          </h3>
-          <p
-            class="card-subtitle mb-2 fw-bold fst-italic"
-            style="color: var(--text)"
-          >
-            <span class="visually-hidden">Tech stack:</span>
-            Next.js&nbsp;15 · TypeScript · ShadCN · Supabase · Tailwind CSS ·
-            GitHub Actions
-          </p>
-        </header>
-
-        <div class="px-3 pb-3">
-          <p class="card-text">
-            Built and deployed a cloud-native inventory platform that gives
-            eight vessel crews <strong>real-time visibility</strong> into
-            onboard supplies, reducing resupply planning time by
-            <strong>≈40&nbsp;%</strong> and stock-related downtime
-            from&nbsp;~5&nbsp;hrs to&nbsp;≈1&nbsp;hr per month.
-          </p>
-
-          <ul class="mb-0">
-            <li>
-              Role-based access controls govern sensitive actions like PDF
-              generation.
-            </li>
-            <li>
-              One-click requisition-slip PDFs via <code>jsPDF</code> +
-              <code>autoTable</code>.
-            </li>
-            <li>
-              Offline-first sync logic caches transactions and reconciles on
-              reconnect.
-            </li>
-            <li>
-              CI/CD pipeline (lint → test → static export) auto-deploys to
-              GitHub Pages.
-            </li>
-          </ul>
-        </div>
-      </article>
-
-      <!-- CEMCDO -->
-      <article
-        class="card mb-3"
-        style="
-          background-color: var(--obsidian);
-          color: var(--text);
-          border: none;
-        "
-      >
-        <header class="card-body">
-          <h3 class="card-title font-weight-bold">
-            CEMCDO – Cooperative Profiling & Fund Utilization System (OJT)
-          </h3>
-          <p
-            class="card-subtitle mb-2 fw-bold fst-italic"
-            style="color: var(--text)"
-          >
-            <span class="visually-hidden">Tech stack:</span>
-            Django · Tailwind CSS · PostgreSQL · Supabase · OpenPyXL · Render
-          </p>
-        </header>
-
-        <div class="px-3 pb-3">
-          <p class="card-text">
-            Delivered a full-stack portal that centralises cooperative records,
-            automates fund utilisation, and generates board-ready Excel reports—
-            cutting manual prep time by <strong>50&nbsp;%</strong> while driving
-            ledger error rates below 1 %.
-          </p>
-
-          <ul class="mb-0">
-            <li>
-              Designed a fully-normalised schema with FK enforcement and audit
-              trails.
-            </li>
-            <li>
-              Reusable OpenPyXL helpers produce multi-sheet spreadsheets with
-              charts.
-            </li>
-            <li>
-              Draft-transaction subsystem reused across four divisions via REST
-              API.
-            </li>
-            <li>
-              GitHub Actions runs lint, pytest + coverage, Docker builds, then
-              zero-downtime deploys on Render.
-            </li>
-          </ul>
-        </div>
-      </article>
-    </section>
+    <div id="work-experiences"></div>
+    <script src="js/work-experiences.js"></script>
+    <script>
+      loadSection("work-experiences", "sections/work-experiences.html", () => {
+        if (typeof initWorkExperiences === "function") initWorkExperiences();
+      });
+    </script>
 
     <!--
     <section
