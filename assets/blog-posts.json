@@ -1,20 +1,26 @@
 [
-  {
-    "title": "Building a Portfolio Site with Django",
-    "date": "2024-01-15",
-    "description": "Lessons learned while creating a personal portfolio using Django.",
-    "url": "https://example.com/django-portfolio"
-  },
-  {
-    "title": "Understanding REST APIs",
-    "date": "2024-02-20",
-    "description": "A beginner-friendly introduction to RESTful APIs and how to consume them.",
-    "url": "https://example.com/rest-apis"
-  },
-  {
-    "title": "Deploying with Docker",
-    "date": "2024-03-05",
-    "description": "Step-by-step guide on containerizing applications with Docker.",
-    "url": "https://example.com/deploying-with-docker"
-  }
+{
+"title": "Certified in Data Analytics Essentials by Cisco",
+"date": "2024-06-21",
+"description": "Officially earned the Data Analytics Essentials certification from Cisco Networking Academy.",
+"url": "[https://www.linkedin.com/posts/seanne-ca%C3%B1ete-8b09322a1\_data-analytics-essentials-was-issued-by-cisco-activity-7338139572624601089-sNto](https://www.linkedin.com/posts/seanne-ca%C3%B1ete-8b09322a1_data-analytics-essentials-was-issued-by-cisco-activity-7338139572624601089-sNto)"
+},
+{
+"title": "Achieved Prompt Engineering Certification",
+"date": "2024-06-26",
+"description": "Earned a new certificate in Prompt Engineering from SoloLearn.",
+"url": "[https://www.linkedin.com/posts/seanne-ca%C3%B1ete-8b09322a1\_im-happy-to-share-that-ive-obtained-a-new-activity-7339504876248289280-j9BI](https://www.linkedin.com/posts/seanne-ca%C3%B1ete-8b09322a1_im-happy-to-share-that-ive-obtained-a-new-activity-7339504876248289280-j9BI)"
+},
+{
+"title": "Introduction to Modern AI by Cisco",
+"date": "2024-06-10",
+"description": "Completed Cisco's Introduction to Modern AI course, exploring the fundamentals of artificial intelligence.",
+"url": "[https://www.linkedin.com/posts/seanne-ca%C3%B1ete-8b09322a1\_im-happy-to-share-that-ive-obtained-a-new-activity-7320714386413613056-M6T9](https://www.linkedin.com/posts/seanne-ca%C3%B1ete-8b09322a1_im-happy-to-share-that-ive-obtained-a-new-activity-7320714386413613056-M6T9)"
+},
+{
+"title": "Certified in JavaScript Algorithms and Data Structures",
+"date": "2024-07-01",
+"description": "Successfully obtained the JavaScript Algorithms and Data Structures certification by FreeCodeCamp.",
+"url": "[https://www.linkedin.com/posts/activity-7356876341306183680-ShYb](https://www.linkedin.com/posts/activity-7356876341306183680-ShYb)"
+}
 ]
