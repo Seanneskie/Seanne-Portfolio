@@ -1,0 +1,19 @@
+<section id="contact" class="container-fluid contact-section" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+  <h2 class="mb-4" style="color: var(--text)">Contact</h2>
+  <form id="contactForm" action="https://formspree.io/f/yourFormID" method="POST" class="contact-form">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" class="form-control" required />
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" class="form-control" required />
+    </div>
+    <div class="form-group">
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="5" class="form-control" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Send</button>
+    <div id="formStatus" class="mt-3"></div>
+  </form>
+</section>
