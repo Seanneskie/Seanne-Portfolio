@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Building a Portfolio Site with Django",
+    "date": "2024-01-15",
+    "description": "Lessons learned while creating a personal portfolio using Django.",
+    "url": "https://example.com/django-portfolio"
+  },
+  {
+    "title": "Understanding REST APIs",
+    "date": "2024-02-20",
+    "description": "A beginner-friendly introduction to RESTful APIs and how to consume them.",
+    "url": "https://example.com/rest-apis"
+  },
+  {
+    "title": "Deploying with Docker",
+    "date": "2024-03-05",
+    "description": "Step-by-step guide on containerizing applications with Docker.",
+    "url": "https://example.com/deploying-with-docker"
+  }
+]

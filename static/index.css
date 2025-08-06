@@ -131,6 +131,31 @@ p {
 }
 
 
+/* Blog Section */
+#blog {
+    background-color: var(--coal);
+}
+
+.blog-post {
+    background-color: var(--charcoal);
+    color: var(--text);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.blog-post h3 {
+    color: white;
+    margin-top: 0;
+}
+
+.blog-date {
+    font-size: 0.9rem;
+    color: #aaa;
+    margin-bottom: 10px;
+}
+
+
 /* Work Experiences Section */
 #work-experiences {
     background-color: var(--obsidian);
