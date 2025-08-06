@@ -70,6 +70,7 @@
           <li class="nav-item"><a class="nav-link" href="#certificates">Certificates</a></li>
           <li class="nav-item"><a class="nav-link" href="#courses">Courses</a></li>
           <li class="nav-item"><a class="nav-link" href="#achievements">Achievements</a></li>
+          <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
           <li class="nav-item"><a class="nav-link" href="#work-experiences">Work Experiences</a></li>
           <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
           <!-- <li class="nav-item"><a class="nav-link" href="#progress">Progress</a></li> -->
@@ -192,15 +193,24 @@
       <script>
         loadSection('achievements', 'sections/achievements.html');
       </script>
-
+      <div id="testimonials"></div>
       <div id="contactSection"></div>
+
+      <script src="js/testimonials.js"></script>
       <script>
+        // Load Testimonials Section
+        loadSection('testimonials', 'sections/testimonials.html', () => {
+          if (typeof initTestimonials === "function") initTestimonials();
+        });
+
+        // Load Contact Section
         loadSection('contactSection', 'sections/contact.html', () => {
           const script = document.createElement('script');
           script.src = 'js/contact.js';
           document.body.appendChild(script);
         });
       </script>
+
     <section
       id="work-experiences"
       class="container-fluid"
