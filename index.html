@@ -71,10 +71,13 @@
           <li class="nav-item"><a class="nav-link" href="#courses">Courses</a></li>
           <li class="nav-item"><a class="nav-link" href="#achievements">Achievements</a></li>
           <li class="nav-item"><a class="nav-link" href="#blog">Blog</a></li>
+          <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
           <li class="nav-item"><a class="nav-link" href="#work-experiences">Work Experiences</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
           <!-- <li class="nav-item"><a class="nav-link" href="#progress">Progress</a></li> -->
         </ul>
       </div>
+      <button id="theme-toggle" class="btn btn-outline-light ml-auto">Toggle Theme</button>
     </nav>
 
       <!-- index.html -->
@@ -124,6 +127,9 @@
           }
 
           renderPage(currentPage);
+          const filterScript = document.createElement('script');
+          filterScript.src = 'js/project-filter.js';
+          document.body.appendChild(filterScript);
         });
       </script>
 
@@ -184,10 +190,6 @@
         loadSection('courses', 'sections/courses.html');
       </script>
 
-        <div id="achievements"></div>
-        <script>
-          loadSection('achievements', 'sections/achievements.html');
-        </script>
 
         <div id="blog"></div>
         <script src="js/blog.js"></script>
@@ -196,6 +198,28 @@
             if (typeof loadBlogPosts === "function") loadBlogPosts();
           });
         </script>
+      <div id="achievements"></div>
+      <script>
+        loadSection('achievements', 'sections/achievements.html');
+      </script>
+      <div id="testimonials"></div>
+      <div id="contactSection"></div>
+
+      <script src="js/testimonials.js"></script>
+      <script>
+        // Load Testimonials Section
+        loadSection('testimonials', 'sections/testimonials.html', () => {
+          if (typeof initTestimonials === "function") initTestimonials();
+        });
+
+        // Load Contact Section
+        loadSection('contactSection', 'sections/contact.html', () => {
+          const script = document.createElement('script');
+          script.src = 'js/contact.js';
+          document.body.appendChild(script);
+        });
+      </script>
+
     <section
       id="work-experiences"
       class="container-fluid"
@@ -448,6 +472,7 @@
 
     <!-- <script src="js/progress-tabs.js"></script> -->
     <script src="js/image-modal.js"></script>
+    <script src="js/theme-toggle.js"></script>
     <!-- <script src="js/progress-update.js"></script> -->
 
     <script>
