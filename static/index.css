@@ -1029,8 +1029,11 @@ progress::-moz-progress-bar {
     margin-bottom: 20px;
 }
 
-#certificateFilters label {
+#certificateFilters .form-check {
     margin-right: 8px;
+}
+
+#certificateFilters .form-check-label {
     color: var(--text);
 }
 

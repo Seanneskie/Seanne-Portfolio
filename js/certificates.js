@@ -49,17 +49,25 @@ function initCertificates() {
   const tagSet = new Set();
   window.certificateData.forEach(c => c.skills.forEach(t => tagSet.add(t)));
 
-  // Render tag filters
+  // Render tag filters using Bootstrap form-check styling
   tagSet.forEach(tag => {
-    const label = document.createElement('label');
-    label.style.marginRight = '8px';
+    const wrapper = document.createElement('div');
+    wrapper.className = 'form-check form-check-inline';
+
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
     checkbox.value = tag;
-    checkbox.style.marginRight = '4px';
-    label.appendChild(checkbox);
-    label.appendChild(document.createTextNode(tag));
-    filterContainer.appendChild(label);
+    checkbox.id = `cert-filter-${tag}`;
+    checkbox.className = 'form-check-input';
+
+    const label = document.createElement('label');
+    label.className = 'form-check-label';
+    label.htmlFor = checkbox.id;
+    label.textContent = tag;
+
+    wrapper.appendChild(checkbox);
+    wrapper.appendChild(label);
+    filterContainer.appendChild(wrapper);
   });
 
   let currentPage = 1;
