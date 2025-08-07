@@ -1029,12 +1029,40 @@ progress::-moz-progress-bar {
     margin-bottom: 20px;
 }
 
-#certificateFilters .form-check {
-    margin-right: 8px;
+#certificateFilters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
 }
 
-#certificateFilters .form-check-label {
+#certificateFilters .filter-pill {
+    display: inline-flex;
+    cursor: pointer;
+}
+
+#certificateFilters .filter-pill input {
+    display: none;
+}
+
+#certificateFilters .filter-pill span {
+    padding: 4px 12px;
+    border: 1px solid var(--text-hover);
+    border-radius: 9999px;
     color: var(--text);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#certificateFilters .filter-pill input:checked + span {
+    background-color: var(--text-hover);
+    color: var(--bg);
+}
+
+#certificateFilters .clear-filters {
+    background: none;
+    border: none;
+    color: var(--text-hover);
+    cursor: pointer;
+    padding: 4px 12px;
 }
 
 .project-tags .tag {

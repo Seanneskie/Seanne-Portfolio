@@ -49,26 +49,33 @@ function initCertificates() {
   const tagSet = new Set();
   window.certificateData.forEach(c => c.skills.forEach(t => tagSet.add(t)));
 
-  // Render tag filters using Bootstrap form-check styling
+  // Render tag filters as pill-style checkboxes
   tagSet.forEach(tag => {
-    const wrapper = document.createElement('div');
-    wrapper.className = 'form-check form-check-inline';
+    const label = document.createElement('label');
+    label.className = 'filter-pill';
 
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
     checkbox.value = tag;
-    checkbox.id = `cert-filter-${tag}`;
-    checkbox.className = 'form-check-input';
 
-    const label = document.createElement('label');
-    label.className = 'form-check-label';
-    label.htmlFor = checkbox.id;
-    label.textContent = tag;
+    const span = document.createElement('span');
+    span.textContent = tag;
 
-    wrapper.appendChild(checkbox);
-    wrapper.appendChild(label);
-    filterContainer.appendChild(wrapper);
+    label.appendChild(checkbox);
+    label.appendChild(span);
+    filterContainer.appendChild(label);
   });
+
+  const clearBtn = document.createElement('button');
+  clearBtn.type = 'button';
+  clearBtn.className = 'clear-filters';
+  clearBtn.textContent = 'Clear';
+  clearBtn.addEventListener('click', () => {
+    filterContainer.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+    currentPage = 1;
+    update();
+  });
+  filterContainer.appendChild(clearBtn);
 
   let currentPage = 1;
   // Number of certificate cards displayed per page
