@@ -420,34 +420,7 @@
       </div>
     </section>
     -->
-    <footer class="footer">
-      <div class="container">
-        <div class="footer-row">
-          <div class="footer-col">
-            <h5>Quick Links</h5>
-            <ul class="footer-links">
-              <li><a href="index.html#profile">Portfolio</a></li>
-              <li><a href="datatables.html">DataTables Demo</a></li>
-            </ul>
-          </div>
-          <div class="footer-col">
-            <h5>Follow Me</h5>
-            <a href="#" class="social-link">
-              <i class="fab fa-facebook"></i> Facebook
-            </a>
-            <a href="#" class="social-link">
-              <i class="fab fa-twitter"></i> Twitter
-            </a>
-            <a href="#" class="social-link">
-              <i class="fab fa-linkedin"></i> LinkedIn
-            </a>
-          </div>
-        </div>
-        <div class="footer-copy">
-          <p>&copy; 2024 Seanneskie. All rights reserved.</p>
-        </div>
-      </div>
-    </footer>
+    <div id="footer"></div>
 
     <!-- FontAwesome for icons -->
 
@@ -465,6 +438,7 @@
         once: true, // Whether animation should happen only once - while scrolling down
         mirror: false, // Whether elements should animate out while scrolling past them
       });
+      loadSection('footer', 'sections/footer.html');
     </script>
     <script>
       $("body").scrollspy({ target: "#mainNav", offset: 70 });

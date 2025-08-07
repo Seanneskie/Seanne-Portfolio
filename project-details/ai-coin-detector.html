@@ -25,8 +25,7 @@
 
   <body>
     <!-- Navigation -->
-    <nav
-      class="d-flex justify-content-between align-items-center p-3"
+    <nav class="details-header d-flex justify-content-between align-items-center p-3"
     >
       <a href="https://seanneskie.github.io/Seanne-Portfolio/" class="btn btn-light">← Go Back</a>
       <h1 class="text-white m-0">AI Coin Detector</h1>
@@ -531,44 +530,19 @@
     </section>
     
     <!-- Footer -->
-    <footer class="footer">
-      <div class="container">
-        <div class="footer-row">
-          <div class="footer-col">
-            <h5>Quick Links</h5>
-            <ul class="footer-links">
-              <li><a href="index.html#profile">Portfolio</a></li>
-              <li><a href="datatables.html">DataTables Demo</a></li>
-            </ul>
-          </div>
-          <div class="footer-col">
-            <h5>Follow Me</h5>
-            <a href="#" class="social-link">
-              <i class="fab fa-facebook"></i> Facebook
-            </a>
-            <a href="#" class="social-link">
-              <i class="fab fa-twitter"></i> Twitter
-            </a>
-            <a href="#" class="social-link">
-              <i class="fab fa-linkedin"></i> LinkedIn
-            </a>
-          </div>
-        </div>
-        <div class="footer-copy">
-          <p>&copy; 2024 Seanneskie. All rights reserved.</p>
-        </div>
-      </div>
-    </footer>
+    <div id="footer"></div>
 
     <!-- Bootstrap JS and AOS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="../js/section-loader.js"></script>
     <script src="../js/gallery.js"></script>
     <script>
       AOS.init();
       loadProjectAssets('ai-coin-detector');
+      loadSection('footer', '../sections/footer.html');
     </script>
   </body>
 </html>
