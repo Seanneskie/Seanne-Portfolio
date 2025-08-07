@@ -20,28 +20,13 @@
 
     <!-- Custom CSS -->
     <link href="../static/index.css" rel="stylesheet" />
-    <style>
-      p {
-        color: #555;
-      }
-
-      p#blogHeader {
-        color: var(--text);
-      }
-    </style>
+    <link href="../static/project-details.css" rel="stylesheet" />
   </head>
 
-  <body
-    style="
-      background-color: var(--obsidian);
-      color: var(--text);
-      font-family: 'Open Sans', sans-serif;
-    "
-  >
+  <body>
     <!-- Navigation -->
     <nav
       class="d-flex justify-content-between align-items-center p-3"
-      style="background-color: var(--sable)"
     >
       <a href="https://seanneskie.github.io/Seanne-Portfolio/" class="btn btn-light">← Go Back</a>
       <h1 class="text-white m-0">Desktop Payroll Management System</h1>
@@ -49,9 +34,7 @@
     </nav>
 
     <!-- Project Content -->
-    <section
-      style="background-color: var(--charcoal)"
-      class="container-fluid"
+    <section class="container-fluid hero"
       data-aos="fade-up"
       data-aos-duration="800"
     >
@@ -81,14 +64,14 @@
     </section>
     <section>
       <div class="container">
-        <h1 style="color: var(--charcoal)">Introduction</h1>
+        <h1>Introduction</h1>
         <p>
           A desktop payroll management system combining a Python FastAPI backend
           and an Electron-powered front end for a seamless Windows application.
         </p>
       </div>
       <div class="container">
-        <h1 style="color: var(--charcoal)">Details</h1>
+        <h1>Details</h1>
         <p>
           The backend leverages SQLite via SQLAlchemy for data models covering
           salary grades, employees, allowances, deductions and incentives.
