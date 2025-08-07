@@ -20,6 +20,15 @@
 
     <!-- Custom CSS -->
     <link href="../static/index.css" rel="stylesheet" />
+    <style>
+      p {
+        color: #555;
+      }
+
+      p#blogHeader {
+        color: var(--text);
+      }
+    </style>
   </head>
 
   <body
@@ -55,12 +64,12 @@
               class="img-fluid rounded shadow"
               style="max-width: 350px; height: auto"
             />
-            <div class="mt-2" style="background-color: var(--text); margin-bottom: 0">
-              <p class="lead">
+            <div class="projectHeader mt-2">
+              <p id="blogHeader" class="lead">
                 <strong>Overview:</strong><br />
                 An interactive dashboard built with HTML, CSS, and JavaScript to explore Airbnb listings in Albany, NY. It visualizes prices, availability, and guest sentiment through charts and maps.
               </p>
-              <p>
+              <p id="blogHeader">
                 <strong>Collaborators:</strong><br />
                 Solo project for ITD112 - Data Analysis and Visualization
               </p>
