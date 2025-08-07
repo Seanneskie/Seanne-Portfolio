@@ -29,7 +29,8 @@
       "PostgreSQL",
       "Supabase",
       "OpenPyXL",
-      "Render"
+      "Render",
+      "JavaScript"
     ],
     "summary": "Delivered a full-stack portal that centralises cooperative records, automates fund utilisation, and generates board-ready Excel reports—cutting manual prep time by 50% while driving ledger error rates below 1%.",
     "highlights": [

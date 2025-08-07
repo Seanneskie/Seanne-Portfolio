@@ -25,16 +25,19 @@
 
   <body>
     <!-- Navigation -->
-    <nav
-      class="d-flex justify-content-between align-items-center p-3"
-    >
-      <a href="https://seanneskie.github.io/Seanne-Portfolio/" class="btn btn-light">← Go Back</a>
+    <nav class="d-flex justify-content-between align-items-center p-3">
+      <a
+        href="https://seanneskie.github.io/Seanne-Portfolio/"
+        class="btn btn-light"
+        >← Go Back</a
+      >
       <h1 class="text-white m-0">Advance Database Project - CNSM Website</h1>
       <span></span>
     </nav>
 
     <!-- Project Content -->
-    <section class="container-fluid hero"
+    <section
+      class="container-fluid hero"
       data-aos="fade-up"
       data-aos-duration="800"
     >
@@ -50,11 +53,20 @@
             <div class="projectHeader mt-2">
               <p id="blogHeader" class="lead">
                 <strong>Overview:</strong><br />
-                This is a placeholder overview for Advance Database Project - CNSM Website.
+                The CNSM Website was a semester-long Advanced Database Project
+                undertaken during SY 2023-2024 by second-year BSIT students. Its
+                goal was to build a full-featured web portal for the College of
+                Natural Sciences and Mathematics (CNSM)—centralizing
+                announcements, course materials, laboratory schedules, and
+                faculty–student interactions—while showcasing practical
+                application of a MERN (MongoDB, Express, React, Node)
+                architecture. Despite solid early momentum, the project was
+                paused near the semester’s end due to time constraints and
+                competing coursework.
               </p>
               <p id="blogHeader">
                 <strong>Collaborators:</strong><br />
-                Placeholder Collaborators
+                Second-year BSIT students Database Major
               </p>
             </div>
           </div>
@@ -64,11 +76,103 @@
     <section>
       <div class="container">
         <h1>Introduction</h1>
-        <p>Placeholder introduction text for Advance Database Project - CNSM Website.</p>
+        <p>
+          The project stemmed from our Advanced Database course requirement to
+          marry sound data modeling with modern web practice. We chose MERN to
+          gain end-to-end JavaScript proficiency and version-controlled
+          everything in a shared GitHub repository, enforcing pull-request
+          reviews for peer learning. Key planned modules included:
+        </p>
+        <ol>
+          <li>
+            <strong>Dynamic CMS</strong> — admins post news, events, and lab
+            notices.
+          </li>
+          <li>
+            <strong>Student Dashboard</strong> — personalized timetable, subject
+            resources, and grade visibility.
+          </li>
+          <li>
+            <strong>Faculty Tools</strong> — laboratory booking, file uploads,
+            and class analytics.
+          </li>
+          <li>
+            <strong>Role-Based Access</strong> — JWT-secured routes
+            differentiating admin, faculty, and student privileges.
+          </li>
+        </ol>
+        <p>
+          By mid-semester we had scaffolding, auth flow, and base CRUD for
+          announcements deployed on a Heroku test instance. However, finals and
+          overlapping projects curtailed further feature completion. The repo
+          now stands as a learn-as-you-go artifact illustrating MERN
+          best-practice patterns, which can be revived for future cohorts.
+        </p>
       </div>
-      <div class="container">
-        <h1>Details</h1>
-        <p>More details about this project will be provided soon.</p>
+      <!-- Tech Stack Table -->
+      <div class="container my-4">
+        <h3 class="mb-3 fw-bold">Tech Stack</h3>
+        <div class="table-responsive">
+          <table class="table table-bordered table-striped align-middle">
+            <thead class="table-dark">
+              <tr>
+                <th scope="col">Layer</th>
+                <th scope="col">Technology</th>
+                <th scope="col">Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Database</td>
+                <td>MongoDB Atlas</td>
+                <td>
+                  Flexible document model; Mongoose ODM for schemas &amp;
+                  validation.
+                </td>
+              </tr>
+              <tr>
+                <td>Server</td>
+                <td>Node.js 18<br /><span class="ms-2">Express 4</span></td>
+                <td>
+                  REST API, JWT auth, <code>.env</code> configs, Nodemon for hot
+                  reload.
+                </td>
+              </tr>
+              <tr>
+                <td>Client</td>
+                <td>React 18 with Vite</td>
+                <td>
+                  Hooks-based components, React Router v6, Axios API calls.
+                </td>
+              </tr>
+              <tr>
+                <td>Styling</td>
+                <td>Bootstrap 5&nbsp;+&nbsp;custom&nbsp;SCSS</td>
+                <td>Rapid grid/layout prototyping, dark-mode variables.</td>
+              </tr>
+              <tr>
+                <td>Version Control / Dev Ops</td>
+                <td>Git &amp; GitHub</td>
+                <td>
+                  Branch-per-feature workflow, pull-request reviews, GitHub
+                  Projects Kanban.
+                </td>
+              </tr>
+              <tr>
+                <td>Testing</td>
+                <td>Jest, Supertest (API)</td>
+                <td>Unit &amp; integration coverage (≈60 % before pause).</td>
+              </tr>
+              <tr>
+                <td>Deployment&nbsp;(prototype)</td>
+                <td>Heroku (free tier)</td>
+                <td>
+                  CI hooked to <code>main</code> branch, auto-deploy on merge.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </section>
 
@@ -107,10 +211,10 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script src="../js/gallery.js"></script>
+    <!-- <script src="../js/gallery.js"></script> -->
     <script>
       AOS.init();
-      loadProjectAssets('cnsm-website');
+      loadProjectAssets("cnsm-website");
     </script>
   </body>
 </html>
