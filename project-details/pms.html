@@ -25,16 +25,19 @@
 
   <body>
     <!-- Navigation -->
-    <nav
-      class="d-flex justify-content-between align-items-center p-3"
-    >
-      <a href="https://seanneskie.github.io/Seanne-Portfolio/" class="btn btn-light">← Go Back</a>
+    <nav class="d-flex justify-content-between align-items-center p-3">
+      <a
+        href="https://seanneskie.github.io/Seanne-Portfolio/"
+        class="btn btn-light"
+        >← Go Back</a
+      >
       <h1 class="text-white m-0">Desktop Payroll Management System</h1>
       <span></span>
     </nav>
 
     <!-- Project Content -->
-    <section class="container-fluid hero"
+    <section
+      class="container-fluid hero"
       data-aos="fade-up"
       data-aos-duration="800"
     >
@@ -87,6 +90,75 @@
           summaries for recent activities and reports.
         </p>
       </div>
+      <div class="container">
+        <h1>Tech Stack</h1>
+        <table class="table table-striped table-bordered">
+          <thead class="table-dark">
+            <tr>
+              <th>Layer</th>
+              <th>Technology</th>
+              <th>Purpose</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Backend</td>
+              <td>Python</td>
+              <td>Primary programming language for server-side logic</td>
+            </tr>
+            <tr>
+              <td>Backend</td>
+              <td>FastAPI</td>
+              <td>Web framework for building the API</td>
+            </tr>
+            <tr>
+              <td>Backend</td>
+              <td>SQLAlchemy</td>
+              <td>ORM for database access</td>
+            </tr>
+            <tr>
+              <td>Backend</td>
+              <td>SQLite</td>
+              <td>Relational database used for persistence</td>
+            </tr>
+            <tr>
+              <td>Backend</td>
+              <td>Uvicorn</td>
+              <td>ASGI server for running FastAPI</td>
+            </tr>
+            <tr>
+              <td>Backend</td>
+              <td>Alembic</td>
+              <td>Database migration management</td>
+            </tr>
+            <tr>
+              <td>Frontend</td>
+              <td>Node.js</td>
+              <td>JavaScript runtime powering build tools & Electron</td>
+            </tr>
+            <tr>
+              <td>Frontend</td>
+              <td>Electron</td>
+              <td>Framework for building the desktop application</td>
+            </tr>
+            <tr>
+              <td>Frontend</td>
+              <td>Tailwind CSS</td>
+              <td>Utility-first CSS framework for styling</td>
+            </tr>
+            <tr>
+              <td>Frontend</td>
+              <td>Axios</td>
+              <td>HTTP client for calling the backend API</td>
+            </tr>
+            <tr>
+              <td>Templating</td>
+              <td>Jinja2</td>
+              <td>HTML templating engine on the backend</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </section>
 
     <!-- Footer -->
@@ -127,7 +199,7 @@
     <script src="../js/gallery.js"></script>
     <script>
       AOS.init();
-      loadProjectAssets('pms');
+      loadProjectAssets("pms");
     </script>
   </body>
 </html>
