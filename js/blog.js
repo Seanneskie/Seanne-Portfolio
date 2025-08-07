@@ -1,6 +1,6 @@
 async function loadBlogPosts() {
   try {
-    const response = await fetch('assets/blog-posts.json');
+    const response = await fetch('assets/datafiles/blog-posts.json');
     const posts = await response.json();
     const container = document.getElementById('blogPosts');
     if (!container) return;

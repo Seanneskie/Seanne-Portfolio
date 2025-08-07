@@ -120,46 +120,115 @@
 
     <script>
       loadSection("projects", "sections/projects.html", () => {
-        const cardsPerPage = 3;
-        const projectCards = document.querySelectorAll(
-          "#projectCards .project-card"
-        );
-        const paginationContainer =
-          document.getElementById("projectPagination");
-        let currentPage = 1;
+        fetch("assets/datafiles/projects.json")
+          .then((res) => res.json())
+          .then((projects) => {
+            const container = document.getElementById("projectCards");
+            projects.forEach((p) => {
+              const card = document.createElement("div");
+              card.className = "project-card";
 
-        function renderPage(page) {
-          const start = (page - 1) * cardsPerPage;
-          const end = start + cardsPerPage;
+              const header = document.createElement("div");
+              header.className = "project-card-header";
+              const img = document.createElement("img");
+              img.src = p.image;
+              img.alt = p.alt;
+              img.className = "project-card-image";
+              img.loading = "lazy";
+              img.width = 350;
+              img.height = 300;
+              header.appendChild(img);
+              const h5 = document.createElement("h5");
+              h5.textContent = p.title;
+              header.appendChild(h5);
+              card.appendChild(header);
 
-          projectCards.forEach((card, index) => {
-            card.style.display =
-              index >= start && index < end ? "flex" : "none";
+              const desc = document.createElement("div");
+              desc.className = "project-description";
+              const pDesc = document.createElement("p");
+              pDesc.textContent = p.description;
+              desc.appendChild(pDesc);
+              if (p.collaborators) {
+                const pCol = document.createElement("p");
+                pCol.innerHTML = `<strong>Collaborators:</strong> ${p.collaborators}`;
+                desc.appendChild(pCol);
+              }
+              const tagDiv = document.createElement("div");
+              tagDiv.className = "project-tags";
+              tagDiv.style.marginTop = "10px";
+              (p.tags || []).forEach((t) => {
+                const span = document.createElement("span");
+                span.className = "tag";
+                span.textContent = t;
+                tagDiv.appendChild(span);
+              });
+              desc.appendChild(tagDiv);
+              card.appendChild(desc);
+
+              const footer = document.createElement("div");
+              footer.className = "project-footer";
+              if (p.github) {
+                const aGit = document.createElement("a");
+                aGit.href = p.github;
+                aGit.target = "_blank";
+                aGit.className = "btn btn-secondary";
+                aGit.textContent = p.githubLabel || "View on GitHub";
+                footer.appendChild(aGit);
+              } else {
+                const aGit = document.createElement("a");
+                aGit.href = "#";
+                aGit.target = "_blank";
+                aGit.className = "btn btn-secondary align-self-end disabled";
+                aGit.setAttribute("disabled", "");
+                aGit.textContent = p.githubLabel || "View on GitHub";
+                footer.appendChild(aGit);
+              }
+              const aDetails = document.createElement("a");
+              aDetails.href = p.details;
+              aDetails.className = "btn btn-secondary";
+              aDetails.textContent = "View Details";
+              footer.appendChild(aDetails);
+              card.appendChild(footer);
+
+              container.appendChild(card);
+            });
+
+            const cardsPerPage = 3;
+            const projectCards = container.querySelectorAll(".project-card");
+            const paginationContainer = document.getElementById(
+              "projectPagination"
+            );
+            let currentPage = 1;
+
+            function renderPage(page) {
+              const start = (page - 1) * cardsPerPage;
+              const end = start + cardsPerPage;
+
+              projectCards.forEach((card, index) => {
+                card.style.display = index >= start && index < end ? "flex" : "none";
+              });
+
+              paginationContainer.innerHTML = "";
+              const totalPages = Math.ceil(projectCards.length / cardsPerPage);
+              for (let i = 1; i <= totalPages; i++) {
+                const btn = document.createElement("button");
+                btn.textContent = i;
+                btn.className =
+                  "btn btn-sm mx-1 " +
+                  (i === page ? "btn-primary" : "btn-outline-secondary");
+                btn.onclick = () => {
+                  currentPage = i;
+                  renderPage(currentPage);
+                };
+                paginationContainer.appendChild(btn);
+              }
+            }
+
+            renderPage(currentPage);
+            const filterScript = document.createElement("script");
+            filterScript.src = "js/project-filter.js";
+            document.body.appendChild(filterScript);
           });
-
-          // Update pagination controls
-          paginationContainer.innerHTML = "";
-
-          const totalPages = Math.ceil(projectCards.length / cardsPerPage);
-
-          for (let i = 1; i <= totalPages; i++) {
-            const btn = document.createElement("button");
-            btn.textContent = i;
-            btn.className =
-              "btn btn-sm mx-1 " +
-              (i === page ? "btn-primary" : "btn-outline-secondary");
-            btn.onclick = () => {
-              currentPage = i;
-              renderPage(currentPage);
-            };
-            paginationContainer.appendChild(btn);
-          }
-        }
-
-        renderPage(currentPage);
-        const filterScript = document.createElement("script");
-        filterScript.src = "js/project-filter.js";
-        document.body.appendChild(filterScript);
       });
     </script>
 
@@ -193,7 +262,11 @@
 
     <div id="courses"></div>
     <script>
-      loadSection("courses", "sections/courses.html");
+      loadSection("courses", "sections/courses.html", () => {
+        const script = document.createElement("script");
+        script.src = "js/courses.js";
+        document.body.appendChild(script);
+      });
     </script>
 
     <div id="blog"></div>
