@@ -25,16 +25,19 @@
 
   <body>
     <!-- Navigation -->
-    <nav
-      class="d-flex justify-content-between align-items-center p-3"
-    >
-      <a href="https://seanneskie.github.io/Seanne-Portfolio/" class="btn btn-light">← Go Back</a>
+    <nav class="d-flex justify-content-between align-items-center p-3">
+      <a
+        href="https://seanneskie.github.io/Seanne-Portfolio/"
+        class="btn btn-light"
+        >← Go Back</a
+      >
       <h1 class="text-white m-0">Bitcoin Analysis App</h1>
       <span></span>
     </nav>
 
     <!-- Project Content -->
-    <section class="container-fluid hero"
+    <section
+      class="container-fluid hero"
       data-aos="fade-up"
       data-aos-duration="800"
     >
@@ -50,11 +53,15 @@
             <div class="projectHeader mt-2">
               <p id="blogHeader" class="lead">
                 <strong>Overview:</strong><br />
-                This is a placeholder overview for Bitcoin Analysis App.
+                A web-based Bitcoin data analysis and prediction tool built
+                using Django and Python data science libraries. This project
+                analyzes historical Bitcoin prices and provides users with
+                statistical summaries, visualizations, and linear
+                regression-based predictions.
               </p>
               <p id="blogHeader">
                 <strong>Collaborators:</strong><br />
-                Placeholder Collaborators
+                Individual Project
               </p>
             </div>
           </div>
@@ -64,11 +71,115 @@
     <section>
       <div class="container">
         <h1>Introduction</h1>
-        <p>Placeholder introduction text for Bitcoin Analysis App.</p>
+        <p>
+          Bitcoin’s hallmark volatility makes it a compelling subject for
+          time-series and predictive analytics. This study set out to:
+        </p>
+        <ol>
+          <li>
+            quantify central-tendency & dispersion metrics for 2019-2021 prices,
+          </li>
+          <li>visualise relationships among price variables,</li>
+          <li>
+            build per-column linear-regression models and cross-check them with
+            Weka outputs,
+          </li>
+          <li>
+            translate the analysis into an interactive web demo for
+            non-technical users.
+          </li>
+        </ol>
       </div>
+      <!-- Tech Stack -->
+      <div class="container my-4">
+        <h3 class="fw-bold mb-3">Tech Stack</h3>
+        <div class="table-responsive">
+          <table class="table table-striped table-bordered align-middle">
+            <thead class="table-dark">
+              <tr>
+                <th>Layer</th>
+                <th>Technology</th>
+                <th>Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Data Source</td>
+                <td>Kaggle CSV (2012-2021)</td>
+                <td>
+                  Minute-by-minute prices, trimmed to 2019-2021 for
+                  tractability.:contentReference[oaicite:2]{index=2}
+                </td>
+              </tr>
+              <tr>
+                <td>Language / Core Libs</td>
+                <td>Python 3.11 — pandas, NumPy</td>
+                <td>
+                  ETL, statistical summaries, data
+                  munging.:contentReference[oaicite:3]{index=3}
+                </td>
+              </tr>
+              <tr>
+                <td>Analytics / ML</td>
+                <td>scikit-learn, seaborn, matplotlib</td>
+                <td>
+                  Correlation heat-map & linear-regression
+                  models.:contentReference[oaicite:4]{index=4}
+                </td>
+              </tr>
+              <tr>
+                <td>Web Framework</td>
+                <td>Django 4</td>
+                <td>
+                  MVT architecture serving stats, charts & prediction
+                  forms.:contentReference[oaicite:5]{index=5}
+                </td>
+              </tr>
+              <tr>
+                <td>Frontend Viz</td>
+                <td>Chart.js 4</td>
+                <td>
+                  Dynamic line graphs of price
+                  trends.:contentReference[oaicite:6]{index=6}
+                </td>
+              </tr>
+              <tr>
+                <td>Dev Tools</td>
+                <td>Jupyter Notebook, Git</td>
+                <td>
+                  Notebook-first exploration; Git tracked code and reports.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
       <div class="container">
-        <h1>Details</h1>
-        <p>More details about this project will be provided soon.</p>
+        <h1>Findings</h1>
+        <ul>
+          <li>
+            Perfect positive correlation among Open, High, Low, Close, and
+            Weighted Price columns confirms their synchronous movement in the
+            market.
+          </li>
+          <li>
+            Linear-regression models trained per price column achieved
+            consistent error rates and mirrored Weka’s outputs, boosting
+            confidence in methodology.
+          </li>
+          <li>
+            Descriptive stats underline Bitcoin’s extreme volatility; high
+            standard deviations and wide value ranges signal substantial
+            short-term risk / reward potential.
+          </li>
+          <li>
+            Forward projections indicated potential upward drift for major price
+            indicators, offering directional insight for traders while
+            reinforcing the caveat that crypto markets remain highly
+            unpredictable.
+          </li>
+        </ul>
       </div>
     </section>
 
@@ -110,7 +221,7 @@
     <script src="../js/gallery.js"></script>
     <script>
       AOS.init();
-      loadProjectAssets('bitcoin-analysis-app');
+      loadProjectAssets("bitcoin-analysis-app");
     </script>
   </body>
 </html>
