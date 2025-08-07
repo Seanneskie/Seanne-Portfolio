@@ -1,0 +1,59 @@
+/* Standardized dark theme for project detail pages */
+body {
+  background-color: var(--obsidian);
+  color: var(--text);
+  font-family: 'Open Sans', sans-serif;
+}
+
+nav {
+  background-color: var(--sable);
+}
+
+.hero {
+  background-color: var(--charcoal);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-hover) !important;
+}
+
+p, li, strong {
+  color: var(--text) !important;
+}
+
+ul, ol {
+  color: var(--text);
+}
+
+pre {
+  background-color: var(--coal);
+  color: var(--text);
+  padding: 10px;
+}
+
+a.btn-outline-light.btn-secondary {
+  border-color: var(--text-hover);
+  color: var(--text-hover);
+}
+
+a.btn-outline-light.btn-secondary:hover {
+  background-color: var(--text-hover);
+  color: var(--onyx);
+}
+
+footer {
+  background-color: var(--coal);
+  color: var(--text);
+}
+
+footer a {
+  color: var(--text);
+}
+
+footer a:hover {
+  color: var(--text-hover);
+}
+
+#blogHeader {
+  color: var(--text);
+}

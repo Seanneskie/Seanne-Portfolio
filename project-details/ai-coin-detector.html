@@ -20,28 +20,13 @@
 
     <!-- Custom CSS -->
     <link href="../static/index.css" rel="stylesheet" />
-    <style>
-      p {
-        color: #555;
-      }
-
-      p#blogHeader {
-        color: var(--text);
-      }
-    </style>
+    <link href="../static/project-details.css" rel="stylesheet" />
   </head>
 
-  <body
-    style="
-      background-color: var(--obsidian);
-      color: var(--text);
-      font-family: 'Open Sans', sans-serif;
-    "
-  >
+  <body>
     <!-- Navigation -->
     <nav
       class="d-flex justify-content-between align-items-center p-3"
-      style="background-color: var(--sable)"
     >
       <a href="https://seanneskie.github.io/Seanne-Portfolio/" class="btn btn-light">← Go Back</a>
       <h1 class="text-white m-0">AI Coin Detector</h1>
@@ -49,9 +34,7 @@
     </nav>
 
     <!-- Project Content -->
-    <section
-      style="background-color: var(--charcoal)"
-      class="container-fluid"
+    <section class="container-fluid hero"
       data-aos="fade-up"
       data-aos-duration="800"
     >
@@ -91,7 +74,7 @@
     </section>
     <section>
       <div class="container">
-        <h2 style="color: var(--charcoal)">Introduction</h2>
+        <h2>Introduction</h2>
         <p>
           In the expanding field of artificial intelligence (AI), the creation
           of accessible, real-world applications demonstrates the rapid growth
@@ -107,7 +90,7 @@
           financial transactions and educational purposes related to currency
           recognition and management.
         </p>
-        <strong style="color: var(--charcoal)">Statement of the Problem</strong>
+        <strong>Statement of the Problem</strong>
         <p>
           The new series of Philippine peso coins are designed to be more
           identical to each other, which can be challenging for people with
@@ -116,7 +99,7 @@
           through images or video samples, thereby enhancing their accessibility
           and convenience in daily transactions (Alon et al., 2021).
         </p>
-        <strong style="color: var(--charcoal)">Significance</strong>
+        <strong>Significance</strong>
         <p>
           The significance of this project lies not only in its practical
           application but also in its educational value. It provides a realistic
@@ -134,7 +117,7 @@
         </p>
       </div>
       <div class="container">
-        <h2 style="color: var(--charcoal)">Rationale</h2>
+        <h2>Rationale</h2>
         <p>
           The rationale behind developing a Philippine coin detection AI lies in
           its potential to improve efficiency, accuracy, accessibility,
@@ -146,8 +129,8 @@
         </p>
       </div>
       <div class="container">
-        <h2 style="color: var(--charcoal)">Data Collection and Preparation</h2>
-        <strong style="color: var(--charcoal)">Data Collection</strong>
+        <h2>Data Collection and Preparation</h2>
+        <strong>Data Collection</strong>
         <p>
           The dataset used for the AI coin detection system, specifically for
           the Philippine peso, consists of legal tender coins that are accepted
@@ -175,7 +158,7 @@
           during transactions.
         </p>
         <p>Right below are the classification of the coins used as dataset:</p>
-        <ul style="color: #555">
+        <ul>
           <li>
             <p>25-Cents Coin Photos</p>
           </li>
@@ -192,7 +175,7 @@
             <p>20-Peso Coin Photos</p>
           </li>
         </ul>
-        <strong style="color: var(--charcoal)">Training and Testing</strong>
+        <strong>Training and Testing</strong>
         <p>
           The training set was composed of coins numbering at least a 100 of
           samples as long as it is possible for the group to collect. Moreover,
@@ -205,8 +188,8 @@
         </p>
       </div>
       <div class="container">
-        <h2 style="color: var(--charcoal)">Model Development</h2>
-        <strong style="color: var(--charcoal)">Architecture and Setup</strong>
+        <h2>Model Development</h2>
+        <strong>Architecture and Setup</strong>
         <p>
           The setup used for training Teachable Model was the default setup of
           teachable model. The classes in the image model were 10 and will be
@@ -302,8 +285,8 @@
         </div>
       </div>
       <div class="container">
-        <h2 style="color: var(--charcoal)">Training and Evaluation</h2>
-        <strong style="color: var(--charcoal)"
+        <h2>Training and Evaluation</h2>
+        <strong
           >Training Processes and Challenges</strong
         >
         <p>
@@ -335,7 +318,7 @@
           conditions are consistent across all images to reduce the impact of
           lighting on the model's performance.
         </p>
-        <strong style="color: var(--charcoal)">Evaluation</strong>
+        <strong>Evaluation</strong>
         <p>
           For testing the model, we used past data of the first model test to
           compare to the current model testing but only by remembering what were
@@ -358,8 +341,8 @@
         </p>
       </div>
       <div class="container">
-        <h2 style="color: var(--charcoal)">Deployment and Uses Case</h2>
-        <strong style="color: var(--charcoal)">Real World Deployment</strong>
+        <h2>Deployment and Uses Case</h2>
+        <strong>Real World Deployment</strong>
         <p>
           The "Philippine Peso Coin Detector and Counter" AI application has a
           potential for creation into a variety of real-world settings to
@@ -382,7 +365,7 @@
           procedures, providing benefits in terms of speed, accuracy, and
           cost-effectiveness (Humanness in the Age of AI, 2023).
         </p>
-        <h3 style="color: var(--charcoal)">
+        <h3>
           Potential Use Case or Application for the developed AI application
         </h3>
         <p>
@@ -394,7 +377,7 @@
           numerous industries to improve efficiency, accuracy, and ease in
           financial transactions and management.
         </p>
-        <strong style="color: var(--charcoal)"
+        <strong
           >Retail and Consumer Services</strong
         >
         <p>
@@ -414,7 +397,7 @@
           payments without manual scanning or waiting in line, thereby reducing
           wait times and improving overall efficiency (admin, 2024).
         </p>
-        <strong style="color: var(--charcoal)"
+        <strong
           >Banking and Financial Institutions</strong
         >
         <p>
@@ -434,7 +417,7 @@
           tasks such as data entry, account reconciliation, and document
           processing, leading to cost savings and greater operational efficiency
         </p>
-        <strong style="color: var(--charcoal)">Charitable Organizations</strong>
+        <strong>Charitable Organizations</strong>
         <p>
           Charitable groups that collect coins can use this AI application to
           better efficiently count and categorize donations. By automating the
@@ -454,7 +437,7 @@
         </p>
       </div>
       <div class="container">
-        <h2 style="color: var(--charcoal)">
+        <h2>
           Ethical and Societal Implications
         </h2>
         <p>
@@ -464,7 +447,7 @@
           reliability, security threats, employment displacement, and a decrease
           in errors and frauds.
         </p>
-        <strong style="color: var(--charcoal)"
+        <strong
           >Reliability and Accuracy
         </strong>
         <p>
@@ -486,7 +469,7 @@
           detection that could impact user trust and result in financial
           losses.”
         </p>
-        <strong style="color: var(--charcoal)">Job Displacement </strong>
+        <strong>Job Displacement </strong>
         <p>
           One additional aspect to take into account regarding the possible
           ethical and societal implications is the possibility of job
@@ -506,7 +489,7 @@
           roles, potentially worsening inequality if not managed carefully (The
           White House, 2022).
         </p>
-        <strong style="color: var(--charcoal)"
+        <strong
           >Banking and Financial Institutions</strong
         >
         <p>
@@ -526,7 +509,7 @@
           tasks such as data entry, account reconciliation, and document
           processing, leading to cost savings and greater operational efficiency
         </p>
-        <strong style="color: var(--charcoal)">Charitable Organizations</strong>
+        <strong>Charitable Organizations</strong>
         <p>
           Charitable groups that collect coins can use this AI application to
           better efficiently count and categorize donations. By automating the
