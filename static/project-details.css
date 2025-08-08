@@ -5,21 +5,7 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
-nav.details-header {
-  background-color: var(--sable);
-  color: var(--text);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-}
 
-nav.details-header a,
-nav.details-header h1 {
-  color: var(--text);
-}
-
-nav.details-header a:hover {
-  color: var(--text-hover);
-  text-decoration: none;
-}
 
 .hero {
   background-color: var(--charcoal);
