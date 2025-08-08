@@ -1,5 +1,5 @@
 async function loadProjectAssets(project) {
-  const nav = document.querySelector('nav');
+  const nav = await waitForNav();
   if (!nav) return;
 
   const [images, pdfs] = await Promise.all([
@@ -19,6 +19,24 @@ async function loadProjectAssets(project) {
   if (pdfList) section.appendChild(pdfList);
 
   nav.insertAdjacentElement('afterend', section);
+}
+
+function waitForNav() {
+  return new Promise((resolve) => {
+    const nav = document.querySelector('nav');
+    if (nav) {
+      resolve(nav);
+      return;
+    }
+    const observer = new MutationObserver(() => {
+      const nav = document.querySelector('nav');
+      if (nav) {
+        observer.disconnect();
+        resolve(nav);
+      }
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+  });
 }
 
 async function fetchAssets(project, type) {
