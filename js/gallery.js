@@ -1,42 +1,65 @@
-function loadProjectAssets(project) {
+async function loadProjectAssets(project) {
   const nav = document.querySelector('nav');
   if (!nav) return;
 
+  const [images, pdfs] = await Promise.all([
+    fetchAssets(project, 'images'),
+    fetchAssets(project, 'pdfs')
+  ]);
+
+  if (images.length === 0 && pdfs.length === 0) return;
+
   const section = document.createElement('section');
   section.className = 'container my-5';
-  section.innerHTML = `
-    <div id="gallery" class="carousel slide" data-ride="carousel">
-      <div class="carousel-inner"></div>
-      <a class="carousel-control-prev" href="#gallery" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#gallery" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
-    </div>
-    <div id="pdf-list" class="mt-3"></div>
-  `;
-  nav.insertAdjacentElement('afterend', section);
 
-  loadAssets(project, 'images', renderImages);
-  loadAssets(project, 'pdfs', renderPDFs);
+  const carousel = renderImages(project, images);
+  if (carousel) section.appendChild(carousel);
+
+  const pdfList = renderPDFs(project, pdfs);
+  if (pdfList) section.appendChild(pdfList);
+
+  nav.insertAdjacentElement('afterend', section);
 }
 
-async function loadAssets(project, type, handler) {
+async function fetchAssets(project, type) {
   try {
     const response = await fetch(`../static/${project}/${type}/${type}.json`);
-    const assets = await response.json();
-    handler(project, assets);
+    if (!response.ok) throw new Error('Missing assets');
+    return await response.json();
   } catch (err) {
     console.error(`Error loading ${type}`, err);
+    return [];
   }
 }
 
 function renderImages(project, images) {
-  const container = document.querySelector('#gallery .carousel-inner');
-  if (!container) return;
+  if (images.length === 0) return null;
+
+  const carousel = document.createElement('div');
+  carousel.id = 'gallery';
+  carousel.className = 'carousel slide';
+  carousel.setAttribute('data-bs-ride', 'carousel');
+
+  if (images.length > 1) {
+    const indicators = document.createElement('div');
+    indicators.className = 'carousel-indicators';
+    images.forEach((_, index) => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.setAttribute('data-bs-target', '#gallery');
+      button.setAttribute('data-bs-slide-to', index);
+      if (index === 0) {
+        button.className = 'active';
+        button.setAttribute('aria-current', 'true');
+      }
+      button.setAttribute('aria-label', `Slide ${index + 1}`);
+      indicators.appendChild(button);
+    });
+    carousel.appendChild(indicators);
+  }
+
+  const inner = document.createElement('div');
+  inner.className = 'carousel-inner';
   images.forEach((file, index) => {
     const caption = file.replace(/\.[^/.]+$/, '').replace(/[-_]/g, ' ');
     const item = document.createElement('div');
@@ -46,23 +69,53 @@ function renderImages(project, images) {
       <div class="carousel-caption d-none d-md-block">
         <p>${caption}</p>
       </div>`;
-    container.appendChild(item);
+    inner.appendChild(item);
   });
+  carousel.appendChild(inner);
+
+  if (images.length > 1) {
+    const prev = document.createElement('button');
+    prev.className = 'carousel-control-prev';
+    prev.type = 'button';
+    prev.setAttribute('data-bs-target', '#gallery');
+    prev.setAttribute('data-bs-slide', 'prev');
+    prev.innerHTML = '<span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Previous</span>';
+    carousel.appendChild(prev);
+
+    const next = document.createElement('button');
+    next.className = 'carousel-control-next';
+    next.type = 'button';
+    next.setAttribute('data-bs-target', '#gallery');
+    next.setAttribute('data-bs-slide', 'next');
+    next.innerHTML = '<span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Next</span>';
+    carousel.appendChild(next);
+  }
+
+  return carousel;
 }
 
 function renderPDFs(project, pdfs) {
-  const list = document.getElementById('pdf-list');
-  if (!list || pdfs.length === 0) return;
+  if (pdfs.length === 0) return null;
+
+  const container = document.createElement('div');
+  container.id = 'pdf-list';
+
   const heading = document.createElement('h5');
   heading.textContent = 'Downloads';
-  list.appendChild(heading);
-  const ul = document.createElement('ul');
-  ul.className = 'list-unstyled';
+  container.appendChild(heading);
+
+  const list = document.createElement('div');
+  list.className = 'list-group';
   pdfs.forEach((file) => {
     const caption = file.replace(/\.[^/.]+$/, '').replace(/[-_]/g, ' ');
-    const li = document.createElement('li');
-    li.innerHTML = `<a href="../static/${project}/pdfs/${file}" download>${caption}</a>`;
-    ul.appendChild(li);
+    const link = document.createElement('a');
+    link.href = `../static/${project}/pdfs/${file}`;
+    link.download = '';
+    link.className = 'list-group-item list-group-item-action';
+    link.textContent = caption;
+    list.appendChild(link);
   });
-  list.appendChild(ul);
+  container.appendChild(list);
+
+  return container;
 }
