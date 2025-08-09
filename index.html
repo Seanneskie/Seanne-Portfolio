@@ -24,7 +24,11 @@
     <meta property="og:image" content="static/profile.jpg" />
     <meta name="author" content="Seanneskie" />
     <link rel="icon" type="image/png" href="static/favicon-32x32.png" />
-    <!-- Tailwind CSS -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="tailwind.config.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Animation Scripts -->
@@ -41,21 +45,21 @@
     />
 
     <!-- Custom CSS -->
-    <link href="static/index.css" rel="stylesheet" />
     <link href="assets/css/styles.css" rel="stylesheet" />
     <script src="js/section-loader.js"></script>
   </head>
-  <body style="width: 100vw; overflow-x: hidden">
-    <div class="cover">
-      <div class="intro-message fade-down">
-        <h1>Dev Portfolio</h1>
-        <p>I'm a passionate developer building innovative solutions.</p>
+  <body class="bg-obsidian text-text w-screen overflow-x-hidden" style="font-family: 'Open Sans', sans-serif">
+    <div class="h-screen bg-[url('static/bg_2.jpg')] bg-cover bg-center flex justify-center items-center relative text-text-hover text-center">
+      <div class="absolute inset-0 bg-black/50"></div>
+      <div class="relative z-10 fade-down p-5 text-2xl">
+        <h1 class="text-4xl md:text-6xl mb-4">Dev Portfolio</h1>
+        <p class="text-xl text-text">I'm a passionate developer building innovative solutions.</p>
       </div>
     </div>
 
     <nav
       id="mainNav"
-      class="bg-[var(--charcoal)] text-white p-4"
+      class="bg-charcoal text-text-hover p-4"
       data-aos="fade-up"
     >
       <ul class="flex flex-wrap justify-center gap-4">
@@ -91,15 +95,17 @@
             const container = document.getElementById("projectCards");
             projects.forEach((p) => {
               const card = document.createElement("div");
-              card.className = "project-card";
+              card.className =
+                "project-card bg-charcoal rounded-lg shadow flex flex-col justify-between p-5 max-w-sm";
 
               const header = document.createElement("div");
-              header.className = "project-card-header";
+              header.className = "project-card-header flex flex-col justify-center";
               const img = document.createElement("img");
               img.src = p.image;
               img.setAttribute("data-src", p.image);
               img.alt = p.alt;
-              img.className = "project-card-image";
+              img.className =
+                "project-card-image min-w-[100px] max-w-[350px] h-[300px] object-contain mx-auto mb-4";
               img.loading = "lazy";
               img.width = 350;
               img.height = 300;
@@ -110,7 +116,7 @@
               card.appendChild(header);
 
               const desc = document.createElement("div");
-              desc.className = "project-description";
+              desc.className = "project-description text-text mb-5";
               const pDesc = document.createElement("p");
               pDesc.textContent = p.description;
               desc.appendChild(pDesc);
@@ -120,11 +126,10 @@
                 desc.appendChild(pCol);
               }
               const tagDiv = document.createElement("div");
-              tagDiv.className = "project-tags";
-              tagDiv.style.marginTop = "10px";
+              tagDiv.className = "project-tags mt-2 flex flex-wrap gap-2";
               (p.tags || []).forEach((t) => {
                 const span = document.createElement("span");
-                span.className = "tag";
+                span.className = "tag bg-onyx text-text px-2 py-1 rounded text-xs";
                 span.textContent = t;
                 tagDiv.appendChild(span);
               });
@@ -132,7 +137,7 @@
               card.appendChild(desc);
 
               const footer = document.createElement("div");
-              footer.className = "project-footer";
+              footer.className = "project-footer mt-auto text-right flex gap-2 justify-end";
               if (p.github) {
                 const aGit = document.createElement("a");
                 aGit.href = p.github;

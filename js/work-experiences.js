@@ -6,10 +6,7 @@ function initWorkExperiences() {
       if (!container) return;
       data.forEach(exp => {
         const article = document.createElement('article');
-        article.className = 'card mb-3';
-        article.style.backgroundColor = 'var(--obsidian)';
-        article.style.color = 'var(--text)';
-        article.style.border = 'none';
+        article.className = 'card mb-3 bg-obsidian text-text border-0';
 
         const header = document.createElement('header');
         header.className = 'card-body';
@@ -21,16 +18,14 @@ function initWorkExperiences() {
 
         if (exp.period) {
           const period = document.createElement('p');
-          period.className = 'card-subtitle mb-2';
-          period.style.color = 'var(--text)';
+          period.className = 'card-subtitle mb-2 text-text';
           period.textContent = exp.period;
           header.appendChild(period);
         }
 
         if (exp.tech && exp.tech.length) {
           const tech = document.createElement('p');
-          tech.className = 'card-subtitle mb-2 fw-bold fst-italic';
-          tech.style.color = 'var(--text)';
+          tech.className = 'card-subtitle mb-2 fw-bold fst-italic text-text';
           tech.innerHTML = `<span class="visually-hidden">Tech stack:</span> ${exp.tech.join(' · ')}`;
           header.appendChild(tech);
         }

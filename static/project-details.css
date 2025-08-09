@@ -1,14 +1,14 @@
 /* Standardized dark theme for project detail pages */
 body {
-  background-color: var(--obsidian);
-  color: var(--text);
+  background-color: #1A1A1A;
+  color: #ccd0cf;
   font-family: 'Open Sans', sans-serif;
 }
 
 
 
 .hero {
-  background-color: var(--charcoal);
+  background-color: #36454F;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -20,46 +20,46 @@ p, li, strong {
 }
 
 ul, ol {
-  color: var(--text);
+  color: #ccd0cf;
 }
 
 pre {
-  background-color: var(--coal);
-  color: var(--text);
+  background-color: #2B2B2B;
+  color: #ccd0cf;
   padding: 10px;
 }
 
 a.btn-outline-light.btn-secondary {
-  border-color: var(--text-hover);
-  color: var(--text-hover);
+  border-color: #ffffff;
+  color: #ffffff;
 }
 
 a.btn-outline-light.btn-secondary:hover {
-  background-color: var(--text-hover);
-  color: var(--onyx);
+  background-color: #ffffff;
+  color: #0F0F0F;
 }
 
 footer {
-  background-color: var(--coal);
-  color: var(--text);
+  background-color: #2B2B2B;
+  color: #ccd0cf;
 }
 
 footer a {
-  color: var(--text);
+  color: #ccd0cf;
 }
 
 footer a:hover {
-  color: var(--text-hover);
+  color: #ffffff;
 }
 
 #blogHeader {
-  color: var(--text);
+  color: #ccd0cf;
 }
 
 
 
 .projectHeader p, .projectHeader strong {
-  color: var(--text) !important;
+  color: #ccd0cf !important;
 }
 
 .projectHeader strong {
