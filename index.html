@@ -28,6 +28,39 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="js/tailwind-config.js"></script>
 
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+    <style>
+      :root {
+        --coal: #2b2b2b;
+        --obsidian: #1a1a1a;
+        --onyx: #0f0f0f;
+        --charcoal: #36454f;
+        --sable: #051229;
+        --text: #ccd0cf;
+        --text-dark: #0f0f0f;
+        --text-hover: #ffffff;
+      }
+      .light-theme {
+        --coal: #f5f5f5;
+        --obsidian: #ffffff;
+        --onyx: #eaeaea;
+        --charcoal: #dddddd;
+        --sable: #fafafa;
+        --text: #333333;
+        --text-dark: #0f0f0f;
+        --text-hover: #000000;
+      }
+    </style>
+
+    <style type="text/tailwindcss">
+      @layer base {
+        body { @apply bg-obsidian text-text font-sans w-screen overflow-x-hidden; }
+        h2 { @apply text-2xl font-bold text-text; }
+        p { @apply text-base text-text; }
+      }
+    </style>
+
     <!-- Animation Scripts -->
     <link
       rel="stylesheet"
@@ -41,35 +74,34 @@
       rel="stylesheet"
     />
 
-    <!-- Custom CSS -->
-    <link href="static/index.css" rel="stylesheet" />
     <link href="assets/css/styles.css" rel="stylesheet" />
     <script src="js/section-loader.js"></script>
   </head>
-  <body style="width: 100vw; overflow-x: hidden">
-    <div class="cover">
-      <div class="intro-message fade-down">
-        <h1>Dev Portfolio</h1>
-        <p>I'm a passionate developer building innovative solutions.</p>
+  <body>
+    <div class="relative flex items-center justify-center h-screen bg-cover bg-center bg-[url('static/bg_2.jpg')] text-text-hover text-center">
+      <div class="absolute inset-0 bg-black/50"></div>
+      <div class="relative z-10 p-5">
+        <h1 class="text-4xl md:text-6xl">Dev Portfolio</h1>
+        <p class="text-text mt-4">I'm a passionate developer building innovative solutions.</p>
       </div>
     </div>
 
     <nav
       id="mainNav"
-      class="bg-[var(--charcoal)] text-white p-4"
+      class="bg-charcoal text-text-hover p-4"
       data-aos="fade-up"
     >
       <ul class="flex flex-wrap justify-center gap-4">
-        <li><a class="hover:text-gray-300" href="#profile">Profile</a></li>
-        <li><a class="hover:text-gray-300" href="#projects">Projects</a></li>
-        <li><a class="hover:text-gray-300" href="#skills">Skills</a></li>
-        <li><a class="hover:text-gray-300" href="#certificates">Certificates</a></li>
-        <li><a class="hover:text-gray-300" href="#courses">Courses</a></li>
-        <li><a class="hover:text-gray-300" href="#achievements">Achievements</a></li>
-        <li><a class="hover:text-gray-300" href="#blog">Blog</a></li>
-        <li><a class="hover:text-gray-300" href="#testimonials">Testimonials</a></li>
+        <li><a class="hover:text-text" href="#profile">Profile</a></li>
+        <li><a class="hover:text-text" href="#projects">Projects</a></li>
+        <li><a class="hover:text-text" href="#skills">Skills</a></li>
+        <li><a class="hover:text-text" href="#certificates">Certificates</a></li>
+        <li><a class="hover:text-text" href="#courses">Courses</a></li>
+        <li><a class="hover:text-text" href="#achievements">Achievements</a></li>
+        <li><a class="hover:text-text" href="#blog">Blog</a></li>
+        <li><a class="hover:text-text" href="#testimonials">Testimonials</a></li>
         <li>
-          <a class="hover:text-gray-300" href="#work-experiences"
+          <a class="hover:text-text" href="#work-experiences"
             >Work Experiences</a
           >
         </li>
@@ -92,40 +124,46 @@
             const container = document.getElementById("projectCards");
             projects.forEach((p) => {
               const card = document.createElement("div");
-              card.className = "project-card";
+              card.className =
+                "project-card flex flex-col bg-charcoal text-text rounded shadow hover:-translate-y-1 transition";
 
               const header = document.createElement("div");
-              header.className = "project-card-header";
+              header.className = "project-card-header relative";
               const img = document.createElement("img");
               img.src = p.image;
               img.setAttribute("data-src", p.image);
               img.alt = p.alt;
-              img.className = "project-card-image";
+              img.className =
+                "project-card-image w-full h-[300px] object-cover rounded-t";
               img.loading = "lazy";
               img.width = 350;
               img.height = 300;
               header.appendChild(img);
               const h5 = document.createElement("h5");
               h5.textContent = p.title;
+              h5.className =
+                "text-text-hover bg-obsidian text-center p-2 font-semibold";
               header.appendChild(h5);
               card.appendChild(header);
 
               const desc = document.createElement("div");
-              desc.className = "project-description";
+              desc.className = "project-description p-4";
               const pDesc = document.createElement("p");
               pDesc.textContent = p.description;
+              pDesc.className = "text-text";
               desc.appendChild(pDesc);
               if (p.collaborators) {
                 const pCol = document.createElement("p");
                 pCol.innerHTML = `<strong>Collaborators:</strong> ${p.collaborators}`;
+                pCol.className = "text-text";
                 desc.appendChild(pCol);
               }
               const tagDiv = document.createElement("div");
-              tagDiv.className = "project-tags";
-              tagDiv.style.marginTop = "10px";
+              tagDiv.className = "project-tags mt-2 flex flex-wrap gap-2";
               (p.tags || []).forEach((t) => {
                 const span = document.createElement("span");
-                span.className = "tag";
+                span.className =
+                  "tag bg-obsidian text-text-hover px-2 py-1 rounded text-xs";
                 span.textContent = t;
                 tagDiv.appendChild(span);
               });
@@ -133,7 +171,8 @@
               card.appendChild(desc);
 
               const footer = document.createElement("div");
-              footer.className = "project-footer";
+              footer.className =
+                "project-footer flex justify-between p-4 bg-obsidian";
               if (p.github) {
                 const aGit = document.createElement("a");
                 aGit.href = p.github;

@@ -9,6 +9,29 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="../js/tailwind-config.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --coal: #2b2b2b;
+        --obsidian: #1a1a1a;
+        --onyx: #0f0f0f;
+        --charcoal: #36454f;
+        --sable: #051229;
+        --text: #ccd0cf;
+        --text-dark: #0f0f0f;
+        --text-hover: #ffffff;
+      }
+      .light-theme {
+        --coal: #f5f5f5;
+        --obsidian: #ffffff;
+        --onyx: #eaeaea;
+        --charcoal: #dddddd;
+        --sable: #fafafa;
+        --text: #333333;
+        --text-dark: #0f0f0f;
+        --text-hover: #000000;
+      }
+    </style>
     <style type="text/tailwindcss">
       @layer base {
         body { @apply bg-obsidian text-text font-sans; }
@@ -24,9 +47,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
     />
 
-    <!-- Custom CSS -->
-    <link href="../static/index.css" rel="stylesheet" />
-  </head>
+    </head>
 
   <body>
     <!-- Navigation -->
