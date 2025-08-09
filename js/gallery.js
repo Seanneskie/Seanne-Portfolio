@@ -10,7 +10,7 @@ async function loadProjectAssets(project) {
   if (images.length === 0 && pdfs.length === 0) return;
 
   const section = document.createElement('section');
-  section.className = 'container my-5';
+  section.className = 'container my-5 bg-charcoal';
 
   const carousel = renderImages(project, images);
   if (carousel) section.appendChild(carousel);
@@ -84,8 +84,8 @@ function renderImages(project, images) {
     item.className = `carousel-item${index === 0 ? ' active' : ''}`;
     item.innerHTML = `
       <img src="../static/${project}/images/${file}" class="d-block w-100" alt="${caption}">
-      <div class="carousel-caption d-none d-md-block text-dark">
-        <p class="text-dark">${caption}</p>
+      <div class="carousel-caption d-none d-md-block text-light">
+        <p class="text-light">${caption}</p>
       </div>`;
     inner.appendChild(item);
   });
@@ -120,7 +120,7 @@ function renderPDFs(project, pdfs) {
 
   const heading = document.createElement('h5');
   heading.textContent = 'Downloads';
-  heading.className = 'text-dark';
+  heading.className = 'text-light';
   container.appendChild(heading);
 
   const list = document.createElement('div');
@@ -130,7 +130,7 @@ function renderPDFs(project, pdfs) {
     const link = document.createElement('a');
     link.href = `../static/${project}/pdfs/${file}`;
     link.download = '';
-    link.className = 'list-group-item list-group-item-action text-dark';
+    link.className = 'list-group-item list-group-item-action bg-charcoal text-light';
     link.textContent = caption;
     list.appendChild(link);
   });
