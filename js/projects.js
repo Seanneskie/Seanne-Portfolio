@@ -47,7 +47,7 @@ function initProjects() {
 
         // Header
         const header = document.createElement('div');
-        header.className = 'card-header text-white';
+        header.className = 'card-header text-light';
         header.id = `${uid}-heading`;
         header.style.backgroundColor = 'var(--charcoal)';
         card.appendChild(header);
@@ -55,7 +55,7 @@ function initProjects() {
         const h5 = document.createElement('h5'); h5.className = 'mb-0'; header.appendChild(h5);
 
         const button = document.createElement('button');
-        button.className = `btn btn-link text-white text-left w-100 ${isOpen ? '' : 'collapsed'}`;
+        button.className = `btn btn-link text-light text-left w-100 ${isOpen ? '' : 'collapsed'}`;
         button.type = 'button';
         button.setAttribute('data-toggle', 'collapse');
         button.setAttribute('data-target', `#${uid}-collapse`);
