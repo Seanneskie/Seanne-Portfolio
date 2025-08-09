@@ -3,30 +3,31 @@
   data-aos="fade-left"
   data-aos-duration="800"
   data-aos-delay="200"
+  class="bg-coal py-16 px-5"
 >
-  <h2>Projects</h2>
+  <h2 class="text-text-hover text-4xl">Projects</h2>
   <p>
     Showcasing various web and mobile applications, built using modern
     technologies like React, Node.js, and Python.
   </p>
-  <div class="project-filters">
+  <div class="project-filters flex flex-col items-center mb-4">
     <input
       type="text"
       id="projectSearch"
       placeholder="Search projects..."
+      class="mb-4 p-2 rounded bg-onyx text-text"
     />
-    <div class="tag-buttons">
-      <button class="tag-button active" data-tag="all">All</button>
-      <button class="tag-button" data-tag="AI">AI</button>
-      <button class="tag-button" data-tag="Django">Django</button>
-      <button class="tag-button" data-tag="ReactJS">ReactJS</button>
-      <button class="tag-button" data-tag="Python">Python</button>
+    <div class="tag-buttons flex flex-wrap gap-2">
+      <button class="tag-button active bg-charcoal text-text-hover px-2 py-1 rounded" data-tag="all">All</button>
+      <button class="tag-button bg-charcoal text-text-hover px-2 py-1 rounded" data-tag="AI">AI</button>
+      <button class="tag-button bg-charcoal text-text-hover px-2 py-1 rounded" data-tag="Django">Django</button>
+      <button class="tag-button bg-charcoal text-text-hover px-2 py-1 rounded" data-tag="ReactJS">ReactJS</button>
+      <button class="tag-button bg-charcoal text-text-hover px-2 py-1 rounded" data-tag="Python">Python</button>
     </div>
   </div>
-  <div class="project-container" id="projectCards"></div>
+  <div class="project-container flex flex-wrap justify-center gap-4" id="projectCards"></div>
   <div
     id="projectPagination"
-    class="pagination-buttons"
-    style="text-align: center; margin-top: 20px"
+    class="pagination-buttons text-center mt-5"
   ></div>
 </section>
