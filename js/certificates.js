@@ -100,7 +100,9 @@ function initCertificates() {
     for (let i = 1; i <= totalPages; i++) {
       const btn = document.createElement('button');
       btn.textContent = i;
-      btn.className = 'btn btn-sm mx-1 ' + (i === currentPage ? 'btn-primary' : 'btn-outline-secondary');
+      btn.className =
+        'mx-1 px-2 py-1 text-sm rounded ' +
+        (i === currentPage ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700');
       btn.onclick = () => { currentPage = i; update(); };
       paginationContainer.appendChild(btn);
     }

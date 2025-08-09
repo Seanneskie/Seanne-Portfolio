@@ -11,7 +11,7 @@ async function loadBlogPosts() {
         <h3>${post.title}</h3>
         <p class="blog-date">${post.date}</p>
         <p>${post.description}</p>
-        <a href="${post.url}" target="_blank" class="btn btn-secondary">Read More</a>
+        <a href="${post.url}" target="_blank" class="inline-block bg-gray-700 text-white px-3 py-2 rounded">Read More</a>
       `;
       container.appendChild(article);
     });
