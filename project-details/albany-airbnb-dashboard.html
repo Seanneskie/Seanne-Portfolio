@@ -17,7 +17,28 @@
 
     <!-- Custom CSS -->
     <link href="../static/index.css" rel="stylesheet" />
-    <link href="../static/project-details.css" rel="stylesheet" />
+  <script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          coal: '#2B2B2B',
+          obsidian: '#1A1A1A',
+          onyx: '#0F0F0F',
+          charcoal: '#36454F',
+          sable: '#051229',
+          text: '#ccd0cf',
+          'text-dark': '#0F0F0F',
+          'text-hover': '#ffffff',
+        },
+        fontFamily: {
+          sans: ['"Open Sans"', 'sans-serif'],
+        },
+      },
+    },
+  }
+</script>
+<script src="https://cdn.tailwindcss.com"></script>
   </head>
 
   <body>
@@ -25,7 +46,7 @@
     <div id="details-header"></div>
 
     <!-- Project Content -->
-    <section class="container-fluid hero"
+    <section class="container-fluid bg-charcoal"
       data-aos="fade-up"
       data-aos-duration="800"
     >
@@ -123,7 +144,7 @@
       </div>
       <div class="container">
         <h1>Folder Structure</h1>
-        <pre>
+        <pre class="bg-coal text-text p-2">
 albany-airbnb-dashboard/
 ├── index.html              # Main dashboard file
 ├── static/

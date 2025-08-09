@@ -17,7 +17,28 @@
 
     <!-- Custom CSS -->
     <link href="../static/index.css" rel="stylesheet" />
-    <link href="../static/project-details.css" rel="stylesheet" />
+  <script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          coal: '#2B2B2B',
+          obsidian: '#1A1A1A',
+          onyx: '#0F0F0F',
+          charcoal: '#36454F',
+          sable: '#051229',
+          text: '#ccd0cf',
+          'text-dark': '#0F0F0F',
+          'text-hover': '#ffffff',
+        },
+        fontFamily: {
+          sans: ['"Open Sans"', 'sans-serif'],
+        },
+      },
+    },
+  }
+</script>
+<script src="https://cdn.tailwindcss.com"></script>
   </head>
 
   <body>
@@ -25,7 +46,7 @@
     <div id="details-header"></div>
 
     <!-- Project Content -->
-    <section class="container-fluid hero"
+    <section class="container-fluid bg-charcoal"
       data-aos="fade-up"
       data-aos-duration="800"
     >
@@ -48,7 +69,7 @@
             <a
               href="https://github.com/Seanneskie/AI-coin-detector-django"
               target="_blank"
-              class="btn btn-outline-light btn-secondary btn-lg mt-3 w-50 mx-auto"
+              class="btn btn-outline-light btn-secondary btn-lg mt-3 w-50 mx-auto border-text-hover text-text-hover hover:bg-text-hover hover:text-onyx"
             >
               <i class="fab fa-github"></i> View on GitHub
             </a>
