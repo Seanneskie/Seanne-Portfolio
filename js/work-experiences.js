@@ -22,10 +22,11 @@ function initWorkExperiences() {
         h5.className = 'mb-0';
 
         const button = document.createElement('button');
-        button.className = 'btn btn-link text-left w-100';
+        button.className =
+          'btn btn-link text-left w-100' + (index === 0 ? '' : ' collapsed');
         button.type = 'button';
-        button.setAttribute('data-bs-toggle', 'collapse');
-        button.setAttribute('data-bs-target', `#collapse${index}`);
+        button.setAttribute('data-toggle', 'collapse');
+        button.setAttribute('data-target', `#collapse${index}`);
         button.setAttribute('aria-expanded', index === 0 ? 'true' : 'false');
         button.setAttribute('aria-controls', `collapse${index}`);
         let buttonHTML = `<strong>${exp.company}</strong> – ${exp.project}`;
@@ -42,7 +43,7 @@ function initWorkExperiences() {
         collapse.id = `collapse${index}`;
         collapse.className = 'collapse' + (index === 0 ? ' show' : '');
         collapse.setAttribute('aria-labelledby', `heading${index}`);
-        collapse.setAttribute('data-bs-parent', '#workExperienceAccordion');
+        collapse.setAttribute('data-parent', '#workExperienceAccordion');
 
         const body = document.createElement('div');
         body.className = 'card-body';
