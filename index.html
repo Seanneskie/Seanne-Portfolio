@@ -24,7 +24,7 @@
     <meta property="og:image" content="static/profile.jpg" />
     <meta name="author" content="Seanneskie" />
     <link rel="icon" type="image/png" href="static/favicon-32x32.png" />
-    <!-- Tailwind CSS -->
+    <!-- Tailwind CSS (CDN for development; use CLI or PostCSS in production) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="js/tailwind-config.js"></script>
 
@@ -459,9 +459,12 @@
         evt.currentTarget.className += " active";
       }
 
-      // Open the first tab by default
+      // Open the first tab by default if tabs exist
       document.addEventListener("DOMContentLoaded", function () {
-        document.querySelector(".tabs button").click();
+        const firstTab = document.querySelector(".tabs button");
+        if (firstTab) {
+          firstTab.click();
+        }
       });
     </script>
 
