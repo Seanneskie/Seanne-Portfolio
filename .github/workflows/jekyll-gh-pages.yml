@@ -36,6 +36,8 @@ jobs:
         run: npm install
       - name: Lint CSS
         run: npm run lint:css
+      - name: Ensure Tailwind-only styling
+        run: npm run check:css
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Build with Jekyll
