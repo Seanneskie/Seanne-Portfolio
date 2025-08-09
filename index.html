@@ -24,7 +24,16 @@
     <meta property="og:image" content="static/profile.jpg" />
     <meta name="author" content="Seanneskie" />
     <link rel="icon" type="image/png" href="static/favicon-32x32.png" />
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Animation Scripts -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+    />
+
+
     <!-- FontAwesome Icons -->
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
@@ -46,57 +55,24 @@
 
     <nav
       id="mainNav"
-      class="navbar navbar-expand-lg navbar-dark fade-up"
-      style="background-color: var(--charcoal)"
+      class="bg-[var(--charcoal)] text-white p-4"
+      data-aos="fade-up"
     >
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div
-        class="collapse navbar-collapse justify-content-center"
-        id="navbarNav"
-      >
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="#profile">Profile</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#projects">Projects</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#skills">Skills</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#certificates">Certificates</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#courses">Courses</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#achievements">Achievements</a>
-          </li>
-          <li class="nav-item"><a class="nav-link" href="#blog">Blog</a></li>
-          <li class="nav-item">
-            <a class="nav-link" href="#testimonials">Testimonials</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#work-experiences">Work Experiences</a>
-          </li>
-          <!-- <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li> -->
-          <!-- <li class="nav-item"><a class="nav-link" href="#progress">Progress</a></li> -->
-        </ul>
-      </div>
-      <button id="theme-toggle" class="btn btn-outline-light ml-auto">
-        Toggle Theme
-      </button>
+      <ul class="flex flex-wrap justify-center gap-4">
+        <li><a class="hover:text-gray-300" href="#profile">Profile</a></li>
+        <li><a class="hover:text-gray-300" href="#projects">Projects</a></li>
+        <li><a class="hover:text-gray-300" href="#skills">Skills</a></li>
+        <li><a class="hover:text-gray-300" href="#certificates">Certificates</a></li>
+        <li><a class="hover:text-gray-300" href="#courses">Courses</a></li>
+        <li><a class="hover:text-gray-300" href="#achievements">Achievements</a></li>
+        <li><a class="hover:text-gray-300" href="#blog">Blog</a></li>
+        <li><a class="hover:text-gray-300" href="#testimonials">Testimonials</a></li>
+        <li>
+          <a class="hover:text-gray-300" href="#work-experiences"
+            >Work Experiences</a
+          >
+        </li>
+      </ul>
     </nav>
 
     <!-- index.html -->
@@ -121,6 +97,7 @@
               header.className = "project-card-header";
               const img = document.createElement("img");
               img.src = p.image;
+              img.setAttribute("data-src", p.image);
               img.alt = p.alt;
               img.className = "project-card-image";
               img.loading = "lazy";
@@ -160,21 +137,24 @@
                 const aGit = document.createElement("a");
                 aGit.href = p.github;
                 aGit.target = "_blank";
-                aGit.className = "btn btn-secondary";
+                aGit.className =
+                  "bg-gray-700 text-white px-3 py-2 rounded";
                 aGit.textContent = p.githubLabel || "View on GitHub";
                 footer.appendChild(aGit);
               } else {
                 const aGit = document.createElement("a");
                 aGit.href = "#";
                 aGit.target = "_blank";
-                aGit.className = "btn btn-secondary align-self-end disabled";
+                aGit.className =
+                  "bg-gray-700 text-white px-3 py-2 rounded opacity-50 cursor-not-allowed";
                 aGit.setAttribute("disabled", "");
                 aGit.textContent = p.githubLabel || "View on GitHub";
                 footer.appendChild(aGit);
               }
               const aDetails = document.createElement("a");
               aDetails.href = p.details;
-              aDetails.className = "btn btn-secondary";
+              aDetails.className =
+                "bg-gray-700 text-white px-3 py-2 rounded";
               aDetails.textContent = "View Details";
               footer.appendChild(aDetails);
               card.appendChild(footer);
@@ -203,8 +183,10 @@
                 const btn = document.createElement("button");
                 btn.textContent = i;
                 btn.className =
-                  "btn btn-sm mx-1 " +
-                  (i === page ? "btn-primary" : "btn-outline-secondary");
+                  "mx-1 px-2 py-1 text-sm rounded " +
+                  (i === page
+                    ? "bg-blue-500 text-white"
+                    : "bg-gray-200 text-gray-700");
                 btn.onclick = () => {
                   currentPage = i;
                   renderPage(currentPage);
@@ -232,7 +214,12 @@
     </script>
     <div id="imageModal" class="modal">
       <span class="close">&times;</span>
-      <img class="modal-content" id="modalImg" alt="Certificate image" />
+      <img
+        class="modal-content"
+        id="modalImg"
+        alt="Certificate image"
+        loading="lazy"
+      />
       <iframe
         id="modalIframe"
         class="modal-content"
@@ -443,7 +430,6 @@
     <!-- <script src="js/progress-tabs.js"></script> -->
     <script src="assets/js/main.js"></script>
     <script src="js/image-modal.js"></script>
-    <script src="js/theme-toggle.js"></script>
     <!-- <script src="js/progress-update.js"></script> -->
 
     <script>
@@ -480,5 +466,6 @@
         }
       }
     </script>
+    <script src="assets/js/main.js"></script>
   </body>
 </html>

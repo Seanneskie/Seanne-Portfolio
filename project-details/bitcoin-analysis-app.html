@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bitcoin Analysis App - Project Details</title>
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- AOS Animation CSS -->
     <link
@@ -26,15 +26,15 @@
 
     <!-- Project Content -->
     <section
-      class="container-fluid hero"
+      class="hero w-full px-4"
       data-aos="fade-up"
       data-aos-duration="800"
     >
-      <div class="row align-items-center">
-        <div class="col-12 col-md-4 mb-3 mb-md-0">
-          <img src="../static/django.png" class="img-fluid rounded shadow" alt="Bitcoin Analysis App Screenshot" />
+      <div class="flex flex-wrap items-center">
+        <div class="w-full md:w-1/3 mb-3 md:mb-0">
+          <img src="../static/django.png" data-src="../static/django.png" class="rounded shadow w-full" loading="lazy" alt="Bitcoin Analysis App Screenshot" />
         </div>
-        <div class="col-12 col-md-8 text-center text-md-left">
+        <div class="w-full md:w-2/3 text-center md:text-left">
           <div class="projectHeader mt-2">
             <p id="blogHeader" class="lead">
               <strong>Overview:</strong><br />
@@ -53,7 +53,7 @@
       </div>
     </section>
     <section>
-      <div class="container">
+      <div class="max-w-6xl mx-auto px-4">
         <h1>Introduction</h1>
         <p>
           Bitcoin’s hallmark volatility makes it a compelling subject for
@@ -75,7 +75,7 @@
         </ol>
       </div>
       <!-- Tech Stack -->
-      <div class="container my-4">
+      <div class="max-w-6xl mx-auto my-4 px-4">
         <h3 class="fw-bold mb-3">Tech Stack</h3>
         <div class="table-responsive">
           <table class="table table-striped table-bordered align-middle">
@@ -139,7 +139,7 @@
         </div>
       </div>
 
-      <div class="container">
+      <div class="max-w-6xl mx-auto px-4">
         <h1>Findings</h1>
         <ul>
           <li>
@@ -183,5 +183,6 @@
       loadProjectAssets("bitcoin-analysis-app");
       loadSection('footer', '../sections/footer.html');
     </script>
+    <script src="../assets/js/main.js"></script>
   </body>
 </html>
