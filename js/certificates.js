@@ -1,122 +1,81 @@
 function initCertificates() {
-  const searchInput = document.getElementById('certificateSearch');
-  const filterContainer = document.getElementById('certificateFilters');
-  const cardsContainer = document.getElementById('certificateCards');
-  const paginationContainer = document.getElementById('certificatePagination');
-  if (!searchInput || !filterContainer || !cardsContainer || !window.certificateData) return;
+  fetch('assets/datafiles/certificates.json')
+    .then(r => r.json())
+    .then(data => {
+      const container = document.getElementById('certificateAccordion');
+      if (!container) return;
 
-  // Build card elements from data
-  const cards = window.certificateData.map(data => {
-    const card = document.createElement('div');
-    card.className = 'certificate-card';
-    card.dataset.tags = data.skills.join(',');
+      data.forEach((cert, index) => {
+        const card = document.createElement('div');
+        card.className = 'card shadow-sm mb-3 border-0';
 
-    const title = document.createElement('h3');
-    title.textContent = data.title;
-    card.appendChild(title);
+        const header = document.createElement('div');
+        header.className = 'card-header text-white';
+        header.style.backgroundColor = 'var(--charcoal)';
+        header.id = `certHeading${index}`;
 
-    const desc = document.createElement('p');
-    desc.className = 'details-placeholder';
-    desc.textContent = data.desc;
-    card.appendChild(desc);
+        const h5 = document.createElement('h5');
+        h5.className = 'mb-0';
 
-    if (data.skills && data.skills.length) {
-      const tagContainer = document.createElement('div');
-      tagContainer.className = 'project-tags';
-      data.skills.forEach(t => {
-        const span = document.createElement('span');
-        span.className = 'tag';
-        span.textContent = t;
-        tagContainer.appendChild(span);
+        const button = document.createElement('button');
+        button.className = `btn btn-link text-white text-left w-100 ${index !== 0 ? 'collapsed' : ''}`;
+        button.type = 'button';
+        button.setAttribute('data-toggle', 'collapse');
+        button.setAttribute('data-target', `#certCollapse${index}`);
+        button.setAttribute('aria-expanded', index === 0 ? 'true' : 'false');
+        button.setAttribute('aria-controls', `certCollapse${index}`);
+        button.innerHTML = `<i class="fas fa-certificate mr-2"></i><strong>${cert.title}</strong>`;
+
+        h5.appendChild(button);
+        header.appendChild(h5);
+        card.appendChild(header);
+
+        const collapse = document.createElement('div');
+        collapse.id = `certCollapse${index}`;
+        collapse.className = `collapse ${index === 0 ? 'show' : ''}`;
+        collapse.setAttribute('aria-labelledby', `certHeading${index}`);
+        collapse.setAttribute('data-parent', '#certificateAccordion');
+
+        const body = document.createElement('div');
+        body.className = 'card-body';
+
+        if (cert.desc) {
+          const p = document.createElement('p');
+          p.className = 'mb-2';
+          p.textContent = cert.desc;
+          body.appendChild(p);
+        }
+
+        if (Array.isArray(cert.skills) && cert.skills.length) {
+          const skillsDiv = document.createElement('div');
+          cert.skills.forEach(s => {
+            const badge = document.createElement('span');
+            badge.className = 'badge badge-secondary mr-1 mb-1';
+            badge.textContent = s;
+            skillsDiv.appendChild(badge);
+          });
+          body.appendChild(skillsDiv);
+        }
+
+        if (cert.link) {
+          const a = document.createElement('a');
+          a.href = cert.link;
+          a.target = '_blank';
+          a.className = 'btn btn-outline-primary btn-sm mt-2';
+          a.textContent = 'View Certificate';
+          body.appendChild(a);
+        }
+
+        collapse.appendChild(body);
+        card.appendChild(collapse);
+        container.appendChild(card);
       });
-      card.appendChild(tagContainer);
-    }
 
-    if (data.link) {
-      const link = document.createElement('a');
-      link.href = data.link;
-      link.target = '_blank';
-      link.className = 'view-image';
-      link.textContent = 'View Certificate';
-      card.appendChild(link);
-    }
-
-    cardsContainer.appendChild(card);
-    return card;
-  });
-
-  // Build unique skill list
-  const tagSet = new Set();
-  window.certificateData.forEach(c => c.skills.forEach(t => tagSet.add(t)));
-
-  // Render tag filters as pill-style checkboxes
-  tagSet.forEach(tag => {
-    const label = document.createElement('label');
-    label.className = 'filter-pill';
-
-    const checkbox = document.createElement('input');
-    checkbox.type = 'checkbox';
-    checkbox.value = tag;
-
-    const span = document.createElement('span');
-    span.textContent = tag;
-
-    label.appendChild(checkbox);
-    label.appendChild(span);
-    filterContainer.appendChild(label);
-  });
-
-  const clearBtn = document.createElement('button');
-  clearBtn.type = 'button';
-  clearBtn.className = 'clear-filters';
-  clearBtn.textContent = 'Clear';
-  clearBtn.addEventListener('click', () => {
-    filterContainer.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
-    currentPage = 1;
-    update();
-  });
-  filterContainer.appendChild(clearBtn);
-
-  let currentPage = 1;
-  // Number of certificate cards displayed per page
-  const cardsPerPage = 8;
-
-  function getFilteredCards() {
-    const query = searchInput.value.toLowerCase();
-    const activeTags = Array.from(filterContainer.querySelectorAll('input:checked')).map(el => el.value);
-    return cards.filter(card => {
-      const text = card.innerText.toLowerCase();
-      const tags = (card.dataset.tags || '').split(',').map(t => t.trim());
-      const matchesQuery = text.includes(query);
-      const matchesTags = activeTags.every(t => tags.includes(t));
-      return matchesQuery && matchesTags;
-    });
-  }
-
-  function renderPagination(filtered) {
-    paginationContainer.innerHTML = '';
-    const totalPages = Math.ceil(filtered.length / cardsPerPage);
-    if (totalPages <= 1) return;
-    for (let i = 1; i <= totalPages; i++) {
-      const btn = document.createElement('button');
-      btn.textContent = i;
-      btn.className = 'btn btn-sm mx-1 ' + (i === currentPage ? 'btn-primary' : 'btn-outline-secondary');
-      btn.onclick = () => { currentPage = i; update(); };
-      paginationContainer.appendChild(btn);
-    }
-  }
-
-  function update() {
-    const filtered = getFilteredCards();
-    const start = (currentPage - 1) * cardsPerPage;
-    const end = start + cardsPerPage;
-    cards.forEach(card => card.style.display = 'none');
-    filtered.slice(start, end).forEach(card => card.style.display = 'block');
-    renderPagination(filtered);
-  }
-
-  searchInput.addEventListener('input', () => { currentPage = 1; update(); });
-  filterContainer.addEventListener('change', () => { currentPage = 1; update(); });
-
-  update();
+      if (typeof window.applyBootstrapTheme === 'function') {
+        const currentTheme = document.body.classList.contains('light-theme') ? 'light' : 'dark';
+        window.applyBootstrapTheme(currentTheme);
+      }
+    })
+    .catch(err => console.error('Error loading certificates:', err));
 }
+
