@@ -132,6 +132,22 @@ table, th, td {
     color: var(--text-dark);
 }
 
+.bg-charcoal table {
+    background-color: var(--charcoal);
+    color: var(--text-hover);
+}
+
+.bg-charcoal th,
+.bg-charcoal td {
+    background-color: var(--charcoal);
+    color: var(--text-hover);
+}
+
+.bg-charcoal thead,
+.bg-charcoal tbody {
+    background-color: var(--charcoal);
+}
+
 
 
 
