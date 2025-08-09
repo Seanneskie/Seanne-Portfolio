@@ -1,31 +1,11 @@
-<!-- Modal Dialog -->
-
 <section
   id="certificates"
+  class="container py-5"
   data-aos="fade-up"
   data-aos-duration="800"
   data-aos-delay="100"
 >
-  <h2>Certificates &amp; Seminars</h2>
-  <p class="description">Certificates and seminars that I attended in my career.</p>
-  <div class="certificate-controls">
-    <input
-      type="text"
-      id="certificateSearch"
-      placeholder="Search certificates"
-      class="form-control"
-      style="max-width: 300px; margin-bottom: 10px"
-    />
-    <div
-      id="certificateFilters"
-      class="d-flex flex-wrap justify-content-center"
-    ></div>
-  </div>
-  <div class="certificate-grid" id="certificateCards">
-    <!-- Cards will be injected by certificates.js -->
-  </div>
-  <div id="certificatePagination"
-    class="pagination-buttons"
-    style="text-align: center; margin-top: 20px"
-  ></div>
+  <h2 class="mb-4" style="color: var(--text)">Certificates &amp; Seminars</h2>
+  <div class="accordion" id="certificateAccordion"></div>
 </section>
+
