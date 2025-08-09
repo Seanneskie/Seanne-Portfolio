@@ -43,113 +43,7 @@
         body { @apply bg-obsidian text-text font-sans; }
       }
     </style>
-    <style>
-        /* Ensure table layout is auto for content fitting */
-        tfoot input{
-            width: 8rem;
-        }
-                /* Apply specific widths to each column in both tables using nth-child */
-        #table1 th:nth-child(1),
-        #table1 td:nth-child(1),
-        #table2 th:nth-child(1),
-        #table2 td:nth-child(1) {
-            width: 15%;
-        }
-
-        #table1 th:nth-child(2),
-        #table1 td:nth-child(2),
-        #table2 th:nth-child(2),
-        #table2 td:nth-child(2) {
-            width: 15%;
-        }
-
-        #table1 th:nth-child(3),
-        #table1 td:nth-child(3),
-        #table2 th:nth-child(3),
-        #table2 td:nth-child(3) {
-            width: 10%;
-        }
-
-        #table1 th:nth-child(4),
-        #table1 td:nth-child(4),
-        #table2 th:nth-child(4),
-        #table2 td:nth-child(4) {
-            width: 5%;
-        }
-
-        #table1 th:nth-child(5),
-        #table1 td:nth-child(5),
-        #table2 th:nth-child(5),
-        #table2 td:nth-child(5) {
-            width: 15%;
-        }
-
-        #table1 th:nth-child(6),
-        #table1 td:nth-child(6),
-        #table2 th:nth-child(6),
-        #table2 td:nth-child(6) {
-            width: 15%;
-        }
-
-        #table1 th:nth-child(7),
-        #table1 td:nth-child(7),
-        #table2 th:nth-child(7),
-        #table2 td:nth-child(7) {
-            width: 20%;
-        }
-        /* Set td and th to fit their content */
-        th, td {
-            width: 1%; /* Fit-content style */
-        }
     
-        /* Custom CSS to center pagination and table information at the top */
-        .dt-paging {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 10px;
-        }
-        .dt-input {
-            margin-right: 12px;
-            margin-top: 12px;
-        }
-    
-        /* CSS to highlight the selected row */
-        tr.selected {
-            background-color: #d4edda;
-            color: #155724;
-        }
-    
-        /* Toggle button active state */
-        .toggle-vis.active {
-            background-color: #007bff;
-            color: var(--text-hover);
-            border-color: #007bff;
-        }
-    
-        /* Inactive button state (default) */
-        .toggle-vis {
-            background-color: #6c757d;
-            color: var(--text-hover);
-        }
-
-    
-
-        .table-dark {
-            background-color: #454d55;
-            color: var(--text-hover);
-        }
-
-        .nav-link.active {
-            background-color: #495057;
-        }
-
-        .btn-secondary {
-            background-color: #6c757d;
-            border-color: #6c757d;
-        }
-
-    
-    </style>
 
 </head>
 <body data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="70" tabindex="0" class="bg-obsidian text-text font-sans">
@@ -161,7 +55,7 @@
             <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link" href="index.html#profile">Portfolio</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="datatables.html">DataTables Demo</a></li>
+                    <li class="nav-item"><a class="nav-link active bg-nav-active text-text-hover" href="datatables.html">DataTables Demo</a></li>
                 </ul>
             </div>
         </div>
@@ -170,48 +64,48 @@
         <div class="container mt-4 bg-dark text-white p-3">
             <div id="toggle-visibility" class="mb-3">
                 <div id="tab1-toggles" class="tab-toggles">
-                    <a href="#" class="toggle-vis btn btn-secondary btn-sm" data-column="0">Toggle Name</a>
-                    <a href="#" class="toggle-vis btn btn-secondary btn-sm" data-column="1">Toggle Position</a>
-                    <a href="#" class="toggle-vis btn btn-secondary btn-sm" data-column="2">Toggle Office</a>
-                    <a href="#" class="toggle-vis btn btn-secondary btn-sm" data-column="3">Toggle Age</a>
-                    <a href="#" class="toggle-vis btn btn-secondary btn-sm" data-column="4">Toggle Start date</a>
-                    <a href="#" class="toggle-vis btn btn-secondary btn-sm" data-column="5">Toggle Salary</a>
-                    <a href="#" class="toggle-vis btn btn-secondary btn-sm" data-column="6">Toggle Country</a>
+                    <a href="#" class="toggle-vis btn btn-sm bg-secondary text-text-hover border border-secondary" data-column="0">Toggle Name</a>
+                    <a href="#" class="toggle-vis btn btn-sm bg-secondary text-text-hover border border-secondary" data-column="1">Toggle Position</a>
+                    <a href="#" class="toggle-vis btn btn-sm bg-secondary text-text-hover border border-secondary" data-column="2">Toggle Office</a>
+                    <a href="#" class="toggle-vis btn btn-sm bg-secondary text-text-hover border border-secondary" data-column="3">Toggle Age</a>
+                    <a href="#" class="toggle-vis btn btn-sm bg-secondary text-text-hover border border-secondary" data-column="4">Toggle Start date</a>
+                    <a href="#" class="toggle-vis btn btn-sm bg-secondary text-text-hover border border-secondary" data-column="5">Toggle Salary</a>
+                    <a href="#" class="toggle-vis btn btn-sm bg-secondary text-text-hover border border-secondary" data-column="6">Toggle Country</a>
                 </div>
             </div>
         
             <ul class="nav nav-tabs" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link active bg-dark text-white" id="tab1-tab" data-bs-toggle="tab" data-bs-target="#tab1" type="button">Table 1</button>
+                    <button class="nav-link active text-white bg-nav-active" id="tab1-tab" data-bs-toggle="tab" data-bs-target="#tab1" type="button">Table 1</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link bg-dark text-white" id="tab2-tab" data-bs-toggle="tab" data-bs-target="#tab2" type="button">Table 2</button>
+                    <button class="nav-link text-white bg-dark" id="tab2-tab" data-bs-toggle="tab" data-bs-target="#tab2" type="button">Table 2</button>
                 </li>
             </ul>
         
             <div class="tab-content mt-2">
                 <div class="tab-pane fade show active" id="tab1" role="tabpanel">
-                    <table id="table1" class="table table-dark table-striped table-bordered text-white" style="width:100%">
+                    <table id="table1" class="table table-striped table-bordered w-full table-auto bg-table-dark text-text-hover">
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Position</th>
-                                <th>Office</th>
-                                <th>Age</th>
-                                <th>Start date</th>
-                                <th>Salary</th>
-                                <th>Country</th>
+                                <th class="w-15p">Name</th>
+                                <th class="w-15p">Position</th>
+                                <th class="w-10p">Office</th>
+                                <th class="w-5p">Age</th>
+                                <th class="w-15p">Start date</th>
+                                <th class="w-15p">Salary</th>
+                                <th class="w-20p">Country</th>
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
-                                <th>Name</th>
-                                <th>Position</th>
-                                <th>Office</th>
-                                <th>Age</th>
-                                <th>Start date</th>
-                                <th>Salary</th>
-                                <th>Country</th>
+                                <th class="w-15p">Name</th>
+                                <th class="w-15p">Position</th>
+                                <th class="w-10p">Office</th>
+                                <th class="w-5p">Age</th>
+                                <th class="w-15p">Start date</th>
+                                <th class="w-15p">Salary</th>
+                                <th class="w-20p">Country</th>
                             </tr>
                         </tfoot>
                         <tbody>
@@ -221,27 +115,27 @@
                 </div>
         
                 <div class="tab-pane fade" id="tab2" role="tabpanel">
-                    <table id="table2" class="table table-dark table-striped table-bordered text-white" style="width: 100%">
+                    <table id="table2" class="table table-striped table-bordered w-full table-auto bg-table-dark text-text-hover">
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Position</th>
-                                <th>Office</th>
-                                <th>Age</th>
-                                <th>Start date</th>
-                                <th>Salary</th>
-                                <th>Country</th>
+                                <th class="w-15p">Name</th>
+                                <th class="w-15p">Position</th>
+                                <th class="w-10p">Office</th>
+                                <th class="w-5p">Age</th>
+                                <th class="w-15p">Start date</th>
+                                <th class="w-15p">Salary</th>
+                                <th class="w-20p">Country</th>
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
-                                <th>Name</th>
-                                <th>Position</th>
-                                <th>Office</th>
-                                <th>Age</th>
-                                <th>Start date</th>
-                                <th>Salary</th>
-                                <th>Country</th>
+                                <th class="w-15p">Name</th>
+                                <th class="w-15p">Position</th>
+                                <th class="w-10p">Office</th>
+                                <th class="w-5p">Age</th>
+                                <th class="w-15p">Start date</th>
+                                <th class="w-15p">Salary</th>
+                                <th class="w-20p">Country</th>
                             </tr>
                         </tfoot>
                         <tbody>
@@ -343,6 +237,7 @@
                                     // Create input element for filtering
                                     let input = document.createElement('input');
                                     input.placeholder = 'Search ' + title;
+                                    input.classList.add('w-32');
                                     column.footer().replaceChildren(input);
 
                                     // Add event listener for search functionality
@@ -378,6 +273,7 @@
                                     // Create input element for filtering
                                     let input = document.createElement('input');
                                     input.placeholder = 'Search ' + title;
+                                    input.classList.add('w-32');
                                     column.footer().replaceChildren(input);
 
                                     // Add event listener for search functionality
@@ -390,6 +286,9 @@
                         }
                     });
 
+                    $('.dt-paging').addClass('flex justify-center mb-2.5');
+                    $('.dt-input').addClass('mr-3 mt-3');
+
                     // Handle Bootstrap tab change
                     $('button[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
                         var target = $(e.target).data('bs-target'); // Get the target tab
@@ -397,11 +296,16 @@
 
                         // Adjust columns
                         table.columns.adjust();
+
+                        $(e.target).addClass('bg-nav-active').removeClass('bg-dark');
+                        if (e.relatedTarget) {
+                            $(e.relatedTarget).addClass('bg-dark').removeClass('bg-nav-active');
+                        }
                     });
 
                     // Row click event handler for selecting rows
                     $('#table1 tbody, #table2 tbody').on('click', 'tr', function () {
-                        $(this).toggleClass('selected');
+                        $(this).toggleClass('selected bg-selected-row text-selected-text');
                     });
 
                     // Delete selected rows event handler
@@ -419,6 +323,9 @@
                         var columnIdx = $(this).data('column');
                         var target = $('.nav-tabs .active').attr('id') === 'tab1-tab' ? '#table1' : '#table2';
                         var table = $(target).DataTable();
+
+                        $(this).toggleClass('bg-primary border-primary');
+                        $(this).toggleClass('bg-secondary border-secondary');
 
                         // Toggle the visibility
                         table.column(columnIdx).visible(!table.column(columnIdx).visible());
