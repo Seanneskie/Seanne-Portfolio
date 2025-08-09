@@ -146,6 +146,13 @@ function initProjects() {
 
         row.appendChild(detailCol);
       });
+
+      // Ensure dynamically added elements match the current theme
+      if (typeof window.applyBootstrapTheme === 'function') {
+        const currentTheme =
+          document.body.classList.contains('light-theme') ? 'light' : 'dark';
+        window.applyBootstrapTheme(currentTheme);
+      }
     })
     .catch(err => console.error('Error loading projects:', err));
 }

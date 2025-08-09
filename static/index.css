@@ -123,6 +123,15 @@ p {
     color: var(--text);
 }
 
+.bg-charcoal {
+    background-color: var(--charcoal);
+    color: var(--text-hover);
+}
+
+table, th, td {
+    color: var(--text-dark);
+}
+
 
 
 
