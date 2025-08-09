@@ -8,6 +8,15 @@
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../js/tailwind-config.js"></script>
+    <style type="text/tailwindcss">
+      @layer base {
+        body { @apply bg-obsidian text-text font-sans; }
+        h1,h2,h3,h4,h5,h6 { @apply text-gray-800; }
+        p, li, strong { @apply text-gray-600; }
+        pre { @apply bg-coal text-text p-2; }
+      }
+    </style>
 
     <!-- AOS Animation CSS -->
     <link
@@ -17,7 +26,6 @@
 
     <!-- Custom CSS -->
     <link href="../static/index.css" rel="stylesheet" />
-    <link href="../static/project-details.css" rel="stylesheet" />
   </head>
 
   <body>
@@ -25,7 +33,7 @@
     <div id="details-header"></div>
 
     <!-- Project Content -->
-    <section class="hero w-full px-4"
+    <section class="bg-charcoal w-full px-4"
       data-aos="fade-up"
       data-aos-duration="800"
     >
@@ -35,9 +43,9 @@
         </div>
         <div class="w-full md:w-2/3 text-center md:text-left">
           <div
-            class="projectHeader mt-2"
+            class="projectHeader mt-2 text-text"
           >
-            <p id="blogHeader" class="lead">
+            <p id="blogHeader" class="text-lg">
               <strong>Overview:</strong><br />
               CoffeeHub is a full-stack web application designed to modernize
               coffee shop operations by streamlining product listings, orders,
