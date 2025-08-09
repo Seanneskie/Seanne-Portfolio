@@ -10,7 +10,7 @@ async function loadProjectAssets(project) {
   if (images.length === 0 && pdfs.length === 0) return;
 
   const section = document.createElement('section');
-  section.className = 'container my-5 bg-charcoal';
+  section.className = 'container-fluid my-5 bg-charcoal';
 
   const carousel = renderImages(project, images);
   if (carousel) section.appendChild(carousel);
