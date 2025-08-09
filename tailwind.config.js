@@ -15,6 +15,20 @@ module.exports = {
       fontFamily: {
         sans: ['Open Sans', 'sans-serif'],
       },
+      keyframes: {
+        'fade-up': {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        'fade-down': {
+          '0%': { opacity: '0', transform: 'translateY(-20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+      },
+      animation: {
+        'fade-up': 'fade-up 0.6s ease-out forwards',
+        'fade-down': 'fade-down 0.6s ease-out forwards',
+      },
     },
   },
   plugins: [],

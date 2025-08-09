@@ -16,10 +16,7 @@ function initSkills() {
 
         const tabcontent = document.createElement('div');
         tabcontent.id = cat.id;
-        tabcontent.className = 'tabcontent';
-        tabcontent.setAttribute('data-aos', 'fade-up');
-        tabcontent.setAttribute('data-aos-duration', '800');
-        tabcontent.setAttribute('data-aos-delay', '100');
+        tabcontent.className = 'tabcontent animate-fade-up';
 
         const side = document.createElement('div');
         side.className = 'side-by-side';
