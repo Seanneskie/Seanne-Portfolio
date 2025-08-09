@@ -189,6 +189,28 @@ p {
     color: var(--text-hover);
 }
 
+#work-experiences .card {
+    background-color: var(--obsidian);
+    color: var(--text);
+    border: none;
+}
+
+#work-experiences .card-header {
+    background-color: var(--onyx);
+    border-bottom: 1px solid var(--charcoal);
+}
+
+#work-experiences .btn-link {
+    color: var(--text);
+    text-decoration: none;
+}
+
+#work-experiences .btn-link:hover,
+#work-experiences .btn-link:focus {
+    color: var(--text-hover);
+    text-decoration: none;
+}
+
 
 #testimonials {
     background-color: var(--coal);
