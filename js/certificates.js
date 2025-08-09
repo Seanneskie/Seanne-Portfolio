@@ -5,6 +5,14 @@ function initCertificates() {
       const container = document.getElementById('certificateAccordion');
       if (!container) return;
 
+      // Collect unique tags
+      const tagsSet = new Set();
+      data.forEach(cert => {
+        if (Array.isArray(cert.tags)) {
+          cert.tags.forEach(t => t && tagsSet.add(t));
+        }
+      });
+
       // Prep wrapper as a responsive row
       container.innerHTML = '';
       const section = container.closest('section');
@@ -38,9 +46,14 @@ function initCertificates() {
 
         // Card (dark theme)
         const card = document.createElement('div');
-        card.className = 'card shadow-sm mb-3 border-0';
+        card.className = 'card shadow-sm mb-3 border-0 certificate-card';
         card.style.backgroundColor = 'var(--obsidian)';
         card.style.color = 'var(--text)';
+        card.dataset.title = (cert.title || '').toLowerCase();
+        card.dataset.desc = (cert.desc || '').toLowerCase();
+        card.dataset.tags = Array.isArray(cert.tags)
+          ? cert.tags.map(t => t.toLowerCase()).join(',')
+          : '';
         parentAcc.appendChild(card);
 
         // Header
@@ -136,6 +149,61 @@ function initCertificates() {
 
         row.appendChild(detailCol);
       });
+
+      // Render tag buttons
+      const tagContainer = document.getElementById('certificateTags');
+      if (tagContainer) {
+        const allBtn = document.createElement('button');
+        allBtn.className = 'tag-button active';
+        allBtn.dataset.tag = 'all';
+        allBtn.textContent = 'All';
+        tagContainer.appendChild(allBtn);
+
+        Array.from(tagsSet)
+          .sort()
+          .forEach(tag => {
+            const btn = document.createElement('button');
+            btn.className = 'tag-button';
+            btn.dataset.tag = tag.toLowerCase();
+            btn.textContent = tag;
+            tagContainer.appendChild(btn);
+          });
+      }
+
+      // Filtering logic
+      const searchInput = document.getElementById('certificateSearch');
+      const cards = container.querySelectorAll('.certificate-card');
+      function filterCertificates() {
+        const query = searchInput ? searchInput.value.toLowerCase() : '';
+        const activeTagBtn = document.querySelector('.tag-button.active');
+        const activeTag = activeTagBtn ? activeTagBtn.dataset.tag.toLowerCase() : 'all';
+
+        cards.forEach(card => {
+          const matchesSearch =
+            card.dataset.title.includes(query) || card.dataset.desc.includes(query);
+          const tags = card.dataset.tags ? card.dataset.tags.split(',') : [];
+          const matchesTag = activeTag === 'all' || tags.includes(activeTag);
+          card.style.display = matchesSearch && matchesTag ? '' : 'none';
+        });
+      }
+
+      if (searchInput) {
+        searchInput.addEventListener('input', filterCertificates);
+      }
+
+      if (tagContainer) {
+        tagContainer.addEventListener('click', e => {
+          if (e.target.classList.contains('tag-button')) {
+            tagContainer
+              .querySelectorAll('.tag-button')
+              .forEach(btn => btn.classList.remove('active'));
+            e.target.classList.add('active');
+            filterCertificates();
+          }
+        });
+      }
+
+      filterCertificates();
     })
     .catch(err => console.error('Error loading certificates:', err));
 }

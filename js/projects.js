@@ -5,6 +5,10 @@ function initProjects() {
       const container = document.getElementById('projectAccordion');
       if (!container) return;
 
+      const searchInput = document.getElementById('projectSearch');
+      const tagContainer = document.getElementById('tagButtonContainer');
+      const allTags = new Set();
+
       // reset & go full-width
       container.innerHTML = '';
       const section = container.closest('section');
@@ -27,11 +31,17 @@ function initProjects() {
 
       // Track whether we've seen the first item in each column
       const firstSeen = Array(numCols).fill(false);
+      const projectCards = [];
 
       data.forEach((project, index) => {
-        const colIndex = index % numCols;           // distribute L-R-L-R...
+        const colIndex = index % numCols; // distribute L-R-L-R...
         const parentAcc = colAccords[colIndex];
         const uid = `proj-${colIndex}-${index}-${Math.random().toString(36).slice(2, 7)}`;
+
+        // collect tags
+        if (Array.isArray(project.tags)) {
+          project.tags.forEach(t => allTags.add(t));
+        }
 
         // Open rule: open only the FIRST item of column 0; column 1 stays closed
         const isFirstInThisCol = !firstSeen[colIndex];
@@ -145,7 +155,72 @@ function initProjects() {
         detailCol.appendChild(footer);
 
         row.appendChild(detailCol);
+
+        // store metadata for filtering
+        card.dataset.title = (project.title || '').toLowerCase();
+        card.dataset.tags = (project.tags || [])
+          .map(t => t.toLowerCase())
+          .join(',');
+        projectCards.push(card);
       });
+
+      // build tag filter buttons
+      if (tagContainer) {
+        tagContainer.innerHTML = '';
+        const allBtn = document.createElement('button');
+        allBtn.textContent = 'All';
+        allBtn.className = 'btn btn-sm btn-outline-light mr-2 mb-2 tag-button active';
+        allBtn.dataset.tag = 'all';
+        tagContainer.appendChild(allBtn);
+
+        Array.from(allTags)
+          .sort((a, b) => a.localeCompare(b))
+          .forEach(tag => {
+            const btn = document.createElement('button');
+            btn.textContent = tag;
+            btn.className =
+              'btn btn-sm btn-outline-light mr-2 mb-2 tag-button';
+            btn.dataset.tag = tag;
+            tagContainer.appendChild(btn);
+          });
+      }
+
+      function filterProjects() {
+        const query = searchInput ? searchInput.value.toLowerCase() : '';
+        const activeBtn = tagContainer
+          ? tagContainer.querySelector('.tag-button.active')
+          : null;
+        const activeTag = activeBtn ? activeBtn.dataset.tag.toLowerCase() : 'all';
+
+        projectCards.forEach(card => {
+          const title = card.dataset.title || '';
+          const tags = card.dataset.tags ? card.dataset.tags.split(',') : [];
+          const matchesSearch =
+            !query ||
+            title.includes(query) ||
+            tags.some(t => t.includes(query));
+          const matchesTag = activeTag === 'all' || tags.includes(activeTag);
+          card.style.display = matchesSearch && matchesTag ? '' : 'none';
+        });
+      }
+
+      if (searchInput) {
+        searchInput.addEventListener('input', filterProjects);
+      }
+
+      if (tagContainer) {
+        tagContainer.addEventListener('click', e => {
+          const btn = e.target.closest('.tag-button');
+          if (!btn) return;
+          tagContainer
+            .querySelectorAll('.tag-button')
+            .forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          filterProjects();
+        });
+      }
+
+      filterProjects();
 
       // Ensure dynamically added elements match the current theme
       if (typeof window.applyBootstrapTheme === 'function') {
