@@ -4,6 +4,7 @@ function initWorkExperiences() {
     .then(data => {
       const container = document.getElementById('workExperienceAccordion');
       if (!container) return;
+
       data.forEach((exp, index) => {
         const card = document.createElement('div');
         card.className = 'card mb-3';
@@ -23,8 +24,8 @@ function initWorkExperiences() {
         const button = document.createElement('button');
         button.className = 'btn btn-link text-left w-100';
         button.type = 'button';
-        button.setAttribute('data-toggle', 'collapse');
-        button.setAttribute('data-target', `#collapse${index}`);
+        button.setAttribute('data-bs-toggle', 'collapse');
+        button.setAttribute('data-bs-target', `#collapse${index}`);
         button.setAttribute('aria-expanded', index === 0 ? 'true' : 'false');
         button.setAttribute('aria-controls', `collapse${index}`);
         let buttonHTML = `<strong>${exp.company}</strong> – ${exp.project}`;
@@ -41,17 +42,17 @@ function initWorkExperiences() {
         collapse.id = `collapse${index}`;
         collapse.className = 'collapse' + (index === 0 ? ' show' : '');
         collapse.setAttribute('aria-labelledby', `heading${index}`);
-        collapse.setAttribute('data-parent', '#workExperienceAccordion');
+        collapse.setAttribute('data-bs-parent', '#workExperienceAccordion');
 
         const body = document.createElement('div');
         body.className = 'card-body';
 
         const summary = document.createElement('p');
         summary.className = 'card-text';
-        summary.innerHTML = exp.summary;
+        summary.innerHTML = exp.summary || '';
         body.appendChild(summary);
 
-        if (exp.tech && exp.tech.length) {
+        if (Array.isArray(exp.tech) && exp.tech.length) {
           const tech = document.createElement('p');
           tech.className = 'mb-2 fw-bold fst-italic';
           tech.style.color = 'var(--text)';
@@ -59,7 +60,7 @@ function initWorkExperiences() {
           body.appendChild(tech);
         }
 
-        if (exp.highlights && exp.highlights.length) {
+        if (Array.isArray(exp.highlights) && exp.highlights.length) {
           const ul = document.createElement('ul');
           ul.className = 'mb-0';
           exp.highlights.forEach(item => {
