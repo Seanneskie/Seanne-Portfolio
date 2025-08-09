@@ -1236,3 +1236,15 @@ p#blogHeader {
     padding: 1rem;
     height: auto;
 }
+
+
+.certificate-thumb {
+  height: 180px;     /* tweak as you like */
+  object-fit: cover; /* keep aspect ratio, crop overflow */
+  border: 1px solid var(--charcoal);
+  border-radius: .25rem;
+}
+
+@media (min-width: 992px) {
+  .certificate-thumb { height: 220px; }
+}
