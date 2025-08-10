@@ -33,8 +33,16 @@ async function loadBlogPosts() {
 
       // sort
       items.sort((a, b) => {
-        const da = new Date(a.date), db = new Date(b.date);
-        return state.sort === 'oldest' ? da - db : db - da;
+        switch (state.sort) {
+          case 'oldest':
+            return new Date(a.date) - new Date(b.date);
+          case 'title-az':
+            return (a.title || '').localeCompare(b.title || '');
+          case 'title-za':
+            return (b.title || '').localeCompare(a.title || '');
+          default:
+            return new Date(b.date) - new Date(a.date);
+        }
       });
 
       if (!items.length) {
