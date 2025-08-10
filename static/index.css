@@ -182,23 +182,54 @@ table, th, td {
     background-color: var(--coal);
 }
 
-.blog-post {
-    background-color: var(--charcoal);
-    color: var(--text);
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 20px;
+.blog-card {
+    transition: transform .15s ease, box-shadow .15s ease;
+    height: 100%;
 }
 
-.blog-post h3 {
-    color: var(--text-hover);
-    margin-top: 0;
+.blog-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, .12);
 }
 
-.blog-date {
-    font-size: 0.9rem;
-    color: var(--text);
-    margin-bottom: 10px;
+.blog-desc {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: 3.8em;
+}
+
+.blog-badge {
+    font-size: .75rem;
+}
+
+.blog-cover {
+    object-fit: cover;
+    height: 160px;
+}
+
+.skeleton {
+    position: relative;
+    overflow: hidden;
+    background: #e9ecef;
+    border-radius: .5rem;
+    min-height: 220px;
+}
+
+.skeleton::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .45), transparent);
+    animation: shimmer 1.2s infinite;
+    transform: translateX(-100%);
+}
+
+@keyframes shimmer {
+    100% {
+        transform: translateX(100%);
+    }
 }
 
 
