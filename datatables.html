@@ -310,10 +310,21 @@
                                     let column = this;
                                     let title = column.footer().textContent;
 
-                                    // Create input element for filtering
+                                    // Create Bootstrap input group for filtering
+                                    let wrapper = document.createElement('div');
+                                    wrapper.className = 'input-group input-group-sm';
+
+                                    let span = document.createElement('span');
+                                    span.className = 'input-group-text';
+                                    span.innerHTML = '<i class="fas fa-search"></i>';
+
                                     let input = document.createElement('input');
+                                    input.className = 'form-control';
                                     input.placeholder = 'Search ' + title;
-                                    column.footer().replaceChildren(input);
+
+                                    wrapper.appendChild(span);
+                                    wrapper.appendChild(input);
+                                    column.footer().replaceChildren(wrapper);
 
                                     // Add event listener for search functionality
                                     input.addEventListener('keyup', function () {
@@ -345,10 +356,21 @@
                                     let column = this;
                                     let title = column.footer().textContent;
 
-                                    // Create input element for filtering
+                                    // Create Bootstrap input group for filtering
+                                    let wrapper = document.createElement('div');
+                                    wrapper.className = 'input-group input-group-sm';
+
+                                    let span = document.createElement('span');
+                                    span.className = 'input-group-text';
+                                    span.innerHTML = '<i class="fas fa-search"></i>';
+
                                     let input = document.createElement('input');
+                                    input.className = 'form-control';
                                     input.placeholder = 'Search ' + title;
-                                    column.footer().replaceChildren(input);
+
+                                    wrapper.appendChild(span);
+                                    wrapper.appendChild(input);
+                                    column.footer().replaceChildren(wrapper);
 
                                     // Add event listener for search functionality
                                     input.addEventListener('keyup', function () {
