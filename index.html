@@ -45,6 +45,7 @@
     <!-- Custom CSS -->
     <link href="static/index.css" rel="stylesheet" />
     <script src="js/section-loader.js"></script>
+    <script src="js/search-box.js"></script>
     </head>
   <body style="width: 100vw; overflow-x: hidden">
     <div class="cover">
@@ -120,7 +121,9 @@
     <script src="js/projects.js"></script>
     <script>
       loadSection("projects", "sections/projects.html", () => {
-        if (typeof initProjects === "function") initProjects();
+        loadSearchBox("projectSearchBox", "projectSearch", "Search projects...", "Search projects", () => {
+          if (typeof initProjects === "function") initProjects();
+        });
       });
     </script>
 
@@ -147,7 +150,9 @@
     <script src="js/certificates.js"></script>
     <script>
       loadSection("certificates", "sections/certificates.html", () => {
-        if (typeof initCertificates === "function") initCertificates();
+        loadSearchBox("certificateSearchBox", "certificateSearch", "Search certificates", "Search certificates", () => {
+          if (typeof initCertificates === "function") initCertificates();
+        });
       });
     </script>
 
@@ -164,7 +169,9 @@
     <script src="js/blog.js"></script>
     <script>
       loadSection("blog", "sections/blog.html", () => {
-        if (typeof loadBlogPosts === "function") loadBlogPosts();
+        loadSearchBox("blogSearchBox", "blogSearch", "Search posts…", "Search blog posts", () => {
+          if (typeof loadBlogPosts === "function") loadBlogPosts();
+        });
       });
     </script>
     <div id="achievements"></div>
