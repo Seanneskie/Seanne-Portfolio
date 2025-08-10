@@ -168,8 +168,11 @@
       });
     </script>
     <div id="achievements"></div>
+    <script src="js/achievements.js"></script>
     <script>
-      loadSection("achievements", "sections/achievements.html");
+      loadSection("achievements", "sections/achievements.html", () => {
+        if (typeof initAchievements === "function") initAchievements();
+      });
     </script>
     <div id="testimonials"></div>
     <!-- <div id="contactSection"></div> -->
