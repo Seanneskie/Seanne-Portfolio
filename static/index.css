@@ -185,11 +185,13 @@ table, th, td {
 .blog-card {
     transition: transform .15s ease, box-shadow .15s ease;
     height: 100%;
+    border: 1px solid var(--charcoal);
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, .1);
 }
 
 .blog-card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, .12);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, .15);
 }
 
 .blog-desc {
@@ -198,6 +200,9 @@ table, th, td {
     -webkit-box-orient: vertical;
     overflow: hidden;
     min-height: 3.8em;
+    background-color: var(--charcoal);
+    padding: .75rem;
+    border-radius: .25rem;
 }
 
 .blog-badge {
@@ -207,6 +212,18 @@ table, th, td {
 .blog-cover {
     object-fit: cover;
     height: 160px;
+}
+
+.btn-charcoal {
+    background-color: var(--charcoal);
+    border-color: var(--charcoal);
+    color: var(--text-hover);
+}
+
+.btn-charcoal:hover {
+    background-color: var(--obsidian);
+    border-color: var(--obsidian);
+    color: var(--text-hover);
 }
 
 .skeleton {
