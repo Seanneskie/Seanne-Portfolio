@@ -47,6 +47,12 @@ async function loadBlogPosts() {
 
       // draw
       items.forEach(post => container.appendChild(renderCard(post)));
+
+      // ensure newly added elements follow current theme
+      if (typeof window.applyBootstrapTheme === 'function') {
+        const theme = document.body.classList.contains('light-theme') ? 'light' : 'dark';
+        window.applyBootstrapTheme(theme);
+      }
     }
 
     render();
@@ -69,10 +75,10 @@ function renderSkeletons(container, count = 6) {
     col.className = 'col-12 col-md-6 col-lg-4';
     col.innerHTML = `
       <div class="skeleton p-3">
-        <div style="height: 160px; border-radius: .5rem; background:#dee2e6;"></div>
-        <div class="mt-3" style="height: 18px; width: 70%; background:#dee2e6; border-radius:.25rem;"></div>
-        <div class="mt-2" style="height: 12px; width: 50%; background:#e5e7eb; border-radius:.25rem;"></div>
-        <div class="mt-3" style="height: 44px; background:#f1f3f5; border-radius:.25rem;"></div>
+        <div style="height: 160px; border-radius: .5rem; background: var(--charcoal);"></div>
+        <div class="mt-3" style="height: 18px; width: 70%; background: var(--charcoal); border-radius:.25rem;"></div>
+        <div class="mt-2" style="height: 12px; width: 50%; background: var(--charcoal); border-radius:.25rem;"></div>
+        <div class="mt-3" style="height: 44px; background: var(--charcoal); border-radius:.25rem;"></div>
       </div>`;
     container.appendChild(col);
   }
@@ -99,7 +105,7 @@ function renderCard(post) {
       ${image ? `
         <img src="${escapeAttr(image)}" class="card-img-top blog-cover" alt="${escapeAttr(title)} cover" loading="lazy" />`
       : `
-        <div class="blog-cover w-100 d-flex align-items-center justify-content-center bg-light">
+        <div class="blog-cover w-100 d-flex align-items-center justify-content-center" style="background: var(--charcoal);">
           <span class="text-muted small">No cover image</span>
         </div>`}
       <div class="card-body d-flex flex-column">
@@ -113,7 +119,7 @@ function renderCard(post) {
         ${Array.isArray(tags) && tags.length ? `
           <div class="mb-3">
             ${tags.slice(0,4).map(t => `<span class="badge bg-secondary blog-badge me-1 mb-1">${escapeHTML(t)}</span>`).join('')}
-            ${tags.length > 4 ? `<span class="badge bg-light text-muted blog-badge">+${tags.length-4}</span>` : ''}
+            ${tags.length > 4 ? `<span class="badge text-muted blog-badge" style="background: var(--charcoal);">+${tags.length-4}</span>` : ''}
           </div>` : ''
         }
         <div class="mt-auto d-flex align-items-center gap-2">
