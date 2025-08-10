@@ -101,7 +101,7 @@ function renderCard(post) {
   const readTime = estimateReadTime(description, post.wordCount);
 
   col.innerHTML = `
-    <article class="card blog-card border-0 shadow-sm flex-grow-1">
+    <article class="card blog-card flex-grow-1">
       ${image ? `
         <img src="${escapeAttr(image)}" class="card-img-top blog-cover" alt="${escapeAttr(title)} cover" loading="lazy" />`
       : `
@@ -123,7 +123,7 @@ function renderCard(post) {
           </div>` : ''
         }
         <div class="mt-auto d-flex align-items-center gap-2">
-          <a href="${escapeAttr(url)}" target="_blank" rel="noopener" class="btn btn-sm btn-primary">Read More</a>
+          <a href="${escapeAttr(url)}" target="_blank" rel="noopener" class="btn btn-sm btn-charcoal">Read More</a>
           <a href="${escapeAttr(url)}" target="_blank" rel="noopener" class="btn btn-sm btn-outline-secondary" aria-label="Share this post"
              onclick="navigator.share ? navigator.share({ title: '${escapeAttr(title)}', url: '${escapeAttr(url)}' }) : window.open('${escapeAttr(url)}','_blank'); return false;">
             Share
