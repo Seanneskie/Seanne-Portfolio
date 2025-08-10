@@ -95,7 +95,7 @@ function renderCard(post) {
   } = post;
 
   const col = document.createElement('div');
-  col.className = 'col-12 col-md-6 col-lg-4 d-flex';
+  col.className = 'col-12 col-md-6 col-lg-4 d-flex mt-5';
 
   const prettyDate = safePrettyDate(date);
   const readTime = estimateReadTime(description, post.wordCount);
@@ -105,10 +105,10 @@ function renderCard(post) {
       ${image ? `
         <img src="${escapeAttr(image)}" class="card-img-top blog-cover" alt="${escapeAttr(title)} cover" loading="lazy" />`
       : `
-        <div class="blog-cover w-100 d-flex align-items-center justify-content-center" style="background: var(--charcoal);">
+        <div class="blog-cover w-100 d-flex align-items-center justify-content-center" style="background: var(--obsidian);">
           <span class="text-muted small">No cover image</span>
         </div>`}
-      <div class="card-body d-flex flex-column">
+      <div class="card-body d-flex flex-column" style="background: var(--charcoal);" >
         <h3 class="h5 card-title mb-2">${escapeHTML(title)}</h3>
         <div class="d-flex align-items-center gap-2 mb-2 text-muted small">
           <time datetime="${escapeAttr(date)}">${prettyDate}</time>
