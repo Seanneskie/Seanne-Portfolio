@@ -2,16 +2,37 @@
   <h2>Blog</h2>
   <p>Latest posts and articles.</p>
 
-  <!-- Controls -->
-  <div class="d-flex flex-wrap align-items-center gap-2">
-    <input id="blogSearch" class="form-control" placeholder="Search posts…" style="max-width: 280px;" />
-    <select id="blogSort" class="form-select" style="max-width: 180px;">
+  <!-- Controls (Bootstrap 4) -->
+<div class="d-flex flex-column flex-md-row align-items-stretch align-items-md-center w-100">
+
+  <!-- Search -->
+  <div class="input-group mb-2 mb-md-0 mr-md-2" style="max-width: 360px;">
+    <div class="input-group-prepend">
+      <span class="input-group-text">
+        <!-- Optional: Font Awesome -->
+        <i class="fa fa-search" aria-hidden="true"></i>
+      </span>
+    </div>
+    <input id="blogSearch"
+           class="form-control"
+           placeholder="Search posts…"
+           aria-label="Search blog posts">
+  </div>
+
+  <!-- Sort -->
+  <div class="d-flex">
+    <select id="blogSort"
+            class="custom-select"
+            style="max-width: 220px;"
+            aria-label="Sort blog posts">
       <option value="newest">Newest</option>
       <option value="oldest">Oldest</option>
       <option value="title-az">Title A–Z</option>
       <option value="title-za">Title Z–A</option>
     </select>
   </div>
+</div>
+
 
   <!-- Posts grid -->
   <div id="blogPosts" class="row gx-3 gy-4"></div>
