@@ -17,3 +17,17 @@ function loadSection(id, path, callback) {
     .catch((error) => console.error(`Error loading ${path}:`, error));
 }
 
+function loadSearchBox(targetId, inputId, placeholder) {
+  return loadSection(targetId, 'sections/components/search-box.html', () => {
+    const container = document.getElementById(targetId);
+    if (!container) return;
+    const input = container.querySelector('input');
+    if (!input) return;
+    if (inputId) input.id = inputId;
+    if (placeholder) {
+      input.placeholder = placeholder;
+      input.setAttribute('aria-label', placeholder);
+    }
+  });
+}
+

@@ -120,7 +120,9 @@
     <script src="js/projects.js"></script>
     <script>
       loadSection("projects", "sections/projects.html", () => {
-        if (typeof initProjects === "function") initProjects();
+        loadSearchBox('projectSearchBox', 'projectSearch', 'Search projects...').then(() => {
+          if (typeof initProjects === "function") initProjects();
+        });
       });
     </script>
 
@@ -147,7 +149,9 @@
     <script src="js/certificates.js"></script>
     <script>
       loadSection("certificates", "sections/certificates.html", () => {
-        if (typeof initCertificates === "function") initCertificates();
+        loadSearchBox('certificateSearchBox', 'certificateSearch', 'Search certificates').then(() => {
+          if (typeof initCertificates === "function") initCertificates();
+        });
       });
     </script>
 
@@ -164,7 +168,9 @@
     <script src="js/blog.js"></script>
     <script>
       loadSection("blog", "sections/blog.html", () => {
-        if (typeof loadBlogPosts === "function") loadBlogPosts();
+        loadSearchBox('blogSearchBox', 'blogSearch', 'Search posts…').then(() => {
+          if (typeof loadBlogPosts === "function") loadBlogPosts();
+        });
       });
     </script>
     <div id="achievements"></div>

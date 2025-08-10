@@ -161,7 +161,3 @@ function escapeHTML(str = '') {
 function escapeAttr(str = '') {
   return escapeHTML(str).replace(/`/g, '&#96;');
 }
-
-// kick off
-loadBlogPosts();
-
