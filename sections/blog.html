@@ -1,5 +1,16 @@
 <section id="blog" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
   <h2>Blog</h2>
   <p>Latest posts and articles.</p>
-  <div class="blog-list" id="blogPosts"></div>
+
+  <!-- Controls -->
+  <div class="d-flex flex-wrap align-items-center gap-2 mb-3">
+    <input id="blogSearch" class="form-control" placeholder="Search posts…" style="max-width: 280px;" />
+    <select id="blogSort" class="form-select" style="max-width: 180px;">
+      <option value="newest">Newest</option>
+      <option value="oldest">Oldest</option>
+    </select>
+  </div>
+
+  <!-- Posts grid -->
+  <div id="blogPosts" class="row g-3"></div>
 </section>
