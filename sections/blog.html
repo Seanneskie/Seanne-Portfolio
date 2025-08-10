@@ -1,34 +1,30 @@
-<section
-  id="blog"
-  data-aos="fade-up"
-  data-aos-duration="800"
-  data-aos-delay="100"
->
+
+<section id="blog" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
   <h2>Blog</h2>
   <p>Latest posts and articles.</p>
 
-  <!-- Controls (Bootstrap 4) -->
-<div class="d-flex flex-column flex-md-row align-items-stretch align-items-md-center w-100">
-
-  <!-- Search -->
-  <div id="blogSearchBox"></div>
+  <!-- Controls -->
+  <form class="form-inline d-flex flex-wrap align-items-center w-100 mb-3">
+    <!-- Search -->
+    <div id="blogSearchBox" class="input-group mb-2 mr-sm-2" style="flex:1 1 30vw; min-width:240px;">
+      <div class="input-group-prepend">
+        <span class="input-group-text"><span class="sr-only">Search</span>🔎</span>
+      </div>
+      <input id="blogSearch" type="search" class="form-control" placeholder="Search posts…" aria-label="Search posts">
+    </div>
 
     <!-- Sort -->
-    <div class="d-flex">
-      <select
-        id="blogSort"
-        class="custom-select"
-        style="max-width: 220px"
-        aria-label="Sort blog posts"
-      >
+    <div class="mb-2">
+      <label for="blogSort" class="sr-only">Sort blog posts</label>
+      <select id="blogSort" class="custom-select flex-shrink-0">
         <option value="newest">Newest</option>
         <option value="oldest">Oldest</option>
         <option value="title-az">Title A–Z</option>
         <option value="title-za">Title Z–A</option>
       </select>
     </div>
-  </div>
+  </form>
 
   <!-- Posts grid -->
-  <div id="blogPosts" class="row gx-3 gy-4"></div>
+  <div id="blogPosts" class="row"></div>
 </section>

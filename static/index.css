@@ -320,7 +320,6 @@ table, th, td {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    justify-content: center;
 }
 
 .tag-button {
@@ -1473,4 +1472,16 @@ p#blogHeader {
 
 @media (min-width: 992px) {
   .certificate-thumb { height: 220px; }
+}
+
+/* Make sort full-width on mobile, 30vw from md and up */
+#blogSort {
+  width: 100%;
+  max-width: 100%;
+  flex-shrink: 0;
+}
+@media (min-width: 768px) {
+  #blogSort {
+    width: 30vw;
+  }
 }
