@@ -1,0 +1,71 @@
+name: Deploy Next.js to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      # Try npm ci, fall back to npm install if lockfile is out of sync
+      - name: Install dependencies (prefer ci)
+        id: deps
+        run: |
+          set -e
+          if npm ci; then
+            echo "ci_ok=true" >> $GITHUB_OUTPUT
+          else
+            echo "npm ci failed; falling back to npm install to refresh lockfile"
+            rm -rf node_modules package-lock.json
+            npm install
+            echo "ci_ok=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Build
+        env:
+          NEXT_TELEMETRY_DISABLED: 1
+          NODE_ENV: production   # 👈 Force production mode
+        run: |
+          npm run build || npx next build
+          # If not using output:'export', ensure static export exists
+          if [ ! -d "out" ]; then
+            echo "No ./out folder found; running next export"
+            npx next export
+          fi
+          # GitHub Pages needs this to skip Jekyll processing
+          touch out/.nojekyll
+
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./out
+
+  deploy:
+    environment:
+      name: github-pages
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
