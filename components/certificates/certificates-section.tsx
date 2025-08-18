@@ -13,17 +13,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
 import { useData } from "@/lib/use-data";
 import { withBasePath } from "@/lib/utils";
 
@@ -36,10 +25,12 @@ interface Certificate {
 }
 
 const MAX_BADGES = 6;
+const MAX_DESC_LENGTH = 120;
 
 export default function CertificatesSection() {
   const [search, setSearch] = useState("");
   const [tag, setTag] = useState("");
+  const [expanded, setExpanded] = useState<Record<number, boolean>>({});
 
   const { data, loading, error } = useData<Certificate[]>("certificates.json");
   const certificates = useMemo(() => data ?? [], [data]);
@@ -137,7 +128,9 @@ export default function CertificatesSection() {
           <AnimatePresence>
             {filtered.map((c: Certificate, i: number) => {
               const labels = Array.from(new Set([...c.tags, ...c.skills]));
-              const extra = Math.max(0, labels.length - MAX_BADGES);
+              const isExpanded = !!expanded[i];
+              const showToggle =
+                labels.length > MAX_BADGES || c.desc.length > MAX_DESC_LENGTH;
               const badgeCls =
                 "rounded-full bg-teal-50 text-teal-800 ring-1 ring-inset ring-teal-200 dark:bg-teal-900/30 dark:text-teal-200 dark:ring-teal-800";
 
@@ -154,101 +147,84 @@ export default function CertificatesSection() {
                 >
                   <Card
                     className={[
-                      "group relative h-full min-h-[220px] overflow-hidden rounded-2xl p-4",
+                      "group relative overflow-hidden rounded-2xl p-4",
                       "border border-teal-200/70 bg-white/85 backdrop-blur",
                       "dark:border-teal-800/70 dark:bg-gray-950/60",
                       "transition-shadow hover:shadow-lg hover:shadow-teal-300/30 dark:hover:shadow-teal-900/20",
                       "focus-within:ring-1 focus-within:ring-teal-500/60",
                       "flex flex-col",
+                      isExpanded ? "" : "h-64",
                     ].join(" ")}
                   >
-                    <Accordion type="single" collapsible className="flex-1">
-                      <AccordionItem value="details">
-                        <AccordionTrigger
-                          aria-label={`Toggle details for ${c.title}`}
-                          className="p-0 text-left"
-                        >
-                          <div className="text-left">
-                            <h3 className="text-lg font-semibold text-teal-800 dark:text-teal-200">
-                              {c.title}
-                            </h3>
+                    <div className="flex-1">
+                      <h3 className="text-lg font-semibold text-teal-800 dark:text-teal-200">
+                        {c.title}
+                      </h3>
 
-                            <div className="mt-2 flex flex-wrap items-center gap-2">
-                              {labels.slice(0, MAX_BADGES).map((label) => (
-                                <Badge
-                                  key={label}
-                                  variant="secondary"
-                                  className={badgeCls}
-                                >
-                                  {label}
-                                </Badge>
-                              ))}
-
-                              {extra > 0 && (
-                                <Popover>
-                                  <PopoverTrigger asChild>
-                                    <button
-                                      type="button"
-                                      aria-label={`Show ${extra} more tags and skills`}
-                                      className={[
-                                        "h-6 rounded-full px-2 text-xs",
-                                        "bg-teal-50 text-teal-800 ring-1 ring-inset ring-teal-200",
-                                        "dark:bg-teal-900/30 dark:text-teal-200 dark:ring-teal-800",
-                                        "hover:opacity-90 transition",
-                                      ].join(" ")}
-                                    >
-                                      +{extra} more
-                                    </button>
-                                  </PopoverTrigger>
-                                  <PopoverContent
-                                    align="start"
-                                    side="bottom"
-                                    className="w-64 p-3"
-                                  >
-                                    <p className="mb-2 text-xs text-gray-600 dark:text-gray-300">
-                                      More tags & skills
-                                    </p>
-                                    <div className="flex flex-wrap gap-2">
-                                      {labels.slice(MAX_BADGES).map((l) => (
-                                        <Badge
-                                          key={l}
-                                          variant="secondary"
-                                          className={badgeCls}
-                                        >
-                                          {l}
-                                        </Badge>
-                                      ))}
-                                    </div>
-                                  </PopoverContent>
-                                </Popover>
-                              )}
-                            </div>
-                          </div>
-                        </AccordionTrigger>
-
-                        <AccordionContent className="pt-2">
-                          <p className="text-sm text-gray-700 dark:text-gray-200">
-                            {c.desc}
-                          </p>
-                          {c.link && (
-                            <Button
-                              asChild
-                              size="sm"
-                              className="mt-4 border-0 bg-gradient-to-r from-teal-600 via-cyan-500 to-sky-500 text-white focus-visible:border-teal-500 focus-visible:ring-teal-500/50"
+                      <div className="mt-2 flex flex-wrap items-center gap-2">
+                        {labels
+                          .slice(0, isExpanded ? labels.length : MAX_BADGES)
+                          .map((label) => (
+                            <Badge
+                              key={label}
+                              variant="secondary"
+                              className={badgeCls}
                             >
-                              <a
-                                href={c.link.startsWith("/") ? withBasePath(c.link) : c.link}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                aria-label={`View ${c.title} certificate`}
-                              >
-                                View certificate
-                              </a>
-                            </Button>
-                          )}
-                        </AccordionContent>
-                      </AccordionItem>
-                    </Accordion>
+                              {label}
+                            </Badge>
+                          ))}
+                      </div>
+
+                      <p
+                        className={[
+                          "mt-2 text-sm text-gray-700 dark:text-gray-200",
+                          !isExpanded && "line-clamp-3",
+                        ]
+                          .filter(Boolean)
+                          .join(" ")}
+                      >
+                        {c.desc}
+                      </p>
+                    </div>
+
+                    <div className="mt-4 flex flex-col gap-2">
+                      {c.link && (
+                        <Button
+                          asChild
+                          size="sm"
+                          className="border-0 bg-gradient-to-r from-teal-600 via-cyan-500 to-sky-500 text-white focus-visible:border-teal-500 focus-visible:ring-teal-500/50"
+                        >
+                          <a
+                            href={
+                              c.link.startsWith("/")
+                                ? withBasePath(c.link)
+                                : c.link
+                            }
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label={`View ${c.title} certificate`}
+                          >
+                            View certificate
+                          </a>
+                        </Button>
+                      )}
+
+                      {showToggle && (
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={() =>
+                            setExpanded((prev) => ({
+                              ...prev,
+                              [i]: !isExpanded,
+                            }))
+                          }
+                          className="self-start px-0 text-teal-700 hover:underline dark:text-teal-300"
+                        >
+                          {isExpanded ? "Show less" : "Show more"}
+                        </Button>
+                      )}
+                    </div>
 
                     <span
                       aria-hidden
