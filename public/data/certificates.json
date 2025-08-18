@@ -1,0 +1,376 @@
+[
+  {
+    "tags": [
+      "SoloLearn",
+      "AI"
+    ],
+    "title": "Data Analytics with AI - SoloLearn",
+    "desc": "This certificate demonstrates proficiency in using AI-powered tools and techniques for data analytics, including interpreting and visualizing insights effectively. Date: June 2025",
+    "link": "https://api2.sololearn.com/v2/certificates/CC-JNHS4VJF/image/png?t=638858996306089130",
+    "skills": [
+      "Programming"
+    ]
+  },
+  {
+    "tags": [
+      "SoloLearn",
+      "ML"
+    ],
+    "title": "ML for Beginners - SoloLearn",
+    "desc": "This certificate demonstrates foundational knowledge of machine learning concepts, including supervised and unsupervised learning, algorithms, and practical applications for beginners. Date: June 2025",
+    "link": "https://api2.sololearn.com/v2/certificates/CC-CZ7RAWOZ/image/png?t=638858990246751340",
+    "skills": [
+      "Programming"
+    ]
+  },
+  {
+    "tags": [
+      "SoloLearn",
+      "AI"
+    ],
+    "title": "Prompt Engineering - SoloLearn",
+    "desc": "This certificate demonstrates an understanding of prompt engineering techniques for large language models, covering best practices for crafting effective prompts, refining outputs, and optimizing AI interactions. Date: June 2025",
+    "link": "https://api2.sololearn.com/v2/certificates/CC-CNESFDKR/image/png?t=638854709909899810",
+    "skills": [
+      "Programming"
+    ]
+  },
+  {
+    "tags": [
+      "AI"
+    ],
+    "title": "Introduction to Modern AI",
+    "desc": "This certificate covers the fundamental principles of modern artificial intelligence, including machine learning concepts, ethical considerations, and real-world applications of AI technologies. Date: June 2025",
+    "link": "https://www.credly.com/badges/472b8d57-ffb3-49d4-9ab1-06aa78057e06/linked_in_profile",
+    "skills": [
+      "Programming"
+    ]
+  },
+  {
+    "tags": [
+      "FreeCodeCamp",
+      "JavaScript"
+    ],
+    "title": "FreeCodeCamp - JavaScript Algorithms and Data Structures",
+    "desc": "This certificate demonstrates proficiency in JavaScript algorithms, data structures, and problem-solving. Date: June 2025",
+    "link": "https://www.freecodecamp.org/certification/Seanneskie/javascript-algorithms-and-data-structures-v8",
+    "skills": [
+      "Programming"
+    ]
+  },
+  {
+    "tags": [
+      "Cisco",
+      "Data"
+    ],
+    "title": "Data Analytics Essentials - Cisco",
+    "desc": "This certificate verifies foundational knowledge and essential skills in data analytics, as issued by Cisco Networking Academy. Date: June 2025",
+    "link": "https://www.credly.com/badges/b34bb4a5-2de9-4759-be14-a17bd194824d/linked_in_profile",
+    "skills": [
+      "DataAnalysis"
+    ]
+  },
+  {
+    "tags": [
+      "FreeCodeCamp",
+      "Python"
+    ],
+    "title": "FreeCodeCamp - Scientific Computing with Python",
+    "desc": "This certificate demonstrates proficiency in using Python. Date:April 2025",
+    "link": "https://www.freecodecamp.org/certification/Seanneskie/scientific-computing-with-python-v7",
+    "skills": [
+      "Programming"
+    ]
+  },
+  {
+    "tags": [
+      "FreeCodeCamp",
+      "Web"
+    ],
+    "title": "FreeCodeCamp - Web Responsive Design",
+    "desc": "This certificate demonstrates proficiency in responsive web design using HTML, CSS, and modern layout techniques. Date:April 2025",
+    "link": "https://www.freecodecamp.org/certification/Seanneskie/responsive-web-design",
+    "skills": [
+      "Programming"
+    ]
+  },
+  {
+    "tags": [
+      "Data"
+    ],
+    "title": "Visualize Your Data",
+    "desc": "This course covers essential tools and techniques for visualizing data to uncover insights and drive decision-making. Date: March 2025",
+    "link": "/static/certificates/visualize_your_data.jpg",
+    "skills": [
+      "DataAnalysis"
+    ]
+  },
+  {
+    "tags": [
+      "Data"
+    ],
+    "title": "Coding for Data",
+    "desc": "Coding is an important part of data analysis, and can be used in a variety of ways. Date: October 2024",
+    "link": "/static/certificates/coding_for_data.jpg",
+    "skills": [
+      "DataAnalysis"
+    ]
+  },
+  {
+    "tags": [
+      "Programming"
+    ],
+    "title": "Intro to C",
+    "desc": "C is a general-purpose programming language. It was created in the 1970s by Dennis Ritchie and remains very widely used and influential. Date: October 2024",
+    "link": "/static/certificates/intro_to_c.jpg",
+    "skills": [
+      "Programming"
+    ]
+  },
+  {
+    "tags": [
+      "Government"
+    ],
+    "title": "Civil Service Professional Examination",
+    "desc": "Successfully passed the Civil Service Professional Examination, demonstrating proficiency in core competencies required for professional roles in Philippine government service. Date: August 2024",
+    "link": "/static/pdfs/csc.pdf",
+    "skills": [
+      "OtherSkill"
+    ]
+  },
+  {
+    "tags": [
+      "Google",
+      "AI"
+    ],
+    "title": "Gemini for end-to-end SDLC - Google Cloud",
+    "desc": "I learned how to develop and build a web application, fix errors in the application, develop tests, and query data with the help of Gemini AI. Date: September 2024",
+    "link": "/static/certificates/gemini.png",
+    "skills": [
+      "OtherSkill",
+      "Programming"
+    ]
+  },
+  {
+    "tags": [
+      "Linux",
+      "Cybersecurity"
+    ],
+    "title": "LFC108 Cybersecurity Essentials - Linux Foundations",
+    "desc": "Cybersecurity Essentials include the fundamental and core skills to protect sensitive data and organizational security Date: September 2024",
+    "link": "/static/certificates/linuxcyber.png",
+    "skills": [
+      "CTF"
+    ]
+  },
+  {
+    "tags": [
+      "SoloLearn",
+      "Web"
+    ],
+    "title": "Frontend for Beginners - Solo Learn",
+    "desc": "Front-end web development is the development of the graphical user interface of a website through the use of HTML, CSS, and JavaScript so users can view and interact with that website. Date: September 2024",
+    "link": "/static/certificates/frontend.png",
+    "skills": [
+      "Programming"
+    ]
+  },
+  {
+    "tags": [
+      "SoloLearn",
+      "Web"
+    ],
+    "title": "Web Development - Solo Learn",
+    "desc": "Web development is the work involved in developing a website for the Internet or an intranet. Date: August 2024",
+    "link": "/static/certificates/web-dev.png",
+    "skills": [
+      "Programming"
+    ]
+  },
+  {
+    "tags": [
+      "Google",
+      "Cloud"
+    ],
+    "title": "Digital Transformation with Google Cloud",
+    "desc": "This course provides an overview of the types of opportunities and challenges that companies often encounter in their digital transformation journey. Date: February 1, 2024",
+    "link": "/static/certificates/googlecloud-1.png",
+    "skills": [
+      "OtherSkill"
+    ]
+  },
+  {
+    "tags": [
+      "SoloLearn",
+      "Python"
+    ],
+    "title": "Python Core - Solo Learn",
+    "desc": "Python is a high-level, general-purpose programming language. Its design philosophy emphasizes code readability with the use of significant indentation. Date: December 2023",
+    "link": "/static/certificates/python-2.png",
+    "skills": [
+      "Programming"
+    ]
+  },
+  {
+    "tags": [
+      "GIS"
+    ],
+    "title": "Foundations of Geographic Information System",
+    "desc": "A Geographic Information System (GIS) is a computer system that analyzes and displays geographically referenced information. Date: October 2023",
+    "link": "/static/placeholders/cert-placeholder.jpeg",
+    "skills": [
+      "OtherSkill"
+    ]
+  },
+  {
+    "tags": [
+      "AI"
+    ],
+    "title": "Intel OpenVINO Training",
+    "desc": "OpenVINO is an open-source software toolkit for optimizing and deploying deep learning models. Date: September 2022",
+    "link": "/static/placeholders/cert-placeholder.jpeg",
+    "skills": [
+      "Programming"
+    ]
+  },
+  {
+    "tags": [
+      "SoloLearn",
+      "Python"
+    ],
+    "title": "Python for Beginners- Solo Learn",
+    "desc": "Python is a high-level, general-purpose programming language. Its design philosophy emphasizes code readability with the use of significant indentation. Date: August 2022",
+    "link": "/static/certificates/python-1.png",
+    "skills": [
+      "Programming"
+    ]
+  },
+  {
+    "tags": [
+      "Workshop",
+      "BPI"
+    ],
+    "title": "Workshop #1 Design Thinking Workshop | BPI DATA Wave 2024",
+    "desc": "Design Thinking Workshop of BPI DATA Wave Date: September 2024",
+    "skills": [
+      "DesignThinking"
+    ]
+  },
+  {
+    "tags": [
+      "Conference",
+      "Cybersecurity"
+    ],
+    "title": "Decode 2024",
+    "desc": "The Philippines' Largest Cybersecurity Conference. Date: June 2024",
+    "skills": [
+      "Cybersecurity"
+    ]
+  },
+  {
+    "tags": [
+      "Roadshow",
+      "Animation"
+    ],
+    "title": "Animation Industry Roadshow",
+    "desc": "Animation is a filmmaking technique by which still images are manipulated to create moving images. Date: June 2024",
+    "skills": [
+      "Animation"
+    ]
+  },
+  {
+    "tags": [
+      "Workshop",
+      "Biodiversity"
+    ],
+    "title": "Capacity Building on the Full Usage of the Marine Biodiversity Website",
+    "desc": "This is a project under the Applied Biodiversity ReseArch for Holistic Advancements in Mindanao (ABRAHAM) Program which oversees projects assessing and documenting the reef fish diversity in Davao Region and the Sulu Archipelago Date: September 2023",
+    "skills": [
+      "Research"
+    ]
+  },
+  {
+    "tags": [
+      "DevCon",
+      "Git"
+    ],
+    "title": "No more code chaos: Git Good and Stay Organized",
+    "desc": "Campus DevCon 2023 Date: May 2023",
+    "link": "/static/certificates/sem4.png",
+    "skills": [
+      "VersionControl"
+    ]
+  },
+  {
+    "tags": [
+      "DevCon",
+      "AI"
+    ],
+    "title": "Revolutionizing the Future: Exploring the Power of AI Tools and their Impact",
+    "desc": "Campus DevCon 2023 Date: May 2023",
+    "link": "/static/certificates/sem1.png",
+    "skills": [
+      "AI"
+    ]
+  },
+  {
+    "tags": [
+      "DevCon",
+      "Cybersecurity"
+    ],
+    "title": "Introduction to Cybersecurity: Building Awareness in Today’s Digital World",
+    "desc": "Campus DevCon 2023 Date: May 2023",
+    "link": "/static/certificates/sem2.png",
+    "skills": [
+      "Cybersecurity"
+    ]
+  },
+  {
+    "tags": [
+      "DevCon",
+      "Technopreneurship"
+    ],
+    "title": "Your Path in Technopreneurship",
+    "desc": "Campus DevCon 2023 Date: May 2023",
+    "link": "/static/certificates/sem3.png",
+    "skills": [
+      "Entrepreneurship"
+    ]
+  },
+  {
+    "tags": [
+      "DevCon",
+      "DevSecOps"
+    ],
+    "title": "DevSecOps for Starters",
+    "desc": "Campus DevCon 2023 Date: May 2023",
+    "link": "/static/certificates/sem5.png",
+    "skills": [
+      "DevSecOps"
+    ]
+  },
+  {
+    "tags": [
+      "DevCon",
+      "Cloud"
+    ],
+    "title": "Careers in Cloud Computing",
+    "desc": "Campus DevCon 2023 Date: May 2023",
+    "link": "/static/certificates/sem7.png",
+    "skills": [
+      "CloudComputing"
+    ]
+  },
+  {
+    "tags": [
+      "DevCon",
+      "Technopreneurship"
+    ],
+    "title": "Your Path in Technopreneurship",
+    "desc": "Campus DevCon 2023 Date: May 2023",
+    "link": "/static/certificates/sem6.png",
+    "skills": [
+      "Entrepreneurship"
+    ]
+  }
+]

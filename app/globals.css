@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+@layer base {
+  * {
+    @apply border-gray-200 dark:border-gray-700;
+  }
+
+  body {
+    @apply bg-white text-black dark:bg-gray-900 dark:text-white;
+  }
+
+  ::selection {
+    @apply bg-blue-200 text-black dark:bg-blue-800 dark:text-white;
+  }
+
+  *:focus-visible {
+    @apply outline-none ring-2 ring-sky-500 ring-offset-2 ring-offset-white dark:ring-offset-gray-900;
+  }
+  *:focus:not(:focus-visible) {
+    @apply ring-0 outline-none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+  }
+}
+
+@layer utilities {
+  .mask-glow {
+    mask-image: radial-gradient(60% 80% at 20% 0%, black 10%, transparent 60%);
+    -webkit-mask-image: radial-gradient(60% 80% at 20% 0%, black 10%, transparent 60%);
+  }
+
+  .bg-size-200 { background-size: 200% 200%; }
+
+  .dot-pattern {
+    background-image: radial-gradient(rgba(255,255,255,0.4) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  @keyframes dot-move {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: 40px 40px;
+    }
+  }
+
+  .animate-dots {
+    animation: dot-move 8s linear infinite;
+  }
+}
+
+
+@layer utilities {
+  .bg-size-200 { background-size: 200% 200%; }
+
+  @keyframes gradient-x {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  .animate-gradient-x { animation: gradient-x 6s ease infinite; }
+
+  @keyframes shine {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+  }
+  .animate-shine {
+    background-image: linear-gradient(90deg, transparent, rgba(20,184,166,.18), transparent);
+    animation: shine 1.2s ease-in-out infinite;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-gradient-x, .animate-shine { animation: none !important; }
+}
