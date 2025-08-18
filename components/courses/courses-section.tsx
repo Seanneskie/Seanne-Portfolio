@@ -55,11 +55,11 @@ export default function CoursesSection() {
 
   if (loading) {
     return (
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid auto-rows-fr grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {[...Array(6)].map((_, i) => (
           <Card
             key={i}
-            className="h-32 animate-pulse rounded-2xl border border-teal-200/60 bg-white/70 dark:border-teal-800/60 dark:bg-gray-950/50"
+            className="h-56 animate-pulse rounded-2xl border border-teal-200/60 bg-white/70 dark:border-teal-800/60 dark:bg-gray-950/50"
           />
         ))}
       </div>
@@ -108,30 +108,31 @@ export default function CoursesSection() {
           No courses match your search.
         </p>
       ) : (
-        <ul
-          role="list"
-          className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
-        >
-          <AnimatePresence>
-            {filtered.map((c: Course, i: number) => (
-              <motion.li
-                key={c.code}
-                role="listitem"
-                layout
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -12 }}
-                transition={{ delay: i * 0.05, duration: 0.35 }}
-              >
-                <Card
-                  className={[
-                    "group relative overflow-hidden rounded-2xl p-4",
-                    "border border-teal-200/70 bg-white/85 backdrop-blur",
-                    "dark:border-teal-800/70 dark:bg-gray-950/60",
-                    "transition-shadow hover:shadow-lg hover:shadow-teal-300/30 dark:hover:shadow-teal-900/20",
-                    "focus-within:ring-1 focus-within:ring-teal-500/60",
-                  ].join(" ")}
+          <ul
+            role="list"
+            className="grid auto-rows-fr grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
+          >
+            <AnimatePresence>
+              {filtered.map((c: Course, i: number) => (
+                <motion.li
+                  key={c.code}
+                  role="listitem"
+                  className="h-full"
+                  layout
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -12 }}
+                  transition={{ delay: i * 0.05, duration: 0.35 }}
                 >
+                  <Card
+                    className={[
+                      "group relative h-full min-h-[220px] overflow-hidden rounded-2xl p-4",
+                      "border border-teal-200/70 bg-white/85 backdrop-blur",
+                      "dark:border-teal-800/70 dark:bg-gray-950/60",
+                      "transition-shadow hover:shadow-lg hover:shadow-teal-300/30 dark:hover:shadow-teal-900/20",
+                      "focus-within:ring-1 focus-within:ring-teal-500/60",
+                    ].join(" ")}
+                  >
                   <Accordion type="single" collapsible>
                     <AccordionItem value="details">
                       <AccordionTrigger
