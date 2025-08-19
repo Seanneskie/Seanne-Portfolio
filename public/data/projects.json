@@ -234,5 +234,22 @@
     "githubLabel": "View on GitHub",
     "details": "project-details/ai-powered-email-generator",
     "period": "Aug 2025 - Present"
+  },
+  {
+    "title": "Headless E-Commerce Mini-Store",
+    "image": "/static/placeholders/next.png",
+    "alt": "Headless E-Commerce Mini-Store Image",
+    "description": "Modern headless e-commerce platform using Next.js, Shopify Storefront GraphQL API, and AWS.",
+    "tags": [
+      "NextJS",
+      "Shopify",
+      "GraphQL",
+      "AWS",
+      "E-Commerce"
+    ],
+    "github": null,
+    "githubLabel": "View Site",
+    "details": "project-details/headless-ecommerce-mini-store",
+    "period": "Aug 2025 - Aug 2025"
   }
 ]
