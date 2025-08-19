@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Order &amp; Inventory Management API</title>
+  <style>
+    body { font-family: sans-serif; line-height: 1.6; }
+    img { max-width: 100%; height: auto; }
+  </style>
+</head>
+<body>
+  <h1>Order &amp; Inventory Management API</h1>
+  <p>Built a lightweight Order &amp; Inventory Management API with ASP.NET Core and PostgreSQL.</p>
+  <ul>
+    <li>Product CRUD with stock validation and idempotent order placement.</li>
+    <li>Transactional updates and inventory audit logging.</li>
+    <li>Uses EF Core migrations, FluentValidation, RFC 7807 ProblemDetails, Swagger, and Serilog.</li>
+    <li>Optimistic concurrency via Postgres <code>xmin</code> prevents oversells.</li>
+    <li>Integration tests run against Dockerized PostgreSQL. Designed for Azure deployment.</li>
+  </ul>
+</body>
+</html>

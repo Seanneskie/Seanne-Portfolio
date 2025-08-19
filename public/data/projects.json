@@ -234,5 +234,27 @@
     "githubLabel": "View on GitHub",
     "details": "project-details/ai-powered-email-generator",
     "period": "Aug 2025 - Present"
+  },
+  {
+    "title": "Order & Inventory Management API",
+    "image": "/static/placeholders/dotnet.svg",
+    "alt": "Order & Inventory Management API image",
+    "description": "ASP.NET Core and PostgreSQL API with transactional order processing and inventory logging.",
+    "tags": [
+      "ASP.NET Core",
+      "PostgreSQL",
+      "EF Core",
+      "FluentValidation",
+      "Swagger",
+      "Serilog",
+      "Docker",
+      "C#",
+      "REST API",
+      "Azure"
+    ],
+    "github": null,
+    "githubLabel": null,
+    "details": "project-details/order-inventory-management-api",
+    "period": "Aug 2025 - Aug 2025"
   }
 ]
