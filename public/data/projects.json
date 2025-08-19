@@ -251,5 +251,26 @@
     "githubLabel": "View Site",
     "details": "project-details/headless-ecommerce-mini-store",
     "period": "Aug 2025 - Aug 2025"
+  },
+  {
+    "title": "Order & Inventory Management API",
+    "image": "/static/placeholders/next.png",
+    "alt": "Order & Inventory Management API Image",
+    "description": "Lightweight ASP.NET Core API with PostgreSQL for products, stock validation, idempotent orders, and audit logging.",
+    "tags": [
+      "ASP.NET Core",
+      "PostgreSQL",
+      "Entity Framework Core",
+      "FluentValidation",
+      "Serilog",
+      "Swagger",
+      "REST API",
+      "Docker",
+      "Azure"
+    ],
+    "github": null,
+    "githubLabel": "View on GitHub",
+    "details": "project-details/order-inventory-management-api",
+    "period": "Aug 2025 - Aug 2025"
   }
 ]
