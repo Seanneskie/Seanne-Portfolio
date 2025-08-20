@@ -1,11 +1,13 @@
 import ProjectOverview from "./ProjectOverview";
 import ProjectSection from "./ProjectSection";
+import { getProjectImages } from "@/lib/project-images";
 
-export default function BudgetSystem() {
+export default async function BudgetSystem() {
+  const images = await getProjectImages("budget-system");
   return (
     <div className="space-y-12">
       <ProjectOverview
-        images={["/static/placeholders/next.png"]}
+        images={images.length ? images : ["/static/placeholders/next.png"]}
         alt="Budget System screenshot"
       >
         <p>

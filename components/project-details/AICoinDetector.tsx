@@ -1,10 +1,12 @@
 import ProjectOverview from "./ProjectOverview";
+import { getProjectImages } from "@/lib/project-images";
 
-export default function AICoinDetector() {
+export default async function AICoinDetector() {
+  const images = await getProjectImages("ai-coin-detector");
   return (
     <div className="space-y-12">
       <ProjectOverview
-        images={["/static/placeholders/ai.png"]}
+        images={images.length ? images : ["/static/placeholders/ai.png"]}
         alt="AI Coin Detector Screenshot"
         githubUrl="https://github.com/Seanneskie/AI-coin-detector-django"
       >
