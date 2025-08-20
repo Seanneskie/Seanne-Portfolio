@@ -9,7 +9,7 @@ This guide explains how to add a new project detail page by cloning the provided
    cp components/project-details/ProjectTemplate.tsx components/project-details/MyProject.tsx
    ```
 2. Rename the default exported function to match your project, e.g. `MyProject`.
-3. Update the `<ProjectOverview>` props (`imageSrc`, `alt`) and its children to describe your project.
+3. Update the `<ProjectOverview>` props (`images`, `alt`) and its children to describe your project.
 4. Edit or remove the `<ProjectSection>` blocks and fill them with your content.
 
 ## 2. Add project assets
@@ -23,7 +23,7 @@ public/
         └── screenshot.png
 ```
 
-Reference these assets in your `ProjectOverview` with a root‑relative path (e.g. `/static/my-project/screenshot.png`).
+Reference these assets in your `ProjectOverview` using the `images` prop with root‑relative paths (e.g. `/static/my-project/screenshot.png`).
 
 ## 3. Register the project
 
