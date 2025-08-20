@@ -68,7 +68,7 @@
   },
   {
     "title": "Bitcoin Analysis App",
-    "image": "/static/placeholders/django.png",
+    "image": "/bitcoin-analysis-app/images/1.png",
     "alt": "Analysis Image",
     "description": "A Bitcoin Prediction and Descriptive Analysis. Made with Django and Python Modules.",
     "tags": [
@@ -87,12 +87,20 @@
     "details": "project-details/bitcoin-analysis-app",
     "period": "Nov 2024 - Dec 2025",
     "images": [
-      "/static/placeholders/django.png"
+      "/bitcoin-analysis-app/images/1.png",
+      "/bitcoin-analysis-app/images/2.png",
+      "/bitcoin-analysis-app/images/3.png",
+      "/bitcoin-analysis-app/images/4.png",
+      "/bitcoin-analysis-app/images/5.png",
+      "/bitcoin-analysis-app/images/6.png",
+      "/bitcoin-analysis-app/images/7.png",
+      "/bitcoin-analysis-app/images/8.png",
+      "/bitcoin-analysis-app/images/9.png"
     ]
   },
   {
     "title": "Desktop Payroll Management System",
-    "image": "/static/placeholders/python-default.png",
+    "image": "/pms/images/1.png",
     "alt": "Desktop Payroll Management System Image",
     "description": "FastAPI-powered payroll management backend bundled with an Electron desktop shell.",
     "tags": [
@@ -108,12 +116,16 @@
     "details": "project-details/pms",
     "period": "Aug 2025 - Present",
     "images": [
-      "/static/placeholders/python-default.png"
+      "/pms/images/1.png",
+      "/pms/images/2.png",
+      "/pms/images/3.png",
+      "/pms/images/4.png",
+      "/pms/images/5.png"
     ]
   },
   {
     "title": "Digital Freelancer Profiling App",
-    "image": "/static/placeholders/django.png",
+    "image": "/digital-freelancer-profiling-app/images/1.png",
     "alt": "Coin Detector Image",
     "description": "A Digital Freelancer Profiling System for Capstone requirement. Made with Django and Python Modules.",
     "collaborators": "Kimberly Baylon, Bridget Jose, Azlan Tomindug",
@@ -130,7 +142,16 @@
     "details": "project-details/digital-freelancer-profiling-app",
     "period": "Jan 2024 - May 2025",
     "images": [
-      "/static/placeholders/django.png"
+      "/digital-freelancer-profiling-app/images/1.png",
+      "/digital-freelancer-profiling-app/images/2.png",
+      "/digital-freelancer-profiling-app/images/3.png",
+      "/digital-freelancer-profiling-app/images/4.png",
+      "/digital-freelancer-profiling-app/images/5.png",
+      "/digital-freelancer-profiling-app/images/6.png",
+      "/digital-freelancer-profiling-app/images/7.png",
+      "/digital-freelancer-profiling-app/images/8.png",
+      "/digital-freelancer-profiling-app/images/9.PNG",
+      "/digital-freelancer-profiling-app/images/10.png"
     ]
   },
   {
@@ -203,7 +224,7 @@
   },
   {
     "title": "Albany Airbnb Dashboard",
-    "image": "/static/placeholders/django.png",
+    "image": "/albany-airbnb-dashboard/images/1.png",
     "alt": "Albany Airbnb Dashboard Image",
     "description": "Interactive dashboard analyzing Airbnb listings, pricing, and guest sentiment.",
     "tags": [
@@ -223,7 +244,11 @@
     "details": "project-details/albany-airbnb-dashboard",
     "period": "Nov 2024 - Dec 2024",
     "images": [
-      "/static/placeholders/django.png"
+      "/albany-airbnb-dashboard/images/1.png",
+      "/albany-airbnb-dashboard/images/2.png",
+      "/albany-airbnb-dashboard/images/3.png",
+      "/albany-airbnb-dashboard/images/4.png",
+      "/albany-airbnb-dashboard/images/5.png"
     ]
   },
   {
@@ -311,7 +336,7 @@
     "githubLabel": "View on GitHub",
     "details": "project-details/order-inventory-management-api",
     "period": "Aug 2025 - Aug 2025",
-     "images": [
+    "images": [
       "/static/placeholders/next.png"
     ]
   },
