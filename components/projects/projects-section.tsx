@@ -8,6 +8,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useData } from "@/lib/use-data";
 import { withBasePath } from "@/lib/utils";
+import { useState } from "react";
 
 interface Project {
   title: string;
@@ -22,6 +23,7 @@ interface Project {
 
 export default function ProjectsSection() {
   const { data, loading, error } = useData<Project[]>("projects.json");
+  const [expanded, setExpanded] = useState<Record<number, boolean>>({});
 
   if (loading) {
     return (
@@ -78,9 +80,25 @@ export default function ProjectsSection() {
             </h3>
 
             {p.description ? (
-              <p className="mt-1 line-clamp-3 text-sm text-gray-700 dark:text-gray-200">
-                {p.description}
-              </p>
+              <>
+                <p
+                  className={[
+                    "mt-1 text-sm text-gray-700 dark:text-gray-200",
+                    expanded[i] ? "" : "line-clamp-3",
+                  ].join(" ")}
+                >
+                  {p.description}
+                </p>
+                <button
+                  type="button"
+                  onClick={() =>
+                    setExpanded((prev) => ({ ...prev, [i]: !prev[i] }))
+                  }
+                  className="mt-1 text-xs font-medium text-teal-700 hover:underline focus:outline-none dark:text-teal-300"
+                >
+                  {expanded[i] ? "Show less" : "Show more"}
+                </button>
+              </>
             ) : null}
 
             {/* Tags */}
