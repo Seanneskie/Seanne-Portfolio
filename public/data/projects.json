@@ -311,6 +311,28 @@
     "githubLabel": "View on GitHub",
     "details": "project-details/order-inventory-management-api",
     "period": "Aug 2025 - Aug 2025",
+     "images": [
+      "/static/placeholders/next.png"
+    ]
+  },
+  {
+    "title": "Budget System",
+    "image": "/static/placeholders/next.png",
+    "alt": "Budget System screenshot",
+    "description": "Layered ASP.NET Core and SQL Server budgeting app with validation, EF Core persistence, and idempotent API middleware.",
+    "tags": [
+      "ASP.NET Core",
+      "SQL Server",
+      "Entity Framework Core",
+      "FluentValidation",
+      "Clean Architecture",
+      "REST API",
+      "Idempotency"
+    ],
+    "github": null,
+    "githubLabel": "View on GitHub",
+    "details": "project-details/budget-system",
+    "period": "Aug 2025 - Present"
     "images": [
       "/static/placeholders/next.png"
     ]
