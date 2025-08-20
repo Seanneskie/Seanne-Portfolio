@@ -3,6 +3,8 @@ import Link from "next/link";
 import { ReactNode } from "react";
 import { withBasePath } from "@/lib/utils";
 import ProjectGallery from "./ProjectGallery";
+import { Button } from "@/components/ui/button";
+import { FileText } from "lucide-react";
 
 interface ProjectOverviewProps {
   images: string[];
@@ -51,13 +53,12 @@ export default function ProjectOverview({
           </Link>
         )}
         {downloadUrl && (
-          <Link
-            href={withBasePath(downloadUrl)}
-            download
-            className="inline-block underline"
-          >
-            Download
-          </Link>
+          <Button variant="outline" size="sm" asChild className="gap-2">
+            <a href={withBasePath(downloadUrl)} download>
+              <FileText className="h-4 w-4" />
+              Download
+            </a>
+          </Button>
         )}
       </div>
     </section>
