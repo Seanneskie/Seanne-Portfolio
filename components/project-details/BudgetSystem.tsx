@@ -5,7 +5,7 @@ export default function BudgetSystem() {
   return (
     <div className="space-y-12">
       <ProjectOverview
-        imageSrc="/static/placeholders/next.png"
+        images={["/static/placeholders/next.png"]}
         alt="Budget System screenshot"
       >
         <p>
