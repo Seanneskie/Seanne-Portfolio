@@ -17,7 +17,10 @@
     "github": "https://github.com/Seanneskie/AI-coin-detector-django",
     "githubLabel": "View on GitHub",
     "details": "project-details/ai-coin-detector",
-    "period": "March 2024 - May 2025"
+    "period": "March 2024 - May 2025",
+    "images": [
+      "/static/placeholders/ai.png"
+    ]
   },
   {
     "title": "NoSQL Project - MERN Stack Website",
@@ -35,7 +38,10 @@
     "github": "https://github.com/Seanneskie/MERN-STACK---Software",
     "githubLabel": "View on GitHub",
     "details": "project-details/nosql-project",
-    "period": "Sep 2023 - Dec 2023"
+    "period": "Sep 2023 - Dec 2023",
+    "images": [
+      "/static/placeholders/Mern.png"
+    ]
   },
   {
     "title": "Advance Database Project - CNSM Website",
@@ -55,7 +61,10 @@
     "github": "https://github.com/Seanneskie/advDB-CNSM-Website",
     "githubLabel": "View on GitHub",
     "details": "project-details/cnsm-website",
-    "period": "Sep 2023 - Dec 2023"
+    "period": "Sep 2023 - Dec 2023",
+    "images": [
+      "/static/placeholders/Mern.png"
+    ]
   },
   {
     "title": "Bitcoin Analysis App",
@@ -76,7 +85,10 @@
     "github": "https://github.com/Seanneskie/bigdata",
     "githubLabel": "View on GitHub",
     "details": "project-details/bitcoin-analysis-app",
-    "period": "Nov 2024 - Dec 2025"
+    "period": "Nov 2024 - Dec 2025",
+    "images": [
+      "/static/placeholders/django.png"
+    ]
   },
   {
     "title": "Desktop Payroll Management System",
@@ -94,7 +106,10 @@
     "github": "https://github.com/Seanneskie/desktop-payroll-management-system",
     "githubLabel": "View on GitHub",
     "details": "project-details/pms",
-    "period": "Aug 2025 - Present"
+    "period": "Aug 2025 - Present",
+    "images": [
+      "/static/placeholders/python-default.png"
+    ]
   },
   {
     "title": "Digital Freelancer Profiling App",
@@ -113,7 +128,10 @@
     "github": "https://github.com/Seanneskie/capstone-app-profile",
     "githubLabel": "View on GitHub",
     "details": "project-details/digital-freelancer-profiling-app",
-    "period": "Jan 2024 - May 2025"
+    "period": "Jan 2024 - May 2025",
+    "images": [
+      "/static/placeholders/django.png"
+    ]
   },
   {
     "title": "CEMCDO App",
@@ -132,7 +150,10 @@
     "github": "https://cemcdo-demo.onrender.com/",
     "githubLabel": "View Site",
     "details": "project-details/cemcdo-app",
-    "period": "Jan 2025 - Apr 2025"
+    "period": "Jan 2025 - Apr 2025",
+    "images": [
+      "/static/placeholders/django.png"
+    ]
   },
   {
     "title": "VIMS - Vessel Inventory Management System",
@@ -151,7 +172,10 @@
     "github": null,
     "githubLabel": "View Site",
     "details": "project-details/vims",
-    "period": "Dec 2024 - June 2025"
+    "period": "Dec 2024 - June 2025",
+    "images": [
+      "/static/placeholders/next.png"
+    ]
   },
   {
     "title": "Laravel Itinerary Planner",
@@ -172,7 +196,10 @@
     "github": "https://github.com/Seanneskie/itinerary-planner",
     "githubLabel": "View on GitHub",
     "details": "project-details/itinerary-planner",
-    "period": "July 2025 - Aug 2025"
+    "period": "July 2025 - Aug 2025",
+    "images": [
+      "/static/placeholders/php.png"
+    ]
   },
   {
     "title": "Albany Airbnb Dashboard",
@@ -194,7 +221,10 @@
     "github": null,
     "githubLabel": "View on GitHub",
     "details": "project-details/albany-airbnb-dashboard",
-    "period": "Nov 2024 - Dec 2024"
+    "period": "Nov 2024 - Dec 2024",
+    "images": [
+      "/static/placeholders/django.png"
+    ]
   },
   {
     "title": "McDonald's Sentiment Analysis",
@@ -216,7 +246,10 @@
     "github": null,
     "githubLabel": "View on GitHub",
     "details": "project-details/mcdonalds-sentiment-analysis",
-    "period": "Nov 2024 - Dec 2024"
+    "period": "Nov 2024 - Dec 2024",
+    "images": [
+      "/static/placeholders/django.png"
+    ]
   },
   {
     "title": "AI-Powered Email Generator",
@@ -233,7 +266,10 @@
     "github": "https://github.com/Seanneskie/langchain-project-va-assist",
     "githubLabel": "View on GitHub",
     "details": "project-details/ai-powered-email-generator",
-    "period": "Aug 2025 - Present"
+    "period": "Aug 2025 - Present",
+    "images": [
+      "/static/placeholders/ai.png"
+    ]
   },
   {
     "title": "Headless E-Commerce Mini-Store",
@@ -250,7 +286,10 @@
     "github": null,
     "githubLabel": "View Site",
     "details": "project-details/headless-ecommerce-mini-store",
-    "period": "Aug 2025 - Aug 2025"
+    "period": "Aug 2025 - Aug 2025",
+    "images": [
+      "/static/placeholders/next.png"
+    ]
   },
   {
     "title": "Order & Inventory Management API",
@@ -271,7 +310,10 @@
     "github": null,
     "githubLabel": "View on GitHub",
     "details": "project-details/order-inventory-management-api",
-    "period": "Aug 2025 - Aug 2025"
+    "period": "Aug 2025 - Aug 2025",
+     "images": [
+      "/static/placeholders/next.png"
+    ]
   },
   {
     "title": "Budget System",
@@ -291,5 +333,8 @@
     "githubLabel": "View on GitHub",
     "details": "project-details/budget-system",
     "period": "Aug 2025 - Present"
+    "images": [
+      "/static/placeholders/next.png"
+    ]
   }
 ]
