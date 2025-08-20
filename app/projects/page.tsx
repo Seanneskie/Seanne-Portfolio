@@ -134,7 +134,7 @@ export default function ProjectsPage() {
             >
               <Card
                 className={[
-                  "group relative h-[460px] overflow-hidden rounded-2xl p-4",
+                  "group relative min-h-[460px] overflow-hidden rounded-2xl p-4",
                   "border border-teal-200/70 bg-white/85 backdrop-blur",
                   "dark:border-teal-800/70 dark:bg-gray-950/60",
                   "transition-shadow hover:shadow-lg hover:shadow-teal-300/30 dark:hover:shadow-teal-900/20",
@@ -158,7 +158,7 @@ export default function ProjectsPage() {
                 </h3>
 
                 {p.description ? (
-                  <p className="mt-1 line-clamp-3 text-sm text-gray-700 dark:text-gray-200">
+                  <p className="mt-1 text-sm text-gray-700 dark:text-gray-200">
                     {p.description}
                   </p>
                 ) : null}
