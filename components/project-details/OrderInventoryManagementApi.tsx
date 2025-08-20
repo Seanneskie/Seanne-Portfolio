@@ -5,7 +5,7 @@ export default function OrderInventoryManagementApi() {
   return (
     <div className="space-y-12">
       <ProjectOverview
-        imageSrc="/static/placeholders/next.png"
+        images={["/static/placeholders/next.png"]}
         alt="Order & Inventory Management API screenshot"
       >
         <p>
