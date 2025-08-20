@@ -83,8 +83,8 @@ export default function ProjectsSection() {
               <>
                 <p
                   className={[
-                    "mt-1 text-sm text-gray-700 dark:text-gray-200",
-                    expanded[i] ? "" : "line-clamp-3",
+                    "text-sm text-gray-700 dark:text-gray-200",
+                    expanded[i] ? "" : "line-clamp-2",
                   ].join(" ")}
                 >
                   {p.description}
