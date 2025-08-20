@@ -5,7 +5,7 @@ export default function ProjectTemplate() {
   return (
     <div className="space-y-12">
       <ProjectOverview
-        imageSrc="/static/placeholders/ai.png"
+        images={["/static/placeholders/ai.png"]}
         alt="Project screenshot"
       >
         <p>
