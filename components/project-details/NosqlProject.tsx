@@ -1,5 +1,4 @@
 import ProjectOverview from "./ProjectOverview";
-import ProjectSection from "./ProjectSection";
 import { getProjectImages } from "@/lib/project-images";
 
 export default async function NosqlProject() {
@@ -21,71 +20,95 @@ export default async function NosqlProject() {
           <strong>Collaborators:</strong> Individual Project
         </p>
       </ProjectOverview>
+      <TechStack />
+      <AuthenticationFeatures />
+      <CoreFeatures />
+      <FolderStructure />
+    </div>
+  );
+}
 
-      <ProjectSection title="Tech Stack">
-        <ul className="list-disc pl-6 space-y-2">
-          <li>
-            <strong>Frontend:</strong> React.js with Axios and Context API for
-            state management.
-          </li>
-          <li>
-            <strong>Backend:</strong> Node.js and Express.js with modular route
-            handling and service-based architecture.
-          </li>
-          <li>
-            <strong>Database:</strong> MongoDB for storing user profiles, menu
-            items, and order data.
-          </li>
-          <li>
-            <strong>Authentication:</strong> Secure JWT-based authentication
-            implemented via custom Express middleware.
-          </li>
-        </ul>
-      </ProjectSection>
+function TechStack() {
+  return (
+    <section className="space-y-4">
+      <h2 className="text-2xl font-semibold">Tech Stack</h2>
+      <ul className="list-disc pl-6 space-y-2">
+        <li>
+          <strong>Frontend:</strong> React.js with Axios and Context API for
+          state management.
+        </li>
+        <li>
+          <strong>Backend:</strong> Node.js and Express.js with modular route
+          handling and service-based architecture.
+        </li>
+        <li>
+          <strong>Database:</strong> MongoDB for storing user profiles, menu
+          items, and order data.
+        </li>
+        <li>
+          <strong>Authentication:</strong> Secure JWT-based authentication
+          implemented via custom Express middleware.
+        </li>
+      </ul>
+    </section>
+  );
+}
 
-      <ProjectSection title="Authentication Features">
-        <ul className="list-disc pl-6 space-y-2">
-          <li>Users authenticate via JWT (JSON Web Tokens).</li>
-          <li>
-            Middleware functions protect private routes, verify tokens, and
-            restrict access based on user roles (e.g., admin vs. customer).
-          </li>
-          <li>Refresh token logic is used to maintain secure sessions.</li>
-        </ul>
-      </ProjectSection>
+function AuthenticationFeatures() {
+  return (
+    <section className="space-y-4">
+      <h2 className="text-2xl font-semibold">Authentication Features</h2>
+      <ul className="list-disc pl-6 space-y-2">
+        <li>Users authenticate via JWT (JSON Web Tokens).</li>
+        <li>
+          Middleware functions protect private routes, verify tokens, and
+          restrict access based on user roles (e.g., admin vs. customer).
+        </li>
+        <li>Refresh token logic is used to maintain secure sessions.</li>
+      </ul>
+    </section>
+  );
+}
 
-      <ProjectSection title="Core Features">
-        <ul className="list-disc pl-6 space-y-2">
-          <li>
-            <strong>User Registration & Login</strong>
-            <br />Secure signup/login with hashed passwords and token-based
-            sessions.
-          </li>
-          <li>
-            <strong>Menu Management</strong>
-            <br />Admins can add, update, or remove coffee products, including
-            pricing and availability.
-          </li>
-          <li>
-            <strong>Cart & Checkout</strong>
-            <br />Customers can browse the coffee menu, add items to the cart,
-            and place orders.
-          </li>
-          <li>
-            <strong>Order Tracking</strong>
-            <br />Real-time status updates for customers and administrative order
-            monitoring.
-          </li>
-          <li>
-            <strong>Admin Dashboard</strong>
-            <br />Provides insights on sales, top-selling items, and active
-            users.
-          </li>
-        </ul>
-      </ProjectSection>
+function CoreFeatures() {
+  return (
+    <section className="space-y-4">
+      <h2 className="text-2xl font-semibold">Core Features</h2>
+      <ul className="list-disc pl-6 space-y-2">
+        <li>
+          <strong>User Registration & Login</strong>
+          <br />Secure signup/login with hashed passwords and token-based
+          sessions.
+        </li>
+        <li>
+          <strong>Menu Management</strong>
+          <br />Admins can add, update, or remove coffee products, including
+          pricing and availability.
+        </li>
+        <li>
+          <strong>Cart & Checkout</strong>
+          <br />Customers can browse the coffee menu, add items to the cart, and
+          place orders.
+        </li>
+        <li>
+          <strong>Order Tracking</strong>
+          <br />Real-time status updates for customers and administrative order
+          monitoring.
+        </li>
+        <li>
+          <strong>Admin Dashboard</strong>
+          <br />Provides insights on sales, top-selling items, and active users.
+        </li>
+      </ul>
+    </section>
+  );
+}
 
-      <ProjectSection title="Folder Structure">
-        <pre>{`/client (React frontend)
+function FolderStructure() {
+  return (
+    <section className="space-y-4">
+      <h2 className="text-2xl font-semibold">Folder Structure</h2>
+      <pre>{`/client (React frontend)
   └── src/
       ├── components/
       ├── pages/
@@ -96,8 +119,7 @@ export default async function NosqlProject() {
   ├── routes/
   ├── middleware/
   └── models/`}</pre>
-      </ProjectSection>
-    </div>
+    </section>
   );
 }
 
