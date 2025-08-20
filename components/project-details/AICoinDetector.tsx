@@ -1,11 +1,23 @@
-import Image from "next/image";
-import Link from "next/link";
-import { withBasePath } from "@/lib/utils";
+import ProjectOverview from "./ProjectOverview";
 
 export default function AICoinDetector() {
   return (
     <div className="space-y-12">
-      <Overview />
+      <ProjectOverview
+        images={["/static/placeholders/ai.png"]}
+        alt="AI Coin Detector Screenshot"
+        githubUrl="https://github.com/Seanneskie/AI-coin-detector-django"
+      >
+        <p>
+          <strong>Overview:</strong> This AI Coin Detector was developed using
+          Django and Google Teachable Machine (GTM) as a requirement for the
+          <em> Introduction to AI</em> course.
+        </p>
+        <p>
+          <strong>Collaborators:</strong> Kimberly Baylon, Jeric Aminola,
+          Bridget Jose, Azlan Tomindug
+        </p>
+      </ProjectOverview>
       <Introduction />
       <Rationale />
       <DataCollection />
@@ -17,40 +29,6 @@ export default function AICoinDetector() {
   );
 }
 
-function Overview() {
-  return (
-    <section className="flex flex-col md:flex-row items-center gap-6">
-      <div className="md:w-1/3">
-        <Image
-          src={withBasePath("/static/placeholders/ai.png")}
-          alt="AI Coin Detector Screenshot"
-          width={400}
-          height={300}
-          className="rounded shadow"
-        />
-      </div>
-      <div className="md:w-2/3 space-y-2">
-        <p>
-          <strong>Overview:</strong> This AI Coin Detector was developed using Django
-          and Google Teachable Machine (GTM) as a requirement for the
-          <em> Introduction to AI</em> course.
-        </p>
-        <p>
-          <strong>Collaborators:</strong> Kimberly Baylon, Jeric Aminola, Bridget
-          Jose, Azlan Tomindug
-        </p>
-        <Link
-          href="https://github.com/Seanneskie/AI-coin-detector-django"
-          className="inline-block underline"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          View on GitHub
-        </Link>
-      </div>
-    </section>
-  );
-}
 
 function Introduction() {
   return (
