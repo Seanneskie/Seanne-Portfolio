@@ -80,7 +80,7 @@ export default function ProjectsPage() {
           {[...Array(ITEMS_PER_PAGE)].map((_, i) => (
             <Card
               key={i}
-              className="h-[460px] animate-pulse rounded-2xl border border-teal-200/60 bg-white/70 dark:border-teal-800/60 dark:bg-gray-950/50"
+              className="h-[500px] animate-pulse rounded-2xl border border-teal-200/60 bg-white/70 dark:border-teal-800/60 dark:bg-gray-950/50"
             />
           ))}
         </div>
