@@ -74,13 +74,13 @@ export default function ProjectsPage() {
 
   if (loading) {
     return (
-      <main className="container mx-auto max-w-5xl px-4 py-12">
+      <main className="container mx-auto max-w-7xl px-4 py-12">
         <h1 className="mb-4 text-3xl font-bold tracking-tight">Projects</h1>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {[...Array(ITEMS_PER_PAGE)].map((_, i) => (
             <Card
               key={i}
-              className="h-56 animate-pulse rounded-2xl border border-teal-200/60 bg-white/70 dark:border-teal-800/60 dark:bg-gray-950/50"
+              className="h-[460px] animate-pulse rounded-2xl border border-teal-200/60 bg-white/70 dark:border-teal-800/60 dark:bg-gray-950/50"
             />
           ))}
         </div>
@@ -89,7 +89,7 @@ export default function ProjectsPage() {
   }
   if (error || !data)
     return (
-      <main className="container mx-auto max-w-5xl px-4 py-12">
+      <main className="container mx-auto max-w-7xl px-4 py-12">
         <p className="text-red-600 dark:text-red-400">
           Failed to load projects.
         </p>
@@ -97,7 +97,7 @@ export default function ProjectsPage() {
     );
 
   return (
-    <main className="container mx-auto max-w-5xl px-4 py-12">
+    <main className="container mx-auto max-w-7xl px-4 py-12">
       <h1 className="mb-4 text-3xl font-bold tracking-tight">Projects</h1>
 
       <div className="mb-6 flex flex-col gap-4">
@@ -134,7 +134,7 @@ export default function ProjectsPage() {
             >
               <Card
                 className={[
-                  "group relative overflow-hidden rounded-2xl p-4",
+                  "group relative h-[460px] overflow-hidden rounded-2xl p-4",
                   "border border-teal-200/70 bg-white/85 backdrop-blur",
                   "dark:border-teal-800/70 dark:bg-gray-950/60",
                   "transition-shadow hover:shadow-lg hover:shadow-teal-300/30 dark:hover:shadow-teal-900/20",
@@ -175,7 +175,7 @@ export default function ProjectsPage() {
                   ))}
                 </div>
 
-                <div className="mt-4 flex flex-wrap gap-2">
+                <div className="mt-auto flex flex-wrap gap-2 pt-4">
                   {p.details ? (
                     <Button
                       size="sm"
