@@ -16,6 +16,7 @@ export default async function AICoinDetector() {
         images={images.length ? images : ["/static/placeholders/ai.png"]}
         alt="AI Coin Detector Screenshot"
         githubUrl="https://github.com/Seanneskie/AI-coin-detector-django"
+        downloadUrl="/ai-coin-detector/pdfs/Philippine%20Peso%20Coin%20Detector%20and%20Counter.pdf"
       >
         <p>
           <strong>Overview:</strong> This AI Coin Detector was developed using
