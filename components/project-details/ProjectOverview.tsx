@@ -4,7 +4,7 @@ import { ReactNode } from "react";
 import { withBasePath } from "@/lib/utils";
 import ProjectGallery from "./ProjectGallery";
 import { Button } from "@/components/ui/button";
-import { FileText } from "lucide-react";
+import { FileText, Github } from "lucide-react";
 
 interface ProjectOverviewProps {
   images: string[];
@@ -42,23 +42,34 @@ export default function ProjectOverview({
       </div>
       <div className="md:w-2/3 space-y-2">
         {children}
-        {githubUrl && (
-          <Link
-            href={githubUrl}
-            className="inline-block underline"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {linkLabel}
-          </Link>
-        )}
-        {downloadUrl && (
-          <Button variant="outline" size="sm" asChild className="gap-2">
-            <a href={withBasePath(downloadUrl)} download>
-              <FileText className="h-4 w-4" />
-              Download
-            </a>
-          </Button>
+        {(githubUrl || downloadUrl) && (
+          <div className="flex flex-wrap gap-2 pt-1">
+            {githubUrl && (
+              <Button
+                variant="outline"
+                size="sm"
+                asChild
+                className="gap-2"
+              >
+                <Link
+                  href={githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Github className="h-4 w-4" />
+                  {linkLabel}
+                </Link>
+              </Button>
+            )}
+            {downloadUrl && (
+              <Button variant="outline" size="sm" asChild className="gap-2">
+                <a href={withBasePath(downloadUrl)} download>
+                  <FileText className="h-4 w-4" />
+                  Download
+                </a>
+              </Button>
+            )}
+          </div>
         )}
       </div>
     </section>
