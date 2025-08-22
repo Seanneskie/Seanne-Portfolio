@@ -26,30 +26,33 @@ export default function ProjectOverview({
   const firstImage = images[0];
 
   return (
-    <section className="flex flex-col md:flex-row items-center gap-6">
-      <div className="md:w-1/3">
+    <section
+      className="group relative overflow-hidden rounded-2xl border border-teal-200/70 bg-white/85 p-4 md:p-6 backdrop-blur dark:border-teal-800/70 dark:bg-gray-950/60 md:grid md:grid-cols-2 md:items-center gap-6 transition-shadow hover:shadow-lg hover:shadow-teal-300/30 dark:hover:shadow-teal-900/20"
+    >
+      <div className="relative mb-4 md:mb-0">
         {images.length > 1 ? (
           <ProjectGallery images={images} alt={alt} />
         ) : (
-          <Image
-            src={withBasePath(firstImage)}
-            alt={alt}
-            width={400}
-            height={300}
-            className="rounded shadow"
-          />
+          <div className="relative aspect-video overflow-hidden rounded-xl">
+            <Image
+              src={withBasePath(firstImage)}
+              alt={alt}
+              fill
+              className="object-cover"
+            />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-teal-900/25 to-transparent dark:from-teal-950/35" />
+          </div>
         )}
       </div>
-      <div className="md:w-2/3 space-y-2">
+      <div className="space-y-2">
         {children}
         {(githubUrl || downloadUrl) && (
           <div className="flex flex-wrap gap-2 pt-1">
             {githubUrl && (
               <Button
-                variant="outline"
                 size="sm"
                 asChild
-                className="gap-2"
+                className="group gap-2 text-white bg-gradient-to-r from-purple-600 via-pink-500 to-rose-500 bg-[length:200%_200%] animate-gradient-x shadow-md hover:shadow-lg transition-[transform,box-shadow,background-position] duration-300 hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:outline-none"
               >
                 <Link
                   href={githubUrl}
@@ -62,7 +65,11 @@ export default function ProjectOverview({
               </Button>
             )}
             {downloadUrl && (
-              <Button variant="outline" size="sm" asChild className="gap-2">
+              <Button
+                size="sm"
+                asChild
+                className="group gap-2 text-white bg-gradient-to-r from-teal-600 via-cyan-500 to-sky-500 bg-[length:200%_200%] animate-gradient-x shadow-md hover:shadow-lg transition-[transform,box-shadow,background-position] duration-300 hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:outline-none"
+              >
                 <a href={withBasePath(downloadUrl)} download>
                   <FileText className="h-4 w-4" />
                   Download
@@ -72,6 +79,10 @@ export default function ProjectOverview({
           </div>
         )}
       </div>
+      <span
+        aria-hidden
+        className="pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full bg-teal-400/20 blur-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100 dark:bg-teal-500/15"
+      />
     </section>
   );
 }
