@@ -3,9 +3,7 @@ import path from "path";
 import type { ComponentType } from "react";
 
 interface PageProps {
-  params: {
-    slug: string;
-  };
+  params: Promise<{ slug: string }>;
 }
 
 const componentMap: Record<string, () => Promise<{ default: ComponentType }>> = {
@@ -34,7 +32,7 @@ const componentMap: Record<string, () => Promise<{ default: ComponentType }>> = 
 };
 
 export default async function ProjectDetailPage({ params }: PageProps) {
-  const { slug } = params;
+  const { slug } = await params;
 
   let Component: ComponentType | null = null;
 
