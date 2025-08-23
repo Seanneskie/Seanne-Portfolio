@@ -40,6 +40,24 @@ Add an entry in `public/data/projects.json` so the project appears in listings. 
 }
 ```
 
+### Field reference
+
+Every project object must define all of the following keys. Fields marked optional may use `null` or an empty string but the key itself should remain present.
+
+| Field | Required | Description |
+| ----- | -------- | ----------- |
+| `title` | Yes | Project name displayed in listings. |
+| `image` | Yes | Thumbnail image path for the project card. |
+| `alt` | Yes | Accessible description of the thumbnail image. |
+| `description` | Yes | Short summary shown on the project card. |
+| `tags` | Yes | Array of technologies or keywords. |
+| `details` | Yes | Route slug in the form `project-details/<slug>`; `<slug>` must match the component filename and the dynamic route in `app/project-details/[slug]/page.tsx`. |
+| `collaborators` | Optional | Names of collaborators; use `null` if none. |
+| `github` | Optional | Link to the repository or live site; use `null` if unavailable. |
+| `githubLabel` | Optional | Label for the above link; use an empty string when `github` is `null`. |
+| `period` | Optional | Development timeline for the project; use an empty string if unknown. |
+| `images` | Optional | Array of screenshot paths for the gallery; include even if empty to keep the key present. |
+
 ## 4. Create the page route
 
 Create a folder under `app/project-details/<slug>/` and add a `page.tsx` that imports your customized component:

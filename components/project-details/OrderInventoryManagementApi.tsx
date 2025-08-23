@@ -1,5 +1,6 @@
 import ProjectOverview from "./ProjectOverview";
 import ProjectSection from "./ProjectSection";
+import ProjectGallery from "./ProjectGallery";
 import { getProjectImages } from "@/lib/project-images";
 
 export default async function OrderInventoryManagementApi() {
@@ -21,25 +22,32 @@ export default async function OrderInventoryManagementApi() {
         </p>
       </ProjectOverview>
 
-      <ProjectSection title="Key Features">
-        <ul className="list-disc pl-6 space-y-2">
-          <li>Product catalog with soft deletes and basic filtering.</li>
-          <li>Inventory-aware order creation that validates stock levels.</li>
-          <li>Idempotent order endpoints to prevent duplicate submissions.</li>
-          <li>Audit logs and structured logging via Serilog.</li>
-          <li>OpenAPI documentation with Swagger UI.</li>
-        </ul>
-      </ProjectSection>
-
-      <ProjectSection title="Development Notes">
+      <ProjectSection title="Introduction">
         <p>
-          The API follows a clean architecture approach using repositories and services
-          to separate concerns. Data access is handled through Entity Framework Core
-          with PostgreSQL migrations. Input validation is enforced with
-          FluentValidation, and integration tests ensure critical flows such as order
-          placement remain reliable.
+          Lightweight ASP.NET Core and PostgreSQL service offering product CRUD,
+          stock validation, and idempotent order placement for small stores.
         </p>
       </ProjectSection>
+      <ProjectSection title="Consistency and Concurrency">
+        <p>
+          Transactions with an inventory audit log ensure reliable updates while
+          Postgres <code>xmin</code> optimistic concurrency prevents oversells.
+        </p>
+      </ProjectSection>
+      <ProjectSection title="Development and Deployment">
+        <p>
+          EF Core migrations, FluentValidation, RFC 7807 <code>ProblemDetails</code>,
+          Swagger, and Serilog support robust development. Integration tests run
+          against a Dockerized Postgres instance and the API targets Azure
+          hosting.
+        </p>
+      </ProjectSection>
+
+      {images.length > 0 && (
+        <ProjectSection title="Screenshots">
+          <ProjectGallery images={images} alt="Order & Inventory Management API screenshot" />
+        </ProjectSection>
+      )}
     </div>
   );
 }

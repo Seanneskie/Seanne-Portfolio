@@ -21,17 +21,33 @@ export default async function ItineraryPlanner() {
         </p>
       </ProjectOverview>
 
-      <ProjectSection title="Key Features">
-        <ul className="list-disc space-y-1 pl-4">
-          <li>Map integration to visualize destinations and routes.</li>
-          <li>Budgeting to estimate costs and track expenses per stop.</li>
-          <li>Export itineraries to shareable formats for offline access.</li>
-        </ul>
+      <ProjectSection title="Introduction">
+        <p>Project introduction coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Rationale">
+        <p>Rationale coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Data Collection">
+        <p>Data collection details coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Model Development">
+        <p>Model development details coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Training and Evaluation">
+        <p>Training and evaluation details coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Deployment">
+        <p>Deployment details coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Ethical Implications">
+        <p>Ethical considerations coming soon.</p>
       </ProjectSection>
 
-      <ProjectSection title="Screenshots">
-        <ProjectGallery images={images} alt="Itinerary Planner screenshot" />
-      </ProjectSection>
+      {images.length > 0 && (
+        <ProjectSection title="Screenshots">
+          <ProjectGallery images={images} alt="Itinerary Planner screenshot" />
+        </ProjectSection>
+      )}
     </div>
   );
 }

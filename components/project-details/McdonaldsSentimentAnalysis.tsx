@@ -1,5 +1,6 @@
 import ProjectOverview from "./ProjectOverview";
 import ProjectSection from "./ProjectSection";
+import ProjectGallery from "./ProjectGallery";
 import { getProjectImages } from "@/lib/project-images";
 
 export default async function McdonaldsSentimentAnalysis() {
@@ -8,11 +9,11 @@ export default async function McdonaldsSentimentAnalysis() {
     <div className="space-y-12">
       <ProjectOverview
         images={images.length ? images : ["/static/placeholders/django.png"]}
-        alt="McDonald's Sentiment Analysis screenshot"
+        alt="McDonald&apos;s Sentiment Analysis screenshot"
       >
         <p>
           <strong>Overview:</strong> Sentiment analysis of over 33,000
-          McDonald's Google reviews using Python to understand customer
+          McDonald&apos;s Google reviews using Python to understand customer
           satisfaction trends.
         </p>
         <p>
@@ -20,31 +21,36 @@ export default async function McdonaldsSentimentAnalysis() {
         </p>
       </ProjectOverview>
 
-      <ProjectSection title="Dataset">
-        <p>
-          The dataset contains more than 33,000 reviews scraped from Google
-          Maps. Each review includes the user's rating, review text, and date,
-          providing a rich corpus for sentiment analysis.
-        </p>
+      <ProjectSection title="Introduction">
+        <p>Project introduction coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Rationale">
+        <p>Rationale coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Data Collection">
+        <p>Data collection details coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Model Development">
+        <p>Model development details coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Training and Evaluation">
+        <p>Training and evaluation details coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Deployment">
+        <p>Deployment details coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Ethical Implications">
+        <p>Ethical considerations coming soon.</p>
       </ProjectSection>
 
-      <ProjectSection title="NLP Approach">
-        <p>
-          Reviews were preprocessed and tokenized using <strong>NLTK</strong>.
-          Sentiment scoring leveraged the <strong>VADER</strong> lexicon to
-          classify each review as positive, negative, or neutral. Aggregate
-          scores were computed to reveal overall customer sentiment.
-        </p>
-      </ProjectSection>
-
-      <ProjectSection title="Charts and Insights">
-        <p>
-          Visualizations illustrate sentiment distribution and top keywords.
-          Bar and pie charts help highlight the proportion of positive versus
-          negative feedback, while word frequency charts expose common themes in
-          customer opinions.
-        </p>
-      </ProjectSection>
+      {images.length > 0 && (
+        <ProjectSection title="Screenshots">
+          <ProjectGallery
+            images={images}
+            alt="McDonald&apos;s Sentiment Analysis screenshot"
+          />
+        </ProjectSection>
+      )}
     </div>
   );
 }

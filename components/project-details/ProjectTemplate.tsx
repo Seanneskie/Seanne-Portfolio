@@ -1,12 +1,16 @@
 import ProjectOverview from "./ProjectOverview";
 import ProjectSection from "./ProjectSection";
-
-export default function ProjectTemplate() {
+import ProjectGallery from "./ProjectGallery";
+import { getProjectImages } from "@/lib/project-images";
+export default async function ProjectTemplate() {
+  const images = await getProjectImages("project-slug");
   return (
     <div className="space-y-12">
       <ProjectOverview
-        images={["/static/placeholders/ai.png"]}
+        images={images.length ? images : ["/static/placeholders/ai.png"]}
         alt="Project screenshot"
+        // githubUrl="https://github.com/username/repo" // optional
+        // downloadUrl="/static/project-slug/file.zip" // optional
       >
         <p>
           <strong>Overview:</strong> Brief overview of the project.
@@ -43,6 +47,12 @@ export default function ProjectTemplate() {
       <ProjectSection title="Ethical and Societal Implications">
         <p>Share ethical and societal considerations.</p>
       </ProjectSection>
+
+      {images.length > 0 && (
+        <ProjectSection title="Screenshots">
+          <ProjectGallery images={images} alt="Project screenshot" />
+        </ProjectSection>
+      )}
     </div>
   );
 }

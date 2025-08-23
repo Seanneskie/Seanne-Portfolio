@@ -27,6 +27,7 @@
     "image": "/static/placeholders/Mern.png",
     "alt": "Image",
     "description": "Made using MERN Stack. A final requirement in NoSQL Course.",
+    "collaborators": null,
     "tags": [
       "MongoDB",
       "ReactJS",
@@ -71,6 +72,7 @@
     "image": "/bitcoin-analysis-app/images/1.png",
     "alt": "Analysis Image",
     "description": "A Bitcoin Prediction and Descriptive Analysis. Made with Django and Python Modules.",
+    "collaborators": null,
     "tags": [
       "Python",
       "Kaggle",
@@ -100,9 +102,10 @@
   },
   {
     "title": "Desktop Payroll Management System",
-    "image": "/pms/images/1.png",
+    "image": "/desktop-payroll-management-system/images/1.png",
     "alt": "Desktop Payroll Management System Image",
     "description": "FastAPI-powered payroll management backend bundled with an Electron desktop shell.",
+    "collaborators": null,
     "tags": [
       "Python",
       "FastAPI",
@@ -113,14 +116,14 @@
     ],
     "github": "https://github.com/Seanneskie/desktop-payroll-management-system",
     "githubLabel": "View on GitHub",
-    "details": "project-details/pms",
+    "details": "project-details/desktop-payroll-management-system",
     "period": "Aug 2025 - Present",
     "images": [
-      "/pms/images/1.png",
-      "/pms/images/2.png",
-      "/pms/images/3.png",
-      "/pms/images/4.png",
-      "/pms/images/5.png"
+      "/desktop-payroll-management-system/images/1.png",
+      "/desktop-payroll-management-system/images/2.png",
+      "/desktop-payroll-management-system/images/3.png",
+      "/desktop-payroll-management-system/images/4.png",
+      "/desktop-payroll-management-system/images/5.png"
     ]
   },
   {
@@ -191,7 +194,7 @@
       "CSS"
     ],
     "github": null,
-    "githubLabel": "View Site",
+    "githubLabel": "",
     "details": "project-details/vims",
     "period": "Dec 2024 - June 2025",
     "images": [
@@ -203,6 +206,7 @@
     "image": "/static/placeholders/php.png",
     "alt": "Laravel Itinerary Planner Image",
     "description": "Full-stack travel planning app with interactive maps, budgeting, and exportable itineraries.",
+    "collaborators": null,
     "tags": [
       "Laravel",
       "PHP",
@@ -227,6 +231,7 @@
     "image": "/albany-airbnb-dashboard/images/1.png",
     "alt": "Albany Airbnb Dashboard Image",
     "description": "Interactive dashboard analyzing Airbnb listings, pricing, and guest sentiment.",
+    "collaborators": null,
     "tags": [
       "Pandas",
       "Data Visualization",
@@ -240,7 +245,7 @@
       "Python"
     ],
     "github": null,
-    "githubLabel": "View on GitHub",
+    "githubLabel": "",
     "details": "project-details/albany-airbnb-dashboard",
     "period": "Nov 2024 - Dec 2024",
     "images": [
@@ -256,6 +261,7 @@
     "image": "/static/placeholders/django.png",
     "alt": "McDonald's Sentiment Analysis Image",
     "description": "Sentiment analysis of over 33,000 McDonald's Google reviews using Python.",
+    "collaborators": null,
     "tags": [
       "NLTK",
       "VADER",
@@ -269,7 +275,7 @@
       "Data Mining"
     ],
     "github": null,
-    "githubLabel": "View on GitHub",
+    "githubLabel": "",
     "details": "project-details/mcdonalds-sentiment-analysis",
     "period": "Nov 2024 - Dec 2024",
     "images": [
@@ -281,6 +287,7 @@
     "image": "/static/placeholders/ai.png",
     "alt": "AI-Powered Email Generator Image",
     "description": "Django and LangChain app that drafts polished emails using LLMs and OpenRouter.",
+    "collaborators": null,
     "tags": [
       "Django",
       "LangChain",
@@ -301,6 +308,7 @@
     "image": "/static/placeholders/next.png",
     "alt": "Headless E-Commerce Mini-Store Image",
     "description": "Modern headless e-commerce platform using Next.js, Shopify Storefront GraphQL API, and AWS.",
+    "collaborators": null,
     "tags": [
       "NextJS",
       "Shopify",
@@ -309,7 +317,7 @@
       "E-Commerce"
     ],
     "github": null,
-    "githubLabel": "View Site",
+    "githubLabel": "",
     "details": "project-details/headless-ecommerce-mini-store",
     "period": "Aug 2025 - Aug 2025",
     "images": [
@@ -321,6 +329,7 @@
     "image": "/static/placeholders/next.png",
     "alt": "Order & Inventory Management API Image",
     "description": "Lightweight ASP.NET Core API with PostgreSQL for products, stock validation, idempotent orders, and audit logging.",
+    "collaborators": null,
     "tags": [
       "ASP.NET Core",
       "PostgreSQL",
@@ -333,7 +342,7 @@
       "Azure"
     ],
     "github": null,
-    "githubLabel": "View on GitHub",
+    "githubLabel": "",
     "details": "project-details/order-inventory-management-api",
     "period": "Aug 2025 - Aug 2025",
     "images": [
@@ -345,6 +354,7 @@
     "image": "/static/placeholders/next.png",
     "alt": "Budget System screenshot",
     "description": "Layered ASP.NET Core and SQL Server budgeting app with validation, EF Core persistence, and idempotent API middleware.",
+    "collaborators": null,
     "tags": [
       "ASP.NET Core",
       "SQL Server",
@@ -355,7 +365,7 @@
       "Idempotency"
     ],
     "github": null,
-    "githubLabel": "View on GitHub",
+    "githubLabel": "",
     "details": "project-details/budget-system",
     "period": "Aug 2025 - Present",
     "images": [

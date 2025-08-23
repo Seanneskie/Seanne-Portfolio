@@ -1,12 +1,7 @@
 import ProjectOverview from "./ProjectOverview";
+import ProjectSection from "./ProjectSection";
+import ProjectGallery from "./ProjectGallery";
 import { getProjectImages } from "@/lib/project-images";
-import Introduction from "./ai-coin-detector/Introduction";
-import Rationale from "./ai-coin-detector/Rationale";
-import DataCollection from "./ai-coin-detector/DataCollection";
-import ModelDevelopment from "./ai-coin-detector/ModelDevelopment";
-import TrainingAndEvaluation from "./ai-coin-detector/TrainingAndEvaluation";
-import Deployment from "./ai-coin-detector/Deployment";
-import EthicalImplications from "./ai-coin-detector/EthicalImplications";
 
 export default async function AICoinDetector() {
   const images = await getProjectImages("ai-coin-detector");
@@ -28,13 +23,58 @@ export default async function AICoinDetector() {
           Bridget Jose, Azlan Tomindug
         </p>
       </ProjectOverview>
-      <Introduction />
-      <Rationale />
-      <DataCollection />
-      <ModelDevelopment />
-      <TrainingAndEvaluation />
-      <Deployment />
-      <EthicalImplications />
+
+      <ProjectSection title="Introduction">
+        <p>
+          Web-based utility that identifies and counts Philippine peso coins
+          from webcam input using a model trained with Google Teachable
+          Machine.
+        </p>
+      </ProjectSection>
+      <ProjectSection title="Rationale">
+        <p>
+          Automating coin recognition streamlines sorting tasks for classrooms
+          and small businesses while demonstrating practical computer vision
+          concepts.
+        </p>
+      </ProjectSection>
+      <ProjectSection title="Data Collection">
+        <p>
+          Hundreds of labeled coin photos were captured with a smartphone and
+          uploaded to Teachable Machine to represent each peso denomination.
+        </p>
+      </ProjectSection>
+      <ProjectSection title="Model Development">
+        <p>
+          The Teachable Machine model was exported to TensorFlow and combined
+          with OpenCV image preprocessing within a Django backend.
+        </p>
+      </ProjectSection>
+      <ProjectSection title="Training and Evaluation">
+        <p>
+          Model accuracy was reviewed using Teachable Machine&apos;s validation
+          metrics and manual testing against real coin samples.
+        </p>
+      </ProjectSection>
+      <ProjectSection title="Deployment">
+        <p>
+          Packaged as a Django app that serves a browser interface, enabling
+          real-time detection via a connected webcam.
+        </p>
+      </ProjectSection>
+      <ProjectSection title="Ethical Implications">
+        <p>
+          Images were collected in controlled settings to avoid privacy issues
+          and the tool is intended for educational use, not counterfeit
+          detection.
+        </p>
+      </ProjectSection>
+
+      {images.length > 0 && (
+        <ProjectSection title="Screenshots">
+          <ProjectGallery images={images} alt="AI Coin Detector Screenshot" />
+        </ProjectSection>
+      )}
     </div>
   );
 }

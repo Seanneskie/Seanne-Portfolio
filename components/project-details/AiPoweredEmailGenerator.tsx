@@ -23,48 +23,53 @@ export default async function AiPoweredEmailGenerator() {
         </p>
       </ProjectOverview>
 
-      <ProjectSection title="LangChain Prompts">
+      <ProjectSection title="Introduction">
         <p>
-          Prompts are assembled with LangChain's
-          <code> ChatPromptTemplate </code> to capture the desired tone, audience,
-          and key points. Few-shot examples guide the model toward concise
-          and professional language.
-        </p>
-        <p>Example template:</p>
-        <pre className="rounded bg-slate-800 p-4 text-slate-100 overflow-x-auto"><code>{`You are an assistant that writes professional emails.
-Write an email in a {tone} voice about {topic} for {audience}.`}</code></pre>
-      </ProjectSection>
-
-      <ProjectSection title="OpenRouter Integration">
-        <p>
-          The application sends the composed prompt to OpenRouter, allowing
-          access to a variety of hosted LLMs. Requests include model selection
-          and stream responses to the UI for a responsive typing effect.
+          Web app that drafts email responses from a short prompt and optional
+          context, built to explore LLM-assisted writing workflows.
         </p>
       </ProjectSection>
-
-      <ProjectSection title="Sample Outputs">
-        <ul className="list-disc pl-6 space-y-1">
-          <li>
-            Formal inquiry email introducing a product and requesting a follow-up
-            call.
-          </li>
-          <li>
-            Friendly reminder email summarizing action items from a recent
-            meeting.
-          </li>
-          <li>
-            Promotional announcement highlighting new features in a release.
-          </li>
-        </ul>
+      <ProjectSection title="Rationale">
+        <p>
+          Automating routine email composition saves time and encourages a
+          consistent tone when handling frequent inquiries.
+        </p>
+      </ProjectSection>
+      <ProjectSection title="Data Collection">
+        <p>
+          The system only processes user-supplied prompts and optional thread
+          history. No external dataset is stored or used for training.
+        </p>
+      </ProjectSection>
+      <ProjectSection title="Model Development">
+        <p>
+          LangChain prompt templates structure requests sent to OpenRouter,
+          allowing different large language models to generate polished drafts.
+        </p>
+      </ProjectSection>
+      <ProjectSection title="Training and Evaluation">
+        <p>
+          The generator relies on pre-trained models. Quality is assessed
+          manually by iterating on prompts and reviewing sample outputs.
+        </p>
+      </ProjectSection>
+      <ProjectSection title="Deployment">
+        <p>
+          Implemented in Next.js and deployed to Vercel. Serverless functions
+          handle API keys and return generated text in real time.
+        </p>
+      </ProjectSection>
+      <ProjectSection title="Ethical Implications">
+        <p>
+          Users are encouraged to review generated content to avoid
+          misinformation or unintended tone. The app avoids storing personal
+          data to respect privacy.
+        </p>
       </ProjectSection>
 
       {images.length > 0 && (
         <ProjectSection title="Screenshots">
-          <ProjectGallery
-            images={images}
-            alt="AI Powered Email Generator screenshot"
-          />
+          <ProjectGallery images={images} alt="AI Powered Email Generator screenshot" />
         </ProjectSection>
       )}
     </div>
