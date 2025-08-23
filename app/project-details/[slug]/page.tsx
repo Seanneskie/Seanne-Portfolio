@@ -3,9 +3,9 @@ import path from "path";
 import type { ComponentType } from "react";
 
 interface PageProps {
-  params: Promise<{
+  params: {
     slug: string;
-  }>;
+  };
 }
 
 const componentMap: Record<string, () => Promise<{ default: ComponentType }>> = {
@@ -30,11 +30,10 @@ const componentMap: Record<string, () => Promise<{ default: ComponentType }>> = 
   "order-inventory-management-api": () =>
     import("@/components/project-details/OrderInventoryManagementApi"),
   "budget-system": () => import("@/components/project-details/BudgetSystem"),
-  "example-project": () => import("@/components/project-details/ExampleProject"),
 };
 
 export default async function ProjectDetailPage({ params }: PageProps) {
-  const { slug } = await params;
+  const { slug } = params;
 
   let Component: ComponentType | null = null;
 
