@@ -52,7 +52,7 @@ export default async function AICoinDetector() {
       </ProjectSection>
       <ProjectSection title="Training and Evaluation">
         <p>
-          Model accuracy was reviewed using Teachable Machine's validation
+          Model accuracy was reviewed using Teachable Machine&apos;s validation
           metrics and manual testing against real coin samples.
         </p>
       </ProjectSection>
