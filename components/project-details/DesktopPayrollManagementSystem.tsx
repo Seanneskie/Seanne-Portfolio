@@ -4,7 +4,9 @@ import ProjectGallery from "./ProjectGallery";
 import { getProjectImages } from "@/lib/project-images";
 
 export default async function DesktopPayrollManagementSystem() {
-  const images = await getProjectImages("pms");
+  const images = await getProjectImages(
+    "desktop-payroll-management-system"
+  );
   return (
     <div className="space-y-12">
       <ProjectOverview
