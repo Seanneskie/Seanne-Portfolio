@@ -1,5 +1,6 @@
 import ProjectOverview from "./ProjectOverview";
 import ProjectSection from "./ProjectSection";
+import ProjectGallery from "./ProjectGallery";
 import { getProjectImages } from "@/lib/project-images";
 
 export default async function DigitalFreelancerProfilingApp() {
@@ -22,29 +23,33 @@ export default async function DigitalFreelancerProfilingApp() {
         </p>
       </ProjectOverview>
 
-      <ProjectSection title="Profile Fields">
-        <ul className="list-disc pl-6 space-y-2">
-          <li>Personal information including photo, contact, and location.</li>
-          <li>Skill tags, work experience, and service rates.</li>
-          <li>Uploadable portfolio items and certifications.</li>
-        </ul>
+      <ProjectSection title="Introduction">
+        <p>Project introduction coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Rationale">
+        <p>Rationale coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Data Collection">
+        <p>Data collection details coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Model Development">
+        <p>Model development details coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Training and Evaluation">
+        <p>Training and evaluation details coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Deployment">
+        <p>Deployment details coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Ethical Implications">
+        <p>Ethical considerations coming soon.</p>
       </ProjectSection>
 
-      <ProjectSection title="Authentication">
-        <p>
-          Users register with email verification and sign in with encrypted
-          credentials. Role-based access separates freelancers from
-          administrators, and session management keeps accounts secure.
-        </p>
-      </ProjectSection>
-
-      <ProjectSection title="Admin Workflows">
-        <ul className="list-disc pl-6 space-y-2">
-          <li>Dashboard listing new profiles awaiting review.</li>
-          <li>Approve, reject, or flag entries with instant feedback.</li>
-          <li>Edit user details and reset credentials when necessary.</li>
-        </ul>
-      </ProjectSection>
+      {images.length > 0 && (
+        <ProjectSection title="Screenshots">
+          <ProjectGallery images={images} alt="Digital Freelancer Profiling App screenshot" />
+        </ProjectSection>
+      )}
     </div>
   );
 }

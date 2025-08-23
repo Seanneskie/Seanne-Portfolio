@@ -1,5 +1,6 @@
 import ProjectOverview from "./ProjectOverview";
 import ProjectSection from "./ProjectSection";
+import ProjectGallery from "./ProjectGallery";
 import { getProjectImages } from "@/lib/project-images";
 
 export default async function DesktopPayrollManagementSystem() {
@@ -22,18 +23,33 @@ export default async function DesktopPayrollManagementSystem() {
         </p>
       </ProjectOverview>
 
-      <ProjectSection title="Key Features">
-        <ul className="list-disc pl-6 space-y-2">
-          <li>Employee directory with roles and configurable salaries.</li>
-          <li>
-            Time tracking and payroll calculations for hourly and salaried
-            staff.
-          </li>
-          <li>Automatic payslip generation with deductions and allowances.</li>
-          <li>FastAPI REST endpoints consumed by the Electron client.</li>
-          <li>Packaging scripts build installers for Windows and Linux.</li>
-        </ul>
+      <ProjectSection title="Introduction">
+        <p>Project introduction coming soon.</p>
       </ProjectSection>
+      <ProjectSection title="Rationale">
+        <p>Rationale coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Data Collection">
+        <p>Data collection details coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Model Development">
+        <p>Model development details coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Training and Evaluation">
+        <p>Training and evaluation details coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Deployment">
+        <p>Deployment details coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Ethical Implications">
+        <p>Ethical considerations coming soon.</p>
+      </ProjectSection>
+
+      {images.length > 0 && (
+        <ProjectSection title="Screenshots">
+          <ProjectGallery images={images} alt="Desktop Payroll Management System screenshot" />
+        </ProjectSection>
+      )}
     </div>
   );
 }

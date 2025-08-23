@@ -1,5 +1,6 @@
 import ProjectOverview from "./ProjectOverview";
 import ProjectSection from "./ProjectSection";
+import ProjectGallery from "./ProjectGallery";
 import { getProjectImages } from "@/lib/project-images";
 
 export default async function CnsmWebsite() {
@@ -21,25 +22,33 @@ export default async function CnsmWebsite() {
         </p>
       </ProjectOverview>
 
-      <ProjectSection title="Key Features">
-        <ul className="list-disc pl-6 space-y-2">
-          <li>Responsive landing pages for departments and degree programs.</li>
-          <li>Admin dashboard for managing faculty profiles and announcements.</li>
-          <li>User authentication with role-based access.</li>
-          <li>Searchable catalog of courses and downloadable resources.</li>
-        </ul>
+      <ProjectSection title="Introduction">
+        <p>Project introduction coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Rationale">
+        <p>Rationale coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Data Collection">
+        <p>Data collection details coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Model Development">
+        <p>Model development details coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Training and Evaluation">
+        <p>Training and evaluation details coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Deployment">
+        <p>Deployment details coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Ethical Implications">
+        <p>Ethical considerations coming soon.</p>
       </ProjectSection>
 
-      <ProjectSection title="Database Architecture">
-        <p>
-          MongoDB stores collections for users, departments, programs, courses,
-          and announcements. Documents reference each other through ObjectIds,
-          enabling quick lookups without joins. Indexed fields such as department
-          names and user emails support fast queries, and embedded subdocuments
-          capture repeated structures like course prerequisites. The Express API
-          enforces schema validation before writes to maintain data integrity.
-        </p>
-      </ProjectSection>
+      {images.length > 0 && (
+        <ProjectSection title="Screenshots">
+          <ProjectGallery images={images} alt="CNSM website screenshot" />
+        </ProjectSection>
+      )}
     </div>
   );
 }

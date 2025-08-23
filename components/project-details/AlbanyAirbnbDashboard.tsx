@@ -19,26 +19,33 @@ export default async function AlbanyAirbnbDashboard() {
           <strong>Collaborators:</strong> Individual Project
         </p>
       </ProjectOverview>
-      <ProjectSection title="Features">
-        <ul className="list-disc space-y-1 pl-4">
-          <li>
-            Dynamic charts displaying price, availability, and review metrics
-            across neighborhoods.
-          </li>
-          <li>
-            Filter controls for refining listings by room type and price range.
-          </li>
-          <li>
-            Exportable summary reports for deeper analysis.
-          </li>
-        </ul>
+      <ProjectSection title="Introduction">
+        <p>Project introduction coming soon.</p>
       </ProjectSection>
-      <ProjectSection title="Screenshots">
-        <ProjectGallery
-          images={images}
-          alt="Albany Airbnb Dashboard screenshot"
-        />
+      <ProjectSection title="Rationale">
+        <p>Rationale coming soon.</p>
       </ProjectSection>
+      <ProjectSection title="Data Collection">
+        <p>Data collection details coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Model Development">
+        <p>Model development details coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Training and Evaluation">
+        <p>Training and evaluation details coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Deployment">
+        <p>Deployment details coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Ethical Implications">
+        <p>Ethical considerations coming soon.</p>
+      </ProjectSection>
+
+      {images.length > 0 && (
+        <ProjectSection title="Screenshots">
+          <ProjectGallery images={images} alt="Albany Airbnb Dashboard screenshot" />
+        </ProjectSection>
+      )}
     </div>
   );
 }

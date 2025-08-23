@@ -1,5 +1,6 @@
 import ProjectOverview from "./ProjectOverview";
 import ProjectSection from "./ProjectSection";
+import ProjectGallery from "./ProjectGallery";
 import { getProjectImages } from "@/lib/project-images";
 
 export default async function Vims() {
@@ -19,20 +20,33 @@ export default async function Vims() {
         </p>
       </ProjectOverview>
 
-      <ProjectSection title="Vessel Inventory Features">
-        <ul className="list-disc pl-6 space-y-2">
-          <li>Maintain detailed records of vessels with capacity and class.</li>
-          <li>Search and filter vessels by name, type, or availability.</li>
-          <li>Track active, inactive, and maintenance statuses in real time.</li>
-        </ul>
+      <ProjectSection title="Introduction">
+        <p>Project introduction coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Rationale">
+        <p>Rationale coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Data Collection">
+        <p>Data collection details coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Model Development">
+        <p>Model development details coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Training and Evaluation">
+        <p>Training and evaluation details coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Deployment">
+        <p>Deployment details coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Ethical Implications">
+        <p>Ethical considerations coming soon.</p>
       </ProjectSection>
 
-      <ProjectSection title="Deployment Details">
-        <p>
-          Deployed on Vercel for fast global delivery, leveraging automatic
-          builds and environment variables for seamless updates.
-        </p>
-      </ProjectSection>
+      {images.length > 0 && (
+        <ProjectSection title="Screenshots">
+          <ProjectGallery images={images} alt="Vessel Inventory Management System screenshot" />
+        </ProjectSection>
+      )}
     </div>
   );
 }

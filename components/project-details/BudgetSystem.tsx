@@ -1,5 +1,6 @@
 import ProjectOverview from "./ProjectOverview";
 import ProjectSection from "./ProjectSection";
+import ProjectGallery from "./ProjectGallery";
 import { getProjectImages } from "@/lib/project-images";
 
 export default async function BudgetSystem() {
@@ -22,31 +23,33 @@ export default async function BudgetSystem() {
         </p>
       </ProjectOverview>
 
-      <ProjectSection title="Key Features">
-        <ul className="list-disc pl-6 space-y-2">
-          <li>
-            Transactions handle income, expense, and transfer flows between
-            accounts.
-          </li>
-          <li>
-            FluentValidation ensures positive amounts and required account fields
-            for each transaction type.
-          </li>
-          <li>
-            EF Core sets monetary precision, unique category names, relationships,
-            and stores idempotency keys; a database seeder bootstraps sample
-            data.
-          </li>
-          <li>
-            Middleware hashes request bodies and checks Idempotency-Key headers
-            to reject duplicate writes.
-          </li>
-          <li>
-            Minimal CRUD API returns RFC 7807 ProblemDetails responses and
-            exposes a typed HttpClient for front-end integration.
-          </li>
-        </ul>
+      <ProjectSection title="Introduction">
+        <p>Project introduction coming soon.</p>
       </ProjectSection>
+      <ProjectSection title="Rationale">
+        <p>Rationale coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Data Collection">
+        <p>Data collection details coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Model Development">
+        <p>Model development details coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Training and Evaluation">
+        <p>Training and evaluation details coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Deployment">
+        <p>Deployment details coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Ethical Implications">
+        <p>Ethical considerations coming soon.</p>
+      </ProjectSection>
+
+      {images.length > 0 && (
+        <ProjectSection title="Screenshots">
+          <ProjectGallery images={images} alt="Budget System screenshot" />
+        </ProjectSection>
+      )}
     </div>
   );
 }

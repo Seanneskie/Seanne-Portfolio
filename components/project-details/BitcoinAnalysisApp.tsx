@@ -1,5 +1,6 @@
 import ProjectOverview from "./ProjectOverview";
 import ProjectSection from "./ProjectSection";
+import ProjectGallery from "./ProjectGallery";
 import { getProjectImages } from "@/lib/project-images";
 
 export default async function BitcoinAnalysisApp() {
@@ -19,25 +20,33 @@ export default async function BitcoinAnalysisApp() {
           <strong>Collaborators:</strong> Individual Project
         </p>
       </ProjectOverview>
-      <ProjectSection title="Objectives">
-        <ul className="list-disc pl-6 space-y-2">
-          <li>Visualize price trends to highlight volatility and market cycles.</li>
-          <li>Compare price action with trading volume and moving averages.</li>
-          <li>Provide an accessible dashboard for exploring Bitcoin market data.</li>
-        </ul>
+      <ProjectSection title="Introduction">
+        <p>Project introduction coming soon.</p>
       </ProjectSection>
-      <ProjectSection title="Data Sources">
-        <p>
-          The application combines daily open, high, low, close, and volume data
-          from public Bitcoin datasets such as CoinDesk and Kaggle.
-        </p>
+      <ProjectSection title="Rationale">
+        <p>Rationale coming soon.</p>
       </ProjectSection>
-      <ProjectSection title="Charts">
-        <p>
-          Line and candlestick charts present price behaviour, while bar charts
-          display trading volume with moving‑average overlays for context.
-        </p>
+      <ProjectSection title="Data Collection">
+        <p>Data collection details coming soon.</p>
       </ProjectSection>
+      <ProjectSection title="Model Development">
+        <p>Model development details coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Training and Evaluation">
+        <p>Training and evaluation details coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Deployment">
+        <p>Deployment details coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Ethical Implications">
+        <p>Ethical considerations coming soon.</p>
+      </ProjectSection>
+
+      {images.length > 0 && (
+        <ProjectSection title="Screenshots">
+          <ProjectGallery images={images} alt="Bitcoin Analysis App screenshot" />
+        </ProjectSection>
+      )}
     </div>
   );
 }
