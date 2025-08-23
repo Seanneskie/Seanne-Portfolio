@@ -27,6 +27,7 @@
     "image": "/static/placeholders/Mern.png",
     "alt": "Image",
     "description": "Made using MERN Stack. A final requirement in NoSQL Course.",
+    "collaborators": null,
     "tags": [
       "MongoDB",
       "ReactJS",
@@ -71,6 +72,7 @@
     "image": "/bitcoin-analysis-app/images/1.png",
     "alt": "Analysis Image",
     "description": "A Bitcoin Prediction and Descriptive Analysis. Made with Django and Python Modules.",
+    "collaborators": null,
     "tags": [
       "Python",
       "Kaggle",
@@ -103,6 +105,7 @@
     "image": "/pms/images/1.png",
     "alt": "Desktop Payroll Management System Image",
     "description": "FastAPI-powered payroll management backend bundled with an Electron desktop shell.",
+    "collaborators": null,
     "tags": [
       "Python",
       "FastAPI",
@@ -203,6 +206,7 @@
     "image": "/static/placeholders/php.png",
     "alt": "Laravel Itinerary Planner Image",
     "description": "Full-stack travel planning app with interactive maps, budgeting, and exportable itineraries.",
+    "collaborators": null,
     "tags": [
       "Laravel",
       "PHP",
@@ -227,6 +231,7 @@
     "image": "/albany-airbnb-dashboard/images/1.png",
     "alt": "Albany Airbnb Dashboard Image",
     "description": "Interactive dashboard analyzing Airbnb listings, pricing, and guest sentiment.",
+    "collaborators": null,
     "tags": [
       "Pandas",
       "Data Visualization",
@@ -256,6 +261,7 @@
     "image": "/static/placeholders/django.png",
     "alt": "McDonald's Sentiment Analysis Image",
     "description": "Sentiment analysis of over 33,000 McDonald's Google reviews using Python.",
+    "collaborators": null,
     "tags": [
       "NLTK",
       "VADER",
@@ -281,6 +287,7 @@
     "image": "/static/placeholders/ai.png",
     "alt": "AI-Powered Email Generator Image",
     "description": "Django and LangChain app that drafts polished emails using LLMs and OpenRouter.",
+    "collaborators": null,
     "tags": [
       "Django",
       "LangChain",
@@ -301,6 +308,7 @@
     "image": "/static/placeholders/next.png",
     "alt": "Headless E-Commerce Mini-Store Image",
     "description": "Modern headless e-commerce platform using Next.js, Shopify Storefront GraphQL API, and AWS.",
+    "collaborators": null,
     "tags": [
       "NextJS",
       "Shopify",
@@ -321,6 +329,7 @@
     "image": "/static/placeholders/next.png",
     "alt": "Order & Inventory Management API Image",
     "description": "Lightweight ASP.NET Core API with PostgreSQL for products, stock validation, idempotent orders, and audit logging.",
+    "collaborators": null,
     "tags": [
       "ASP.NET Core",
       "PostgreSQL",
@@ -345,6 +354,7 @@
     "image": "/static/placeholders/next.png",
     "alt": "Budget System screenshot",
     "description": "Layered ASP.NET Core and SQL Server budgeting app with validation, EF Core persistence, and idempotent API middleware.",
+    "collaborators": null,
     "tags": [
       "ASP.NET Core",
       "SQL Server",
