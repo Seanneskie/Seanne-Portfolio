@@ -25,25 +25,49 @@ export default async function AICoinDetector() {
       </ProjectOverview>
 
       <ProjectSection title="Introduction">
-        <p>Project introduction coming soon.</p>
+        <p>
+          Web-based utility that identifies and counts Philippine peso coins
+          from webcam input using a model trained with Google Teachable
+          Machine.
+        </p>
       </ProjectSection>
       <ProjectSection title="Rationale">
-        <p>Rationale coming soon.</p>
+        <p>
+          Automating coin recognition streamlines sorting tasks for classrooms
+          and small businesses while demonstrating practical computer vision
+          concepts.
+        </p>
       </ProjectSection>
       <ProjectSection title="Data Collection">
-        <p>Data collection details coming soon.</p>
+        <p>
+          Hundreds of labeled coin photos were captured with a smartphone and
+          uploaded to Teachable Machine to represent each peso denomination.
+        </p>
       </ProjectSection>
       <ProjectSection title="Model Development">
-        <p>Model development details coming soon.</p>
+        <p>
+          The Teachable Machine model was exported to TensorFlow and combined
+          with OpenCV image preprocessing within a Django backend.
+        </p>
       </ProjectSection>
       <ProjectSection title="Training and Evaluation">
-        <p>Training and evaluation details coming soon.</p>
+        <p>
+          Model accuracy was reviewed using Teachable Machine's validation
+          metrics and manual testing against real coin samples.
+        </p>
       </ProjectSection>
       <ProjectSection title="Deployment">
-        <p>Deployment details coming soon.</p>
+        <p>
+          Packaged as a Django app that serves a browser interface, enabling
+          real-time detection via a connected webcam.
+        </p>
       </ProjectSection>
       <ProjectSection title="Ethical Implications">
-        <p>Ethical considerations coming soon.</p>
+        <p>
+          Images were collected in controlled settings to avoid privacy issues
+          and the tool is intended for educational use, not counterfeit
+          detection.
+        </p>
       </ProjectSection>
 
       {images.length > 0 && (
