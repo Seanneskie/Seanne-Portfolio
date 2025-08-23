@@ -41,7 +41,8 @@
     "period": "Sep 2023 - Dec 2023",
     "images": [
       "/static/placeholders/Mern.png"
-    ]
+    ],
+    "collaborators": ""
   },
   {
     "title": "Advance Database Project - CNSM Website",
@@ -96,7 +97,8 @@
       "/bitcoin-analysis-app/images/7.png",
       "/bitcoin-analysis-app/images/8.png",
       "/bitcoin-analysis-app/images/9.png"
-    ]
+    ],
+    "collaborators": ""
   },
   {
     "title": "Desktop Payroll Management System",
@@ -121,7 +123,8 @@
       "/pms/images/3.png",
       "/pms/images/4.png",
       "/pms/images/5.png"
-    ]
+    ],
+    "collaborators": ""
   },
   {
     "title": "Digital Freelancer Profiling App",
@@ -220,7 +223,8 @@
     "period": "July 2025 - Aug 2025",
     "images": [
       "/static/placeholders/php.png"
-    ]
+    ],
+    "collaborators": ""
   },
   {
     "title": "Albany Airbnb Dashboard",
@@ -249,7 +253,8 @@
       "/albany-airbnb-dashboard/images/3.png",
       "/albany-airbnb-dashboard/images/4.png",
       "/albany-airbnb-dashboard/images/5.png"
-    ]
+    ],
+    "collaborators": ""
   },
   {
     "title": "McDonald's Sentiment Analysis",
@@ -274,7 +279,8 @@
     "period": "Nov 2024 - Dec 2024",
     "images": [
       "/static/placeholders/django.png"
-    ]
+    ],
+    "collaborators": ""
   },
   {
     "title": "AI-Powered Email Generator",
@@ -294,7 +300,8 @@
     "period": "Aug 2025 - Present",
     "images": [
       "/static/placeholders/ai.png"
-    ]
+    ],
+    "collaborators": ""
   },
   {
     "title": "Headless E-Commerce Mini-Store",
@@ -314,7 +321,8 @@
     "period": "Aug 2025 - Aug 2025",
     "images": [
       "/static/placeholders/next.png"
-    ]
+    ],
+    "collaborators": ""
   },
   {
     "title": "Order & Inventory Management API",
@@ -338,7 +346,8 @@
     "period": "Aug 2025 - Aug 2025",
     "images": [
       "/static/placeholders/next.png"
-    ]
+    ],
+    "collaborators": ""
   },
   {
     "title": "Budget System",
@@ -360,6 +369,7 @@
     "period": "Aug 2025 - Present",
     "images": [
       "/static/placeholders/next.png"
-    ]
+    ],
+    "collaborators": ""
   }
 ]

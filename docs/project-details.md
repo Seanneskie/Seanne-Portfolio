@@ -40,6 +40,27 @@ Add an entry in `public/data/projects.json` so the project appears in listings. 
 }
 ```
 
+### Field reference
+
+Each project entry in `projects.json` should include the following fields:
+
+**Required**
+
+- `title` – project name
+- `image` – thumbnail path shown in listings
+- `alt` – alt text for the thumbnail
+- `description` – short summary
+- `tags` – array of descriptors
+- `details` – slug in the form `project-details/<slug>` matching the route and component
+
+**Optional** (still include the key with an empty value when unknown)
+
+- `collaborators` – comma‑separated names or empty string
+- `github` – repository URL or `null`
+- `githubLabel` – link label such as “View on GitHub”
+- `period` – development timeframe
+- `images` – array of additional image paths (can be empty)
+
 ## 4. Create the page route
 
 Create a folder under `app/project-details/<slug>/` and add a `page.tsx` that imports your customized component:
