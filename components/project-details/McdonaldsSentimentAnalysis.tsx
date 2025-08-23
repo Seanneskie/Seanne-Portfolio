@@ -45,7 +45,10 @@ export default async function McdonaldsSentimentAnalysis() {
 
       {images.length > 0 && (
         <ProjectSection title="Screenshots">
-          <ProjectGallery images={images} alt="McDonald's Sentiment Analysis screenshot" />
+          <ProjectGallery
+            images={images}
+            alt="McDonald&apos;s Sentiment Analysis screenshot"
+          />
         </ProjectSection>
       )}
     </div>
