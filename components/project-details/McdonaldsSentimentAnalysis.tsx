@@ -8,11 +8,11 @@ export default async function McdonaldsSentimentAnalysis() {
     <div className="space-y-12">
       <ProjectOverview
         images={images.length ? images : ["/static/placeholders/django.png"]}
-        alt="McDonald's Sentiment Analysis screenshot"
+        alt="McDonald&apos;s Sentiment Analysis screenshot"
       >
         <p>
           <strong>Overview:</strong> Sentiment analysis of over 33,000
-          McDonald's Google reviews using Python to understand customer
+          McDonald&apos;s Google reviews using Python to understand customer
           satisfaction trends.
         </p>
         <p>
@@ -23,7 +23,7 @@ export default async function McdonaldsSentimentAnalysis() {
       <ProjectSection title="Dataset">
         <p>
           The dataset contains more than 33,000 reviews scraped from Google
-          Maps. Each review includes the user's rating, review text, and date,
+          Maps. Each review includes the user&apos;s rating, review text, and date,
           providing a rich corpus for sentiment analysis.
         </p>
       </ProjectSection>

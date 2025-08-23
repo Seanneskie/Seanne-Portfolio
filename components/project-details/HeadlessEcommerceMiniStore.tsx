@@ -23,14 +23,14 @@ export default async function HeadlessEcommerceMiniStore() {
       </ProjectOverview>
       <ProjectSection title="Product Catalog">
         <p>
-          The storefront queries Shopify's GraphQL API to display products,
+          The storefront queries Shopify&apos;s GraphQL API to display products,
           collections, and real-time inventory with a responsive UI.
         </p>
       </ProjectSection>
       <ProjectSection title="Checkout Flow">
         <p>
           Customers proceed through a custom checkout that hands off to
-          Shopify's secure checkout while persisting cart data via serverless
+          Shopify&apos;s secure checkout while persisting cart data via serverless
           functions.
         </p>
       </ProjectSection>
