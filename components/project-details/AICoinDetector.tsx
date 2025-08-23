@@ -1,12 +1,7 @@
 import ProjectOverview from "./ProjectOverview";
+import ProjectSection from "./ProjectSection";
+import ProjectGallery from "./ProjectGallery";
 import { getProjectImages } from "@/lib/project-images";
-import Introduction from "./ai-coin-detector/Introduction";
-import Rationale from "./ai-coin-detector/Rationale";
-import DataCollection from "./ai-coin-detector/DataCollection";
-import ModelDevelopment from "./ai-coin-detector/ModelDevelopment";
-import TrainingAndEvaluation from "./ai-coin-detector/TrainingAndEvaluation";
-import Deployment from "./ai-coin-detector/Deployment";
-import EthicalImplications from "./ai-coin-detector/EthicalImplications";
 
 export default async function AICoinDetector() {
   const images = await getProjectImages("ai-coin-detector");
@@ -28,13 +23,34 @@ export default async function AICoinDetector() {
           Bridget Jose, Azlan Tomindug
         </p>
       </ProjectOverview>
-      <Introduction />
-      <Rationale />
-      <DataCollection />
-      <ModelDevelopment />
-      <TrainingAndEvaluation />
-      <Deployment />
-      <EthicalImplications />
+
+      <ProjectSection title="Introduction">
+        <p>Project introduction coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Rationale">
+        <p>Rationale coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Data Collection">
+        <p>Data collection details coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Model Development">
+        <p>Model development details coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Training and Evaluation">
+        <p>Training and evaluation details coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Deployment">
+        <p>Deployment details coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Ethical Implications">
+        <p>Ethical considerations coming soon.</p>
+      </ProjectSection>
+
+      {images.length > 0 && (
+        <ProjectSection title="Screenshots">
+          <ProjectGallery images={images} alt="AI Coin Detector Screenshot" />
+        </ProjectSection>
+      )}
     </div>
   );
 }

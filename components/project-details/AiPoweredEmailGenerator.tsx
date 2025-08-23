@@ -23,48 +23,31 @@ export default async function AiPoweredEmailGenerator() {
         </p>
       </ProjectOverview>
 
-      <ProjectSection title="LangChain Prompts">
-        <p>
-          Prompts are assembled with LangChain&apos;s
-          <code> ChatPromptTemplate </code> to capture the desired tone, audience,
-          and key points. Few-shot examples guide the model toward concise
-          and professional language.
-        </p>
-        <p>Example template:</p>
-        <pre className="rounded bg-slate-800 p-4 text-slate-100 overflow-x-auto"><code>{`You are an assistant that writes professional emails.
-Write an email in a {tone} voice about {topic} for {audience}.`}</code></pre>
+      <ProjectSection title="Introduction">
+        <p>Project introduction coming soon.</p>
       </ProjectSection>
-
-      <ProjectSection title="OpenRouter Integration">
-        <p>
-          The application sends the composed prompt to OpenRouter, allowing
-          access to a variety of hosted LLMs. Requests include model selection
-          and stream responses to the UI for a responsive typing effect.
-        </p>
+      <ProjectSection title="Rationale">
+        <p>Rationale coming soon.</p>
       </ProjectSection>
-
-      <ProjectSection title="Sample Outputs">
-        <ul className="list-disc pl-6 space-y-1">
-          <li>
-            Formal inquiry email introducing a product and requesting a follow-up
-            call.
-          </li>
-          <li>
-            Friendly reminder email summarizing action items from a recent
-            meeting.
-          </li>
-          <li>
-            Promotional announcement highlighting new features in a release.
-          </li>
-        </ul>
+      <ProjectSection title="Data Collection">
+        <p>Data collection details coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Model Development">
+        <p>Model development details coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Training and Evaluation">
+        <p>Training and evaluation details coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Deployment">
+        <p>Deployment details coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Ethical Implications">
+        <p>Ethical considerations coming soon.</p>
       </ProjectSection>
 
       {images.length > 0 && (
         <ProjectSection title="Screenshots">
-          <ProjectGallery
-            images={images}
-            alt="AI Powered Email Generator screenshot"
-          />
+          <ProjectGallery images={images} alt="AI Powered Email Generator screenshot" />
         </ProjectSection>
       )}
     </div>

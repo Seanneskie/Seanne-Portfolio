@@ -1,5 +1,6 @@
 import ProjectOverview from "./ProjectOverview";
 import ProjectSection from "./ProjectSection";
+import ProjectGallery from "./ProjectGallery";
 import { getProjectImages } from "@/lib/project-images";
 
 export default async function OrderInventoryManagementApi() {
@@ -21,25 +22,33 @@ export default async function OrderInventoryManagementApi() {
         </p>
       </ProjectOverview>
 
-      <ProjectSection title="Key Features">
-        <ul className="list-disc pl-6 space-y-2">
-          <li>Product catalog with soft deletes and basic filtering.</li>
-          <li>Inventory-aware order creation that validates stock levels.</li>
-          <li>Idempotent order endpoints to prevent duplicate submissions.</li>
-          <li>Audit logs and structured logging via Serilog.</li>
-          <li>OpenAPI documentation with Swagger UI.</li>
-        </ul>
+      <ProjectSection title="Introduction">
+        <p>Project introduction coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Rationale">
+        <p>Rationale coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Data Collection">
+        <p>Data collection details coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Model Development">
+        <p>Model development details coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Training and Evaluation">
+        <p>Training and evaluation details coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Deployment">
+        <p>Deployment details coming soon.</p>
+      </ProjectSection>
+      <ProjectSection title="Ethical Implications">
+        <p>Ethical considerations coming soon.</p>
       </ProjectSection>
 
-      <ProjectSection title="Development Notes">
-        <p>
-          The API follows a clean architecture approach using repositories and services
-          to separate concerns. Data access is handled through Entity Framework Core
-          with PostgreSQL migrations. Input validation is enforced with
-          FluentValidation, and integration tests ensure critical flows such as order
-          placement remain reliable.
-        </p>
-      </ProjectSection>
+      {images.length > 0 && (
+        <ProjectSection title="Screenshots">
+          <ProjectGallery images={images} alt="Order & Inventory Management API screenshot" />
+        </ProjectSection>
+      )}
     </div>
   );
 }
