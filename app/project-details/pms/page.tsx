@@ -1,9 +1,10 @@
-import ProjectHtml from "@/components/project-details/ProjectHtml";
+import DesktopPayrollManagementSystem from "@/components/project-details/DesktopPayrollManagementSystem";
 
-export default async function Page() {
+export default function Page() {
   return (
     <main className="container mx-auto max-w-5xl px-4 py-12">
-      <ProjectHtml slug="pms" />
+      <DesktopPayrollManagementSystem />
     </main>
   );
 }
+
