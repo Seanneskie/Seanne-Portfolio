@@ -23,25 +23,24 @@ export default async function OrderInventoryManagementApi() {
       </ProjectOverview>
 
       <ProjectSection title="Introduction">
-        <p>Project introduction coming soon.</p>
+        <p>
+          Lightweight ASP.NET Core and PostgreSQL service offering product CRUD,
+          stock validation, and idempotent order placement for small stores.
+        </p>
       </ProjectSection>
-      <ProjectSection title="Rationale">
-        <p>Rationale coming soon.</p>
+      <ProjectSection title="Consistency and Concurrency">
+        <p>
+          Transactions with an inventory audit log ensure reliable updates while
+          Postgres <code>xmin</code> optimistic concurrency prevents oversells.
+        </p>
       </ProjectSection>
-      <ProjectSection title="Data Collection">
-        <p>Data collection details coming soon.</p>
-      </ProjectSection>
-      <ProjectSection title="Model Development">
-        <p>Model development details coming soon.</p>
-      </ProjectSection>
-      <ProjectSection title="Training and Evaluation">
-        <p>Training and evaluation details coming soon.</p>
-      </ProjectSection>
-      <ProjectSection title="Deployment">
-        <p>Deployment details coming soon.</p>
-      </ProjectSection>
-      <ProjectSection title="Ethical Implications">
-        <p>Ethical considerations coming soon.</p>
+      <ProjectSection title="Development and Deployment">
+        <p>
+          EF Core migrations, FluentValidation, RFC 7807 <code>ProblemDetails</code>,
+          Swagger, and Serilog support robust development. Integration tests run
+          against a Dockerized Postgres instance and the API targets Azure
+          hosting.
+        </p>
       </ProjectSection>
 
       {images.length > 0 && (
