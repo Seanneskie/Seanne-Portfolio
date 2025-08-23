@@ -1,9 +1,10 @@
-import ProjectHtml from "@/components/project-details/ProjectHtml";
+import AiPoweredEmailGenerator from "@/components/project-details/AiPoweredEmailGenerator";
 
-export default async function Page() {
+export default function Page() {
   return (
     <main className="container mx-auto max-w-5xl px-4 py-12">
-      <ProjectHtml slug="ai-powered-email-generator" />
+      <AiPoweredEmailGenerator />
     </main>
   );
 }
+
