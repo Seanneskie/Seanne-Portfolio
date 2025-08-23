@@ -11,7 +11,7 @@ export default async function BitcoinAnalysisApp() {
         alt="Bitcoin Analysis App screenshot"
       >
         <p>
-          <strong>Overview:</strong> The Bitcoin Analysis App explores Bitcoin's
+          <strong>Overview:</strong> The Bitcoin Analysis App explores Bitcoin&apos;s
           historical price movement and market activity through interactive
           visualizations.
         </p>

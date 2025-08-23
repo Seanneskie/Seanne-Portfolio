@@ -25,7 +25,7 @@ export default async function AiPoweredEmailGenerator() {
 
       <ProjectSection title="LangChain Prompts">
         <p>
-          Prompts are assembled with LangChain's
+          Prompts are assembled with LangChain&apos;s
           <code> ChatPromptTemplate </code> to capture the desired tone, audience,
           and key points. Few-shot examples guide the model toward concise
           and professional language.
