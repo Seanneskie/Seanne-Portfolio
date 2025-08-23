@@ -102,7 +102,7 @@
   },
   {
     "title": "Desktop Payroll Management System",
-    "image": "/pms/images/1.png",
+    "image": "/desktop-payroll-management-system/images/1.png",
     "alt": "Desktop Payroll Management System Image",
     "description": "FastAPI-powered payroll management backend bundled with an Electron desktop shell.",
     "collaborators": null,
@@ -116,14 +116,14 @@
     ],
     "github": "https://github.com/Seanneskie/desktop-payroll-management-system",
     "githubLabel": "View on GitHub",
-    "details": "project-details/pms",
+    "details": "project-details/desktop-payroll-management-system",
     "period": "Aug 2025 - Present",
     "images": [
-      "/pms/images/1.png",
-      "/pms/images/2.png",
-      "/pms/images/3.png",
-      "/pms/images/4.png",
-      "/pms/images/5.png"
+      "/desktop-payroll-management-system/images/1.png",
+      "/desktop-payroll-management-system/images/2.png",
+      "/desktop-payroll-management-system/images/3.png",
+      "/desktop-payroll-management-system/images/4.png",
+      "/desktop-payroll-management-system/images/5.png"
     ]
   },
   {
@@ -194,7 +194,7 @@
       "CSS"
     ],
     "github": null,
-    "githubLabel": "View Site",
+    "githubLabel": "",
     "details": "project-details/vims",
     "period": "Dec 2024 - June 2025",
     "images": [
@@ -245,7 +245,7 @@
       "Python"
     ],
     "github": null,
-    "githubLabel": "View on GitHub",
+    "githubLabel": "",
     "details": "project-details/albany-airbnb-dashboard",
     "period": "Nov 2024 - Dec 2024",
     "images": [
@@ -275,7 +275,7 @@
       "Data Mining"
     ],
     "github": null,
-    "githubLabel": "View on GitHub",
+    "githubLabel": "",
     "details": "project-details/mcdonalds-sentiment-analysis",
     "period": "Nov 2024 - Dec 2024",
     "images": [
@@ -317,7 +317,7 @@
       "E-Commerce"
     ],
     "github": null,
-    "githubLabel": "View Site",
+    "githubLabel": "",
     "details": "project-details/headless-ecommerce-mini-store",
     "period": "Aug 2025 - Aug 2025",
     "images": [
@@ -342,7 +342,7 @@
       "Azure"
     ],
     "github": null,
-    "githubLabel": "View on GitHub",
+    "githubLabel": "",
     "details": "project-details/order-inventory-management-api",
     "period": "Aug 2025 - Aug 2025",
     "images": [
@@ -365,7 +365,7 @@
       "Idempotency"
     ],
     "github": null,
-    "githubLabel": "View on GitHub",
+    "githubLabel": "",
     "details": "project-details/budget-system",
     "period": "Aug 2025 - Present",
     "images": [

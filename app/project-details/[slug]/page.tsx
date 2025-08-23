@@ -13,7 +13,8 @@ const componentMap: Record<string, () => Promise<{ default: ComponentType }>> = 
   "nosql-project": () => import("@/components/project-details/NosqlProject"),
   "cnsm-website": () => import("@/components/project-details/CnsmWebsite"),
   "bitcoin-analysis-app": () => import("@/components/project-details/BitcoinAnalysisApp"),
-  pms: () => import("@/components/project-details/DesktopPayrollManagementSystem"),
+  "desktop-payroll-management-system": () =>
+    import("@/components/project-details/DesktopPayrollManagementSystem"),
   "digital-freelancer-profiling-app": () =>
     import("@/components/project-details/DigitalFreelancerProfilingApp"),
   "cemcdo-app": () => import("@/components/project-details/CemcdoApp"),
