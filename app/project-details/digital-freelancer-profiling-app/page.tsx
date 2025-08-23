@@ -1,9 +1,10 @@
-import ProjectHtml from "@/components/project-details/ProjectHtml";
+import DigitalFreelancerProfilingApp from "@/components/project-details/DigitalFreelancerProfilingApp";
 
-export default async function Page() {
+export default function Page() {
   return (
     <main className="container mx-auto max-w-5xl px-4 py-12">
-      <ProjectHtml slug="digital-freelancer-profiling-app" />
+      <DigitalFreelancerProfilingApp />
     </main>
   );
 }
+
