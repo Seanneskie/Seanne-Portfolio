@@ -10,6 +10,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import TagFilter from "@/components/projects/tag-filter";
 import { useData } from "@/lib/use-data";
 
 interface Project {
@@ -60,13 +61,6 @@ export default function ProjectsPage() {
     page * ITEMS_PER_PAGE
   );
 
-  const toggleTag = (tag: string) => {
-    setPage(1);
-    setSelectedTags((prev) =>
-      prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag]
-    );
-  };
-
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPage(1);
     setSearch(e.target.value);
@@ -107,18 +101,14 @@ export default function ProjectsPage() {
           onChange={handleSearch}
           className="w-full"
         />
-        <div className="flex flex-wrap gap-2">
-          {allTags.map((tag) => (
-            <Button
-              key={tag}
-              variant={selectedTags.includes(tag) ? "default" : "outline"}
-              size="sm"
-              onClick={() => toggleTag(tag)}
-            >
-              {tag}
-            </Button>
-          ))}
-        </div>
+        <TagFilter
+          tags={allTags}
+          selected={selectedTags}
+          onChange={(tags) => {
+            setSelectedTags(tags);
+            setPage(1);
+          }}
+        />
       </div>
 
       {currentProjects.length === 0 ? (
