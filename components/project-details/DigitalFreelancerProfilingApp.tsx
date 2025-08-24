@@ -14,36 +14,89 @@ export default async function DigitalFreelancerProfilingApp() {
         downloadUrl="/digital-freelancer-profiling-app/pdfs/DPFS_UserManual.pdf"
       >
         <p>
-          <strong>Overview:</strong> Web platform for profiling digital freelancers,
-          capturing detailed qualifications while providing administrators tools to
-          vet and manage entries.
+          <strong>Overview:</strong> Capstone Freelancer Profiling App is a
+          Django-based platform for managing freelancer profiles, events, and
+          support requests.
         </p>
         <p>
-          <strong>Tech Stack:</strong> PHP, MySQL, Tailwind CSS, and Vanilla
-          JavaScript.
+          <strong>Tech Stack:</strong> Django 4.2.7, django-allauth,
+          crispy-bootstrap5, django-jazzmin, PostgreSQL, Graphene, psycopg2.
+        </p>
+        <p>
+          <strong>Collaborators:</strong> Azlan Tomindug, Kimberly Claire
+          Baylon, Seanne Cañete, Bridget Nicolette Jose, and Dr. Lumer Jude P.
+          Doce (Adviser).
         </p>
       </ProjectOverview>
 
       <ProjectSection title="Introduction">
-        <p>Project introduction coming soon.</p>
+        <p>
+          Capstone Freelancer Profiling App centralizes freelancer management
+          with features for profile creation, event participation, announcements,
+          and support ticket handling.
+        </p>
       </ProjectSection>
-      <ProjectSection title="Rationale">
-        <p>Rationale coming soon.</p>
+      <ProjectSection title="Features">
+        <ul className="list-disc pl-6 space-y-1">
+          <li>
+            Create detailed freelancer profiles including affiliations,
+            experience, skills, and languages.
+          </li>
+          <li>Upload resumes, certificates, and project portfolios.</li>
+          <li>
+            Browse and RSVP to events with QR-code attendance tracking.
+          </li>
+          <li>
+            Receive announcements and submit support tickets with
+            notifications.
+          </li>
+          <li>
+            Admin dashboard with analytics and content management.
+          </li>
+        </ul>
       </ProjectSection>
-      <ProjectSection title="Data Collection">
-        <p>Data collection details coming soon.</p>
+      <ProjectSection title="Installation">
+        <ul className="list-disc pl-6 space-y-1">
+          <li>
+            <strong>Clone the repository:</strong> <code>git clone
+            https://github.com/Seanneskie/capstone-app-profile.git</code>
+          </li>
+          <li>
+            <strong>Create and activate a virtual environment:</strong>
+            <code>py -m venv env</code> and activate via
+            <code>env\Scripts\activate.bat</code> or
+            <code>env\Scripts\activate.ps1</code>
+          </li>
+          <li>
+            <strong>Install dependencies:</strong>
+            <code>pip install -r requirements.txt</code>
+          </li>
+          <li>
+            <strong>Configure environment variables:</strong> create a
+            <code>.env</code> file with PostgreSQL settings.
+          </li>
+          <li>
+            <strong>Run migrations and load initial data:</strong>
+            <code>py manage.py migrate</code> and
+            <code>py manage.py loaddata fixtures/updated_data.json</code>
+          </li>
+        </ul>
       </ProjectSection>
-      <ProjectSection title="Model Development">
-        <p>Model development details coming soon.</p>
-      </ProjectSection>
-      <ProjectSection title="Training and Evaluation">
-        <p>Training and evaluation details coming soon.</p>
-      </ProjectSection>
-      <ProjectSection title="Deployment">
-        <p>Deployment details coming soon.</p>
-      </ProjectSection>
-      <ProjectSection title="Ethical Implications">
-        <p>Ethical considerations coming soon.</p>
+      <ProjectSection title="Usage">
+        <ul className="list-disc pl-6 space-y-1">
+          <li>
+            Start the development server:
+            <code>py manage.py runserver</code>
+          </li>
+          <li>
+            Visit <code>http://127.0.0.1:8000</code> to browse the site and
+            manage profiles.
+          </li>
+          <li>
+            Explore events, announcements, and the support ticket system
+            through the web interface.
+          </li>
+        </ul>
       </ProjectSection>
 
       {images.length > 0 && (
