@@ -19,9 +19,9 @@ export default async function Vims() {
           requests and report generation, with a responsive interface styled by
           Tailwind CSS and Radix UI components.
         </p>
-        <p>
-          <strong>Tech Stack:</strong>
-        </p>
+      </ProjectOverview>
+
+      <ProjectSection title="Tech Stack">
         <ul className="list-disc list-inside space-y-1">
           <li>
             <strong>Framework:</strong> Next.js 15 with React 18 and TypeScript,
@@ -48,7 +48,7 @@ export default async function Vims() {
             alerts
           </li>
         </ul>
-      </ProjectOverview>
+      </ProjectSection>
 
       <ProjectSection title="Introduction">
         <p>
