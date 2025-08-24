@@ -169,7 +169,8 @@
       "Government",
       "HTML",
       "CSS",
-      "JavaScript"
+      "JavaScript",
+      "Tailwind CSS"
     ],
     "github": "https://cemcdo-demo.onrender.com/",
     "githubLabel": "View Site",
@@ -338,8 +339,7 @@
       "Serilog",
       "Swagger",
       "REST API",
-      "Docker",
-      "Azure"
+      "Docker"
     ],
     "github": null,
     "githubLabel": "",
