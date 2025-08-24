@@ -35,6 +35,10 @@ export default async function DigitalFreelancerProfilingApp() {
           with features for profile creation, event participation, announcements,
           and support ticket handling.
         </p>
+        <p>
+          Development tasks were tracked in Notion using Kanban boards tailored
+          to a Scrumban workflow.
+        </p>
       </ProjectSection>
       <ProjectSection title="Features">
         <ul className="list-disc pl-6 space-y-1">
@@ -52,6 +56,10 @@ export default async function DigitalFreelancerProfilingApp() {
           </li>
           <li>
             Admin dashboard with analytics and content management.
+          </li>
+          <li>
+            Organize work in Notion Kanban boards with Scrumban for iterative
+            planning and review.
           </li>
         </ul>
       </ProjectSection>
