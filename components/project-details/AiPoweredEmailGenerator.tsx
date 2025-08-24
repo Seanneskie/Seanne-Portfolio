@@ -11,60 +11,59 @@ export default async function AiPoweredEmailGenerator() {
         title="AI-Powered Email Generator"
         images={images.length ? images : ["/static/placeholders/ai.png"]}
         alt="AI Powered Email Generator screenshot"
-        githubUrl="https://github.com/Seanneskie/ai-powered-email-generator"
+        githubUrl="https://github.com/Seanneskie/email-generator"
       >
         <p>
-          <strong>Overview:</strong> Prototype email assistant that combines
-          LangChain prompt templates with the OpenRouter API to craft
-          context-aware messages.
+          <strong>Overview:</strong> Django and LangChain assistant for
+          drafting professional emails with tone and purpose controls,
+          automatic signature insertion, and built-in CRM features.
         </p>
         <p>
-          <strong>Tech Stack:</strong> Next.js, TypeScript, LangChain,
-          OpenRouter, Tailwind CSS.
+          <strong>Tech Stack:</strong> Python 3, Django 5.2, LangChain 0.3,
+          OpenRouter/OpenAI API, Tailwind CSS via CLI, SQLite/PostgreSQL,
+          Whisper for audio transcription, Node.js.
         </p>
       </ProjectOverview>
 
-      <ProjectSection title="Introduction">
+      <ProjectSection title="Email Composition">
         <p>
-          Web app that drafts email responses from a short prompt and optional
-          context, built to explore LLM-assisted writing workflows.
+          Compose emails by setting tone and purpose while automatically
+          appending sender details like name, phone, and affiliation.
         </p>
       </ProjectSection>
-      <ProjectSection title="Rationale">
+
+      <ProjectSection title="Template History">
         <p>
-          Automating routine email composition saves time and encourages a
-          consistent tone when handling frequent inquiries.
+          Every generated message is saved with its metadata so users can
+          revisit and reuse past templates.
         </p>
       </ProjectSection>
-      <ProjectSection title="Data Collection">
+
+      <ProjectSection title="Gmail Integration">
         <p>
-          The system only processes user-supplied prompts and optional thread
-          history. No external dataset is stored or used for training.
+          Drafts can be confirmed and sent through Gmail with optional
+          attachments, keeping communication in one flow.
         </p>
       </ProjectSection>
-      <ProjectSection title="Model Development">
+
+      <ProjectSection title="Audio Transcription">
         <p>
-          LangChain prompt templates structure requests sent to OpenRouter,
-          allowing different large language models to generate polished drafts.
+          Local Whisper models convert uploaded MP3 or WAV files to text,
+          producing downloadable transcripts.
         </p>
       </ProjectSection>
-      <ProjectSection title="Training and Evaluation">
+
+      <ProjectSection title="CRM Dashboard">
         <p>
-          The generator relies on pre-trained models. Quality is assessed
-          manually by iterating on prompts and reviewing sample outputs.
+          Manage accounts, contacts, leads, opportunities, and activities in a
+          lightweight CRM that ties directly into email history.
         </p>
       </ProjectSection>
-      <ProjectSection title="Deployment">
+
+      <ProjectSection title="Tech Highlights">
         <p>
-          Implemented in Next.js and deployed to Vercel. Serverless functions
-          handle API keys and return generated text in real time.
-        </p>
-      </ProjectSection>
-      <ProjectSection title="Ethical Implications">
-        <p>
-          Users are encouraged to review generated content to avoid
-          misinformation or unintended tone. The app avoids storing personal
-          data to respect privacy.
+          Uses Django ORM with SQLite by default and optional PostgreSQL,
+          Tailwind for styling, and dotenv-managed environment settings.
         </p>
       </ProjectSection>
 
