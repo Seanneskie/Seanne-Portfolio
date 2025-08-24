@@ -301,7 +301,7 @@
   },
   {
     "title": "AI-Powered Email Generator",
-    "image": "/static/placeholders/ai.png",
+    "image": "/ai-powered-email-generator/images/Dashboard.png",
     "alt": "AI-Powered Email Generator Image",
     "description": "Django and LangChain assistant that crafts professional emails with adjustable tone and signature details, Gmail sending, audio transcription, and a lightweight CRM.",
     "collaborators": null,
@@ -321,7 +321,11 @@
     "details": "project-details/ai-powered-email-generator",
     "period": "Aug 2025 - Present",
     "images": [
-      "/static/placeholders/ai.png"
+      "/ai-powered-email-generator/images/Dashboard.png",
+      "/ai-powered-email-generator/images/Compose Email.png",
+      "/ai-powered-email-generator/images/Email Logs.png",
+      "/ai-powered-email-generator/images/Audio Transcribe.png",
+      "/ai-powered-email-generator/images/Audio Transcribe Result.png"
     ]
   },
   {
