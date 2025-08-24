@@ -8,6 +8,7 @@ export default async function BitcoinAnalysisApp() {
   return (
     <div className="space-y-12">
       <ProjectOverview
+        title="Bitcoin Analysis App"
         images={
           images.length ? images : ["/static/placeholders/data-analytics.webp"]
         }

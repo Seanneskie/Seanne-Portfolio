@@ -8,6 +8,7 @@ export default async function NosqlProject() {
   return (
     <div className="space-y-12">
       <ProjectOverview
+        title="NoSQL Project - MERN Stack Website"
         images={images.length ? images : ["/static/placeholders/Mern.png"]}
         alt="NoSQL Project screenshot"
       >

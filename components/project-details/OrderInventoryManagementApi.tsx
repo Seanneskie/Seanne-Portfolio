@@ -8,6 +8,7 @@ export default async function OrderInventoryManagementApi() {
   return (
     <div className="space-y-12">
       <ProjectOverview
+        title="Order & Inventory Management API"
         images={images.length ? images : ["/static/placeholders/next.png"]}
         alt="Order & Inventory Management API screenshot"
       >

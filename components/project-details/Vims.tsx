@@ -8,6 +8,7 @@ export default async function Vims() {
   return (
     <div className="space-y-12">
       <ProjectOverview
+        title="Vessel Inventory Management System"
         images={images.length ? images : ["/static/placeholders/next.png"]}
         alt="Vessel Inventory Management System screenshot"
       >

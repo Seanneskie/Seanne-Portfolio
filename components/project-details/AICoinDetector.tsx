@@ -8,6 +8,7 @@ export default async function AICoinDetector() {
   return (
     <div className="space-y-12">
       <ProjectOverview
+        title="AI Coin Detector"
         images={images.length ? images : ["/static/placeholders/ai.png"]}
         alt="AI Coin Detector Screenshot"
         githubUrl="https://github.com/Seanneskie/AI-coin-detector-django"

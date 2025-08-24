@@ -10,6 +10,7 @@ export default async function DesktopPayrollManagementSystem() {
   return (
     <div className="space-y-12">
       <ProjectOverview
+        title="Desktop Payroll Management System"
         images={images.length ? images : ["/static/placeholders/next.png"]}
         alt="Desktop Payroll Management System screenshot"
       >

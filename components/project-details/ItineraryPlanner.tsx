@@ -8,6 +8,7 @@ export default async function ItineraryPlanner() {
   return (
     <div className="space-y-12">
       <ProjectOverview
+        title="Itinerary Planner"
         images={images.length ? images : ["/static/placeholders/data-analytics.webp"]}
         alt="Itinerary Planner screenshot"
       >

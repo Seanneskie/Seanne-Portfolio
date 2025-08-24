@@ -8,6 +8,7 @@ export default async function CnsmWebsite() {
   return (
     <div className="space-y-12">
       <ProjectOverview
+        title="CNSM Website"
         images={images.length ? images : ["/static/placeholders/Mern.png"]}
         alt="CNSM website screenshot"
         githubUrl="https://github.com/Seanneskie/advDB-CNSM-Website"
