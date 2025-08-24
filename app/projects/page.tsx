@@ -121,10 +121,11 @@ export default function ProjectsPage() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.05, duration: 0.35 }}
+              className="h-full"
             >
               <Card
                 className={[
-                  "group relative min-h-[460px] overflow-hidden rounded-2xl p-4",
+                  "group relative min-h-[460px] h-full overflow-hidden rounded-2xl p-4",
                   "border border-teal-200/70 bg-white/85 backdrop-blur",
                   "dark:border-teal-800/70 dark:bg-gray-950/60",
                   "transition-shadow hover:shadow-lg hover:shadow-teal-300/30 dark:hover:shadow-teal-900/20",
