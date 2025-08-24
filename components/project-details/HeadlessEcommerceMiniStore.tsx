@@ -15,33 +15,57 @@ export default async function HeadlessEcommerceMiniStore() {
         alt="Headless E-Commerce Mini-Store screenshot"
       >
         <p>
-          <strong>Overview:</strong> Modern headless e-commerce platform using
-          Next.js, Shopify Storefront GraphQL API, and AWS.
+          <strong>Overview:</strong> Shop‑Next is a Next.js storefront that
+          fetches product data from Shopify’s Storefront API and renders it
+          with reusable UI components and server-side data fetching.
+        </p>
+        <p>
+          <strong>Tech Stack:</strong> Next.js 15, React 19, TypeScript 5,
+          Tailwind CSS 4, Radix UI primitives, Lucide icons, Framer Motion,
+          Shopify Storefront GraphQL API, ESLint 9, Vitest, Testing Library, Docker.
         </p>
         <p>
           <strong>Collaborators:</strong> Individual Project
         </p>
       </ProjectOverview>
       <ProjectSection title="Introduction">
-        <p>Project introduction coming soon.</p>
+        <p>
+          Shop‑Next is a customizable e‑commerce demo built with modern React
+          features and the Shopify Storefront API. It showcases product catalogs,
+          promotional banners, and paginated listings.
+        </p>
       </ProjectSection>
-      <ProjectSection title="Rationale">
-        <p>Rationale coming soon.</p>
+      <ProjectSection title="Local Development">
+        <p>Install dependencies and start the development server:</p>
+        <pre>
+          <code>npm run dev</code>
+        </pre>
+        <p>
+          Visit <code>http://localhost:3000</code> to view the site. Editing
+          <code>app/page.tsx</code> hot‑reloads changes automatically.
+        </p>
       </ProjectSection>
-      <ProjectSection title="Data Collection">
-        <p>Data collection details coming soon.</p>
-      </ProjectSection>
-      <ProjectSection title="Model Development">
-        <p>Model development details coming soon.</p>
-      </ProjectSection>
-      <ProjectSection title="Training and Evaluation">
-        <p>Training and evaluation details coming soon.</p>
+      <ProjectSection title="Architecture">
+        <p>
+          Server components handle Shopify data fetching while client components
+          provide interactive UI elements such as product grids and banners. The
+          <code>shopifyFetch</code> helper in <code>lib/shopify.ts</code> manages
+          authenticated GraphQL requests.
+        </p>
       </ProjectSection>
       <ProjectSection title="Deployment">
-        <p>Deployment details coming soon.</p>
+        <p>
+          Vercel is the recommended platform. An <code>apprunner.yaml</code>
+          outlines a potential AWS App Runner setup. A multi‑stage Dockerfile
+          builds a production image and injects Shopify credentials via
+          environment variables.
+        </p>
       </ProjectSection>
-      <ProjectSection title="Ethical Implications">
-        <p>Ethical considerations coming soon.</p>
+      <ProjectSection title="Testing">
+        <p>
+          Unit tests use Vitest and Testing Library while ESLint 9 enforces code
+          standards.
+        </p>
       </ProjectSection>
 
       {images.length > 0 && (

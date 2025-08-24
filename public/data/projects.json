@@ -308,17 +308,19 @@
     "title": "Headless E-Commerce Mini-Store",
     "image": "/static/placeholders/next.png",
     "alt": "Headless E-Commerce Mini-Store Image",
-    "description": "Modern headless e-commerce platform using Next.js, Shopify Storefront GraphQL API, and AWS.",
+    "description": "Next.js storefront that fetches product data from Shopify’s Storefront API and renders it with reusable UI components and server-side data fetching.",
     "collaborators": null,
     "tags": [
-      "NextJS",
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
       "Shopify",
       "GraphQL",
-      "AWS",
-      "E-Commerce"
+      "Docker"
     ],
-    "github": null,
-    "githubLabel": "",
+    "github": "https://github.com/Seanneskie/shop-next",
+    "githubLabel": "View on GitHub",
     "details": "project-details/headless-ecommerce-mini-store",
     "period": "Aug 2025 - Aug 2025",
     "images": [
