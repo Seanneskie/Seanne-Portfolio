@@ -13,34 +13,75 @@ export default async function Vims() {
         alt="Vessel Inventory Management System screenshot"
       >
         <p>
-          <strong>Overview:</strong> Web application for tracking vessels, their
-          specifications, and operational status across a fleet.
+          <strong>Overview:</strong> VIMS is a vessel‑oriented inventory
+          management system built on the Next.js App Router. It provides admin
+          modules for items, departments, inventory adjustments, transfers,
+          requests and report generation, with a responsive interface styled by
+          Tailwind CSS and Radix UI components.
         </p>
         <p>
-          <strong>Tech Stack:</strong> Next.js, React, TypeScript, Tailwind CSS.
+          <strong>Tech Stack:</strong>
         </p>
+        <ul className="list-disc list-inside space-y-1">
+          <li>
+            <strong>Framework:</strong> Next.js 15 with React 18 and TypeScript,
+            bundled via Turbopack for development
+          </li>
+          <li>
+            <strong>Styling:</strong> Tailwind CSS with custom color tokens and
+            tailwindcss-animate plugin
+          </li>
+          <li>
+            <strong>UI Components:</strong> Radix UI and ShadCN UI primitives
+          </li>
+          <li>
+            <strong>State/Data:</strong> Supabase client and server helpers for
+            authentication and database access
+          </li>
+          <li>
+            <strong>ORM & DB tooling:</strong> Drizzle ORM with migration
+            configs for PostgreSQL
+          </li>
+          <li>
+            <strong>Utilities:</strong> Chart.js for dashboards, ExcelJS and
+            xlsx for export, and various helper libraries for file handling and
+            alerts
+          </li>
+        </ul>
       </ProjectOverview>
 
       <ProjectSection title="Introduction">
-        <p>Project introduction coming soon.</p>
+        <p>
+          VIMS (Vessel Inventory Management System) centralizes tracking of
+          marine vessel stock. Administrators can manage item catalogs, monitor
+          per‑vessel quantities, log adjustments or transfers, and export reports
+          to common formats. The application integrates Supabase for
+          authentication and data persistence while providing a modern,
+          responsive UI.
+        </p>
       </ProjectSection>
-      <ProjectSection title="Rationale">
-        <p>Rationale coming soon.</p>
+      <ProjectSection title="Structure">
+        <pre className="whitespace-pre-wrap"><code>{`src/\n ├─ app/              # Next.js routes: admin dashboards, auth pages, user views\n ├─ components/       # Reusable UI parts (header, footer, form controls)\n ├─ context/          # React context for session/auth state\n ├─ db/               # Drizzle schema and Supabase migrations\n ├─ lib/              # Helper modules: inventory, transfers, exports, auth\n └─ utils/            # General utilities\n`}</code></pre>
       </ProjectSection>
-      <ProjectSection title="Data Collection">
-        <p>Data collection details coming soon.</p>
-      </ProjectSection>
-      <ProjectSection title="Model Development">
-        <p>Model development details coming soon.</p>
-      </ProjectSection>
-      <ProjectSection title="Training and Evaluation">
-        <p>Training and evaluation details coming soon.</p>
-      </ProjectSection>
-      <ProjectSection title="Deployment">
-        <p>Deployment details coming soon.</p>
-      </ProjectSection>
-      <ProjectSection title="Ethical Implications">
-        <p>Ethical considerations coming soon.</p>
+      <ProjectSection title="Key Features">
+        <ul className="list-disc list-inside space-y-2">
+          <li>
+            <strong>Admin Inventory:</strong> Group items by vessel, filter low
+            stock, and paginate results.
+          </li>
+          <li>
+            <strong>Adjustments & Transfers:</strong> Helpers and pages to move
+            stock between vessels or record consumption.
+          </li>
+          <li>
+            <strong>Reports & Exports:</strong> Generate Excel/PDF summaries
+            through dedicated helper functions.
+          </li>
+          <li>
+            <strong>Authentication:</strong> Supabase sessions with
+            client/server helpers and persistent cookies.
+          </li>
+        </ul>
       </ProjectSection>
 
       {images.length > 0 && (
