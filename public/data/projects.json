@@ -130,7 +130,7 @@
     "title": "Digital Freelancer Profiling App",
     "image": "/digital-freelancer-profiling-app/images/1.png",
     "alt": "Coin Detector Image",
-    "description": "A Digital Freelancer Profiling System for Capstone requirement. Made with Django and Python Modules.",
+    "description": "A Digital Freelancer Profiling System for Capstone requirement. Made with Django and Python Modules, featuring Notion Kanban boards that follow a Scrumban workflow for task management.",
     "collaborators": "Kimberly Baylon, Bridget Jose, Azlan Tomindug",
     "tags": [
       "Django",
@@ -182,8 +182,8 @@
   },
   {
     "title": "VIMS - Vessel Inventory Management System",
-    "image": "/static/placeholders/next.png",
-    "alt": "Coin Detector Image",
+    "image": "/vims/images/1.png",
+    "alt": "Vessel Inventory Management System screenshot",
     "description": "An Inventory Management System for TSP Marine Industries to manage vessel inventory in the open seas. Made with NextJS and React.",
     "collaborators": "TSP Marine - IT Division",
     "tags": [
@@ -199,7 +199,12 @@
     "details": "project-details/vims",
     "period": "Dec 2024 - June 2025",
     "images": [
-      "/static/placeholders/next.png"
+      "/vims/images/1.png",
+      "/vims/images/2.png",
+      "/vims/images/3.png",
+      "/vims/images/4.png",
+      "/vims/images/5.png",
+      "/vims/images/6.png"
     ]
   },
   {
@@ -306,23 +311,29 @@
   },
   {
     "title": "Headless E-Commerce Mini-Store",
-    "image": "/static/placeholders/next.png",
+    "image": "/headless-ecommerce-mini-store/images/banner.png",
     "alt": "Headless E-Commerce Mini-Store Image",
-    "description": "Modern headless e-commerce platform using Next.js, Shopify Storefront GraphQL API, and AWS.",
+    "description": "Next.js storefront that fetches product data from Shopify’s Storefront API and renders it with reusable UI components and server-side data fetching.",
     "collaborators": null,
     "tags": [
-      "NextJS",
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
       "Shopify",
       "GraphQL",
-      "AWS",
-      "E-Commerce"
+      "Docker"
     ],
-    "github": null,
-    "githubLabel": "",
+    "github": "https://github.com/Seanneskie/shop-next",
+    "githubLabel": "View on GitHub",
     "details": "project-details/headless-ecommerce-mini-store",
     "period": "Aug 2025 - Aug 2025",
     "images": [
-      "/static/placeholders/next.png"
+      "/headless-ecommerce-mini-store/images/banner.png",
+      "/headless-ecommerce-mini-store/images/header.png",
+      "/headless-ecommerce-mini-store/images/productgrid.png",
+      "/headless-ecommerce-mini-store/images/product detail.png",
+      "/headless-ecommerce-mini-store/images/2025-08-11_19-38.png"
     ]
   },
   {
