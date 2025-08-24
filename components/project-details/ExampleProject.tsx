@@ -8,6 +8,7 @@ export default async function ExampleProject() {
   return (
     <div className="space-y-12">
       <ProjectOverview
+        title="Example Project"
         images={images.length ? images : ["/static/placeholders/ai.png"]}
         alt="Example project screenshot"
       >

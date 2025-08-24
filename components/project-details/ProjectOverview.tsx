@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { FileText, Github } from "lucide-react";
 
 interface ProjectOverviewProps {
+  title: string;
   images: string[];
   alt: string;
   children: ReactNode;
@@ -16,6 +17,7 @@ interface ProjectOverviewProps {
 }
 
 export default function ProjectOverview({
+  title,
   images,
   alt,
   children,
@@ -45,6 +47,9 @@ export default function ProjectOverview({
         )}
       </div>
       <div className="space-y-2">
+        <h1 className="text-3xl font-bold tracking-tight text-teal-700 dark:text-teal-400">
+          {title}
+        </h1>
         {children}
         {(githubUrl || downloadUrl) && (
           <div className="flex flex-wrap gap-2 pt-1">

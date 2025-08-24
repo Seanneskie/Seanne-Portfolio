@@ -8,6 +8,7 @@ export default async function AiPoweredEmailGenerator() {
   return (
     <div className="space-y-12">
       <ProjectOverview
+        title="AI-Powered Email Generator"
         images={images.length ? images : ["/static/placeholders/ai.png"]}
         alt="AI Powered Email Generator screenshot"
         githubUrl="https://github.com/Seanneskie/ai-powered-email-generator"

@@ -8,6 +8,7 @@ export default async function McdonaldsSentimentAnalysis() {
   return (
     <div className="space-y-12">
       <ProjectOverview
+        title="McDonald's Sentiment Analysis"
         images={images.length ? images : ["/static/placeholders/django.png"]}
         alt="McDonald&apos;s Sentiment Analysis screenshot"
       >

@@ -10,6 +10,7 @@ export default async function HeadlessEcommerceMiniStore() {
   return (
     <div className="space-y-12">
       <ProjectOverview
+        title="Headless E-Commerce Mini-Store"
         images={images.length ? images : fallback}
         alt="Headless E-Commerce Mini-Store screenshot"
       >

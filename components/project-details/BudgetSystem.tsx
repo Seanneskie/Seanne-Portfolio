@@ -8,6 +8,7 @@ export default async function BudgetSystem() {
   return (
     <div className="space-y-12">
       <ProjectOverview
+        title="Budget System"
         images={images.length ? images : ["/static/placeholders/next.png"]}
         alt="Budget System screenshot"
       >

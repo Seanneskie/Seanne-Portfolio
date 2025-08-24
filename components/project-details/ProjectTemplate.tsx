@@ -7,6 +7,7 @@ export default async function ProjectTemplate() {
   return (
     <div className="space-y-12">
       <ProjectOverview
+        title="Project Title"
         images={images.length ? images : ["/static/placeholders/ai.png"]}
         alt="Project screenshot"
         // githubUrl="https://github.com/username/repo" // optional

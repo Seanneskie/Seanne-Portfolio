@@ -8,6 +8,7 @@ export default async function DigitalFreelancerProfilingApp() {
   return (
     <div className="space-y-12">
       <ProjectOverview
+        title="Digital Freelancer Profiling App"
         images={images.length ? images : ["/static/placeholders/next.png"]}
         alt="Digital Freelancer Profiling App screenshot"
         downloadUrl="/digital-freelancer-profiling-app/pdfs/DPFS_UserManual.pdf"

@@ -8,6 +8,7 @@ export default async function CemcdoApp() {
   return (
     <div className="space-y-12">
       <ProjectOverview
+        title="CEMCDO App"
         images={images.length ? images : ["/static/placeholders/django.png"]}
         alt="CEMCDO App screenshot"
         githubUrl="https://cemcdo-demo.onrender.com/"

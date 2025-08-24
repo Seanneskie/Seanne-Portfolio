@@ -8,6 +8,7 @@ export default async function AlbanyAirbnbDashboard() {
   return (
     <div className="space-y-12">
       <ProjectOverview
+        title="Albany Airbnb Dashboard"
         images={images.length ? images : ["/static/placeholders/data-analytics.webp"]}
         alt="Albany Airbnb Dashboard screenshot"
       >
