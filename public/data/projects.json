@@ -130,7 +130,7 @@
     "title": "Digital Freelancer Profiling App",
     "image": "/digital-freelancer-profiling-app/images/1.png",
     "alt": "Coin Detector Image",
-    "description": "A Digital Freelancer Profiling System for Capstone requirement. Made with Django and Python Modules.",
+    "description": "A Digital Freelancer Profiling System for Capstone requirement. Made with Django and Python Modules, featuring Notion Kanban boards that follow a Scrumban workflow for task management.",
     "collaborators": "Kimberly Baylon, Bridget Jose, Azlan Tomindug",
     "tags": [
       "Django",
