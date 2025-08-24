@@ -2,16 +2,20 @@ import ProjectOverview from "./ProjectOverview";
 import ProjectSection from "./ProjectSection";
 import ProjectGallery from "./ProjectGallery";
 import { getProjectImages } from "@/lib/project-images";
+import { getProjectPdfs } from "@/lib/project-pdfs";
+import { withBasePath } from "@/lib/utils";
 
 export default async function McdonaldsSentimentAnalysis() {
   const images = await getProjectImages("mcdonalds-sentiment-analysis");
+  const pdfs = await getProjectPdfs("mcdonalds-sentiment-analysis");
+  const pdf = pdfs[0];
   return (
     <div className="space-y-12">
       <ProjectOverview
         title="McDonald's Sentiment Analysis"
         images={images.length ? images : ["/static/placeholders/django.png"]}
         alt="McDonald&apos;s Sentiment Analysis screenshot"
-        downloadUrl="/mcdonalds-sentiment-analysis/pdfs/McDonaldsSentimentAnalysis.pdf"
+        downloadUrl={pdf}
       >
         <p>
           <strong>Overview:</strong> Sentiment analysis of over 33,000
@@ -119,14 +123,16 @@ export default async function McdonaldsSentimentAnalysis() {
 
       <ProjectSection title="Links">
         <ul className="list-disc pl-6">
-          <li>
-            <a
-              href="/mcdonalds-sentiment-analysis/pdfs/McDonaldsSentimentAnalysis.pdf"
-              className="text-teal-600 hover:underline"
-            >
-              Project Documentation (PDF)
-            </a>
-          </li>
+          {pdf && (
+            <li>
+              <a
+                href={withBasePath(pdf)}
+                className="text-teal-600 hover:underline"
+              >
+                Project Documentation (PDF)
+              </a>
+            </li>
+          )}
         </ul>
       </ProjectSection>
 
