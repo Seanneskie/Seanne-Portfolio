@@ -5,11 +5,12 @@ import { getProjectImages } from "@/lib/project-images";
 
 export default async function ItineraryPlanner() {
   const images = await getProjectImages("itinerary-planner");
+  const doubledImages = images.flatMap((img) => [img, img]);
   return (
     <div className="space-y-12">
       <ProjectOverview
         title="Itinerary Planner"
-        images={images.length ? images : ["/static/placeholders/php.png"]}
+        images={doubledImages.length ? doubledImages : ["/static/placeholders/php.png"]}
         alt="Itinerary Planner screenshot"
         githubUrl="https://github.com/Seanneskie/itinerary-planner"
       >
@@ -148,9 +149,9 @@ php artisan serve`}</pre>
         </ul>
       </ProjectSection>
 
-      {images.length > 0 && (
+      {doubledImages.length > 0 && (
         <ProjectSection title="Screenshots">
-          <ProjectGallery images={images} alt="Itinerary Planner screenshot" />
+          <ProjectGallery images={doubledImages} alt="Itinerary Planner screenshot" />
         </ProjectSection>
       )}
     </div>
