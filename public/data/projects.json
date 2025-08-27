@@ -220,7 +220,7 @@
   },
   {
     "title": "Laravel Itinerary Planner",
-    "image": "/static/placeholders/php.png",
+    "image": "/itinerary-planner/images/1.png",
     "alt": "Laravel Itinerary Planner Image",
     "description": "Full-stack travel planning app with interactive maps, budgeting, and exportable itineraries.",
     "collaborators": null,
@@ -240,7 +240,10 @@
     "details": "project-details/itinerary-planner",
     "period": "July 2025 - Aug 2025",
     "images": [
-      "/static/placeholders/php.png"
+      "/itinerary-planner/images/1.png",
+      "/itinerary-planner/images/2.png",
+      "/itinerary-planner/images/3.png",
+      "/itinerary-planner/images/4.png"
     ]
   },
   {
