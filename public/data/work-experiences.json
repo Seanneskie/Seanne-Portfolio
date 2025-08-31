@@ -54,7 +54,12 @@
     "company": "COTSEYE Project",
     "project": "Crowd Mapping for Crown of Thorns (COTS) Monitoring",
     "period": "May 2024 – August 2024",
-    "images": [],
+    "images": [
+      {
+        "src": "/cotseye/images/placeholder.svg",
+        "alt": "COTSEYE placeholder image"
+      }
+    ],
     "tech": [
       "Django",
       "Python",

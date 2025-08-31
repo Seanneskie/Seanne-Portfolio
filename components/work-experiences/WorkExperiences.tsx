@@ -2,15 +2,25 @@
 
 import { useData } from "@/lib/use-data";
 import { motion, type Variants } from "framer-motion";
+import Image from "next/image";
+import { withBasePath } from "@/lib/utils";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 import { Building2, Briefcase, CalendarDays, CheckCircle2 } from "lucide-react";
 
 interface WorkExperience {
   company: string;
   project: string;
   period: string;
+  images: { src: string; alt: string }[];
   tech: string[];
   summary: string;
   highlights: string[];
@@ -70,6 +80,7 @@ export default function WorkExperiences() {
                 <Skeleton className="mt-2 h-3 w-24" />
               </CardHeader>
               <CardContent className="space-y-3">
+                <Skeleton className="aspect-video w-full rounded-md" />
                 <Skeleton className="h-4 w-full" />
                 <Skeleton className="h-4 w-5/6" />
                 <div className="mt-3 flex flex-wrap gap-2">
@@ -135,7 +146,6 @@ export default function WorkExperiences() {
                   aria-hidden
                   className="pointer-events-none absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 opacity-80"
                 />
-
                 <CardHeader className="pb-3">
                   <CardTitle className="flex items-center gap-2 text-xl text-teal-800 dark:text-teal-200">
                     <Building2 className="h-5 w-5 opacity-80" />
@@ -155,6 +165,28 @@ export default function WorkExperiences() {
                 </CardHeader>
 
                 <CardContent className="space-y-4">
+                  {exp.images.length > 0 && (
+                    <Carousel className="w-full" opts={{ align: "start" }}>
+                      <CarouselContent>
+                        {exp.images.map((img) => (
+                          <CarouselItem key={img.src}>
+                            <div className="relative aspect-video w-full overflow-hidden rounded-md">
+                              <Image
+                                src={withBasePath(img.src)}
+                                alt={img.alt}
+                                fill
+                                className="object-cover"
+                                sizes="(max-width: 768px) 100vw, 50vw"
+                              />
+                            </div>
+                          </CarouselItem>
+                        ))}
+                      </CarouselContent>
+                      <CarouselPrevious className="left-2 top-1/2 -translate-y-1/2 shadow-sm" />
+                      <CarouselNext className="right-2 top-1/2 -translate-y-1/2 shadow-sm" />
+                    </Carousel>
+                  )}
+
                   <p className="text-gray-700 dark:text-gray-200">{exp.summary}</p>
 
                   <div className="flex flex-wrap gap-2">
