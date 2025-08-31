@@ -1,6 +1,7 @@
 import Profile, { MyStory } from "@/components/profile";
 import Banner from "@/components/banner";
 import Link from "next/link";
+import { WorkExperienceCarousel } from "@/components/work-experiences";
 
 export default function HomePage() {
   return (
@@ -33,6 +34,7 @@ export default function HomePage() {
       <div className="container mx-auto max-w-7xl space-y-16 px-4 py-12">
         <Profile />
         <MyStory />
+        <WorkExperienceCarousel />
         <div className="flex justify-center">
           <Link
             href="/profile"
