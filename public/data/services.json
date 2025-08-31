@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Full-Stack Development",
+    "description": "Building responsive web applications with Next.js, Django, and modern tooling.",
+    "icon": "Code2"
+  },
+  {
+    "title": "API & Backend Services",
+    "description": "Designing and integrating RESTful APIs and scalable backend systems.",
+    "icon": "Server"
+  },
+  {
+    "title": "Data Visualization",
+    "description": "Transforming data into insights through charts and interactive dashboards.",
+    "icon": "BarChart3"
+  },
+  {
+    "title": "UI/UX Design",
+    "description": "Crafting accessible interfaces focused on clarity and usability.",
+    "icon": "Palette"
+  }
+]
