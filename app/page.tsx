@@ -3,6 +3,7 @@ import Banner from "@/components/banner";
 import WorkExperiences from "@/components/work-experiences";
 import ServicesSection from "@/components/services";
 import Link from "next/link";
+import { WorkExperienceCarousel } from "@/components/work-experiences";
 
 export default function HomePage() {
   return (
@@ -35,7 +36,7 @@ export default function HomePage() {
       <div className="container mx-auto max-w-7xl space-y-16 px-4 py-12">
         <Profile />
         <MyStory />
-        <WorkExperiences />
+        <WorkExperienceCarousel />
         <ServicesSection />
         <div className="flex justify-center">
           <Link
