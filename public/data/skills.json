@@ -12,7 +12,7 @@
           {"icon": "devicon-vitejs-plain colored", "name": "Vite"},
           {"icon": "devicon-react-original colored", "name": "ReactJS"},
           {"icon": "devicon-nextjs-plain", "name": "NextJS"},
-          {"icon": "devicon-php-plain colored", "name": "PHP (Basic)"},
+          {"icon": "devicon-php-plain colored", "name": "PHP"},
           {"icon": "devicon-typescript-plain colored", "name": "TypeScript"},
           {"icon": "devicon-javascript-plain colored", "name": "JavaScript"},
           {"icon": "devicon-jquery-plain colored", "name": "jQuery"},
@@ -47,13 +47,13 @@
         "title": "Programming Languages",
         "items": [
           {"icon": "devicon-python-plain colored", "name": "Python"},
-          {"icon": "devicon-php-plain colored", "name": "PHP (Basic)"},
+          {"icon": "devicon-php-plain colored", "name": "PHP"},
           {"icon": "devicon-typescript-plain colored", "name": "TypeScript"},
           {"icon": "devicon-javascript-plain colored", "name": "JavaScript"},
           {"icon": "devicon-mysql-plain colored", "name": "SQL (MySQL, PostgreSQL)"},
           {"icon": "devicon-mongodb-plain colored", "name": "NoSQL (MongoDB)"},
-          {"icon": "devicon-c-plain colored", "name": "C (Basic)"},
-          {"icon": "devicon-csharp-plain colored", "name": "C# (Basic; upskilling)"}
+          {"icon": "devicon-c-plain colored", "name": "C"},
+          {"icon": "devicon-csharp-plain colored", "name": "C# (Upskilling)"}
         ]
       },
       {
@@ -97,7 +97,7 @@
         "title": "Software Design & Documentation",
         "items": [
           {"icon": "fas fa-project-diagram", "name": "UML Diagramming"},
-          {"icon": "fas fa-sitemap", "name": "Basic Data Flow Diagramming"}
+          {"icon": "fas fa-sitemap", "name": "Data Flow Diagramming"}
         ]
       },
       {
