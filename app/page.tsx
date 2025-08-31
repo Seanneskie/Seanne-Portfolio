@@ -1,7 +1,10 @@
 import Profile, { MyStory } from "@/components/profile";
 import Banner from "@/components/banner";
+import WorkExperiences from "@/components/work-experiences";
+import ServicesSection from "@/components/services";
 import Link from "next/link";
 import PhotoCarousel from "@/components/photo-carousel";
+import { WorkExperienceCarousel } from "@/components/work-experiences";
 
 export default function HomePage() {
   return (
@@ -35,6 +38,8 @@ export default function HomePage() {
         <Profile />
         <MyStory />
         <PhotoCarousel />
+        <WorkExperienceCarousel />
+        <ServicesSection />
         <div className="flex justify-center">
           <Link
             href="/profile"

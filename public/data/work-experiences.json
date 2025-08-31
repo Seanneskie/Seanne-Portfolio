@@ -3,6 +3,10 @@
     "company": "TSP Marine Industries",
     "project": "Vessel Inventory Management System (VIMS)",
     "period": "November 2024 – June 2025",
+    "images": [
+      { "src": "/vims/images/1.png", "alt": "VIMS dashboard" },
+      { "src": "/vims/images/2.png", "alt": "VIMS inventory table" }
+    ],
     "tech": [
       "Next.js 15",
       "TypeScript",
@@ -25,6 +29,10 @@
     "company": "LGU Gensan – CEMCDO",
     "project": "Cooperative Profiling & Fund Utilization System",
     "period": "January 2025 – April 2025",
+    "images": [
+      { "src": "/cemcdo-app/images/Landing Page.png", "alt": "CEMCDO landing page" },
+      { "src": "/cemcdo-app/images/Admin Dashboard.png", "alt": "CEMCDO admin dashboard" }
+    ],
     "tech": [
       "Django",
       "Tailwind CSS",
@@ -46,6 +54,7 @@
     "company": "COTSEYE Project",
     "project": "Crowd Mapping for Crown of Thorns (COTS) Monitoring",
     "period": "May 2024 – August 2024",
+    "images": [],
     "tech": [
       "Django",
       "Python",
