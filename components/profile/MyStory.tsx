@@ -51,17 +51,20 @@ export default function MyStory() {
     {
       icon: <MapPinned className="h-5 w-5" />,
       title: "Maps & GIS",
-      blurb: "Build location-aware features with Leaflet and basic GIS workflows.",
+      blurb:
+        "Build location-aware features with Leaflet and basic GIS workflows.",
     },
     {
       icon: <ShieldCheck className="h-5 w-5" />,
       title: "Secure by Default",
-      blurb: "Follow safe coding practices, reviews, and least-privilege patterns.",
+      blurb:
+        "Follow safe coding practices, reviews, and least-privilege patterns.",
     },
     {
       icon: <FileText className="h-5 w-5" />,
       title: "Docs & Handover",
-      blurb: "UML/DFD diagrams, clean READMEs, and setup guides teams can trust.",
+      blurb:
+        "UML/DFD diagrams, clean READMEs, and setup guides teams can trust.",
     },
   ];
 
@@ -120,8 +123,8 @@ export default function MyStory() {
 
                 <p>
                   Today, I focus on shipping practical, well-designed systems—
-                  normalized data models, reliable APIs, and interfaces that stay
-                  out of the way. I move fast, measure impact, and document
+                  normalized data models, reliable APIs, and interfaces that
+                  stay out of the way. I move fast, measure impact, and document
                   everything clearly so teams can build with confidence.
                 </p>
 
@@ -160,15 +163,15 @@ export default function MyStory() {
                   <li className="flex items-start gap-3">
                     <MapPinned className="mt-0.5 h-4 w-4 text-teal-600 dark:text-teal-300" />
                     <span>
-                      <span className="font-medium">COTSEYE:</span> crowd-mapping
-                      for marine conservation (Django, JS).
+                      <span className="font-medium">COTSEYE:</span>{" "}
+                      crowd-mapping for marine conservation (Django, JS).
                     </span>
                   </li>
                   <li className="flex items-start gap-3">
                     <Database className="mt-0.5 h-4 w-4 text-teal-600 dark:text-teal-300" />
                     <span>
-                      <span className="font-medium">VIMS:</span> vessel inventory
-                      system (Next.js, Supabase, Tailwind).
+                      <span className="font-medium">VIMS:</span> vessel
+                      inventory system (Next.js, Supabase, Tailwind).
                     </span>
                   </li>
                   <li className="flex items-start gap-3">
@@ -188,30 +191,38 @@ export default function MyStory() {
                     <li>
                       Graduated as
                       <span className="font-semibold text-teal-700 dark:text-teal-300">
-                        {" "}Cum Laude
-                      </span>
-                      {" "}and
+                        {" "}
+                        Cum Laude
+                      </span>{" "}
+                      and
                       <span className="font-semibold text-teal-700 dark:text-teal-300">
-                        {" "}PSITE XII Most Outstanding IT Student
+                        {" "}
+                        PSITE XII Most Outstanding IT Student
                       </span>
                     </li>
                     <li>
                       Hack4Gov3 National Finals –
                       <span className="font-semibold text-teal-700 dark:text-teal-300">
-                        {" "}4th Place
-                      </span>{" "}(Oct 2024)
+                        {" "}
+                        4th Place
+                      </span>{" "}
+                      (Oct 2024)
                     </li>
                     <li>
                       Hack4Gov3 Region 12 –
                       <span className="font-semibold text-teal-700 dark:text-teal-300">
-                        {" "}Champion & Excellence Awardee
-                      </span>{" "}(Aug 2024)
+                        {" "}
+                        Champion & Excellence Awardee
+                      </span>{" "}
+                      (Aug 2024)
                     </li>
                     <li>
                       JITS IT Week Hackathon –
                       <span className="font-semibold text-teal-700 dark:text-teal-300">
-                        {" "}Champion
-                      </span>{" "}(2024 & 2023)
+                        {" "}
+                        Champion
+                      </span>{" "}
+                      (2024 & 2023)
                     </li>
                   </ul>
                 </div>
@@ -220,7 +231,10 @@ export default function MyStory() {
                   <p className="font-medium text-teal-700 dark:text-teal-300">
                     Principles
                   </p>
-                  <p>Clarity over cleverness • Small PRs • Measure, don’t guess • Docs your future-you will thank.</p>
+                  <p>
+                    Clarity over cleverness • Small PRs • Measure, don’t guess •
+                    Docs your future-you will thank.
+                  </p>
                 </div>
               </div>
             </div>
@@ -232,15 +246,17 @@ export default function MyStory() {
             <CardHeader>
               <CardTitle className="text-xl">What I Do</CardTitle>
             </CardHeader>
-            <CardContent className="grid gap-4 sm:grid-cols-2">
+            <CardContent className="grid gap-12 sm:grid-cols-1 justify-items-start">
               {whatIDo.map((item) => (
-                <div key={item.title} className="flex items-start gap-3">
+                <div key={item.title} className="flex items-center gap-3">
                   <div className="mt-0.5 text-teal-700 dark:text-teal-400">
                     {item.icon}
                   </div>
-                  <div>
+                  <div className="text-left">
                     <p className="font-medium">{item.title}</p>
-                    <p className="text-sm text-muted-foreground">{item.blurb}</p>
+                    <p className="text-sm text-muted-foreground">
+                      {item.blurb}
+                    </p>
                   </div>
                 </div>
               ))}
