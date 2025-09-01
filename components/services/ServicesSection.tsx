@@ -31,7 +31,7 @@ export default function ServicesSection() {
       </h1>
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {data.map((svc) => {
-          const Icon = (Icons as Record<string, LucideIcon>)[svc.icon] ?? Icons.Code2;
+          const Icon = (Icons[svc.icon as keyof typeof Icons] ?? Icons.Code2) as LucideIcon;
           return (
             <Card
               key={svc.title}
