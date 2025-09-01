@@ -27,6 +27,7 @@ interface Certificate {
   title: string;
   desc: string;
   link?: string;
+  image?: string;
   skills: string[];
 }
 
@@ -150,12 +151,11 @@ function CertificateCard({ certificate: c, index }: CertificateCardProps) {
   const labels = Array.from(new Set([...c.tags, ...c.skills]));
   const badgeCls =
     "rounded-full bg-teal-50 text-teal-800 ring-1 ring-inset ring-teal-200 dark:bg-teal-900/30 dark:text-teal-200 dark:ring-teal-800";
-  const viewLink = c.link
-    ? c.link.startsWith("/")
-      ? withBasePath(c.link)
-      : c.link
-    : "";
-  const { image: imageSrc, loading: imageLoading } = useOgImage(c.link);
+  const rawLink = c.link ?? c.image ?? "";
+  const viewLink = rawLink.startsWith("/") ? withBasePath(rawLink) : rawLink;
+  const { image: imageSrc, loading: imageLoading } = useOgImage(
+    c.image ?? c.link
+  );
 
   return (
     <motion.li
@@ -210,7 +210,7 @@ function CertificateCard({ certificate: c, index }: CertificateCardProps) {
             </div>
 
             <div className="mt-4 flex flex-col gap-2">
-              {c.link && (
+              {rawLink && (
                 <Button
                   asChild
                   size="sm"
