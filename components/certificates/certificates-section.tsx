@@ -155,7 +155,7 @@ function CertificateCard({ certificate: c, index }: CertificateCardProps) {
       ? withBasePath(c.link)
       : c.link
     : "";
-  const imageSrc = useOgImage(c.link);
+  const { image: imageSrc, loading: imageLoading } = useOgImage(c.link);
 
   return (
     <motion.li
@@ -234,13 +234,19 @@ function CertificateCard({ certificate: c, index }: CertificateCardProps) {
             />
           </Card>
         </HoverCardTrigger>
-        {imageSrc && (
+        {(imageLoading || imageSrc) && (
           <HoverCardContent side="top" className="w-80 p-0">
-            <img
-              src={imageSrc}
-              alt={`${c.title} certificate`}
-              className="h-auto w-full rounded-md"
-            />
+            {imageSrc ? (
+              <img
+                src={imageSrc}
+                alt={`${c.title} certificate`}
+                className="h-auto w-full rounded-md"
+              />
+            ) : (
+              <div className="flex h-44 w-full items-center justify-center rounded-md bg-teal-50 dark:bg-teal-900/30">
+                <span className="h-6 w-6 animate-spin rounded-full border-2 border-teal-600 border-r-transparent dark:border-teal-400" />
+              </div>
+            )}
           </HoverCardContent>
         )}
       </HoverCard>

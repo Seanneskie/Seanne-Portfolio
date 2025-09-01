@@ -5,16 +5,20 @@ const IMAGE_REGEX = /\.(png|jpe?g|gif|webp)$/i;
 
 export function useOgImage(url?: string) {
   const [image, setImage] = useState<string>();
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (!url) return;
 
     if (IMAGE_REGEX.test(url)) {
       setImage(url.startsWith("/") ? withBasePath(url) : url);
+      setLoading(false);
       return;
     }
 
     const controller = new AbortController();
+    setLoading(true);
+    setImage(undefined);
     fetch(`/api/og-image?url=${encodeURIComponent(url)}`, {
       signal: controller.signal,
     })
@@ -22,10 +26,14 @@ export function useOgImage(url?: string) {
       .then((data: { image?: string }) => {
         if (data?.image) setImage(data.image);
       })
-      .catch(() => null);
+      .catch(() => null)
+      .finally(() => setLoading(false));
 
-    return () => controller.abort();
+    return () => {
+      controller.abort();
+      setLoading(false);
+    };
   }, [url]);
 
-  return image;
+  return { image, loading };
 }
