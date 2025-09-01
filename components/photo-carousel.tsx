@@ -47,7 +47,9 @@ export default function PhotoCarousel() {
                   />
                 </AspectRatio>
                 {photo.label && (
-                  <p className="text-center text-sm text-muted-foreground">{photo.label}</p>
+                  <p className="text-center text-sm text-teal-700 dark:text-teal-300">
+                    {photo.label}
+                  </p>
                 )}
               </div>
             </CarouselItem>

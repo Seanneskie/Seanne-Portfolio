@@ -17,6 +17,7 @@ interface WorkExperience {
   project: string;
   period: string;
   images: { src: string; alt: string }[];
+  summary: string;
 }
 
 export default function WorkExperienceCarousel() {
@@ -38,6 +39,9 @@ export default function WorkExperienceCarousel() {
       >
         Work Experiences
       </h2>
+      <p className="text-gray-700 dark:text-gray-300">
+        Snapshots from my on-the-job training and key projects.
+      </p>
       <div className="grid gap-6 md:grid-cols-2">
         {data.map((exp) => (
           <Card
@@ -51,7 +55,7 @@ export default function WorkExperienceCarousel() {
               <p className="text-sm text-gray-700 dark:text-gray-300">{exp.project}</p>
               <p className="text-xs text-gray-500 dark:text-gray-400">{exp.period}</p>
             </CardHeader>
-            <CardContent>
+            <CardContent className="space-y-4">
               {exp.images.length > 0 && (
                 <Carousel className="w-full" opts={{ align: "start" }}>
                   <CarouselContent>
@@ -73,6 +77,7 @@ export default function WorkExperienceCarousel() {
                   <CarouselNext className="right-2 top-1/2 -translate-y-1/2 shadow-sm" />
                 </Carousel>
               )}
+              <p className="text-gray-700 dark:text-gray-300">{exp.summary}</p>
             </CardContent>
           </Card>
         ))}

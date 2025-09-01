@@ -4,6 +4,7 @@
     "project": "Vessel Inventory Management System (VIMS)",
     "period": "November 2024 – June 2025",
     "images": [
+      { "src": "/photo-carousel/ojt.jpg", "alt": "On-the-job training photo" },
       { "src": "/vims/images/1.png", "alt": "VIMS dashboard" },
       { "src": "/vims/images/2.png", "alt": "VIMS inventory table" }
     ],
