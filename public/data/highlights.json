@@ -10,5 +10,8 @@
   { "src": "/photo-carousel/ojt_4.jpg", "label": "On-the-job training photo 4" },
   { "src": "/photo-carousel/ojt_5.jpg", "label": "On-the-job training photo 5" },
   { "src": "/photo-carousel/ojt_6.jpg", "label": "On-the-job training photo 6" },
-  { "src": "/photo-carousel/ojt_7.jpg", "label": "On-the-job training photo 7" }
+  { "src": "/photo-carousel/ojt_7.jpg", "label": "On-the-job training photo 7" },
+  { "src": "/photo-carousel/decode2024_uctf_1.jpg", "label": "DECODE 2024 UCTF" },
+  { "src": "/photo-carousel/hack4gov3_regionals.jpg", "label": "Hack4Gov 3 Regionals" },
+  { "src": "/photo-carousel/hack4gov3_nationals.jpg", "label": "Hack4Gov 3 Nationals" }
 ]
