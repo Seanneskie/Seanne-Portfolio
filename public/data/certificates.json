@@ -134,6 +134,7 @@
     "title": "Civil Service Professional Examination",
     "desc": "Successfully passed the Civil Service Professional Examination, demonstrating proficiency in core competencies required for professional roles in Philippine government service. Date: August 2024",
     "link": "/static/pdfs/csc.pdf",
+    "image": "/static/placeholders/cert-placeholder.jpeg",
     "skills": [
       "OtherSkill"
     ]

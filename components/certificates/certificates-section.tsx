@@ -27,6 +27,7 @@ interface Certificate {
   title: string;
   desc: string;
   link?: string;
+  image?: string;
   skills: string[];
 }
 
@@ -151,11 +152,13 @@ function CertificateCard({ certificate: c, index }: CertificateCardProps) {
   const badgeCls =
     "rounded-full bg-teal-50 text-teal-800 ring-1 ring-inset ring-teal-200 dark:bg-teal-900/30 dark:text-teal-200 dark:ring-teal-800";
   const viewLink = c.link
-    ? c.link.startsWith("/")
-      ? withBasePath(c.link)
-      : c.link
+    ? /^https?:\/\//.test(c.link)
+      ? c.link
+      : withBasePath(c.link.startsWith("/") ? c.link : `/${c.link}`)
     : "";
-  const { image: imageSrc, loading: imageLoading } = useOgImage(c.link);
+  const { image: imageSrc, loading: imageLoading } = useOgImage(
+    c.image ?? c.link
+  );
 
   return (
     <motion.li

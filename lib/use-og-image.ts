@@ -11,7 +11,11 @@ export function useOgImage(url?: string) {
     if (!url) return;
 
     if (IMAGE_REGEX.test(url)) {
-      setImage(url.startsWith("/") ? withBasePath(url) : url);
+      const isAbsolute = /^https?:\/\//.test(url);
+      const normalized = isAbsolute
+        ? url
+        : withBasePath(url.startsWith("/") ? url : `/${url}`);
+      setImage(normalized);
       setLoading(false);
       return;
     }
