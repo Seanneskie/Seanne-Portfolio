@@ -20,6 +20,7 @@ import {
 } from "@/components/ui/hover-card";
 import { useData } from "@/lib/use-data";
 import { withBasePath } from "@/lib/utils";
+import { useOgImage } from "@/lib/use-og-image";
 
 interface Certificate {
   tags: string[];
@@ -30,7 +31,6 @@ interface Certificate {
 }
 
 const MAX_BADGES = 6;
-const MAX_DESC_LENGTH = 120;
 
 export default function CertificatesSection() {
   const [search, setSearch] = useState("");
@@ -134,125 +134,113 @@ export default function CertificatesSection() {
             {filtered.map((c: Certificate, i: number) => {
               const labels = Array.from(new Set([...c.tags, ...c.skills]));
               const isExpanded = !!expanded[i];
-              const showToggle =
-                labels.length > MAX_BADGES || c.desc.length > MAX_DESC_LENGTH;
               const badgeCls =
                 "rounded-full bg-teal-50 text-teal-800 ring-1 ring-inset ring-teal-200 dark:bg-teal-900/30 dark:text-teal-200 dark:ring-teal-800";
-              const imageSrc = c.link
+              const viewLink = c.link
                 ? c.link.startsWith("/")
                   ? withBasePath(c.link)
                   : c.link
                 : "";
-              const isImage = /\.(png|jpe?g|gif|webp)$/i.test(imageSrc);
+              const imageSrc = useOgImage(c.link);
 
-                return (
-                  <motion.li
-                    key={c.title + i}
-                    role="listitem"
-                    className="h-full"
-                    layout
-                    initial={{ opacity: 0, y: 12 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -12 }}
-                    transition={{ delay: i * 0.05, duration: 0.35 }}
-                  >
-                    <HoverCard>
-                      <HoverCardTrigger asChild>
-                        <Card
-                          className={[
-                            "group relative overflow-hidden rounded-2xl p-4",
-                            "border border-teal-200/70 bg-white/85 backdrop-blur",
-                            "dark:border-teal-800/70 dark:bg-gray-950/60",
-                            "transition-shadow hover:shadow-lg hover:shadow-teal-300/30 dark:hover:shadow-teal-900/20",
-                            "focus-within:ring-1 focus-within:ring-teal-500/60",
-                            "flex flex-col",
-                            isExpanded ? "" : "h-64",
-                          ].join(" ")}
-                        >
+              return (
+                <motion.li
+                  key={c.title + i}
+                  role="listitem"
+                  className="h-full"
+                  layout
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -12 }}
+                  transition={{ delay: i * 0.05, duration: 0.35 }}
+                >
+                  <HoverCard>
+                    <HoverCardTrigger asChild>
+                      <Card
+                        onMouseEnter={() =>
+                          setExpanded((prev) => ({ ...prev, [i]: true }))
+                        }
+                        onMouseLeave={() =>
+                          setExpanded((prev) => ({ ...prev, [i]: false }))
+                        }
+                        className={[
+                          "group relative overflow-hidden rounded-2xl p-4",
+                          "border border-teal-200/70 bg-white/85 backdrop-blur",
+                          "dark:border-teal-800/70 dark:bg-gray-950/60",
+                          "transition-shadow hover:shadow-lg hover:shadow-teal-300/30 dark:hover:shadow-teal-900/20",
+                          "focus-within:ring-1 focus-within:ring-teal-500/60",
+                          "flex flex-col",
+                          isExpanded ? "" : "h-64",
+                        ].join(" ")}
+                      >
                         <div className="flex-1">
                           <h3 className="text-lg font-semibold text-teal-800 dark:text-teal-200">
                             {c.title}
                           </h3>
 
-                      <div className="mt-2 flex flex-wrap items-center gap-2">
-                        {labels
-                          .slice(0, isExpanded ? labels.length : MAX_BADGES)
-                          .map((label) => (
-                            <Badge
-                              key={label}
-                              variant="secondary"
-                              className={badgeCls}
-                            >
-                              {label}
-                            </Badge>
-                          ))}
-                      </div>
+                          <div className="mt-2 flex flex-wrap items-center gap-2">
+                            {labels
+                              .slice(0, isExpanded ? labels.length : MAX_BADGES)
+                              .map((label) => (
+                                <Badge
+                                  key={label}
+                                  variant="secondary"
+                                  className={badgeCls}
+                                >
+                                  {label}
+                                </Badge>
+                              ))}
+                          </div>
 
-                      <p
-                        className={[
-                          "mt-2 text-sm text-gray-700 dark:text-gray-200",
-                          !isExpanded && "line-clamp-3",
-                        ]
-                          .filter(Boolean)
-                          .join(" ")}
-                      >
-                        {c.desc}
-                      </p>
-                    </div>
-
-                    <div className="mt-4 flex flex-col gap-2">
-                        {c.link && (
-                          <Button
-                            asChild
-                            size="sm"
-                            className="border-0 bg-gradient-to-r from-teal-600 via-cyan-500 to-sky-500 text-white focus-visible:border-teal-500 focus-visible:ring-teal-500/50"
+                          <p
+                            className={[
+                              "mt-2 text-sm text-gray-700 dark:text-gray-200",
+                              !isExpanded && "line-clamp-3",
+                            ]
+                              .filter(Boolean)
+                              .join(" ")}
                           >
-                            <a
-                              href={imageSrc}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              aria-label={`View ${c.title} certificate`}
+                            {c.desc}
+                          </p>
+                        </div>
+
+                        <div className="mt-4 flex flex-col gap-2">
+                          {c.link && (
+                            <Button
+                              asChild
+                              size="sm"
+                              className="border-0 bg-gradient-to-r from-teal-600 via-cyan-500 to-sky-500 text-white focus-visible:border-teal-500 focus-visible:ring-teal-500/50"
                             >
-                              View certificate
-                            </a>
-                          </Button>
-                        )}
+                              <a
+                                href={viewLink}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label={`View ${c.title} certificate`}
+                              >
+                                View certificate
+                              </a>
+                            </Button>
+                          )}
+                        </div>
 
-                      {showToggle && (
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          onClick={() =>
-                            setExpanded((prev) => ({
-                              ...prev,
-                              [i]: !isExpanded,
-                            }))
-                          }
-                          className="self-start px-0 text-teal-700 hover:underline dark:text-teal-300"
-                        >
-                          {isExpanded ? "Show less" : "Show more"}
-                        </Button>
-                      )}
-                    </div>
-
-                    <span
-                      aria-hidden
-                      className="pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full bg-teal-400/20 blur-2xl transition-opacity duration-300 group-hover:opacity-100 dark:bg-teal-500/15"
-                    />
-                        </Card>
-                      </HoverCardTrigger>
-                      {isImage && (
-                        <HoverCardContent className="w-80 p-0">
-                          <img
-                            src={imageSrc}
-                            alt={`${c.title} certificate`}
-                            className="h-auto w-full rounded-md"
-                          />
-                        </HoverCardContent>
-                      )}
-                    </HoverCard>
-                  </motion.li>
-                );
+                        <span
+                          aria-hidden
+                          className="pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full bg-teal-400/20 blur-2xl transition-opacity duration-300 group-hover:opacity-100 dark:bg-teal-500/15"
+                        />
+                      </Card>
+                    </HoverCardTrigger>
+                    {imageSrc && (
+                      <HoverCardContent side="top" className="w-80 p-0">
+                        <img
+                          src={imageSrc}
+                          alt={`${c.title} certificate`}
+                          className="h-auto w-full rounded-md"
+                        />
+                      </HoverCardContent>
+                    )}
+                  </HoverCard>
+                </motion.li>
+              );
             })}
           </AnimatePresence>
         </ul>
