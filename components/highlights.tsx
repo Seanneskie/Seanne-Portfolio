@@ -6,49 +6,44 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { withBasePath } from "@/lib/utils";
 
-interface PhotoItem {
+interface HighlightItem {
   src: string;
   label: string;
 }
 
-export default function PhotoCarousel() {
-  const [photos, setPhotos] = React.useState<PhotoItem[]>([]);
+export default function Highlights() {
+  const [highlights, setHighlights] = React.useState<HighlightItem[]>([]);
 
   React.useEffect(() => {
-    fetch(withBasePath("/data/photo-carousel.json"))
+    fetch(withBasePath("/data/highlights.json"))
       .then((res) => res.json())
-      .then((data) => setPhotos(data))
-      .catch(() => setPhotos([]));
+      .then((data) => setHighlights(data))
+      .catch(() => setHighlights([]));
   }, []);
 
-  if (photos.length === 0) {
+  if (highlights.length === 0) {
     return (
-      <section id="photos" className="space-y-4">
-        <h2 className="text-2xl font-bold">Photo Carousel</h2>
+      <section id="highlights" className="space-y-4">
+        <h2 className="text-2xl font-bold">Highlights</h2>
         <p className="text-muted-foreground">No photos available.</p>
       </section>
     );
   }
 
   return (
-    <section id="photos" className="space-y-4">
-      <h2 className="text-2xl font-bold">Photo Carousel</h2>
+    <section id="highlights" className="space-y-4">
+      <h2 className="text-2xl font-bold">Highlights</h2>
       <Carousel className="w-full">
         <CarouselContent>
-          {photos.map((photo) => (
-            <CarouselItem key={photo.src} className="basis-full">
+          {highlights.map((highlight) => (
+            <CarouselItem key={highlight.src} className="basis-full">
               <div className="space-y-2">
                 <AspectRatio ratio={16 / 9} className="overflow-hidden rounded-xl bg-muted">
-                  <Image
-                    src={withBasePath(photo.src)}
-                    alt={photo.label}
-                    fill
-                    className="object-cover"
-                  />
+                  <Image src={withBasePath(highlight.src)} alt={highlight.label} fill className="object-cover" />
                 </AspectRatio>
-                {photo.label && (
+                {highlight.label && (
                   <p className="text-center text-sm text-teal-700 dark:text-teal-300">
-                    {photo.label}
+                    {highlight.label}
                   </p>
                 )}
               </div>
