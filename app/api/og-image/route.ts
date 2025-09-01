@@ -1,5 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 
+// Mark the route as static so it can be used with `output: export`.
+export const dynamic = "force-static";
+
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const target = searchParams.get("url");
