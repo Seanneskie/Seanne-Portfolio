@@ -1,6 +1,5 @@
 import Profile, { MyStory } from "@/components/profile";
 import Banner from "@/components/banner";
-import WorkExperiences from "@/components/work-experiences";
 import ServicesSection from "@/components/services";
 import Link from "next/link";
 import Highlights from "@/components/highlights";

@@ -21,6 +21,7 @@ import {
 import { useData } from "@/lib/use-data";
 import { withBasePath } from "@/lib/utils";
 import { useOgImage } from "@/lib/use-og-image";
+import Image from "next/image";
 
 interface Certificate {
   tags: string[];
@@ -237,9 +238,11 @@ function CertificateCard({ certificate: c, index }: CertificateCardProps) {
         {(imageLoading || imageSrc) && (
           <HoverCardContent side="top" className="w-80 p-0">
             {imageSrc ? (
-              <img
+              <Image
                 src={imageSrc}
                 alt={`${c.title} certificate`}
+                width={320}
+                height={200}
                 className="h-auto w-full rounded-md"
               />
             ) : (
