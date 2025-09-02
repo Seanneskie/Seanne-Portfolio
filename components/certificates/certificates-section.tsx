@@ -20,7 +20,6 @@ import {
 } from "@/components/ui/hover-card";
 import { useData } from "@/lib/use-data";
 import { withBasePath } from "@/lib/utils";
-import { useOgImage } from "@/lib/use-og-image";
 import Image from "next/image";
 
 interface Certificate {
@@ -154,9 +153,12 @@ function CertificateCard({ certificate: c, index }: CertificateCardProps) {
     "rounded-full bg-teal-50 text-teal-800 ring-1 ring-inset ring-teal-200 dark:bg-teal-900/30 dark:text-teal-200 dark:ring-teal-800";
   const rawLink = c.link ?? c.image ?? "";
   const viewLink = rawLink.startsWith("/") ? withBasePath(rawLink) : rawLink;
-  const { image: imageSrc, loading: imageLoading } = useOgImage(
-    c.image ?? c.link
-  );
+  const imageSrc = c.image?.startsWith("/")
+    ? withBasePath(c.image)
+    : c.link?.startsWith("/")
+      ? withBasePath(c.link)
+      : undefined;
+  const hasExternalLink = Boolean(c.link && !c.link.startsWith("/"));
 
   return (
     <motion.li
@@ -235,7 +237,7 @@ function CertificateCard({ certificate: c, index }: CertificateCardProps) {
             />
           </Card>
         </HoverCardTrigger>
-        {(imageLoading || imageSrc) && (
+        {(imageSrc || hasExternalLink) && (
           <HoverCardContent side="top" className="w-80 p-0">
             {imageSrc ? (
               <Image
@@ -247,7 +249,14 @@ function CertificateCard({ certificate: c, index }: CertificateCardProps) {
               />
             ) : (
               <div className="flex h-44 w-full items-center justify-center rounded-md bg-teal-50 dark:bg-teal-900/30">
-                <span className="h-6 w-6 animate-spin rounded-full border-2 border-teal-600 border-r-transparent dark:border-teal-400" />
+                <a
+                  href={viewLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-teal-700 underline dark:text-teal-200"
+                >
+                  View on Certificate Link
+                </a>
               </div>
             )}
           </HoverCardContent>
