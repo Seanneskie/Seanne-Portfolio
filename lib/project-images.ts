@@ -10,7 +10,8 @@ export async function getProjectImages(slug: string): Promise<string[]> {
       return [];
     }
     return names.map((name) => `/${slug}/images/${name}`);
-  } catch {
-    return [];
+  } catch (error) {
+    console.error(`Failed to load project images for slug "${slug}":`, error);
+    throw new Error(`Failed to load project images for slug "${slug}"`);
   }
 }
