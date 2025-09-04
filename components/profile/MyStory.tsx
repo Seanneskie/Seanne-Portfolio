@@ -15,6 +15,7 @@ import StorySkills from "./StorySkills";
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { Sparkles, Rocket } from "lucide-react";
+import ServicesSection from "@/components/services";
 
 export default function MyStory() {
   const whatIDo = [
@@ -265,6 +266,7 @@ export default function MyStory() {
           <StorySkills />
         </div>
       </section>
+      <ServicesSection />
     </motion.div>
   );
 }

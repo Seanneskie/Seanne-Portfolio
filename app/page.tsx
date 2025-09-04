@@ -1,6 +1,5 @@
 import Profile, { MyStory } from "@/components/profile";
 import Banner from "@/components/banner";
-import ServicesSection from "@/components/services";
 import Link from "next/link";
 import Highlights from "@/components/highlights";
 import { WorkExperienceCarousel } from "@/components/work-experiences";
@@ -38,7 +37,6 @@ export default function HomePage() {
         <MyStory />
         <Highlights />
         <WorkExperienceCarousel />
-        <ServicesSection />
         <div className="flex justify-center">
           <Link
             href="/profile"
