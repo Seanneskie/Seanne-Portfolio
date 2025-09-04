@@ -203,7 +203,10 @@
       "Inventory",
       "JavaScript",
       "HTML",
-      "CSS"
+      "CSS",
+      "Supabase",
+      "Shadcn UI",
+      "Tailwind CSS"
     ],
     "github": null,
     "githubLabel": "",
