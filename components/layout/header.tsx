@@ -15,6 +15,12 @@ import { Github, Linkedin, Twitter } from "lucide-react";
 import { withBasePath } from "@/lib/utils";
 import { toast } from "sonner";
 
+type NavLink = {
+  href: string;
+  label: string;
+  external?: boolean;
+};
+
 const NAV_LINKS = [
   { href: "/", label: "Home" },
   { href: "/projects", label: "Projects" },
@@ -28,7 +34,7 @@ const NAV_LINKS = [
     label: "Resume",
     external: true,
   },
-] as const;
+] as const satisfies readonly NavLink[];
 
 const SOCIAL_LINKS = [
   {
