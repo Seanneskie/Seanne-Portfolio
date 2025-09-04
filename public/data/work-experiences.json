@@ -31,8 +31,8 @@
     "project": "Cooperative Profiling & Fund Utilization System",
     "period": "January 2025 – April 2025",
     "images": [
-      { "src": "/cemcdo-app/images/Landing Page.png", "alt": "CEMCDO landing page" },
-      { "src": "/cemcdo-app/images/Admin Dashboard.png", "alt": "CEMCDO admin dashboard" },
+      { "src": "/cemcdo-app/images/landing-page.png", "alt": "CEMCDO landing page" },
+      { "src": "/cemcdo-app/images/adkmin-dashboard.png", "alt": "CEMCDO admin dashboard" },
       { "src": "/photo-carousel/ojt.jpg", "alt": "OJT at CEMCDO – System Presentation Meeting" },
       { "src": "/photo-carousel/ojt_4.jpg", "alt": "OJT at CEMCDO – Workshop and User Testing" },
       { "src": "/photo-carousel/ojt_6.jpg", "alt": "OOJT at CEMCDO – The Team" }
