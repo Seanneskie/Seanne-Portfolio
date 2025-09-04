@@ -5,7 +5,6 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { useData } from "@/lib/use-data";
 import {
   Copy,
   Mail,
@@ -32,21 +31,82 @@ import { TooltipArrow } from "@radix-ui/react-tooltip";
 import Image from "next/image";
 import { withBasePath } from "@/lib/utils";
 
-interface SkillItem {
-  icon: string;
-  name: string;
-}
-
-interface SkillGroup {
+interface KeySkillGroup {
   title: string;
-  items: SkillItem[];
+  skills: string[];
 }
 
-interface SkillCategory {
-  id: string;
-  label: string;
-  groups: SkillGroup[];
-}
+const keySkillGroups: KeySkillGroup[] = [
+  {
+    title: "Full-stack Web Development",
+    skills: [
+      "Django (Python)",
+      "React & Next.js",
+      "TypeScript/JavaScript",
+      "REST API development",
+      "Laravel (basic)",
+      "Supabase",
+    ],
+  },
+  {
+    title: "Frontend UI",
+    skills: [
+      "Tailwind CSS",
+      "Bootstrap (responsive)",
+      "jQuery + DataTables",
+      "HTML5/CSS3",
+    ],
+  },
+  {
+    title: "Data & Analytics",
+    skills: [
+      "Python (Pandas, scikit-learn, Matplotlib)",
+      "Chart.js",
+      "Tableau",
+      "Google Looker Studio",
+      "Data cleaning, analysis, visualization",
+    ],
+  },
+  {
+    title: "AI/ML Tooling",
+    skills: [
+      "TensorFlow",
+      "LangChain integration",
+      "Google Teachable Machine",
+      "Prompt engineering",
+    ],
+  },
+  {
+    title: "Databases",
+    skills: [
+      "SQL (MySQL, PostgreSQL)",
+      "NoSQL (MongoDB)",
+      "General SQL/NoSQL proficiency",
+    ],
+  },
+  {
+    title: "Geospatial",
+    skills: ["GIS concepts", "Leaflet map integration"],
+  },
+  {
+    title: "Software Design & Docs",
+    skills: ["UML", "Data-flow diagramming"],
+  },
+  {
+    title: "Tooling & Platforms",
+    skills: ["Git/GitHub", "VS Code", "Google Cloud Platform"],
+  },
+  {
+    title: "Core Strengths",
+    skills: [
+      "Critical thinking",
+      "Problem solving",
+      "Agile collaboration",
+      "Documentation",
+      "Presentation skills",
+    ],
+  },
+];
 
 const socialList: { key: keyof Links; label: string; icon: LucideIcon }[] = [
   { key: "linkedin", label: "LinkedIn", icon: Linkedin },
@@ -75,21 +135,6 @@ export default function ProfileCardContent({ profile }: { profile: ProfileData }
   const major = info.major ?? info.specialization ?? "Database Systems Major";
   const phone =
     info.phone ?? info.contact ?? info.contactNo ?? info.contact_number ?? null;
-
-  const { data } = useData<SkillCategory[]>("skills.json");
-  const programming = data?.find(
-    (category) => category.id === "Programming"
-  );
-  const keySkills: SkillItem[] = [];
-  if (programming) {
-    const items = programming.groups.flatMap((group) => group.items);
-    for (const item of items) {
-      if (!keySkills.some((s) => s.name === item.name)) {
-        keySkills.push(item);
-      }
-      if (keySkills.length >= 5) break;
-    }
-  }
 
   return (
     <Card className="relative overflow-hidden">
@@ -210,25 +255,19 @@ export default function ProfileCardContent({ profile }: { profile: ProfileData }
                 </Button>
               </div>
 
-              {keySkills.length > 0 && (
-                <div>
-                  <p className="text-sm font-medium text-black/80 dark:text-white/80">
-                    Key Skills
-                  </p>
-                  <div className="mt-2 flex flex-wrap gap-2">
-                    {keySkills.map((skill) => (
-                      <Badge
-                        key={skill.name}
-                        variant="secondary"
-                        className="flex items-center gap-1 rounded-full"
-                      >
-                        <i className={skill.icon} />
-                        {skill.name}
-                      </Badge>
-                    ))}
-                  </div>
-                </div>
-              )}
+              <div>
+                <p className="text-sm font-medium text-black/80 dark:text-white/80">
+                  Key Skills
+                </p>
+                <ul className="mt-2 space-y-1 pl-4 text-sm text-black/80 dark:text-white/80 list-disc">
+                  {keySkillGroups.map((group) => (
+                    <li key={group.title}>
+                      <span className="font-medium">{group.title}:</span>{" "}
+                      {group.skills.join(", ")}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
 
             <Separator />
