@@ -1,8 +1,12 @@
+"use client";
+
 import Profile, { MyStory } from "@/components/profile";
 import Banner from "@/components/banner";
 import Link from "next/link";
 import Highlights from "@/components/highlights";
 import { WorkExperienceCarousel } from "@/components/work-experiences";
+import { withBasePath } from "@/lib/utils";
+import { toast } from "sonner";
 
 export default function HomePage() {
   return (
@@ -22,6 +26,15 @@ export default function HomePage() {
               className="inline-flex items-center rounded-xl px-5 py-2.5 bg-white/90 text-gray-900 hover:bg-white transition shadow"
             >
               View Projects
+            </a>
+            <a
+              href={withBasePath("/static/pdfs/canete_resume.pdf")}
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => toast.info("Opening resume…")}
+              className="inline-flex items-center rounded-xl px-5 py-2.5 bg-white/90 text-gray-900 hover:bg-white transition shadow"
+            >
+              View Resume
             </a>
             <a
               href="mailto:seannecanete32@gmail.com"
