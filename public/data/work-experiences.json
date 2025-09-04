@@ -4,7 +4,6 @@
     "project": "Vessel Inventory Management System (VIMS)",
     "period": "November 2024 – June 2025",
     "images": [
-      { "src": "/photo-carousel/ojt.jpg", "alt": "OJT at TSP Marine – orientation" },
       { "src": "/vims/images/1.png", "alt": "VIMS dashboard" },
       { "src": "/vims/images/2.png", "alt": "VIMS inventory table" }
     ],
@@ -31,8 +30,11 @@
     "project": "Cooperative Profiling & Fund Utilization System",
     "period": "January 2025 – April 2025",
     "images": [
-      { "src": "/cemcdo-app/images/landing-page.png", "alt": "CEMCDO landing page" },
-      { "src": "/cemcdo-app/images/admin-dashboard.png", "alt": "CEMCDO admin dashboard" }
+      { "src": "/cemcdo-app/images/Landing Page.png", "alt": "CEMCDO landing page" },
+      { "src": "/cemcdo-app/images/Admin Dashboard.png", "alt": "CEMCDO admin dashboard" },
+      { "src": "/photo-carousel/ojt.jpg", "alt": "OJT at CEMCDO – System Planning Meeting" },
+      { "src": "/photo-carousel/ojt-1.jpg", "alt": "OJT at TSP Marine – orientation" },
+      { "src": "/photo-carousel/ojt-2.jpg", "alt": "OJT at TSP Marine – orientation" }
     ],
     "tech": [
       "Django",
