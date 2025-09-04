@@ -11,6 +11,7 @@ import {
   NavigationMenuLink,
 } from "@/components/ui/navigation-menu";
 import { ModeToggle } from "@/components/mode-toggle";
+import { Github, Linkedin, Twitter } from "lucide-react";
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
@@ -19,6 +20,24 @@ const NAV_LINKS = [
   { href: "/certificates", label: "Certificates" },
   { href: "/awards", label: "Awards" },
   { href: "/work-experiences", label: "Work Experiences" },
+] as const;
+
+const SOCIAL_LINKS = [
+  {
+    href: "https://github.com/Seanneskie",
+    label: "GitHub",
+    icon: Github,
+  },
+  {
+    href: "https://x.com/Seanneskie",
+    label: "Twitter",
+    icon: Twitter,
+  },
+  {
+    href: "https://www.linkedin.com/in/seanne-ca%C3%B1ete-8b09322a1/",
+    label: "LinkedIn",
+    icon: Linkedin,
+  },
 ] as const;
 
 export default function Header() {
@@ -96,6 +115,21 @@ export default function Header() {
               })}
             </NavigationMenuList>
           </NavigationMenu>
+
+          <div className="flex items-center gap-2">
+            {SOCIAL_LINKS.map(({ href, label, icon: Icon }) => (
+              <a
+                key={href}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={label}
+                className="rounded-md p-2 text-black transition hover:-translate-y-0.5 hover:shadow-sm hover:text-teal-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/50 dark:text-white dark:hover:text-teal-400 dark:focus-visible:ring-white/50"
+              >
+                <Icon className="h-4 w-4" />
+              </a>
+            ))}
+          </div>
 
           {/* Theme toggle */}
           <ModeToggle className="text-black hover:opacity-90 dark:text-white" />
