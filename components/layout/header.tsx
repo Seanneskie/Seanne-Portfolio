@@ -84,7 +84,8 @@ export default function Header() {
                 "group-hover:[&>li:not(:hover)]:scale-95",
               ].join(" ")}
             >
-              {NAV_LINKS.map(({ href, label, external }) => {
+              {NAV_LINKS.map((link: NavLink) => {
+                const { href, label, external } = link;
                 const isActive =
                   !external && (pathname === href || (href !== "/" && pathname?.startsWith(href)));
                 const isHot = hovered === href || isActive;
