@@ -341,7 +341,7 @@
     "description": "Next.js storefront that fetches product data from Shopify’s Storefront API and renders it with reusable UI components and server-side data fetching.",
     "collaborators": null,
     "tags": [
-      "Next.js",
+      "NextJS",
       "React",
       "TypeScript",
       "Tailwind CSS",
