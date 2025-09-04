@@ -21,12 +21,12 @@ export default function HomePage() {
         parallax
         actions={
           <>
-            <a
-              href="#projects"
+            <Link
+              href="/projects"
               className="inline-flex items-center rounded-xl px-5 py-2.5 bg-white/90 text-gray-900 hover:bg-white transition shadow"
             >
               View Projects
-            </a>
+            </Link>
             <a
               href={withBasePath("/static/pdfs/canete_resume.pdf")}
               target="_blank"
