@@ -31,81 +31,16 @@ import { TooltipArrow } from "@radix-ui/react-tooltip";
 import Image from "next/image";
 import { withBasePath } from "@/lib/utils";
 
-interface KeySkillGroup {
-  title: string;
-  skills: string[];
-}
-
-const keySkillGroups: KeySkillGroup[] = [
-  {
-    title: "Full-stack Web Development",
-    skills: [
-      "Django (Python)",
-      "React & Next.js",
-      "TypeScript/JavaScript",
-      "REST API development",
-      "Laravel (basic)",
-      "Supabase",
-    ],
-  },
-  {
-    title: "Frontend UI",
-    skills: [
-      "Tailwind CSS",
-      "Bootstrap (responsive)",
-      "jQuery + DataTables",
-      "HTML5/CSS3",
-    ],
-  },
-  {
-    title: "Data & Analytics",
-    skills: [
-      "Python (Pandas, scikit-learn, Matplotlib)",
-      "Chart.js",
-      "Tableau",
-      "Google Looker Studio",
-      "Data cleaning, analysis, visualization",
-    ],
-  },
-  {
-    title: "AI/ML Tooling",
-    skills: [
-      "TensorFlow",
-      "LangChain integration",
-      "Google Teachable Machine",
-      "Prompt engineering",
-    ],
-  },
-  {
-    title: "Databases",
-    skills: [
-      "SQL (MySQL, PostgreSQL)",
-      "NoSQL (MongoDB)",
-      "General SQL/NoSQL proficiency",
-    ],
-  },
-  {
-    title: "Geospatial",
-    skills: ["GIS concepts", "Leaflet map integration"],
-  },
-  {
-    title: "Software Design & Docs",
-    skills: ["UML", "Data-flow diagramming"],
-  },
-  {
-    title: "Tooling & Platforms",
-    skills: ["Git/GitHub", "VS Code", "Google Cloud Platform"],
-  },
-  {
-    title: "Core Strengths",
-    skills: [
-      "Critical thinking",
-      "Problem solving",
-      "Agile collaboration",
-      "Documentation",
-      "Presentation skills",
-    ],
-  },
+const keySkills = [
+  "Web Development",
+  "Frontend UI",
+  "Data & Analytics",
+  "AI/ML Tooling",
+  "Databases",
+  "Geospatial",
+  "Software Design & Docs",
+  "Tooling & Platforms",
+  "Core Strengths",
 ];
 
 const socialList: { key: keyof Links; label: string; icon: LucideIcon }[] = [
@@ -259,14 +194,17 @@ export default function ProfileCardContent({ profile }: { profile: ProfileData }
                 <p className="text-sm font-medium text-black/80 dark:text-white/80">
                   Key Skills
                 </p>
-                <ul className="mt-2 space-y-1 pl-4 text-sm text-black/80 dark:text-white/80 list-disc">
-                  {keySkillGroups.map((group) => (
-                    <li key={group.title}>
-                      <span className="font-medium">{group.title}:</span>{" "}
-                      {group.skills.join(", ")}
-                    </li>
+                <div className="mt-2 flex flex-wrap gap-2">
+                  {keySkills.map((skill) => (
+                    <Badge
+                      key={skill}
+                      variant="secondary"
+                      className="rounded-full"
+                    >
+                      {skill}
+                    </Badge>
                   ))}
-                </ul>
+                </div>
               </div>
             </div>
 
