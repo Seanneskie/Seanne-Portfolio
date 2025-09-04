@@ -4,13 +4,20 @@ import ProjectGallery from "./ProjectGallery";
 import { getProjectImages } from "@/lib/project-images";
 
 export default async function Vims() {
-  const images = await getProjectImages("vims");
+  const alt = "Vessel Inventory Management System screenshot";
+  const images = (await getProjectImages("vims")).map((src) => ({
+    src,
+    alt,
+  }));
   return (
     <div className="space-y-12">
       <ProjectOverview
         title="Vessel Inventory Management System"
-        images={images.length ? images : ["/static/placeholders/next.png"]}
-        alt="Vessel Inventory Management System screenshot"
+        images={
+          images.length
+            ? images
+            : [{ src: "/static/placeholders/next.png", alt }]
+        }
       >
         <p>
           <strong>Overview:</strong> VIMS is a vessel‑oriented inventory
@@ -86,7 +93,7 @@ export default async function Vims() {
 
       {images.length > 0 && (
         <ProjectSection title="Screenshots">
-          <ProjectGallery images={images} alt="Vessel Inventory Management System screenshot" />
+          <ProjectGallery images={images} />
         </ProjectSection>
       )}
     </div>

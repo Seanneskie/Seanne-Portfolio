@@ -4,15 +4,17 @@ import ProjectGallery from "./ProjectGallery";
 import { getProjectImages } from "@/lib/project-images";
 
 export default async function HeadlessEcommerceMiniStore() {
-  const images = await getProjectImages("headless-ecommerce-mini-store");
-  const fallback = ["/static/placeholders/next.png"];
+  const alt = "Headless E-Commerce Mini-Store screenshot";
+  const images = (await getProjectImages("headless-ecommerce-mini-store")).map(
+    (src) => ({ src, alt })
+  );
+  const fallback = [{ src: "/static/placeholders/next.png", alt }];
 
   return (
     <div className="space-y-12">
       <ProjectOverview
         title="Headless E-Commerce Mini-Store"
         images={images.length ? images : fallback}
-        alt="Headless E-Commerce Mini-Store screenshot"
       >
         <p>
           <strong>Overview:</strong> Shop‑Next is a Next.js storefront that
@@ -70,7 +72,7 @@ export default async function HeadlessEcommerceMiniStore() {
 
       {images.length > 0 && (
         <ProjectSection title="Screenshots">
-          <ProjectGallery images={images} alt="Headless E-Commerce Mini-Store screenshots" />
+          <ProjectGallery images={images} />
         </ProjectSection>
       )}
     </div>

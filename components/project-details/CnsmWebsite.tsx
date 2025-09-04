@@ -4,13 +4,20 @@ import ProjectGallery from "./ProjectGallery";
 import { getProjectImages } from "@/lib/project-images";
 
 export default async function CnsmWebsite() {
-  const images = await getProjectImages("cnsm-website");
+  const alt = "CNSM website screenshot";
+  const images = (await getProjectImages("cnsm-website")).map((src) => ({
+    src,
+    alt,
+  }));
   return (
     <div className="space-y-12">
       <ProjectOverview
         title="CNSM Website"
-        images={images.length ? images : ["/static/placeholders/Mern.png"]}
-        alt="CNSM website screenshot"
+        images={
+          images.length
+            ? images
+            : [{ src: "/static/placeholders/Mern.png", alt }]
+        }
         githubUrl="https://github.com/Seanneskie/advDB-CNSM-Website"
       >
         <p>
@@ -227,7 +234,7 @@ export default async function CnsmWebsite() {
 
       {images.length > 0 && (
         <ProjectSection title="Screenshots">
-          <ProjectGallery images={images} alt="CNSM website screenshot" />
+          <ProjectGallery images={images} />
         </ProjectSection>
       )}
     </div>

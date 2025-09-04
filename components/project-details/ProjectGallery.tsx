@@ -16,8 +16,7 @@ import {
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 interface ProjectGalleryProps {
-  images: string[];
-  alt: string;
+  images: Array<{ src: string; alt: string }>;
   showThumbnails?: boolean;
   className?: string;
   enableLightbox?: boolean;
@@ -25,7 +24,6 @@ interface ProjectGalleryProps {
 
 export default function ProjectGallery({
   images,
-  alt,
   showThumbnails = true,
   className,
   enableLightbox = true,
@@ -81,8 +79,8 @@ export default function ProjectGallery({
 
         <Carousel className="w-full" opts={{ loop: true, align: "start", duration: 16 }} setApi={setApi}>
           <CarouselContent className="ml-0">
-            {images.map((src, i) => (
-              <CarouselItem key={src} className="basis-full">
+            {images.map((img, i) => (
+              <CarouselItem key={img.src} className="basis-full">
                 <motion.figure
                   className="relative overflow-hidden rounded-xl ring-1 ring-black/5 dark:ring-white/10"
                   initial={{ opacity: 0, scale: 0.98 }}
@@ -91,8 +89,8 @@ export default function ProjectGallery({
                 >
                   <AspectRatio ratio={4 / 3} className="bg-muted/40">
                     <Image
-                      src={withBasePath(src)}
-                      alt={`${alt} (${i + 1}/${images.length})`}
+                      src={withBasePath(img.src)}
+                      alt={`${img.alt} (${i + 1}/${images.length})`}
                       fill
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 960px"
                       priority={i === 0}
@@ -130,9 +128,9 @@ export default function ProjectGallery({
         {/* Thumbnails */}
         {showThumbnails && images.length > 1 && (
           <div className="mt-4 flex gap-2 overflow-x-auto pb-1">
-            {images.map((src, i) => (
+            {images.map((img, i) => (
               <button
-                key={`thumb-${src}`}
+                key={`thumb-${img.src}`}
                 onClick={() => api?.scrollTo(i)}
                 className={cn(
                   "relative h-16 w-24 flex-shrink-0 overflow-hidden rounded-lg ring-1 ring-black/5 transition",
@@ -140,7 +138,7 @@ export default function ProjectGallery({
                 )}
                 aria-label={`View thumbnail ${i + 1}`}
               >
-                <Image src={withBasePath(src)} alt={`${alt} thumbnail ${i + 1}`} fill className="object-cover" sizes="96px" draggable={false} />
+                <Image src={withBasePath(img.src)} alt={img.alt} fill className="object-cover" sizes="96px" draggable={false} />
               </button>
             ))}
           </div>
@@ -150,7 +148,6 @@ export default function ProjectGallery({
       <Lightbox
         images={images}
         startIndex={index}
-        alt={alt}
         open={lightboxOpen}
         onClose={() => setLightboxOpen(false)}
         onIndexChange={(i) => {
@@ -169,14 +166,12 @@ export default function ProjectGallery({
 function Lightbox({
   images,
   startIndex = 0,
-  alt,
   open,
   onClose,
   onIndexChange,
 }: {
-  images: string[];
+  images: Array<{ src: string; alt: string }>;
   startIndex?: number;
-  alt: string;
   open: boolean;
   onClose: () => void;
   onIndexChange?: (index: number) => void;
@@ -344,9 +339,9 @@ function Lightbox({
             style={{ touchAction: "none" }}
           >
             <Image
-              key={images[index]}
-              src={withBasePath(images[index])}
-              alt={`${alt} (zoomed ${index + 1}/${images.length})`}
+              key={images[index].src}
+              src={withBasePath(images[index].src)}
+              alt={`${images[index].alt} (zoomed ${index + 1}/${images.length})`}
               fill
               sizes="100vw"
               className="pointer-events-none object-contain"

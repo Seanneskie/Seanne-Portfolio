@@ -4,14 +4,21 @@ import ProjectGallery from "./ProjectGallery";
 import { getProjectImages } from "@/lib/project-images";
 
 export default async function BudgetSystem() {
-  const images = await getProjectImages("budget-system");
+  const alt = "Budget System screenshot";
+  const images = (await getProjectImages("budget-system")).map((src) => ({
+    src,
+    alt,
+  }));
   return (
     <div className="space-y-12">
       <ProjectOverview
         title="Budget System"
-        images={images.length ? images : ["/static/placeholders/next.png"]}
-        alt="Budget System screenshot"
-      >
+        images={
+          images.length
+            ? images
+            : [{ src: "/static/placeholders/next.png", alt }]
+        }
+        >
         <p>
           <strong>Overview:</strong> Layered ASP.NET Core and SQL Server
           application for managing personal budgets. Accounts track starting
@@ -48,7 +55,7 @@ export default async function BudgetSystem() {
 
       {images.length > 0 && (
         <ProjectSection title="Screenshots">
-          <ProjectGallery images={images} alt="Budget System screenshot" />
+          <ProjectGallery images={images} />
         </ProjectSection>
       )}
     </div>

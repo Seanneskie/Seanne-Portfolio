@@ -4,13 +4,20 @@ import ProjectGallery from "./ProjectGallery";
 import { getProjectImages } from "@/lib/project-images";
 
 export default async function ExampleProject() {
-  const images = await getProjectImages("example-project");
+  const alt = "Example project screenshot";
+  const images = (await getProjectImages("example-project")).map((src) => ({
+    src,
+    alt,
+  }));
   return (
     <div className="space-y-12">
       <ProjectOverview
         title="Example Project"
-        images={images.length ? images : ["/static/placeholders/ai.png"]}
-        alt="Example project screenshot"
+        images={
+          images.length
+            ? images
+            : [{ src: "/static/placeholders/ai.png", alt }]
+        }
       >
         <p>
           <strong>Overview:</strong> Replace this text with a short summary of
@@ -45,7 +52,7 @@ export default async function ExampleProject() {
 
       {images.length > 0 && (
         <ProjectSection title="Screenshots">
-          <ProjectGallery images={images} alt="Example project screenshot" />
+          <ProjectGallery images={images} />
         </ProjectSection>
       )}
     </div>

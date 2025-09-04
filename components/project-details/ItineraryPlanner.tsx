@@ -4,14 +4,21 @@ import ProjectGallery from "./ProjectGallery";
 import { getProjectImages } from "@/lib/project-images";
 
 export default async function ItineraryPlanner() {
-  const images = await getProjectImages("itinerary-planner");
+  const alt = "Itinerary Planner screenshot";
+  const images = (await getProjectImages("itinerary-planner")).map((src) => ({
+    src,
+    alt,
+  }));
   const doubledImages = images.flatMap((img) => [img, img]);
   return (
     <div className="space-y-12">
       <ProjectOverview
         title="Itinerary Planner"
-        images={doubledImages.length ? doubledImages : ["/static/placeholders/php.png"]}
-        alt="Itinerary Planner screenshot"
+        images={
+          doubledImages.length
+            ? doubledImages
+            : [{ src: "/static/placeholders/php.png", alt }]
+        }
         githubUrl="https://github.com/Seanneskie/itinerary-planner"
       >
         <p>
@@ -151,7 +158,7 @@ php artisan serve`}</pre>
 
       {doubledImages.length > 0 && (
         <ProjectSection title="Screenshots">
-          <ProjectGallery images={doubledImages} alt="Itinerary Planner screenshot" />
+          <ProjectGallery images={doubledImages} />
         </ProjectSection>
       )}
     </div>

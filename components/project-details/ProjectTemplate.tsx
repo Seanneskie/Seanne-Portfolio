@@ -3,13 +3,20 @@ import ProjectSection from "./ProjectSection";
 import ProjectGallery from "./ProjectGallery";
 import { getProjectImages } from "@/lib/project-images";
 export default async function ProjectTemplate() {
-  const images = await getProjectImages("project-slug");
+  const alt = "Project screenshot";
+  const images = (await getProjectImages("project-slug")).map((src) => ({
+    src,
+    alt,
+  }));
   return (
     <div className="space-y-12">
       <ProjectOverview
         title="Project Title"
-        images={images.length ? images : ["/static/placeholders/ai.png"]}
-        alt="Project screenshot"
+        images={
+          images.length
+            ? images
+            : [{ src: "/static/placeholders/ai.png", alt }]
+        }
         // githubUrl="https://github.com/username/repo" // optional
         // downloadUrl="/static/project-slug/file.zip" // optional
       >
@@ -51,7 +58,7 @@ export default async function ProjectTemplate() {
 
       {images.length > 0 && (
         <ProjectSection title="Screenshots">
-          <ProjectGallery images={images} alt="Project screenshot" />
+          <ProjectGallery images={images} />
         </ProjectSection>
       )}
     </div>

@@ -4,13 +4,20 @@ import ProjectGallery from "./ProjectGallery";
 import { getProjectImages } from "@/lib/project-images";
 
 export default async function AICoinDetector() {
-  const images = await getProjectImages("ai-coin-detector");
+  const alt = "AI Coin Detector Screenshot";
+  const images = (await getProjectImages("ai-coin-detector")).map((src) => ({
+    src,
+    alt,
+  }));
   return (
     <div className="space-y-12">
       <ProjectOverview
         title="AI Coin Detector"
-        images={images.length ? images : ["/static/placeholders/ai.png"]}
-        alt="AI Coin Detector Screenshot"
+        images={
+          images.length
+            ? images
+            : [{ src: "/static/placeholders/ai.png", alt }]
+        }
         githubUrl="https://github.com/Seanneskie/AI-coin-detector-django"
         downloadUrl="/ai-coin-detector/pdfs/Philippine%20Peso%20Coin%20Detector%20and%20Counter.pdf"
       >
@@ -264,7 +271,7 @@ export default async function AICoinDetector() {
 
       {images.length > 0 && (
         <ProjectSection title="Screenshots">
-          <ProjectGallery images={images} alt="AI Coin Detector Screenshot" />
+          <ProjectGallery images={images} />
         </ProjectSection>
       )}
     </div>

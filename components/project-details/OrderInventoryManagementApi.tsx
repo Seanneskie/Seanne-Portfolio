@@ -4,13 +4,19 @@ import ProjectGallery from "./ProjectGallery";
 import { getProjectImages } from "@/lib/project-images";
 
 export default async function OrderInventoryManagementApi() {
-  const images = await getProjectImages("order-inventory-management-api");
+  const alt = "Order & Inventory Management API screenshot";
+  const images = (await getProjectImages("order-inventory-management-api")).map(
+    (src) => ({ src, alt })
+  );
   return (
     <div className="space-y-12">
       <ProjectOverview
         title="Order & Inventory Management API"
-        images={images.length ? images : ["/static/placeholders/next.png"]}
-        alt="Order & Inventory Management API screenshot"
+        images={
+          images.length
+            ? images
+            : [{ src: "/static/placeholders/next.png", alt }]
+        }
       >
         <p>
           <strong>Overview:</strong> Lightweight RESTful API built with ASP.NET Core
@@ -46,7 +52,7 @@ export default async function OrderInventoryManagementApi() {
 
       {images.length > 0 && (
         <ProjectSection title="Screenshots">
-          <ProjectGallery images={images} alt="Order & Inventory Management API screenshot" />
+          <ProjectGallery images={images} />
         </ProjectSection>
       )}
     </div>
