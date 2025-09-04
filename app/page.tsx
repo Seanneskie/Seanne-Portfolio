@@ -36,12 +36,12 @@ export default function HomePage() {
             >
               View Resume
             </a>
-            <a
-              href="mailto:seannecanete32@gmail.com"
+            <Link
+              href="/contact"
               className="inline-flex items-center rounded-xl px-5 py-2.5 bg-teal-500/90 text-white hover:bg-teal-500 transition shadow"
             >
               Contact Me
-            </a>
+            </Link>
           </>
         }
       />
