@@ -22,6 +22,7 @@ const NAV_LINKS = [
   { href: "/certificates", label: "Certificates" },
   { href: "/awards", label: "Awards" },
   { href: "/work-experiences", label: "Work Experiences" },
+  { href: "/contact", label: "Contact" },
   {
     href: withBasePath("/static/pdfs/canete_resume.pdf"),
     label: "Resume",
