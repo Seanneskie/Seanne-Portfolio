@@ -31,8 +31,8 @@
     "project": "Cooperative Profiling & Fund Utilization System",
     "period": "January 2025 – April 2025",
     "images": [
-      { "src": "/cemcdo-app/images/Landing Page.png", "alt": "CEMCDO landing page" },
-      { "src": "/cemcdo-app/images/Admin Dashboard.png", "alt": "CEMCDO admin dashboard" }
+      { "src": "/cemcdo-app/images/landing-page.png", "alt": "CEMCDO landing page" },
+      { "src": "/cemcdo-app/images/admin-dashboard.png", "alt": "CEMCDO admin dashboard" }
     ],
     "tech": [
       "Django",
