@@ -12,6 +12,8 @@ import {
 } from "@/components/ui/navigation-menu";
 import { ModeToggle } from "@/components/mode-toggle";
 import { Github, Linkedin, Twitter } from "lucide-react";
+import { withBasePath } from "@/lib/utils";
+import { toast } from "sonner";
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
@@ -20,6 +22,11 @@ const NAV_LINKS = [
   { href: "/certificates", label: "Certificates" },
   { href: "/awards", label: "Awards" },
   { href: "/work-experiences", label: "Work Experiences" },
+  {
+    href: withBasePath("/static/pdfs/canete_resume.pdf"),
+    label: "Resume",
+    external: true,
+  },
 ] as const;
 
 const SOCIAL_LINKS = [
@@ -70,8 +77,9 @@ export default function Header() {
                 "group-hover:[&>li:not(:hover)]:scale-95",
               ].join(" ")}
             >
-              {NAV_LINKS.map(({ href, label }) => {
-                const isActive = pathname === href || (href !== "/" && pathname?.startsWith(href));
+              {NAV_LINKS.map(({ href, label, external }) => {
+                const isActive =
+                  !external && (pathname === href || (href !== "/" && pathname?.startsWith(href)));
                 const isHot = hovered === href || isActive;
 
                 return (
@@ -81,34 +89,62 @@ export default function Header() {
                     onMouseLeave={() => setHovered((prev) => (prev === href ? null : prev))}
                   >
                     <NavigationMenuLink asChild>
-                      <Link
-                        href={href}
-                        aria-current={isActive ? "page" : undefined}
-                        className={[
-                          "relative block rounded-md px-3 py-1.5 text-sm font-medium transition",
-                          "text-black dark:text-white",
-                          "hover:-translate-y-0.5 hover:shadow-sm",
-                          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/50 dark:focus-visible:ring-white/50",
-                          // active page: teal text + subtle ring
-                          "aria-[current=page]:text-teal-700 dark:aria-[current=page]:text-teal-300",
-                          "aria-[current=page]:ring-1 aria-[current=page]:ring-teal-500/40 dark:aria-[current=page]:ring-teal-400/30",
-                          // underline that grows in
-                          "after:absolute after:inset-x-2 after:-bottom-0.5 after:h-0.5 after:rounded-full after:scale-x-0",
-                          "after:origin-left after:transition-transform after:duration-300",
-                          "after:bg-teal-600/80 dark:after:bg-teal-400/80",
-                          "hover:after:scale-x-100 aria-[current=page]:after:scale-x-100",
-                        ].join(" ")}
-                      >
-                        {/* Animated pill highlight on hover/active */}
-                        {isHot && (
-                          <motion.span
-                            layoutId="nav-pill"
-                            className="absolute inset-0 -z-10 rounded-md bg-teal-600/10 ring-1 ring-teal-600/25 dark:bg-teal-400/10 dark:ring-teal-400/25"
-                            transition={{ type: "spring", stiffness: 500, damping: 35, mass: 0.3 }}
-                          />
-                        )}
-                        {label}
-                      </Link>
+                      {external ? (
+                        <a
+                          href={href}
+                          target="_blank"
+                          rel="noreferrer"
+                          onClick={() => toast.info("Opening resume…")}
+                          className={[
+                            "relative block rounded-md px-3 py-1.5 text-sm font-medium transition",
+                            "text-black dark:text-white",
+                            "hover:-translate-y-0.5 hover:shadow-sm",
+                            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/50 dark:focus-visible:ring-white/50",
+                            "after:absolute after:inset-x-2 after:-bottom-0.5 after:h-0.5 after:rounded-full after:scale-x-0",
+                            "after:origin-left after:transition-transform after:duration-300",
+                            "after:bg-teal-600/80 dark:after:bg-teal-400/80",
+                            "hover:after:scale-x-100",
+                          ].join(" ")}
+                        >
+                          {isHot && (
+                            <motion.span
+                              layoutId="nav-pill"
+                              className="absolute inset-0 -z-10 rounded-md bg-teal-600/10 ring-1 ring-teal-600/25 dark:bg-teal-400/10 dark:ring-teal-400/25"
+                              transition={{ type: "spring", stiffness: 500, damping: 35, mass: 0.3 }}
+                            />
+                          )}
+                          {label}
+                        </a>
+                      ) : (
+                        <Link
+                          href={href}
+                          aria-current={isActive ? "page" : undefined}
+                          className={[
+                            "relative block rounded-md px-3 py-1.5 text-sm font-medium transition",
+                            "text-black dark:text-white",
+                            "hover:-translate-y-0.5 hover:shadow-sm",
+                            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/50 dark:focus-visible:ring-white/50",
+                            // active page: teal text + subtle ring
+                            "aria-[current=page]:text-teal-700 dark:aria-[current=page]:text-teal-300",
+                            "aria-[current=page]:ring-1 aria-[current=page]:ring-teal-500/40 dark:aria-[current=page]:ring-teal-400/30",
+                            // underline that grows in
+                            "after:absolute after:inset-x-2 after:-bottom-0.5 after:h-0.5 after:rounded-full after:scale-x-0",
+                            "after:origin-left after:transition-transform after:duration-300",
+                            "after:bg-teal-600/80 dark:after:bg-teal-400/80",
+                            "hover:after:scale-x-100 aria-[current=page]:after:scale-x-100",
+                          ].join(" ")}
+                        >
+                          {/* Animated pill highlight on hover/active */}
+                          {isHot && (
+                            <motion.span
+                              layoutId="nav-pill"
+                              className="absolute inset-0 -z-10 rounded-md bg-teal-600/10 ring-1 ring-teal-600/25 dark:bg-teal-400/10 dark:ring-teal-400/25"
+                              transition={{ type: "spring", stiffness: 500, damping: 35, mass: 0.3 }}
+                            />
+                          )}
+                          {label}
+                        </Link>
+                      )}
                     </NavigationMenuLink>
                   </NavigationMenuItem>
                 );
