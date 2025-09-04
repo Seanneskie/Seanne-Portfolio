@@ -1,3 +1,4 @@
+import React from "react";
 import Awards from "@/components/awards";
 
 export default function AwardsPage() {
