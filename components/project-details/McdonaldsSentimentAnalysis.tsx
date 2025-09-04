@@ -6,15 +6,21 @@ import { getProjectPdfs } from "@/lib/project-pdfs";
 import { withBasePath } from "@/lib/utils";
 
 export default async function McdonaldsSentimentAnalysis() {
-  const images = await getProjectImages("mcdonalds-sentiment-analysis");
+  const alt = "McDonald's Sentiment Analysis screenshot";
+  const images = (
+    await getProjectImages("mcdonalds-sentiment-analysis")
+  ).map((src) => ({ src, alt }));
   const pdfs = await getProjectPdfs("mcdonalds-sentiment-analysis");
   const pdf = pdfs[0];
   return (
     <div className="space-y-12">
       <ProjectOverview
         title="McDonald's Sentiment Analysis"
-        images={images.length ? images : ["/static/placeholders/django.png"]}
-        alt="McDonald&apos;s Sentiment Analysis screenshot"
+        images={
+          images.length
+            ? images
+            : [{ src: "/static/placeholders/django.png", alt }]
+        }
         downloadUrl={pdf}
       >
         <p>
@@ -138,10 +144,7 @@ export default async function McdonaldsSentimentAnalysis() {
 
       {images.length > 0 && (
         <ProjectSection title="Screenshots">
-          <ProjectGallery
-            images={images}
-            alt="McDonald&apos;s Sentiment Analysis screenshot"
-          />
+          <ProjectGallery images={images} />
         </ProjectSection>
       )}
     </div>

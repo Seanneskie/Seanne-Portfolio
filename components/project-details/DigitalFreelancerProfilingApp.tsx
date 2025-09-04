@@ -4,13 +4,19 @@ import ProjectGallery from "./ProjectGallery";
 import { getProjectImages } from "@/lib/project-images";
 
 export default async function DigitalFreelancerProfilingApp() {
-  const images = await getProjectImages("digital-freelancer-profiling-app");
+  const alt = "Digital Freelancer Profiling App screenshot";
+  const images = (
+    await getProjectImages("digital-freelancer-profiling-app")
+  ).map((src) => ({ src, alt }));
   return (
     <div className="space-y-12">
       <ProjectOverview
         title="Digital Freelancer Profiling App"
-        images={images.length ? images : ["/static/placeholders/next.png"]}
-        alt="Digital Freelancer Profiling App screenshot"
+        images={
+          images.length
+            ? images
+            : [{ src: "/static/placeholders/next.png", alt }]
+        }
         downloadUrl="/digital-freelancer-profiling-app/pdfs/DPFS_UserManual.pdf"
       >
         <p>
@@ -109,7 +115,7 @@ export default async function DigitalFreelancerProfilingApp() {
 
       {images.length > 0 && (
         <ProjectSection title="Screenshots">
-          <ProjectGallery images={images} alt="Digital Freelancer Profiling App screenshot" />
+          <ProjectGallery images={images} />
         </ProjectSection>
       )}
     </div>

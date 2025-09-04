@@ -4,15 +4,19 @@ import ProjectGallery from "./ProjectGallery";
 import { getProjectImages } from "@/lib/project-images";
 
 export default async function DesktopPayrollManagementSystem() {
-  const images = await getProjectImages(
-    "desktop-payroll-management-system"
-  );
+  const alt = "Desktop Payroll Management System screenshot";
+  const images = (
+    await getProjectImages("desktop-payroll-management-system")
+  ).map((src) => ({ src, alt }));
   return (
     <div className="space-y-12">
       <ProjectOverview
         title="Desktop Payroll Management System"
-        images={images.length ? images : ["/static/placeholders/next.png"]}
-        alt="Desktop Payroll Management System screenshot"
+        images={
+          images.length
+            ? images
+            : [{ src: "/static/placeholders/next.png", alt }]
+        }
       >
         <p>
           <strong>Overview:</strong> Cross-platform payroll management
@@ -89,7 +93,7 @@ export default async function DesktopPayrollManagementSystem() {
 
       {images.length > 0 && (
         <ProjectSection title="Screenshots">
-          <ProjectGallery images={images} alt="Desktop Payroll Management System screenshot" />
+          <ProjectGallery images={images} />
         </ProjectSection>
       )}
     </div>

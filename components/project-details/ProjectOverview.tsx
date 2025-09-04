@@ -8,8 +8,7 @@ import { FileText, Github } from "lucide-react";
 
 interface ProjectOverviewProps {
   title: string;
-  images: string[];
-  alt: string;
+  images: Array<{ src: string; alt: string }>;
   children: ReactNode;
   githubUrl?: string;
   linkLabel?: string;
@@ -19,7 +18,6 @@ interface ProjectOverviewProps {
 export default function ProjectOverview({
   title,
   images,
-  alt,
   children,
   githubUrl,
   linkLabel = "View on GitHub",
@@ -33,12 +31,12 @@ export default function ProjectOverview({
     >
       <div className="relative mb-4 md:mb-0">
         {images.length > 1 ? (
-          <ProjectGallery images={images} alt={alt} />
+          <ProjectGallery images={images} />
         ) : (
           <div className="relative aspect-video overflow-hidden rounded-xl">
             <Image
-              src={withBasePath(firstImage)}
-              alt={alt}
+              src={withBasePath(firstImage.src)}
+              alt={firstImage.alt}
               fill
               className="object-cover"
             />

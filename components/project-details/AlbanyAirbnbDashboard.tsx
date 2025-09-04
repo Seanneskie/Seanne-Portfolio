@@ -4,13 +4,22 @@ import ProjectGallery from "./ProjectGallery";
 import { getProjectImages } from "@/lib/project-images";
 
 export default async function AlbanyAirbnbDashboard() {
-  const images = await getProjectImages("albany-airbnb-dashboard");
+  const alt = "Albany Airbnb Dashboard screenshot";
+  const images = (await getProjectImages("albany-airbnb-dashboard")).map(
+    (src) => ({ src, alt })
+  );
   return (
     <div className="space-y-12">
       <ProjectOverview
         title="Albany Airbnb Dashboard"
-        images={images.length ? images : ["/static/placeholders/data-analytics.webp"]}
-        alt="Albany Airbnb Dashboard screenshot"
+        images={
+          images.length
+            ? images
+            : [{
+                src: "/static/placeholders/data-analytics.webp",
+                alt,
+              }]
+        }
       >
         <p>
           <strong>Overview:</strong> An interactive Streamlit dashboard that
@@ -44,7 +53,7 @@ export default async function AlbanyAirbnbDashboard() {
 
       {images.length > 0 && (
         <ProjectSection title="Screenshots">
-          <ProjectGallery images={images} alt="Albany Airbnb Dashboard screenshot" />
+          <ProjectGallery images={images} />
         </ProjectSection>
       )}
     </div>

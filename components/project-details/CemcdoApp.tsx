@@ -4,13 +4,20 @@ import ProjectGallery from "./ProjectGallery";
 import { getProjectImages } from "@/lib/project-images";
 
 export default async function CemcdoApp() {
-  const images = await getProjectImages("cemcdo-app");
+  const alt = "CEMCDO App screenshot";
+  const images = (await getProjectImages("cemcdo-app")).map((src) => ({
+    src,
+    alt,
+  }));
   return (
     <div className="space-y-12">
       <ProjectOverview
         title="CEMCDO App"
-        images={images.length ? images : ["/static/placeholders/django.png"]}
-        alt="CEMCDO App screenshot"
+        images={
+          images.length
+            ? images
+            : [{ src: "/static/placeholders/django.png", alt }]
+        }
         githubUrl="https://cemcdo-demo.onrender.com/"
         linkLabel="View Site"
       >
@@ -193,7 +200,7 @@ export default async function CemcdoApp() {
 
       {images.length > 0 && (
         <ProjectSection title="Screenshots">
-          <ProjectGallery images={images} alt="CEMCDO App screenshot" />
+          <ProjectGallery images={images} />
         </ProjectSection>
       )}
     </div>

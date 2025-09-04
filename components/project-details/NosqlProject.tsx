@@ -4,13 +4,20 @@ import ProjectGallery from "./ProjectGallery";
 import { getProjectImages } from "@/lib/project-images";
 
 export default async function NosqlProject() {
-  const images = await getProjectImages("nosql-project");
+  const alt = "NoSQL Project screenshot";
+  const images = (await getProjectImages("nosql-project")).map((src) => ({
+    src,
+    alt,
+  }));
   return (
     <div className="space-y-12">
       <ProjectOverview
         title="NoSQL Project - MERN Stack Website"
-        images={images.length ? images : ["/static/placeholders/Mern.png"]}
-        alt="NoSQL Project screenshot"
+        images={
+          images.length
+            ? images
+            : [{ src: "/static/placeholders/Mern.png", alt }]
+        }
       >
         <p>
           <strong>Overview:</strong> CoffeeHub is a full-stack web application
@@ -93,7 +100,7 @@ export default async function NosqlProject() {
 
       {images.length > 0 && (
         <ProjectSection title="Screenshots">
-          <ProjectGallery images={images} alt="NoSQL Project screenshot" />
+          <ProjectGallery images={images} />
         </ProjectSection>
       )}
     </div>

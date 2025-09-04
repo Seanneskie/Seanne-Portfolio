@@ -8,7 +8,8 @@ interface ProjectHtmlProps {
 }
 
 export default async function ProjectHtml({ slug }: ProjectHtmlProps) {
-  const images = await getProjectImages(slug);
+  const alt = `${slug} screenshot`;
+  const images = (await getProjectImages(slug)).map((src) => ({ src, alt }));
   const filePath = path.join(process.cwd(), "public", "project-details", `${slug}.html`);
 
   let html = "";
@@ -20,9 +21,7 @@ export default async function ProjectHtml({ slug }: ProjectHtmlProps) {
 
   return (
     <div className="space-y-6">
-      {images.length > 0 && (
-        <ProjectGallery images={images} alt={`${slug} screenshot`} />
-      )}
+      {images.length > 0 && <ProjectGallery images={images} />}
       <div dangerouslySetInnerHTML={{ __html: html }} />
     </div>
   );

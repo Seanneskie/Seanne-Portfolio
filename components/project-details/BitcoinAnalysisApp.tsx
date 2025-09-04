@@ -4,15 +4,23 @@ import ProjectGallery from "./ProjectGallery";
 import { getProjectImages } from "@/lib/project-images";
 
 export default async function BitcoinAnalysisApp() {
-  const images = await getProjectImages("bitcoin-analysis-app");
+  const alt = "Bitcoin Analysis App screenshot";
+  const images = (await getProjectImages("bitcoin-analysis-app")).map((src) => ({
+    src,
+    alt,
+  }));
   return (
     <div className="space-y-12">
       <ProjectOverview
         title="Bitcoin Analysis App"
         images={
-          images.length ? images : ["/static/placeholders/data-analytics.webp"]
+          images.length
+            ? images
+            : [{
+                src: "/static/placeholders/data-analytics.webp",
+                alt,
+              }]
         }
-        alt="Bitcoin Analysis App screenshot"
       >
         <p>
           <strong>Overview:</strong> The Bitcoin Analysis App explores
@@ -179,10 +187,7 @@ export default async function BitcoinAnalysisApp() {
 
       {images.length > 0 && (
         <ProjectSection title="Screenshots">
-          <ProjectGallery
-            images={images}
-            alt="Bitcoin Analysis App screenshot"
-          />
+          <ProjectGallery images={images} />
         </ProjectSection>
       )}
     </div>

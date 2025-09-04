@@ -4,13 +4,19 @@ import ProjectGallery from "./ProjectGallery";
 import { getProjectImages } from "@/lib/project-images";
 
 export default async function AiPoweredEmailGenerator() {
-  const images = await getProjectImages("ai-powered-email-generator");
+  const alt = "AI Powered Email Generator screenshot";
+  const images = (await getProjectImages("ai-powered-email-generator")).map(
+    (src) => ({ src, alt })
+  );
   return (
     <div className="space-y-12">
       <ProjectOverview
         title="AI-Powered Email Generator"
-        images={images.length ? images : ["/static/placeholders/ai.png"]}
-        alt="AI Powered Email Generator screenshot"
+        images={
+          images.length
+            ? images
+            : [{ src: "/static/placeholders/ai.png", alt }]
+        }
         githubUrl="https://github.com/Seanneskie/email-generator"
       >
         <p>
@@ -69,7 +75,7 @@ export default async function AiPoweredEmailGenerator() {
 
       {images.length > 0 && (
         <ProjectSection title="Screenshots">
-          <ProjectGallery images={images} alt="AI Powered Email Generator screenshot" />
+          <ProjectGallery images={images} />
         </ProjectSection>
       )}
     </div>
