@@ -199,7 +199,7 @@ export default function ProfileCardContent({ profile }: { profile: ProfileData }
                     <Badge
                       key={skill}
                       variant="secondary"
-                      className="rounded-full"
+                      className="rounded-full bg-teal-50 text-teal-800 ring-1 ring-inset ring-teal-200 dark:bg-teal-900/30 dark:text-teal-200 dark:ring-teal-800"
                     >
                       {skill}
                     </Badge>
@@ -229,7 +229,12 @@ export default function ProfileCardContent({ profile }: { profile: ProfileData }
                         {e.institution}
                       </p>
                     </div>
-                    <Badge variant="secondary">{e.year}</Badge>
+                    <Badge
+                      variant="secondary"
+                      className="rounded-full bg-teal-50 text-teal-800 ring-1 ring-inset ring-teal-200 dark:bg-teal-900/30 dark:text-teal-200 dark:ring-teal-800"
+                    >
+                      {e.year}
+                    </Badge>
                   </li>
                 ))}
               </ul>
