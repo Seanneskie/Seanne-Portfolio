@@ -159,7 +159,7 @@
   },
   {
     "title": "CEMCDO App",
-    "image": "/cemcdo-app/images/Landing Page.png",
+    "image": "/cemcdo-app/images/landing-page.png",
     "alt": "CEMCDO App screenshot",
     "description": "A system made for CEMCDO, currently composed of Fund Utilization and Cooperative Profiling of General Santos City. Made with Django and Python Modules.",
     "collaborators": "Kimberly Baylon, Bridget Jose, Azlan Tomindug, Francheska Mei Besana",
@@ -177,18 +177,18 @@
     "details": "project-details/cemcdo-app",
     "period": "Jan 2025 - Apr 2025",
     "images": [
-      "/cemcdo-app/images/Landing Page.png",
-      "/cemcdo-app/images/Login.png",
-      "/cemcdo-app/images/Admin Dashboard.png",
-      "/cemcdo-app/images/Super Admin Dashboard.png",
-      "/cemcdo-app/images/Coooperative Dashboard.png",
-      "/cemcdo-app/images/Coop registration.png",
-      "/cemcdo-app/images/Coop Table View.png",
-      "/cemcdo-app/images/Event View.png",
-      "/cemcdo-app/images/Reports.png",
-      "/cemcdo-app/images/Sample Division view.png",
-      "/cemcdo-app/images/Simple Flow Visualization - Cooperative System.png",
-      "/cemcdo-app/images/Transaction View.png"
+      "/cemcdo-app/images/landing-page.png",
+      "/cemcdo-app/images/login.png",
+      "/cemcdo-app/images/admin-dashboard.png",
+      "/cemcdo-app/images/super-admin-dashboard.png",
+      "/cemcdo-app/images/coooperative-dashboard.png",
+      "/cemcdo-app/images/coop-registration.png",
+      "/cemcdo-app/images/coop-table-view.png",
+      "/cemcdo-app/images/event-view.png",
+      "/cemcdo-app/images/reports.png",
+      "/cemcdo-app/images/sample-division-view.png",
+      "/cemcdo-app/images/simple-flow-visualization-cooperative-system.png",
+      "/cemcdo-app/images/transaction-view.png"
     ]
   },
   {
