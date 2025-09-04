@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { motion, type Variants, type Transition } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { useData } from "@/lib/use-data";
