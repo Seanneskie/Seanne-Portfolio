@@ -8,8 +8,7 @@ import {
   CardContent,
 } from "@/components/ui/card";
 import { cn } from "@/lib/cn";
-
-export type CounterCardTheme = "ocean" | "teal" | "cyan" | "ice";
+import { type CounterCardTheme } from "@/types/card-counter";
 
 const THEME_STYLES: Record<
   CounterCardTheme,

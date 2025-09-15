@@ -1,7 +1,8 @@
 import { type ReactElement } from "react";
 
-import techComparisonData from "@/public/data/tech-comparison.json" assert { type: "json" };
-import { TechComparisonDashboard, type TechComparisonData } from "@/components/tech-comparison";
+import rawTechComparisonData from "@/public/data/tech-comparison.json" assert { type: "json" };
+import { TechComparisonDashboard } from "@/components/tech-comparison";
+import { normalizeTechComparisonData } from "@/lib/tech-comparison";
 
 /**
  * Displays the {@link TechComparisonDashboard} using statically imported data.
@@ -16,7 +17,6 @@ import { TechComparisonDashboard, type TechComparisonData } from "@/components/t
  * ```
  */
 export default function TechComparison(): ReactElement {
-  const data: TechComparisonData = techComparisonData;
+  const data = normalizeTechComparisonData(rawTechComparisonData);
   return <TechComparisonDashboard data={data} />;
 }
-
