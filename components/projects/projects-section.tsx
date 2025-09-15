@@ -129,7 +129,9 @@ export default function ProjectsSection() {
                     "focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:outline-none",
                   ].join(" ")}
                 >
-                  <Link href={`/${p.details}`}>
+                  <Link
+                    href={`/${p.details.replace(/\.html$/, "")}`}
+                  >
                     Project details →
                   </Link>
                 </Button>

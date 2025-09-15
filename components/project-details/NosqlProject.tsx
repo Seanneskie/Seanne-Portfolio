@@ -3,21 +3,25 @@ import ProjectSection from "./ProjectSection";
 import ProjectGallery from "./ProjectGallery";
 import { getProjectImages } from "@/lib/project-images";
 
-export default async function NosqlProject() {
+/**
+ * Displays the CoffeeHub NoSQL project details and screenshots.
+ * Falls back to a placeholder image when no screenshots are available.
+ */
+export default async function NosqlProject(): Promise<JSX.Element> {
   const alt = "NoSQL Project screenshot";
-  const images = (await getProjectImages("nosql-project")).map((src) => ({
+  const rawImages = await getProjectImages("nosql-project");
+  const images = (
+    rawImages.length ? rawImages : ["/static/placeholders/Mern.png"]
+  ).map((src) => ({
     src,
     alt,
   }));
+
   return (
     <div className="space-y-12">
       <ProjectOverview
         title="NoSQL Project - MERN Stack Website"
-        images={
-          images.length
-            ? images
-            : [{ src: "/static/placeholders/Mern.png", alt }]
-        }
+        images={images}
       >
         <p>
           <strong>Overview:</strong> CoffeeHub is a full-stack web application
@@ -98,11 +102,9 @@ export default async function NosqlProject() {
         </pre>
       </ProjectSection>
 
-      {images.length > 0 && (
-        <ProjectSection title="Screenshots">
-          <ProjectGallery images={images} />
-        </ProjectSection>
-      )}
+      <ProjectSection title="Screenshots">
+        <ProjectGallery images={images} />
+      </ProjectSection>
     </div>
   );
 }
