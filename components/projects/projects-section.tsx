@@ -130,9 +130,7 @@ export default function ProjectsSection() {
                   ].join(" ")}
                 >
                   <Link
-                    href={`/project-details/${p.details
-                      .replace(/^project-details\//, "")
-                      .replace(/\.html$/, "")}`}
+                    href={`/${p.details.replace(/\.html$/, "")}`}
                   >
                     Project details →
                   </Link>
