@@ -1,16 +1,8 @@
 import { type ReactElement } from "react";
 
-import counterData from "@/public/data/card-counter.json" assert { type: "json" };
-import CounterCard, { type CounterCardTheme } from "@/components/card/CardCounter";
-
-interface CardCounterItem {
-  id: string;
-  title: string;
-  value: number;
-  description?: string;
-  theme?: CounterCardTheme;
-  order: number;
-}
+import rawData from "@/public/data/card-counter.json" assert { type: "json" };
+import CounterCard from "@/components/card/CardCounter";
+import { type CardCounterData, type CardCounterItem } from "@/types/card-counter";
 
 /**
  * Renders a grid of {@link CounterCard} components based on data in
@@ -26,6 +18,7 @@ interface CardCounterItem {
  * ```
  */
 export default function CardCounters(): ReactElement {
+  const counterData: CardCounterData = rawData;
   const items: CardCounterItem[] = [...counterData.items].sort(
     (a, b) => a.order - b.order
   );
