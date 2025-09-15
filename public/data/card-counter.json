@@ -1,0 +1,68 @@
+{
+  "lastUpdated": "2025-09-15",
+  "items": [
+    {
+      "id": "projects",
+      "title": "Projects",
+      "value": 24,
+      "description": "Completed across web, data, and ops",
+      "theme": "ocean",
+      "icon": "FolderGit2",
+      "order": 1
+    },
+    {
+      "id": "skills",
+      "title": "Skills",
+      "value": 38,
+      "description": "Core stack + supporting tools",
+      "theme": "teal",
+      "icon": "Sparkles",
+      "order": 2
+    },
+    {
+      "id": "experienceYears",
+      "title": "Years of Experience",
+      "value": 2,
+      "description": "Professional & freelance",
+      "theme": "cyan",
+      "icon": "BriefcaseBusiness",
+      "order": 3
+    },
+    {
+      "id": "clients",
+      "title": "Clients Served",
+      "value": 7,
+      "description": "SMBs, startups, agencies",
+      "theme": "ice",
+      "icon": "Handshake",
+      "order": 4
+    },
+    {
+      "id": "certifications",
+      "title": "Certifications",
+      "value": 5,
+      "description": "Tech & analytics credentials",
+      "theme": "teal",
+      "icon": "BadgeCheck",
+      "order": 5
+    },
+    {
+      "id": "deployments",
+      "title": "Production Deployments",
+      "value": 18,
+      "description": "Web apps & APIs shipped",
+      "theme": "ocean",
+      "icon": "Rocket",
+      "order": 6
+    },
+    {
+      "id": "repos",
+      "title": "Public Repos",
+      "value": 42,
+      "description": "Open-source + samples",
+      "theme": "cyan",
+      "icon": "Github",
+      "order": 7
+    }
+  ]
+}

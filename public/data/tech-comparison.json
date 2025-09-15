@@ -1,0 +1,328 @@
+{
+  "lastUpdated": "2025-09-15",
+  "rating_types": [
+    {
+      "id": "proficiency",
+      "label": "Proficiency",
+      "description": "Hands-on skill level, from syntax to advanced patterns.",
+      "scale": {
+        "1": "Familiar",
+        "2": "Basic",
+        "3": "Working",
+        "4": "Advanced",
+        "5": "Expert"
+      }
+    },
+    {
+      "id": "production_use",
+      "label": "Production Use",
+      "description": "How often and how large the real deployments are.",
+      "scale": {
+        "1": "Prototype only",
+        "2": "Small internal",
+        "3": "Single production app",
+        "4": "Multiple production apps",
+        "5": "Mission-critical/at scale"
+      }
+    },
+    {
+      "id": "recency",
+      "label": "Recency",
+      "description": "How recently this was used in active work.",
+      "scale": {
+        "1": "> 24 months ago",
+        "2": "12–24 months ago",
+        "3": "6–12 months ago",
+        "4": "Last 3–6 months",
+        "5": "Current / weekly"
+      }
+    },
+    {
+      "id": "depth",
+      "label": "Depth",
+      "description": "Breadth of features/APIs used beyond basics.",
+      "scale": {
+        "1": "Surface-level",
+        "2": "Some features",
+        "3": "Core features",
+        "4": "Advanced features",
+        "5": "Expert/internals"
+      }
+    },
+    {
+      "id": "preference",
+      "label": "Preference",
+      "description": "Likelihood of choosing this for a new project (fit permitting).",
+      "scale": {
+        "1": "Avoid",
+        "2": "Low",
+        "3": "Neutral",
+        "4": "High",
+        "5": "Go-to"
+      }
+    }
+  ],
+  "categories": [
+    { "id": "fullstack", "label": "Full-Stack Web", "color": "#06B6D4" },
+    { "id": "frontend", "label": "Frontend UI", "color": "#22D3EE" },
+    { "id": "backend", "label": "Backend / APIs", "color": "#0EA5E9" },
+    { "id": "database", "label": "Databases & ORM", "color": "#0891B2" },
+    { "id": "data_analytics", "label": "Data / BI / Viz", "color": "#0D9488" },
+    { "id": "devops", "label": "DevOps / CI-CD / Hosting", "color": "#155E75" },
+    { "id": "mapping", "label": "Geospatial / Mapping", "color": "#14B8A6" },
+    { "id": "graphql", "label": "GraphQL Stack", "color": "#38BDF8" },
+    { "id": "languages", "label": "Languages", "color": "#0EA5E9" }
+  ],
+  "items": [
+    {
+      "id": "nextjs",
+      "name": "Next.js (App Router 15)",
+      "type": "framework",
+      "category": "fullstack",
+      "tags": ["React", "TypeScript", "SSR/ISR", "RSC"],
+      "since": "2023",
+      "ratings": { "proficiency": 4, "production_use": 5, "recency": 5, "depth": 4, "preference": 5 },
+      "notes": "Primary framework for VIMS and portfolio."
+    },
+    {
+      "id": "react",
+      "name": "React",
+      "type": "library",
+      "category": "frontend",
+      "tags": ["Hooks", "Context", "Framer Motion", "Embla Carousel"],
+      "since": "2022",
+      "ratings": { "proficiency": 4, "production_use": 5, "recency": 5, "depth": 4, "preference": 5 },
+      "notes": "Core UI library across projects."
+    },
+    {
+      "id": "typescript",
+      "name": "TypeScript",
+      "type": "language",
+      "category": "languages",
+      "tags": ["strict", "types-first", "generics"],
+      "since": "2023",
+      "ratings": { "proficiency": 4, "production_use": 5, "recency": 5, "depth": 4, "preference": 5 },
+      "notes": "Strict typing across Next.js and Node."
+    },
+    {
+      "id": "tailwind",
+      "name": "Tailwind CSS 4",
+      "type": "styling",
+      "category": "frontend",
+      "tags": ["utility-first", "design tokens", "dark mode", "shadcn"],
+      "since": "2023",
+      "ratings": { "proficiency": 5, "production_use": 5, "recency": 5, "depth": 4, "preference": 5 },
+      "notes": "Primary styling; gradient teal/cyan theme."
+    },
+    {
+      "id": "shadcn",
+      "name": "shadcn/ui",
+      "type": "ui",
+      "category": "frontend",
+      "tags": ["Radix", "New York preset"],
+      "since": "2024",
+      "ratings": { "proficiency": 4, "production_use": 4, "recency": 5, "depth": 3, "preference": 5 },
+      "notes": "Cards, inputs, navigation, sheets, tabs."
+    },
+    {
+      "id": "supabase",
+      "name": "Supabase",
+      "type": "baas",
+      "category": "backend",
+      "tags": ["Auth", "Postgres", "Storage", "Edge Functions"],
+      "since": "2024",
+      "ratings": { "proficiency": 4, "production_use": 4, "recency": 5, "depth": 4, "preference": 4 },
+      "notes": "Auth + Postgres for VIMS; triggers and RPC."
+    },
+    {
+      "id": "postgresql",
+      "name": "PostgreSQL",
+      "type": "database",
+      "category": "database",
+      "tags": ["SQL", "Triggers", "Functions"],
+      "since": "2023",
+      "ratings": { "proficiency": 4, "production_use": 5, "recency": 5, "depth": 4, "preference": 5 },
+      "notes": "Primary RDBMS; heavy use with Supabase."
+    },
+    {
+      "id": "drizzle",
+      "name": "Drizzle ORM",
+      "type": "orm",
+      "category": "database",
+      "tags": ["Type-safe SQL", "Migrations"],
+      "since": "2024",
+      "ratings": { "proficiency": 4, "production_use": 4, "recency": 5, "depth": 3, "preference": 4 },
+      "notes": "Type-safe queries in VIMS."
+    },
+    {
+      "id": "prisma",
+      "name": "Prisma",
+      "type": "orm",
+      "category": "database",
+      "tags": ["Schema-first", "Migrations"],
+      "since": "2023",
+      "ratings": { "proficiency": 3, "production_use": 3, "recency": 3, "depth": 3, "preference": 3 },
+      "notes": "Used in Job Tracker / GraphQL projects."
+    },
+    {
+      "id": "nodejs",
+      "name": "Node.js",
+      "type": "runtime",
+      "category": "backend",
+      "tags": ["REST", "Hono", "Express"],
+      "since": "2022",
+      "ratings": { "proficiency": 4, "production_use": 4, "recency": 5, "depth": 4, "preference": 4 },
+      "notes": "APIs and server utilities."
+    },
+    {
+      "id": "django",
+      "name": "Django",
+      "type": "framework",
+      "category": "backend",
+      "tags": ["ORM", "Admin", "Class-based Views"],
+      "since": "2023",
+      "ratings": { "proficiency": 4, "production_use": 4, "recency": 4, "depth": 4, "preference": 4 },
+      "notes": "PMWAS/DFPMS backend and exports."
+    },
+    {
+      "id": "python",
+      "name": "Python",
+      "type": "language",
+      "category": "languages",
+      "tags": ["Pandas", "OpenPyXL", "FastAPI/Django"],
+      "since": "2022",
+      "ratings": { "proficiency": 4, "production_use": 4, "recency": 4, "depth": 4, "preference": 4 },
+      "notes": "Data processing, exports, and services."
+    },
+    {
+      "id": "laravel",
+      "name": "Laravel",
+      "type": "framework",
+      "category": "backend",
+      "tags": ["Blade", "Eloquent", "MySQL"],
+      "since": "2024",
+      "ratings": { "proficiency": 2, "production_use": 2, "recency": 3, "depth": 2, "preference": 3 },
+      "notes": "Itinerary planner (learning phase)."
+    },
+    {
+      "id": "mysql",
+      "name": "MySQL",
+      "type": "database",
+      "category": "database",
+      "tags": ["SQL", "Eloquent"],
+      "since": "2024",
+      "ratings": { "proficiency": 3, "production_use": 3, "recency": 3, "depth": 3, "preference": 3 },
+      "notes": "Used with Laravel protos."
+    },
+    {
+      "id": "sqlserver",
+      "name": "SQL Server",
+      "type": "database",
+      "category": "database",
+      "tags": ["EF Core", "MSSQL"],
+      "since": "2024",
+      "ratings": { "proficiency": 3, "production_use": 3, "recency": 2, "depth": 3, "preference": 3 },
+      "notes": "ASP.NET Core budget tracker."
+    },
+    {
+      "id": "csharp",
+      "name": "C#",
+      "type": "language",
+      "category": "languages",
+      "tags": ["ASP.NET Core", "WinForms", "EF Core"],
+      "since": "2024",
+      "ratings": { "proficiency": 3, "production_use": 3, "recency": 2, "depth": 3, "preference": 3 },
+      "notes": "Offline PMS migration and API."
+    },
+    {
+      "id": "aspnetcore",
+      "name": "ASP.NET Core",
+      "type": "framework",
+      "category": "backend",
+      "tags": ["REST APIs", "EF Core"],
+      "since": "2024",
+      "ratings": { "proficiency": 3, "production_use": 3, "recency": 2, "depth": 3, "preference": 3 },
+      "notes": "Layered architecture budget tracker."
+    },
+    {
+      "id": "graphql_yoga",
+      "name": "GraphQL Yoga",
+      "type": "server",
+      "category": "graphql",
+      "tags": ["Schema", "Resolvers", "Next API Route"],
+      "since": "2024",
+      "ratings": { "proficiency": 4, "production_use": 4, "recency": 5, "depth": 3, "preference": 4 },
+      "notes": "Serves JSON data for portfolio."
+    },
+    {
+      "id": "apollo_client",
+      "name": "Apollo Client",
+      "type": "client",
+      "category": "graphql",
+      "tags": ["Caching", "GQL hooks"],
+      "since": "2024",
+      "ratings": { "proficiency": 4, "production_use": 4, "recency": 5, "depth": 3, "preference": 4 },
+      "notes": "Client-side data for Projects section."
+    },
+    {
+      "id": "chartjs",
+      "name": "Chart.js",
+      "type": "viz",
+      "category": "data_analytics",
+      "tags": ["Dashboards", "Plugins"],
+      "since": "2023",
+      "ratings": { "proficiency": 3, "production_use": 4, "recency": 4, "depth": 3, "preference": 4 },
+      "notes": "Event stats and PMWAS charts."
+    },
+    {
+      "id": "powerbi",
+      "name": "Power BI",
+      "type": "bi",
+      "category": "data_analytics",
+      "tags": ["DAX", "Power Query", "Star schema"],
+      "since": "2023",
+      "ratings": { "proficiency": 3, "production_use": 3, "recency": 3, "depth": 3, "preference": 3 },
+      "notes": "F1 and operations dashboards."
+    },
+    {
+      "id": "leaflet",
+      "name": "Leaflet",
+      "type": "mapping",
+      "category": "mapping",
+      "tags": ["GeoJSON", "Markers", "Heatmaps"],
+      "since": "2023",
+      "ratings": { "proficiency": 3, "production_use": 4, "recency": 4, "depth": 3, "preference": 4 },
+      "notes": "Freelancer distribution maps."
+    },
+    {
+      "id": "vercel",
+      "name": "Vercel",
+      "type": "hosting",
+      "category": "devops",
+      "tags": ["Edge", "Serverless", "CI Build"],
+      "since": "2023",
+      "ratings": { "proficiency": 4, "production_use": 5, "recency": 5, "depth": 4, "preference": 5 },
+      "notes": "Primary hosting for Next.js apps."
+    },
+    {
+      "id": "render",
+      "name": "Render",
+      "type": "hosting",
+      "category": "devops",
+      "tags": ["Node services", "Background workers"],
+      "since": "2024",
+      "ratings": { "proficiency": 3, "production_use": 3, "recency": 4, "depth": 3, "preference": 3 },
+      "notes": "APIs and servers for challenges."
+    },
+    {
+      "id": "github_actions",
+      "name": "GitHub Actions",
+      "type": "ci_cd",
+      "category": "devops",
+      "tags": ["CI", "CD", "Workflows"],
+      "since": "2023",
+      "ratings": { "proficiency": 4, "production_use": 4, "recency": 5, "depth": 3, "preference": 4 },
+      "notes": "CI/CD for VIMS and portfolio."
+    }
+  ]
+}
