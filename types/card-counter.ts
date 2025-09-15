@@ -1,4 +1,6 @@
-import { CounterCardTheme } from "@/components/card/CardCounter";
+export const COUNTER_CARD_THEMES = ["ocean", "teal", "cyan", "ice"] as const;
+
+export type CounterCardTheme = (typeof COUNTER_CARD_THEMES)[number];
 
 export interface CardCounterItem {
   id: string;
@@ -7,6 +9,7 @@ export interface CardCounterItem {
   description?: string;
   theme: CounterCardTheme;
   order: number;
+  icon?: string;
 }
 
 export interface CardCounterData {

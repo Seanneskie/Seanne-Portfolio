@@ -1,7 +1,7 @@
 import { type ReactElement } from "react";
 
-import rawData from "@/public/data/card-counter.json" assert { type: "json" };
 import CounterCard from "@/components/card/CardCounter";
+import { getCardCounterData } from "@/lib/profile-card-counter-data";
 import { type CardCounterData, type CardCounterItem } from "@/types/card-counter";
 
 /**
@@ -18,7 +18,7 @@ import { type CardCounterData, type CardCounterItem } from "@/types/card-counter
  * ```
  */
 export default function CardCounters(): ReactElement {
-  const counterData: CardCounterData = rawData;
+  const counterData: CardCounterData = getCardCounterData();
   const items: CardCounterItem[] = [...counterData.items].sort(
     (a, b) => a.order - b.order
   );
