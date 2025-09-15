@@ -363,7 +363,7 @@
   },
   {
     "title": "Order & Inventory Management API",
-    "image": "/static/placeholders/c#.png",
+    "image": "/static/placeholders/csharp.png",
     "alt": "Order & Inventory Management API Image",
     "description": "Lightweight ASP.NET Core API with PostgreSQL for products, stock validation, idempotent orders, and audit logging.",
     "collaborators": null,
@@ -382,12 +382,12 @@
     "details": "project-details/order-inventory-management-api",
     "period": "Aug 2025 - Aug 2025",
     "images": [
-      "/static/placeholders/c#.png"
+      "/static/placeholders/csharp.png"
     ]
   },
   {
     "title": "Budget System",
-    "image": "/static/placeholders/c#.png",
+    "image": "/static/placeholders/csharp.png",
     "alt": "Budget System screenshot",
     "description": "Layered ASP.NET Core and SQL Server budgeting app with validation, EF Core persistence, and idempotent API middleware.",
     "collaborators": null,
@@ -405,7 +405,7 @@
     "details": "project-details/budget-system",
     "period": "Aug 2025 - Present",
     "images": [
-      "/static/placeholders/c#.png"
+      "/static/placeholders/csharp.png"
     ]
   }
 ]
