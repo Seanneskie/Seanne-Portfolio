@@ -13,12 +13,13 @@ export default async function BudgetSystem() {
     <div className="space-y-12">
       <ProjectOverview
         title="Budget System"
+        githubUrl="https://github.com/Seanneskie/budgetTracker"
         images={
           images.length
             ? images
-            : [{ src: "/static/placeholders/next.png", alt }]
+            : [{ src: "/static/placeholders/c#.png", alt }]
         }
-        >
+      >
         <p>
           <strong>Overview:</strong> Layered ASP.NET Core and SQL Server
           application for managing personal budgets. Accounts track starting
@@ -28,6 +29,9 @@ export default async function BudgetSystem() {
         <p>
           <strong>Tech Stack:</strong> ASP.NET Core, SQL Server, Entity Framework
           Core, FluentValidation.
+        </p>
+        <p>
+          <strong>Note:</strong> This is a hobby/learning project only.
         </p>
       </ProjectOverview>
 
