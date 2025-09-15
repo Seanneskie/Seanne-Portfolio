@@ -1,3 +1,5 @@
+import { type ReactElement } from "react";
+
 import counterData from "@/public/data/card-counter.json" assert { type: "json" };
 import CounterCard, { type CounterCardTheme } from "@/components/card/CardCounter";
 
@@ -23,7 +25,7 @@ interface CardCounterItem {
  * }
  * ```
  */
-export default function CardCounters(): JSX.Element {
+export default function CardCounters(): ReactElement {
   const items: CardCounterItem[] = [...counterData.items].sort(
     (a, b) => a.order - b.order
   );

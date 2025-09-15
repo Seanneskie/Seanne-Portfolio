@@ -1,3 +1,5 @@
+import { type ReactElement } from "react";
+
 import ProjectOverview from "./ProjectOverview";
 import ProjectSection from "./ProjectSection";
 import ProjectGallery from "./ProjectGallery";
@@ -7,7 +9,7 @@ import { getProjectImages } from "@/lib/project-images";
  * Displays the CoffeeHub NoSQL project details and screenshots.
  * Falls back to a placeholder image when no screenshots are available.
  */
-export default async function NosqlProject(): Promise<JSX.Element> {
+export default async function NosqlProject(): Promise<ReactElement> {
   const alt = "NoSQL Project screenshot";
   const rawImages = await getProjectImages("nosql-project");
   const images = (
