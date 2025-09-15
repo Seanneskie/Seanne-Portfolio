@@ -1,6 +1,5 @@
-import { promises as fs } from "fs";
-import path from "path";
 import type { ComponentType } from "react";
+import { notFound } from "next/navigation";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -34,60 +33,23 @@ const componentMap: Record<string, () => Promise<{ default: ComponentType }>> = 
 export default async function ProjectDetailPage({ params }: PageProps) {
   const { slug } = await params;
 
-  let Component: ComponentType | null = null;
-
   const loader = componentMap[slug];
-  if (loader) {
-    try {
-      Component = (await loader()).default;
-    } catch {
-      Component = null;
-    }
+  if (!loader) {
+    notFound();
   }
 
-  if (Component) {
+  try {
+    const Component: ComponentType = (await loader()).default;
     return (
       <main className="container mx-auto max-w-5xl px-4 py-12">
         <Component />
       </main>
     );
-  }
-
-  const filePath = path.join(
-    process.cwd(),
-    "public",
-    "project-details",
-    `${slug}.html`
-  );
-
-  try {
-    const html = await fs.readFile(filePath, "utf8");
-    return (
-      <main className="container mx-auto max-w-5xl px-4 py-12">
-        <div dangerouslySetInnerHTML={{ __html: html }} />
-      </main>
-    );
   } catch {
-    return (
-      <main className="container mx-auto max-w-5xl px-4 py-12">
-        <p>Project details not found.</p>
-      </main>
-    );
+    notFound();
   }
 }
 
 export async function generateStaticParams() {
-  const htmlDir = path.join(process.cwd(), "public", "project-details");
-
-  const htmlFiles = await fs.readdir(htmlDir).catch(() => []);
-
-  const htmlSlugs = htmlFiles
-    .filter((file) => file.endsWith(".html"))
-    .map((file) => file.replace(/\.html$/, ""));
-
-  const slugs = Array.from(
-    new Set([...htmlSlugs, ...Object.keys(componentMap)])
-  );
-
-  return slugs.map((slug) => ({ slug }));
+  return Object.keys(componentMap).map((slug) => ({ slug }));
 }
