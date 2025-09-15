@@ -1,3 +1,5 @@
+import { type ReactElement } from "react";
+
 import techComparisonData from "@/public/data/tech-comparison.json" assert { type: "json" };
 import { TechComparisonDashboard, type TechComparisonData } from "@/components/tech-comparison";
 
@@ -13,7 +15,7 @@ import { TechComparisonDashboard, type TechComparisonData } from "@/components/t
  * }
  * ```
  */
-export default function TechComparison(): JSX.Element {
+export default function TechComparison(): ReactElement {
   const data: TechComparisonData = techComparisonData;
   return <TechComparisonDashboard data={data} />;
 }

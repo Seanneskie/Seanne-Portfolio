@@ -1,4 +1,4 @@
-import React from "react";
+import React, { type ReactElement } from "react";
 import { describe, it, expect, vi } from "vitest";
 import { act } from "react-dom/test-utils";
 import { createRoot } from "react-dom/client";
@@ -28,10 +28,50 @@ vi.mock("next/link", () => ({
   ),
 }));
 
-vi.mock("next/image", () => ({
-  __esModule: true,
-  default: (props: React.ImgHTMLAttributes<HTMLImageElement>) => <img {...props} />,
-}));
+vi.mock("next/image", () => {
+  interface MockNextImageProps {
+    alt: string;
+    src: string;
+    className?: string;
+    fill?: boolean;
+    sizes?: string;
+    priority?: boolean;
+    placeholder?: "blur" | "empty";
+    blurDataURL?: string;
+    style?: React.CSSProperties;
+  }
+
+  const MockNextImage = ({
+    alt,
+    src,
+    className,
+    fill,
+    sizes,
+    priority,
+    placeholder,
+    blurDataURL,
+    style,
+  }: MockNextImageProps): ReactElement => (
+    <span
+      role="img"
+      aria-label={alt}
+      data-src={src}
+      data-fill={fill ? "true" : undefined}
+      data-sizes={sizes}
+      data-priority={priority ? "true" : undefined}
+      data-placeholder={placeholder}
+      data-blur={blurDataURL}
+      className={className}
+      style={style}
+      data-testid="next-image-mock"
+    />
+  );
+
+  return {
+    __esModule: true,
+    default: MockNextImage,
+  };
+});
 
 vi.mock("@/components/ui/card", () => ({
   Card: ({ children, ...props }: { children: React.ReactNode }) => (
