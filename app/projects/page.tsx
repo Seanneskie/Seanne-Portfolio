@@ -181,9 +181,10 @@ export default function ProjectsPage() {
                       ].join(" ")}
                     >
                       <Link
-                        href={`/project-details/${p.details
-                          .replace(/^project-details\//, "")
-                          .replace(/\.html$/, "")}`}
+                        href={`/project-details/${p.details.replace(
+                          /^project-details\//,
+                          ""
+                        )}`}
                       >
                         Project details →
                       </Link>
