@@ -12,10 +12,11 @@ export default async function OrderInventoryManagementApi() {
     <div className="space-y-12">
       <ProjectOverview
         title="Order & Inventory Management API"
+        githubUrl="https://github.com/Seanneskie/dotnet-inventory"
         images={
           images.length
             ? images
-            : [{ src: "/static/placeholders/next.png", alt }]
+            : [{ src: "/static/placeholders/c#.png", alt }]
         }
       >
         <p>
@@ -26,6 +27,9 @@ export default async function OrderInventoryManagementApi() {
         <p>
           <strong>Tech Stack:</strong> ASP.NET Core, Entity Framework Core, PostgreSQL,
           FluentValidation, Serilog, Swagger.
+        </p>
+        <p>
+          <strong>Note:</strong> This is a hobby/learning project only.
         </p>
       </ProjectOverview>
 
