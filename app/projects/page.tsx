@@ -180,11 +180,7 @@ export default function ProjectsPage() {
                         "focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:outline-none",
                       ].join(" ")}
                     >
-                      <Link
-                        href={`/project-details/${p.details
-                          .replace(/^project-details\//, "")
-                          .replace(/\.html$/, "")}`}
-                      >
+                      <Link href={`/${p.details}`}>
                         Project details →
                       </Link>
                     </Button>
