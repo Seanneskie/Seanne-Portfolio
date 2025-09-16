@@ -1,4 +1,4 @@
-import Profile, { CardCounters, MyStory, TechComparison } from "@/components/profile";
+import Profile, { MyStory, TechComparison } from "@/components/profile";
 import OtherSkills from "@/components/profile/OtherSkills";
 
 export default function ProfilePage() {
