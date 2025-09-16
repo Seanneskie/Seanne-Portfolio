@@ -115,7 +115,7 @@ export default function ProfileCardContent({ profile }: { profile: ProfileData }
           className="grid grid-cols-1 items-stretch gap-8 md:grid-cols-[25%_75%]"
         >
           {/* LEFT (25%): Full-height image */}
-          <div className="relative h-full min-h-[240px] overflow-hidden rounded-xl ring-2 ring-blue-900/30 dark:ring-blue-500/30 shadow-sm">
+          <div className="relative h-full min-h-[240px] overflow-hidden rounded-xl ring-2 ring-teal-900/30 dark:ring-teal-400/30 shadow-sm">
             <Image
               src={withBasePath("/static/image_1.jpg")}
               alt={profile.name}
