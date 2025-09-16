@@ -48,7 +48,12 @@
             "name": "jQuery + DataTables"
           },
           { "icon": "devicon-nuxtjs-plain colored", "name": "Nuxt (Vue)" },
-          { "icon": "devicon-vuejs-plain colored", "name": "Vue.js" }
+          { "icon": "devicon-vuejs-plain colored", "name": "Vue.js" },
+          { "icon": "fas fa-bolt", "name": "Framer Motion" },
+          { "icon": "fas fa-bell", "name": "Sonner" },
+          { "icon": "fas fa-images", "name": "Embla Carousel" },
+          { "icon": "devicon-react-original colored", "name": "lucide-react" },
+          { "icon": "devicon-radixui-plain colored", "name": "Radix UI" }
         ]
       },
       {
@@ -62,7 +67,10 @@
             "icon": "devicon-graphql-plain colored",
             "name": "GraphQL (Apollo Client + GraphQL Yoga)"
           },
-          { "icon": "devicon-nodejs-plain colored", "name": "Node.js" }
+          { "icon": "devicon-nodejs-plain colored", "name": "Node.js" },
+          { "icon": "devicon-drizzle-plain colored", "name": "Drizzle ORM" },
+          { "icon": "devicon-prisma-plain colored", "name": "Prisma" },
+          { "icon": "devicon-nodejs-plain colored", "name": "Hono" }
         ]
       },
       {
@@ -97,7 +105,8 @@
             "name": "TensorFlow"
           },
           { "icon": "fas fa-terminal", "name": "Prompt Engineering" },
-          { "icon": "fas fa-brain", "name": "Machine Learning" }
+          { "icon": "fas fa-brain", "name": "Machine Learning" },
+          { "icon": "devicon-intel-plain colored", "name": "OpenVINO" }
         ]
       },
       {
@@ -117,7 +126,10 @@
           {
             "icon": "devicon-python-plain colored",
             "name": "Scientific Computing with Python"
-          }
+          },
+          { "icon": "fas fa-file-excel", "name": "OpenPyXL" },
+          { "icon": "devicon-streamlit-plain colored", "name": "Streamlit" },
+          { "icon": "devicon-powerbi-plain colored", "name": "Power BI" }
         ]
       },
       {
@@ -130,6 +142,10 @@
           {
             "icon": "devicon-microsoftsqlserver-plain colored",
             "name": "SQL Server 2022"
+          },
+          {
+            "icon": "devicon-postgresql-plain colored",
+            "name": "PostgreSQL Triggers / PL/pgSQL"
           }
         ]
       },
@@ -171,6 +187,16 @@
           { "icon": "devicon-railway-plain colored", "name": "Railway" },
           { "icon": "fas fa-cloud-upload-alt", "name": "Render" },
           { "icon": "devicon-docker-plain colored", "name": "Docker" }
+        ]
+      },
+      {
+        "title": "Testing",
+        "items": [
+          { "icon": "devicon-jest-plain colored", "name": "Jest" },
+          {
+            "icon": "devicon-react-plain colored",
+            "name": "React Testing Library"
+          }
         ]
       }
     ]
@@ -313,7 +339,10 @@
           { "icon": "devicon-linux-plain colored", "name": "Linux Commands" },
           { "icon": "devicon-bash-plain colored", "name": "Bash Scripting" },
           { "icon": "devicon-windows8-plain colored", "name": "Windows OS" },
-          { "icon": "devicon-linux-plain", "name": "WSL Linux (Linux Mint, Ubuntu" },
+          {
+            "icon": "devicon-linux-plain",
+            "name": "WSL Linux (Linux Mint, Ubuntu"
+          },
 
           {
             "icon": "devicon-powershell-plain colored",
