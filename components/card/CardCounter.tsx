@@ -1,6 +1,7 @@
 // components/counter-card.tsx
 import { type ReactElement } from "react";
 import * as LucideIcons from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import {
   Card,
   CardHeader,
@@ -13,6 +14,28 @@ import {
   type CounterCardTheme,
   type LucideIconName,
 } from "@/types/card-counter";
+
+/**
+ * Type guard verifying a Lucide export is a forward-ref icon component.
+ */
+const isLucideIconComponent = (value: unknown): value is LucideIcon =>
+  typeof value === "object" &&
+  value !== null &&
+  "render" in (value as Record<string, unknown>) &&
+  typeof (value as { render?: unknown }).render === "function";
+
+/**
+ * Resolves a Lucide icon name to a renderable component when available.
+ */
+const resolveLucideIcon = (iconName?: LucideIconName): LucideIcon | null => {
+  if (!iconName) {
+    return null;
+  }
+
+  const candidate: unknown = LucideIcons[iconName];
+
+  return isLucideIconComponent(candidate) ? candidate : null;
+};
 
 const THEME_STYLES: Record<
   CounterCardTheme,
@@ -86,7 +109,7 @@ export default function CounterCard({
     typeof count === "number" ? count.toLocaleString() : String(count);
 
   const style = THEME_STYLES[theme];
-  const Icon = icon ? LucideIcons[icon] : null;
+  const IconComponent = resolveLucideIcon(icon);
 
   return (
     <Card className={cn("relative pt-6 pl-12", className)}>
@@ -99,7 +122,9 @@ export default function CounterCard({
           dotClassName
         )}
       >
-        {Icon ? <Icon aria-hidden="true" className="h-4 w-4 text-white" /> : null}
+        {IconComponent ? (
+          <IconComponent aria-hidden="true" className="h-4 w-4 text-white" />
+        ) : null}
       </span>
       <CardHeader className="p-0">
         <CardTitle className={cn("text-sm font-medium text-muted-foreground", style.title)}>
