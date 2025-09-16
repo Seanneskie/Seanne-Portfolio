@@ -13,7 +13,7 @@
     {
       "id": "skills",
       "title": "Skills",
-      "value": 38,
+      "value": 120,
       "description": "Core stack + supporting tools",
       "theme": "teal",
       "icon": "Sparkles",
@@ -31,7 +31,7 @@
     {
       "id": "clients",
       "title": "Clients Served",
-      "value": 7,
+      "value": 3,
       "description": "SMBs, startups, agencies",
       "theme": "ice",
       "icon": "Handshake",
@@ -40,7 +40,7 @@
     {
       "id": "certifications",
       "title": "Certifications",
-      "value": 5,
+      "value": 20,
       "description": "Tech & analytics credentials",
       "theme": "teal",
       "icon": "BadgeCheck",
@@ -49,7 +49,7 @@
     {
       "id": "deployments",
       "title": "Production Deployments",
-      "value": 18,
+      "value": "5+",
       "description": "Web apps & APIs shipped",
       "theme": "ocean",
       "icon": "Rocket",
@@ -57,8 +57,8 @@
     },
     {
       "id": "repos",
-      "title": "Public Repos",
-      "value": 42,
+      "title": "Public & Private Repos",
+      "value": 39,
       "description": "Open-source + samples",
       "theme": "cyan",
       "icon": "Github",
