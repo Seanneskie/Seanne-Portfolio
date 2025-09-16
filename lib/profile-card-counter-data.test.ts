@@ -48,4 +48,22 @@ describe("parseCardCounterData", () => {
       })
     ).toThrow(/theme/);
   });
+
+  it("throws when an icon is not part of the lucide-react library", () => {
+    expect(() =>
+      parseCardCounterData({
+        lastUpdated: "2025-01-01",
+        items: [
+          {
+            id: "invalid-icon",
+            title: "Invalid",
+            value: 1,
+            theme: "ocean",
+            order: 1,
+            icon: "FontAwesomeIcon",
+          },
+        ],
+      })
+    ).toThrow(/unsupported icon/);
+  });
 });
