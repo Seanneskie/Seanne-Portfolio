@@ -3,6 +3,14 @@
 @custom-variant dark (&:is(.dark *));
 
 @layer base {
+  :root {
+    --chart-bar: 199 89% 55%;
+  }
+
+  .dark {
+    --chart-bar: 199 94% 68%;
+  }
+
   * {
     @apply border-gray-200 dark:border-gray-700;
   }
