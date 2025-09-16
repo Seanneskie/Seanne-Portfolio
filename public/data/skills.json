@@ -311,6 +311,10 @@
         "title": "Command Line & Process",
         "items": [
           { "icon": "devicon-linux-plain colored", "name": "Linux Commands" },
+          { "icon": "devicon-bash-plain colored", "name": "Bash Scripting" },
+          { "icon": "devicon-windows8-plain colored", "name": "Windows OS" },
+          { "icon": "devicon-linux-plain", "name": "WSL Linux (Linux Mint, Ubuntu" },
+
           {
             "icon": "devicon-powershell-plain colored",
             "name": "PowerShell Commands"
