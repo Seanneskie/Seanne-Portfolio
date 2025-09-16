@@ -16,6 +16,8 @@ export interface BarSummaryProps {
   label: string;
 }
 
+export const CHART_BAR_FILL = "hsl(var(--chart-bar))";
+
 export function BarSummary({ items, rating }: BarSummaryProps): React.ReactElement {
   const data = items
     .map((it) => ({ name: it.name, value: it.ratings[rating] ?? 0 }))
@@ -30,7 +32,7 @@ export function BarSummary({ items, rating }: BarSummaryProps): React.ReactEleme
           <XAxis dataKey="name" tick={{ fontSize: 12 }} interval={0} angle={-30} textAnchor="end" height={60} />
           <YAxis domain={[0, 5]} tickCount={6} />
           <ReTooltip />
-          <Bar dataKey="value" fill="#0ea5e9" radius={[6, 6, 0, 0]} />
+          <Bar dataKey="value" fill={CHART_BAR_FILL} radius={[6, 6, 0, 0]} />
         </BarChart>
       </ResponsiveContainer>
     </div>
