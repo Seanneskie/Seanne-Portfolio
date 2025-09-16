@@ -11,10 +11,19 @@ export interface CategoryTabsProps {
 export function CategoryTabs({ categories, value, onValueChange }: CategoryTabsProps): React.ReactElement {
   return (
     <Tabs value={value} onValueChange={onValueChange} className="w-full">
-      <TabsList className="grid w-full grid-cols-4 sm:grid-cols-6 lg:grid-cols-8">
-        <TabsTrigger value="all">All</TabsTrigger>
+      <TabsList
+        aria-label="Technology categories"
+        className="flex w-full flex-nowrap gap-2 overflow-x-auto pb-1"
+      >
+        <TabsTrigger value="all" className="flex-none whitespace-nowrap px-3">
+          All
+        </TabsTrigger>
         {categories.map((c) => (
-          <TabsTrigger key={c.id} value={c.id}>
+          <TabsTrigger
+            key={c.id}
+            value={c.id}
+            className="flex-none whitespace-nowrap px-3"
+          >
             {c.label}
           </TabsTrigger>
         ))}
