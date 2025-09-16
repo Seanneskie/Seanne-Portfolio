@@ -10,7 +10,8 @@ import CategoryTabs from "./category-tabs";
 import ItemList from "./item-list";
 import RadarView from "./radar-view";
 import BarSummary from "./bar-summary";
-import { TechComparisonData, RatingTypesId } from "@/types/tech-comparison";
+import { useTechComparison } from "@/hooks/use-tech-comparison";
+import { TechComparisonData } from "@/types/tech-comparison";
 
 export interface TechComparisonDashboardProps {
   data: TechComparisonData;
@@ -19,27 +20,15 @@ export interface TechComparisonDashboardProps {
 export function TechComparisonDashboard({ data }: TechComparisonDashboardProps): React.ReactElement {
   const ratingTypes = data.rating_types;
   const categories = data.categories;
-  const [selectedRating, setSelectedRating] = React.useState<RatingTypesId>(
-    ratingTypes[0]?.id ?? "proficiency"
-  );
-  const [selectedCategory, setSelectedCategory] = React.useState<string>("all");
-
-  const categoriesById = React.useMemo(
-    () => Object.fromEntries(categories.map((c) => [c.id, c])),
-    [categories]
-  );
-
-  const filtered = React.useMemo(() => {
-    const pool =
-      selectedCategory === "all"
-        ? data.items
-        : data.items.filter((i) => i.category === selectedCategory);
-    return [...pool].sort(
-      (a, b) => (b.ratings[selectedRating] ?? 0) - (a.ratings[selectedRating] ?? 0)
-    );
-  }, [data.items, selectedCategory, selectedRating]);
-
-  const topItem = filtered[0] ?? data.items[0];
+  const {
+    selectedRating,
+    setSelectedRating,
+    selectedCategory,
+    setSelectedCategory,
+    filteredItems,
+    topItem,
+    categoriesById,
+  } = useTechComparison(data);
   const selectedRatingLabel =
     ratingTypes.find((r) => r.id === selectedRating)?.label ?? selectedRating;
 
@@ -81,7 +70,7 @@ export function TechComparisonDashboard({ data }: TechComparisonDashboardProps):
             </CardHeader>
             <CardContent>
               <BarSummary
-                items={filtered}
+                items={filteredItems}
                 rating={selectedRating}
                 label={selectedRatingLabel}
               />
@@ -109,7 +98,7 @@ export function TechComparisonDashboard({ data }: TechComparisonDashboardProps):
             </span>
           </div>
           <ItemList
-            items={filtered}
+            items={filteredItems}
             selectedRating={selectedRating}
             categoriesById={categoriesById}
           />
