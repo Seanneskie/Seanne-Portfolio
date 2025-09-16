@@ -8,7 +8,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useData } from "@/lib/use-data";
 import { withBasePath } from "@/lib/utils";
-import { useState } from "react";
+import { useState, type ReactElement } from "react";
 
 interface Project {
   title: string;
@@ -21,7 +21,7 @@ interface Project {
   details?: string | null;
 }
 
-export default function ProjectsSection() {
+export default function ProjectsSection(): ReactElement {
   const { data, loading, error } = useData<Project[]>("projects.json");
   const [expanded, setExpanded] = useState<Record<number, boolean>>({});
 

@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { type ReactElement, type ReactNode } from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 
 interface ProjectSectionProps {
@@ -6,7 +6,7 @@ interface ProjectSectionProps {
   children: ReactNode;
 }
 
-export default function ProjectSection({ title, children }: ProjectSectionProps) {
+export default function ProjectSection({ title, children }: ProjectSectionProps): ReactElement {
   return (
     <Card className="relative overflow-hidden">
       <div

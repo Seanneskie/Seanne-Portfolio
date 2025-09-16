@@ -1,5 +1,6 @@
 "use client";
 
+import { type ReactElement } from "react";
 import { useData } from "@/lib/use-data";
 import { motion, type Variants } from "framer-motion";
 import Image from "next/image";
@@ -49,7 +50,7 @@ const listItem = {
   show: { opacity: 1, x: 0, transition: { duration: 0.25 } },
 } satisfies Variants;
 
-export default function WorkExperiences() {
+export default function WorkExperiences(): ReactElement {
   const { data, loading, error } = useData<WorkExperience[]>("work-experiences.json");
 
   if (loading) {

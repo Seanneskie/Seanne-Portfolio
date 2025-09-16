@@ -1,5 +1,6 @@
 "use client";
 
+import { type ReactElement } from "react";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import ProfileCard from "./ProfileCard";
 import BackgroundCard from "./BackgroundCard";
@@ -31,7 +32,7 @@ const PROFILE: ProfileData = {
   },
 };
 
-export default function Profile() {
+export default function Profile(): ReactElement {
   return (
     <TooltipProvider delayDuration={100}>
       <section id="profile" className="space-y-6">

@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { useMemo, useState } from "react";
+import { useMemo, useState, type ReactElement } from "react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
@@ -33,7 +33,7 @@ interface Certificate {
 
 const MAX_BADGES = 6;
 
-export default function CertificatesSection() {
+export default function CertificatesSection(): ReactElement {
   const [search, setSearch] = useState("");
   const [tag, setTag] = useState("");
 

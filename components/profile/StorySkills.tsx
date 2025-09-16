@@ -1,5 +1,6 @@
 "use client";
 
+import { type ReactElement } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useData } from "@/lib/use-data";
@@ -20,12 +21,12 @@ interface SkillCategory {
   groups: SkillGroup[];
 }
 
-export default function StorySkills() {
+export default function StorySkills(): ReactElement {
   const { data, error } = useData<SkillCategory[]>("skills.json");
-  if (error || !data) return null;
+  if (error || !data) return <></>;
 
   const programming = data.find((category) => category.id === "Programming");
-  if (!programming) return null;
+  if (!programming) return <></>;
 
   return (
     <Card className="border border-teal-600/10 dark:border-teal-400/10">

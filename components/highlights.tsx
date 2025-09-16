@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { type ReactElement } from "react";
 import Image from "next/image";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
@@ -11,7 +12,7 @@ interface HighlightItem {
   label: string;
 }
 
-export default function Highlights() {
+export default function Highlights(): ReactElement {
   const [highlights, setHighlights] = React.useState<HighlightItem[]>([]);
 
   React.useEffect(() => {

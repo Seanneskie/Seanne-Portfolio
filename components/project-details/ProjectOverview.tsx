@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ReactNode } from "react";
+import { type ReactElement, type ReactNode } from "react";
 import { withBasePath } from "@/lib/utils";
 import ProjectGallery from "./ProjectGallery";
 import { Button } from "@/components/ui/button";
@@ -22,7 +22,7 @@ export default function ProjectOverview({
   githubUrl,
   linkLabel = "View on GitHub",
   downloadUrl,
-}: ProjectOverviewProps) {
+}: ProjectOverviewProps): ReactElement {
   const firstImage = images[0];
 
   return (

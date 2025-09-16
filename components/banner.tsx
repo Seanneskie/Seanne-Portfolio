@@ -3,14 +3,14 @@
 
 import { cn, withBasePath } from "@/lib/utils";
 import Image from "next/image";
-import * as React from "react";
+import { type ReactElement, type ReactNode } from "react";
 
 type Align = "left" | "center" | "right";
 type Height = "sm" | "md" | "lg" | "screen";
 
 export interface BannerProps {
-  title: React.ReactNode;
-  subtitle?: React.ReactNode;
+  title: ReactNode;
+  subtitle?: ReactNode;
   /** Absolute or public path (e.g., /static/hero.jpg) */
   backgroundImage: string;
   /** Improves accessibility; describe the image context briefly */
@@ -26,7 +26,7 @@ export interface BannerProps {
   /** Additional className for the root section */
   className?: string;
   /** Optional action buttons or extra content under subtitle */
-  actions?: React.ReactNode;
+  actions?: ReactNode;
   /** Control background object position (e.g., "50% 30%" or "center top") */
   objectPosition?: string;
   /** Prioritize image loading (good for above-the-fold heroes) */
@@ -53,7 +53,7 @@ export default function Banner({
   actions,
   objectPosition = "center",
   priority = false,
-}: BannerProps) {
+}: BannerProps): ReactElement {
   const alignWrap =
     align === "left"
       ? "ml-0 mr-auto text-left"

@@ -1,10 +1,11 @@
 "use client";
 
+import { type ReactElement } from "react";
 import { Facebook, Twitter, Linkedin, Github, FileText, Code } from "lucide-react";
 import SocialIcon from "./SocialIcon";
 import type { Links } from "./types";
 
-export default function SocialLinks({ links }: { links: Links }) {
+export default function SocialLinks({ links }: { links: Links }): ReactElement {
   return (
     <div className="flex flex-wrap items-center justify-center gap-3">
       <SocialIcon href={links.facebook} label="Facebook">

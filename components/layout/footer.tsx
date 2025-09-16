@@ -1,3 +1,4 @@
+import { type ReactElement } from "react";
 import Link from "next/link";
 import { Github, Linkedin, Twitter } from "lucide-react";
 
@@ -28,7 +29,7 @@ const SOCIAL_LINKS = [
   },
 ] as const;
 
-export default function Footer() {
+export default function Footer(): ReactElement {
   return (
     <footer className="relative overflow-hidden border-t bg-gradient-to-r from-teal-600/20 to-transparent dark:from-teal-400/20 dark:to-transparent bg-size-200 animate-gradient-x">
       <span className="pointer-events-none absolute inset-0 dot-pattern opacity-30 blur-sm animate-dots" />
