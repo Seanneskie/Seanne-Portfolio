@@ -1,5 +1,6 @@
 "use client";
 
+import { type ReactElement } from "react";
 import { motion } from "framer-motion";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
@@ -53,7 +54,7 @@ const socialList: { key: keyof Links; label: string; icon: LucideIcon }[] = [
   { key: "resume", label: "Resume", icon: FileText },
 ];
 
-export default function ProfileCardContent({ profile }: { profile: ProfileData }) {
+export default function ProfileCardContent({ profile }: { profile: ProfileData }): ReactElement {
   const links = profile.links ?? {};
 
   const info = profile as Partial<{

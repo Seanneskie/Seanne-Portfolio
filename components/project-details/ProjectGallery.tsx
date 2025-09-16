@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { type ReactElement } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight, ZoomIn, ZoomOut, RotateCcw } from "lucide-react";
@@ -27,7 +28,7 @@ export default function ProjectGallery({
   showThumbnails = true,
   className,
   enableLightbox = true,
-}: ProjectGalleryProps) {
+}: ProjectGalleryProps): ReactElement {
   const [api, setApi] = React.useState<CarouselApi | null>(null);
   const [index, setIndex] = React.useState(0);
   const [count, setCount] = React.useState(0);

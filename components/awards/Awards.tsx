@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { type ReactElement } from "react";
 import { motion, type Variants, type Transition } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { useData } from "@/lib/use-data";
@@ -23,7 +24,7 @@ const itemVariants: Variants = {
   },
 };
 
-export default function Awards() {
+export default function Awards(): ReactElement {
   const { data, loading, error } = useData<Achievement[]>("achievements.json");
 
   if (loading) return <p className="text-black dark:text-white">Loading awards...</p>;

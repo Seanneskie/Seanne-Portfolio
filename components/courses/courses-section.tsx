@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { useMemo, useState } from "react";
+import { useMemo, useState, type ReactElement } from "react";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import {
@@ -28,7 +28,7 @@ interface Course {
   credits?: number;
 }
 
-export default function CoursesSection() {
+export default function CoursesSection(): ReactElement {
   const [search, setSearch] = useState("");
   const [institution, setInstitution] = useState("");
 

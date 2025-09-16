@@ -1,5 +1,6 @@
 "use client";
 
+import { type ReactElement, type ReactNode } from "react";
 import { Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
 
 export default function SocialIcon({
@@ -9,9 +10,9 @@ export default function SocialIcon({
 }: {
   href?: string;
   label: string;
-  children: React.ReactNode;
-}) {
-  if (!href) return null;
+  children: ReactNode;
+}): ReactElement {
+  if (!href) return <></>;
   return (
     <Tooltip>
       <TooltipTrigger asChild>

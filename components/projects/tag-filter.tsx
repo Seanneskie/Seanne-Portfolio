@@ -1,5 +1,6 @@
 "use client";
 
+import { type ReactElement } from "react";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 
@@ -15,7 +16,7 @@ export default function TagFilter({
   selected,
   onChange,
   className,
-}: TagFilterProps) {
+}: TagFilterProps): ReactElement {
   const toggleTag = (tag: string) => {
     onChange(
       selected.includes(tag)

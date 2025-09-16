@@ -1,5 +1,5 @@
 // components/counter-card.tsx
-import * as React from "react";
+import { type ReactElement } from "react";
 import {
   Card,
   CardHeader,
@@ -71,7 +71,7 @@ export default function CounterCard({
   className,
   theme = "ocean",
   dotClassName,
-}: CounterCardProps) {
+}: CounterCardProps): ReactElement {
   const formatted =
     typeof count === "number" ? count.toLocaleString() : String(count);
 
