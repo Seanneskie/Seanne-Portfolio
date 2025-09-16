@@ -25,13 +25,14 @@ export default function CardCounters(): ReactElement {
 
   return (
     <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-      {items.map(({ id, title, value, description, theme }) => (
+      {items.map(({ id, title, value, description, theme, icon }) => (
         <CounterCard
           key={id}
           count={value}
           title={title}
           description={description}
           theme={theme}
+          icon={icon}
         />
       ))}
     </section>
