@@ -97,7 +97,7 @@
             "name": "TensorFlow"
           },
           { "icon": "fas fa-terminal", "name": "Prompt Engineering" },
-          { "icon": "fas fa-brain", "name": "ML for Beginners" }
+          { "icon": "fas fa-brain", "name": "Machine Learning" }
         ]
       },
       {
@@ -142,7 +142,8 @@
           {
             "icon": "fas fa-globe",
             "name": "Geographic Information Systems (GIS)"
-          }
+          },
+          {  "icon": "fas fa-globe", "name": "QGIS" }
         ]
       },
       {
