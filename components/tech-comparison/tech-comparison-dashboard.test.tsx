@@ -9,7 +9,11 @@ vi.mock("./theme-dot", () => ({ __esModule: true, default: () => <div /> }));
 vi.mock("./rating-type-picker", () => ({ __esModule: true, default: () => <div /> }));
 vi.mock("./category-tabs", () => ({ __esModule: true, default: () => <div /> }));
 vi.mock("./item-list", () => ({ __esModule: true, default: () => <div /> }));
-vi.mock("./radar-view", () => ({ __esModule: true, default: () => <div /> }));
+vi.mock("./radar-view", () => ({
+  __esModule: true,
+  default: () => <div />,
+  RADAR_DEFAULT_MAX_SERIES: 5,
+}));
 vi.mock("./bar-summary", () => ({ __esModule: true, default: () => <div /> }));
 vi.mock("@/components/ui/card", () => ({
   Card: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,

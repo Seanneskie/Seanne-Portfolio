@@ -8,7 +8,7 @@ import ThemeDot from "./theme-dot";
 import RatingTypePicker from "./rating-type-picker";
 import CategoryTabs from "./category-tabs";
 import ItemList from "./item-list";
-import RadarView from "./radar-view";
+import RadarView, { RADAR_DEFAULT_MAX_SERIES } from "./radar-view";
 import BarSummary from "./bar-summary";
 import { useTechComparison } from "@/hooks/use-tech-comparison";
 import { TechComparisonData } from "@/types/tech-comparison";
@@ -26,11 +26,18 @@ export function TechComparisonDashboard({ data }: TechComparisonDashboardProps):
     selectedCategory,
     setSelectedCategory,
     filteredItems,
-    topItem,
+    topItems,
     categoriesById,
+    selectedCategoryLabel,
   } = useTechComparison(data);
   const selectedRatingLabel =
     ratingTypes.find((r) => r.id === selectedRating)?.label ?? selectedRating;
+  const topCount = Math.min(topItems.length, RADAR_DEFAULT_MAX_SERIES);
+  const stackLabel = topCount === 1 ? "stack" : "stacks";
+  const radarDescription =
+    topItems.length > 0
+      ? `Top ${topCount} ${stackLabel} across all metrics`
+      : "No stacks available in this category";
 
   return (
     <TooltipProvider>
@@ -77,17 +84,15 @@ export function TechComparisonDashboard({ data }: TechComparisonDashboardProps):
             </CardContent>
           </Card>
 
-          {topItem ? (
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-lg">{topItem.name}: Full Profile</CardTitle>
-                <CardDescription>Compare all five dimensions</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <RadarView item={topItem} ratingTypes={ratingTypes} />
-              </CardContent>
-            </Card>
-          ) : null}
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-lg">{selectedCategoryLabel} comparison</CardTitle>
+              <CardDescription>{radarDescription}</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <RadarView items={topItems} ratingTypes={ratingTypes} />
+            </CardContent>
+          </Card>
         </div>
 
         <div className="space-y-3">

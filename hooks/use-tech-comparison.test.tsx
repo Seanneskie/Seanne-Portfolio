@@ -96,6 +96,8 @@ describe("useTechComparison", () => {
 
     expect(latest?.selectedRating).toBe("proficiency");
     expect(latest?.filteredItems.map((item) => item.id)).toEqual(["1", "2", "3"]);
+    expect(latest?.topItems.map((item) => item.id)).toEqual(["1", "2", "3"]);
+    expect(latest?.selectedCategoryLabel).toBe("All categories");
 
     await act(async () => {
       latest?.setSelectedRating("recency");
@@ -131,6 +133,8 @@ describe("useTechComparison", () => {
     expect(latest?.filteredItems).toHaveLength(1);
     expect(latest?.filteredItems[0]?.id).toBe("2");
     expect(latest?.categoriesById.backend?.label).toBe("Backend");
+    expect(latest?.topItems.map((item) => item.id)).toEqual(["2"]);
+    expect(latest?.selectedCategoryLabel).toBe("Backend");
 
     root.unmount();
     container.remove();
@@ -157,6 +161,71 @@ describe("useTechComparison", () => {
 
     expect(latest?.filteredItems).toHaveLength(0);
     expect(latest?.topItem?.id).toBe("1");
+    expect(latest?.topItems).toEqual([]);
+    expect(latest?.selectedCategoryLabel).toBe("Operations");
+
+    root.unmount();
+    container.remove();
+  });
+
+  it("limits the number of top items returned", async () => {
+    const data = createTestData();
+    data.items.push(
+      {
+        id: "4",
+        name: "Next.js",
+        type: "Framework",
+        category: "frontend",
+        ratings: {
+          proficiency: 5,
+          production_use: 5,
+          recency: 4,
+          depth: 5,
+          preference: 5,
+        },
+      },
+      {
+        id: "5",
+        name: "Remix",
+        type: "Framework",
+        category: "frontend",
+        ratings: {
+          proficiency: 4,
+          production_use: 3,
+          recency: 3,
+          depth: 3,
+          preference: 4,
+        },
+      },
+      {
+        id: "6",
+        name: "SolidStart",
+        type: "Framework",
+        category: "frontend",
+        ratings: {
+          proficiency: 4,
+          production_use: 2,
+          recency: 4,
+          depth: 3,
+          preference: 4,
+        },
+      }
+    );
+
+    const container = document.createElement("div");
+    document.body.appendChild(container);
+    const root = createRoot(container);
+
+    let latest: UseTechComparisonResult | undefined;
+    const handleRender = (value: UseTechComparisonResult): void => {
+      latest = value;
+    };
+
+    await act(async () => {
+      root.render(<HookTestComponent data={data} onRender={handleRender} />);
+    });
+
+    expect(latest?.topItems).toHaveLength(5);
 
     root.unmount();
     container.remove();

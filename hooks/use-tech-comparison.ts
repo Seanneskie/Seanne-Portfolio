@@ -15,7 +15,9 @@ export interface UseTechComparisonResult {
   setSelectedCategory: React.Dispatch<React.SetStateAction<string>>;
   filteredItems: TechItem[];
   topItem: TechItem | undefined;
+  topItems: TechItem[];
   categoriesById: Record<string, Category>;
+  selectedCategoryLabel: string;
 }
 
 /**
@@ -52,6 +54,18 @@ export function useTechComparison(data: TechComparisonData): UseTechComparisonRe
   }, [data.items, selectedCategory, selectedRating]);
 
   const topItem = filteredItems[0] ?? data.items[0];
+  const topItems = React.useMemo<TechItem[]>(
+    () => filteredItems.slice(0, 5),
+    [filteredItems]
+  );
+
+  const selectedCategoryLabel = React.useMemo<string>(() => {
+    if (selectedCategory === "all") {
+      return "All categories";
+    }
+
+    return categoriesById[selectedCategory]?.label ?? selectedCategory;
+  }, [categoriesById, selectedCategory]);
 
   return {
     selectedRating,
@@ -60,7 +74,9 @@ export function useTechComparison(data: TechComparisonData): UseTechComparisonRe
     setSelectedCategory,
     filteredItems,
     topItem,
+    topItems,
     categoriesById,
+    selectedCategoryLabel,
   };
 }
 
