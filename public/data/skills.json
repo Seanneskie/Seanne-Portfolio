@@ -125,6 +125,7 @@
         "items": [
           { "icon": "devicon-mysql-plain colored", "name": "MySQL" },
           { "icon": "devicon-postgresql-plain colored", "name": "PostgreSQL" },
+          { "icon": "devicon-sqlite-plain colored", "name": "SQLite" },
           { "icon": "devicon-mongodb-plain colored", "name": "MongoDB" },
           {
             "icon": "devicon-microsoftsqlserver-plain colored",
@@ -143,7 +144,7 @@
             "icon": "fas fa-globe",
             "name": "Geographic Information Systems (GIS)"
           },
-          {  "icon": "fas fa-globe", "name": "QGIS" }
+          { "icon": "fas fa-globe", "name": "QGIS" }
         ]
       },
       {
