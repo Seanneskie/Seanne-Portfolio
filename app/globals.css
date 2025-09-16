@@ -20,11 +20,13 @@
   }
 
   ::selection {
-    @apply bg-blue-200 text-black dark:bg-blue-800 dark:text-white;
+    /* Teal accent palette keeps highlights consistent across light and dark modes. */
+    @apply bg-teal-200 text-black dark:bg-teal-800 dark:text-white;
   }
 
   *:focus-visible {
-    @apply outline-none ring-2 ring-sky-500 ring-offset-2 ring-offset-white dark:ring-offset-gray-900;
+    /* Focus outlines reuse the teal accent color for accessibility cues. */
+    @apply outline-none ring-2 ring-teal-500 ring-offset-2 ring-offset-white dark:ring-offset-gray-900;
   }
   *:focus:not(:focus-visible) {
     @apply ring-0 outline-none;
@@ -60,11 +62,6 @@
   .animate-dots {
     animation: dot-move 8s linear infinite;
   }
-}
-
-
-@layer utilities {
-  .bg-size-200 { background-size: 200% 200%; }
 
   @keyframes gradient-x {
     0% { background-position: 0% 50%; }
