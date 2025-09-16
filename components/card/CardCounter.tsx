@@ -1,5 +1,6 @@
 // components/counter-card.tsx
 import { type ReactElement } from "react";
+import * as LucideIcons from "lucide-react";
 import {
   Card,
   CardHeader,
@@ -8,7 +9,10 @@ import {
   CardContent,
 } from "@/components/ui/card";
 import { cn } from "@/lib/cn";
-import { type CounterCardTheme } from "@/types/card-counter";
+import {
+  type CounterCardTheme,
+  type LucideIconName,
+} from "@/types/card-counter";
 
 const THEME_STYLES: Record<
   CounterCardTheme,
@@ -53,6 +57,9 @@ const THEME_STYLES: Record<
   },
 };
 
+/**
+ * Props for rendering a counter card with an optional Lucide icon accent.
+ */
 export type CounterCardProps = {
   count: number | string;
   title: string;
@@ -62,6 +69,8 @@ export type CounterCardProps = {
   theme?: CounterCardTheme;
   /** Optional override to tweak the accent dot per-instance. */
   dotClassName?: string;
+  /** Optional icon rendered inside the accent dot. */
+  icon?: LucideIconName;
 };
 
 export default function CounterCard({
@@ -71,11 +80,13 @@ export default function CounterCard({
   className,
   theme = "ocean",
   dotClassName,
+  icon,
 }: CounterCardProps): ReactElement {
   const formatted =
     typeof count === "number" ? count.toLocaleString() : String(count);
 
   const style = THEME_STYLES[theme];
+  const Icon = icon ? LucideIcons[icon] : null;
 
   return (
     <Card className={cn("relative pt-6 pl-12", className)}>
@@ -87,7 +98,9 @@ export default function CounterCard({
           style.dot,
           dotClassName
         )}
-      />
+      >
+        {Icon ? <Icon aria-hidden="true" className="h-4 w-4 text-white" /> : null}
+      </span>
       <CardHeader className="p-0">
         <CardTitle className={cn("text-sm font-medium text-muted-foreground", style.title)}>
           {title}
