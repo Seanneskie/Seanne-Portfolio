@@ -1,12 +1,17 @@
 import rawData from "@/public/data/card-counter.json" assert { type: "json" };
+import * as LucideIcons from "lucide-react";
 import {
   COUNTER_CARD_THEMES,
   type CardCounterData,
   type CardCounterItem,
   type CounterCardTheme,
+  type LucideIconName,
 } from "@/types/card-counter";
 
 const COUNTER_CARD_THEME_SET = new Set<string>(COUNTER_CARD_THEMES);
+const LUCIDE_ICON_SET = new Set<LucideIconName>(
+  Object.keys(LucideIcons) as LucideIconName[]
+);
 
 type RawCardCounterItem = {
   id?: unknown;
@@ -25,6 +30,9 @@ type RawCardCounterData = {
 
 const isCounterCardTheme = (value: unknown): value is CounterCardTheme =>
   typeof value === "string" && COUNTER_CARD_THEME_SET.has(value);
+
+const isLucideIconName = (value: unknown): value is LucideIconName =>
+  typeof value === "string" && LUCIDE_ICON_SET.has(value as LucideIconName);
 
 const parseCardCounterItem = (item: unknown, index: number): CardCounterItem => {
   if (!item || typeof item !== "object") {
@@ -74,7 +82,13 @@ const parseCardCounterItem = (item: unknown, index: number): CardCounterItem => 
     parsedItem.description = description;
   }
 
-  if (typeof icon === "string" && icon.trim().length > 0) {
+  if (icon != null) {
+    if (!isLucideIconName(icon)) {
+      throw new Error(
+        `Item at index ${index} references an unsupported icon: ${String(icon)}`
+      );
+    }
+
     parsedItem.icon = icon;
   }
 

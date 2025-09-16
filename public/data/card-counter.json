@@ -7,7 +7,7 @@
       "value": 15,
       "description": "Completed across web, data, and ops",
       "theme": "ocean",
-      "icon": "FolderGit2",
+      "icon": "LayoutDashboard",
       "order": 1
     },
     {
@@ -16,7 +16,7 @@
       "value": 120,
       "description": "Core stack + supporting tools",
       "theme": "teal",
-      "icon": "Sparkles",
+      "icon": "Sparkle",
       "order": 2
     },
     {
@@ -43,14 +43,14 @@
       "value": 20,
       "description": "Tech & analytics credentials",
       "theme": "teal",
-      "icon": "BadgeCheck",
+      "icon": "Award",
       "order": 5
     },
     {
       "id": "deployments",
       "title": "Production Deployments",
-      "value": "5+",
-      "description": "Web apps & APIs shipped",
+      "value": 5,
+      "description": "5+ web apps & APIs shipped",
       "theme": "ocean",
       "icon": "Rocket",
       "order": 6
@@ -61,7 +61,7 @@
       "value": 39,
       "description": "Open-source + samples",
       "theme": "cyan",
-      "icon": "Github",
+      "icon": "GitBranch",
       "order": 7
     }
   ]
