@@ -13,7 +13,7 @@ export default function ProfilePage() {
         </h2>
         <OtherSkills />
       </section>
-      <TechComparison />
+      {/* <TechComparison /> */}
     </main>
   );
 }
