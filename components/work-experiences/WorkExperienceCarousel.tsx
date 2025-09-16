@@ -1,5 +1,6 @@
 "use client";
 
+import { type ReactElement } from "react";
 import Image from "next/image";
 import { withBasePath } from "@/lib/utils";
 import { useData } from "@/lib/use-data";
@@ -20,7 +21,7 @@ interface WorkExperience {
   summary: string;
 }
 
-export default function WorkExperienceCarousel() {
+export default function WorkExperienceCarousel(): ReactElement {
   const { data, loading, error } = useData<WorkExperience[]>("work-experiences.json");
 
   if (loading) {

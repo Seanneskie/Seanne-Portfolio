@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { type ReactElement } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
@@ -54,7 +55,7 @@ const SOCIAL_LINKS = [
   },
 ] as const;
 
-export default function Header() {
+export default function Header(): ReactElement {
   const pathname = usePathname();
   const [hovered, setHovered] = React.useState<string | null>(null);
 

@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { type ReactElement } from "react";
 import Autoplay from "embla-carousel-autoplay";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -17,7 +18,7 @@ import type { ProfileData } from "./types";
 import Image from "next/image";
 import { withBasePath } from "@/lib/utils";
 
-export default function BackgroundCard({ profile }: { profile: ProfileData }) {
+export default function BackgroundCard({ profile }: { profile: ProfileData }): ReactElement {
   const autoplay = React.useRef(
     Autoplay({ delay: 4500, stopOnInteraction: true })
   );

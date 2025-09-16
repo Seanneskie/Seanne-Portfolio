@@ -1,5 +1,6 @@
 "use client";
 
+import { type ReactElement } from "react";
 import { useData } from "@/lib/use-data";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import * as Icons from "lucide-react";
@@ -11,7 +12,7 @@ interface Service {
   icon: keyof typeof Icons;
 }
 
-export default function ServicesSection() {
+export default function ServicesSection(): ReactElement {
   const { data, loading, error } = useData<Service[]>("services.json");
 
   if (loading)

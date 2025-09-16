@@ -1,4 +1,6 @@
-export default function AboutMe() {
+import { type ReactElement } from "react";
+
+export default function AboutMe(): ReactElement {
   return (
     <section className="space-y-4">
       <h1 className="text-3xl font-bold tracking-tight text-teal-700 dark:text-teal-400">About Me</h1>

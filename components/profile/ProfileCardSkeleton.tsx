@@ -1,10 +1,11 @@
 "use client";
 
+import { type ReactElement } from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Skeleton } from "@/components/ui/skeleton";
 
-export default function ProfileCardSkeleton() {
+export default function ProfileCardSkeleton(): ReactElement {
   return (
     <Card className="relative overflow-hidden">
       <div

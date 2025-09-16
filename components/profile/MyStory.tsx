@@ -1,5 +1,6 @@
 "use client";
 
+import { type ReactElement } from "react";
 import {
   Code2,
   Database,
@@ -17,7 +18,7 @@ import { Badge } from "@/components/ui/badge";
 import { Sparkles, Rocket } from "lucide-react";
 import ServicesSection from "@/components/services";
 
-export default function MyStory() {
+export default function MyStory(): ReactElement {
   const whatIDo = [
     {
       icon: <Code2 className="h-5 w-5" />,
