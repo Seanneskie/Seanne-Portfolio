@@ -59,7 +59,7 @@ function NavigationMenuItem({
 }
 
 const navigationMenuTriggerStyle = cva(
-  "group inline-flex h-9 w-max items-center justify-center rounded-md bg-white dark:bg-gray-900 px-4 py-2 text-sm font-medium hover:bg-teal-500 hover:text-white focus:bg-teal-500 focus:text-white dark:hover:bg-teal-400 dark:focus:bg-teal-400 disabled:pointer-events-none disabled:opacity-50 data-[state=open]:bg-teal-500 data-[state=open]:text-white dark:data-[state=open]:bg-teal-400 focus-visible:ring-sky-500/50 outline-none transition-[color,box-shadow] focus-visible:ring-[3px] focus-visible:outline-1"
+  "group inline-flex h-9 w-max items-center justify-center rounded-md bg-white dark:bg-gray-900 px-4 py-2 text-sm font-medium hover:bg-teal-500 hover:text-white focus:bg-teal-500 focus:text-white dark:hover:bg-teal-400 dark:focus:bg-teal-400 disabled:pointer-events-none disabled:opacity-50 data-[state=open]:bg-teal-500 data-[state=open]:text-white dark:data-[state=open]:bg-teal-400 focus-visible:ring-teal-500/50 outline-none transition-[color,box-shadow] focus-visible:ring-[3px] focus-visible:outline-1"
 )
 
 
@@ -130,7 +130,7 @@ function NavigationMenuLink({
     <NavigationMenuPrimitive.Link
       data-slot="navigation-menu-link"
       className={cn(
-        "data-[active=true]:focus:bg-teal-500 data-[active=true]:hover:bg-teal-500 data-[active=true]:bg-teal-500/50 data-[active=true]:text-white hover:bg-teal-500 hover:text-white focus:bg-teal-500 focus:text-white focus-visible:ring-sky-500/50 [&_svg:not([class*='text-'])]:text-black dark:[&_svg:not([class*='text-'])]:text-white flex flex-col gap-1 rounded-sm p-2 text-sm transition-all outline-none focus-visible:ring-[3px] focus-visible:outline-1 [&_svg:not([class*='size-'])]:size-4",
+        "data-[active=true]:focus:bg-teal-500 data-[active=true]:hover:bg-teal-500 data-[active=true]:bg-teal-500/50 data-[active=true]:text-white hover:bg-teal-500 hover:text-white focus:bg-teal-500 focus:text-white focus-visible:ring-teal-500/50 [&_svg:not([class*='text-'])]:text-black dark:[&_svg:not([class*='text-'])]:text-white flex flex-col gap-1 rounded-sm p-2 text-sm transition-all outline-none focus-visible:ring-[3px] focus-visible:outline-1 [&_svg:not([class*='size-'])]:size-4",
         className
       )}
       {...props}

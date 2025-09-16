@@ -53,7 +53,7 @@ export default function HomePage() {
         <div className="flex justify-center">
           <Link
             href="/profile"
-            className="inline-block rounded-full bg-gradient-to-r from-teal-500 via-cyan-400 to-blue-500 bg-size-200 animate-gradient-x px-8 py-3 text-white shadow-lg transition-transform hover:scale-105"
+            className="inline-block rounded-full bg-gradient-to-r from-teal-500 via-cyan-400 to-teal-400 bg-size-200 animate-gradient-x px-8 py-3 text-white shadow-lg transition-transform hover:scale-105"
           >
             View more of me
           </Link>
