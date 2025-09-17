@@ -20,7 +20,9 @@ vi.mock("@/components/ui/card", () => ({
 }));
 
 vi.mock("@/components/ui/badge", () => ({
-  Badge: ({ children }: { children: React.ReactNode }) => <span>{children}</span>,
+  Badge: ({ children, ...props }: { children: React.ReactNode } & React.HTMLAttributes<HTMLSpanElement>) => (
+    <span {...props}>{children}</span>
+  ),
 }));
 
 vi.mock("./theme-dot", () => ({
@@ -36,6 +38,16 @@ vi.mock("./star-rating", () => ({
 vi.mock("./rating-bar", () => ({
   __esModule: true,
   default: () => <div />,
+}));
+
+vi.mock("./category-icon", () => ({
+  __esModule: true,
+  CategoryIcon: ({ categoryId }: { categoryId: string }) => (
+    <span data-testid={`category-icon-${categoryId}`} />
+  ),
+  default: ({ categoryId }: { categoryId: string }) => (
+    <span data-testid={`category-icon-${categoryId}`} />
+  ),
 }));
 
 (globalThis as { React?: typeof React }).React = React;
@@ -67,6 +79,7 @@ describe("ItemList", () => {
     });
 
     expect(container.textContent).toContain("React");
+    expect(container.querySelector("[data-testid='category-icon-web']")).not.toBeNull();
 
     root.unmount();
     container.remove();
