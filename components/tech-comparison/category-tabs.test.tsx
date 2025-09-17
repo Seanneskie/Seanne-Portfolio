@@ -23,6 +23,16 @@ vi.mock("@/components/ui/tabs", () => ({
   ),
 }));
 
+vi.mock("./category-icon", () => ({
+  __esModule: true,
+  CategoryIcon: ({ categoryId }: { categoryId: string }) => (
+    <span data-testid={`icon-${categoryId}`} />
+  ),
+  default: ({ categoryId }: { categoryId: string }) => (
+    <span data-testid={`icon-${categoryId}`} />
+  ),
+}));
+
 (globalThis as { React?: typeof React }).React = React;
 
 describe("CategoryTabs", () => {
@@ -45,7 +55,7 @@ describe("CategoryTabs", () => {
     container.remove();
   });
 
-  it("applies overflow handling classes", async () => {
+  it("applies overflow handling classes and renders icons", async () => {
     const categories: Category[] = [
       { id: "web", label: "Web" },
       { id: "mobile", label: "Mobile" },
@@ -63,12 +73,20 @@ describe("CategoryTabs", () => {
 
     const list = container.querySelector<HTMLDivElement>("[data-component='tabs-list']");
     const triggers = container.querySelectorAll<HTMLButtonElement>("[data-component='tabs-trigger']");
+    const firstCategoryIcon = container.querySelector("[data-testid='icon-web']");
+    const allTrigger = container.querySelector<HTMLButtonElement>("button[value='all']");
+    const gradientOverlays = container.querySelectorAll("span[aria-hidden='true']");
 
     expect(list?.className).toContain("overflow-x-auto");
+    expect(list?.className).toContain("[&::-webkit-scrollbar]:hidden");
     expect(list?.getAttribute("aria-label")).toBe("Technology categories");
     triggers.forEach((trigger) => {
       expect(trigger.className).toContain("flex-none");
+      expect(trigger.className).toContain("rounded-full");
     });
+    expect(firstCategoryIcon).not.toBeNull();
+    expect(allTrigger?.querySelector("svg")).not.toBeNull();
+    expect(gradientOverlays.length).toBeGreaterThanOrEqual(2);
 
     root.unmount();
     container.remove();

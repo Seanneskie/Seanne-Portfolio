@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import ThemeDot from "./theme-dot";
 import StarRating from "./star-rating";
 import RatingBar from "./rating-bar";
+import { CategoryIcon } from "./category-icon";
 import { TechItem, RatingTypesId, Category } from "@/types/tech-comparison";
 
 export interface ItemListProps {
@@ -28,8 +29,15 @@ export function ItemList({ items, selectedRating, categoriesById }: ItemListProp
                 <CardDescription className="flex items-center gap-2">
                   <Badge variant="secondary">{it.type}</Badge>
                   {cat?.label ? (
-                    <Badge style={{ backgroundColor: cat.color ?? undefined }} className="text-white">
-                      {cat.label}
+                    <Badge
+                      style={{ backgroundColor: cat.color ?? undefined }}
+                      className="flex items-center gap-1 text-white"
+                    >
+                      <CategoryIcon
+                        categoryId={cat.id}
+                        className="size-3.5 text-white/90"
+                      />
+                      <span>{cat.label}</span>
                     </Badge>
                   ) : null}
                 </CardDescription>
