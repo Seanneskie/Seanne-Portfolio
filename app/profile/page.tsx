@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { JSX } from "react";
 
 import Profile, { CardCounters, MyStory } from "@/components/profile";
 import OtherSkills from "@/components/profile/OtherSkills";
