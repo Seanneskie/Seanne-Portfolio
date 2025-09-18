@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { JSX } from "react";
 
 import ProjectsPageContent from "@/components/projects/projects-page-content";
 

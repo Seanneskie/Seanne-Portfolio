@@ -1,5 +1,6 @@
 "use client";
 
+import type { JSX } from "react";
 import { useState } from "react";
 import { Github, Linkedin, Mail, Phone, Twitter } from "lucide-react";
 

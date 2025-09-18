@@ -1,4 +1,5 @@
 import type { ComponentType } from "react";
+import type { JSX } from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
