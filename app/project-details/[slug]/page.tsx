@@ -2,9 +2,22 @@ import type { ComponentType } from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
+type PageParams = { slug: string };
+
 interface PageProps {
-  params: { slug: string };
+  params: Promise<PageParams>;
 }
+
+/**
+ * Normalizes the dynamic route parameters emitted by Next.js type generation.
+ *
+ * Although the generated types annotate `params` as a `Promise`, the runtime
+ * value may already be resolved. Awaiting the helper keeps the implementation
+ * compatible with either shape without sacrificing type safety.
+ */
+const resolveParams = async (params: PageProps["params"]): Promise<PageParams> => {
+  return params;
+};
 
 interface ProjectDetailConfig {
   loader: () => Promise<{ default: ComponentType }>;
@@ -91,7 +104,7 @@ const projectDetailConfig: Record<string, ProjectDetailConfig> = {
 };
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { slug } = params;
+  const { slug } = await resolveParams(params);
   const config = projectDetailConfig[slug];
 
   if (!config) {
@@ -132,7 +145,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function ProjectDetailPage({ params }: PageProps): Promise<JSX.Element> {
-  const { slug } = params;
+  const { slug } = await resolveParams(params);
   const config = projectDetailConfig[slug];
 
   if (!config) {
@@ -151,6 +164,6 @@ export default async function ProjectDetailPage({ params }: PageProps): Promise<
   }
 }
 
-export async function generateStaticParams() {
+export async function generateStaticParams(): Promise<PageParams[]> {
   return Object.keys(projectDetailConfig).map((slug) => ({ slug }));
 }
