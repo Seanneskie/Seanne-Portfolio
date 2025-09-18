@@ -1,11 +1,10 @@
 import React from "react";
-import { describe, it, expect, vi } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 
 vi.mock("next/navigation", () => ({
   notFound: vi.fn(),
 }));
 
-// Ensure React is available globally
 (globalThis as { React?: typeof React }).React = React;
 
 describe("ProjectDetailPage", () => {
@@ -13,9 +12,17 @@ describe("ProjectDetailPage", () => {
     const { default: ProjectDetailPage } = await import("./page");
     const { notFound } = await import("next/navigation");
 
-    await ProjectDetailPage({ params: Promise.resolve({ slug: "missing" }) });
+    await ProjectDetailPage({ params: { slug: "missing" } });
 
     expect(notFound).toHaveBeenCalled();
   });
-});
 
+  it("generates metadata for known project", async () => {
+    const { generateMetadata } = await import("./page");
+
+    const metadata = await generateMetadata({ params: { slug: "ai-coin-detector" } });
+
+    expect(metadata.title).toContain("AI Coin Detector");
+    expect(metadata.description).toContain("Django");
+  });
+});
