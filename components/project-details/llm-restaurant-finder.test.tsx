@@ -14,8 +14,8 @@ vi.mock("./ProjectGallery", () => ({
 type LlmRestaurantFinderComponent = typeof import("./LlmRestaurantFinder")["default"];
 
 const loadComponent = async (): Promise<LlmRestaurantFinderComponent> => {
-  const module = await import("./LlmRestaurantFinder");
-  return module.default;
+  const componentModule = await import("./LlmRestaurantFinder");
+  return componentModule.default;
 };
 
 (globalThis as { React?: typeof React }).React = React;
