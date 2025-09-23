@@ -1,10 +1,10 @@
 {
-  "lastUpdated": "2025-09-15",
+  "lastUpdated": "2025-09-23",
   "items": [
     {
       "id": "projects",
       "title": "Projects",
-      "value": 15,
+      "value": 16,
       "description": "Completed across web, data, and ops",
       "theme": "ocean",
       "icon": "LayoutDashboard",
