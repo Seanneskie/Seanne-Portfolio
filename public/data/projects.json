@@ -23,28 +23,6 @@
     ]
   },
   {
-    "title": "LLM Restaurant Finder",
-    "image": "/static/placeholders/ai.png",
-    "alt": "LLM Restaurant Finder screenshot",
-    "description": "Conversational restaurant discovery assistant that maps Gemini-authored JSON commands to the Foursquare Places API.",
-    "collaborators": null,
-    "tags": [
-      "LLM",
-      "Hono",
-      "Google Gemini",
-      "Foursquare Places API",
-      "Zod",
-      "TypeScript"
-    ],
-    "github": null,
-    "githubLabel": "",
-    "details": "project-details/llm-restaurant-finder",
-    "period": "2025",
-    "images": [
-      "/static/placeholders/ai.png"
-    ]
-  },
-  {
     "title": "NoSQL Project - MERN Stack Website",
     "image": "/static/placeholders/Mern.png",
     "alt": "Image",
@@ -360,7 +338,7 @@
     "title": "Headless E-Commerce Mini-Store",
     "image": "/headless-ecommerce-mini-store/images/banner.png",
     "alt": "Headless E-Commerce Mini-Store Image",
-    "description": "Next.js storefront that fetches product data from Shopify’s Storefront API and renders it with reusable UI components and server-side data fetching.",
+    "description": "Next.js storefront that fetches product data from Shopify\u2019s Storefront API and renders it with reusable UI components and server-side data fetching.",
     "collaborators": null,
     "tags": [
       "NextJS",
@@ -428,6 +406,29 @@
     "period": "Aug 2025 - Present",
     "images": [
       "/static/placeholders/csharp.png"
+    ]
+  },
+  {
+    "title": "LLM Restaurant Finder",
+    "image": "/static/placeholders/ai.png",
+    "alt": "LLM Restaurant Finder results interface",
+    "description": "Chat-led restaurant discovery app where a Next.js client hands prompts to a Hono API that validates Gemini commands before querying Foursquare Places.",
+    "collaborators": null,
+    "tags": [
+      "Next.js",
+      "TypeScript",
+      "Hono",
+      "Google Gemini",
+      "Foursquare Places API",
+      "LLM",
+      "Render"
+    ],
+    "github": null,
+    "githubLabel": "",
+    "details": "project-details/llm-restaurant-finder",
+    "period": "2025",
+    "images": [
+      "/static/placeholders/ai.png"
     ]
   }
 ]
