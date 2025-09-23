@@ -27,6 +27,12 @@ interface ProjectDetailConfig {
 }
 
 const projectDetailConfig: Record<string, ProjectDetailConfig> = {
+  "llm-restaurant-finder": {
+    loader: () => import("@/components/project-details/LlmRestaurantFinder"),
+    title: "LLM Restaurant Finder",
+    description:
+      "Conversational restaurant discovery service orchestrating Gemini JSON commands with the Foursquare Places API.",
+  },
   "ai-coin-detector": {
     loader: () => import("@/components/project-details/AICoinDetector"),
     title: "AI Coin Detector",

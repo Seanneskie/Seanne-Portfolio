@@ -23,6 +23,28 @@
     ]
   },
   {
+    "title": "LLM Restaurant Finder",
+    "image": "/static/placeholders/ai.png",
+    "alt": "LLM Restaurant Finder screenshot",
+    "description": "Conversational restaurant discovery assistant that maps Gemini-authored JSON commands to the Foursquare Places API.",
+    "collaborators": null,
+    "tags": [
+      "LLM",
+      "Hono",
+      "Google Gemini",
+      "Foursquare Places API",
+      "Zod",
+      "TypeScript"
+    ],
+    "github": null,
+    "githubLabel": "",
+    "details": "project-details/llm-restaurant-finder",
+    "period": "2025",
+    "images": [
+      "/static/placeholders/ai.png"
+    ]
+  },
+  {
     "title": "NoSQL Project - MERN Stack Website",
     "image": "/static/placeholders/Mern.png",
     "alt": "Image",
