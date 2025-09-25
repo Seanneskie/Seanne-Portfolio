@@ -51,18 +51,18 @@ export default function BackgroundCard({ profile }: { profile: ProfileData }): R
       />
 
       <CardHeader className="relative z-10 pb-2">
-         <CardTitle className="text-sm font-semibold uppercase tracking-wide text-black/70 dark:text-white/70">
-            Background
-          </CardTitle>
+        <CardTitle className="text-sm font-semibold uppercase tracking-wide text-black/70 dark:text-white/70">
+          Background
+        </CardTitle>
       </CardHeader>
 
       <div className="absolute inset-x-0 top-[52px] h-px bg-gradient-to-r from-teal-600/20 to-transparent dark:from-teal-400/20 dark:to-transparent" />
 
       <CardContent className="relative z-10">
         {/* Image on the RIGHT; ensure no overlap with z-index + spacing */}
-        <div className="grid items-stretch gap-8 md:grid-cols-[1fr_36%]">
+        <div className="grid items-start gap-8 md:gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(260px,320px)] xl:grid-cols-[minmax(0,1fr)_minmax(300px,360px)]">
           {/* LEFT: Description carousel (serif, centered, larger) */}
-          <div className="relative z-10 flex flex-col">
+          <div className="relative z-10 flex flex-col gap-6">
             <Carousel
               opts={{ loop: true, align: "start" }}
               plugins={[autoplay.current]}
@@ -75,8 +75,8 @@ export default function BackgroundCard({ profile }: { profile: ProfileData }): R
               <CarouselContent className="pb-2">
                 {slides.map((text, i) => (
                   <CarouselItem key={i} className="px-1">
-                    <div className="rounded-xl border border-neutral-200/60 bg-neutral-50/70 p-6 md:p-8 text-center backdrop-blur-sm dark:border-neutral-800/60 dark:bg-neutral-900/60">
-                      <p className="mx-auto max-w-3xl font-serif text-lg leading-relaxed text-black md:text-xl dark:text-white">
+                    <div className="rounded-xl border border-neutral-200/60 bg-neutral-50/70 p-6 text-center backdrop-blur-sm dark:border-neutral-800/60 dark:bg-neutral-900/60 sm:p-7 md:p-8">
+                      <p className="mx-auto max-w-2xl font-serif text-lg leading-relaxed text-black sm:text-xl dark:text-white">
                         {text}
                       </p>
                     </div>
@@ -86,7 +86,7 @@ export default function BackgroundCard({ profile }: { profile: ProfileData }): R
             </Carousel>
 
             {/* DOTS (no page buttons) */}
-            <div className="mt-4 flex justify-center gap-2">
+            <div className="mt-4 flex justify-center gap-2 md:justify-start">
               {Array.from({ length: count }).map((_, i) => (
                 <button
                   key={i}
@@ -104,7 +104,7 @@ export default function BackgroundCard({ profile }: { profile: ProfileData }): R
             </div>
 
             {/* CTAs — spaced to avoid any overlap */}
-            <div className="mt-6 flex flex-wrap gap-3">
+            <div className="mt-6 flex flex-wrap justify-center gap-3 md:justify-start">
               <Button
                 size="sm"
                 onClick={() => openMailTo(profile.email)}
@@ -149,13 +149,13 @@ export default function BackgroundCard({ profile }: { profile: ProfileData }): R
           </div>
 
           {/* RIGHT: Portrait image (fixed crop & position) */}
-          <div className="order-last overflow-hidden rounded-xl ring-1 ring-teal-600/20 shadow-sm dark:ring-teal-400/20 md:order-none">
-            <div className="relative h-72 w-full overflow-hidden rounded-xl">
+          <div className="order-first overflow-hidden rounded-xl ring-1 ring-teal-600/20 shadow-sm dark:ring-teal-400/20 sm:order-last lg:order-none">
+            <div className="relative aspect-[3/4] w-full min-h-[18rem] overflow-hidden rounded-xl md:min-h-[20rem]">
               <Image
                 src={withBasePath("/static/image_2.jpg")}
                 alt="Profile portrait"
                 fill
-                sizes="(max-width: 768px) 100vw, 36vw"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 45vw, 32vw"
                 className="object-cover object-top"
               />
             </div>
