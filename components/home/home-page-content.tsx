@@ -6,6 +6,7 @@ import { toast } from "sonner";
 
 import Banner from "@/components/banner";
 import Highlights from "@/components/highlights";
+import HobbyAchievements from "@/components/hobbies/hobby-achievements";
 import Profile, { MyStory } from "@/components/profile";
 import { WorkExperienceCarousel } from "@/components/work-experiences";
 import { withBasePath } from "@/lib/utils";
@@ -50,6 +51,7 @@ export default function HomePageContent(): JSX.Element {
       <div className="container mx-auto max-w-7xl space-y-16 px-4 py-12">
         <Profile />
         <MyStory />
+        <HobbyAchievements />
         <Highlights />
         <WorkExperienceCarousel />
         <div className="flex justify-center">
