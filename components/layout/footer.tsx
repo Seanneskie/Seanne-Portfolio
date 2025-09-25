@@ -5,6 +5,7 @@ import { Github, Linkedin, Twitter } from "lucide-react";
 const NAV_LINKS = [
   { href: "/", label: "Home" },
   { href: "/projects", label: "Projects" },
+  { href: "/design-wire-report", label: "Design Wire" },
   { href: "/courses", label: "Courses" },
   { href: "/certificates", label: "Certificates" },
   { href: "/awards", label: "Awards" },
