@@ -2,11 +2,20 @@
   {
     "company": "TSP Marine Industries",
     "project": "Vessel Inventory Management System (VIMS)",
-    "period": "November 2024 – June 2025",
+    "period": "November 2024 \u2013 June 2025",
     "images": [
-      { "src": "/vims/images/3.png", "alt": "VIMS dashboard" },
-      { "src": "/vims/images/4.png", "alt": "VIMS inventory table" },
-      { "src": "/vims/images/6.png", "alt": "VIMS Reports" }
+      {
+        "src": "/vims/images/3.png",
+        "alt": "VIMS dashboard"
+      },
+      {
+        "src": "/vims/images/4.png",
+        "alt": "VIMS inventory table"
+      },
+      {
+        "src": "/vims/images/6.png",
+        "alt": "VIMS Reports"
+      }
     ],
     "tech": [
       "Next.js 15",
@@ -23,19 +32,34 @@
       "Implemented role-based access controls for sensitive operations, including PDF generation.",
       "Developed one-click requisition-slip PDF exports using jsPDF and autoTable.",
       "Engineered offline-first sync logic to cache transactions and reconcile upon reconnect.",
-      "Set up CI/CD pipeline (lint → test → static export) with GitHub Actions for automated deployments."
+      "Set up CI/CD pipeline (lint \u2192 test \u2192 static export) with GitHub Actions for automated deployments."
     ]
   },
   {
-    "company": "LGU Gensan – CEMCDO",
+    "company": "LGU Gensan \u2013 CEMCDO",
     "project": "Cooperative Profiling & Fund Utilization System",
-    "period": "January 2025 – April 2025",
+    "period": "January 2025 \u2013 April 2025",
     "images": [
-      { "src": "/cemcdo-app/images/landing-page.png", "alt": "CEMCDO landing page" },
-      { "src": "/cemcdo-app/images/admin-dashboard.png", "alt": "CEMCDO admin dashboard" },
-      { "src": "/photo-carousel/ojt.jpg", "alt": "OJT at CEMCDO – System Presentation Meeting" },
-      { "src": "/photo-carousel/ojt_4.jpg", "alt": "OJT at CEMCDO – Workshop and User Testing" },
-      { "src": "/photo-carousel/ojt_6.jpg", "alt": "OOJT at CEMCDO – The Team" }
+      {
+        "src": "/cemcdo-app/images/landing-page.png",
+        "alt": "CEMCDO landing page"
+      },
+      {
+        "src": "/cemcdo-app/images/admin-dashboard.png",
+        "alt": "CEMCDO admin dashboard"
+      },
+      {
+        "src": "/photo-carousel/ojt.jpg",
+        "alt": "OJT at CEMCDO \u2013 System Presentation Meeting"
+      },
+      {
+        "src": "/photo-carousel/ojt_4.jpg",
+        "alt": "OJT at CEMCDO \u2013 Workshop and User Testing"
+      },
+      {
+        "src": "/photo-carousel/ojt_6.jpg",
+        "alt": "OOJT at CEMCDO \u2013 The Team"
+      }
     ],
     "tech": [
       "Django",
@@ -46,7 +70,7 @@
       "Render",
       "JavaScript"
     ],
-    "summary": "Delivered a full-stack portal centralising cooperative records, automating fund utilisation, and generating board-ready Excel reports—cutting manual preparation time by 50% and reducing ledger error rates below 1%.",
+    "summary": "Delivered a full-stack portal centralising cooperative records, automating fund utilisation, and generating board-ready Excel reports\u2014cutting manual preparation time by 50% and reducing ledger error rates below 1%.",
     "highlights": [
       "Designed fully-normalised database schema with foreign key enforcement and audit trails.",
       "Created reusable OpenPyXL helpers for multi-sheet spreadsheets with embedded charts.",
@@ -57,7 +81,7 @@
   {
     "company": "COTSEYE Project",
     "project": "Crowd Mapping for Crown of Thorns (COTS) Monitoring",
-    "period": "May 2024 – August 2024",
+    "period": "May 2024 \u2013 August 2024",
     "images": [
       {
         "src": "/cotseye/images/placeholder.svg",
@@ -77,6 +101,38 @@
       "Integrated Leaflet.js for geospatial mapping of sightings.",
       "Optimised backend queries for faster data retrieval and visualization.",
       "Implemented responsive UI for mobile field reporting by community members."
+    ]
+  },
+  {
+    "company": "Pionner Dev AI",
+    "project": "Intelligent Development Enablement Platform",
+    "period": "September 2025 \u2013 Present",
+    "images": [
+      {
+        "src": "/static/pionner-dev-ai/platform-overview.svg",
+        "alt": "Pionner Dev AI platform overview"
+      },
+      {
+        "src": "/static/pionner-dev-ai/agent-pipeline.svg",
+        "alt": "Pionner Dev AI agent pipeline"
+      }
+    ],
+    "tech": [
+      "Next.js 15",
+      "TypeScript",
+      "LangChain",
+      "OpenAI GPT-4.1",
+      "Supabase",
+      "PostgreSQL",
+      "Tailwind CSS",
+      "ShadCN"
+    ],
+    "summary": "Leading the design of an AI-assisted delivery platform that orchestrates autonomous coding agents, accelerating enterprise feature delivery while guaranteeing human oversight and compliance.",
+    "highlights": [
+      "Architected guardrailed agent workflows that triage backlog items and propose implementation plans with 95% reviewer acceptance.",
+      "Integrated LangChain evaluation harness and Supabase vector memory to continuously fine-tune prompts on production telemetry.",
+      "Shipped observability dashboards combining OpenAI usage metrics and customer SLAs to maintain <1% incident regression rate.",
+      "Coordinated cross-functional rollout playbooks ensuring SOC2 alignment and zero unplanned downtime during pilot releases."
     ]
   }
 ]

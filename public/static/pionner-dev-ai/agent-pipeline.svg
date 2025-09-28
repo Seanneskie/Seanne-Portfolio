@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" role="img" aria-labelledby="title desc">
+  <title id="title">Pionner Dev AI agent pipeline</title>
+  <desc id="desc">Diagram of orchestrated AI agent pipeline with analytics.</desc>
+  <rect width="800" height="450" fill="#0f172a" rx="24" />
+  <g fill="#1e293b">
+    <rect x="60" y="80" width="200" height="80" rx="14" />
+    <rect x="300" y="80" width="200" height="80" rx="14" />
+    <rect x="540" y="80" width="200" height="80" rx="14" />
+    <rect x="150" y="220" width="500" height="160" rx="24" />
+  </g>
+  <g fill="#10b981" opacity="0.85">
+    <circle cx="160" cy="120" r="16" />
+    <circle cx="400" cy="120" r="16" />
+    <circle cx="640" cy="120" r="16" />
+  </g>
+  <g stroke="#38bdf8" stroke-width="4" fill="none" stroke-linecap="round">
+    <path d="M220 120 H300" />
+    <path d="M460 120 H540" />
+  </g>
+  <text x="90" y="122" fill="#e2e8f0" font-family="'Inter', sans-serif" font-size="18">Ingestion</text>
+  <text x="330" y="122" fill="#e2e8f0" font-family="'Inter', sans-serif" font-size="18">Reasoning</text>
+  <text x="580" y="122" fill="#e2e8f0" font-family="'Inter', sans-serif" font-size="18">Delivery</text>
+  <text x="190" y="260" fill="#e2e8f0" font-family="'Inter', sans-serif" font-size="20">Live agent performance metrics</text>
+  <text x="190" y="300" fill="#38bdf8" font-family="'Inter', sans-serif" font-size="44" font-weight="600">99.2% SLA</text>
+  <text x="190" y="340" fill="#e2e8f0" font-family="'Inter', sans-serif" font-size="18">Autonomous remediation coverage ↑ 35%</text>
+</svg>
