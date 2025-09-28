@@ -104,17 +104,17 @@
     ]
   },
   {
-    "company": "Pionner Dev AI",
-    "project": "Intelligent Development Enablement Platform",
+    "company": "PioneerDev.ai",
+    "project": "SaaS & AI Platform Delivery",
     "period": "September 2025 \u2013 Present",
     "images": [
       {
-        "src": "/static/pionner-dev-ai/platform-overview.svg",
-        "alt": "Pionner Dev AI platform overview"
+        "src": "/static/pioneer-dev-ai/platform-overview.svg",
+        "alt": "PioneerDev.ai platform overview"
       },
       {
-        "src": "/static/pionner-dev-ai/agent-pipeline.svg",
-        "alt": "Pionner Dev AI agent pipeline"
+        "src": "/static/pioneer-dev-ai/agent-pipeline.svg",
+        "alt": "PioneerDev.ai agent pipeline"
       }
     ],
     "tech": [
@@ -127,12 +127,12 @@
       "Tailwind CSS",
       "ShadCN"
     ],
-    "summary": "Leading the design of an AI-assisted delivery platform that orchestrates autonomous coding agents, accelerating enterprise feature delivery while guaranteeing human oversight and compliance.",
+    "summary": "PioneerDev.ai builds scalable SaaS and AI-enabled applications that combine streaming LLM workflows, custom integrations, and enterprise-ready delivery for clients across law, fintech, eCommerce, and startup ecosystems. As a Full Stack Web Developer, I translate domain requirements into maintainable software that blends intuitive UX with resilient backend infrastructure.",
     "highlights": [
-      "Architected guardrailed agent workflows that triage backlog items and propose implementation plans with 95% reviewer acceptance.",
-      "Integrated LangChain evaluation harness and Supabase vector memory to continuously fine-tune prompts on production telemetry.",
-      "Shipped observability dashboards combining OpenAI usage metrics and customer SLAs to maintain <1% incident regression rate.",
-      "Coordinated cross-functional rollout playbooks ensuring SOC2 alignment and zero unplanned downtime during pilot releases."
+      "Architect, develop, and ship end-to-end features that span responsive interfaces, secure APIs, and data infrastructure.",
+      "Implement streaming LLM workflows that orchestrate chained models for real-time, human-in-the-loop product experiences.",
+      "Integrate authentication, payments, and domain-specific business logic into reusable SaaS foundations with strong observability and security guardrails.",
+      "Champion code reviews, CI/CD automation, and production monitoring to uphold reliability while collaborating with AI engineers, designers, and stakeholders."
     ]
   }
 ]

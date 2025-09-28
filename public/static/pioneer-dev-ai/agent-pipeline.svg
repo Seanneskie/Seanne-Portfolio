@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" role="img" aria-labelledby="title desc">
-  <title id="title">Pionner Dev AI agent pipeline</title>
+  <title id="title">PioneerDev.ai agent pipeline</title>
   <desc id="desc">Diagram of orchestrated AI agent pipeline with analytics.</desc>
   <rect width="800" height="450" fill="#0f172a" rx="24" />
   <g fill="#1e293b">
