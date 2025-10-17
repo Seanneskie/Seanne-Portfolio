@@ -144,6 +144,11 @@ export default function MyStory(): ReactElement {
                     "Tailwind",
                     "Chart.js",
                     "Leaflet",
+                    "Remix",
+                    "Cloudflare",
+                    "Plausible Analytics",
+                    "Fly.io",
+                    "Redis",
                   ].map((t) => (
                     <Badge
                       key={t}
