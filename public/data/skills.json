@@ -53,7 +53,8 @@
           { "icon": "fas fa-bell", "name": "Sonner" },
           { "icon": "fas fa-images", "name": "Embla Carousel" },
           { "icon": "devicon-react-original colored", "name": "lucide-react" },
-          { "icon": "devicon-radixui-plain colored", "name": "Radix UI" }
+          { "icon": "devicon-radixui-plain colored", "name": "Radix UI" },
+          { "icon": "devicon-remix-original colored", "name": "Remix" }
         ]
       },
       {
@@ -70,7 +71,8 @@
           { "icon": "devicon-nodejs-plain colored", "name": "Node.js" },
           { "icon": "devicon-drizzle-plain colored", "name": "Drizzle ORM" },
           { "icon": "devicon-prisma-plain colored", "name": "Prisma" },
-          { "icon": "devicon-nodejs-plain colored", "name": "Hono" }
+          { "icon": "devicon-nodejs-plain colored", "name": "Hono" },
+          { "icon": "devicon-redis-plain colored", "name": "Redis" }
         ]
       },
       {
@@ -129,7 +131,8 @@
           },
           { "icon": "fas fa-file-excel", "name": "OpenPyXL" },
           { "icon": "devicon-streamlit-plain colored", "name": "Streamlit" },
-          { "icon": "devicon-powerbi-plain colored", "name": "Power BI" }
+          { "icon": "devicon-powerbi-plain colored", "name": "Power BI" },
+          { "icon": "fas fa-chart-line", "name": "Plausible Analytics" }
         ]
       },
       {
@@ -330,7 +333,9 @@
             "name": "Google Cloud"
           },
           { "icon": "fas fa-cloud-upload-alt", "name": "Render" },
-          { "icon": "devicon-vercel-plain colored", "name": "Vercel" }
+          { "icon": "devicon-vercel-plain colored", "name": "Vercel" },
+          { "icon": "devicon-cloudflare-plain colored", "name": "Cloudflare" },
+          { "icon": "fas fa-paper-plane", "name": "Fly.io" }
         ]
       },
       {
