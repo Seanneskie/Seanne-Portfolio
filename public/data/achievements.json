@@ -2,41 +2,90 @@
   {
     "icon": "fas fa-trophy",
     "title": "JITS IT Week 2023 - Hackathon | January 2023",
-    "description": "Champion"
+    "description": "Champion",
+    "skills": [
+      "Front-End Development",
+      "Back-End Development",
+      "REST API Development",
+      "Creative Problem Solving",
+      "Agile Collaboration"
+    ]
   },
   {
     "icon": "fas fa-trophy",
     "title": "JITS IT Week 2024 - Hackathon | April 2024",
-    "description": "Champion"
+    "description": "Champion",
+    "skills": [
+      "Front-End Development",
+      "Back-End Development",
+      "REST API Development",
+      "Problem Solving",
+      "Agile Collaboration"
+    ]
   },
   {
     "icon": "fas fa-award",
     "title": "Hack4Gov3 – Region 12 Qualifier | August 2024",
-    "description": "Champion & Excellence Awardee"
+    "description": "Champion & Excellence Awardee",
+    "skills": [
+      "Problem Solving",
+      "Critical Thinking",
+      "REST API Development",
+      "Agile Collaboration"
+    ]
   },
   {
     "icon": "fas fa-medal",
     "title": "Trend Micro – Trend University CTF Qualifier | August 2024",
-    "description": "1st Place"
+    "description": "1st Place",
+    "skills": [
+      "Forensics",
+      "Reverse Engineering",
+      "OSINT",
+      "Kali Linux"
+    ]
   },
   {
     "icon": "fas fa-medal",
     "title": "Trend Micro – Trend University CTF Finals | September 2024",
-    "description": "4th Place"
+    "description": "4th Place",
+    "skills": [
+      "Forensics",
+      "Reverse Engineering",
+      "OSINT",
+      "Kali Linux"
+    ]
   },
   {
     "icon": "fas fa-flag-checkered",
     "title": "Hack4Gov3 – National Finals | October 2024",
-    "description": "4th Place"
+    "description": "4th Place",
+    "skills": [
+      "Problem Solving",
+      "Critical Thinking",
+      "REST API Development",
+      "Agile Collaboration"
+    ]
   },
   {
     "icon": "fas fa-graduation-cap",
     "title": "Cum Laude | June 2025",
-    "description": "Mindanao State University - General Santos"
+    "description": "Mindanao State University - General Santos",
+    "skills": [
+      "Analytical Skills",
+      "Critical Thinking",
+      "Documentation"
+    ]
   },
   {
     "icon": "fas fa-award",
     "title": "PSITE12 Most Outstanding IT Student | June 2025",
-    "description": "Awarded by PSITEXII and Dr. Lumer Jude P. Doce"
+    "description": "Awarded by PSITEXII and Dr. Lumer Jude P. Doce",
+    "skills": [
+      "Presentation Skills",
+      "Documentation",
+      "Creative Problem Solving",
+      "Analytical Skills"
+    ]
   }
 ]

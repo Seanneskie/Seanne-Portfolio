@@ -801,6 +801,11 @@
             "description": "Containerize apps for reproducible deployments."
           },
           {
+            "icon": "fas fa-user-shield",
+            "name": "DevSecOps",
+            "description": "Integrate security checks across CI/CD pipelines."
+          },
+          {
             "icon": "devicon-vitejs-plain colored",
             "name": "Vite",
             "description": "Bundle modern frontend builds with Vite."
@@ -931,6 +936,11 @@
             "description": "Work with spatial layers and map data."
           },
           {
+            "icon": "fas fa-shield-alt",
+            "name": "Cybersecurity",
+            "description": "Apply security fundamentals to protect systems and data."
+          },
+          {
             "icon": "devicon-cplusplus-plain colored",
             "name": "x86-64 Assembly Language (studying)",
             "description": "Study assembly concepts and low-level code."
@@ -977,9 +987,19 @@
             "description": "Evaluate options and choose sound approaches."
           },
           {
+            "icon": "fas fa-search",
+            "name": "Research",
+            "description": "Investigate topics, gather sources, and synthesize findings."
+          },
+          {
             "icon": "fas fa-puzzle-piece",
             "name": "Problem Solving",
             "description": "Resolve issues through structured analysis."
+          },
+          {
+            "icon": "fas fa-compass",
+            "name": "Design Thinking",
+            "description": "Apply user-centered ideation and prototyping methods."
           },
           {
             "icon": "fas fa-users",
@@ -995,6 +1015,11 @@
             "icon": "fas fa-chalkboard-teacher",
             "name": "Presentation Skills",
             "description": "Communicate ideas clearly to stakeholders."
+          },
+          {
+            "icon": "fas fa-rocket",
+            "name": "Entrepreneurship",
+            "description": "Explore business ideas, market fit, and go-to-market thinking."
           }
         ]
       }

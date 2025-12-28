@@ -4,16 +4,20 @@ import React from "react";
 import { type ReactElement } from "react";
 import { motion, type Variants, type Transition } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import { useData } from "@/lib/use-data";
 
 interface Achievement {
   icon: string;
   title: string;
   description: string;
+  skills?: string[];
 }
 
 // Framer Motion v11 expects an Easing (function or [x1,y1,x2,y2])
 const EASE_OUT: NonNullable<Transition["ease"]> = [0.16, 1, 0.3, 1];
+const badgeCls =
+  "rounded-full bg-teal-50 text-teal-800 ring-1 ring-inset ring-teal-200 dark:bg-teal-900/30 dark:text-teal-200 dark:ring-teal-800";
 
 const itemVariants: Variants = {
   hidden: { opacity: 0, y: 18 },
@@ -121,6 +125,19 @@ export default function Awards(): ReactElement {
                     <p className="mt-2 text-base text-gray-700 dark:text-gray-200">
                       {achievement.description}
                     </p>
+                    {achievement.skills?.length ? (
+                      <div className="mt-3 flex flex-wrap gap-2">
+                        {achievement.skills.map((label) => (
+                          <Badge
+                            key={label}
+                            variant="secondary"
+                            className={badgeCls}
+                          >
+                            {label}
+                          </Badge>
+                        ))}
+                      </div>
+                    ) : null}
 
                     <div
                       className="mt-4 h-px w-0 bg-gradient-to-r from-teal-500/50 to-cyan-400/50

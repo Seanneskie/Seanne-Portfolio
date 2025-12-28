@@ -3,6 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useMemo, useState, type ReactElement } from "react";
 import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -26,11 +27,13 @@ interface Course {
   institution: string;
   description?: string;
   credits?: number;
+  skills?: string[];
 }
 
 export default function CoursesSection(): ReactElement {
   const [search, setSearch] = useState("");
   const [institution, setInstitution] = useState("");
+  const [skill, setSkill] = useState("");
 
   const { data, loading, error } = useData<Course[]>("courses.json");
   const courses = useMemo(() => data ?? [], [data]);
@@ -39,9 +42,14 @@ export default function CoursesSection(): ReactElement {
     () => Array.from(new Set(courses.map((c) => c.institution))).sort(),
     [courses]
   );
+  const skills = useMemo<string[]>(
+    () => Array.from(new Set(courses.flatMap((c) => c.skills ?? []))).sort(),
+    [courses]
+  );
 
   const totalCourses = courses.length;
   const totalInstitutions = institutions.length;
+  const totalSkills = skills.length;
 
   const filtered = useMemo(() => {
     return courses.filter((c) => {
@@ -52,9 +60,13 @@ export default function CoursesSection(): ReactElement {
         c.title.toLowerCase().includes(term);
       const matchesInstitution =
         !institution || c.institution === institution;
-      return matchesSearch && matchesInstitution;
+      const matchesSkill = !skill || (c.skills ?? []).includes(skill);
+      return matchesSearch && matchesInstitution && matchesSkill;
     });
-  }, [courses, search, institution]);
+  }, [courses, search, institution, skill]);
+
+  const badgeCls =
+    "rounded-full bg-teal-50 text-teal-800 ring-1 ring-inset ring-teal-200 dark:bg-teal-900/30 dark:text-teal-200 dark:ring-teal-800";
 
   if (loading) {
     return (
@@ -96,20 +108,39 @@ export default function CoursesSection(): ReactElement {
               ))}
             </SelectContent>
           </Select>
+          <Select
+            value={skill ? skill : "__all"}
+            onValueChange={(value) => setSkill(value === "__all" ? "" : value)}
+          >
+            <SelectTrigger className="lg:w-64">
+              <SelectValue placeholder="All skills" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="__all">All skills</SelectItem>
+              {skills.map((skillLabel) => (
+                <SelectItem key={skillLabel} value={skillLabel}>
+                  {skillLabel}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
           <div className="flex flex-wrap items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
             <span>
               Showing {filtered.length} of {totalCourses}
             </span>
-            <span className="hidden text-gray-400 dark:text-gray-500 sm:inline">•</span>
+            <span className="hidden text-gray-400 dark:text-gray-500 sm:inline">|</span>
             <span>{totalInstitutions} institutions</span>
+            <span className="hidden text-gray-400 dark:text-gray-500 sm:inline">|</span>
+            <span>{totalSkills} skills</span>
             <Button
               size="sm"
               variant="outline"
               onClick={() => {
                 setSearch("");
                 setInstitution("");
+                setSkill("");
               }}
-              disabled={!search && !institution}
+              disabled={!search && !institution && !skill}
               className="border-teal-200 text-teal-700 hover:border-teal-300 hover:text-teal-800 dark:border-teal-800 dark:text-teal-200"
             >
               Clear filters
@@ -130,6 +161,7 @@ export default function CoursesSection(): ReactElement {
             onClick={() => {
               setSearch("");
               setInstitution("");
+              setSkill("");
             }}
             className="mt-4 border-teal-200 text-teal-700 hover:border-teal-300 hover:text-teal-800 dark:border-teal-800 dark:text-teal-200"
           >
@@ -175,6 +207,19 @@ export default function CoursesSection(): ReactElement {
                           <p className="mt-2 text-sm text-gray-700 dark:text-gray-200">
                             {c.institution}
                           </p>
+                          {c.skills?.length ? (
+                            <div className="mt-3 flex flex-wrap gap-2">
+                              {c.skills.map((label) => (
+                                <Badge
+                                  key={label}
+                                  variant="secondary"
+                                  className={badgeCls}
+                                >
+                                  {label}
+                                </Badge>
+                              ))}
+                            </div>
+                          ) : null}
                         </div>
                       </AccordionTrigger>
                       <AccordionContent>
@@ -204,3 +249,4 @@ export default function CoursesSection(): ReactElement {
     </div>
   );
 }
+

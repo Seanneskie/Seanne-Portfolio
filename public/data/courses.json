@@ -4,102 +4,198 @@
     "code": "ITE152",
     "institution": "Mindanao State University - General Santos",
     "description": "Covers advanced database concepts and optimization strategies.",
-    "credits": 3
+    "credits": 3,
+    "skills": [
+      "SQL",
+      "MySQL",
+      "PostgreSQL",
+      "Database Administration"
+    ]
   },
   {
     "title": "Big Data Analytics",
     "code": "ITD105",
     "institution": "Mindanao State University - General Santos",
-    "credits": 3
+    "credits": 3,
+    "skills": [
+      "Data Analysis",
+      "Business Intelligence (BI)",
+      "Power BI"
+    ]
   },
   {
     "title": "Business Intelligence",
     "code": "ITD111",
-    "institution": "Mindanao State University - General Santos"
+    "institution": "Mindanao State University - General Santos",
+    "skills": [
+      "Business Intelligence (BI)",
+      "Tableau",
+      "Google Looker Studio"
+    ]
   },
   {
     "title": "Application Development",
     "code": "CCC181",
-    "institution": "Mindanao State University - General Santos"
+    "institution": "Mindanao State University - General Santos",
+    "skills": [
+      "Front-End Development",
+      "Back-End Development",
+      "REST API Development"
+    ]
   },
   {
     "title": "Computer Architecture & Operating Systems",
     "code": "ITE131",
-    "institution": "Mindanao State University - General Santos"
+    "institution": "Mindanao State University - General Santos",
+    "skills": [
+      "C",
+      "Linux Commands",
+      "Windows OS"
+    ]
   },
   {
     "title": "Computer Programming 1",
     "code": "CCC101",
-    "institution": "Mindanao State University - General Santos"
+    "institution": "Mindanao State University - General Santos",
+    "skills": [
+      "Python",
+      "C"
+    ]
   },
   {
     "title": "Computer Programming 2",
     "code": "CCC102",
-    "institution": "Mindanao State University - General Santos"
+    "institution": "Mindanao State University - General Santos",
+    "skills": [
+      "Python",
+      "JavaScript"
+    ]
   },
   {
     "title": "Data Structures & Algorithms",
     "code": "CCC121",
-    "institution": "Mindanao State University - General Santos"
+    "institution": "Mindanao State University - General Santos",
+    "skills": [
+      "Python",
+      "C",
+      "JavaScript"
+    ]
   },
   {
     "title": "Data Visualization Techniques",
     "code": "ITD112",
-    "institution": "Mindanao State University - General Santos"
+    "institution": "Mindanao State University - General Santos",
+    "skills": [
+      "Data Visualization",
+      "Tableau",
+      "Power BI"
+    ]
   },
   {
     "title": "Database Security, Admin & Management",
     "code": "ITD104",
-    "institution": "Mindanao State University - General Santos"
+    "institution": "Mindanao State University - General Santos",
+    "skills": [
+      "Database Administration",
+      "SQL",
+      "SQL Server 2022"
+    ]
   },
   {
     "title": "Fundamentals of Computing",
     "code": "CCC100",
-    "institution": "Mindanao State University - General Santos"
+    "institution": "Mindanao State University - General Santos",
+    "skills": [
+      "Python",
+      "Windows OS"
+    ]
   },
   {
     "title": "Information Assurance and Security",
     "code": "ITE185",
-    "institution": "Mindanao State University - General Santos"
+    "institution": "Mindanao State University - General Santos",
+    "skills": [
+      "Kali Linux",
+      "Forensics",
+      "OSINT"
+    ]
   },
   {
     "title": "Intro to AI and Expert Systems",
     "code": "ITE153",
-    "institution": "Mindanao State University - General Santos"
+    "institution": "Mindanao State University - General Santos",
+    "skills": [
+      "Machine Learning",
+      "TensorFlow",
+      "Prompt Engineering"
+    ]
   },
   {
     "title": "NoSQL Databases",
     "code": "ITD110",
-    "institution": "Mindanao State University - General Santos"
+    "institution": "Mindanao State University - General Santos",
+    "skills": [
+      "NoSQL (MongoDB)",
+      "MongoDB"
+    ]
   },
   {
     "title": "Probability and Stat'l Inference for Computing Sys",
     "code": "STT071",
-    "institution": "Mindanao State University - General Santos"
+    "institution": "Mindanao State University - General Santos",
+    "skills": [
+      "Numerical Analysis",
+      "Data Analysis"
+    ]
   },
   {
     "title": "Requirements Engineering",
     "code": "ISY108",
-    "institution": "Mindanao State University - General Santos"
+    "institution": "Mindanao State University - General Santos",
+    "skills": [
+      "Software Development Life Cycle (SDLC)",
+      "Project Documentation",
+      "UML Diagramming"
+    ]
   },
   {
     "title": "Social, Legal & Professional Issues in Computing",
     "code": "ITE184",
-    "institution": "Mindanao State University - General Santos"
+    "institution": "Mindanao State University - General Santos",
+    "skills": [
+      "Documentation",
+      "Agile Collaboration",
+      "Critical Thinking"
+    ]
   },
   {
     "title": "Startup Essentials: Fund. of Inno-driven Entrep",
     "code": "ENT101",
-    "institution": "Mindanao State University - General Santos"
+    "institution": "Mindanao State University - General Santos",
+    "skills": [
+      "Creative Problem Solving",
+      "Presentation Skills",
+      "Critical Thinking"
+    ]
   },
   {
     "title": "Systems Integration, Admin. and Maintenance",
     "code": "ITE182",
-    "institution": "Mindanao State University - General Santos"
+    "institution": "Mindanao State University - General Santos",
+    "skills": [
+      "REST API Development",
+      "Linux Commands",
+      "Windows OS"
+    ]
   },
   {
     "title": "Web Systems and Technologies",
     "code": "ITE183",
-    "institution": "Mindanao State University - General Santos"
+    "institution": "Mindanao State University - General Santos",
+    "skills": [
+      "HTML5",
+      "CSS3",
+      "JavaScript"
+    ]
   }
 ]
