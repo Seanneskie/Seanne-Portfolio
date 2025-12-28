@@ -15,7 +15,7 @@ export default async function ProjectTemplate() {
         images={
           images.length
             ? images
-            : [{ src: "/static/placeholders/ai.png", alt }]
+            : [{ src: "/static/placeholders/ai.webp", alt }]
         }
         // githubUrl="https://github.com/username/repo" // optional
         // downloadUrl="/static/project-slug/file.zip" // optional

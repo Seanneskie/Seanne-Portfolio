@@ -17,7 +17,7 @@ export default async function BudgetSystem() {
         images={
           images.length
             ? images
-            : [{ src: "/static/placeholders/csharp.png", alt }]
+            : [{ src: "/static/placeholders/csharp.webp", alt }]
         }
       >
         <p>

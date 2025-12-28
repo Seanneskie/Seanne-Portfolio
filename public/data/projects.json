@@ -1,7 +1,7 @@
 [
   {
     "title": "AI Coin Detector",
-    "image": "/static/placeholders/ai.png",
+    "image": "/static/placeholders/ai.webp",
     "alt": "Coin Detector Image",
     "description": "Made with Django and GTM. A requirement in Introduction to AI course.",
     "collaborators": "Kimberly Baylon, Jeric Aminola, Bridget Jose, Azlan Tomindug",
@@ -19,12 +19,12 @@
     "details": "project-details/ai-coin-detector",
     "period": "March 2024 - May 2025",
     "images": [
-      "/static/placeholders/ai.png"
+      "/static/placeholders/ai.webp"
     ]
   },
   {
     "title": "NoSQL Project - MERN Stack Website",
-    "image": "/static/placeholders/Mern.png",
+    "image": "/static/placeholders/Mern.webp",
     "alt": "Image",
     "description": "Made using MERN Stack. A final requirement in NoSQL Course.",
     "collaborators": null,
@@ -41,12 +41,12 @@
     "details": "project-details/nosql-project",
     "period": "Sep 2023 - Dec 2023",
     "images": [
-      "/static/placeholders/Mern.png"
+      "/static/placeholders/Mern.webp"
     ]
   },
   {
     "title": "Advance Database Project - CNSM Website",
-    "image": "/static/placeholders/Mern.png",
+    "image": "/static/placeholders/Mern.webp",
     "alt": "CNSM Image",
     "description": "Made using MERN Stack. A final requirement in Advance Database Course.",
     "collaborators": "Database Major Batch of 2021-2025",
@@ -64,12 +64,12 @@
     "details": "project-details/cnsm-website",
     "period": "Sep 2023 - Dec 2023",
     "images": [
-      "/static/placeholders/Mern.png"
+      "/static/placeholders/Mern.webp"
     ]
   },
   {
     "title": "Bitcoin Analysis App",
-    "image": "/bitcoin-analysis-app/images/1.png",
+    "image": "/bitcoin-analysis-app/images/1.webp",
     "alt": "Analysis Image",
     "description": "A Bitcoin Prediction and Descriptive Analysis. Made with Django and Python Modules.",
     "collaborators": null,
@@ -89,20 +89,20 @@
     "details": "project-details/bitcoin-analysis-app",
     "period": "Nov 2024 - Dec 2025",
     "images": [
-      "/bitcoin-analysis-app/images/1.png",
-      "/bitcoin-analysis-app/images/2.png",
-      "/bitcoin-analysis-app/images/3.png",
-      "/bitcoin-analysis-app/images/4.png",
-      "/bitcoin-analysis-app/images/5.png",
-      "/bitcoin-analysis-app/images/6.png",
-      "/bitcoin-analysis-app/images/7.png",
-      "/bitcoin-analysis-app/images/8.png",
-      "/bitcoin-analysis-app/images/9.png"
+      "/bitcoin-analysis-app/images/1.webp",
+      "/bitcoin-analysis-app/images/2.webp",
+      "/bitcoin-analysis-app/images/3.webp",
+      "/bitcoin-analysis-app/images/4.webp",
+      "/bitcoin-analysis-app/images/5.webp",
+      "/bitcoin-analysis-app/images/6.webp",
+      "/bitcoin-analysis-app/images/7.webp",
+      "/bitcoin-analysis-app/images/8.webp",
+      "/bitcoin-analysis-app/images/9.webp"
     ]
   },
   {
     "title": "Desktop Payroll Management System",
-    "image": "/desktop-payroll-management-system/images/1.png",
+    "image": "/desktop-payroll-management-system/images/1.webp",
     "alt": "Desktop Payroll Management System Image",
     "description": "FastAPI-powered payroll management backend bundled with an Electron desktop shell.",
     "collaborators": null,
@@ -119,16 +119,16 @@
     "details": "project-details/desktop-payroll-management-system",
     "period": "Aug 2025 - Present",
     "images": [
-      "/desktop-payroll-management-system/images/1.png",
-      "/desktop-payroll-management-system/images/2.png",
-      "/desktop-payroll-management-system/images/3.png",
-      "/desktop-payroll-management-system/images/4.png",
-      "/desktop-payroll-management-system/images/5.png"
+      "/desktop-payroll-management-system/images/1.webp",
+      "/desktop-payroll-management-system/images/2.webp",
+      "/desktop-payroll-management-system/images/3.webp",
+      "/desktop-payroll-management-system/images/4.webp",
+      "/desktop-payroll-management-system/images/5.webp"
     ]
   },
   {
     "title": "Digital Freelancer Profiling App",
-    "image": "/digital-freelancer-profiling-app/images/1.png",
+    "image": "/digital-freelancer-profiling-app/images/1.webp",
     "alt": "Coin Detector Image",
     "description": "A Digital Freelancer Profiling System for Capstone requirement. Made with Django and Python Modules, featuring Notion Kanban boards that follow a Scrumban workflow for task management.",
     "collaborators": "Kimberly Baylon, Bridget Jose, Azlan Tomindug",
@@ -145,21 +145,21 @@
     "details": "project-details/digital-freelancer-profiling-app",
     "period": "Jan 2024 - May 2025",
     "images": [
-      "/digital-freelancer-profiling-app/images/1.png",
-      "/digital-freelancer-profiling-app/images/2.png",
-      "/digital-freelancer-profiling-app/images/3.png",
-      "/digital-freelancer-profiling-app/images/4.png",
-      "/digital-freelancer-profiling-app/images/5.png",
-      "/digital-freelancer-profiling-app/images/6.png",
-      "/digital-freelancer-profiling-app/images/7.png",
-      "/digital-freelancer-profiling-app/images/8.png",
-      "/digital-freelancer-profiling-app/images/9.PNG",
-      "/digital-freelancer-profiling-app/images/10.png"
+      "/digital-freelancer-profiling-app/images/1.webp",
+      "/digital-freelancer-profiling-app/images/2.webp",
+      "/digital-freelancer-profiling-app/images/3.webp",
+      "/digital-freelancer-profiling-app/images/4.webp",
+      "/digital-freelancer-profiling-app/images/5.webp",
+      "/digital-freelancer-profiling-app/images/6.webp",
+      "/digital-freelancer-profiling-app/images/7.webp",
+      "/digital-freelancer-profiling-app/images/8.webp",
+      "/digital-freelancer-profiling-app/images/9.webp",
+      "/digital-freelancer-profiling-app/images/10.webp"
     ]
   },
   {
     "title": "CEMCDO App",
-    "image": "/cemcdo-app/images/landing-page.png",
+    "image": "/cemcdo-app/images/landing-page.webp",
     "alt": "CEMCDO App screenshot",
     "description": "A system made for CEMCDO, currently composed of Fund Utilization and Cooperative Profiling of General Santos City. Made with Django and Python Modules.",
     "collaborators": "Kimberly Baylon, Bridget Jose, Azlan Tomindug, Francheska Mei Besana",
@@ -177,23 +177,23 @@
     "details": "project-details/cemcdo-app",
     "period": "Jan 2025 - Apr 2025",
     "images": [
-      "/cemcdo-app/images/landing-page.png",
-      "/cemcdo-app/images/login.png",
-      "/cemcdo-app/images/admin-dashboard.png",
-      "/cemcdo-app/images/super-admin-dashboard.png",
-      "/cemcdo-app/images/coooperative-dashboard.png",
-      "/cemcdo-app/images/coop-registration.png",
-      "/cemcdo-app/images/coop-table-view.png",
-      "/cemcdo-app/images/event-view.png",
-      "/cemcdo-app/images/reports.png",
-      "/cemcdo-app/images/sample-division-view.png",
-      "/cemcdo-app/images/simple-flow-visualization-cooperative-system.png",
-      "/cemcdo-app/images/transaction-view.png"
+      "/cemcdo-app/images/landing-page.webp",
+      "/cemcdo-app/images/login.webp",
+      "/cemcdo-app/images/admin-dashboard.webp",
+      "/cemcdo-app/images/super-admin-dashboard.webp",
+      "/cemcdo-app/images/coooperative-dashboard.webp",
+      "/cemcdo-app/images/coop-registration.webp",
+      "/cemcdo-app/images/coop-table-view.webp",
+      "/cemcdo-app/images/event-view.webp",
+      "/cemcdo-app/images/reports.webp",
+      "/cemcdo-app/images/sample-division-view.webp",
+      "/cemcdo-app/images/simple-flow-visualization-cooperative-system.webp",
+      "/cemcdo-app/images/transaction-view.webp"
     ]
   },
   {
     "title": "VIMS - Vessel Inventory Management System",
-    "image": "/vims/images/1.png",
+    "image": "/vims/images/1.webp",
     "alt": "Vessel Inventory Management System screenshot",
     "description": "An Inventory Management System for TSP Marine Industries to manage vessel inventory in the open seas. Made with NextJS and React.",
     "collaborators": "TSP Marine - IT Division",
@@ -213,17 +213,17 @@
     "details": "project-details/vims",
     "period": "Dec 2024 - June 2025",
     "images": [
-      "/vims/images/1.png",
-      "/vims/images/2.png",
-      "/vims/images/3.png",
-      "/vims/images/4.png",
-      "/vims/images/5.png",
-      "/vims/images/6.png"
+      "/vims/images/1.webp",
+      "/vims/images/2.webp",
+      "/vims/images/3.webp",
+      "/vims/images/4.webp",
+      "/vims/images/5.webp",
+      "/vims/images/6.webp"
     ]
   },
   {
     "title": "Laravel Itinerary Planner",
-    "image": "/itinerary-planner/images/1.png",
+    "image": "/itinerary-planner/images/1.webp",
     "alt": "Laravel Itinerary Planner Image",
     "description": "Full-stack travel planning app with interactive maps, budgeting, and exportable itineraries.",
     "collaborators": null,
@@ -243,15 +243,15 @@
     "details": "project-details/itinerary-planner",
     "period": "July 2025 - Aug 2025",
     "images": [
-      "/itinerary-planner/images/1.png",
-      "/itinerary-planner/images/2.png",
-      "/itinerary-planner/images/3.png",
-      "/itinerary-planner/images/4.png"
+      "/itinerary-planner/images/1.webp",
+      "/itinerary-planner/images/2.webp",
+      "/itinerary-planner/images/3.webp",
+      "/itinerary-planner/images/4.webp"
     ]
   },
   {
     "title": "Albany Airbnb Dashboard",
-    "image": "/albany-airbnb-dashboard/images/1.png",
+    "image": "/albany-airbnb-dashboard/images/1.webp",
     "alt": "Albany Airbnb Dashboard Image",
     "description": "Interactive dashboard analyzing Airbnb listings, pricing, and guest sentiment.",
     "collaborators": null,
@@ -272,16 +272,16 @@
     "details": "project-details/albany-airbnb-dashboard",
     "period": "Nov 2024 - Dec 2024",
     "images": [
-      "/albany-airbnb-dashboard/images/1.png",
-      "/albany-airbnb-dashboard/images/2.png",
-      "/albany-airbnb-dashboard/images/3.png",
-      "/albany-airbnb-dashboard/images/4.png",
-      "/albany-airbnb-dashboard/images/5.png"
+      "/albany-airbnb-dashboard/images/1.webp",
+      "/albany-airbnb-dashboard/images/2.webp",
+      "/albany-airbnb-dashboard/images/3.webp",
+      "/albany-airbnb-dashboard/images/4.webp",
+      "/albany-airbnb-dashboard/images/5.webp"
     ]
   },
   {
     "title": "McDonald's Sentiment Analysis",
-    "image": "/static/placeholders/django.png",
+    "image": "/static/placeholders/django.webp",
     "alt": "McDonald's Sentiment Analysis Image",
     "description": "Sentiment analysis of over 33,000 McDonald's Google reviews using Python.",
     "collaborators": null,
@@ -302,12 +302,12 @@
     "details": "project-details/mcdonalds-sentiment-analysis",
     "period": "Nov 2024 - Dec 2024",
     "images": [
-      "/static/placeholders/django.png"
+      "/static/placeholders/django.webp"
     ]
   },
   {
     "title": "AI-Powered Email Generator",
-    "image": "/ai-powered-email-generator/images/Dashboard.png",
+    "image": "/ai-powered-email-generator/images/Dashboard.webp",
     "alt": "AI-Powered Email Generator Image",
     "description": "Django and LangChain assistant that crafts professional emails with adjustable tone and signature details, Gmail sending, audio transcription, and a lightweight CRM.",
     "collaborators": null,
@@ -327,16 +327,16 @@
     "details": "project-details/ai-powered-email-generator",
     "period": "Aug 2025 - Present",
     "images": [
-      "/ai-powered-email-generator/images/Dashboard.png",
-      "/ai-powered-email-generator/images/Compose Email.png",
-      "/ai-powered-email-generator/images/Email Logs.png",
-      "/ai-powered-email-generator/images/Audio Transcribe.png",
-      "/ai-powered-email-generator/images/Audio Transcribe Result.png"
+      "/ai-powered-email-generator/images/Dashboard.webp",
+      "/ai-powered-email-generator/images/Compose Email.webp",
+      "/ai-powered-email-generator/images/Email Logs.webp",
+      "/ai-powered-email-generator/images/Audio Transcribe.webp",
+      "/ai-powered-email-generator/images/Audio Transcribe Result.webp"
     ]
   },
   {
     "title": "Headless E-Commerce Mini-Store",
-    "image": "/headless-ecommerce-mini-store/images/banner.png",
+    "image": "/headless-ecommerce-mini-store/images/banner.webp",
     "alt": "Headless E-Commerce Mini-Store Image",
     "description": "Next.js storefront that fetches product data from Shopify\u2019s Storefront API and renders it with reusable UI components and server-side data fetching.",
     "collaborators": null,
@@ -354,16 +354,16 @@
     "details": "project-details/headless-ecommerce-mini-store",
     "period": "Aug 2025 - Aug 2025",
     "images": [
-      "/headless-ecommerce-mini-store/images/banner.png",
-      "/headless-ecommerce-mini-store/images/header.png",
-      "/headless-ecommerce-mini-store/images/productgrid.png",
-      "/headless-ecommerce-mini-store/images/product detail.png",
-      "/headless-ecommerce-mini-store/images/2025-08-11_19-38.png"
+      "/headless-ecommerce-mini-store/images/banner.webp",
+      "/headless-ecommerce-mini-store/images/header.webp",
+      "/headless-ecommerce-mini-store/images/productgrid.webp",
+      "/headless-ecommerce-mini-store/images/product detail.webp",
+      "/headless-ecommerce-mini-store/images/2025-08-11_19-38.webp"
     ]
   },
   {
     "title": "Order & Inventory Management API",
-    "image": "/static/placeholders/csharp.png",
+    "image": "/static/placeholders/csharp.webp",
     "alt": "Order & Inventory Management API Image",
     "description": "Lightweight ASP.NET Core API with PostgreSQL for products, stock validation, idempotent orders, and audit logging.",
     "collaborators": null,
@@ -382,12 +382,12 @@
     "details": "project-details/order-inventory-management-api",
     "period": "Aug 2025 - Aug 2025",
     "images": [
-      "/static/placeholders/csharp.png"
+      "/static/placeholders/csharp.webp"
     ]
   },
   {
     "title": "Budget System",
-    "image": "/static/placeholders/csharp.png",
+    "image": "/static/placeholders/csharp.webp",
     "alt": "Budget System screenshot",
     "description": "Layered ASP.NET Core and SQL Server budgeting app with validation, EF Core persistence, and idempotent API middleware.",
     "collaborators": null,
@@ -405,12 +405,12 @@
     "details": "project-details/budget-system",
     "period": "Aug 2025 - Present",
     "images": [
-      "/static/placeholders/csharp.png"
+      "/static/placeholders/csharp.webp"
     ]
   },
   {
     "title": "LLM Restaurant Finder",
-    "image": "/static/placeholders/ai.png",
+    "image": "/static/placeholders/ai.webp",
     "alt": "LLM Restaurant Finder results interface",
     "description": "Chat-led restaurant discovery app where a Next.js client hands prompts to a Hono API that validates Gemini commands before querying Foursquare Places.",
     "collaborators": null,
@@ -428,7 +428,7 @@
     "details": "project-details/llm-restaurant-finder",
     "period": "2025",
     "images": [
-      "/static/placeholders/ai.png"
+      "/static/placeholders/ai.webp"
     ]
   }
 ]

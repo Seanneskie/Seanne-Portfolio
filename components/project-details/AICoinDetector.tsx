@@ -16,7 +16,7 @@ export default async function AICoinDetector() {
         images={
           images.length
             ? images
-            : [{ src: "/static/placeholders/ai.png", alt }]
+            : [{ src: "/static/placeholders/ai.webp", alt }]
         }
         githubUrl="https://github.com/Seanneskie/AI-coin-detector-django"
         downloadUrl="/ai-coin-detector/pdfs/Philippine%20Peso%20Coin%20Detector%20and%20Counter.pdf"

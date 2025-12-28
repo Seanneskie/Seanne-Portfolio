@@ -152,7 +152,7 @@ export default function BackgroundCard({ profile }: { profile: ProfileData }): R
           <div className="order-first overflow-hidden rounded-xl ring-1 ring-teal-600/20 shadow-sm dark:ring-teal-400/20 sm:order-last lg:order-none">
             <div className="relative aspect-[3/4] w-full min-h-[18rem] overflow-hidden rounded-xl md:min-h-[20rem]">
               <Image
-                src={withBasePath("/static/image_2.jpg")}
+                src={withBasePath("/static/image_2.webp")}
                 alt="Profile portrait"
                 fill
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 45vw, 32vw"

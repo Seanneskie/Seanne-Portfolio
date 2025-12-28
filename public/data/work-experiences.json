@@ -5,15 +5,15 @@
     "period": "November 2024 \u2013 June 2025",
     "images": [
       {
-        "src": "/vims/images/3.png",
+        "src": "/vims/images/3.webp",
         "alt": "VIMS dashboard"
       },
       {
-        "src": "/vims/images/4.png",
+        "src": "/vims/images/4.webp",
         "alt": "VIMS inventory table"
       },
       {
-        "src": "/vims/images/6.png",
+        "src": "/vims/images/6.webp",
         "alt": "VIMS Reports"
       }
     ],
@@ -41,23 +41,23 @@
     "period": "January 2025 \u2013 April 2025",
     "images": [
       {
-        "src": "/cemcdo-app/images/landing-page.png",
+        "src": "/cemcdo-app/images/landing-page.webp",
         "alt": "CEMCDO landing page"
       },
       {
-        "src": "/cemcdo-app/images/admin-dashboard.png",
+        "src": "/cemcdo-app/images/admin-dashboard.webp",
         "alt": "CEMCDO admin dashboard"
       },
       {
-        "src": "/photo-carousel/ojt.jpg",
+        "src": "/photo-carousel/ojt.webp",
         "alt": "OJT at CEMCDO \u2013 System Presentation Meeting"
       },
       {
-        "src": "/photo-carousel/ojt_4.jpg",
+        "src": "/photo-carousel/ojt_4.webp",
         "alt": "OJT at CEMCDO \u2013 Workshop and User Testing"
       },
       {
-        "src": "/photo-carousel/ojt_6.jpg",
+        "src": "/photo-carousel/ojt_6.webp",
         "alt": "OOJT at CEMCDO \u2013 The Team"
       }
     ],

@@ -16,7 +16,7 @@ export default async function Vims() {
         images={
           images.length
             ? images
-            : [{ src: "/static/placeholders/next.png", alt }]
+            : [{ src: "/static/placeholders/next.webp", alt }]
         }
       >
         <p>

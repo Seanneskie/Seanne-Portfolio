@@ -16,7 +16,7 @@ export default async function ExampleProject() {
         images={
           images.length
             ? images
-            : [{ src: "/static/placeholders/ai.png", alt }]
+            : [{ src: "/static/placeholders/ai.webp", alt }]
         }
       >
         <p>

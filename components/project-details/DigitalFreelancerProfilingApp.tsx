@@ -15,7 +15,7 @@ export default async function DigitalFreelancerProfilingApp() {
         images={
           images.length
             ? images
-            : [{ src: "/static/placeholders/next.png", alt }]
+            : [{ src: "/static/placeholders/next.webp", alt }]
         }
         downloadUrl="/digital-freelancer-profiling-app/pdfs/DPFS_UserManual.pdf"
       >

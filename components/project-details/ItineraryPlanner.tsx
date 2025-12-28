@@ -17,7 +17,7 @@ export default async function ItineraryPlanner() {
         images={
           doubledImages.length
             ? doubledImages
-            : [{ src: "/static/placeholders/php.png", alt }]
+            : [{ src: "/static/placeholders/php.webp", alt }]
         }
         githubUrl="https://github.com/Seanneskie/itinerary-planner"
       >

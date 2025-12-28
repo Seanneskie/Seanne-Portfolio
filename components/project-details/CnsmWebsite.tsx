@@ -16,7 +16,7 @@ export default async function CnsmWebsite() {
         images={
           images.length
             ? images
-            : [{ src: "/static/placeholders/Mern.png", alt }]
+            : [{ src: "/static/placeholders/Mern.webp", alt }]
         }
         githubUrl="https://github.com/Seanneskie/advDB-CNSM-Website"
       >

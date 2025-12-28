@@ -8,7 +8,7 @@ export default async function HeadlessEcommerceMiniStore() {
   const images = (await getProjectImages("headless-ecommerce-mini-store")).map(
     (src) => ({ src, alt })
   );
-  const fallback = [{ src: "/static/placeholders/next.png", alt }];
+  const fallback = [{ src: "/static/placeholders/next.webp", alt }];
 
   return (
     <div className="space-y-12">

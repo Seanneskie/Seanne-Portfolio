@@ -15,7 +15,7 @@ export default async function DesktopPayrollManagementSystem() {
         images={
           images.length
             ? images
-            : [{ src: "/static/placeholders/next.png", alt }]
+            : [{ src: "/static/placeholders/next.webp", alt }]
         }
       >
         <p>

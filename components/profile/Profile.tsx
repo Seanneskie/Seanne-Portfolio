@@ -11,7 +11,7 @@ const PROFILE: ProfileData = {
   name: "Seanne Cañete",
   email: "seannecanete32@gmail.com",
   address: "General Santos City, Philippines",
-  image: withBasePath("/static/profile.jpg"),
+  image: withBasePath("/static/profile.webp"),
   background:
     "Hello! I'm Seanne Cañete, an Information Technology graduate at Mindanao State University – General Santos City with a passion for full-stack development, data engineering, and clean UI/UX.",
   education: [

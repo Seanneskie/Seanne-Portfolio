@@ -11,7 +11,7 @@ type Height = "sm" | "md" | "lg" | "screen";
 export interface BannerProps {
   title: ReactNode;
   subtitle?: ReactNode;
-  /** Absolute or public path (e.g., /static/hero.jpg) */
+  /** Absolute or public path (e.g., /static/hero.webp) */
   backgroundImage: string;
   /** Improves accessibility; describe the image context briefly */
   imageAlt?: string;

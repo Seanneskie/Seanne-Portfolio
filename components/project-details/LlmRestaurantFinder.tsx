@@ -5,7 +5,7 @@ import ProjectSection from "./ProjectSection";
 import ProjectGallery from "./ProjectGallery";
 import { getProjectImages } from "@/lib/project-images";
 
-const FALLBACK_IMAGE = "/static/placeholders/ai.png";
+const FALLBACK_IMAGE = "/static/placeholders/ai.webp";
 
 /**
  * Renders the detailed breakdown of the LLM Restaurant Finder pipeline.

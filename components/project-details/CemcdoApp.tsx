@@ -16,7 +16,7 @@ export default async function CemcdoApp() {
         images={
           images.length
             ? images
-            : [{ src: "/static/placeholders/django.png", alt }]
+            : [{ src: "/static/placeholders/django.webp", alt }]
         }
         githubUrl="https://cemcdo-demo.onrender.com/"
         linkLabel="View Site"

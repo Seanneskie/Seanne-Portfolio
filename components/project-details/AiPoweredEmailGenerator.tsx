@@ -15,7 +15,7 @@ export default async function AiPoweredEmailGenerator() {
         images={
           images.length
             ? images
-            : [{ src: "/static/placeholders/ai.png", alt }]
+            : [{ src: "/static/placeholders/ai.webp", alt }]
         }
         githubUrl="https://github.com/Seanneskie/email-generator"
       >

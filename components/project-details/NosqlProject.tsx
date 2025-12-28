@@ -13,7 +13,7 @@ export default async function NosqlProject(): Promise<ReactElement> {
   const alt = "NoSQL Project screenshot";
   const rawImages = await getProjectImages("nosql-project");
   const images = (
-    rawImages.length ? rawImages : ["/static/placeholders/Mern.png"]
+    rawImages.length ? rawImages : ["/static/placeholders/Mern.webp"]
   ).map((src) => ({
     src,
     alt,

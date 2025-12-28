@@ -19,7 +19,7 @@ export default async function McdonaldsSentimentAnalysis() {
         images={
           images.length
             ? images
-            : [{ src: "/static/placeholders/django.png", alt }]
+            : [{ src: "/static/placeholders/django.webp", alt }]
         }
         downloadUrl={pdf}
       >

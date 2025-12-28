@@ -124,7 +124,7 @@ export default function ProfileCardContent({
           {/* LEFT (25%): Full-height image */}
           <div className="relative h-full min-h-[240px] overflow-hidden rounded-xl ring-2 ring-teal-900/30 dark:ring-teal-400/30 shadow-sm">
             <Image
-              src={withBasePath("/static/image_1.jpg")}
+              src={withBasePath("/static/image_1.webp")}
               alt={profile.name}
               fill
               sizes="(max-width: 768px) 100vw, 25vw"
