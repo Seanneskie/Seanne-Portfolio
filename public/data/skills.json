@@ -6,157 +6,405 @@
       {
         "title": "Web Development",
         "items": [
-          { "icon": "devicon-django-plain colored", "name": "Django" },
-          { "icon": "devicon-laravel-plain colored", "name": "Laravel 12" },
-          { "icon": "devicon-alpinejs-original colored", "name": "Alpine.js" },
-          { "icon": "devicon-vitejs-plain colored", "name": "Vite" },
-          { "icon": "devicon-react-original colored", "name": "ReactJS" },
-          { "icon": "devicon-nextjs-plain", "name": "NextJS" },
-          { "icon": "devicon-php-plain colored", "name": "PHP" },
-          { "icon": "devicon-typescript-plain colored", "name": "TypeScript" },
-          { "icon": "devicon-javascript-plain colored", "name": "JavaScript" },
-          { "icon": "devicon-jquery-plain colored", "name": "jQuery" },
-          { "icon": "devicon-html5-plain colored", "name": "HTML5" },
-          { "icon": "devicon-css3-plain colored", "name": "CSS3" },
+          {
+            "icon": "devicon-django-plain colored",
+            "name": "Django",
+            "description": "Build full-stack web apps with Django, templates, and ORM."
+          },
+          {
+            "icon": "devicon-laravel-plain colored",
+            "name": "Laravel 12",
+            "description": "Develop Laravel 12 apps with MVC, Eloquent, and Blade."
+          },
+          {
+            "icon": "devicon-alpinejs-original colored",
+            "name": "Alpine.js",
+            "description": "Add lightweight interactivity in server-rendered UIs."
+          },
+          {
+            "icon": "devicon-vitejs-plain colored",
+            "name": "Vite",
+            "description": "Bundle modern frontend projects with fast dev HMR."
+          },
+          {
+            "icon": "devicon-react-original colored",
+            "name": "ReactJS",
+            "description": "Build component-driven UIs with hooks and state."
+          },
+          {
+            "icon": "devicon-nextjs-plain",
+            "name": "NextJS",
+            "description": "Ship SSR/SSG apps with routing and API routes."
+          },
+          {
+            "icon": "devicon-php-plain colored",
+            "name": "PHP",
+            "description": "Write server-side logic for dynamic web apps."
+          },
+          {
+            "icon": "devicon-typescript-plain colored",
+            "name": "TypeScript",
+            "description": "Model typed APIs and safer frontend logic."
+          },
+          {
+            "icon": "devicon-javascript-plain colored",
+            "name": "JavaScript",
+            "description": "Implement interactive client-side behaviors."
+          },
+          {
+            "icon": "devicon-jquery-plain colored",
+            "name": "jQuery",
+            "description": "Enhance legacy UIs with DOM and Ajax helpers."
+          },
+          {
+            "icon": "devicon-html5-plain colored",
+            "name": "HTML5",
+            "description": "Structure semantic layouts and accessible markup."
+          },
+          {
+            "icon": "devicon-css3-plain colored",
+            "name": "CSS3",
+            "description": "Create responsive layouts and UI styling."
+          },
           {
             "icon": "devicon-bootstrap-plain colored",
-            "name": "Bootstrap (Responsive Design)"
+            "name": "Bootstrap (Responsive Design)",
+            "description": "Prototype responsive layouts with Bootstrap utilities."
           },
           {
             "icon": "devicon-tailwindcss-original colored",
-            "name": "Tailwind CSS"
+            "name": "Tailwind CSS",
+            "description": "Design interfaces with utility-first styling."
           },
           {
             "icon": "devicon-dotnetcore-plain colored",
-            "name": ".NET / ASP.NET Core"
+            "name": ".NET / ASP.NET Core",
+            "description": "Build web APIs and MVC apps with ASP.NET Core."
           }
         ]
       },
       {
         "title": "Frontend Technologies",
         "items": [
-          { "icon": "devicon-javascript-plain colored", "name": "JavaScript" },
-          { "icon": "devicon-react-original colored", "name": "ReactJS" },
-          { "icon": "devicon-nextjs-plain", "name": "NextJS" },
-          { "icon": "fas fa-mobile-screen", "name": "PWA (Progressive Web App)" },
+          {
+            "icon": "devicon-javascript-plain colored",
+            "name": "JavaScript",
+            "description": "Drive UI logic and client-side interactions."
+          },
+          {
+            "icon": "devicon-react-original colored",
+            "name": "ReactJS",
+            "description": "Compose reusable UI components with hooks."
+          },
+          {
+            "icon": "devicon-nextjs-plain",
+            "name": "NextJS",
+            "description": "Implement routing, data fetching, and SSR."
+          },
+          {
+            "icon": "fas fa-mobile-screen",
+            "name": "PWA (Progressive Web App)",
+            "description": "Deliver installable apps with offline-ready UX."
+          },
           {
             "icon": "devicon-tailwindcss-original colored",
-            "name": "Tailwind CSS"
+            "name": "Tailwind CSS",
+            "description": "Craft UI with design tokens and utility classes."
           },
-          { "icon": "devicon-bootstrap-plain colored", "name": "Bootstrap" },
+          {
+            "icon": "devicon-bootstrap-plain colored",
+            "name": "Bootstrap",
+            "description": "Quickly assemble responsive UI components."
+          },
           {
             "icon": "devicon-jquery-plain colored",
-            "name": "jQuery + DataTables"
+            "name": "jQuery + DataTables",
+            "description": "Build interactive tables with sorting and paging."
           },
-          { "icon": "devicon-nuxtjs-plain colored", "name": "Nuxt (Vue)" },
-          { "icon": "devicon-vuejs-plain colored", "name": "Vue.js" },
-          { "icon": "fas fa-bolt", "name": "Framer Motion" },
-          { "icon": "fas fa-bell", "name": "Sonner" },
-          { "icon": "fas fa-images", "name": "Embla Carousel" },
-          { "icon": "devicon-react-original colored", "name": "lucide-react" },
-          { "icon": "devicon-radixui-plain colored", "name": "Radix UI" },
-          { "icon": "devicon-remix-original colored", "name": "Remix" }
+          {
+            "icon": "devicon-nuxtjs-plain colored",
+            "name": "Nuxt (Vue)",
+            "description": "Create SSR Vue apps with file-based routing."
+          },
+          {
+            "icon": "devicon-vuejs-plain colored",
+            "name": "Vue.js",
+            "description": "Develop reactive UIs with Vue components."
+          },
+          {
+            "icon": "fas fa-bolt",
+            "name": "Framer Motion",
+            "description": "Animate UI transitions and micro-interactions."
+          },
+          {
+            "icon": "fas fa-bell",
+            "name": "Sonner",
+            "description": "Add accessible toast notifications."
+          },
+          {
+            "icon": "fas fa-images",
+            "name": "Embla Carousel",
+            "description": "Implement touch-friendly carousels."
+          },
+          {
+            "icon": "devicon-react-original colored",
+            "name": "lucide-react",
+            "description": "Use consistent SVG icons in React UIs."
+          },
+          {
+            "icon": "devicon-radixui-plain colored",
+            "name": "Radix UI",
+            "description": "Compose accessible primitives for custom UI."
+          },
+          {
+            "icon": "devicon-remix-original colored",
+            "name": "Remix",
+            "description": "Build web apps with nested routes and loaders."
+          }
         ]
       },
       {
         "title": "Backend & Frameworks",
         "items": [
-          { "icon": "devicon-django-plain colored", "name": "Django (Python)" },
-          { "icon": "devicon-laravel-plain colored", "name": "Laravel (PHP)" },
-          { "icon": "devicon-supabase-plain colored", "name": "Supabase" },
-          { "icon": "fas fa-network-wired", "name": "REST API Development" },
-          { "icon": "fas fa-plug", "name": "Webhooks" },
+          {
+            "icon": "devicon-django-plain colored",
+            "name": "Django (Python)",
+            "description": "Ship backend apps with Django ORM, views, and auth."
+          },
+          {
+            "icon": "devicon-laravel-plain colored",
+            "name": "Laravel (PHP)",
+            "description": "Build APIs and web apps with Laravel MVC and Eloquent."
+          },
+          {
+            "icon": "devicon-supabase-plain colored",
+            "name": "Supabase",
+            "description": "Use hosted Postgres, auth, and storage for apps."
+          },
+          {
+            "icon": "fas fa-network-wired",
+            "name": "REST API Development",
+            "description": "Design RESTful endpoints with validation and auth."
+          },
+          {
+            "icon": "fas fa-plug",
+            "name": "Webhooks",
+            "description": "Integrate event callbacks and webhook verification."
+          },
           {
             "icon": "fab fa-whatsapp",
-            "name": "WhatsApp Business API (Notifications)"
+            "name": "WhatsApp Business API (Notifications)",
+            "description": "Send templated notifications via WhatsApp API."
           },
-          { "icon": "fas fa-bell", "name": "Web Push" },
+          {
+            "icon": "fas fa-bell",
+            "name": "Web Push",
+            "description": "Implement browser push subscriptions and delivery."
+          },
           {
             "icon": "devicon-graphql-plain colored",
-            "name": "GraphQL (Apollo Client + GraphQL Yoga)"
+            "name": "GraphQL (Apollo Client + GraphQL Yoga)",
+            "description": "Build GraphQL APIs and consume them via Apollo."
           },
-          { "icon": "devicon-nodejs-plain colored", "name": "Node.js" },
-          { "icon": "devicon-drizzle-plain colored", "name": "Drizzle ORM" },
-          { "icon": "devicon-prisma-plain colored", "name": "Prisma" },
-          { "icon": "devicon-nodejs-plain colored", "name": "Hono" },
-          { "icon": "devicon-redis-plain colored", "name": "Redis" }
+          {
+            "icon": "devicon-nodejs-plain colored",
+            "name": "Node.js",
+            "description": "Create backend services and tooling with Node."
+          },
+          {
+            "icon": "devicon-drizzle-plain colored",
+            "name": "Drizzle ORM",
+            "description": "Define typed schemas and queries with Drizzle."
+          },
+          {
+            "icon": "devicon-prisma-plain colored",
+            "name": "Prisma",
+            "description": "Model databases and run typed queries with Prisma."
+          },
+          {
+            "icon": "devicon-nodejs-plain colored",
+            "name": "Hono",
+            "description": "Build fast edge-ready APIs with Hono."
+          },
+          {
+            "icon": "devicon-redis-plain colored",
+            "name": "Redis",
+            "description": "Use Redis for caching, queues, and sessions."
+          }
         ]
       },
       {
         "title": "Programming Languages",
         "items": [
-          { "icon": "devicon-python-plain colored", "name": "Python" },
-          { "icon": "devicon-php-plain colored", "name": "PHP" },
-          { "icon": "devicon-typescript-plain colored", "name": "TypeScript" },
-          { "icon": "devicon-javascript-plain colored", "name": "JavaScript" },
+          {
+            "icon": "devicon-python-plain colored",
+            "name": "Python",
+            "description": "Automate workflows and build backend services."
+          },
+          {
+            "icon": "devicon-php-plain colored",
+            "name": "PHP",
+            "description": "Develop server-side apps and APIs with PHP."
+          },
+          {
+            "icon": "devicon-typescript-plain colored",
+            "name": "TypeScript",
+            "description": "Write typed frontend and backend code."
+          },
+          {
+            "icon": "devicon-javascript-plain colored",
+            "name": "JavaScript",
+            "description": "Implement UI logic and async app behavior."
+          },
           {
             "icon": "devicon-mysql-plain colored",
-            "name": "SQL (MySQL, PostgreSQL)"
+            "name": "SQL (MySQL, PostgreSQL)",
+            "description": "Write queries, joins, and reports in SQL."
           },
           {
             "icon": "devicon-mongodb-plain colored",
-            "name": "NoSQL (MongoDB)"
+            "name": "NoSQL (MongoDB)",
+            "description": "Model and query document data with MongoDB."
           },
-          { "icon": "devicon-c-plain colored", "name": "C" },
-          { "icon": "devicon-csharp-plain colored", "name": "C# (Upskilling)" }
+          {
+            "icon": "devicon-c-plain colored",
+            "name": "C",
+            "description": "Work with low-level systems programming concepts."
+          },
+          {
+            "icon": "devicon-csharp-plain colored",
+            "name": "C# (Upskilling)",
+            "description": "Currently upskilling in C# and .NET tooling."
+          }
         ]
       },
       {
         "title": "AI & Machine Learning",
         "items": [
-          { "icon": "fas fa-link", "name": "LangChain Integration" },
-          { "icon": "fas fa-language", "name": "Franc (Language Detection)" },
+          {
+            "icon": "fas fa-link",
+            "name": "LangChain Integration",
+            "description": "Orchestrate LLM chains, tools, and agents with LangChain."
+          },
+          {
+            "icon": "fas fa-language",
+            "name": "Franc (Language Detection)",
+            "description": "Detect language from text using Franc."
+          },
           {
             "icon": "devicon-google-plain colored",
-            "name": "Google Teachable Machine"
+            "name": "Google Teachable Machine",
+            "description": "Train quick ML classifiers with Teachable Machine."
           },
           {
             "icon": "devicon-tensorflow-original colored",
-            "name": "TensorFlow"
+            "name": "TensorFlow",
+            "description": "Build and train ML models with TensorFlow."
           },
-          { "icon": "fas fa-terminal", "name": "Prompt Engineering" },
-          { "icon": "fas fa-brain", "name": "Machine Learning" },
-          { "icon": "devicon-intel-plain colored", "name": "OpenVINO" }
+          {
+            "icon": "fas fa-terminal",
+            "name": "Prompt Engineering",
+            "description": "Design prompts for reliable model outputs."
+          },
+          {
+            "icon": "fas fa-brain",
+            "name": "Machine Learning",
+            "description": "Apply ML concepts for classification and prediction."
+          },
+          {
+            "icon": "devicon-intel-plain colored",
+            "name": "OpenVINO",
+            "description": "Optimize inference pipelines with OpenVINO."
+          }
         ]
       },
       {
         "title": "Data Analytics & Visualization",
         "items": [
-          { "icon": "fas fa-chart-line", "name": "Data Analysis" },
-          { "icon": "fas fa-chart-area", "name": "Chart.js" },
+          {
+            "icon": "fas fa-chart-line",
+            "name": "Data Analysis",
+            "description": "Analyze datasets to uncover trends and insights."
+          },
+          {
+            "icon": "fas fa-chart-area",
+            "name": "Chart.js",
+            "description": "Visualize metrics with Chart.js dashboards."
+          },
           {
             "icon": "devicon-google-plain colored",
-            "name": "Google Looker Studio"
+            "name": "Google Looker Studio",
+            "description": "Build BI reports and dashboards in Looker Studio."
           },
-          { "icon": "fas fa-chart-pie", "name": "Tableau" },
+          {
+            "icon": "fas fa-chart-pie",
+            "name": "Tableau",
+            "description": "Create interactive data visualizations in Tableau."
+          },
           {
             "icon": "fas fa-graduation-cap",
-            "name": "Visualize Your Data (SoloLearn)"
+            "name": "Visualize Your Data (SoloLearn)",
+            "description": "Applied data-viz principles from SoloLearn coursework."
           },
           {
             "icon": "devicon-python-plain colored",
-            "name": "Scientific Computing with Python"
+            "name": "Scientific Computing with Python",
+            "description": "Use Python libraries for scientific computing."
           },
-          { "icon": "fas fa-file-excel", "name": "OpenPyXL" },
-          { "icon": "devicon-streamlit-plain colored", "name": "Streamlit" },
-          { "icon": "devicon-powerbi-plain colored", "name": "Power BI" },
-          { "icon": "fas fa-chart-line", "name": "Plausible Analytics" }
+          {
+            "icon": "fas fa-file-excel",
+            "name": "OpenPyXL",
+            "description": "Automate Excel reports with OpenPyXL."
+          },
+          {
+            "icon": "devicon-streamlit-plain colored",
+            "name": "Streamlit",
+            "description": "Build quick data apps and dashboards in Streamlit."
+          },
+          {
+            "icon": "devicon-powerbi-plain colored",
+            "name": "Power BI",
+            "description": "Model and visualize data in Power BI."
+          },
+          {
+            "icon": "fas fa-chart-line",
+            "name": "Plausible Analytics",
+            "description": "Track lightweight analytics with Plausible."
+          }
         ]
       },
       {
         "title": "Database Systems",
         "items": [
-          { "icon": "devicon-mysql-plain colored", "name": "MySQL" },
-          { "icon": "devicon-postgresql-plain colored", "name": "PostgreSQL" },
-          { "icon": "devicon-sqlite-plain colored", "name": "SQLite" },
-          { "icon": "devicon-mongodb-plain colored", "name": "MongoDB" },
           {
-            "icon": "devicon-microsoftsqlserver-plain colored",
-            "name": "SQL Server 2022"
+            "icon": "devicon-mysql-plain colored",
+            "name": "MySQL",
+            "description": "Design schemas and optimize MySQL queries."
           },
           {
             "icon": "devicon-postgresql-plain colored",
-            "name": "PostgreSQL Triggers / PL/pgSQL"
+            "name": "PostgreSQL",
+            "description": "Use PostgreSQL for relational data modeling."
+          },
+          {
+            "icon": "devicon-sqlite-plain colored",
+            "name": "SQLite",
+            "description": "Prototype apps with lightweight SQLite storage."
+          },
+          {
+            "icon": "devicon-mongodb-plain colored",
+            "name": "MongoDB",
+            "description": "Store and query JSON documents in MongoDB."
+          },
+          {
+            "icon": "devicon-microsoftsqlserver-plain colored",
+            "name": "SQL Server 2022",
+            "description": "Manage SQL Server databases and queries."
+          },
+          {
+            "icon": "devicon-postgresql-plain colored",
+            "name": "PostgreSQL Triggers / PL/pgSQL",
+            "description": "Write triggers and functions with PL/pgSQL."
           }
         ]
       },
@@ -165,49 +413,98 @@
         "items": [
           {
             "icon": "devicon-mapbox-original colored",
-            "name": "Leaflet Maps Integration"
+            "name": "Leaflet Maps Integration",
+            "description": "Build interactive maps with Leaflet layers and markers."
           },
           {
             "icon": "fas fa-globe",
-            "name": "Geographic Information Systems (GIS)"
+            "name": "Geographic Information Systems (GIS)",
+            "description": "Work with spatial data, projections, and GIS workflows."
           },
-          { "icon": "fas fa-globe", "name": "QGIS" }
+          {
+            "icon": "fas fa-globe",
+            "name": "QGIS",
+            "description": "Analyze and edit spatial datasets in QGIS."
+          }
         ]
       },
       {
         "title": "Software Design & Documentation",
         "items": [
-          { "icon": "fas fa-project-diagram", "name": "UML Diagramming" },
-          { "icon": "fas fa-sitemap", "name": "Data Flow Diagramming" }
+          {
+            "icon": "fas fa-project-diagram",
+            "name": "UML Diagramming",
+            "description": "Model systems with UML for clear architecture."
+          },
+          {
+            "icon": "fas fa-sitemap",
+            "name": "Data Flow Diagramming",
+            "description": "Map data movement and integrations with DFDs."
+          }
         ]
       },
       {
         "title": "Tools & Platforms",
         "items": [
-          { "icon": "devicon-git-plain colored", "name": "Git" },
+          {
+            "icon": "devicon-git-plain colored",
+            "name": "Git",
+            "description": "Manage code history with branches and merges."
+          },
           {
             "icon": "devicon-github-plain colored",
-            "name": "GitHub & GitHub Actions"
+            "name": "GitHub & GitHub Actions",
+            "description": "Automate CI workflows with GitHub Actions."
           },
-          { "icon": "devicon-vscode-plain colored", "name": "VS Code" },
+          {
+            "icon": "devicon-vscode-plain colored",
+            "name": "VS Code",
+            "description": "Develop efficiently with VS Code tooling."
+          },
           {
             "icon": "devicon-googlecloud-plain colored",
-            "name": "Google Cloud Platform"
+            "name": "Google Cloud Platform",
+            "description": "Deploy services using GCP products."
           },
-          { "icon": "fas fa-image", "name": "Cloudflare Image Transformation" },
-          { "icon": "devicon-amazonwebservices-plain colored", "name": "AWS" },
-          { "icon": "devicon-railway-plain colored", "name": "Railway" },
-          { "icon": "fas fa-cloud-upload-alt", "name": "Render" },
-          { "icon": "devicon-docker-plain colored", "name": "Docker" }
+          {
+            "icon": "fas fa-image",
+            "name": "Cloudflare Image Transformation",
+            "description": "Optimize images via Cloudflare transformations."
+          },
+          {
+            "icon": "devicon-amazonwebservices-plain colored",
+            "name": "AWS",
+            "description": "Host and manage apps on AWS services."
+          },
+          {
+            "icon": "devicon-railway-plain colored",
+            "name": "Railway",
+            "description": "Deploy apps quickly on Railway."
+          },
+          {
+            "icon": "fas fa-cloud-upload-alt",
+            "name": "Render",
+            "description": "Deploy web services and cron jobs on Render."
+          },
+          {
+            "icon": "devicon-docker-plain colored",
+            "name": "Docker",
+            "description": "Containerize apps for consistent environments."
+          }
         ]
       },
       {
         "title": "Testing",
         "items": [
-          { "icon": "devicon-jest-plain colored", "name": "Jest" },
+          {
+            "icon": "devicon-jest-plain colored",
+            "name": "Jest",
+            "description": "Write unit tests and mocks with Jest."
+          },
           {
             "icon": "devicon-react-plain colored",
-            "name": "React Testing Library"
+            "name": "React Testing Library",
+            "description": "Test UI behavior with RTL queries and events."
           }
         ]
       }
@@ -220,49 +517,131 @@
       {
         "title": "Skills",
         "items": [
-          { "icon": "fas fa-chart-line", "name": "Data Analysis Skill" },
-          { "icon": "fas fa-chart-pie", "name": "Data Visualization" },
-          { "icon": "fas fa-lightbulb", "name": "Data Storytelling" },
-          { "icon": "devicon-mysql-plain colored", "name": "SQL" }
+          {
+            "icon": "fas fa-chart-line",
+            "name": "Data Analysis Skill",
+            "description": "Inspect datasets, clean data, and surface insights."
+          },
+          {
+            "icon": "fas fa-chart-pie",
+            "name": "Data Visualization",
+            "description": "Present findings through clear charts and visuals."
+          },
+          {
+            "icon": "fas fa-lightbulb",
+            "name": "Data Storytelling",
+            "description": "Explain analysis with narrative and context."
+          },
+          {
+            "icon": "devicon-mysql-plain colored",
+            "name": "SQL",
+            "description": "Query, join, and aggregate relational data."
+          }
         ]
       },
       {
         "title": "Tools",
         "items": [
-          { "icon": "fas fa-cogs", "name": "Weka" },
-          { "icon": "fas fa-chart-bar", "name": "Tableau" },
-          { "icon": "fas fa-chart-bar", "name": "Jamovi" },
-          { "icon": "fas fa-file-excel", "name": "Excel" },
-          { "icon": "devicon-postgresql-plain colored", "name": "PGAdmin4" },
-          { "icon": "devicon-dbeaver-plain colored", "name": "DBeaver" },
+          {
+            "icon": "fas fa-cogs",
+            "name": "Weka",
+            "description": "Explore ML models and datasets in Weka."
+          },
+          {
+            "icon": "fas fa-chart-bar",
+            "name": "Tableau",
+            "description": "Build interactive dashboards in Tableau."
+          },
+          {
+            "icon": "fas fa-chart-bar",
+            "name": "Jamovi",
+            "description": "Run statistical analysis in Jamovi."
+          },
+          {
+            "icon": "fas fa-file-excel",
+            "name": "Excel",
+            "description": "Analyze data with formulas, pivots, and charts."
+          },
+          {
+            "icon": "devicon-postgresql-plain colored",
+            "name": "PGAdmin4",
+            "description": "Manage PostgreSQL databases with pgAdmin."
+          },
+          {
+            "icon": "devicon-dbeaver-plain colored",
+            "name": "DBeaver",
+            "description": "Work across SQL databases using DBeaver."
+          },
           {
             "icon": "devicon-google-plain colored",
-            "name": "Google Looker Studio"
+            "name": "Google Looker Studio",
+            "description": "Create BI dashboards in Looker Studio."
           },
-          { "icon": "fas fa-briefcase", "name": "Business Intelligence (BI)" }
+          {
+            "icon": "fas fa-briefcase",
+            "name": "Business Intelligence (BI)",
+            "description": "Apply BI practices for reporting and decisions."
+          }
         ]
       },
       {
         "title": "Used in App Development",
         "items": [
-          { "icon": "devicon-javascript-plain colored", "name": "Chart.js" },
-          { "icon": "devicon-python-plain colored", "name": "Pandas" },
-          { "icon": "devicon-python-plain colored", "name": "Matplotlib" },
-          { "icon": "devicon-python-plain colored", "name": "Seaborn" },
+          {
+            "icon": "devicon-javascript-plain colored",
+            "name": "Chart.js",
+            "description": "Render interactive charts for product analytics."
+          },
+          {
+            "icon": "devicon-python-plain colored",
+            "name": "Pandas",
+            "description": "Manipulate and analyze dataframes with Pandas."
+          },
+          {
+            "icon": "devicon-python-plain colored",
+            "name": "Matplotlib",
+            "description": "Create plots and visualizations with Matplotlib."
+          },
+          {
+            "icon": "devicon-python-plain colored",
+            "name": "Seaborn",
+            "description": "Generate statistical charts with Seaborn."
+          },
           {
             "icon": "devicon-tensorflow-original colored",
-            "name": "TensorFlow"
+            "name": "TensorFlow",
+            "description": "Apply TensorFlow models in data apps."
           },
-          { "icon": "devicon-python-plain colored", "name": "Scikit-learn" }
+          {
+            "icon": "devicon-python-plain colored",
+            "name": "Scikit-learn",
+            "description": "Train classical ML models with scikit-learn."
+          }
         ]
       },
       {
         "title": "Databases",
         "items": [
-          { "icon": "devicon-mysql-plain colored", "name": "MySQL" },
-          { "icon": "devicon-postgresql-plain colored", "name": "PostgreSQL" },
-          { "icon": "devicon-mongodb-plain colored", "name": "MongoDB" },
-          { "icon": "devicon-sqlite-plain colored", "name": "SQLite" }
+          {
+            "icon": "devicon-mysql-plain colored",
+            "name": "MySQL",
+            "description": "Query and manage relational data in MySQL."
+          },
+          {
+            "icon": "devicon-postgresql-plain colored",
+            "name": "PostgreSQL",
+            "description": "Use PostgreSQL for structured data storage."
+          },
+          {
+            "icon": "devicon-mongodb-plain colored",
+            "name": "MongoDB",
+            "description": "Store JSON-like documents in MongoDB."
+          },
+          {
+            "icon": "devicon-sqlite-plain colored",
+            "name": "SQLite",
+            "description": "Prototype features with SQLite databases."
+          }
         ]
       }
     ]
@@ -274,22 +653,66 @@
       {
         "title": "Categories",
         "items": [
-          { "icon": "fas fa-code", "name": "Forensics" },
-          { "icon": "fas fa-code", "name": "Reverse Engineering" },
-          { "icon": "fas fa-code", "name": "OSINT" },
-          { "icon": "fas fa-code", "name": "Malware Analysis" }
+          {
+            "icon": "fas fa-code",
+            "name": "Forensics",
+            "description": "Analyze artifacts and recover evidence in CTFs."
+          },
+          {
+            "icon": "fas fa-code",
+            "name": "Reverse Engineering",
+            "description": "Dissect binaries to understand behavior and logic."
+          },
+          {
+            "icon": "fas fa-code",
+            "name": "OSINT",
+            "description": "Gather publicly available intel for challenge solving."
+          },
+          {
+            "icon": "fas fa-code",
+            "name": "Malware Analysis",
+            "description": "Inspect malicious files to identify indicators."
+          }
         ]
       },
       {
         "title": "Tools used",
         "items": [
-          { "icon": "devicon-kalilinux-plain colored", "name": "Kali Linux" },
-          { "icon": "fas fa-code", "name": "Binwalk" },
-          { "icon": "fas fa-code", "name": "Hexedit" },
-          { "icon": "fas fa-code", "name": "Autopsy" },
-          { "icon": "fas fa-code", "name": "Hindsight" },
-          { "icon": "fas fa-code", "name": "Ghidra" },
-          { "icon": "fas fa-code", "name": "x64Dbg" }
+          {
+            "icon": "devicon-kalilinux-plain colored",
+            "name": "Kali Linux",
+            "description": "Use Kali tools for analysis and CTF workflows."
+          },
+          {
+            "icon": "fas fa-code",
+            "name": "Binwalk",
+            "description": "Extract embedded files from binaries."
+          },
+          {
+            "icon": "fas fa-code",
+            "name": "Hexedit",
+            "description": "Inspect and modify binary data in hex."
+          },
+          {
+            "icon": "fas fa-code",
+            "name": "Autopsy",
+            "description": "Run digital forensics triage with Autopsy."
+          },
+          {
+            "icon": "fas fa-code",
+            "name": "Hindsight",
+            "description": "Analyze browser artifacts for investigation."
+          },
+          {
+            "icon": "fas fa-code",
+            "name": "Ghidra",
+            "description": "Decompile and analyze binaries in Ghidra."
+          },
+          {
+            "icon": "fas fa-code",
+            "name": "x64Dbg",
+            "description": "Debug Windows binaries with x64dbg."
+          }
         ]
       }
     ]
@@ -301,28 +724,61 @@
       {
         "title": "UI/UX",
         "items": [
-          { "icon": "devicon-figma-plain colored", "name": "Figma" },
-          { "icon": "devicon-canva-original colored", "name": "Canva" },
-          { "icon": "devicon-visualstudio-plain colored", "name": "Visio" }
+          {
+            "icon": "devicon-figma-plain colored",
+            "name": "Figma",
+            "description": "Design UI layouts and component mockups."
+          },
+          {
+            "icon": "devicon-canva-original colored",
+            "name": "Canva",
+            "description": "Create quick visuals and presentations."
+          },
+          {
+            "icon": "devicon-visualstudio-plain colored",
+            "name": "Visio",
+            "description": "Build diagrams and flowcharts in Visio."
+          }
         ]
       },
       {
         "title": "React Component Libraries",
         "items": [
-          { "icon": "devicon-react-original colored", "name": "ShadCN" },
-          { "icon": "devicon-materialui-plain colored", "name": "Material UI" },
+          {
+            "icon": "devicon-react-original colored",
+            "name": "ShadCN",
+            "description": "Compose Radix-based components with shadcn/ui."
+          },
+          {
+            "icon": "devicon-materialui-plain colored",
+            "name": "Material UI",
+            "description": "Build interfaces with MUI components."
+          },
           {
             "icon": "devicon-tailwindcss-original colored",
-            "name": "HeroIcons"
+            "name": "HeroIcons",
+            "description": "Use Heroicons for consistent UI iconography."
           }
         ]
       },
       {
         "title": "Wireframing/Diagrams",
         "items": [
-          { "icon": "devicon-figma-plain colored", "name": "UML Diagrams" },
-          { "icon": "devicon-figma-plain colored", "name": "Draw.io" },
-          { "icon": "devicon-sketch-plain colored", "name": "Sketch" }
+          {
+            "icon": "devicon-figma-plain colored",
+            "name": "UML Diagrams",
+            "description": "Sketch system structure with UML diagrams."
+          },
+          {
+            "icon": "devicon-figma-plain colored",
+            "name": "Draw.io",
+            "description": "Create architecture and process diagrams."
+          },
+          {
+            "icon": "devicon-sketch-plain colored",
+            "name": "Sketch",
+            "description": "Design UI wireframes and layouts in Sketch."
+          }
         ]
       }
     ]
@@ -334,45 +790,90 @@
       {
         "title": "DevOps",
         "items": [
-          { "icon": "devicon-git-plain colored", "name": "Git" },
-          { "icon": "devicon-docker-plain colored", "name": "Docker" },
-          { "icon": "devicon-vitejs-plain colored", "name": "Vite" },
+          {
+            "icon": "devicon-git-plain colored",
+            "name": "Git",
+            "description": "Use Git for version control and collaboration."
+          },
+          {
+            "icon": "devicon-docker-plain colored",
+            "name": "Docker",
+            "description": "Containerize apps for reproducible deployments."
+          },
+          {
+            "icon": "devicon-vitejs-plain colored",
+            "name": "Vite",
+            "description": "Bundle modern frontend builds with Vite."
+          },
           {
             "icon": "devicon-googlecloud-plain colored",
-            "name": "Google Cloud"
+            "name": "Google Cloud",
+            "description": "Deploy services on Google Cloud Platform."
           },
-          { "icon": "fas fa-cloud-upload-alt", "name": "Render" },
-          { "icon": "devicon-vercel-plain colored", "name": "Vercel" },
-          { "icon": "devicon-cloudflare-plain colored", "name": "Cloudflare" },
-          { "icon": "fas fa-paper-plane", "name": "Fly.io" }
+          {
+            "icon": "fas fa-cloud-upload-alt",
+            "name": "Render",
+            "description": "Host services and static sites on Render."
+          },
+          {
+            "icon": "devicon-vercel-plain colored",
+            "name": "Vercel",
+            "description": "Deploy Next.js apps with Vercel."
+          },
+          {
+            "icon": "devicon-cloudflare-plain colored",
+            "name": "Cloudflare",
+            "description": "Use Cloudflare for CDN, DNS, and caching."
+          },
+          {
+            "icon": "fas fa-paper-plane",
+            "name": "Fly.io",
+            "description": "Deploy apps close to users on Fly.io."
+          }
         ]
       },
       {
         "title": "Command Line & Process",
         "items": [
-          { "icon": "devicon-linux-plain colored", "name": "Linux Commands" },
-          { "icon": "devicon-bash-plain colored", "name": "Bash Scripting" },
-          { "icon": "devicon-windows8-plain colored", "name": "Windows OS" },
+          {
+            "icon": "devicon-linux-plain colored",
+            "name": "Linux Commands",
+            "description": "Navigate and manage systems via Linux CLI."
+          },
+          {
+            "icon": "devicon-bash-plain colored",
+            "name": "Bash Scripting",
+            "description": "Automate tasks with Bash scripts."
+          },
+          {
+            "icon": "devicon-windows8-plain colored",
+            "name": "Windows OS",
+            "description": "Work effectively in Windows environments."
+          },
           {
             "icon": "devicon-linux-plain",
-            "name": "WSL Linux (Linux Mint, Ubuntu"
+            "name": "WSL Linux (Linux Mint, Ubuntu",
+            "description": "Use WSL distros for Linux tooling on Windows."
           },
-
           {
             "icon": "devicon-powershell-plain colored",
-            "name": "PowerShell Commands"
+            "name": "PowerShell Commands",
+            "description": "Automate Windows tasks with PowerShell."
           },
           {
             "icon": "devicon-markdown-original colored",
-            "name": "Markdown Language"
+            "name": "Markdown Language",
+            "description": "Document projects with clean Markdown."
           },
           {
             "icon": "devicon-notion-plain colored",
-            "name": "Project Documentation"
+            "name": "Project Documentation",
+            "description": "Maintain project notes and specs in Notion."
           },
           {
             "icon": "devicon-github-plain colored",
-            "name": "Software Development Life Cycle (SDLC)"
+            "name": "Software Development Life Cycle (SDLC)",
+            "description": "Apply SDLC phases from planning to delivery."
           }
         ]
       },
@@ -381,33 +882,43 @@
         "items": [
           {
             "icon": "devicon-html5-plain colored",
-            "name": "Front-End Development"
+            "name": "Front-End Development",
+            "description": "Build responsive UI with HTML, CSS, and JS."
           },
           {
             "icon": "devicon-nodejs-plain colored",
-            "name": "Back-End Development"
+            "name": "Back-End Development",
+            "description": "Create APIs, services, and server logic."
           },
           {
             "icon": "devicon-python-plain colored",
-            "name": "Chatbot Development"
+            "name": "Chatbot Development",
+            "description": "Build chatbots with intent and response flows."
           },
           {
             "icon": "devicon-mysql-plain colored",
-            "name": "Database Administration"
+            "name": "Database Administration",
+            "description": "Manage databases, backups, and user access."
           }
         ]
       },
       {
         "title": "AI & Prompting",
         "items": [
-          { "icon": "devicon-python-plain colored", "name": "AI Prompting" },
           {
             "icon": "devicon-python-plain colored",
-            "name": "Prompt Engineering"
+            "name": "AI Prompting",
+            "description": "Craft prompts for consistent AI outputs."
+          },
+          {
+            "icon": "devicon-python-plain colored",
+            "name": "Prompt Engineering",
+            "description": "Iterate prompts to improve accuracy and style."
           },
           {
             "icon": "devicon-pytorch-original colored",
-            "name": "Generative AI"
+            "name": "Generative AI",
+            "description": "Use generative models for text and content."
           }
         ]
       },
@@ -416,11 +927,13 @@
         "items": [
           {
             "icon": "devicon-mapbox-original colored",
-            "name": "Geographic Information System (GIS)"
+            "name": "Geographic Information System (GIS)",
+            "description": "Work with spatial layers and map data."
           },
           {
             "icon": "devicon-cplusplus-plain colored",
-            "name": "x86-64 Assembly Language (studying)"
+            "name": "x86-64 Assembly Language (studying)",
+            "description": "Study assembly concepts and low-level code."
           }
         ]
       }
@@ -433,16 +946,56 @@
       {
         "title": "General Abilities",
         "items": [
-          { "icon": "fas fa-lightbulb", "name": "Creative Problem Solving" },
-          { "icon": "fas fa-chart-line", "name": "Analytical Skills" },
-          { "icon": "fas fa-keyboard", "name": "Clerical Skills" },
-          { "icon": "fas fa-sort-numeric-up", "name": "Numerical Analysis" },
-          { "icon": "fas fa-database", "name": "Database Administration" },
-          { "icon": "fas fa-lightbulb", "name": "Critical Thinking" },
-          { "icon": "fas fa-puzzle-piece", "name": "Problem Solving" },
-          { "icon": "fas fa-users", "name": "Agile Collaboration" },
-          { "icon": "fas fa-file-alt", "name": "Documentation" },
-          { "icon": "fas fa-chalkboard-teacher", "name": "Presentation Skills" }
+          {
+            "icon": "fas fa-lightbulb",
+            "name": "Creative Problem Solving",
+            "description": "Generate practical solutions under constraints."
+          },
+          {
+            "icon": "fas fa-chart-line",
+            "name": "Analytical Skills",
+            "description": "Break down problems and interpret data."
+          },
+          {
+            "icon": "fas fa-keyboard",
+            "name": "Clerical Skills",
+            "description": "Manage records and documentation accurately."
+          },
+          {
+            "icon": "fas fa-sort-numeric-up",
+            "name": "Numerical Analysis",
+            "description": "Analyze numbers to support decisions."
+          },
+          {
+            "icon": "fas fa-database",
+            "name": "Database Administration",
+            "description": "Maintain database health and reliability."
+          },
+          {
+            "icon": "fas fa-lightbulb",
+            "name": "Critical Thinking",
+            "description": "Evaluate options and choose sound approaches."
+          },
+          {
+            "icon": "fas fa-puzzle-piece",
+            "name": "Problem Solving",
+            "description": "Resolve issues through structured analysis."
+          },
+          {
+            "icon": "fas fa-users",
+            "name": "Agile Collaboration",
+            "description": "Work effectively with teams in agile cycles."
+          },
+          {
+            "icon": "fas fa-file-alt",
+            "name": "Documentation",
+            "description": "Produce clear, organized project docs."
+          },
+          {
+            "icon": "fas fa-chalkboard-teacher",
+            "name": "Presentation Skills",
+            "description": "Communicate ideas clearly to stakeholders."
+          }
         ]
       }
     ]

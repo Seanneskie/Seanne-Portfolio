@@ -3,11 +3,17 @@
 import { type ReactElement } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { useData } from "@/lib/use-data";
 
 interface SkillItem {
   icon: string;
   name: string;
+  description?: string;
 }
 
 interface SkillGroup {
@@ -40,16 +46,34 @@ export default function StorySkills(): ReactElement {
               {group.title}
             </p>
             <div className="flex flex-wrap gap-2">
-              {group.items.map((item) => (
-                <Badge
-                  key={item.name}
-                  variant="secondary"
-                  className="flex items-center gap-1 rounded-full"
-                >
-                  <i className={item.icon} />
-                  {item.name}
-                </Badge>
-              ))}
+              {group.items.map((item) => {
+                const badge = (
+                  <Badge
+                    variant="secondary"
+                    className="flex items-center gap-1 rounded-full"
+                  >
+                    <i className={item.icon} />
+                    {item.name}
+                  </Badge>
+                );
+
+                if (!item.description) {
+                  return (
+                    <span key={item.name} className="contents">
+                      {badge}
+                    </span>
+                  );
+                }
+
+                return (
+                  <Tooltip key={item.name}>
+                    <TooltipTrigger asChild>{badge}</TooltipTrigger>
+                    <TooltipContent side="top" sideOffset={6}>
+                      {item.description}
+                    </TooltipContent>
+                  </Tooltip>
+                );
+              })}
             </div>
           </div>
         ))}

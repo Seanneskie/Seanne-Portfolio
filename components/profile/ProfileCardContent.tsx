@@ -1,7 +1,7 @@
 "use client";
 
-import { type ReactElement } from "react";
-import { motion } from "framer-motion";
+import { type ReactElement, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
@@ -61,6 +61,7 @@ export default function ProfileCardContent({
   profile: ProfileData;
   imagePriority?: boolean;
 }): ReactElement {
+  const [showShyPhoto, setShowShyPhoto] = useState(false);
   const links = profile.links ?? {};
 
   const info = profile as Partial<{
@@ -77,6 +78,9 @@ export default function ProfileCardContent({
   const major = info.major ?? info.specialization ?? "Database Systems Major";
   const phone =
     info.phone ?? info.contact ?? info.contactNo ?? info.contact_number ?? null;
+  const profilePhoto = showShyPhoto
+    ? withBasePath("/static/shy_image.webp")
+    : profile.image ?? withBasePath("/static/profile.webp");
 
   return (
     <Card className="relative overflow-hidden">
@@ -122,16 +126,32 @@ export default function ProfileCardContent({
           className="grid grid-cols-1 items-stretch gap-8 md:grid-cols-[25%_75%]"
         >
           {/* LEFT (25%): Full-height image */}
-          <div className="relative h-full min-h-[240px] overflow-hidden rounded-xl ring-2 ring-teal-900/30 dark:ring-teal-400/30 shadow-sm">
-            <Image
-              src={withBasePath("/static/image_1.webp")}
-              alt={profile.name}
-              fill
-              sizes="(max-width: 768px) 100vw, 25vw"
-              priority={imagePriority}
-              className="object-cover"
-            />
-          </div>
+          <button
+            type="button"
+            onClick={() => setShowShyPhoto(true)}
+            className="relative h-full min-h-[240px] cursor-pointer overflow-hidden rounded-xl ring-2 ring-teal-900/30 shadow-sm transition hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/60 dark:ring-teal-400/30"
+            aria-label="View shy profile photo"
+          >
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={profilePhoto}
+                initial={{ opacity: 0, scale: 0.98 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 1.02 }}
+                transition={{ duration: 0.35, ease: "easeOut" }}
+                className="absolute inset-0"
+              >
+                <Image
+                  src={profilePhoto}
+                  alt={profile.name}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 25vw"
+                  priority={imagePriority}
+                  className="object-cover"
+                />
+              </motion.div>
+            </AnimatePresence>
+          </button>
 
           {/* RIGHT (75%): Details, Education, then Links row */}
           <div className="space-y-6">
