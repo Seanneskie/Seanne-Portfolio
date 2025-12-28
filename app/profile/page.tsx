@@ -4,22 +4,24 @@ import type { JSX } from "react";
 import Profile, { CardCounters, MyStory } from "@/components/profile";
 import OtherSkills from "@/components/profile/OtherSkills";
 
-const PAGE_TITLE = "Profile | Seanne Cañete";
-const PAGE_DESCRIPTION =
-  "Learn more about Seanne Cañete's background, story, and skills across frontend, backend, and data technologies.";
+const PAGE_METADATA = {
+  title: "Profile | Seanne Canete",
+  description:
+    "Learn more about Seanne Canete's background, story, and skills across frontend, backend, and data technologies.",
+};
 
 export const metadata: Metadata = {
-  title: PAGE_TITLE,
-  description: PAGE_DESCRIPTION,
+  title: PAGE_METADATA.title,
+  description: PAGE_METADATA.description,
   openGraph: {
-    title: PAGE_TITLE,
-    description: PAGE_DESCRIPTION,
+    title: PAGE_METADATA.title,
+    description: PAGE_METADATA.description,
     type: "profile",
   },
   twitter: {
     card: "summary_large_image",
-    title: PAGE_TITLE,
-    description: PAGE_DESCRIPTION,
+    title: PAGE_METADATA.title,
+    description: PAGE_METADATA.description,
   },
 };
 
