@@ -57,6 +57,9 @@ export default function CertificatesSection(): ReactElement {
     });
   }, [certificates, search, tag]);
 
+  const totalCertificates = certificates.length;
+  const totalTags = tags.length;
+
   if (loading) {
     return (
       <div className="grid auto-rows-fr grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -79,52 +82,77 @@ export default function CertificatesSection(): ReactElement {
 
   return (
     <div className="space-y-4">
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-        <Input
-          placeholder="Search certificates"
-          aria-label="Search certificates"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="sm:max-w-xs focus-visible:border-teal-500 focus-visible:ring-teal-500/50"
-        />
-        {/* 1) Control value using a sentinel when tag is empty */}
-        <Select
-          value={tag ? tag : "__all"}
-          onValueChange={(v) => setTag(v === "__all" ? "" : v)}
-        >
-          <SelectTrigger
-            aria-label="Filter by tag"
-            className="sm:w-56 focus-visible:border-teal-500 focus-visible:ring-teal-500/50"
+      <Card className="rounded-2xl border border-teal-200/70 bg-white/85 p-4 shadow-sm backdrop-blur dark:border-teal-800/70 dark:bg-gray-950/60">
+        <div className="flex flex-col gap-4 lg:flex-row lg:items-center">
+          <Input
+            placeholder="Search certificates"
+            aria-label="Search certificates"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="w-full lg:max-w-md focus-visible:border-teal-500 focus-visible:ring-teal-500/50"
+          />
+          {/* 1) Control value using a sentinel when tag is empty */}
+          <Select
+            value={tag ? tag : "__all"}
+            onValueChange={(v) => setTag(v === "__all" ? "" : v)}
           >
-            <SelectValue placeholder="All tags" />
-          </SelectTrigger>
+            <SelectTrigger
+              aria-label="Filter by tag"
+              className="lg:w-64 focus-visible:border-teal-500 focus-visible:ring-teal-500/50"
+            >
+              <SelectValue placeholder="All tags" />
+            </SelectTrigger>
 
-          <SelectContent>
-            {/* 2) Use a non-empty value here */}
-            <SelectItem value="__all">All tags</SelectItem>
-            {tags.map((t) => (
-              <SelectItem key={t} value={t}>
-                {t}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-        <Button
-          variant="ghost"
-          onClick={() => {
-            setSearch("");
-            setTag("");
-          }}
-          disabled={!search && !tag}
-        >
-          Clear filters
-        </Button>
-      </div>
+            <SelectContent>
+              {/* 2) Use a non-empty value here */}
+              <SelectItem value="__all">All tags</SelectItem>
+              {tags.map((t) => (
+                <SelectItem key={t} value={t}>
+                  {t}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+          <div className="flex flex-wrap items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
+            <span>
+              Showing {filtered.length} of {totalCertificates}
+            </span>
+            <span className="hidden text-gray-400 dark:text-gray-500 sm:inline">•</span>
+            <span>{totalTags} tags</span>
+            <Button
+              size="sm"
+              variant="outline"
+              onClick={() => {
+                setSearch("");
+                setTag("");
+              }}
+              disabled={!search && !tag}
+              className="border-teal-200 text-teal-700 hover:border-teal-300 hover:text-teal-800 dark:border-teal-800 dark:text-teal-200"
+            >
+              Clear filters
+            </Button>
+          </div>
+        </div>
+      </Card>
 
       {filtered.length === 0 ? (
-        <p className="text-gray-700 dark:text-gray-200">
-          No certificates match your search.
-        </p>
+        <Card className="rounded-2xl border border-dashed border-teal-200 bg-white/80 p-10 text-center text-gray-600 dark:border-teal-800 dark:bg-gray-950/60 dark:text-gray-300">
+          <p className="text-lg font-semibold text-gray-900 dark:text-white">
+            No certificates match your search
+          </p>
+          <p className="mt-2 text-sm">Try a different keyword or reset the filters.</p>
+          <Button
+            size="sm"
+            variant="outline"
+            onClick={() => {
+              setSearch("");
+              setTag("");
+            }}
+            className="mt-4 border-teal-200 text-teal-700 hover:border-teal-300 hover:text-teal-800 dark:border-teal-800 dark:text-teal-200"
+          >
+            Reset filters
+          </Button>
+        </Card>
       ) : (
         <ul
           role="list"

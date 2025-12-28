@@ -23,9 +23,5 @@ export const metadata: Metadata = {
 };
 
 export default function WorkExperiencesPage(): JSX.Element {
-  return (
-    <main className="container mx-auto max-w-5xl px-4 py-12">
-      <WorkExperiences />
-    </main>
-  );
+  return <WorkExperiences />;
 }

@@ -23,9 +23,5 @@ export const metadata: Metadata = {
 };
 
 export default function AwardsPage(): ReactElement {
-  return (
-    <main className="container mx-auto max-w-5xl px-4 py-12">
-      <Awards />
-    </main>
-  );
+  return <Awards />;
 }
