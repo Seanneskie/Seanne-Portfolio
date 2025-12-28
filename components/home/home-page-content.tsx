@@ -33,12 +33,7 @@ export default function HomePageContent(): JSX.Element {
                 <ArrowUpRight className="h-4 w-4" />
               </Link>
             </Button>
-            <Button
-              asChild
-              size="lg"
-              variant="outline"
-              className="rounded-full bg-white/90 text-gray-900 hover:bg-white"
-            >
+            <Button asChild size="lg" className="rounded-full">
               <a
                 href={withBasePath("/static/pdfs/canete_resume.pdf")}
                 target="_blank"
