@@ -112,7 +112,16 @@ export default function Banner({
           </p>
         )}
 
-        {actions && <div className={cn("mt-6 inline-flex gap-3", align !== "left" ? "justify-center" : "")}>{actions}</div>}
+        {actions && (
+          <div
+            className={cn(
+              "mt-6 flex flex-wrap items-center gap-3",
+              align !== "left" ? "justify-center" : "justify-start"
+            )}
+          >
+            {actions}
+          </div>
+        )}
 
         {/* Screen-reader-only description of the background image (if provided) */}
         {imageAlt ? <span className="sr-only">{imageAlt}</span> : null}

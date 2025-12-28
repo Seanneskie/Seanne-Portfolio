@@ -79,8 +79,8 @@ export default function ProfileCardContent({
   const phone =
     info.phone ?? info.contact ?? info.contactNo ?? info.contact_number ?? null;
   const profilePhoto = showShyPhoto
-    ? withBasePath("/static/shy_image.webp")
-    : profile.image ?? withBasePath("/static/profile.webp");
+    ? withBasePath("/profile/static/shy_image.webp")
+    : profile.image ?? withBasePath("/profile/static/image_1.webp");
 
   return (
     <Card className="relative overflow-hidden">
@@ -91,7 +91,7 @@ export default function ProfileCardContent({
       />
 
       <CardHeader className="relative z-10 p-0">
-        <div className="flex items-center justify-between px-6 py-3">
+        <div className="flex flex-col gap-3 px-6 py-3 sm:flex-row sm:items-center sm:justify-between">
           <CardTitle className="text-sm font-semibold uppercase tracking-wide text-black/70 dark:text-white/70">
             Profile
           </CardTitle>
@@ -247,7 +247,7 @@ export default function ProfileCardContent({
                 {profile.education?.map((e, idx) => (
                   <li
                     key={`${e.institution}-${e.level}-${e.year}-${idx}`}
-                    className="flex items-center justify-between gap-3"
+                    className="flex flex-col items-start gap-2 sm:flex-row sm:items-center sm:justify-between"
                   >
                     <div className="min-w-0">
                       <p className="truncate font-medium text-black dark:text-white">

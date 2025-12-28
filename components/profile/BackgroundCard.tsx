@@ -75,8 +75,8 @@ export default function BackgroundCard({ profile }: { profile: ProfileData }): R
               <CarouselContent className="pb-2">
                 {slides.map((text, i) => (
                   <CarouselItem key={i} className="px-1">
-                    <div className="rounded-xl border border-neutral-200/60 bg-neutral-50/70 p-6 text-center backdrop-blur-sm dark:border-neutral-800/60 dark:bg-neutral-900/60 sm:p-7 md:p-8">
-                      <p className="mx-auto max-w-2xl font-serif text-lg leading-relaxed text-black sm:text-xl dark:text-white">
+                    <div className="rounded-xl border border-neutral-200/60 bg-neutral-50/70 p-5 text-center backdrop-blur-sm dark:border-neutral-800/60 dark:bg-neutral-900/60 sm:p-7 md:p-8">
+                      <p className="mx-auto max-w-2xl font-serif text-base leading-relaxed text-black sm:text-lg md:text-xl dark:text-white">
                         {text}
                       </p>
                     </div>
@@ -150,7 +150,7 @@ export default function BackgroundCard({ profile }: { profile: ProfileData }): R
 
           {/* RIGHT: Portrait image (fixed crop & position) */}
           <div className="order-first overflow-hidden rounded-xl ring-1 ring-teal-600/20 shadow-sm dark:ring-teal-400/20 sm:order-last lg:order-none">
-            <div className="relative aspect-[3/4] w-full min-h-[18rem] overflow-hidden rounded-xl md:min-h-[20rem]">
+            <div className="relative aspect-[3/4] w-full min-h-[14rem] overflow-hidden rounded-xl sm:min-h-[18rem] md:min-h-[20rem]">
               <Image
                 src={withBasePath("/static/image_2.webp")}
                 alt="Profile portrait"
