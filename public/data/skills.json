@@ -38,6 +38,7 @@
           { "icon": "devicon-javascript-plain colored", "name": "JavaScript" },
           { "icon": "devicon-react-original colored", "name": "ReactJS" },
           { "icon": "devicon-nextjs-plain", "name": "NextJS" },
+          { "icon": "fas fa-mobile-screen", "name": "PWA (Progressive Web App)" },
           {
             "icon": "devicon-tailwindcss-original colored",
             "name": "Tailwind CSS"
@@ -64,6 +65,12 @@
           { "icon": "devicon-laravel-plain colored", "name": "Laravel (PHP)" },
           { "icon": "devicon-supabase-plain colored", "name": "Supabase" },
           { "icon": "fas fa-network-wired", "name": "REST API Development" },
+          { "icon": "fas fa-plug", "name": "Webhooks" },
+          {
+            "icon": "fab fa-whatsapp",
+            "name": "WhatsApp Business API (Notifications)"
+          },
+          { "icon": "fas fa-bell", "name": "Web Push" },
           {
             "icon": "devicon-graphql-plain colored",
             "name": "GraphQL (Apollo Client + GraphQL Yoga)"
@@ -98,6 +105,7 @@
         "title": "AI & Machine Learning",
         "items": [
           { "icon": "fas fa-link", "name": "LangChain Integration" },
+          { "icon": "fas fa-language", "name": "Franc (Language Detection)" },
           {
             "icon": "devicon-google-plain colored",
             "name": "Google Teachable Machine"
@@ -186,6 +194,7 @@
             "icon": "devicon-googlecloud-plain colored",
             "name": "Google Cloud Platform"
           },
+          { "icon": "fas fa-image", "name": "Cloudflare Image Transformation" },
           { "icon": "devicon-amazonwebservices-plain colored", "name": "AWS" },
           { "icon": "devicon-railway-plain colored", "name": "Railway" },
           { "icon": "fas fa-cloud-upload-alt", "name": "Render" },
