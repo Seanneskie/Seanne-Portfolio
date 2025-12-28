@@ -123,7 +123,7 @@ export default function ProfileCardContent({
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.35, ease: "easeOut" }}
-          className="grid grid-cols-1 items-stretch gap-8 md:grid-cols-[minmax(0,25%)_minmax(0,75%)]"
+          className="grid grid-cols-1 items-stretch gap-8 lg:grid-cols-[minmax(0,25%)_minmax(0,75%)]"
         >
           {/* LEFT (25%): Full-height image */}
           <button
@@ -239,7 +239,7 @@ export default function ProfileCardContent({
             <Separator />
 
             {/* Education */}
-            <section className="px-6 ">
+            <section className="px-0 sm:px-6">
               <h3 className="mb-3 text-sm font-semibold uppercase tracking-wide text-black/70 dark:text-white/70">
                 Education
               </h3>
@@ -250,10 +250,10 @@ export default function ProfileCardContent({
                     className="flex flex-col items-start gap-2 sm:flex-row sm:items-center sm:justify-between"
                   >
                     <div className="min-w-0">
-                      <p className="truncate font-medium text-black dark:text-white">
+                      <p className="font-medium text-black dark:text-white sm:truncate">
                         {e.level}
                       </p>
-                      <p className="truncate text-black/80 dark:text-white/80">
+                      <p className="text-black/80 dark:text-white/80 sm:truncate">
                         {e.institution}
                       </p>
                     </div>

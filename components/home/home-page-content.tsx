@@ -51,21 +51,20 @@ export default function HomePageContent(): JSX.Element {
       />
       <div className="bg-gradient-to-b from-white via-slate-50/70 to-white dark:from-gray-900 dark:via-gray-950/40 dark:to-gray-900">
         <div className="container mx-auto max-w-7xl space-y-16 px-4 py-14">
-          <section className="grid items-start gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
-            <div className="min-w-0 space-y-6">
-              <div className="inline-flex items-center gap-2 rounded-full border border-teal-500/20 bg-white/80 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-teal-700 shadow-sm dark:border-teal-400/20 dark:bg-gray-900/60 dark:text-teal-300">
-                <Sparkles className="h-3.5 w-3.5" />
-                Featured
-              </div>
-              <Profile />
+          <section className="space-y-6">
+            <div className="inline-flex items-center gap-2 rounded-full border border-teal-500/20 bg-white/80 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-teal-700 shadow-sm dark:border-teal-400/20 dark:bg-gray-900/60 dark:text-teal-300">
+              <Sparkles className="h-3.5 w-3.5" />
+              Featured
             </div>
-            <div className="min-w-0 space-y-10">
-              <HobbyAchievements />
-              <Highlights />
-            </div>
+            <Profile />
           </section>
 
           <MyStory />
+
+          <div className="space-y-10">
+            <HobbyAchievements />
+            <Highlights />
+          </div>
 
           <WorkExperienceCarousel />
 

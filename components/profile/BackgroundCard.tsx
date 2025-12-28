@@ -59,10 +59,10 @@ export default function BackgroundCard({ profile }: { profile: ProfileData }): R
       <div className="absolute inset-x-0 top-[52px] h-px bg-gradient-to-r from-teal-600/20 to-transparent dark:from-teal-400/20 dark:to-transparent" />
 
       <CardContent className="relative z-10">
-        {/* Image on the RIGHT; ensure no overlap with z-index + spacing */}
-        <div className="grid items-start gap-8 md:gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(260px,320px)] xl:grid-cols-[minmax(0,1fr)_minmax(300px,360px)]">
+        {/* Image stacks on mobile, splits on large screens */}
+        <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,320px)] lg:items-start">
           {/* LEFT: Description carousel (serif, centered, larger) */}
-          <div className="relative z-10 flex flex-col gap-6">
+          <div className="order-2 min-w-0 lg:order-1 relative z-10 flex flex-col gap-6">
             <Carousel
               opts={{ loop: true, align: "start" }}
               plugins={[autoplay.current]}
@@ -149,14 +149,15 @@ export default function BackgroundCard({ profile }: { profile: ProfileData }): R
           </div>
 
           {/* RIGHT: Portrait image (fixed crop & position) */}
-          <div className="order-first overflow-hidden rounded-xl ring-1 ring-teal-600/20 shadow-sm dark:ring-teal-400/20 sm:order-last lg:order-none">
-            <div className="relative aspect-[3/4] w-full min-h-[14rem] overflow-hidden rounded-xl sm:min-h-[18rem] md:min-h-[20rem]">
+          <div className="order-1 rounded-2xl border border-teal-600/10 bg-white/70 p-3 shadow-sm backdrop-blur-sm dark:border-teal-400/10 dark:bg-teal-900/20 lg:order-2">
+            <div className="w-full rounded-xl bg-neutral-50/60 p-2 dark:bg-neutral-900/40">
               <Image
                 src={withBasePath("/static/image_2.webp")}
                 alt="Profile portrait"
-                fill
+                width={900}
+                height={1200}
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 45vw, 32vw"
-                className="object-cover object-top"
+                className="h-auto w-full rounded-lg object-contain"
               />
             </div>
           </div>
