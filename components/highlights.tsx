@@ -32,9 +32,9 @@ export default function Highlights(): ReactElement {
   }
 
   return (
-    <section id="highlights" className="space-y-4">
+    <section id="highlights" className="min-w-0 space-y-4">
       <h2 className="text-2xl font-bold">Highlights</h2>
-      <Carousel className="w-full">
+      <Carousel className="w-full min-w-0">
         <CarouselContent>
           {highlights.map((highlight) => (
             <CarouselItem key={highlight.src} className="basis-full">

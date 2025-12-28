@@ -123,7 +123,7 @@ export default function ProfileCardContent({
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.35, ease: "easeOut" }}
-          className="grid grid-cols-1 items-stretch gap-8 md:grid-cols-[25%_75%]"
+          className="grid grid-cols-1 items-stretch gap-8 md:grid-cols-[minmax(0,25%)_minmax(0,75%)]"
         >
           {/* LEFT (25%): Full-height image */}
           <button
@@ -154,7 +154,7 @@ export default function ProfileCardContent({
           </button>
 
           {/* RIGHT (75%): Details, Education, then Links row */}
-          <div className="space-y-6">
+          <div className="min-w-0 space-y-6">
             {/* Header block */}
             <div className="space-y-3">
               <h2 className="text-3xl font-semibold leading-tight text-black dark:text-white">
