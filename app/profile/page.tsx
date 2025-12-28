@@ -28,7 +28,7 @@ export const metadata: Metadata = {
 export default function ProfilePage(): JSX.Element {
   return (
     <main className="container mx-auto max-w-7xl space-y-16 px-4 py-12">
-      <Profile />
+      <Profile imagePriority />
       <CardCounters />
       <MyStory />
       <section className="space-y-6">

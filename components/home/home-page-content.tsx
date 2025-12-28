@@ -22,6 +22,7 @@ export default function HomePageContent(): JSX.Element {
         align="left"
         height="lg"
         parallax
+        priority
         actions={
           <>
             <Link

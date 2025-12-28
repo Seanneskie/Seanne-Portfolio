@@ -69,6 +69,7 @@ export default function ProjectsSection(): ReactElement {
                   src={withBasePath(p.image)}
                   alt={p.alt}
                   fill
+                  sizes="(max-width: 640px) 100vw, 50vw"
                   className="object-cover"
                 />
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-teal-900/25 to-transparent dark:from-teal-950/35" />

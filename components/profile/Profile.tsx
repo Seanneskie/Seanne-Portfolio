@@ -32,11 +32,11 @@ const PROFILE: ProfileData = {
   },
 };
 
-export default function Profile(): ReactElement {
+export default function Profile({ imagePriority = false }: { imagePriority?: boolean }): ReactElement {
   return (
     <TooltipProvider delayDuration={100}>
       <section id="profile" className="space-y-6">
-        <ProfileCard profile={PROFILE} />
+        <ProfileCard profile={PROFILE} imagePriority={imagePriority} />
         <BackgroundCard profile={PROFILE} />
       </section>
     </TooltipProvider>

@@ -40,7 +40,13 @@ export default function Highlights(): ReactElement {
             <CarouselItem key={highlight.src} className="basis-full">
               <div className="space-y-2">
                 <AspectRatio ratio={16 / 9} className="overflow-hidden rounded-xl bg-muted">
-                  <Image src={withBasePath(highlight.src)} alt={highlight.label} fill className="object-cover" />
+                  <Image
+                    src={withBasePath(highlight.src)}
+                    alt={highlight.label}
+                    fill
+                    sizes="(max-width: 1280px) 100vw, 1280px"
+                    className="object-cover"
+                  />
                 </AspectRatio>
                 {highlight.label && (
                   <p className="text-center text-sm text-teal-700 dark:text-teal-300">

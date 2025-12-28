@@ -54,7 +54,13 @@ const socialList: { key: keyof Links; label: string; icon: LucideIcon }[] = [
   { key: "resume", label: "Resume", icon: FileText },
 ];
 
-export default function ProfileCardContent({ profile }: { profile: ProfileData }): ReactElement {
+export default function ProfileCardContent({
+  profile,
+  imagePriority = false,
+}: {
+  profile: ProfileData;
+  imagePriority?: boolean;
+}): ReactElement {
   const links = profile.links ?? {};
 
   const info = profile as Partial<{
@@ -122,6 +128,7 @@ export default function ProfileCardContent({ profile }: { profile: ProfileData }
               alt={profile.name}
               fill
               sizes="(max-width: 768px) 100vw, 25vw"
+              priority={imagePriority}
               className="object-cover"
             />
           </div>
