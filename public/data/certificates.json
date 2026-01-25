@@ -2,6 +2,22 @@
   {
     "tags": [
       "SoloLearn",
+      "AI",
+      "SEO"
+    ],
+    "title": "SEO with AI - SoloLearn",
+    "desc": "This certificate demonstrates proficiency in using AI-powered tools and techniques for Search Engine Optimization, including keyword research, content optimization, and improving website visibility. Date: January 2025",
+    "link": "/static/certificates/seo-with-ai.jpg",
+    "image": "/static/certificates/seo-with-ai.jpg",
+    "skills": [
+      "SEO",
+      "AI Prompting",
+      "Content Optimization"
+    ]
+  },
+  {
+    "tags": [
+      "SoloLearn",
       "AI"
     ],
     "title": "Data Analytics with AI - SoloLearn",

@@ -924,6 +924,16 @@
             "icon": "devicon-pytorch-original colored",
             "name": "Generative AI",
             "description": "Use generative models for text and content."
+          },
+          {
+            "icon": "fas fa-search",
+            "name": "SEO",
+            "description": "Optimize content and websites for search engine visibility."
+          },
+          {
+            "icon": "fas fa-file-alt",
+            "name": "Content Optimization",
+            "description": "Improve content quality and structure for better engagement and rankings."
           }
         ]
       },
