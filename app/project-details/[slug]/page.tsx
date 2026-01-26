@@ -115,37 +115,39 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const config = projectDetailConfig[slug];
 
   if (!config) {
-    const fallbackTitle = "Project Not Found | Seanne Cañete";
+    const fallbackTitle = "Project Not Found";
     const fallbackDescription = "The requested project page could not be located.";
+    const fallbackOgTitle = `${fallbackTitle} | Seanne Cañete`;
     return {
       title: fallbackTitle,
       description: fallbackDescription,
       openGraph: {
-        title: fallbackTitle,
+        title: fallbackOgTitle,
         description: fallbackDescription,
         type: "article",
       },
       twitter: {
         card: "summary_large_image",
-        title: fallbackTitle,
+        title: fallbackOgTitle,
         description: fallbackDescription,
       },
     };
   }
 
-  const pageTitle = `${config.title} | Project Details | Seanne Cañete`;
+  const pageTitle = `${config.title} | Project Details`;
+  const pageOgTitle = `${pageTitle} | Seanne Cañete`;
 
   return {
     title: pageTitle,
     description: config.description,
     openGraph: {
-      title: pageTitle,
+      title: pageOgTitle,
       description: config.description,
       type: "article",
     },
     twitter: {
       card: "summary_large_image",
-      title: pageTitle,
+      title: pageOgTitle,
       description: config.description,
     },
   };

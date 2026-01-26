@@ -3,21 +3,22 @@ import type { JSX } from "react";
 
 import WorkExperiences from "@/components/work-experiences";
 
-const PAGE_TITLE = "Work Experience | Seanne Cañete";
+const PAGE_TITLE = "Work Experience";
+const PAGE_OG_TITLE = "Work Experience | Seanne Cañete";
 const PAGE_DESCRIPTION =
-  "Explore Seanne Cañete's professional experience across software engineering, analytics, and product delivery roles.";
+  "Explore Seanne Cañete's professional experience across software engineering, analytics, and product delivery, including full-stack roles.";
 
 export const metadata: Metadata = {
   title: PAGE_TITLE,
   description: PAGE_DESCRIPTION,
   openGraph: {
-    title: PAGE_TITLE,
+    title: PAGE_OG_TITLE,
     description: PAGE_DESCRIPTION,
     type: "article",
   },
   twitter: {
     card: "summary_large_image",
-    title: PAGE_TITLE,
+    title: PAGE_OG_TITLE,
     description: PAGE_DESCRIPTION,
   },
 };

@@ -5,22 +5,34 @@ import Profile, { CardCounters, MyStory } from "@/components/profile";
 import OtherSkills from "@/components/profile/OtherSkills";
 
 const PAGE_METADATA = {
-  title: "Profile | Seanne Canete",
+  title: "Profile",
+  ogTitle: "Profile | Seanne Cañete",
   description:
-    "Learn more about Seanne Canete's background, story, and skills across frontend, backend, and data technologies.",
+    "Learn more about Seanne Cañete, a full-stack engineer and IT graduate from Mindanao State University - General Santos City.",
+  keywords: [
+    "Seanne Cañete",
+    "Seanne Canete",
+    "full stack engineer",
+    "software engineer",
+    "Mindanao State University",
+    "Mindanao State University - General Santos",
+    "General Santos City",
+    "information technology graduate",
+  ],
 };
 
 export const metadata: Metadata = {
   title: PAGE_METADATA.title,
   description: PAGE_METADATA.description,
+  keywords: PAGE_METADATA.keywords,
   openGraph: {
-    title: PAGE_METADATA.title,
+    title: PAGE_METADATA.ogTitle,
     description: PAGE_METADATA.description,
     type: "profile",
   },
   twitter: {
     card: "summary_large_image",
-    title: PAGE_METADATA.title,
+    title: PAGE_METADATA.ogTitle,
     description: PAGE_METADATA.description,
   },
 };

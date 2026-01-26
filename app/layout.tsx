@@ -8,8 +8,36 @@ import { ThemeProvider } from "@/components/theme-provider";
 
 
 export const metadata: Metadata = {
-  title: "Seanne Cañete — Portfolio",
-  description: "Next.js portfolio with shadcn/ui.",
+  title: {
+    default: "Seanne Cañete | Full-Stack Engineer",
+    template: "%s | Seanne Cañete",
+  },
+  description:
+    "Seanne Cañete is a full-stack engineer and Information Technology graduate from Mindanao State University - General Santos City. Explore projects, experience, and engineering work.",
+  keywords: [
+    "Seanne Cañete",
+    "Seanne Canete",
+    "full stack engineer",
+    "full stack developer",
+    "software engineer",
+    "web developer",
+    "frontend developer",
+    "backend developer",
+    "Next.js developer",
+    "React developer",
+    "TypeScript developer",
+    "JavaScript developer",
+    "data engineer",
+    "data analyst",
+    "portfolio",
+    "hire full stack engineer",
+    "full stack engineer for hire",
+    "Mindanao State University",
+    "Mindanao State University - General Santos",
+    "MSU General Santos",
+    "General Santos City",
+    "Philippines",
+  ],
 };
 
 export default function RootLayout({

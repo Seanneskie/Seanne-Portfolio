@@ -3,21 +3,22 @@ import type { JSX } from "react";
 
 import ContactPageContent from "@/components/contact/contact-page-content";
 
-const PAGE_TITLE = "Contact | Seanne Cañete";
+const PAGE_TITLE = "Contact";
+const PAGE_OG_TITLE = "Contact | Seanne Cañete";
 const PAGE_DESCRIPTION =
-  "Reach out to Seanne Cañete for collaboration, freelance opportunities, or questions about recent engineering projects.";
+  "Reach out to Seanne Cañete, a full-stack engineer, for collaboration, freelance opportunities, or questions about recent engineering projects.";
 
 export const metadata: Metadata = {
   title: PAGE_TITLE,
   description: PAGE_DESCRIPTION,
   openGraph: {
-    title: PAGE_TITLE,
+    title: PAGE_OG_TITLE,
     description: PAGE_DESCRIPTION,
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: PAGE_TITLE,
+    title: PAGE_OG_TITLE,
     description: PAGE_DESCRIPTION,
   },
 };
