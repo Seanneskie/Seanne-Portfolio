@@ -140,6 +140,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: pageTitle,
     description: config.description,
+    alternates: { canonical: `/${slug}` },
     openGraph: {
       title: pageOgTitle,
       description: config.description,

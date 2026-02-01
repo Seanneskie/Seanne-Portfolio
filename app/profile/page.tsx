@@ -25,6 +25,7 @@ export const metadata: Metadata = {
   title: PAGE_METADATA.title,
   description: PAGE_METADATA.description,
   keywords: PAGE_METADATA.keywords,
+  alternates: { canonical: "/profile" },
   openGraph: {
     title: PAGE_METADATA.ogTitle,
     description: PAGE_METADATA.description,

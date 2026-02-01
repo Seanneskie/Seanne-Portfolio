@@ -30,6 +30,7 @@ export const metadata: Metadata = {
   title: PAGE_TITLE,
   description: PAGE_DESCRIPTION,
   keywords: PAGE_KEYWORDS,
+  alternates: { canonical: "/" },
   openGraph: {
     title: PAGE_OG_TITLE,
     description: PAGE_DESCRIPTION,

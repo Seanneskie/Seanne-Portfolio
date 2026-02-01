@@ -11,6 +11,7 @@ const PAGE_DESCRIPTION =
 export const metadata: Metadata = {
   title: PAGE_TITLE,
   description: PAGE_DESCRIPTION,
+  alternates: { canonical: "/certificates" },
   openGraph: {
     title: PAGE_OG_TITLE,
     description: PAGE_DESCRIPTION,
