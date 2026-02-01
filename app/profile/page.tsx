@@ -3,6 +3,7 @@ import type { JSX } from "react";
 
 import Profile, { CardCounters, MyStory } from "@/components/profile";
 import OtherSkills from "@/components/profile/OtherSkills";
+import { getSkills, getServices } from "@/lib/get-data";
 
 const PAGE_METADATA = {
   title: "Profile",
@@ -39,6 +40,9 @@ export const metadata: Metadata = {
 };
 
 export default function ProfilePage(): JSX.Element {
+  const skills = getSkills();
+  const services = getServices();
+
   return (
     <main className="bg-gradient-to-b from-white via-slate-50/70 to-white dark:from-gray-900 dark:via-gray-950/40 dark:to-gray-900">
       <div className="container mx-auto max-w-7xl space-y-16 px-4 py-14">
@@ -71,7 +75,7 @@ export default function ProfilePage(): JSX.Element {
           </div>
         </section>
 
-        <MyStory />
+        <MyStory skills={skills} services={services} />
 
         <section className="space-y-6">
           <div className="space-y-2">
@@ -82,7 +86,7 @@ export default function ProfilePage(): JSX.Element {
               Supporting tools and workflows that help teams ship with clarity.
             </p>
           </div>
-          <OtherSkills />
+          <OtherSkills data={skills} />
         </section>
         {/* <TechComparison /> */}
       </div>

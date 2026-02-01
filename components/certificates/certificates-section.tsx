@@ -18,11 +18,10 @@ import {
   HoverCardTrigger,
   HoverCardContent,
 } from "@/components/ui/hover-card";
-import { useData } from "@/lib/use-data";
 import { withBasePath } from "@/lib/utils";
 import Image from "next/image";
 
-interface Certificate {
+export interface Certificate {
   tags: string[];
   title: string;
   desc: string;
@@ -33,12 +32,15 @@ interface Certificate {
 
 const MAX_BADGES = 6;
 
-export default function CertificatesSection(): ReactElement {
+interface CertificatesSectionProps {
+  data: Certificate[];
+}
+
+export default function CertificatesSection({ data }: CertificatesSectionProps): ReactElement {
   const [search, setSearch] = useState("");
   const [tag, setTag] = useState("");
 
-  const { data, loading, error } = useData<Certificate[]>("certificates.json");
-  const certificates = useMemo(() => data ?? [], [data]);
+  const certificates: Certificate[] = data;
 
   const tags = useMemo<string[]>(
     () => Array.from(new Set(certificates.flatMap((c) => c.tags))).sort(),
@@ -59,26 +61,6 @@ export default function CertificatesSection(): ReactElement {
 
   const totalCertificates = certificates.length;
   const totalTags = tags.length;
-
-  if (loading) {
-    return (
-      <div className="grid auto-rows-fr grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {[...Array(6)].map((_, i) => (
-          <Card
-            key={i}
-            className="h-56 animate-pulse rounded-2xl border border-teal-200/60 bg-white/70 dark:border-teal-800/60 dark:bg-gray-950/50"
-          />
-        ))}
-      </div>
-    );
-  }
-
-  if (error || !data)
-    return (
-      <p className="text-red-600 dark:text-red-400">
-        Failed to load certificates.
-      </p>
-    );
 
   return (
     <div className="space-y-4">

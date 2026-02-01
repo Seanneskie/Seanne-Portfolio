@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import type { JSX } from "react";
 
 import CoursesSection from "@/components/courses";
+import { getCourses } from "@/lib/get-data";
 
 const PAGE_TITLE = "Courses";
 const PAGE_OG_TITLE = "Courses | Seanne Cañete";
@@ -25,5 +26,6 @@ export const metadata: Metadata = {
 };
 
 export default function CoursesPage(): JSX.Element {
-  return <CoursesSection />;
+  const courses = getCourses();
+  return <CoursesSection data={courses} />;
 }

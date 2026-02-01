@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import type { JSX } from "react";
 
 import ProjectsPageContent from "@/components/projects/projects-page-content";
+import { getProjects } from "@/lib/get-data";
 
 const PAGE_TITLE = "Projects";
 const PAGE_OG_TITLE = "Projects | Seanne Cañete";
@@ -25,5 +26,6 @@ export const metadata: Metadata = {
 };
 
 export default function ProjectsPage(): JSX.Element {
-  return <ProjectsPageContent />;
+  const projects = getProjects();
+  return <ProjectsPageContent data={projects} />;
 }

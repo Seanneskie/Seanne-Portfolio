@@ -1,17 +1,18 @@
 "use client";
 
-import React from "react";
 import { type ReactElement } from "react";
 import { motion, type Variants, type Transition } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { useData } from "@/lib/use-data";
-
-interface Achievement {
+export interface Achievement {
   icon: string;
   title: string;
   description: string;
   skills?: string[];
+}
+
+interface AwardsProps {
+  data: Achievement[];
 }
 
 // Framer Motion v11 expects an Easing (function or [x1,y1,x2,y2])
@@ -28,12 +29,7 @@ const itemVariants: Variants = {
   },
 };
 
-export default function Awards(): ReactElement {
-  const { data, loading, error } = useData<Achievement[]>("achievements.json");
-
-  if (loading) return <p className="text-black dark:text-white">Loading awards...</p>;
-  if (error || !data) return <p className="text-red-600 dark:text-red-400">Failed to load awards.</p>;
-
+export default function Awards({ data }: AwardsProps): ReactElement {
   const totalAwards = data.length;
 
   return (

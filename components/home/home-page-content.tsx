@@ -1,19 +1,26 @@
-"use client";
-
 import type { JSX } from "react";
 import Link from "next/link";
-import { toast } from "sonner";
 import { ArrowUpRight, Sparkles } from "lucide-react";
 
 import Banner from "@/components/banner";
+import BannerActions from "@/components/home/banner-actions";
 import Highlights from "@/components/highlights";
 import HobbyAchievements from "@/components/hobbies/hobby-achievements";
 import Profile, { MyStory } from "@/components/profile";
 import { WorkExperienceCarousel } from "@/components/work-experiences";
-import { Button } from "@/components/ui/button";
-import { withBasePath } from "@/lib/utils";
+import {
+  getHighlights,
+  getSkills,
+  getServices,
+  getWorkExperiences,
+} from "@/lib/get-data";
 
 export default function HomePageContent(): JSX.Element {
+  const highlights = getHighlights();
+  const skills = getSkills();
+  const services = getServices();
+  const workExperiences = getWorkExperiences();
+
   return (
     <main>
       <Banner
@@ -25,29 +32,7 @@ export default function HomePageContent(): JSX.Element {
         height="lg"
         parallax
         priority
-        actions={
-          <>
-            <Button asChild size="lg" className="rounded-full">
-              <Link href="/projects">
-                View Projects
-                <ArrowUpRight className="h-4 w-4" />
-              </Link>
-            </Button>
-            <Button asChild size="lg" className="rounded-full">
-              <a
-                href={withBasePath("/static/pdfs/canete_resume.pdf")}
-                target="_blank"
-                rel="noreferrer"
-                onClick={() => toast.info("Opening resume")}
-              >
-                View Resume
-              </a>
-            </Button>
-            <Button asChild size="lg" className="rounded-full">
-              <Link href="/contact">Contact Me</Link>
-            </Button>
-          </>
-        }
+        actions={<BannerActions />}
       />
       <div className="bg-gradient-to-b from-white via-slate-50/70 to-white dark:from-gray-900 dark:via-gray-950/40 dark:to-gray-900">
         <div className="container mx-auto max-w-7xl space-y-16 px-4 py-14">
@@ -59,14 +44,14 @@ export default function HomePageContent(): JSX.Element {
             <Profile />
           </section>
 
-          <MyStory />
+          <MyStory skills={skills} services={services} />
 
           <div className="space-y-10">
             <HobbyAchievements />
-            <Highlights />
+            <Highlights data={highlights} />
           </div>
 
-          <WorkExperienceCarousel />
+          <WorkExperienceCarousel data={workExperiences} />
 
           <div className="flex justify-center">
             <Link

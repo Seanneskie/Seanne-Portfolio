@@ -1,13 +1,11 @@
 "use client";
 
 import { type ReactElement } from "react";
-import { useData } from "@/lib/use-data";
 import { motion, type Variants } from "framer-motion";
 import Image from "next/image";
 import { withBasePath } from "@/lib/utils";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Skeleton } from "@/components/ui/skeleton";
 import {
   Carousel,
   CarouselContent,
@@ -17,7 +15,7 @@ import {
 } from "@/components/ui/carousel";
 import { Building2, Briefcase, CalendarDays, CheckCircle2 } from "lucide-react";
 
-interface WorkExperience {
+export interface WorkExperience {
   company: string;
   project: string;
   period: string;
@@ -25,6 +23,10 @@ interface WorkExperience {
   tech: string[];
   summary: string;
   highlights: string[];
+}
+
+interface WorkExperiencesProps {
+  data: WorkExperience[];
 }
 
 /** Variants (typed & literal-narrowed) */
@@ -50,77 +52,7 @@ const listItem = {
   show: { opacity: 1, x: 0, transition: { duration: 0.25 } },
 } satisfies Variants;
 
-export default function WorkExperiences(): ReactElement {
-  const { data, loading, error } = useData<WorkExperience[]>("work-experiences.json");
-
-  if (loading) {
-    return (
-      <main className="relative overflow-hidden">
-        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
-          <div className="absolute inset-0 bg-gradient-to-b from-white via-white to-slate-50 dark:from-gray-950 dark:via-gray-950 dark:to-gray-900" />
-          <div className="absolute -top-24 right-6 h-56 w-56 rounded-full bg-teal-200/40 blur-3xl dark:bg-teal-900/30" />
-          <div className="absolute bottom-0 left-0 h-72 w-72 rounded-full bg-sky-200/40 blur-3xl dark:bg-sky-900/30" />
-        </div>
-
-        <div className="container mx-auto max-w-6xl px-4 py-12">
-          <section className="mb-10 space-y-3">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-teal-600 dark:text-teal-400">
-              Career
-            </p>
-            <h1 className="text-4xl font-semibold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
-              Work experiences
-            </h1>
-            <p className="text-base text-gray-700 dark:text-gray-200 sm:text-lg">
-              Roles and projects that shaped production delivery, collaboration, and impact.
-            </p>
-          </section>
-
-          <div className="relative grid gap-6 sm:grid-cols-2">
-            {/* Timeline rail (loading) */}
-            <span
-              aria-hidden
-              className="pointer-events-none absolute left-3 top-0 hidden h-full w-px bg-gradient-to-b from-teal-400/0 via-teal-500/30 to-teal-400/0 sm:block"
-            />
-            {Array.from({ length: 3 }).map((_, i) => (
-              <Card
-                key={i}
-                className="relative overflow-hidden border-teal-600/10 bg-white/70 shadow-sm backdrop-blur-sm dark:border-teal-400/10 dark:bg-teal-900/20"
-              >
-                <span
-                  aria-hidden
-                  className="absolute left-[-1.15rem] top-7 hidden h-3 w-3 rounded-full bg-teal-500 ring-4 ring-white/70 dark:ring-teal-950 sm:block"
-                />
-                <CardHeader className="pb-2">
-                  <Skeleton className="h-5 w-1/3" />
-                  <Skeleton className="mt-2 h-4 w-2/3" />
-                  <Skeleton className="mt-2 h-3 w-24" />
-                </CardHeader>
-                <CardContent className="space-y-3">
-                  <Skeleton className="aspect-video w-full rounded-md" />
-                  <Skeleton className="h-4 w-full" />
-                  <Skeleton className="h-4 w-5/6" />
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    {Array.from({ length: 4 }).map((__, k) => (
-                      <Skeleton key={k} className="h-6 w-16 rounded-full" />
-                    ))}
-                  </div>
-                  <div className="space-y-2 pt-1">
-                    <Skeleton className="h-4 w-4/5" />
-                    <Skeleton className="h-4 w-3/5" />
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </main>
-    );
-  }
-
-  if (error || !data) {
-    return <p className="text-red-600 dark:text-red-400">Failed to load work experiences.</p>;
-  }
-
+export default function WorkExperiences({ data }: WorkExperiencesProps): ReactElement {
   const totalExperiences = data.length;
   const totalTech = new Set(data.flatMap((exp) => exp.tech)).size;
   const totalHighlights = data.reduce((sum, exp) => sum + exp.highlights.length, 0);

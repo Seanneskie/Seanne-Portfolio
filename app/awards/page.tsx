@@ -1,7 +1,8 @@
-import React, { type ReactElement } from "react";
+import { type ReactElement } from "react";
 import type { Metadata } from "next";
 
 import Awards from "@/components/awards";
+import { getAchievements } from "@/lib/get-data";
 
 const PAGE_TITLE = "Awards";
 const PAGE_OG_TITLE = "Awards | Seanne Cañete";
@@ -25,5 +26,6 @@ export const metadata: Metadata = {
 };
 
 export default function AwardsPage(): ReactElement {
-  return <Awards />;
+  const achievements = getAchievements();
+  return <Awards data={achievements} />;
 }

@@ -2,8 +2,13 @@ import { type ReactElement } from "react";
 
 import { Card } from "@/components/ui/card";
 import CoursesSection from "./courses-section";
+import type { Course } from "./courses-section";
 
-export default function Courses(): ReactElement {
+interface CoursesProps {
+  data: Course[];
+}
+
+export default function Courses({ data }: CoursesProps): ReactElement {
   return (
     <main className="relative overflow-hidden">
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
@@ -43,7 +48,7 @@ export default function Courses(): ReactElement {
           </Card>
         </section>
 
-        <CoursesSection />
+        <CoursesSection data={data} />
       </div>
     </main>
   );

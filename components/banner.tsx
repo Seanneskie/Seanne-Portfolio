@@ -1,5 +1,4 @@
 // components/common/Banner.tsx
-"use client";
 
 import { cn, withBasePath } from "@/lib/utils";
 import Image from "next/image";

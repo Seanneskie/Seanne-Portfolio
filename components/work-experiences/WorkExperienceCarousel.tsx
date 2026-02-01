@@ -3,7 +3,6 @@
 import { type ReactElement } from "react";
 import Image from "next/image";
 import { withBasePath } from "@/lib/utils";
-import { useData } from "@/lib/use-data";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import {
   Carousel,
@@ -13,7 +12,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
-interface WorkExperience {
+export interface WorkExperience {
   company: string;
   project: string;
   period: string;
@@ -21,17 +20,11 @@ interface WorkExperience {
   summary: string;
 }
 
-export default function WorkExperienceCarousel(): ReactElement {
-  const { data, loading, error } = useData<WorkExperience[]>("work-experiences.json");
+interface WorkExperienceCarouselProps {
+  data: WorkExperience[];
+}
 
-  if (loading) {
-    return <p>Loading work experiences...</p>;
-  }
-
-  if (error || !data) {
-    return <p className="text-red-600 dark:text-red-400">Failed to load work experiences.</p>;
-  }
-
+export default function WorkExperienceCarousel({ data }: WorkExperienceCarouselProps): ReactElement {
   return (
     <section className="space-y-6" aria-labelledby="work-carousel-title">
       <h2
@@ -86,4 +79,3 @@ export default function WorkExperienceCarousel(): ReactElement {
     </section>
   );
 }
-

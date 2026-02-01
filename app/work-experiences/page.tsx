@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import type { JSX } from "react";
 
 import WorkExperiences from "@/components/work-experiences";
+import { getWorkExperiences } from "@/lib/get-data";
 
 const PAGE_TITLE = "Work Experience";
 const PAGE_OG_TITLE = "Work Experience | Seanne Cañete";
@@ -25,5 +26,6 @@ export const metadata: Metadata = {
 };
 
 export default function WorkExperiencesPage(): JSX.Element {
-  return <WorkExperiences />;
+  const workExperiences = getWorkExperiences();
+  return <WorkExperiences data={workExperiences} />;
 }

@@ -17,8 +17,15 @@ import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { Sparkles, Rocket } from "lucide-react";
 import ServicesSection from "@/components/services";
+import type { SkillCategory } from "./StorySkills";
+import type { Service } from "@/components/services/ServicesSection";
 
-export default function MyStory(): ReactElement {
+interface MyStoryProps {
+  skills: SkillCategory[];
+  services: Service[];
+}
+
+export default function MyStory({ skills, services }: MyStoryProps): ReactElement {
   const whatIDo = [
     {
       icon: <Code2 className="h-5 w-5" />,
@@ -269,10 +276,10 @@ export default function MyStory(): ReactElement {
               ))}
             </CardContent>
           </Card>
-          <StorySkills />
+          <StorySkills data={skills} />
         </div>
       </section>
-      <ServicesSection />
+      <ServicesSection data={services} />
     </motion.div>
   );
 }

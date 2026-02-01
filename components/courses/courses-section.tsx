@@ -19,9 +19,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { useData } from "@/lib/use-data";
-
-interface Course {
+export interface Course {
   code: string;
   title: string;
   institution: string;
@@ -30,13 +28,16 @@ interface Course {
   skills?: string[];
 }
 
-export default function CoursesSection(): ReactElement {
+interface CoursesSectionProps {
+  data: Course[];
+}
+
+export default function CoursesSection({ data }: CoursesSectionProps): ReactElement {
   const [search, setSearch] = useState("");
   const [institution, setInstitution] = useState("");
   const [skill, setSkill] = useState("");
 
-  const { data, loading, error } = useData<Course[]>("courses.json");
-  const courses = useMemo(() => data ?? [], [data]);
+  const courses: Course[] = data;
 
   const institutions = useMemo<string[]>(
     () => Array.from(new Set(courses.map((c) => c.institution))).sort(),
@@ -67,24 +68,6 @@ export default function CoursesSection(): ReactElement {
 
   const badgeCls =
     "rounded-full bg-teal-50 text-teal-800 ring-1 ring-inset ring-teal-200 dark:bg-teal-900/30 dark:text-teal-200 dark:ring-teal-800";
-
-  if (loading) {
-    return (
-      <div className="grid auto-rows-fr grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {[...Array(6)].map((_, i) => (
-          <Card
-            key={i}
-            className="h-56 animate-pulse rounded-2xl border border-teal-200/60 bg-white/70 dark:border-teal-800/60 dark:bg-gray-950/50"
-          />
-        ))}
-      </div>
-    );
-  }
-
-  if (error || !data)
-    return (
-      <p className="text-red-600 dark:text-red-400">Failed to load courses.</p>
-    );
 
   return (
     <div className="space-y-4">

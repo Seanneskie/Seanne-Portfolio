@@ -1,28 +1,22 @@
 "use client";
 
-import * as React from "react";
 import { type ReactElement } from "react";
 import Image from "next/image";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { withBasePath } from "@/lib/utils";
 
-interface HighlightItem {
+export interface HighlightItem {
   src: string;
   label: string;
 }
 
-export default function Highlights(): ReactElement {
-  const [highlights, setHighlights] = React.useState<HighlightItem[]>([]);
+interface HighlightsProps {
+  data: HighlightItem[];
+}
 
-  React.useEffect(() => {
-    fetch(withBasePath("/data/highlights.json"))
-      .then((res) => res.json())
-      .then((data) => setHighlights(data))
-      .catch(() => setHighlights([]));
-  }, []);
-
-  if (highlights.length === 0) {
+export default function Highlights({ data }: HighlightsProps): ReactElement {
+  if (data.length === 0) {
     return (
       <section id="highlights" className="space-y-4">
         <h2 className="text-2xl font-bold">Highlights</h2>
@@ -36,7 +30,7 @@ export default function Highlights(): ReactElement {
       <h2 className="text-2xl font-bold">Highlights</h2>
       <Carousel className="w-full min-w-0">
         <CarouselContent>
-          {highlights.map((highlight) => (
+          {data.map((highlight) => (
             <CarouselItem key={highlight.src} className="basis-full">
               <div className="space-y-2">
                 <AspectRatio ratio={16 / 9} className="overflow-hidden rounded-xl bg-muted">

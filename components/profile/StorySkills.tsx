@@ -8,7 +8,6 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { useData } from "@/lib/use-data";
 
 interface SkillItem {
   icon: string;
@@ -21,16 +20,17 @@ interface SkillGroup {
   items: SkillItem[];
 }
 
-interface SkillCategory {
+export interface SkillCategory {
   id: string;
   label: string;
   groups: SkillGroup[];
 }
 
-export default function StorySkills(): ReactElement {
-  const { data, error } = useData<SkillCategory[]>("skills.json");
-  if (error || !data) return <></>;
+interface StorySkillsProps {
+  data: SkillCategory[];
+}
 
+export default function StorySkills({ data }: StorySkillsProps): ReactElement {
   const programming = data.find((category) => category.id === "Programming");
   if (!programming) return <></>;
 
@@ -81,4 +81,3 @@ export default function StorySkills(): ReactElement {
     </Card>
   );
 }
-

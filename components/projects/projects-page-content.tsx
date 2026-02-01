@@ -11,10 +11,9 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import TagFilter from "@/components/projects/tag-filter";
-import { useData } from "@/lib/use-data";
 import { withBasePath } from "@/lib/utils";
 
-interface Project {
+export interface Project {
   title: string;
   image: string;
   alt: string;
@@ -25,15 +24,18 @@ interface Project {
   details?: string | null;
 }
 
+interface ProjectsPageContentProps {
+  data: Project[];
+}
+
 const ITEMS_PER_PAGE = 6;
 
-export default function ProjectsPageContent(): JSX.Element {
-  const { data, loading, error } = useData<Project[]>("projects.json");
+export default function ProjectsPageContent({ data }: ProjectsPageContentProps): JSX.Element {
   const [search, setSearch] = useState("");
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [page, setPage] = useState(1);
 
-  const projects: Project[] = useMemo(() => data ?? [], [data]);
+  const projects: Project[] = data;
 
   const allTags = useMemo(() => {
     const tags = new Set<string>();
@@ -82,30 +84,6 @@ export default function ProjectsPageContent(): JSX.Element {
     setSelectedTags([]);
     setPage(1);
   };
-
-  if (loading) {
-    return (
-      <main className="container mx-auto max-w-7xl px-4 py-12">
-        <h1 className="mb-4 text-3xl font-bold tracking-tight">Projects</h1>
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {[...Array(ITEMS_PER_PAGE)].map((_, index) => (
-            <Card
-              key={index}
-              className="h-[500px] animate-pulse rounded-2xl border border-teal-200/60 bg-white/70 dark:border-teal-800/60 dark:bg-gray-950/50"
-            />
-          ))}
-        </div>
-      </main>
-    );
-  }
-
-  if (error || !data) {
-    return (
-      <main className="container mx-auto max-w-7xl px-4 py-12">
-        <p className="text-red-600 dark:text-red-400">Failed to load projects.</p>
-      </main>
-    );
-  }
 
   return (
     <main className="relative overflow-hidden">

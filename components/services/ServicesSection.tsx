@@ -1,27 +1,21 @@
 "use client";
 
 import { type ReactElement } from "react";
-import { useData } from "@/lib/use-data";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import * as Icons from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
-interface Service {
+export interface Service {
   title: string;
   description: string;
-  icon: keyof typeof Icons;
+  icon: string;
 }
 
-export default function ServicesSection(): ReactElement {
-  const { data, loading, error } = useData<Service[]>("services.json");
+interface ServicesSectionProps {
+  data: Service[];
+}
 
-  if (loading)
-    return <p className="text-black dark:text-white">Loading services...</p>;
-  if (error || !data)
-    return (
-      <p className="text-red-600 dark:text-red-400">Failed to load services.</p>
-    );
-
+export default function ServicesSection({ data }: ServicesSectionProps): ReactElement {
   return (
     <section className="space-y-4" aria-labelledby="services-title">
       <h1
@@ -56,4 +50,3 @@ export default function ServicesSection(): ReactElement {
     </section>
   );
 }
-

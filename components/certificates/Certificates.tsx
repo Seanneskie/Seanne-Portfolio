@@ -2,8 +2,13 @@ import { type ReactElement } from "react";
 
 import { Card } from "@/components/ui/card";
 import CertificatesSection from "./certificates-section";
+import type { Certificate } from "./certificates-section";
 
-export default function Certificates(): ReactElement {
+interface CertificatesProps {
+  data: Certificate[];
+}
+
+export default function Certificates({ data }: CertificatesProps): ReactElement {
   return (
     <main className="relative overflow-hidden">
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
@@ -42,7 +47,7 @@ export default function Certificates(): ReactElement {
           </Card>
         </section>
 
-        <CertificatesSection />
+        <CertificatesSection data={data} />
       </div>
     </main>
   );

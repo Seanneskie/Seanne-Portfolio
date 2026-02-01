@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import type { JSX } from "react";
 
 import Certificates from "@/components/certificates";
+import { getCertificates } from "@/lib/get-data";
 
 const PAGE_TITLE = "Certificates";
 const PAGE_OG_TITLE = "Certificates | Seanne Cañete";
@@ -25,5 +26,6 @@ export const metadata: Metadata = {
 };
 
 export default function CertificatesPage(): JSX.Element {
-  return <Certificates />;
+  const certificates = getCertificates();
+  return <Certificates data={certificates} />;
 }
