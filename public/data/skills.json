@@ -921,6 +921,16 @@
             "description": "Iterate prompts to improve accuracy and style."
           },
           {
+            "icon": "fas fa-robot",
+            "name": "OpenClaw",
+            "description": "Build and run OpenClaw-based coding agent workflows."
+          },
+          {
+            "icon": "fas fa-gears",
+            "name": "Automation",
+            "description": "Automate repetitive engineering tasks and delivery flows."
+          },
+          {
             "icon": "devicon-pytorch-original colored",
             "name": "Generative AI",
             "description": "Use generative models for text and content."
