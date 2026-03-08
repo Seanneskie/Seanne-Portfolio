@@ -1,6 +1,21 @@
 [
   {
     "tags": [
+      "Google",
+      "AI"
+    ],
+    "title": "Agent Fundamentals - Google",
+    "desc": "This certificate covers the fundamentals of AI Agents, how they differ from LLM APIs, and where they add value in the real world. Based on Google's agents whitepaper, it provides the theoretical foundation for understanding autonomous, goal-directed AI systems. Date: March 2026",
+    "link": "/static/certificates/agent_fundamentals.png",
+    "image": "/static/certificates/agent_fundamentals.png",
+    "skills": [
+      "AI Agents",
+      "LLM Architecture",
+      "Autonomous Systems"
+    ]
+  },
+  {
+    "tags": [
       "SoloLearn",
       "AI",
       "SEO"
