@@ -1,5 +1,28 @@
 [
   {
+    "title": "Minerva - Service Status Dashboard",
+    "image": "/static/placeholders/ai.webp",
+    "alt": "Minerva Project screenshot",
+    "description": "Real-time incident monitoring dashboard that aggregates service status from multiple cloud providers into a single, unified view.",
+    "collaborators": null,
+    "tags": [
+      "NextJS",
+      "React",
+      "TypeScript",
+      "Vercel",
+      "RSS",
+      "Real-Time"
+    ],
+    "github": "https://github.com/Seanneskie/minerva-project",
+    "githubLabel": "View on GitHub",
+    "details": "project-details/minerva-project",
+    "period": "2026",
+    "images": [
+      "/static/placeholders/ai.webp"
+    ],
+    "link": "https://minerva-project.vercel.app/"
+  },
+  {
     "title": "AI Coin Detector",
     "image": "/static/placeholders/ai.webp",
     "alt": "Coin Detector Image",
