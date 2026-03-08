@@ -108,6 +108,12 @@ const projectDetailConfig: Record<string, ProjectDetailConfig> = {
     title: "Budget System",
     description: "Layered ASP.NET Core and SQL Server budgeting platform with validation and idempotent API middleware.",
   },
+  "minerva-project": {
+    loader: () => import("@/components/project-details/MinervaProject"),
+    title: "Minerva - Service Status Dashboard",
+    description:
+      "Real-time incident monitoring dashboard aggregating service status from Cloudflare, Supabase, Fly.io, GitHub, Vercel, and Upstash into a unified view.",
+  },
 };
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
