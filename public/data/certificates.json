@@ -2,6 +2,23 @@
   {
     "tags": [
       "Google",
+      "AI",
+      "Cloud"
+    ],
+    "title": "Gemini for Application Developers - Google Cloud",
+    "desc": "This course covers how Gemini, a generative AI-powered collaborator from Google Cloud, helps developers build applications. It includes prompting Gemini to explain code, recommend Google Cloud services, and generate code for applications, with hands-on labs demonstrating how Gemini improves the application development workflow. Date: March 2026",
+    "link": "/static/certificates/gemini_application_for_developers.png",
+    "image": "/static/certificates/gemini_application_for_developers.png",
+    "skills": [
+      "Gemini AI",
+      "Google Cloud",
+      "Code Generation",
+      "Application Development"
+    ]
+  },
+  {
+    "tags": [
+      "Google",
       "AI"
     ],
     "title": "Agent Fundamentals - Google",
