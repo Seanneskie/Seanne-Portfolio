@@ -1,7 +1,7 @@
 [
   {
     "title": "Minerva - Service Status Dashboard",
-    "image": "/minerva-project/1.png",
+    "image": "/minerva-project/images/1.png",
     "alt": "Minerva Project screenshot",
     "description": "Real-time incident monitoring dashboard that aggregates service status from multiple cloud providers into a single, unified view.",
     "collaborators": null,
@@ -19,7 +19,7 @@
     "details": "project-details/minerva-project",
     "period": "2026",
     "images": [
-      "/minerva-project/1.png"
+      "/minerva-project/images/1.png"
     ],
     "link": "https://minerva-project.vercel.app/"
   },
