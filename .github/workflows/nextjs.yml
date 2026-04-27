@@ -16,6 +16,11 @@ concurrency:
   group: "pages"
   cancel-in-progress: true
 
+env:
+  # Opt JS-based actions into Node 24 ahead of the June 2026 cutover
+  # so we drop the "Node.js 20 actions are deprecated" warnings.
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
 jobs:
   test:
     name: Lint & test
@@ -27,7 +32,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version-file: '.nvmrc'
           cache: 'npm'
 
       - name: Install dependencies (prefer ci)
@@ -64,7 +69,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version-file: '.nvmrc'
           cache: 'npm'
 
       - name: Install dependencies (prefer ci)

@@ -53,7 +53,7 @@ describe("useData", () => {
     const mockData: ExampleData = { message: "Hello" };
 
     const fetchMock = vi
-      .fn<typeof fetch>()
+      .fn()
       .mockResolvedValue(
         new Response(JSON.stringify(mockData), {
           status: 200,
@@ -61,7 +61,7 @@ describe("useData", () => {
         })
       );
 
-    global.fetch = fetchMock;
+    global.fetch = fetchMock as unknown as typeof fetch;
 
     const container = document.createElement("div");
     document.body.appendChild(container);
@@ -104,17 +104,19 @@ describe("useData", () => {
   it("aborts the request when the component unmounts", async () => {
     let capturedSignal: AbortSignal | undefined;
 
-    const fetchMock = vi.fn<typeof fetch>((_input, init) => {
-      capturedSignal = init?.signal ?? undefined;
+    const fetchMock = vi.fn(
+      (_input: RequestInfo | URL, init?: RequestInit): Promise<Response> => {
+        capturedSignal = init?.signal ?? undefined;
 
-      return new Promise<Response>((_resolve, reject) => {
-        capturedSignal?.addEventListener("abort", () => {
-          reject(new DOMException("Aborted", "AbortError"));
+        return new Promise<Response>((_resolve, reject) => {
+          capturedSignal?.addEventListener("abort", () => {
+            reject(new DOMException("Aborted", "AbortError"));
+          });
         });
-      });
-    });
+      }
+    );
 
-    global.fetch = fetchMock;
+    global.fetch = fetchMock as unknown as typeof fetch;
 
     const container = document.createElement("div");
     document.body.appendChild(container);
