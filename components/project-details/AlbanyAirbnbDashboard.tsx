@@ -1,34 +1,24 @@
 import ProjectOverview from "./ProjectOverview";
 import ProjectSection from "./ProjectSection";
-import ProjectGallery from "./ProjectGallery";
-import { getProjectImages } from "@/lib/project-images";
+import { getGalleryImages } from "@/lib/project-images";
+
+const SLUG = "albany-airbnb-dashboard";
 
 export default async function AlbanyAirbnbDashboard() {
-  const alt = "Albany Airbnb Dashboard screenshot";
-  const images = (await getProjectImages("albany-airbnb-dashboard")).map(
-    (src) => ({ src, alt })
+  const images = await getGalleryImages(
+    SLUG,
+    "Albany Airbnb Dashboard screenshot",
+    "/static/placeholders/data-analytics.webp"
   );
+
   return (
     <div className="space-y-12">
       <ProjectOverview
-        title="Albany Airbnb Dashboard"
-        images={
-          images.length
-            ? images
-            : [{
-                src: "/static/placeholders/data-analytics.webp",
-                alt,
-              }]
-        }
-      >
-        <p>
-          <strong>Overview:</strong> An interactive Streamlit dashboard that
-          visualizes Airbnb listing trends in Albany, New York.
-        </p>
-        <p>
-          <strong>Collaborators:</strong> Individual Project
-        </p>
-      </ProjectOverview>
+        slug={SLUG}
+        images={images}
+        summary="Interactive Streamlit dashboard visualizing Airbnb listing trends, pricing patterns, and guest sentiment in Albany, New York."
+      />
+
       <ProjectSection title="Introduction">
         <p>Project introduction coming soon.</p>
       </ProjectSection>
@@ -50,13 +40,6 @@ export default async function AlbanyAirbnbDashboard() {
       <ProjectSection title="Ethical Implications">
         <p>Ethical considerations coming soon.</p>
       </ProjectSection>
-
-      {images.length > 0 && (
-        <ProjectSection title="Screenshots">
-          <ProjectGallery images={images} />
-        </ProjectSection>
-      )}
     </div>
   );
 }
-

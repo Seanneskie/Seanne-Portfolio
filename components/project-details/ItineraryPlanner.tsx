@@ -1,35 +1,23 @@
 import ProjectOverview from "./ProjectOverview";
 import ProjectSection from "./ProjectSection";
-import ProjectGallery from "./ProjectGallery";
-import { getProjectImages } from "@/lib/project-images";
+import { getGalleryImages } from "@/lib/project-images";
+
+const SLUG = "itinerary-planner";
 
 export default async function ItineraryPlanner() {
-  const alt = "Itinerary Planner screenshot";
-  const images = (await getProjectImages("itinerary-planner")).map((src) => ({
-    src,
-    alt,
-  }));
-  const doubledImages = images.flatMap((img) => [img, img]);
+  const images = await getGalleryImages(
+    SLUG,
+    "Itinerary Planner screenshot",
+    "/static/placeholders/php.webp"
+  );
+
   return (
     <div className="space-y-12">
       <ProjectOverview
-        title="Itinerary Planner"
-        images={
-          doubledImages.length
-            ? doubledImages
-            : [{ src: "/static/placeholders/php.webp", alt }]
-        }
-        githubUrl="https://github.com/Seanneskie/itinerary-planner"
-      >
-        <p>
-          <strong>Overview:</strong> Web app for organizing trips, mapping
-          activities, and tracking budgets in one dashboard.
-        </p>
-        <p>
-          <strong>Tech Stack:</strong> Laravel, PHP 8.2, Tailwind CSS, Alpine.js,
-          Leaflet, Chart.js.
-        </p>
-      </ProjectOverview>
+        slug={SLUG}
+        images={images}
+        summary="Web app for organizing trips — itineraries, mapped activities, group budgets, and exportable reports in one Laravel-powered dashboard."
+      />
 
       <ProjectSection title="Project Overview">
         <ul className="list-disc space-y-2 pl-6">
@@ -82,7 +70,7 @@ export default async function ItineraryPlanner() {
             location data and date ranges.
           </li>
           <li>
-            <strong>Exporting & Reporting:</strong> Generate Excel and PDF
+            <strong>Exporting &amp; Reporting:</strong> Generate Excel and PDF
             exports of itineraries.
           </li>
         </ul>
@@ -99,8 +87,8 @@ export default async function ItineraryPlanner() {
             Alpine.js, Axios, Leaflet, Chart.js.
           </li>
           <li>
-            <strong>Tooling & Development:</strong> npm scripts, concurrently for
-            dev services, composer scripts for setup and tests.
+            <strong>Tooling &amp; Development:</strong> npm scripts, concurrently
+            for dev services, composer scripts for setup and tests.
           </li>
         </ul>
       </ProjectSection>
@@ -155,12 +143,6 @@ php artisan serve`}</pre>
           <li>Submit a pull request describing changes and rationale.</li>
         </ul>
       </ProjectSection>
-
-      {doubledImages.length > 0 && (
-        <ProjectSection title="Screenshots">
-          <ProjectGallery images={doubledImages} />
-        </ProjectSection>
-      )}
     </div>
   );
 }

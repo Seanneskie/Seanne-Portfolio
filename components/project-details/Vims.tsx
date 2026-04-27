@@ -1,32 +1,23 @@
 import ProjectOverview from "./ProjectOverview";
 import ProjectSection from "./ProjectSection";
-import ProjectGallery from "./ProjectGallery";
-import { getProjectImages } from "@/lib/project-images";
+import { getGalleryImages } from "@/lib/project-images";
+
+const SLUG = "vims";
 
 export default async function Vims() {
-  const alt = "Vessel Inventory Management System screenshot";
-  const images = (await getProjectImages("vims")).map((src) => ({
-    src,
-    alt,
-  }));
+  const images = await getGalleryImages(
+    SLUG,
+    "Vessel Inventory Management System screenshot",
+    "/static/placeholders/next.webp"
+  );
+
   return (
     <div className="space-y-12">
       <ProjectOverview
-        title="Vessel Inventory Management System"
-        images={
-          images.length
-            ? images
-            : [{ src: "/static/placeholders/next.webp", alt }]
-        }
-      >
-        <p>
-          <strong>Overview:</strong> VIMS is a vessel‑oriented inventory
-          management system built on the Next.js App Router. It provides admin
-          modules for items, departments, inventory adjustments, transfers,
-          requests and report generation, with a responsive interface styled by
-          Tailwind CSS and Radix UI components.
-        </p>
-      </ProjectOverview>
+        slug={SLUG}
+        images={images}
+        summary="Vessel-oriented inventory management system on the Next.js App Router — modules for items, departments, transfers, requests, and report generation for TSP Marine Industries."
+      />
 
       <ProjectSection title="Tech Stack">
         <ul className="list-disc list-inside space-y-1">
@@ -46,7 +37,7 @@ export default async function Vims() {
             authentication and database access
           </li>
           <li>
-            <strong>ORM & DB tooling:</strong> Drizzle ORM with migration
+            <strong>ORM &amp; DB tooling:</strong> Drizzle ORM with migration
             configs for PostgreSQL
           </li>
           <li>
@@ -61,14 +52,23 @@ export default async function Vims() {
         <p>
           VIMS (Vessel Inventory Management System) centralizes tracking of
           marine vessel stock. Administrators can manage item catalogs, monitor
-          per‑vessel quantities, log adjustments or transfers, and export reports
+          per-vessel quantities, log adjustments or transfers, and export reports
           to common formats. The application integrates Supabase for
           authentication and data persistence while providing a modern,
           responsive UI.
         </p>
       </ProjectSection>
       <ProjectSection title="Structure">
-        <pre className="whitespace-pre-wrap"><code>{`src/\n ├─ app/              # Next.js routes: admin dashboards, auth pages, user views\n ├─ components/       # Reusable UI parts (header, footer, form controls)\n ├─ context/          # React context for session/auth state\n ├─ db/               # Drizzle schema and Supabase migrations\n ├─ lib/              # Helper modules: inventory, transfers, exports, auth\n └─ utils/            # General utilities\n`}</code></pre>
+        <pre className="whitespace-pre-wrap">
+          <code>{`src/
+ ├─ app/              # Next.js routes: admin dashboards, auth pages, user views
+ ├─ components/       # Reusable UI parts (header, footer, form controls)
+ ├─ context/          # React context for session/auth state
+ ├─ db/               # Drizzle schema and Supabase migrations
+ ├─ lib/              # Helper modules: inventory, transfers, exports, auth
+ └─ utils/            # General utilities
+`}</code>
+        </pre>
       </ProjectSection>
       <ProjectSection title="Key Features">
         <ul className="list-disc list-inside space-y-2">
@@ -77,11 +77,11 @@ export default async function Vims() {
             stock, and paginate results.
           </li>
           <li>
-            <strong>Adjustments & Transfers:</strong> Helpers and pages to move
-            stock between vessels or record consumption.
+            <strong>Adjustments &amp; Transfers:</strong> Helpers and pages to
+            move stock between vessels or record consumption.
           </li>
           <li>
-            <strong>Reports & Exports:</strong> Generate Excel/PDF summaries
+            <strong>Reports &amp; Exports:</strong> Generate Excel/PDF summaries
             through dedicated helper functions.
           </li>
           <li>
@@ -90,13 +90,6 @@ export default async function Vims() {
           </li>
         </ul>
       </ProjectSection>
-
-      {images.length > 0 && (
-        <ProjectSection title="Screenshots">
-          <ProjectGallery images={images} />
-        </ProjectSection>
-      )}
     </div>
   );
 }
-

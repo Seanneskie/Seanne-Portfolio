@@ -1,33 +1,11 @@
 # Creating Custom Project Detail Pages
 
-This guide explains how to add a new project detail page by cloning the provided `ProjectTemplate` and customizing the reusable sections.
+This guide explains how to add a new project detail page using the shared
+`ProjectOverview` / `ProjectSection` building blocks. Most metadata
+(title, tags, period, GitHub link, live link, collaborators) is auto-loaded
+from `public/data/projects.json` — your component only owns the body content.
 
-## 1. Clone the template
-
-1. Copy `components/project-details/ProjectTemplate.tsx` to a new file in the same folder. For example:
-   ```bash
-   cp components/project-details/ProjectTemplate.tsx components/project-details/MyProject.tsx
-   ```
-2. Rename the default exported function to match your project, e.g. `MyProject`.
-3. Update the `<ProjectOverview>` props (`title`, `images`, `alt`) and its children to describe your project.
-4. Edit or remove the `<ProjectSection>` blocks and fill them with your content.
-
-## 2. Add project assets
-
-Place screenshots or other static files inside `public/static`. You can organize images in sub‑folders if desired:
-
-```
-public/
-└── static/
-    └── my-project/
-        └── screenshot.png
-```
-
-Reference these assets in your `ProjectOverview` using the `images` prop with root‑relative paths (e.g. `/static/my-project/screenshot.png`).
-
-## 3. Register the project
-
-Add an entry in `public/data/projects.json` so the project appears in listings. Include a unique `details` slug pointing to your page directory:
+## 1. Add the project to `public/data/projects.json`
 
 ```json
 {
@@ -36,44 +14,105 @@ Add an entry in `public/data/projects.json` so the project appears in listings. 
   "alt": "My Project screenshot",
   "description": "Short summary…",
   "tags": ["Tag1", "Tag2"],
-  "details": "project-details/my-project"
+  "github": "https://github.com/me/my-project",
+  "githubLabel": "View on GitHub",
+  "link": "https://my-project.example.com",
+  "details": "project-details/my-project",
+  "period": "2026",
+  "collaborators": null,
+  "images": ["/my-project/images/1.png"]
 }
 ```
 
-### Field reference
+The `details` slug (without the `project-details/` prefix) drives:
 
-Every project object must define all of the following keys. Fields marked optional may use `null` or an empty string but the key itself should remain present.
+- The dynamic route at `/project-details/<slug>`
+- Auto-population of `<ProjectOverview slug="<slug>" />`
+- Prev/next navigation
+
+### Field reference
 
 | Field | Required | Description |
 | ----- | -------- | ----------- |
-| `title` | Yes | Project name displayed in listings. |
-| `image` | Yes | Thumbnail image path for the project card. |
+| `title` | Yes | Project name displayed in listings and the detail header. |
+| `image` | Yes | Thumbnail image path for the project card and OG preview. |
 | `alt` | Yes | Accessible description of the thumbnail image. |
-| `description` | Yes | Short summary shown on the project card. |
-| `tags` | Yes | Array of technologies or keywords. |
-| `details` | Yes | Route slug in the form `project-details/<slug>`; `<slug>` must match the component filename and the dynamic route in `app/project-details/[slug]/page.tsx`. |
+| `description` | Yes | Short summary shown on the project card and meta description. |
+| `tags` | Yes | Array of technologies or keywords (rendered as pills on the detail page). |
+| `details` | Yes | Route slug `project-details/<slug>`. |
 | `collaborators` | Optional | Names of collaborators; use `null` if none. |
-| `github` | Optional | Link to the repository or live site; use `null` if unavailable. |
-| `githubLabel` | Optional | Label for the above link; use an empty string when `github` is `null`. |
-| `period` | Optional | Development timeline for the project; use an empty string if unknown. |
-| `images` | Optional | Array of screenshot paths for the gallery; include even if empty to keep the key present. |
+| `github` | Optional | Link to repository or external resource. |
+| `githubLabel` | Optional | Label for the github button. Defaults to "View on GitHub". |
+| `link` | Optional | Live demo URL — rendered as a separate "Live demo" button. |
+| `period` | Optional | Development timeline (rendered with a calendar icon next to the title). |
+| `images` | Optional | Array of screenshot paths for the gallery. |
 
-## 4. Create the page route
+## 2. Add project assets
 
-Create a folder under `app/project-details/<slug>/` and add a `page.tsx` that imports your customized component:
+Place screenshots under `public/<slug>/images/` and list them in
+`public/<slug>/images/images.json` so `getGalleryImages` can resolve them.
+You can also use static placeholders under `public/static/`.
+
+## 3. Create the project component
+
+Copy `components/project-details/ProjectTemplate.tsx` and customize:
 
 ```tsx
-import MyProject from "@/components/project-details/MyProject";
+import ProjectOverview from "./ProjectOverview";
+import ProjectSection from "./ProjectSection";
+import ProjectHighlights from "./ProjectHighlights";
+import { getGalleryImages } from "@/lib/project-images";
 
-export default function Page() {
+const SLUG = "my-project";
+
+export default async function MyProject() {
+  const images = await getGalleryImages(SLUG, "My Project screenshot");
   return (
-    <main className="container mx-auto max-w-5xl px-4 py-12">
-      <MyProject />
-    </main>
+    <div className="space-y-12">
+      <ProjectOverview
+        slug={SLUG}
+        images={images}
+        summary="One-sentence pitch."
+      />
+
+      <ProjectHighlights items={[{ label: "Users", value: "1k+" }]} />
+
+      <ProjectSection title="Introduction">
+        <p>...</p>
+      </ProjectSection>
+    </div>
   );
 }
 ```
 
-The `<slug>` directory must match the `details` field in `public/data/projects.json`.
+The `slug` prop wires up tags, period, collaborators, GitHub, and live-demo
+buttons automatically. You can override anything by passing the matching prop
+explicitly.
 
-With these steps your new project detail page will be served at `/project-details/<slug>`.
+## 4. Register the slug
+
+In `app/project-details/[slug]/page.tsx`, add an entry to `projectDetailConfig`:
+
+```ts
+"my-project": {
+  loader: () => import("@/components/project-details/MyProject"),
+  title: "My Project",
+  description: "Short summary used for SEO metadata.",
+  sections: ["Introduction", "Architecture", "Deployment"],
+},
+```
+
+The `sections` array drives the sticky table of contents on the right side
+of the page (visible at `lg` and up). Section titles are auto-slugified to
+ids by `slugifySection` so anchor links work without manual id wiring.
+
+## 5. Components available
+
+| Component | Purpose |
+| --- | --- |
+| `ProjectOverview` | Hero header — image gallery, title, tags, period, action buttons. |
+| `ProjectSection` | Anchored content card with `h2` heading and hash link. |
+| `ProjectGallery` | Carousel + lightbox; auto-used by `ProjectOverview` when images.length > 0. |
+| `ProjectHighlights` | Optional 4-up stat tiles for headline metrics. |
+| `ProjectTOC` | Sticky table of contents (driven by the `sections` array on the route). |
+| `ProjectNav` | Auto-rendered prev/next links at the bottom of every detail page. |

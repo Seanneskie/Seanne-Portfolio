@@ -2,51 +2,20 @@ import { type ReactElement } from "react";
 
 import ProjectOverview from "./ProjectOverview";
 import ProjectSection from "./ProjectSection";
-import ProjectGallery from "./ProjectGallery";
-import { getProjectImages } from "@/lib/project-images";
+import { getGalleryImages } from "@/lib/project-images";
 
-const FALLBACK_IMAGE = "/static/placeholders/ai.webp";
+const SLUG = "minerva-project";
 
 export default async function MinervaProject(): Promise<ReactElement> {
-  const alt = "Minerva Project screenshot";
-  let rawImages: string[] = [];
-
-  try {
-    rawImages = await getProjectImages("minerva-project");
-  } catch (error) {
-    console.error("Unable to load Minerva Project screenshots:", error);
-  }
-
-  const images = (rawImages.length ? rawImages : [FALLBACK_IMAGE]).map((src) => ({
-    src,
-    alt,
-  }));
+  const images = await getGalleryImages(SLUG, "Minerva Project screenshot");
 
   return (
     <div className="space-y-12">
       <ProjectOverview
-        title="Minerva - Service Status Dashboard"
+        slug={SLUG}
         images={images}
-      >
-        <p>
-          <strong>Overview:</strong> Minerva is a real-time incident monitoring
-          dashboard that aggregates service status information from multiple
-          cloud providers into a single, unified view. Instead of visiting
-          individual status pages, developers can monitor the health of critical
-          services from one centralized location.
-        </p>
-        <p>
-          <strong>Services Monitored:</strong> Cloudflare, Supabase, Fly.io,
-          GitHub, Vercel, and Upstash — with the ability to add more providers.
-        </p>
-        <p>
-          <strong>Collaborators:</strong> Solo build.
-        </p>
-        <p>
-          <strong>Tech Stack:</strong> Next.js 16, React 19, TypeScript,
-          Tailwind CSS, shadcn/ui, rss-parser, Lucide Icons, Vercel.
-        </p>
-      </ProjectOverview>
+        summary="Minerva is a real-time incident monitoring dashboard that aggregates service status from multiple cloud providers — Cloudflare, Supabase, Fly.io, GitHub, Vercel, and Upstash — into a single unified view."
+      />
 
       <ProjectSection title="RSS Feed Aggregation">
         <p>
@@ -98,12 +67,6 @@ export default async function MinervaProject(): Promise<ReactElement> {
           </li>
         </ul>
       </ProjectSection>
-
-      {images.length > 0 && (
-        <ProjectSection title="Screenshots">
-          <ProjectGallery images={images} />
-        </ProjectSection>
-      )}
     </div>
   );
 }

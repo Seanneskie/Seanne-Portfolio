@@ -1,36 +1,20 @@
 import ProjectOverview from "./ProjectOverview";
 import ProjectSection from "./ProjectSection";
-import ProjectGallery from "./ProjectGallery";
-import { getProjectImages } from "@/lib/project-images";
+import { getGalleryImages } from "@/lib/project-images";
+
+const SLUG = "ai-coin-detector";
 
 export default async function AICoinDetector() {
-  const alt = "AI Coin Detector Screenshot";
-  const images = (await getProjectImages("ai-coin-detector")).map((src) => ({
-    src,
-    alt,
-  }));
+  const images = await getGalleryImages(SLUG, "AI Coin Detector Screenshot");
+
   return (
     <div className="space-y-12">
       <ProjectOverview
-        title="AI Coin Detector"
-        images={
-          images.length
-            ? images
-            : [{ src: "/static/placeholders/ai.webp", alt }]
-        }
-        githubUrl="https://github.com/Seanneskie/AI-coin-detector-django"
+        slug={SLUG}
+        images={images}
         downloadUrl="/ai-coin-detector/pdfs/Philippine%20Peso%20Coin%20Detector%20and%20Counter.pdf"
-      >
-        <p>
-          <strong>Overview:</strong> This AI Coin Detector was developed using
-          Django and Google Teachable Machine (GTM) as a requirement for the
-          <em> Introduction to AI</em> course.
-        </p>
-        <p>
-          <strong>Collaborators:</strong> Kimberly Baylon, Jeric Aminola,
-          Bridget Jose, Azlan Tomindug
-        </p>
-      </ProjectOverview>
+        summary="A browser-based Philippine Peso coin detector and counter built with Django and Google Teachable Machine for an Introduction to AI course."
+      />
 
       <ProjectSection title="Project Overview">
         <p>
@@ -112,16 +96,16 @@ export default async function AICoinDetector() {
           testing sets were strictly separated: test images used different
           angles/lighting and were not seen during training. After evaluation,
           selected test samples were merged into training to incrementally
-          improve the model (“train-validate-add” loop). Ongoing testing spanned
-          several months, constrained by data scarcity for some denominations
-          (e.g., ₱20, ₱10, 25¢).
+          improve the model (&ldquo;train-validate-add&rdquo; loop). Ongoing
+          testing spanned several months, constrained by data scarcity for some
+          denominations (e.g., ₱20, ₱10, 25¢).
         </p>
       </ProjectSection>
 
       <ProjectSection title="Model Development">
         <p>
           The model was built with <strong>Teachable Machine</strong> using the
-          platform’s default image classification pipeline to prioritize
+          platform&apos;s default image classification pipeline to prioritize
           stability and avoid over-tuning. Ten classes represent front/back
           faces for each denomination (see below). Default hyperparameters were
           chosen to reduce complexity risk and keep the training process
@@ -258,8 +242,8 @@ export default async function AICoinDetector() {
         <p>
           <strong>Security & Misuse:</strong> Datasets and models must be
           protected from tampering that could cause acceptance of counterfeit
-          items. Simple UI safeguards (e.g., “hold steady” prompts, glare
-          warnings) help manage user-side risk.
+          items. Simple UI safeguards (e.g., &ldquo;hold steady&rdquo; prompts,
+          glare warnings) help manage user-side risk.
         </p>
         <p>
           <strong>Job Displacement:</strong> Automating manual coin counting may
@@ -268,12 +252,6 @@ export default async function AICoinDetector() {
           customer care).
         </p>
       </ProjectSection>
-
-      {images.length > 0 && (
-        <ProjectSection title="Screenshots">
-          <ProjectGallery images={images} />
-        </ProjectSection>
-      )}
     </div>
   );
 }

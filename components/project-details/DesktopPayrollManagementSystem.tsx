@@ -1,34 +1,23 @@
 import ProjectOverview from "./ProjectOverview";
 import ProjectSection from "./ProjectSection";
-import ProjectGallery from "./ProjectGallery";
-import { getProjectImages } from "@/lib/project-images";
+import { getGalleryImages } from "@/lib/project-images";
+
+const SLUG = "desktop-payroll-management-system";
 
 export default async function DesktopPayrollManagementSystem() {
-  const alt = "Desktop Payroll Management System screenshot";
-  const images = (
-    await getProjectImages("desktop-payroll-management-system")
-  ).map((src) => ({ src, alt }));
+  const images = await getGalleryImages(
+    SLUG,
+    "Desktop Payroll Management System screenshot",
+    "/static/placeholders/next.webp"
+  );
+
   return (
     <div className="space-y-12">
       <ProjectOverview
-        title="Desktop Payroll Management System"
-        images={
-          images.length
-            ? images
-            : [{ src: "/static/placeholders/next.webp", alt }]
-        }
-      >
-        <p>
-          <strong>Overview:</strong> Cross-platform payroll management
-          application with an Electron shell and FastAPI backend. The Electron
-          wrapper delivers a native desktop experience while FastAPI powers the
-          business logic and data APIs.
-        </p>
-        <p>
-          <strong>Tech Stack:</strong> Electron, React, TypeScript, FastAPI,
-          SQLAlchemy, SQLite.
-        </p>
-      </ProjectOverview>
+        slug={SLUG}
+        images={images}
+        summary="Cross-platform payroll application — Electron desktop shell wrapping a FastAPI backend with SQLAlchemy persistence and rich reporting."
+      />
 
       <ProjectSection title="Introduction">
         <p>
@@ -38,7 +27,7 @@ export default async function DesktopPayrollManagementSystem() {
           deductions, payroll, incentives, catch bonuses, reports, and
           thirteenth-month pay, all served through a FastAPI application and
           static files. The Electron shell launches this API as a subprocess,
-          waits for it to become available at
+          waits for it to become available at{" "}
           <a
             href="http://127.0.0.1:8000"
             target="_blank"
@@ -90,13 +79,6 @@ export default async function DesktopPayrollManagementSystem() {
           reporting, among others, as listed in requirements.txt.
         </p>
       </ProjectSection>
-
-      {images.length > 0 && (
-        <ProjectSection title="Screenshots">
-          <ProjectGallery images={images} />
-        </ProjectSection>
-      )}
     </div>
   );
 }
-

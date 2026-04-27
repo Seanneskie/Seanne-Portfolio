@@ -1,37 +1,38 @@
 import ProjectOverview from "./ProjectOverview";
 import ProjectSection from "./ProjectSection";
-import ProjectGallery from "./ProjectGallery";
-import { getProjectImages } from "@/lib/project-images";
+import ProjectHighlights from "./ProjectHighlights";
+import { getGalleryImages } from "@/lib/project-images";
 import { getProjectPdfs } from "@/lib/project-pdfs";
 import { withBasePath } from "@/lib/utils";
 
+const SLUG = "mcdonalds-sentiment-analysis";
+
 export default async function McdonaldsSentimentAnalysis() {
-  const alt = "McDonald's Sentiment Analysis screenshot";
-  const images = (
-    await getProjectImages("mcdonalds-sentiment-analysis")
-  ).map((src) => ({ src, alt }));
-  const pdfs = await getProjectPdfs("mcdonalds-sentiment-analysis");
+  const images = await getGalleryImages(
+    SLUG,
+    "McDonald's Sentiment Analysis screenshot",
+    "/static/placeholders/django.webp"
+  );
+  const pdfs = await getProjectPdfs(SLUG);
   const pdf = pdfs[0];
+
   return (
     <div className="space-y-12">
       <ProjectOverview
-        title="McDonald's Sentiment Analysis"
-        images={
-          images.length
-            ? images
-            : [{ src: "/static/placeholders/django.webp", alt }]
-        }
+        slug={SLUG}
+        images={images}
         downloadUrl={pdf}
-      >
-        <p>
-          <strong>Overview:</strong> Sentiment analysis of over 33,000
-          McDonald&apos;s Google reviews using Python to understand customer
-          satisfaction trends.
-        </p>
-        <p>
-          <strong>Collaborators:</strong> Individual project
-        </p>
-      </ProjectOverview>
+        summary="VADER-based sentiment analysis pipeline mining ~33,000 Google reviews to surface customer-experience trends across U.S. McDonald's locations."
+      />
+
+      <ProjectHighlights
+        items={[
+          { label: "Reviews analyzed", value: "33k+", hint: "U.S. Google reviews" },
+          { label: "Aspect categories", value: "4", hint: "food, service, speed, cleanliness" },
+          { label: "Polarity classes", value: "3", hint: "positive / neutral / negative" },
+          { label: "Stack", value: "NLTK + VADER", hint: "Pandas / Orange" },
+        ]}
+      />
 
       <ProjectSection title="Introduction">
         <p>
@@ -127,9 +128,9 @@ export default async function McdonaldsSentimentAnalysis() {
         </ul>
       </ProjectSection>
 
-      <ProjectSection title="Links">
-        <ul className="list-disc pl-6">
-          {pdf && (
+      {pdf && (
+        <ProjectSection title="Links">
+          <ul className="list-disc pl-6">
             <li>
               <a
                 href={withBasePath(pdf)}
@@ -138,16 +139,9 @@ export default async function McdonaldsSentimentAnalysis() {
                 Project Documentation (PDF)
               </a>
             </li>
-          )}
-        </ul>
-      </ProjectSection>
-
-      {images.length > 0 && (
-        <ProjectSection title="Screenshots">
-          <ProjectGallery images={images} />
+          </ul>
         </ProjectSection>
       )}
     </div>
   );
 }
-

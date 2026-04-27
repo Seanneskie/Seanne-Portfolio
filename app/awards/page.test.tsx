@@ -4,24 +4,10 @@ import { act } from "react-dom/test-utils";
 import { createRoot } from "react-dom/client";
 import AwardsPage from "./page";
 
+(globalThis as { React?: typeof React }).React = React;
+
 describe("AwardsPage", () => {
   beforeEach(() => {
-    vi.stubGlobal(
-      "fetch",
-      vi.fn(() =>
-        Promise.resolve({
-          ok: true,
-          json: () =>
-            Promise.resolve([
-              {
-                icon: "fas fa-trophy",
-                title: "Hackathon Champion",
-                description: "Won first place at the 2024 City Hackathon.",
-              },
-            ]),
-        })
-      )
-    );
     vi.stubGlobal(
       "IntersectionObserver",
       class {
@@ -36,7 +22,7 @@ describe("AwardsPage", () => {
     vi.restoreAllMocks();
   });
 
-  it("renders award from data", async () => {
+  it("renders awards from data", async () => {
     const container = document.createElement("div");
     document.body.appendChild(container);
     const root = createRoot(container);
@@ -45,10 +31,10 @@ describe("AwardsPage", () => {
       root.render(<AwardsPage />);
     });
 
-    // Allow effects to run
     await act(async () => {});
 
-    expect(container.textContent).toContain("Hackathon Champion");
+    expect(container.textContent).toContain("Awards collected");
+    expect(container.textContent).toContain("Hackathon");
 
     root.unmount();
     container.remove();

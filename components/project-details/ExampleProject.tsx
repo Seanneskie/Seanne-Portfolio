@@ -1,32 +1,21 @@
 import ProjectOverview from "./ProjectOverview";
 import ProjectSection from "./ProjectSection";
-import ProjectGallery from "./ProjectGallery";
-import { getProjectImages } from "@/lib/project-images";
+import { getGalleryImages } from "@/lib/project-images";
+
+const SLUG = "example-project";
 
 export default async function ExampleProject() {
-  const alt = "Example project screenshot";
-  const images = (await getProjectImages("example-project")).map((src) => ({
-    src,
-    alt,
-  }));
+  const images = await getGalleryImages(SLUG, "Example project screenshot");
+
   return (
     <div className="space-y-12">
       <ProjectOverview
+        slug={SLUG}
         title="Example Project"
-        images={
-          images.length
-            ? images
-            : [{ src: "/static/placeholders/ai.webp", alt }]
-        }
-      >
-        <p>
-          <strong>Overview:</strong> Replace this text with a short summary of
-          your project.
-        </p>
-        <p>
-          <strong>Collaborators:</strong> List collaborators here.
-        </p>
-      </ProjectOverview>
+        images={images}
+        summary="Replace this text with a short summary of your project."
+        collaborators="List collaborators here."
+      />
 
       <ProjectSection title="Introduction">
         <p>Introduction content coming soon.</p>
@@ -49,12 +38,6 @@ export default async function ExampleProject() {
       <ProjectSection title="Ethical Implications">
         <p>Ethical considerations coming soon.</p>
       </ProjectSection>
-
-      {images.length > 0 && (
-        <ProjectSection title="Screenshots">
-          <ProjectGallery images={images} />
-        </ProjectSection>
-      )}
     </div>
   );
 }

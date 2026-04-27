@@ -1,39 +1,23 @@
 import ProjectOverview from "./ProjectOverview";
 import ProjectSection from "./ProjectSection";
-import ProjectGallery from "./ProjectGallery";
-import { getProjectImages } from "@/lib/project-images";
+import { getGalleryImages } from "@/lib/project-images";
+
+const SLUG = "budget-system";
 
 export default async function BudgetSystem() {
-  const alt = "Budget System screenshot";
-  const images = (await getProjectImages("budget-system")).map((src) => ({
-    src,
-    alt,
-  }));
+  const images = await getGalleryImages(
+    SLUG,
+    "Budget System screenshot",
+    "/static/placeholders/csharp.webp"
+  );
+
   return (
     <div className="space-y-12">
       <ProjectOverview
-        title="Budget System"
-        githubUrl="https://github.com/Seanneskie/budgetTracker"
-        images={
-          images.length
-            ? images
-            : [{ src: "/static/placeholders/csharp.webp", alt }]
-        }
-      >
-        <p>
-          <strong>Overview:</strong> Layered ASP.NET Core and SQL Server
-          application for managing personal budgets. Accounts track starting
-          balances and currencies, budgets are scoped by month and category, and
-          categories indicate income or expense types.
-        </p>
-        <p>
-          <strong>Tech Stack:</strong> ASP.NET Core, SQL Server, Entity Framework
-          Core, FluentValidation.
-        </p>
-        <p>
-          <strong>Note:</strong> This is a hobby/learning project only.
-        </p>
-      </ProjectOverview>
+        slug={SLUG}
+        images={images}
+        summary="Layered ASP.NET Core + SQL Server personal-finance app — accounts, monthly budgets by category, and clean architecture. Hobby/learning project."
+      />
 
       <ProjectSection title="Introduction">
         <p>
@@ -83,13 +67,6 @@ dotnet run`}
 dotnet test`}
         </pre>
       </ProjectSection>
-
-      {images.length > 0 && (
-        <ProjectSection title="Screenshots">
-          <ProjectGallery images={images} />
-        </ProjectSection>
-      )}
     </div>
   );
 }
-

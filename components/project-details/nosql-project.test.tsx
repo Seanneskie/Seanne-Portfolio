@@ -5,7 +5,10 @@ import { createRoot } from "react-dom/client";
 import NosqlProject from "./NosqlProject";
 
 vi.mock("@/lib/project-images", () => ({
-  getProjectImages: vi.fn(async () => [])
+  getProjectImages: vi.fn(async () => []),
+  getGalleryImages: vi.fn(async (_slug: string, alt: string) => [
+    { src: "/static/placeholders/Mern.webp", alt },
+  ]),
 }));
 
 vi.mock("./ProjectGallery", () => {

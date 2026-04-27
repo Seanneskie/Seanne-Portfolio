@@ -2,64 +2,20 @@ import { type ReactElement } from "react";
 
 import ProjectOverview from "./ProjectOverview";
 import ProjectSection from "./ProjectSection";
-import ProjectGallery from "./ProjectGallery";
-import { getProjectImages } from "@/lib/project-images";
+import { getGalleryImages } from "@/lib/project-images";
 
-const FALLBACK_IMAGE = "/static/placeholders/ai.webp";
+const SLUG = "llm-restaurant-finder";
 
-/**
- * Renders the detailed breakdown of the LLM Restaurant Finder pipeline.
- *
- * The component orchestrates screenshot loading with graceful fallbacks so the
- * page remains accessible even if project assets are temporarily unavailable.
- *
- * @returns ReactElement describing the LLM Restaurant Finder implementation.
- * @example
- * ```tsx
- * <LlmRestaurantFinder />
- * ```
- */
 export default async function LlmRestaurantFinder(): Promise<ReactElement> {
-  const alt = "LLM Restaurant Finder screenshot";
-  let rawImages: string[] = [];
-
-  try {
-    rawImages = await getProjectImages("llm-restaurant-finder");
-  } catch (error) {
-    console.error("Unable to load LLM Restaurant Finder screenshots:", error);
-  }
-
-  const images = (rawImages.length ? rawImages : [FALLBACK_IMAGE]).map((src) => ({
-    src,
-    alt,
-  }));
+  const images = await getGalleryImages(SLUG, "LLM Restaurant Finder screenshot");
 
   return (
     <div className="space-y-12">
       <ProjectOverview
-        title="LLM Restaurant Finder"
+        slug={SLUG}
         images={images}
-      >
-        <p>
-          <strong>Overview:</strong> LLM Restaurant Finder turns conversational
-          prompts into structured restaurant hunts by funneling each request
-          through a TypeScript Hono API. Google Gemini generates a JSON command
-          that captures cuisine, price, and location intents, while Zod guards
-          the shape before any network call occurs.
-        </p>
-        <p>
-          <strong>Flow:</strong> Once validated, the command is mapped to
-          Foursquare Places API parameters, searched, optionally enriched with
-          detail lookups, and normalized for the client experience.
-        </p>
-        <p>
-          <strong>Collaborators:</strong> Solo build.
-        </p>
-        <p>
-          <strong>Tech Stack:</strong> Hono, Google Gemini, Foursquare Places
-          API, Zod, TypeScript.
-        </p>
-      </ProjectOverview>
+        summary="LLM Restaurant Finder turns conversational prompts into structured Foursquare searches via a TypeScript Hono API — Gemini drafts the JSON intent, Zod validates it, and the mapper hits Places."
+      />
 
       <ProjectSection title="Natural-Language Intake">
         <p>
@@ -142,12 +98,6 @@ export default async function LlmRestaurantFinder(): Promise<ReactElement> {
           </li>
         </ul>
       </ProjectSection>
-
-      {images.length > 0 && (
-        <ProjectSection title="Screenshots">
-          <ProjectGallery images={images} />
-        </ProjectSection>
-      )}
     </div>
   );
 }

@@ -3,12 +3,6 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import { act } from "react-dom/test-utils";
 import { createRoot } from "react-dom/client";
 
-const useDataMock = vi.fn();
-
-vi.mock("@/lib/use-data", () => ({
-  useData: <T,>(resource: string) => useDataMock(resource) as { data: T; loading: boolean; error: unknown },
-}));
-
 vi.mock("@/components/ui/card", () => ({
   Card: ({ children, ...props }: { children: React.ReactNode }) => (
     <div data-testid="card" {...props}>
@@ -49,6 +43,7 @@ vi.mock("framer-motion", () => ({
 
 vi.mock("@/lib/utils", () => ({
   withBasePath: (value: string) => value,
+  cn: (...inputs: unknown[]) => inputs.filter(Boolean).join(" "),
 }));
 
 vi.mock("next/link", () => ({
@@ -71,76 +66,92 @@ vi.mock("next/image", () => ({
 
 afterEach(() => {
   vi.clearAllMocks();
-  useDataMock.mockReset();
 });
 
 describe("ProjectsPageContent", () => {
-  it("renders loading state skeletons", async () => {
-    useDataMock.mockReturnValue({ data: null, loading: true, error: null });
-
+  it("renders empty state when no projects match", async () => {
     const { default: ProjectsPageContent } = await import("./projects-page-content");
     const container = document.createElement("div");
     document.body.appendChild(container);
     const root = createRoot(container);
 
     await act(async () => {
-      root.render(<ProjectsPageContent />);
+      root.render(<ProjectsPageContent data={[]} />);
     });
 
-    expect(container.querySelectorAll('[data-testid="card"]').length).toBe(6);
-
-    root.unmount();
-    container.remove();
-  });
-
-  it("displays error feedback when data fails to load", async () => {
-    useDataMock.mockReturnValue({ data: null, loading: false, error: new Error("boom") });
-
-    const { default: ProjectsPageContent } = await import("./projects-page-content");
-    const container = document.createElement("div");
-    document.body.appendChild(container);
-    const root = createRoot(container);
-
-    await act(async () => {
-      root.render(<ProjectsPageContent />);
-    });
-
-    expect(container.textContent).toContain("Failed to load projects.");
+    expect(container.textContent).toContain("No projects found");
 
     root.unmount();
     container.remove();
   });
 
   it("lists project cards with detail links", async () => {
-    useDataMock.mockReturnValue({
-      data: [
-        {
-          title: "Example",
-          image: "/image.png",
-          alt: "Example",
-          description: "Example description",
-          tags: ["Tag"],
-          github: "https://github.com/example",
-          githubLabel: "GitHub",
-          details: "project-details/example",
-        },
-      ],
-      loading: false,
-      error: null,
-    });
-
     const { default: ProjectsPageContent } = await import("./projects-page-content");
     const container = document.createElement("div");
     document.body.appendChild(container);
     const root = createRoot(container);
 
     await act(async () => {
-      root.render(<ProjectsPageContent />);
+      root.render(
+        <ProjectsPageContent
+          data={[
+            {
+              title: "Example",
+              image: "/image.png",
+              alt: "Example",
+              description: "Example description",
+              tags: ["Tag"],
+              github: "https://github.com/example",
+              githubLabel: "GitHub",
+              details: "project-details/example",
+            },
+          ]}
+        />
+      );
     });
 
     const detailsLink = container.querySelector("a[href='/project-details/example']");
     expect(detailsLink).not.toBeNull();
-    expect(container.querySelector("[data-testid='tag-filter']")?.getAttribute("data-tags")).toBe('["Tag"]');
+    expect(container.querySelector("[data-testid='tag-filter']")?.getAttribute("data-tags")).toBe(
+      '["Tag"]'
+    );
+
+    root.unmount();
+    container.remove();
+  });
+
+  it("shows summary stats reflecting the data", async () => {
+    const { default: ProjectsPageContent } = await import("./projects-page-content");
+    const container = document.createElement("div");
+    document.body.appendChild(container);
+    const root = createRoot(container);
+
+    await act(async () => {
+      root.render(
+        <ProjectsPageContent
+          data={[
+            {
+              title: "Alpha",
+              image: "/a.png",
+              alt: "Alpha",
+              tags: ["Next"],
+              github: "https://github.com/example/alpha",
+              details: "project-details/alpha",
+            },
+            {
+              title: "Beta",
+              image: "/b.png",
+              alt: "Beta",
+              tags: ["Next", "TS"],
+              github: null,
+              details: null,
+            },
+          ]}
+        />
+      );
+    });
+
+    expect(container.textContent).toContain("Showing 2 of 2");
 
     root.unmount();
     container.remove();

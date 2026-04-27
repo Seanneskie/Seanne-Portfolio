@@ -105,7 +105,7 @@ export function RadarView({
               fillOpacity={0.25}
             />
           ))}
-          <Tooltip formatter={(value: number | string) => `${value}/5`} />
+          <Tooltip formatter={(value) => `${value}/5`} />
           <Legend />
         </RadarChart>
       </ResponsiveContainer>

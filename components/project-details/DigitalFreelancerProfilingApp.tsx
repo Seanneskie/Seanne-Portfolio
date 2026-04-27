@@ -1,39 +1,24 @@
 import ProjectOverview from "./ProjectOverview";
 import ProjectSection from "./ProjectSection";
-import ProjectGallery from "./ProjectGallery";
-import { getProjectImages } from "@/lib/project-images";
+import { getGalleryImages } from "@/lib/project-images";
+
+const SLUG = "digital-freelancer-profiling-app";
 
 export default async function DigitalFreelancerProfilingApp() {
-  const alt = "Digital Freelancer Profiling App screenshot";
-  const images = (
-    await getProjectImages("digital-freelancer-profiling-app")
-  ).map((src) => ({ src, alt }));
+  const images = await getGalleryImages(
+    SLUG,
+    "Digital Freelancer Profiling App screenshot",
+    "/static/placeholders/next.webp"
+  );
+
   return (
     <div className="space-y-12">
       <ProjectOverview
-        title="Digital Freelancer Profiling App"
-        images={
-          images.length
-            ? images
-            : [{ src: "/static/placeholders/next.webp", alt }]
-        }
+        slug={SLUG}
+        images={images}
         downloadUrl="/digital-freelancer-profiling-app/pdfs/DPFS_UserManual.pdf"
-      >
-        <p>
-          <strong>Overview:</strong> Capstone Freelancer Profiling App is a
-          Django-based platform for managing freelancer profiles, events, and
-          support requests.
-        </p>
-        <p>
-          <strong>Tech Stack:</strong> Django 4.2.7, django-allauth,
-          crispy-bootstrap5, django-jazzmin, PostgreSQL, Graphene, psycopg2.
-        </p>
-        <p>
-          <strong>Collaborators:</strong> Azlan Tomindug, Kimberly Claire
-          Baylon, Seanne Cañete, Bridget Nicolette Jose, and Dr. Lumer Jude P.
-          Doce (Adviser).
-        </p>
-      </ProjectOverview>
+        summary="Capstone Django platform for freelancer profile management, event participation, and support requests — coordinated through Notion Scrumban boards."
+      />
 
       <ProjectSection title="Introduction">
         <p>
@@ -60,9 +45,7 @@ export default async function DigitalFreelancerProfilingApp() {
             Receive announcements and submit support tickets with
             notifications.
           </li>
-          <li>
-            Admin dashboard with analytics and content management.
-          </li>
+          <li>Admin dashboard with analytics and content management.</li>
           <li>
             Organize work in Notion Kanban boards with Scrumban for iterative
             planning and review.
@@ -72,26 +55,28 @@ export default async function DigitalFreelancerProfilingApp() {
       <ProjectSection title="Installation">
         <ul className="list-disc pl-6 space-y-1">
           <li>
-            <strong>Clone the repository:</strong> <code>git clone
-            https://github.com/Seanneskie/capstone-app-profile.git</code>
+            <strong>Clone the repository:</strong>{" "}
+            <code>
+              git clone https://github.com/Seanneskie/capstone-app-profile.git
+            </code>
           </li>
           <li>
-            <strong>Create and activate a virtual environment:</strong>
-            <code>py -m venv env</code> and activate via
-            <code>env\Scripts\activate.bat</code> or
+            <strong>Create and activate a virtual environment:</strong>{" "}
+            <code>py -m venv env</code> and activate via{" "}
+            <code>env\Scripts\activate.bat</code> or{" "}
             <code>env\Scripts\activate.ps1</code>
           </li>
           <li>
-            <strong>Install dependencies:</strong>
+            <strong>Install dependencies:</strong>{" "}
             <code>pip install -r requirements.txt</code>
           </li>
           <li>
-            <strong>Configure environment variables:</strong> create a
+            <strong>Configure environment variables:</strong> create a{" "}
             <code>.env</code> file with PostgreSQL settings.
           </li>
           <li>
-            <strong>Run migrations and load initial data:</strong>
-            <code>py manage.py migrate</code> and
+            <strong>Run migrations and load initial data:</strong>{" "}
+            <code>py manage.py migrate</code> and{" "}
             <code>py manage.py loaddata fixtures/updated_data.json</code>
           </li>
         </ul>
@@ -99,8 +84,7 @@ export default async function DigitalFreelancerProfilingApp() {
       <ProjectSection title="Usage">
         <ul className="list-disc pl-6 space-y-1">
           <li>
-            Start the development server:
-            <code>py manage.py runserver</code>
+            Start the development server: <code>py manage.py runserver</code>
           </li>
           <li>
             Visit <code>http://127.0.0.1:8000</code> to browse the site and
@@ -112,13 +96,6 @@ export default async function DigitalFreelancerProfilingApp() {
           </li>
         </ul>
       </ProjectSection>
-
-      {images.length > 0 && (
-        <ProjectSection title="Screenshots">
-          <ProjectGallery images={images} />
-        </ProjectSection>
-      )}
     </div>
   );
 }
-

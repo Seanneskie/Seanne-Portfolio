@@ -1,38 +1,23 @@
 import ProjectOverview from "./ProjectOverview";
 import ProjectSection from "./ProjectSection";
-import ProjectGallery from "./ProjectGallery";
-import { getProjectImages } from "@/lib/project-images";
+import { getGalleryImages } from "@/lib/project-images";
+
+const SLUG = "cemcdo-app";
 
 export default async function CemcdoApp() {
-  const alt = "CEMCDO App screenshot";
-  const images = (await getProjectImages("cemcdo-app")).map((src) => ({
-    src,
-    alt,
-  }));
+  const images = await getGalleryImages(
+    SLUG,
+    "CEMCDO App screenshot",
+    "/static/placeholders/django.webp"
+  );
+
   return (
     <div className="space-y-12">
       <ProjectOverview
-        title="CEMCDO App"
-        images={
-          images.length
-            ? images
-            : [{ src: "/static/placeholders/django.webp", alt }]
-        }
-        githubUrl="https://cemcdo-demo.onrender.com/"
-        linkLabel="View Site"
-      >
-        <p>
-          <strong>Overview:</strong> A Django-powered information system for the
-          City Economic Management and Cooperative Development Office of General
-          Santos City. It consolidates cooperative records and fund utilization
-          into a unified portal with role-based dashboards.
-        </p>
-        <p>
-          <strong>Collaborators:</strong> Azlan Tomindug, Bridget Nicolette
-          Jose, Francheska Mei Besana, Kimberly Claire Baylon, Seanne B.
-          Cañete
-        </p>
-      </ProjectOverview>
+        slug={SLUG}
+        images={images}
+        summary="Django-powered information system for the City Economic Management and Cooperative Development Office of General Santos City — unified cooperative records and fund-utilization workflows."
+      />
 
       <ProjectSection title="System Overview">
         <p>
@@ -129,9 +114,7 @@ export default async function CemcdoApp() {
 
       <ProjectSection title="Security & Access">
         <ul className="list-disc list-inside space-y-1">
-          <li>
-            Authentication gates all modules with role-based dashboards.
-          </li>
+          <li>Authentication gates all modules with role-based dashboards.</li>
           <li>
             Cooperative account creation enforces passwords ≥8 characters with
             uppercase, number, and symbol requirements.
@@ -150,8 +133,8 @@ export default async function CemcdoApp() {
             with Chart.js visualizations.
           </li>
           <li>
-            <strong>Database & Auth:</strong> Supabase PostgreSQL with managed
-            authentication.
+            <strong>Database &amp; Auth:</strong> Supabase PostgreSQL with
+            managed authentication.
           </li>
           <li>
             <strong>Hosting:</strong> Render for web service and static/media
@@ -177,8 +160,8 @@ export default async function CemcdoApp() {
             export profiles.
           </li>
           <li>
-            Fund Utilization: manage divisions and accounts, submit obligation or
-            augmentation requests, and export reports.
+            Fund Utilization: manage divisions and accounts, submit obligation
+            or augmentation requests, and export reports.
           </li>
         </ul>
       </ProjectSection>
@@ -197,13 +180,6 @@ export default async function CemcdoApp() {
           based on official user manuals for each module.
         </p>
       </ProjectSection>
-
-      {images.length > 0 && (
-        <ProjectSection title="Screenshots">
-          <ProjectGallery images={images} />
-        </ProjectSection>
-      )}
     </div>
   );
 }
-

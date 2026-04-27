@@ -1,34 +1,24 @@
 import ProjectOverview from "./ProjectOverview";
 import ProjectSection from "./ProjectSection";
-import ProjectGallery from "./ProjectGallery";
-import { getProjectImages } from "@/lib/project-images";
+import { getGalleryImages } from "@/lib/project-images";
+
+const SLUG = "cnsm-website";
 
 export default async function CnsmWebsite() {
-  const alt = "CNSM website screenshot";
-  const images = (await getProjectImages("cnsm-website")).map((src) => ({
-    src,
-    alt,
-  }));
+  const images = await getGalleryImages(
+    SLUG,
+    "CNSM website screenshot",
+    "/static/placeholders/Mern.webp"
+  );
+
   return (
     <div className="space-y-12">
       <ProjectOverview
-        title="CNSM Website"
-        images={
-          images.length
-            ? images
-            : [{ src: "/static/placeholders/Mern.webp", alt }]
-        }
-        githubUrl="https://github.com/Seanneskie/advDB-CNSM-Website"
-      >
-        <p>
-          <strong>Overview:</strong> MERN stack website for the College of
-          Natural Sciences and Mathematics showcasing departments,
-          announcements, and program information.
-        </p>
-        <p>
-          <strong>Collaborators:</strong> Database Major Batch of 2021-2025
-        </p>
-      </ProjectOverview>
+        slug={SLUG}
+        images={images}
+        summary="MERN stack website for the College of Natural Sciences and Mathematics — centralizing department pages, announcements, and program information."
+      />
+
       <ProjectSection title="Introduction">
         <p>
           A collaborative MERN (MongoDB, Express.js, React, Node.js) web
@@ -141,7 +131,7 @@ export default async function CnsmWebsite() {
         </ul>
         <p>
           API design followed resource-oriented routes (e.g.,{" "}
-          <code>/api/announcements</code>,<code>/api/attendance</code>) with
+          <code>/api/announcements</code>, <code>/api/attendance</code>) with
           role-based access checks at the controller layer and request
           validation via middleware.
         </p>
@@ -227,16 +217,10 @@ export default async function CnsmWebsite() {
           </li>
           <li>
             <strong>Data Retention:</strong> Time-bounded retention for logs and
-            the ability to export/delete a student’s data upon request.
+            the ability to export/delete a student&apos;s data upon request.
           </li>
         </ul>
       </ProjectSection>
-
-      {images.length > 0 && (
-        <ProjectSection title="Screenshots">
-          <ProjectGallery images={images} />
-        </ProjectSection>
-      )}
     </div>
   );
 }

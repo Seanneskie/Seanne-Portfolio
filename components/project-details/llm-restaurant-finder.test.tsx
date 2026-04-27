@@ -14,6 +14,9 @@ const mockedScreenshots = vi.hoisted(
 
 vi.mock("@/lib/project-images", () => ({
   getProjectImages: vi.fn(async () => [...mockedScreenshots]),
+  getGalleryImages: vi.fn(async (_slug: string, alt: string) =>
+    mockedScreenshots.map((src) => ({ src, alt })),
+  ),
 }));
 
 vi.mock("./ProjectGallery", () => {
@@ -59,13 +62,14 @@ describe("LlmRestaurantFinder", () => {
     });
 
     const projectImagesModule = await import("@/lib/project-images");
-    expect(vi.mocked(projectImagesModule.getProjectImages)).toHaveBeenCalledWith(
+    expect(vi.mocked(projectImagesModule.getGalleryImages)).toHaveBeenCalledWith(
       "llm-restaurant-finder",
+      expect.any(String),
     );
 
     const textContent = container.textContent ?? "";
-    expect(textContent).toContain("Gemini generates a JSON command");
-    expect(textContent).toContain("Foursquare Places API parameters");
+    expect(textContent).toContain("JSON matching a Zod schema");
+    expect(textContent).toContain("Foursquare Places search endpoint");
     expect(textContent).toContain("rotating access code");
 
     const galleryImages = container.querySelectorAll("[data-testid='project-gallery-image']");

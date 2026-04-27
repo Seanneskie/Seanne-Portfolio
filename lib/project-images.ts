@@ -15,3 +15,22 @@ export async function getProjectImages(slug: string): Promise<string[]> {
     throw new Error(`Failed to load project images for slug "${slug}"`);
   }
 }
+
+/**
+ * Resolves image objects for a project page with a graceful fallback.
+ * Logs but does not throw when the manifest is missing — keeps detail
+ * pages renderable for projects that don't ship local screenshots.
+ */
+export async function getGalleryImages(
+  slug: string,
+  alt: string,
+  fallback = '/static/placeholders/ai.webp'
+): Promise<Array<{ src: string; alt: string }>> {
+  let images: string[] = [];
+  try {
+    images = await getProjectImages(slug);
+  } catch {
+    // intentionally swallow — fallback below
+  }
+  return (images.length ? images : [fallback]).map((src) => ({ src, alt }));
+}

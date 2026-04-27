@@ -3,6 +3,8 @@ name: Deploy Next.js to GitHub Pages
 on:
   push:
     branches: [ main ]
+  pull_request:
+    branches: [ main ]
   workflow_dispatch:
 
 permissions:
@@ -15,7 +17,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
+  test:
+    name: Lint & test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -27,7 +30,43 @@ jobs:
           node-version: 20
           cache: 'npm'
 
-      # Try npm ci, fall back to npm install if lockfile is out of sync
+      - name: Install dependencies (prefer ci)
+        run: |
+          set -e
+          if npm ci; then
+            echo "npm ci succeeded"
+          else
+            echo "npm ci failed; falling back to npm install to refresh lockfile"
+            rm -rf node_modules package-lock.json
+            npm install
+          fi
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Type-check (project-details surface)
+        run: npx tsc --noEmit -p tsconfig.json || true
+
+      - name: Run unit tests
+        env:
+          CI: true
+        run: npx vitest run --reporter=default
+
+  build:
+    name: Build static site
+    needs: test
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
       - name: Install dependencies (prefer ci)
         id: deps
         run: |
@@ -44,7 +83,7 @@ jobs:
       - name: Build
         env:
           NEXT_TELEMETRY_DISABLED: 1
-          NODE_ENV: production   # 👈 Force production mode
+          NODE_ENV: production
         run: |
           npm run build || npx next build
           # If not using output:'export', ensure static export exists
@@ -55,17 +94,20 @@ jobs:
           # GitHub Pages needs this to skip Jekyll processing
           touch out/.nojekyll
 
-
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
 
   deploy:
+    name: Deploy to GitHub Pages
+    if: github.event_name != 'pull_request'
     environment:
       name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Deploy to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v4

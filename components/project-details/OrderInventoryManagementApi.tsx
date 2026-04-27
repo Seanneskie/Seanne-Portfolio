@@ -1,38 +1,23 @@
-import React from "react";
 import ProjectOverview from "./ProjectOverview";
 import ProjectSection from "./ProjectSection";
-import ProjectGallery from "./ProjectGallery";
-import { getProjectImages } from "@/lib/project-images";
+import { getGalleryImages } from "@/lib/project-images";
+
+const SLUG = "order-inventory-management-api";
 
 export default async function OrderInventoryManagementApi() {
-  const alt = "Order & Inventory Management API screenshot";
-  const images = (await getProjectImages("order-inventory-management-api")).map(
-    (src) => ({ src, alt })
+  const images = await getGalleryImages(
+    SLUG,
+    "Order & Inventory Management API screenshot",
+    "/static/placeholders/csharp.webp"
   );
+
   return (
     <div className="space-y-12">
       <ProjectOverview
-        title="Order & Inventory Management API"
-        githubUrl="https://github.com/Seanneskie/dotnet-inventory"
-        images={
-          images.length
-            ? images
-            : [{ src: "/static/placeholders/csharp.webp", alt }]
-        }
-      >
-        <p>
-          <strong>Overview:</strong> Lightweight RESTful API built with ASP.NET Core
-          and PostgreSQL for managing products and orders with stock validation and
-          audit logging.
-        </p>
-        <p>
-          <strong>Tech Stack:</strong> ASP.NET Core, Entity Framework Core, PostgreSQL,
-          FluentValidation, Serilog, Swagger.
-        </p>
-        <p>
-          <strong>Note:</strong> This is a hobby/learning project only.
-        </p>
-      </ProjectOverview>
+        slug={SLUG}
+        images={images}
+        summary="Lightweight RESTful API built with ASP.NET Core and PostgreSQL — products, stock validation, idempotent orders, and audit logging. Hobby/learning project."
+      />
 
       <ProjectSection title="Introduction">
         <p>
@@ -50,22 +35,16 @@ export default async function OrderInventoryManagementApi() {
       </ProjectSection>
       <ProjectSection title="Development and Deployment">
         <p>
-          NuGet packages like FluentValidation.AspNetCore, Microsoft.AspNetCore.OpenApi,
-          Npgsql.EntityFrameworkCore.PostgreSQL, Serilog.AspNetCore with a console
-          sink, and Swashbuckle.AspNetCore power the API. The default connection
-          string points at a local PostgreSQL instance but can be overridden for
-          other environments. EF Core migrations, RFC 7807 <code>ProblemDetails</code>,
-          and integration tests against Dockerized Postgres prepare the project
-          for Azure deployment.
+          NuGet packages like FluentValidation.AspNetCore,
+          Microsoft.AspNetCore.OpenApi, Npgsql.EntityFrameworkCore.PostgreSQL,
+          Serilog.AspNetCore with a console sink, and Swashbuckle.AspNetCore
+          power the API. The default connection string points at a local
+          PostgreSQL instance but can be overridden for other environments. EF
+          Core migrations, RFC 7807 <code>ProblemDetails</code>, and integration
+          tests against Dockerized Postgres prepare the project for Azure
+          deployment.
         </p>
       </ProjectSection>
-
-      {images.length > 0 && (
-        <ProjectSection title="Screenshots">
-          <ProjectGallery images={images} />
-        </ProjectSection>
-      )}
     </div>
   );
 }
-

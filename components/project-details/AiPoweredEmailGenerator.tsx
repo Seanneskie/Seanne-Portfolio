@@ -1,35 +1,23 @@
 import ProjectOverview from "./ProjectOverview";
 import ProjectSection from "./ProjectSection";
-import ProjectGallery from "./ProjectGallery";
-import { getProjectImages } from "@/lib/project-images";
+import { getGalleryImages } from "@/lib/project-images";
+
+const SLUG = "ai-powered-email-generator";
 
 export default async function AiPoweredEmailGenerator() {
-  const alt = "AI Powered Email Generator screenshot";
-  const images = (await getProjectImages("ai-powered-email-generator")).map(
-    (src) => ({ src, alt })
+  const images = await getGalleryImages(
+    SLUG,
+    "AI Powered Email Generator screenshot",
+    "/static/placeholders/ai.webp"
   );
+
   return (
     <div className="space-y-12">
       <ProjectOverview
-        title="AI-Powered Email Generator"
-        images={
-          images.length
-            ? images
-            : [{ src: "/static/placeholders/ai.webp", alt }]
-        }
-        githubUrl="https://github.com/Seanneskie/email-generator"
-      >
-        <p>
-          <strong>Overview:</strong> Django and LangChain assistant for
-          drafting professional emails with tone and purpose controls,
-          automatic signature insertion, and built-in CRM features.
-        </p>
-        <p>
-          <strong>Tech Stack:</strong> Python 3, Django 5.2, LangChain 0.3,
-          OpenRouter/OpenAI API, Tailwind CSS via CLI, SQLite/PostgreSQL,
-          Whisper for audio transcription, Node.js.
-        </p>
-      </ProjectOverview>
+        slug={SLUG}
+        images={images}
+        summary="Django + LangChain assistant that drafts professional emails with tone and purpose controls, automatic signature insertion, audio transcription, and a built-in CRM."
+      />
 
       <ProjectSection title="Email Composition">
         <p>
@@ -72,13 +60,6 @@ export default async function AiPoweredEmailGenerator() {
           Tailwind for styling, and dotenv-managed environment settings.
         </p>
       </ProjectSection>
-
-      {images.length > 0 && (
-        <ProjectSection title="Screenshots">
-          <ProjectGallery images={images} />
-        </ProjectSection>
-      )}
     </div>
   );
 }
-

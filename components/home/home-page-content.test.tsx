@@ -37,6 +37,7 @@ vi.mock("@/components/work-experiences", () => ({
 
 vi.mock("@/lib/utils", () => ({
   withBasePath: withBasePathMock,
+  cn: (...inputs: unknown[]) => inputs.filter(Boolean).join(" "),
 }));
 
 vi.mock("sonner", () => ({

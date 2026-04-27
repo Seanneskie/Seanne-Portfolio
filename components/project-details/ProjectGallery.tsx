@@ -128,10 +128,17 @@ export default function ProjectGallery({
 
         {/* Thumbnails */}
         {showThumbnails && images.length > 1 && (
-          <div className="mt-4 flex gap-2 overflow-x-auto pb-1">
+          <div
+            role="tablist"
+            aria-label="Image thumbnails"
+            className="mt-4 flex gap-2 overflow-x-auto pb-1"
+          >
             {images.map((img, i) => (
               <button
                 key={`thumb-${img.src}`}
+                role="tab"
+                aria-selected={i === index}
+                tabIndex={i === index ? 0 : -1}
                 onClick={() => api?.scrollTo(i)}
                 className={cn(
                   "relative h-16 w-24 flex-shrink-0 overflow-hidden rounded-lg ring-1 ring-black/5 transition",
@@ -329,7 +336,7 @@ function Lightbox({
           <div
             className={cn(
               "pointer-events-auto relative z-[64] mx-6 flex h-[82vh] w-[min(96vw,1280px)] select-none items-center justify-center overflow-hidden rounded-xl ring-1 ring-white/10",
-              dragging && "cursor-grabbing"
+              scale > 1 ? (dragging ? "cursor-grabbing" : "cursor-grab") : "cursor-zoom-in"
             )}
             onWheel={onWheel}
             onMouseDown={onMouseDown}
@@ -339,23 +346,22 @@ function Lightbox({
             onDoubleClick={onDoubleClick}
             style={{ touchAction: "none" }}
           >
-            <Image
-              key={images[index].src}
-              src={withBasePath(images[index].src)}
-              alt={`${images[index].alt} (zoomed ${index + 1}/${images.length})`}
-              fill
-              sizes="100vw"
-              className="pointer-events-none object-contain"
-              draggable={false}
-            />
-            {/* Transform layer */}
             <motion.div
-              className="pointer-events-none absolute inset-0"
-              style={{
-                transform: `translate3d(${tx}px, ${ty}px, 0) scale(${scale})`,
-                transformOrigin: "center center",
-              }}
-            />
+              className="absolute inset-0"
+              animate={{ x: tx, y: ty, scale }}
+              transition={{ type: "tween", duration: dragging ? 0 : 0.15 }}
+              style={{ transformOrigin: "center center" }}
+            >
+              <Image
+                key={images[index].src}
+                src={withBasePath(images[index].src)}
+                alt={`${images[index].alt} (zoomed ${index + 1}/${images.length})`}
+                fill
+                sizes="100vw"
+                className="pointer-events-none object-contain"
+                draggable={false}
+              />
+            </motion.div>
           </div>
         </motion.div>
       )}

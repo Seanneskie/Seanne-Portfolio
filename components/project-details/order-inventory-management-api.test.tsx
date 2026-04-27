@@ -1,12 +1,30 @@
-import React from "react";
+import React, { type ReactElement } from "react";
 import { describe, it, expect, vi } from "vitest";
 import { act } from "react-dom/test-utils";
 import { createRoot } from "react-dom/client";
 import OrderInventoryManagementApi from "./OrderInventoryManagementApi";
 
 vi.mock("@/lib/project-images", () => ({
-  getProjectImages: vi.fn(async () => [])
+  getProjectImages: vi.fn(async () => []),
+  getGalleryImages: vi.fn(async (_slug: string, alt: string) => [
+    { src: "/static/placeholders/csharp.webp", alt },
+  ]),
 }));
+
+vi.mock("./ProjectGallery", () => {
+  interface MockGalleryImage {
+    src: string;
+    alt: string;
+  }
+  const ProjectGalleryMock = ({ images }: { images: MockGalleryImage[] }): ReactElement => (
+    <div data-testid="project-gallery-mock">
+      {images.map((img) => (
+        <span key={img.src} aria-label={img.alt} data-src={img.src} />
+      ))}
+    </div>
+  );
+  return { __esModule: true, default: ProjectGalleryMock };
+});
 
 // Ensure React is globally available for components compiled with the new JSX runtime
 (globalThis as { React?: typeof React }).React = React;

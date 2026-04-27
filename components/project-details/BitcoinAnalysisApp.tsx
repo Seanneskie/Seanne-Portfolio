@@ -1,43 +1,41 @@
 import ProjectOverview from "./ProjectOverview";
 import ProjectSection from "./ProjectSection";
-import ProjectGallery from "./ProjectGallery";
-import { getProjectImages } from "@/lib/project-images";
+import ProjectHighlights from "./ProjectHighlights";
+import { getGalleryImages } from "@/lib/project-images";
+
+const SLUG = "bitcoin-analysis-app";
 
 export default async function BitcoinAnalysisApp() {
-  const alt = "Bitcoin Analysis App screenshot";
-  const images = (await getProjectImages("bitcoin-analysis-app")).map((src) => ({
-    src,
-    alt,
-  }));
+  const images = await getGalleryImages(
+    SLUG,
+    "Bitcoin Analysis App screenshot",
+    "/static/placeholders/data-analytics.webp"
+  );
+
   return (
     <div className="space-y-12">
       <ProjectOverview
-        title="Bitcoin Analysis App"
-        images={
-          images.length
-            ? images
-            : [{
-                src: "/static/placeholders/data-analytics.webp",
-                alt,
-              }]
-        }
-      >
-        <p>
-          <strong>Overview:</strong> The Bitcoin Analysis App explores
-          Bitcoin&apos;s historical price movement and market activity through
-          interactive visualizations.
-        </p>
-        <p>
-          <strong>Collaborators:</strong> Individual Project
-        </p>
-      </ProjectOverview>
+        slug={SLUG}
+        images={images}
+        summary="Bitcoin historical-data analysis with interactive visualizations, descriptive statistics, and simple linear-regression baselines for big-data coursework."
+      />
+
+      <ProjectHighlights
+        items={[
+          { label: "Years of data", value: "10+", hint: "2012–2021 minute bars" },
+          { label: "Dataset window", value: "2019–2021", hint: "tractable focus range" },
+          { label: "Models trained", value: "5", hint: "per-target linear regressions" },
+          { label: "Validation tool", value: "Weka", hint: "cross-tool sanity check" },
+        ]}
+      />
+
       <ProjectSection title="Introduction">
         <p>
           <strong>Bitcoin Historical Data Analysis</strong> (ITD 105 – Big Data
-          Analytics). I analyzed Bitcoin’s price behavior to understand trends,
-          volatility, and relationships among core market variables. The project
-          centered on practical data wrangling, exploratory analysis, simple
-          predictive modeling, and clear visualization for non-technical
+          Analytics). I analyzed Bitcoin&apos;s price behavior to understand
+          trends, volatility, and relationships among core market variables. The
+          project centered on practical data wrangling, exploratory analysis,
+          simple predictive modeling, and clear visualization for non-technical
           stakeholders.
         </p>
       </ProjectSection>
@@ -50,7 +48,7 @@ export default async function BitcoinAnalysisApp() {
           </li>
           <li>
             Compute descriptive statistics (mean, median, stdev, range, min/max
-            & dates).
+            &amp; dates).
           </li>
           <li>
             Build simple linear regression models per target column and evaluate
@@ -89,7 +87,7 @@ export default async function BitcoinAnalysisApp() {
           </li>
           <li>
             Documented a lightweight data dictionary to standardize field names
-            & validation.
+            &amp; validation.
           </li>
         </ul>
       </ProjectSection>
@@ -101,8 +99,8 @@ export default async function BitcoinAnalysisApp() {
             across price columns.
           </li>
           <li>
-            Descriptive stats to summarize magnitude & spread, highlighting
-            BTC’s high variance.
+            Descriptive stats to summarize magnitude &amp; spread, highlighting
+            BTC&apos;s high variance.
           </li>
           <li>
             Simple linear regression per target (e.g., Close, High, Low,
@@ -184,12 +182,6 @@ export default async function BitcoinAnalysisApp() {
           </li>
         </ul>
       </ProjectSection>
-
-      {images.length > 0 && (
-        <ProjectSection title="Screenshots">
-          <ProjectGallery images={images} />
-        </ProjectSection>
-      )}
     </div>
   );
 }
