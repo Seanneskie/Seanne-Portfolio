@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "optimize:images": "node scripts/optimize-images.mjs",
+    "new:travel": "node scripts/new-travel.mjs",
     "prebuild": "npm run optimize:images",
     "build": "next build",
     "start": "next start",
