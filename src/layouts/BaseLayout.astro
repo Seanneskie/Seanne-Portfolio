@@ -1,5 +1,10 @@
 ---
 import "../styles/globals.css";
+import "devicon/devicon.min.css";
+import Header from "../components/layout/Header.astro";
+import Footer from "../components/layout/Footer.astro";
+import Toaster from "../components/toaster.tsx";
+import { themeInitScript } from "../lib/theme-init";
 
 interface Props {
   title?: string;
@@ -56,10 +61,12 @@ const jsonLd = {
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" suppressHydrationWarning>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {/* FOUC-safe theme init — must run before paint */}
+    <script is:inline set:html={themeInitScript} />
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={absoluteCanonical} />
@@ -84,6 +91,9 @@ const jsonLd = {
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </head>
   <body class="antialiased min-h-screen bg-white text-black dark:bg-gray-900 dark:text-white font-sans">
+    <Toaster client:idle />
+    <Header />
     <slot />
+    <Footer />
   </body>
 </html>

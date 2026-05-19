@@ -113,19 +113,37 @@ page so subsequent phases consume the typed API directly.
 
 Port the global shell once so all subsequent pages drop in cleanly.
 
-- [ ] Implement theme handling without `next-themes`:
-  - [ ] Inline FOUC-prevention script in `BaseLayout.astro` that sets
-        `data-theme` on `<html>` from `localStorage` before paint.
-  - [ ] Tiny React island `<ThemeToggle client:idle />` reusing existing
-        `mode-toggle.tsx` UI but driving the inline script's storage key.
-- [ ] Port `components/layout/header.tsx` → `src/components/layout/Header.astro`
-      with a `<MobileNav client:load />` island for the radix dialog.
-- [ ] Port `components/layout/footer.tsx` → `Footer.astro`.
-- [ ] Add `<Toaster client:idle />` island in `BaseLayout`.
-- [ ] Replace `next/link` in chrome with plain `<a href={withBase(...)}>`.
-- [ ] Add `src/lib/with-base.ts` helper for prefixing asset/route URLs with
+- [x] Implement theme handling without `next-themes`:
+  - [x] Inline FOUC-prevention script in `BaseLayout.astro` that adds/removes
+        the `.dark` class on `<html>` from `localStorage["theme"]` (same key
+        next-themes used, so light/dark choice carries over for existing
+        visitors) before paint. Lives in `src/lib/theme-init.ts`.
+  - [x] React island `<ThemeToggle client:idle />` in `src/components/theme-toggle.tsx`
+        — reuses the lucide Sun/Moon UI but drives the `.dark` class +
+        localStorage directly. ~1.8 KB minified.
+- [x] Port `components/layout/header.tsx` → `src/components/layout/Header.astro`.
+      Active state is computed at SSR from `Astro.url.pathname` (no
+      `usePathname`); the framer-motion animated pill was dropped in favor
+      of pure-CSS `aria-current=page` styling so the header ships zero JS
+      beyond the small `<ThemeToggle>` island.
+- [x] `<MobileNav client:load />` island in `src/components/layout/mobile-nav.tsx`
+      — built directly on `@radix-ui/react-dialog` (no shadcn Sheet wrapper)
+      so the React bundle stays minimal. Receives `navLinks` + `currentPathname`
+      as props from `Header.astro`.
+- [x] Port `components/layout/footer.tsx` → `Footer.astro`. Pure server-render,
+      zero JS.
+- [x] Add `<Toaster client:idle />` island in `BaseLayout`
+      (`src/components/toaster.tsx` — thin wrapper around `sonner`).
+- [x] All `next/link` in chrome replaced with `<a href={withBase(...)}>`.
+- [x] Add `src/lib/with-base.ts` for prefixing asset/route URLs with
       `import.meta.env.BASE_URL`.
-- [ ] Verify dark/light toggle works across a hard reload (no FOUC).
+- [x] Brand icons (Github/Linkedin/Twitter) — `@lucide/astro` dropped these,
+      so `src/components/layout/SocialIcon.astro` inlines the SVG paths
+      from `lucide-react`. Zero runtime cost.
+- [x] Build verified: chrome renders, 3 islands hydrate (toaster idle,
+      theme-toggle ×2 idle, mobile-nav load). Total JS shipped ≈ 263 KB
+      across 9 chunks vs Next baseline of 572 kB First Load on `/`.
+      Lint + 45/45 tests green; Next build still produces Phase 0 sizes.
 
 ---
 
