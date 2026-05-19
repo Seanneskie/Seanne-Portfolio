@@ -1,6 +1,12 @@
-import type * as LucideIcons from "lucide-react";
+import type { CardCounterIconName } from "@/lib/card-counter-icons";
 
-export type LucideIconName = keyof typeof LucideIcons;
+/**
+ * @deprecated kept as an alias so existing imports don't break. Use
+ * `CardCounterIconName` from `lib/card-counter-icons` going forward — it's
+ * narrowed to the icons actually referenced from card-counter.json, which
+ * lets Vite/Rollup tree-shake unused lucide-react exports.
+ */
+export type LucideIconName = CardCounterIconName;
 
 export const COUNTER_CARD_THEMES = ["ocean", "teal", "cyan", "ice"] as const;
 
@@ -13,7 +19,7 @@ export interface CardCounterItem {
   description?: string;
   theme: CounterCardTheme;
   order: number;
-  icon?: LucideIconName;
+  icon?: CardCounterIconName;
 }
 
 export interface CardCounterData {

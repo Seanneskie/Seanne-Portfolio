@@ -1,0 +1,17 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Courses from "../../../components/courses/Courses.tsx";
+
+const entries = await getCollection("courses");
+const data = entries.map((e) => e.data);
+---
+
+<BaseLayout
+  title="Courses"
+  description="Courses and workshops completed by Seanne Cañete at Mindanao State University - General Santos City and beyond."
+  canonical="/courses/"
+  ogType="article"
+>
+  <Courses client:load data={data} />
+</BaseLayout>

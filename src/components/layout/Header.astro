@@ -1,0 +1,129 @@
+---
+import ThemeToggle from "../theme-toggle.tsx";
+import MobileNav from "./mobile-nav.tsx";
+import SocialIcon from "./SocialIcon.astro";
+import { withBase } from "../../lib/with-base";
+
+type SocialName = "github" | "linkedin" | "twitter";
+
+interface NavLink {
+  href: string;
+  label: string;
+  external?: boolean;
+}
+
+const NAV_LINKS: NavLink[] = [
+  { href: withBase("/"), label: "Home" },
+  { href: withBase("/projects/"), label: "Projects" },
+  { href: withBase("/courses/"), label: "Courses" },
+  { href: withBase("/certificates/"), label: "Certificates" },
+  { href: withBase("/awards/"), label: "Awards" },
+  { href: withBase("/work-experiences/"), label: "Work Experiences" },
+  { href: withBase("/contact/"), label: "Contact" },
+  {
+    href: withBase("/static/pdfs/canete_resume.pdf"),
+    label: "Resume",
+    external: true,
+  },
+];
+
+const SOCIAL_LINKS: { href: string; label: string; icon: SocialName }[] = [
+  { href: "https://github.com/Seanneskie", label: "GitHub", icon: "github" },
+  { href: "https://x.com/Seanneskie", label: "Twitter", icon: "twitter" },
+  {
+    href: "https://www.linkedin.com/in/seanne-ca%C3%B1ete-8b09322a1/",
+    label: "LinkedIn",
+    icon: "linkedin",
+  },
+];
+
+const pathname = Astro.url.pathname;
+const isActive = (href: string): boolean => {
+  if (href === withBase("/")) return pathname === href;
+  return pathname === href || pathname.startsWith(href);
+};
+
+const desktopLinkClass = [
+  "relative block rounded-md px-3 py-1.5 text-sm font-medium transition",
+  "text-black dark:text-white",
+  "hover:-translate-y-0.5 hover:shadow-sm",
+  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/50 dark:focus-visible:ring-white/50",
+  "aria-[current=page]:text-teal-700 dark:aria-[current=page]:text-teal-300",
+  "aria-[current=page]:ring-1 aria-[current=page]:ring-teal-500/40 dark:aria-[current=page]:ring-teal-400/30",
+  "after:absolute after:inset-x-2 after:-bottom-0.5 after:h-0.5 after:rounded-full after:scale-x-0",
+  "after:origin-left after:transition-transform after:duration-300",
+  "after:bg-teal-600/80 dark:after:bg-teal-400/80",
+  "hover:after:scale-x-100 aria-[current=page]:after:scale-x-100",
+].join(" ");
+---
+
+<header
+  class="relative z-50 border-b bg-gradient-to-r from-teal-600/15 to-transparent dark:from-teal-400/15 dark:to-transparent"
+>
+  <span class="pointer-events-none absolute inset-0 dot-pattern opacity-20 blur-sm"></span>
+  <div
+    class="relative container mx-auto flex h-16 items-center justify-between px-4 sm:h-[4.5rem] md:h-20"
+  >
+    {/* Brand */}
+    <a
+      href={withBase("/")}
+      class="text-base font-semibold text-black transition hover:opacity-90 dark:text-white sm:text-lg"
+    >
+      Dev Portfolio
+    </a>
+
+    <div class="flex items-center gap-2 md:gap-3">
+      {/* Desktop nav */}
+      <div class="hidden items-center gap-3 md:flex">
+        <nav aria-label="Primary navigation">
+          <ul
+            class="group flex items-center gap-1 transition-[gap] duration-300 group-hover:gap-3 [&>li]:transition [&>li]:duration-300 group-hover:[&>li:not(:hover)]:opacity-60 group-hover:[&>li:not(:hover)]:scale-95"
+          >
+            {
+              NAV_LINKS.map((link) => {
+                const active = !link.external && isActive(link.href);
+                return (
+                  <li>
+                    <a
+                      href={link.href}
+                      target={link.external ? "_blank" : undefined}
+                      rel={link.external ? "noreferrer" : undefined}
+                      aria-current={active ? "page" : undefined}
+                      class={desktopLinkClass}
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                );
+              })
+            }
+          </ul>
+        </nav>
+
+        <div class="hidden items-center gap-2 lg:flex">
+          {
+            SOCIAL_LINKS.map(({ href, label, icon }) => (
+              <a
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={label}
+                class="rounded-md p-2 text-black transition hover:-translate-y-0.5 hover:shadow-sm hover:text-teal-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/50 dark:text-white dark:hover:text-teal-400 dark:focus-visible:ring-white/50"
+              >
+                <SocialIcon name={icon} class="h-4 w-4" />
+              </a>
+            ))
+          }
+        </div>
+
+        <ThemeToggle client:idle />
+      </div>
+
+      {/* Mobile nav */}
+      <div class="flex items-center gap-2 md:hidden">
+        <ThemeToggle client:idle />
+        <MobileNav client:load navLinks={NAV_LINKS} currentPathname={pathname} />
+      </div>
+    </div>
+  </div>
+</header>

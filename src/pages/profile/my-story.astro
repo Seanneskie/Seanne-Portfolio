@@ -1,0 +1,16 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import MyStory from "../../../components/profile/MyStory.tsx";
+
+const skillEntries = await getCollection("skills");
+const serviceEntries = await getCollection("services");
+const skills = skillEntries.map((e) => ({ id: e.id, ...e.data }));
+const services = serviceEntries.map((e) => e.data);
+---
+
+<BaseLayout title="My Story" canonical="/profile/my-story/">
+  <main class="container mx-auto max-w-5xl px-4 py-12">
+    <MyStory client:load skills={skills} services={services} />
+  </main>
+</BaseLayout>

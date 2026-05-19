@@ -1,0 +1,12 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ContactPageContent from "../../../components/contact/contact-page-content.tsx";
+---
+
+<BaseLayout
+  title="Contact"
+  description="Reach out to Seanne Cañete, a full-stack engineer, for collaboration, freelance opportunities, or questions about recent engineering projects."
+  canonical="/contact/"
+>
+  <ContactPageContent client:load />
+</BaseLayout>

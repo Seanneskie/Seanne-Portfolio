@@ -1,0 +1,62 @@
+---
+import SocialIcon from "./SocialIcon.astro";
+import { withBase } from "../../lib/with-base";
+
+type SocialName = "github" | "linkedin" | "twitter";
+
+const NAV_LINKS = [
+  { href: withBase("/"), label: "Home" },
+  { href: withBase("/projects/"), label: "Projects" },
+  { href: withBase("/courses/"), label: "Courses" },
+  { href: withBase("/certificates/"), label: "Certificates" },
+  { href: withBase("/awards/"), label: "Awards" },
+  { href: withBase("/work-experiences/"), label: "Work Experiences" },
+];
+
+const SOCIAL_LINKS: { href: string; label: string; icon: SocialName }[] = [
+  { href: "https://github.com/Seanneskie", label: "GitHub", icon: "github" },
+  { href: "https://x.com/Seanneskie", label: "Twitter", icon: "twitter" },
+  {
+    href: "https://www.linkedin.com/in/seanne-ca%C3%B1ete-8b09322a1/",
+    label: "LinkedIn",
+    icon: "linkedin",
+  },
+];
+
+const year = new Date().getFullYear();
+---
+
+<footer
+  class="relative overflow-hidden border-t bg-gradient-to-r from-teal-600/20 to-transparent dark:from-teal-400/20 dark:to-transparent bg-size-200 animate-gradient-x"
+>
+  <span class="pointer-events-none absolute inset-0 dot-pattern opacity-30 blur-sm animate-dots"></span>
+  <div
+    class="relative container mx-auto flex flex-col items-center gap-4 px-4 py-6 text-sm text-black dark:text-white sm:h-16 sm:flex-row sm:justify-between sm:py-0"
+  >
+    <p>&copy; {year} Seanne Cañete</p>
+    <nav class="flex flex-wrap justify-center gap-4">
+      {
+        NAV_LINKS.map(({ href, label }) => (
+          <a href={href} class="hover:underline">
+            {label}
+          </a>
+        ))
+      }
+    </nav>
+    <div class="flex gap-4">
+      {
+        SOCIAL_LINKS.map(({ href, label, icon }) => (
+          <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={label}
+            class="transition hover:text-teal-600 dark:hover:text-teal-400"
+          >
+            <SocialIcon name={icon} class="h-5 w-5" />
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</footer>

@@ -2,8 +2,7 @@
 
 import { type ReactElement } from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import * as Icons from "lucide-react";
-import type { LucideIcon } from "lucide-react";
+import { resolveServiceIcon } from "@/lib/services-icons";
 
 export interface Service {
   title: string;
@@ -26,7 +25,7 @@ export default function ServicesSection({ data }: ServicesSectionProps): ReactEl
       </h1>
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {data.map((svc) => {
-          const Icon = (Icons[svc.icon as keyof typeof Icons] ?? Icons.Code2) as LucideIcon;
+          const Icon = resolveServiceIcon(svc.icon);
           return (
             <Card
               key={svc.title}

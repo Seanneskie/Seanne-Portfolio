@@ -1,0 +1,16 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Awards from "../../../components/awards/Awards.tsx";
+
+const entries = await getCollection("awards");
+const achievements = entries.map((e) => e.data);
+---
+
+<BaseLayout
+  title="Awards"
+  description="See the awards and recognitions earned by Seanne Cañete, a full-stack engineer and IT graduate from Mindanao State University - General Santos City."
+  canonical="/awards/"
+>
+  <Awards client:load data={achievements} />
+</BaseLayout>
