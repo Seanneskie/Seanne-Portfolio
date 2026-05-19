@@ -1,0 +1,120 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { withBase } from "../../lib/with-base";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("blogs");
+  return entries.map((entry) => ({
+    params: { slug: entry.id.replace(/\.md$/, "") },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+
+const fmtDate = (d: Date) =>
+  d.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
+
+const pageTitle = `${entry.data.title} | Blog`;
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={entry.data.description ?? entry.data.title}
+  canonical={`/blogs/${entry.id.replace(/\.md$/, "")}/`}
+  ogType="article"
+  ogImage={entry.data.cover ?? "/static/bg_2.jpg"}
+  keywords={entry.data.tags}
+>
+  <main class="container mx-auto max-w-3xl px-4 py-12">
+    <a
+      href={withBase("/blogs/")}
+      class="inline-flex items-center gap-1 text-sm font-medium text-teal-700 hover:text-teal-900 dark:text-teal-300 dark:hover:text-teal-100"
+    >
+      ← All posts
+    </a>
+
+    <header class="mt-6 mb-8">
+      <h1 class="text-3xl font-semibold text-black dark:text-white sm:text-4xl">
+        {entry.data.title}
+      </h1>
+      <div class="mt-2 flex flex-wrap items-center gap-3 text-sm text-gray-600 dark:text-gray-300">
+        <time>{fmtDate(entry.data.date)}</time>
+        {entry.data.tags.length > 0 && (
+          <ul class="flex flex-wrap gap-1.5">
+            {entry.data.tags.map((tag) => (
+              <li class="rounded-full bg-teal-500/10 px-2 py-0.5 text-xs font-medium text-teal-700 dark:bg-teal-400/10 dark:text-teal-300">
+                #{tag}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+    </header>
+
+    {entry.data.cover && (
+      <img
+        src={withBase(entry.data.cover)}
+        alt=""
+        class="mb-8 aspect-[16/9] w-full rounded-lg object-cover"
+      />
+    )}
+
+    <article class="prose prose-teal max-w-none dark:prose-invert">
+      <Content />
+    </article>
+  </main>
+</BaseLayout>
+
+<style is:global>
+  .prose {
+    color: inherit;
+  }
+  .prose h2,
+  .prose h3,
+  .prose h4 {
+    color: inherit;
+    font-weight: 600;
+    margin-top: 1.75em;
+    margin-bottom: 0.5em;
+  }
+  .prose h2 { font-size: 1.5rem; }
+  .prose h3 { font-size: 1.25rem; }
+  .prose p,
+  .prose ul,
+  .prose ol {
+    line-height: 1.7;
+    margin-bottom: 1em;
+  }
+  .prose a { color: rgb(15 118 110); text-decoration: underline; }
+  :global(.dark) .prose a { color: rgb(94 234 212); }
+  .prose code {
+    background: rgba(20, 184, 166, 0.1);
+    padding: 0.1em 0.3em;
+    border-radius: 0.25rem;
+    font-size: 0.9em;
+  }
+  .prose pre {
+    background: #0b1220;
+    color: #e2e8f0;
+    padding: 1em;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    font-size: 0.9em;
+  }
+  .prose pre code {
+    background: transparent;
+    padding: 0;
+  }
+  .prose ul { list-style: disc; padding-left: 1.25rem; }
+  .prose ol { list-style: decimal; padding-left: 1.25rem; }
+  .prose blockquote {
+    border-left: 4px solid rgba(20, 184, 166, 0.4);
+    padding-left: 1rem;
+    color: rgb(75 85 99);
+    font-style: italic;
+  }
+  :global(.dark) .prose blockquote { color: rgb(156 163 175); }
+</style>
