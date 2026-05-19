@@ -2,6 +2,7 @@
 title: "Zark's Burgers at SM City Davao"
 date: 2025-08-18
 location: "SM City Davao, Ecoland, Davao City, PH"
+city: "Davao City"
 country: "Philippines"
 coords: [7.0617, 125.6048]
 cover: "/static/travels/zarks-burgers-sm-ecoland/01.jpg"

@@ -78,6 +78,7 @@ function renderFrontmatter(fields) {
   lines.push(`date: ${fields.date}`);
   if (fields.endDate) lines.push(`endDate: ${fields.endDate}`);
   lines.push(`location: ${escapeYaml(fields.location)}`);
+  if (fields.city) lines.push(`city: ${escapeYaml(fields.city)}`);
   if (fields.country) lines.push(`country: ${escapeYaml(fields.country)}`);
   if (fields.coords) lines.push(`coords: [${fields.coords[0]}, ${fields.coords[1]}]`);
   if (fields.tags?.length) {
@@ -152,6 +153,7 @@ async function main() {
     date: args.date,
     endDate: args.endDate || null,
     location: args.location,
+    city: args.city || null,
     country: args.country || null,
     coords: args.coords ? parseCoords(args.coords) : null,
     tags: args.tags

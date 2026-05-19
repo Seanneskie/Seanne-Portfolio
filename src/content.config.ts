@@ -208,6 +208,7 @@ const travels = defineCollection({
     date: z.coerce.date(),
     endDate: z.coerce.date().optional(),
     location: z.string(),
+    city: z.string().optional(),
     country: z.string().optional(),
     coords: z.tuple([z.number(), z.number()]).optional(),
     cover: z.string().optional(),

@@ -32,6 +32,7 @@ forwarded to the script.
 | `--date` | yes | `YYYY-MM-DD`. Start date if it's a multi-day trip. |
 | `--location` | yes | Free-form, shown on the card and pin popup. |
 | `--endDate` | no | `YYYY-MM-DD` if multi-day. |
+| `--city` | no | Powers the "N cities" stat. Use the normalized city name (e.g., `"Davao City"`) so duplicate trips in one city count as one. |
 | `--country` | no | Used by the country filter chip. |
 | `--coords` | no | `lat,lng` floats. Without coords, the trip won't get a map pin. |
 | `--tags` | no | Comma-separated, lowercase. Powers the tag filter chips. |

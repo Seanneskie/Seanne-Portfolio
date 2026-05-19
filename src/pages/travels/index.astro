@@ -13,6 +13,7 @@ const trips = (await getCollection("travels"))
     date: e.data.date.toISOString(),
     endDate: e.data.endDate?.toISOString(),
     location: e.data.location,
+    city: e.data.city,
     country: e.data.country,
     coords: e.data.coords,
     cover: e.data.cover,

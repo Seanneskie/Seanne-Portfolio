@@ -3,6 +3,7 @@ title: "BnB at NorthPoint by Camella"
 date: 2025-08-18
 endDate: 2025-08-20
 location: "NorthPoint by Camella, Davao City, PH"
+city: "Davao City"
 country: "Philippines"
 coords: [7.1244, 125.6028]
 cover: "/static/travels/northpoint-camella-davao/01.jpg"
