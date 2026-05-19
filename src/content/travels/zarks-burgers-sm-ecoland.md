@@ -10,6 +10,7 @@ gallery:
   - { src: "/static/travels/zarks-burgers-sm-ecoland/02.jpg", alt: "Zark's SM Davao — photo 2" }
   - { src: "/static/travels/zarks-burgers-sm-ecoland/03.jpg", alt: "Zark's SM Davao — photo 3" }
 tags: ["food", "burgers", "davao", "ph"]
+trip: "davao-aug-2025"
 excerpt: "A Zark's Burgers stop at SM City Davao in the Ecoland district."
 draft: false
 ---

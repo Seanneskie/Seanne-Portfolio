@@ -200,7 +200,9 @@ const blogs = defineCollection({
 
 // Travels are blog-shaped but carry geo + gallery metadata so the listing
 // page can render a synchronized map + timeline. `coords` is optional — a
-// trip without coordinates appears in the timeline only.
+// trip without coordinates appears in the timeline only. `trip` is the
+// optional slug of an entry in the `trips` collection; when set, the
+// listing groups this visit under the trip's header.
 const travels = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "src/content/travels" }),
   schema: z.object({
@@ -217,6 +219,22 @@ const travels = defineCollection({
       .default([]),
     tags: z.array(z.string()).default([]),
     excerpt: z.string().optional(),
+    trip: z.string().optional(),
+    draft: z.boolean().default(false),
+  }),
+});
+
+// Trips bundle multiple `travels` entries into a single named outing
+// (e.g. "Davao — Aug 18–20, 2025"). The slug (filename) is what a
+// `travels` entry's `trip` field references to opt into the group.
+const trips = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "src/content/trips" }),
+  schema: z.object({
+    title: z.string(),
+    startDate: z.coerce.date(),
+    endDate: z.coerce.date().optional(),
+    location: z.string(),
+    summary: z.string().optional(),
     draft: z.boolean().default(false),
   }),
 });
@@ -315,6 +333,7 @@ export const collections = {
   "blog-posts": blogPosts,
   blogs,
   travels,
+  trips,
   profile,
   "card-counter": cardCounter,
   "tech-comparison": techComparison,

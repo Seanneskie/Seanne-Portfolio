@@ -19,6 +19,7 @@ gallery:
   - { src: "/static/travels/starbucks-sm-lanang/11.jpg", alt: "Starbucks SM Lanang — photo 11" }
   - { src: "/static/travels/starbucks-sm-lanang/12.jpg", alt: "Starbucks SM Lanang — photo 12" }
 tags: ["coffee", "davao", "ph"]
+trip: "davao-aug-2025"
 excerpt: "A quick stop at the Starbucks inside SM Lanang Premier along J.P. Laurel Avenue."
 draft: false
 ---

@@ -5,13 +5,17 @@ import TravelMap from "./TravelMap";
 import TravelCardFeed from "./TravelCardFeed";
 import TravelStats from "./TravelStats";
 import TravelFilters from "./TravelFilters";
-import type { TravelEntry } from "./types";
+import type { TravelEntry, TripGroup } from "./types";
 
 interface TravelsViewProps {
   trips: TravelEntry[];
+  tripGroups?: TripGroup[];
 }
 
-export default function TravelsView({ trips }: TravelsViewProps): React.ReactElement {
+export default function TravelsView({
+  trips,
+  tripGroups = [],
+}: TravelsViewProps): React.ReactElement {
   const [activeSlug, setActiveSlug] = React.useState<string | null>(null);
   const [activeTag, setActiveTag] = React.useState<string | null>(null);
   const [activeCountry, setActiveCountry] = React.useState<string | null>(null);
@@ -80,6 +84,7 @@ export default function TravelsView({ trips }: TravelsViewProps): React.ReactEle
         />
         <TravelCardFeed
           trips={filteredTrips}
+          tripGroups={tripGroups}
           activeSlug={activeSlug}
           onSelect={setActiveSlug}
           indexBySlug={indexBySlug}

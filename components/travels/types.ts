@@ -10,4 +10,14 @@ export interface TravelEntry {
   cover?: string;
   excerpt?: string;
   tags: string[];
+  trip?: string;
+}
+
+export interface TripGroup {
+  slug: string;
+  title: string;
+  startDate: string;
+  endDate?: string;
+  location: string;
+  summary?: string;
 }

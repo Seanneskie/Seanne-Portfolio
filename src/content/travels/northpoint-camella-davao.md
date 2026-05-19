@@ -16,6 +16,7 @@ gallery:
   - { src: "/static/travels/northpoint-camella-davao/07.jpg", alt: "NorthPoint Camella BnB — photo 7" }
   - { src: "/static/travels/northpoint-camella-davao/08.jpg", alt: "NorthPoint Camella BnB — photo 8" }
 tags: ["bnb", "davao", "ph"]
+trip: "davao-aug-2025"
 excerpt: "Two nights at a NorthPoint by Camella BnB in Davao City."
 draft: false
 ---

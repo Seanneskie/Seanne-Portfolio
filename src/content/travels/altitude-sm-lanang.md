@@ -6,6 +6,7 @@ city: "Davao City"
 country: "Philippines"
 coords: [7.0988, 125.6311]
 tags: ["arcade", "amusement", "davao", "ph"]
+trip: "davao-aug-2025"
 excerpt: "An afternoon at Altitude, the rooftop entertainment zone on the 5th floor of SM Lanang Premier."
 cover: "/static/travels/altitude-sm-lanang/01.jpg"
 gallery:

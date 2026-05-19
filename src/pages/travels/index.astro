@@ -19,8 +19,20 @@ const trips = (await getCollection("travels"))
     cover: e.data.cover,
     excerpt: e.data.excerpt,
     tags: e.data.tags,
+    trip: e.data.trip,
   }))
   .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+const tripGroups = (await getCollection("trips"))
+  .filter((e) => isProd ? !e.data.draft : true)
+  .map((e) => ({
+    slug: e.id.replace(/\.md$/, ""),
+    title: e.data.title,
+    startDate: e.data.startDate.toISOString(),
+    endDate: e.data.endDate?.toISOString(),
+    location: e.data.location,
+    summary: e.data.summary,
+  }));
 ---
 
 <BaseLayout
@@ -38,6 +50,6 @@ const trips = (await getCollection("travels"))
 
     {/* Leaflet touches `window` at import time, so the parent island must be
        client:only — server rendering it would crash the build. */}
-    <TravelsView client:only="react" trips={trips} />
+    <TravelsView client:only="react" trips={trips} tripGroups={tripGroups} />
   </main>
 </BaseLayout>
