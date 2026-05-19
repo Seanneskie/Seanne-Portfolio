@@ -1,5 +1,5 @@
 import { defineCollection, z } from "astro:content";
-import { file } from "astro/loaders";
+import { file, glob } from "astro/loaders";
 
 /**
  * Content collections — typed mirror of the legacy `public/data/*.json` files.
@@ -182,6 +182,44 @@ const blogPosts = defineCollection({
   }),
 });
 
+// Markdown-backed long-form content. Each `.md` file under src/content/blogs
+// becomes one entry; the slug is the filename. Bodies render via `<Content />`
+// on the detail route. The legacy `blog-posts` JSON collection (external links)
+// stays so the listing page can merge native posts + cross-posted links.
+const blogs = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "src/content/blogs" }),
+  schema: z.object({
+    title: z.string(),
+    date: z.coerce.date(),
+    description: z.string().optional(),
+    cover: z.string().optional(),
+    tags: z.array(z.string()).default([]),
+    draft: z.boolean().default(false),
+  }),
+});
+
+// Travels are blog-shaped but carry geo + gallery metadata so the listing
+// page can render a synchronized map + timeline. `coords` is optional — a
+// trip without coordinates appears in the timeline only.
+const travels = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "src/content/travels" }),
+  schema: z.object({
+    title: z.string(),
+    date: z.coerce.date(),
+    endDate: z.coerce.date().optional(),
+    location: z.string(),
+    country: z.string().optional(),
+    coords: z.tuple([z.number(), z.number()]).optional(),
+    cover: z.string().optional(),
+    gallery: z
+      .array(z.object({ src: z.string(), alt: z.string() }))
+      .default([]),
+    tags: z.array(z.string()).default([]),
+    excerpt: z.string().optional(),
+    draft: z.boolean().default(false),
+  }),
+});
+
 // -----------------------------------------------------------------------------
 // Singletons
 // -----------------------------------------------------------------------------
@@ -274,6 +312,8 @@ export const collections = {
   highlights,
   testimonials,
   "blog-posts": blogPosts,
+  blogs,
+  travels,
   profile,
   "card-counter": cardCounter,
   "tech-comparison": techComparison,
