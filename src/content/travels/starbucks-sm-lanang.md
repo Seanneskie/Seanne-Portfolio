@@ -1,6 +1,6 @@
 ---
 title: "Coffee at Starbucks SM Lanang"
-date: 2026-05-19
+date: 2025-08-18
 location: "SM Lanang Premier, Davao City, PH"
 country: "Philippines"
 coords: [7.0988, 125.6311]
