@@ -84,7 +84,13 @@ export default function ProjectGallery({
               <CarouselItem key={img.src} className="basis-full">
                 <motion.figure
                   className="relative overflow-hidden rounded-xl ring-1 ring-black/5 dark:ring-white/10"
-                  initial={{ opacity: 0, scale: 0.98 }}
+                  // initial=false skips the entry animation so the SSR'd
+                  // markup is already in the visible state. The project body
+                  // is rendered server-only (the components are async — can't
+                  // be a client:* island), so framer-motion never gets a
+                  // chance to run animate={} client-side and the figure was
+                  // stuck at opacity:0.
+                  initial={false}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.25, ease: "easeOut" }}
                 >
