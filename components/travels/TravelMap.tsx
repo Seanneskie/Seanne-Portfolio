@@ -57,7 +57,7 @@ L.Icon.Default.mergeOptions({
 interface TravelMapProps {
   trips: TravelEntry[];
   activeSlug: string | null;
-  onSelect: (slug: string) => void;
+  onSelect: (slug: string | null) => void;
   /** When true, fit bounds to all pins on mount; otherwise centers on the first pin. */
   fitBounds?: boolean;
   /** Slug -> chronological index (1-based) shown inside the pin. */

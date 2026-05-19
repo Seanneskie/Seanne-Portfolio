@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import TravelMap from "./TravelMap";
-import TravelTimeline from "./TravelTimeline";
+import TravelCardFeed from "./TravelCardFeed";
 import TravelStats from "./TravelStats";
 import TravelFilters from "./TravelFilters";
 import type { TravelEntry } from "./types";
@@ -69,19 +69,18 @@ export default function TravelsView({ trips }: TravelsViewProps): React.ReactEle
         onTagChange={setActiveTag}
         onCountryChange={setActiveCountry}
       />
-      <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_360px]">
-        <TravelMap
-          trips={filteredTrips}
-          activeSlug={activeSlug}
-          onSelect={setActiveSlug}
-          indexBySlug={indexBySlug}
-        />
-        <TravelTimeline
-          trips={filteredTrips}
-          activeSlug={activeSlug}
-          onSelect={setActiveSlug}
-        />
-      </div>
+      <TravelMap
+        trips={filteredTrips}
+        activeSlug={activeSlug}
+        onSelect={setActiveSlug}
+        indexBySlug={indexBySlug}
+      />
+      <TravelCardFeed
+        trips={filteredTrips}
+        activeSlug={activeSlug}
+        onSelect={setActiveSlug}
+        indexBySlug={indexBySlug}
+      />
     </div>
   );
 }
