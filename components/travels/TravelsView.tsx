@@ -76,7 +76,6 @@ export default function TravelsView({ trips }: TravelsViewProps): React.ReactEle
           trips={filteredTrips}
           activeSlug={activeSlug}
           onSelect={setActiveSlug}
-          indexBySlug={indexBySlug}
           sticky
         />
         <TravelCardFeed

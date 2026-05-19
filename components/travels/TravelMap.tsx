@@ -1,11 +1,13 @@
 "use client";
 
 import * as React from "react";
+import { renderToStaticMarkup } from "react-dom/server";
 import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import type { TravelEntry } from "./types";
 import { withBasePath } from "@/lib/utils";
+import { resolvePinIcon } from "./pinIcon";
 
 const fmtDate = (iso: string): string =>
   new Date(iso).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
@@ -64,18 +66,21 @@ interface TravelMapProps {
   onSelect: (slug: string | null) => void;
   /** When true, fit bounds to all pins on mount; otherwise centers on the first pin. */
   fitBounds?: boolean;
-  /** Slug -> chronological index (1-based) shown inside the pin. */
-  indexBySlug?: Record<string, number>;
   /** When true, the map sticks to the top on desktop as the page scrolls. */
   sticky?: boolean;
 }
 
-// Builds a Leaflet divIcon that renders a circular numbered pin in the brand
-// teal. Built as pure HTML/CSS via divIcon so we avoid shipping an SVG sprite
-// and the pin inherits theme colors at runtime.
-function buildPinIcon(index: number | undefined, active: boolean): L.DivIcon {
+// Builds a Leaflet divIcon that renders a circular pin in the brand teal with
+// a tag-derived Lucide glyph inside. The glyph is serialized to SVG once per
+// (tag, active) pair via renderToStaticMarkup so we avoid shipping a sprite
+// and the pin can still inherit theme colors at runtime.
+function buildPinIcon(tags: string[], active: boolean): L.DivIcon {
   const size = active ? 36 : 28;
-  const label = index !== undefined ? String(index) : "•";
+  const glyphSize = active ? 18 : 16;
+  const Icon = resolvePinIcon(tags);
+  const glyph = renderToStaticMarkup(
+    <Icon size={glyphSize} strokeWidth={2.25} color="#fff" />,
+  );
   const html = `
     <div style="
       width: ${size}px;
@@ -86,12 +91,10 @@ function buildPinIcon(index: number | undefined, active: boolean): L.DivIcon {
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: ${active ? 13 : 12}px;
-      font-weight: 600;
       box-shadow: 0 0 0 2px #fff, 0 4px 10px rgba(0,0,0,0.25);
       transform: translateY(${active ? "-2px" : "0"});
       transition: transform 200ms ease, background 200ms ease, width 200ms ease, height 200ms ease;
-    ">${label}</div>
+    ">${glyph}</div>
   `;
   return L.divIcon({
     html,
@@ -130,7 +133,6 @@ export default function TravelMap({
   activeSlug,
   onSelect,
   fitBounds = true,
-  indexBySlug,
   sticky = false,
 }: TravelMapProps): React.ReactElement {
   const isDark = useIsDarkMode();
@@ -176,13 +178,16 @@ export default function TravelMap({
         <FlyTo coords={activeCoords} />
         {pinnedTrips.map((trip) => {
           const isActive = trip.slug === activeSlug;
-          const index = indexBySlug?.[trip.slug];
           return (
             <Marker
               key={`${trip.slug}-${isActive ? "active" : "idle"}`}
               position={trip.coords}
-              icon={buildPinIcon(index, isActive)}
-              eventHandlers={{ click: () => onSelect(trip.slug) }}
+              icon={buildPinIcon(trip.tags, isActive)}
+              eventHandlers={{
+                click: () => onSelect(trip.slug),
+                mouseover: (event) => event.target.openPopup(),
+                mouseout: (event) => event.target.closePopup(),
+              }}
             >
               <Popup>
                 <div className="w-[180px] space-y-1.5">
@@ -193,10 +198,7 @@ export default function TravelMap({
                       className="mb-1 h-24 w-full rounded object-cover"
                     />
                   )}
-                  <p className="text-sm font-semibold leading-tight">
-                    {index !== undefined ? `${index}. ` : ""}
-                    {trip.title}
-                  </p>
+                  <p className="text-sm font-semibold leading-tight">{trip.title}</p>
                   <p className="text-[11px] text-gray-600">
                     {fmtDate(trip.date)} · {trip.location}
                   </p>

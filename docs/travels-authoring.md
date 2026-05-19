@@ -78,6 +78,33 @@ in `src/content/travels/`. The schema is enforced at build time — see
 Required fields: `title`, `date`, `location`. Everything else is
 optional, but a trip with no `coords` won't appear on the map.
 
+## Tag → pin icon
+
+The first tag on a trip that matches the table below sets the map pin
+glyph. Country/region tags (`davao`, `ph`, …) are ignored — they only
+power filter chips. Trips with no matching tag fall back to a generic
+map-pin glyph.
+
+| Tag(s) | Pin icon (Lucide) |
+| ------ | ----------------- |
+| `burgers` | `Beef` |
+| `coffee`, `cafe` | `Coffee` |
+| `food`, `restaurant`, `dining` | `UtensilsCrossed` |
+| `bnb`, `hotel`, `stay`, `hostel`, `airbnb` | `BedDouble` |
+| `beach`, `island` | `Palmtree` |
+| `hike`, `mountain`, `trek` | `Mountain` |
+| `nature`, `park`, `forest` | `Trees` |
+| `museum`, `culture`, `history` | `Landmark` |
+| `shopping`, `mall`, `market` | `ShoppingBag` |
+| `viewpoint`, `scenic` | `Binoculars` |
+| `flight`, `airport` | `Plane` |
+| `road-trip`, `drive` | `Car` |
+| *(no match)* | `MapPin` |
+
+Add or extend the mapping in `components/travels/pinIcon.tsx`. Order
+matters there — put specific tags (`burgers`) above their generic
+parents (`food`) so the specific glyph wins.
+
 ## Sanity check
 
 Before opening a PR:
