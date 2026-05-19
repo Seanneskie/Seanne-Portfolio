@@ -32,6 +32,7 @@ const tripGroups = (await getCollection("trips"))
     endDate: e.data.endDate?.toISOString(),
     location: e.data.location,
     summary: e.data.summary,
+    stops: e.data.stops,
   }));
 ---
 

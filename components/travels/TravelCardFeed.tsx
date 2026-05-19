@@ -29,6 +29,19 @@ const fmtDateRange = (startIso: string, endIso?: string): string => {
   return `${fmtDate(startIso)} – ${fmtDate(endIso)}`;
 };
 
+// Sort trip stops by the itinerary order in `stops:`, then fall back to date
+// (oldest first — narrative order within the trip). Items not listed in
+// `stops` go to the end. Empty `stops` → pure date ascending.
+function sortByItinerary(items: TravelEntry[], stops: string[]): TravelEntry[] {
+  const rank = new Map(stops.map((slug, i) => [slug, i]));
+  return [...items].sort((a, b) => {
+    const ra = rank.has(a.slug) ? rank.get(a.slug)! : Number.MAX_SAFE_INTEGER;
+    const rb = rank.has(b.slug) ? rank.get(b.slug)! : Number.MAX_SAFE_INTEGER;
+    if (ra !== rb) return ra - rb;
+    return new Date(a.date).getTime() - new Date(b.date).getTime();
+  });
+}
+
 // One feed section — either a multi-stop trip or a year bucket of one-offs.
 interface FeedSection {
   key: string;
@@ -76,9 +89,7 @@ export default function TravelCardFeed({
     const tripSections: FeedSection[] = Array.from(tripBuckets.entries()).map(
       ([slug, items]) => {
         const group = groupsBySlug.get(slug)!;
-        const sortedItems = [...items].sort(
-          (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
-        );
+        const sortedItems = sortByItinerary(items, group.stops);
         return {
           key: `trip:${slug}`,
           kind: "trip",

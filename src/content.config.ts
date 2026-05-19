@@ -235,6 +235,11 @@ const trips = defineCollection({
     endDate: z.coerce.date().optional(),
     location: z.string(),
     summary: z.string().optional(),
+    // Ordered list of travel slugs that make up the trip's itinerary.
+    // The map polyline follows this order; the feed and detail page
+    // also use it to render stops in narrative sequence. Optional —
+    // when absent, stops fall back to date-sorted order.
+    stops: z.array(z.string()).default([]),
     draft: z.boolean().default(false),
   }),
 });

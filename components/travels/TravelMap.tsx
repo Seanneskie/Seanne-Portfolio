@@ -2,10 +2,10 @@
 
 import * as React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
-import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
+import { MapContainer, Marker, Polyline, Popup, TileLayer, useMap } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import type { TravelEntry } from "./types";
+import type { TravelEntry, TripGroup } from "./types";
 import { withBasePath } from "@/lib/utils";
 import { resolvePinIcon } from "./pinIcon";
 import { jitterPins } from "./jitterPins";
@@ -63,6 +63,7 @@ L.Icon.Default.mergeOptions({
 
 interface TravelMapProps {
   trips: TravelEntry[];
+  tripGroups?: TripGroup[];
   activeSlug: string | null;
   onSelect: (slug: string | null) => void;
   /** When true, fit bounds to all pins on mount; otherwise centers on the first pin. */
@@ -76,16 +77,19 @@ interface TravelMapProps {
 // render via renderToStaticMarkup so we avoid shipping a sprite. Colors swap
 // in dark mode — the CartoDB dark basemap is heavily muted, so the idle pin
 // needs a brighter teal plus a darker outer ring to register against it.
-function buildPinIcon(tags: string[], active: boolean, dark: boolean): L.DivIcon {
+type PinState = "idle" | "sibling" | "active";
+
+function buildPinIcon(tags: string[], state: PinState, dark: boolean): L.DivIcon {
+  const active = state === "active";
+  const sibling = state === "sibling";
   const size = active ? 36 : 28;
   const glyphSize = active ? 18 : 16;
   const Icon = resolvePinIcon(tags);
   const glyph = renderToStaticMarkup(
     <Icon size={glyphSize} strokeWidth={2.25} color="#fff" />,
   );
-  // Light-mode keeps the original teal (500/600 hex). Dark mode pushes idle
-  // pins to teal-400 for higher contrast against the dim basemap, and uses
-  // teal-300 for the active state so the brightness step still reads.
+  // Active = stronger teal, sibling = a teal glow ring to flag trip membership
+  // without competing with the active pin, idle = standard teal.
   const fill = active
     ? dark
       ? "#2dd4bf"
@@ -93,9 +97,12 @@ function buildPinIcon(tags: string[], active: boolean, dark: boolean): L.DivIcon
     : dark
       ? "#14b8a6"
       : "#14b8a6";
-  // Ring: white on light, near-black on dark — the basemap is light grey on
-  // dark, so white-on-dark would blend in.
   const ringColor = dark ? "rgba(15, 23, 42, 0.85)" : "#fff";
+  // Sibling pins get an extra outer teal halo so the trip group reads as a
+  // unit on the map. The inner white/dark ring stays for legibility.
+  const boxShadow = sibling
+    ? `0 0 0 2px ${ringColor}, 0 0 0 5px ${dark ? "rgba(45, 212, 191, 0.55)" : "rgba(13, 148, 136, 0.45)"}, 0 4px 10px rgba(0,0,0,0.35)`
+    : `0 0 0 2px ${ringColor}, 0 4px 10px rgba(0,0,0,0.35)`;
   const html = `
     <div style="
       width: ${size}px;
@@ -106,7 +113,7 @@ function buildPinIcon(tags: string[], active: boolean, dark: boolean): L.DivIcon
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 0 0 2px ${ringColor}, 0 4px 10px rgba(0,0,0,0.35);
+      box-shadow: ${boxShadow};
       transform: translateY(${active ? "-2px" : "0"});
       transition: transform 200ms ease, background 200ms ease, width 200ms ease, height 200ms ease;
     ">${glyph}</div>
@@ -150,6 +157,7 @@ const POPUP_HOVER_LINGER_MS = 3000;
 
 export default function TravelMap({
   trips,
+  tripGroups = [],
   activeSlug,
   onSelect,
   fitBounds = true,
@@ -158,6 +166,7 @@ export default function TravelMap({
   const isDark = useIsDarkMode();
   const tile = isDark ? TILES.dark : TILES.light;
   const closeTimers = React.useRef<Map<string, ReturnType<typeof setTimeout>>>(new Map());
+  const markerRefs = React.useRef<Map<string, L.Marker>>(new Map());
 
   React.useEffect(() => {
     const timers = closeTimers.current;
@@ -166,6 +175,20 @@ export default function TravelMap({
       timers.clear();
     };
   }, []);
+
+  // Open the popup whenever activeSlug changes from a non-pointer source
+  // (keyboard focus on a card, click that flips activeSlug). Mouse hover
+  // already opens it via the marker's own `mouseover` handler, so this
+  // closes the keyboard-accessibility gap. Closing on null deselect lets
+  // the card-mouse-leave path collapse the popup cleanly.
+  React.useEffect(() => {
+    if (!activeSlug) {
+      markerRefs.current.forEach((marker) => marker.closePopup());
+      return;
+    }
+    const marker = markerRefs.current.get(activeSlug);
+    if (marker) marker.openPopup();
+  }, [activeSlug]);
 
   const pinnedTrips = React.useMemo(
     () => trips.filter((t): t is TravelEntry & { coords: [number, number] } => Boolean(t.coords)),
@@ -186,6 +209,46 @@ export default function TravelMap({
     if (!activeSlug) return null;
     return resolvedCoords.get(activeSlug) ?? null;
   }, [activeSlug, resolvedCoords]);
+
+  // Which trip does the currently-hovered/selected pin belong to (if any)?
+  // Used to draw the trip polyline and highlight sibling pins.
+  const activeTripGroup = React.useMemo<TripGroup | null>(() => {
+    if (!activeSlug) return null;
+    const active = trips.find((t) => t.slug === activeSlug);
+    if (!active?.trip) return null;
+    return tripGroups.find((g) => g.slug === active.trip) ?? null;
+  }, [activeSlug, trips, tripGroups]);
+
+  // Set of slugs that should pulse along with the active pin — its trip
+  // siblings. Empty when the active pin has no trip or no trip is active.
+  const siblingSlugs = React.useMemo<Set<string>>(() => {
+    if (!activeTripGroup) return new Set();
+    const siblings = pinnedTrips
+      .filter((t) => t.trip === activeTripGroup.slug)
+      .map((t) => t.slug);
+    return new Set(siblings);
+  }, [activeTripGroup, pinnedTrips]);
+
+  // Itinerary path: stops listed in the trip's `stops` field, in order,
+  // with each slug resolved to its jittered coords. Falls back to
+  // date-sorted order if the trip has no explicit stops.
+  const polylinePath = React.useMemo<[number, number][]>(() => {
+    if (!activeTripGroup) return [];
+    const tripPins = pinnedTrips.filter((t) => t.trip === activeTripGroup.slug);
+    if (tripPins.length < 2) return [];
+
+    const rank = new Map(activeTripGroup.stops.map((slug, i) => [slug, i]));
+    const ordered = [...tripPins].sort((a, b) => {
+      const ra = rank.has(a.slug) ? rank.get(a.slug)! : Number.MAX_SAFE_INTEGER;
+      const rb = rank.has(b.slug) ? rank.get(b.slug)! : Number.MAX_SAFE_INTEGER;
+      if (ra !== rb) return ra - rb;
+      return new Date(a.date).getTime() - new Date(b.date).getTime();
+    });
+
+    return ordered
+      .map((t) => resolvedCoords.get(t.slug))
+      .filter((c): c is [number, number] => Boolean(c));
+  }, [activeTripGroup, pinnedTrips, resolvedCoords]);
 
   return (
     <div
@@ -209,13 +272,31 @@ export default function TravelMap({
         <TileLayer key={isDark ? "dark" : "light"} url={tile.url} attribution={tile.attribution} />
         {fitBounds && <FitAll points={points} />}
         <FlyTo coords={activeCoords} />
+        {polylinePath.length >= 2 && (
+          <Polyline
+            positions={polylinePath}
+            pathOptions={{
+              color: isDark ? "#2dd4bf" : "#0d9488",
+              weight: 3,
+              opacity: 0.7,
+              dashArray: "6 8",
+              lineCap: "round",
+            }}
+          />
+        )}
         {pinnedTrips.map((trip) => {
           const isActive = trip.slug === activeSlug;
+          const isSibling = !isActive && siblingSlugs.has(trip.slug);
+          const state: PinState = isActive ? "active" : isSibling ? "sibling" : "idle";
           return (
             <Marker
-              key={`${trip.slug}-${isActive ? "active" : "idle"}-${isDark ? "d" : "l"}`}
+              key={`${trip.slug}-${state}-${isDark ? "d" : "l"}`}
               position={resolvedCoords.get(trip.slug) ?? trip.coords}
-              icon={buildPinIcon(trip.tags, isActive, isDark)}
+              icon={buildPinIcon(trip.tags, state, isDark)}
+              ref={(instance) => {
+                if (instance) markerRefs.current.set(trip.slug, instance);
+                else markerRefs.current.delete(trip.slug);
+              }}
               eventHandlers={{
                 click: () => onSelect(trip.slug),
                 mouseover: (event) => {

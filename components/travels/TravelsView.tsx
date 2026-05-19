@@ -78,6 +78,7 @@ export default function TravelsView({
       <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-start">
         <TravelMap
           trips={filteredTrips}
+          tripGroups={tripGroups}
           activeSlug={activeSlug}
           onSelect={setActiveSlug}
           sticky

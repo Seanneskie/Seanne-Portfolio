@@ -20,4 +20,6 @@ export interface TripGroup {
   endDate?: string;
   location: string;
   summary?: string;
+  /** Ordered travel slugs that make up the itinerary. Empty = no explicit order. */
+  stops: string[];
 }
