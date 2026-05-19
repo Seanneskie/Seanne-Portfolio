@@ -90,6 +90,7 @@ map-pin glyph.
 | `burgers` | `Beef` |
 | `coffee`, `cafe` | `Coffee` |
 | `food`, `restaurant`, `dining` | `UtensilsCrossed` |
+| `arcade`, `amusement`, `games` | `Gamepad2` |
 | `bnb`, `hotel`, `stay`, `hostel`, `airbnb` | `BedDouble` |
 | `beach`, `island` | `Palmtree` |
 | `hike`, `mountain`, `trek` | `Mountain` |

@@ -1,10 +1,10 @@
-import * as React from "react";
 import {
   Beef,
   BedDouble,
   Binoculars,
   Car,
   Coffee,
+  Gamepad2,
   Landmark,
   MapPin,
   Mountain,
@@ -24,6 +24,7 @@ const TAG_ICONS: { tags: readonly string[]; icon: LucideIcon }[] = [
   { tags: ["burgers"], icon: Beef },
   { tags: ["coffee", "cafe"], icon: Coffee },
   { tags: ["food", "restaurant", "dining"], icon: UtensilsCrossed },
+  { tags: ["arcade", "amusement", "games"], icon: Gamepad2 },
   { tags: ["bnb", "hotel", "stay", "hostel", "airbnb"], icon: BedDouble },
   { tags: ["beach", "island"], icon: Palmtree },
   { tags: ["hike", "mountain", "trek"], icon: Mountain },
