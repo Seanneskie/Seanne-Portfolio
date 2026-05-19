@@ -28,6 +28,10 @@ const ASTRO_BASE: string =
 function withBase(src: string): string {
   if (/^https?:\/\//.test(src) || src.startsWith("data:")) return src;
   const base = ASTRO_BASE.replace(/\/$/, "");
+  if (!base) return src;
+  // Idempotent: callers may already have called withBasePath() — don't
+  // double-prefix when the src already starts with the base.
+  if (src.startsWith(`${base}/`)) return src;
   const normalized = src.startsWith("/") ? src : `/${src}`;
   return `${base}${normalized}`;
 }

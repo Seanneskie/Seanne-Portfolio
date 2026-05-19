@@ -18,7 +18,13 @@ export function cn(...inputs: ClassValue[]) {
 export function withBasePath(path: string): string {
   if (/^https?:\/\//.test(path)) return path;
   const nextBase = process.env.NEXT_PUBLIC_BASE_PATH;
-  if (nextBase) return `${nextBase}${path}`;
+  if (nextBase) {
+    // Idempotent: avoid double-prefix when called twice (shimmed
+    // next/image/Link also runs withBasePath in Astro builds).
+    return path.startsWith(`${nextBase}/`) || path === nextBase
+      ? path
+      : `${nextBase}${path}`;
+  }
   // Vite/Astro: BASE_URL is always trailing-slashed (e.g. "/Seanne-Portfolio/").
   const astroBase =
     (typeof import.meta !== "undefined" &&
@@ -26,5 +32,6 @@ export function withBasePath(path: string): string {
     "";
   const trimmed = astroBase.replace(/\/$/, "");
   if (!trimmed || trimmed === "/") return path;
+  if (path.startsWith(`${trimmed}/`) || path === trimmed) return path;
   return `${trimmed}${path}`;
 }

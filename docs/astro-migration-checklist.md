@@ -196,21 +196,45 @@ transitively. Phase 6 should swap this for a name-to-component map.
 
 The most complex route — dynamic, code-split, TOC, prev/next, JSON-LD.
 
-- [ ] Create `src/pages/project-details/[slug].astro`.
-- [ ] `getStaticPaths()` enumerates slugs from
-      `getCollection("projects")` (filtered to entries with a `details` slug).
-- [ ] Keep `projectDetailConfig` (component + sections array) — move it to
-      `src/lib/project-detail-config.ts` and import it.
-- [ ] Render each project component as a React island. Decide directive
-      per component (likely `client:load` for galleries, server-only for
-      pure prose components).
-- [ ] Port `ProjectTOC` and `ProjectNav` — keep React unless trivially
-      static; if static, convert to `.astro`.
-- [ ] Inject per-page `<script type="application/ld+json">` matching the
-      current `CreativeWork` JSON-LD.
-- [ ] Verify all prev/next links work and the TOC scrollspy still functions.
-- [ ] Spot-check 3 representative slugs against the Next build:
-      `llm-restaurant-finder`, `cnsm-website`, `minerva-project`.
+- [x] Create `src/pages/project-details/[slug].astro` with `getStaticPaths()`
+      driven by `projectDetailSlugs`. All 17 slugs generate.
+- [x] **Moved `projectDetailConfig` to `lib/project-detail-config.ts`** (kept
+      at repo root so both stacks share the same module during coexistence).
+      The Next page now imports from there; the inline block is gone.
+- [x] **Hydration constraint discovered:** Astro's `client:*` directives
+      can't accept a component looked up by variable (`<Component />`) — the
+      hydration script needs the JSX identifier at build time. Resolved by
+      enumerating all 17 components as named imports + a `slug === "..." &&`
+      switch in the template.
+- [x] **Render strategy: server-only.** Every project component is
+      `export default async function` (they `await getGalleryImages` which
+      reads `fs`). Astro can render async React server-side just fine, but
+      can't ship an async component to the client as an island. So the
+      project body is server-rendered; only `ProjectTOC` is a `client:visible`
+      island (it owns the scrollspy IntersectionObserver). **Known
+      degradation:** embla carousel arrows render in the HTML but are inert
+      without hydration. First slide displays — acceptable for prose-heavy
+      projects but logged for Phase 6 to extract `ProjectGallery` into its
+      own client island.
+- [x] **Port `ProjectNav` to `.astro`.** It's pure SSR (just renders prev/next
+      links), so no need to keep it as a React component on the Astro side.
+      `lib/project-meta.ts`'s `getAdjacentProjects` works unchanged.
+- [x] **`ProjectTOC` stays a React island** (`client:visible`) — its
+      IntersectionObserver-driven active-section highlight is the whole
+      point of the component.
+- [x] Inject per-page `<script type="application/ld+json">` matching the
+      Next page's `CreativeWork` schema.
+- [x] **Idempotent basepath fix:** discovered an image-URL double-prefix
+      (`/Seanne-Portfolio/Seanne-Portfolio/...`) — `ProjectGallery` already
+      calls `withBasePath(src)`, and the `next/image` shim was re-prefixing.
+      Made `withBasePath`, the shim's `withBase`, and `next/link`'s
+      `withBase` all idempotent (skip when the input already starts with
+      the base).
+- [x] Spot-checked 3 representative slugs (`llm-restaurant-finder`,
+      `cnsm-website`, `minerva-project`, `bitcoin-analysis-app`): titles,
+      TOC anchors, JSON-LD, canonical, prev/next all correct.
+      Confirmed `Previous`/`Next` boundary behavior (first slug has no
+      "Previous", last has no "Next").
 
 ---
 
@@ -234,6 +258,13 @@ Round out the long-tail before cutover.
       ~595 KB lucide bundle into a chunk. Replace with an explicit
       `{ Award: AwardIcon, Code2: CodeIcon, ... }` map so Vite/Rollup can
       tree-shake.
+- [ ] **Extract `ProjectGallery` into a client island.** Phase 5 left the
+      project-detail bodies server-rendered (the components are async, can't
+      be `client:*` directly). Result: embla carousel arrows render but are
+      inert. Refactor `ProjectOverview` so that `ProjectGallery` is rendered
+      as a separate `<ProjectGallery client:visible images={...} />` island,
+      with images pre-resolved at build time on the Astro page and passed
+      down as props. Leaves the prose components SSR-only.
 - [ ] Run `astro build` — fix all Zod validation errors surfaced from
       Phase 2 schemas.
 - [ ] Compare `dist/` (Astro) vs `out/` (Next):

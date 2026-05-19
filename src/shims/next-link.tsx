@@ -16,6 +16,10 @@ function withBase(href: string): string {
     return href;
   }
   const base = ASTRO_BASE.replace(/\/$/, "");
+  if (!base) return href;
+  // Idempotent: callers may already have called withBasePath() — don't
+  // double-prefix when the href already starts with the base.
+  if (href.startsWith(`${base}/`) || href === base) return href;
   const normalized = href.startsWith("/") ? href : `/${href}`;
   return `${base}${normalized}`;
 }

@@ -1,0 +1,122 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ProjectTOC from "../../../components/project-details/ProjectTOC.tsx";
+import ProjectNav from "../../components/project-details/ProjectNav.astro";
+import { projectDetailConfig, projectDetailSlugs } from "../../../lib/project-detail-config";
+import { getProjectMeta } from "../../../lib/project-meta";
+import { withBase } from "../../lib/with-base";
+
+// Astro's hydration scripts need a known component identifier at build time,
+// so we can't render `(await loader()).default` as a `client:*` island. The
+// fix is to enumerate all 17 components statically — each one becomes a
+// real React import that Vite can wire to a hydration chunk.
+import LlmRestaurantFinder from "../../../components/project-details/LlmRestaurantFinder.tsx";
+import AICoinDetector from "../../../components/project-details/AICoinDetector.tsx";
+import NosqlProject from "../../../components/project-details/NosqlProject.tsx";
+import CnsmWebsite from "../../../components/project-details/CnsmWebsite.tsx";
+import BitcoinAnalysisApp from "../../../components/project-details/BitcoinAnalysisApp.tsx";
+import DesktopPayrollManagementSystem from "../../../components/project-details/DesktopPayrollManagementSystem.tsx";
+import DigitalFreelancerProfilingApp from "../../../components/project-details/DigitalFreelancerProfilingApp.tsx";
+import CemcdoApp from "../../../components/project-details/CemcdoApp.tsx";
+import Vims from "../../../components/project-details/Vims.tsx";
+import ItineraryPlanner from "../../../components/project-details/ItineraryPlanner.tsx";
+import AlbanyAirbnbDashboard from "../../../components/project-details/AlbanyAirbnbDashboard.tsx";
+import McdonaldsSentimentAnalysis from "../../../components/project-details/McdonaldsSentimentAnalysis.tsx";
+import AiPoweredEmailGenerator from "../../../components/project-details/AiPoweredEmailGenerator.tsx";
+import HeadlessEcommerceMiniStore from "../../../components/project-details/HeadlessEcommerceMiniStore.tsx";
+import OrderInventoryManagementApi from "../../../components/project-details/OrderInventoryManagementApi.tsx";
+import BudgetSystem from "../../../components/project-details/BudgetSystem.tsx";
+import MinervaProject from "../../../components/project-details/MinervaProject.tsx";
+
+export function getStaticPaths() {
+  return projectDetailSlugs.map((slug) => ({ params: { slug } }));
+}
+
+const { slug } = Astro.params as { slug: string };
+const config = projectDetailConfig[slug];
+
+if (!config) {
+  return Astro.redirect("/404");
+}
+
+const meta = getProjectMeta(slug);
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  name: config.title,
+  description: config.description,
+  keywords: meta?.tags?.join(", "),
+  author: { "@type": "Person", name: "Seanne Cañete" },
+  datePublished: meta?.period,
+  image: meta?.image,
+  url: meta?.github ?? undefined,
+};
+
+const pageTitle = `${config.title} | Project Details`;
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={config.description}
+  canonical={`/project-details/${slug}/`}
+  ogType="article"
+  ogImage={meta?.image ?? "/static/bg_2.jpg"}
+  keywords={meta?.tags}
+>
+  <main class="container mx-auto max-w-6xl px-4 py-12">
+    <div class="mb-6">
+      <a
+        href={withBase("/projects/")}
+        class="inline-flex items-center gap-1 text-sm font-medium text-teal-700 hover:text-teal-900 dark:text-teal-300 dark:hover:text-teal-100"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="h-4 w-4"
+          aria-hidden="true"
+        >
+          <path d="m12 19-7-7 7-7" />
+          <path d="M19 12H5" />
+        </svg>
+        All projects
+      </a>
+    </div>
+
+    <div class="lg:grid lg:grid-cols-[minmax(0,1fr)_240px] lg:gap-8">
+      <div class="space-y-12">
+        {slug === "llm-restaurant-finder" && <LlmRestaurantFinder />}
+        {slug === "ai-coin-detector" && <AICoinDetector />}
+        {slug === "nosql-project" && <NosqlProject />}
+        {slug === "cnsm-website" && <CnsmWebsite />}
+        {slug === "bitcoin-analysis-app" && <BitcoinAnalysisApp />}
+        {slug === "desktop-payroll-management-system" && <DesktopPayrollManagementSystem />}
+        {slug === "digital-freelancer-profiling-app" && <DigitalFreelancerProfilingApp />}
+        {slug === "cemcdo-app" && <CemcdoApp />}
+        {slug === "vims" && <Vims />}
+        {slug === "itinerary-planner" && <ItineraryPlanner />}
+        {slug === "albany-airbnb-dashboard" && <AlbanyAirbnbDashboard />}
+        {slug === "mcdonalds-sentiment-analysis" && <McdonaldsSentimentAnalysis />}
+        {slug === "ai-powered-email-generator" && <AiPoweredEmailGenerator />}
+        {slug === "headless-ecommerce-mini-store" && <HeadlessEcommerceMiniStore />}
+        {slug === "order-inventory-management-api" && <OrderInventoryManagementApi />}
+        {slug === "budget-system" && <BudgetSystem />}
+        {slug === "minerva-project" && <MinervaProject />}
+        <ProjectNav slug={slug} />
+      </div>
+
+      {config.sections && config.sections.length > 0 && (
+        <aside class="mt-10 lg:mt-0">
+          <ProjectTOC client:visible sections={config.sections} />
+        </aside>
+      )}
+    </div>
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </main>
+</BaseLayout>
