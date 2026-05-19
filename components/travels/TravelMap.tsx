@@ -128,6 +128,11 @@ function FitAll({ points }: { points: [number, number][] }) {
   return null;
 }
 
+// Hover-to-preview latency. Mouseout starts a timer; re-entering the marker
+// (or its popup) cancels it. 3s is long enough to drag the cursor onto the
+// popup to click "Read full trip →" without it vanishing.
+const POPUP_HOVER_LINGER_MS = 3000;
+
 export default function TravelMap({
   trips,
   activeSlug,
@@ -137,6 +142,15 @@ export default function TravelMap({
 }: TravelMapProps): React.ReactElement {
   const isDark = useIsDarkMode();
   const tile = isDark ? TILES.dark : TILES.light;
+  const closeTimers = React.useRef<Map<string, ReturnType<typeof setTimeout>>>(new Map());
+
+  React.useEffect(() => {
+    const timers = closeTimers.current;
+    return () => {
+      timers.forEach((t) => clearTimeout(t));
+      timers.clear();
+    };
+  }, []);
 
   const pinnedTrips = React.useMemo(
     () => trips.filter((t): t is TravelEntry & { coords: [number, number] } => Boolean(t.coords)),
@@ -185,8 +199,22 @@ export default function TravelMap({
               icon={buildPinIcon(trip.tags, isActive)}
               eventHandlers={{
                 click: () => onSelect(trip.slug),
-                mouseover: (event) => event.target.openPopup(),
-                mouseout: (event) => event.target.closePopup(),
+                mouseover: (event) => {
+                  const pending = closeTimers.current.get(trip.slug);
+                  if (pending) {
+                    clearTimeout(pending);
+                    closeTimers.current.delete(trip.slug);
+                  }
+                  event.target.openPopup();
+                },
+                mouseout: (event) => {
+                  const marker = event.target;
+                  const timer = setTimeout(() => {
+                    marker.closePopup();
+                    closeTimers.current.delete(trip.slug);
+                  }, POPUP_HOVER_LINGER_MS);
+                  closeTimers.current.set(trip.slug, timer);
+                },
               }}
             >
               <Popup>
