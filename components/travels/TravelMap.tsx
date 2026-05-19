@@ -60,6 +60,40 @@ interface TravelMapProps {
   onSelect: (slug: string) => void;
   /** When true, fit bounds to all pins on mount; otherwise centers on the first pin. */
   fitBounds?: boolean;
+  /** Slug -> chronological index (1-based) shown inside the pin. */
+  indexBySlug?: Record<string, number>;
+}
+
+// Builds a Leaflet divIcon that renders a circular numbered pin in the brand
+// teal. Built as pure HTML/CSS via divIcon so we avoid shipping an SVG sprite
+// and the pin inherits theme colors at runtime.
+function buildPinIcon(index: number | undefined, active: boolean): L.DivIcon {
+  const size = active ? 36 : 28;
+  const label = index !== undefined ? String(index) : "•";
+  const html = `
+    <div style="
+      width: ${size}px;
+      height: ${size}px;
+      border-radius: 9999px;
+      background: ${active ? "#0d9488" : "#14b8a6"};
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: ${active ? 13 : 12}px;
+      font-weight: 600;
+      box-shadow: 0 0 0 2px #fff, 0 4px 10px rgba(0,0,0,0.25);
+      transform: translateY(${active ? "-2px" : "0"});
+      transition: transform 200ms ease, background 200ms ease, width 200ms ease, height 200ms ease;
+    ">${label}</div>
+  `;
+  return L.divIcon({
+    html,
+    className: "travel-pin",
+    iconSize: [size, size],
+    iconAnchor: [size / 2, size / 2],
+    popupAnchor: [0, -(size / 2)],
+  });
 }
 
 function FlyTo({ coords }: { coords: [number, number] | null }) {
@@ -90,6 +124,7 @@ export default function TravelMap({
   activeSlug,
   onSelect,
   fitBounds = true,
+  indexBySlug,
 }: TravelMapProps): React.ReactElement {
   const isDark = useIsDarkMode();
   const tile = isDark ? TILES.dark : TILES.light;
@@ -123,21 +158,26 @@ export default function TravelMap({
         <TileLayer key={isDark ? "dark" : "light"} url={tile.url} attribution={tile.attribution} />
         {fitBounds && <FitAll points={points} />}
         <FlyTo coords={activeCoords} />
-        {pinnedTrips.map((trip) => (
-          <Marker
-            key={trip.slug}
-            position={trip.coords}
-            eventHandlers={{ click: () => onSelect(trip.slug) }}
-          >
-            <Popup>
-              <div className="space-y-1">
-                <p className="text-sm font-semibold">{trip.title}</p>
-                <p className="text-xs text-gray-600">{trip.location}</p>
-                {trip.excerpt && <p className="text-xs">{trip.excerpt}</p>}
-              </div>
-            </Popup>
-          </Marker>
-        ))}
+        {pinnedTrips.map((trip) => {
+          const isActive = trip.slug === activeSlug;
+          const index = indexBySlug?.[trip.slug];
+          return (
+            <Marker
+              key={`${trip.slug}-${isActive ? "active" : "idle"}`}
+              position={trip.coords}
+              icon={buildPinIcon(index, isActive)}
+              eventHandlers={{ click: () => onSelect(trip.slug) }}
+            >
+              <Popup>
+                <div className="space-y-1">
+                  <p className="text-sm font-semibold">{trip.title}</p>
+                  <p className="text-xs text-gray-600">{trip.location}</p>
+                  {trip.excerpt && <p className="text-xs">{trip.excerpt}</p>}
+                </div>
+              </Popup>
+            </Marker>
+          );
+        })}
       </MapContainer>
     </div>
   );
