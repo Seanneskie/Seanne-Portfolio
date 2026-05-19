@@ -1,0 +1,89 @@
+---
+import "../styles/globals.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  ogImage?: string;
+}
+
+const SITE_URL =
+  import.meta.env.PUBLIC_SITE_URL ?? "https://seanneskie.github.io";
+const BASE_PATH = import.meta.env.BASE_URL.replace(/\/$/, "");
+
+const {
+  title = "Seanne Cañete | Full-Stack Engineer",
+  description = "Seanne Cañete is a full-stack engineer and Information Technology graduate from Mindanao State University - General Santos City. Explore projects, experience, and engineering work.",
+  canonical = "/",
+  ogImage = "/static/bg_2.jpg",
+} = Astro.props;
+
+const joinBase = (path: string): string => {
+  if (/^https?:\/\//.test(path)) return path;
+  const normalized = path.startsWith("/") ? path : `/${path}`;
+  return `${SITE_URL}${BASE_PATH}${normalized}`;
+};
+
+const absoluteCanonical = joinBase(canonical);
+const absoluteOgImage = joinBase(ogImage);
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Seanne Cañete",
+  alternateName: "Seanne Canete",
+  url: `${SITE_URL}${BASE_PATH}`,
+  jobTitle: "Full-Stack Engineer",
+  alumniOf: {
+    "@type": "CollegeOrUniversity",
+    name: "Mindanao State University - General Santos",
+  },
+  knowsAbout: [
+    "Full-Stack Development",
+    "React",
+    "Next.js",
+    "TypeScript",
+    "Python",
+    "Data Analysis",
+  ],
+  sameAs: [
+    "https://github.com/Seanneskie",
+    "https://www.linkedin.com/in/seanne-ca%C3%B1ete-8b09322a1/",
+    "https://x.com/Seanneskie",
+  ],
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={absoluteCanonical} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Seanne Cañete | Portfolio" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={absoluteOgImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:creator" content="@Seanneskie" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={absoluteOgImage} />
+
+    <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body class="antialiased min-h-screen bg-white text-black dark:bg-gray-900 dark:text-white font-sans">
+    <slot />
+  </body>
+</html>
