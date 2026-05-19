@@ -10,6 +10,7 @@ stops:
   - seawind-condominium-sasa
   - sta-ana-wharf-davao
   - talicud-island-hopping
+  - buffalos-wings-sm-lanang
   - cavenico-il-mare-samal
   - cavenico-il-mare-activities
   - sm-city-davao-meetup
@@ -20,8 +21,9 @@ draft: false
 A four-day swing through Davao and Samal. Day one was food and check-in
 on the Davao side — sushi at SM City, a Ghibli-themed coffee stop at
 Cake Gallerie, and an Airbnb at Seawind in Sasa. Day two crossed over
-to Samal: ferry from Sta. Ana Wharf, island hopping around Talicud, and
-a night check-in at Cavenico il Mare. Day three split between Cavenico
+to Samal: ferry from Sta. Ana Wharf, island hopping around Talicud, a
+dinner stop at Buffalo's Wings N' Things in SM Lanang on the way back,
+then a late check-in at Cavenico il Mare. Day three split between Cavenico
 water activities (banana boat, kayak, stand-up paddle, swimming) and a
 mainland meetup at SM City Davao with Ma'am Laiza, ending at One Oasis
 for the final night. Day four was the drive home to General Santos.
