@@ -32,7 +32,7 @@ const slugify = (input: string): string =>
 // entry is silently dropped if two share the same title/label.
 const arrayWithIds =
   (...fields: string[]) =>
-  (text: string): unknown[] => {
+  (text: string): Record<string, unknown>[] => {
     const parsed = JSON.parse(text) as Record<string, unknown>[];
     const seen = new Map<string, number>();
     return parsed.map((entry, index) => {
@@ -49,10 +49,12 @@ const arrayWithIds =
   };
 
 // Wraps a singleton JSON object into a single-entry array for the file loader.
-const singleton = (id: string) => (text: string): unknown[] => {
-  const parsed = JSON.parse(text);
-  return [{ id, ...parsed }];
-};
+const singleton =
+  (id: string) =>
+  (text: string): Record<string, unknown>[] => {
+    const parsed = JSON.parse(text) as Record<string, unknown>;
+    return [{ id, ...parsed }];
+  };
 
 // -----------------------------------------------------------------------------
 // Schemas
