@@ -1,0 +1,201 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import TravelMap from "../../../../components/travels/TravelMap.tsx";
+import { withBase } from "../../../lib/with-base";
+
+export async function getStaticPaths() {
+  const trips = await getCollection("trips");
+  const travels = await getCollection("travels");
+  return trips.map((trip) => ({
+    params: { slug: trip.id.replace(/\.md$/, "") },
+    props: { trip, travels },
+  }));
+}
+
+const { trip, travels } = Astro.props;
+const { Content } = await render(trip);
+
+const slug = trip.id.replace(/\.md$/, "");
+const pageTitle = `${trip.data.title} | Travels`;
+
+const fmtDate = (d: Date) =>
+  d.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
+
+const fmtDateRange = (start: Date, end?: Date): string => {
+  if (!end) return fmtDate(start);
+  const sameMonth = start.getFullYear() === end.getFullYear() && start.getMonth() === end.getMonth();
+  if (sameMonth) {
+    const startStr = start.toLocaleDateString("en-US", { month: "long", day: "numeric" });
+    return `${startStr}–${end.getDate()}, ${end.getFullYear()}`;
+  }
+  return `${fmtDate(start)} – ${fmtDate(end)}`;
+};
+
+// Stops in itinerary order. `trip.data.stops` is the source of truth; any
+// travel entry with `trip: <slug>` that isn't in `stops` is appended at the
+// end (date-sorted) so authoring a stop without updating the trip's order
+// list doesn't make it vanish from the detail page.
+const tripTravels = travels.filter((t) => t.data.trip === slug);
+const stopRank = new Map(trip.data.stops.map((s, i) => [s, i]));
+const orderedStops = [...tripTravels].sort((a, b) => {
+  const sa = a.id.replace(/\.md$/, "");
+  const sb = b.id.replace(/\.md$/, "");
+  const ra = stopRank.has(sa) ? stopRank.get(sa)! : Number.MAX_SAFE_INTEGER;
+  const rb = stopRank.has(sb) ? stopRank.get(sb)! : Number.MAX_SAFE_INTEGER;
+  if (ra !== rb) return ra - rb;
+  return a.data.date.getTime() - b.data.date.getTime();
+});
+
+// TravelMap input — keep only stops with coords. The map renders the trip
+// polyline because `tripGroups` includes this trip; no need to fake an
+// activeSlug from the page since the user navigates within the page itself.
+const mapTrips = orderedStops
+  .filter((t) => t.data.coords)
+  .map((t) => ({
+    slug: t.id.replace(/\.md$/, ""),
+    title: t.data.title,
+    date: t.data.date.toISOString(),
+    endDate: t.data.endDate?.toISOString(),
+    location: t.data.location,
+    city: t.data.city,
+    country: t.data.country,
+    coords: t.data.coords,
+    cover: t.data.cover,
+    excerpt: t.data.excerpt,
+    tags: t.data.tags,
+    trip: t.data.trip,
+  }));
+
+const mapTripGroups = [
+  {
+    slug,
+    title: trip.data.title,
+    startDate: trip.data.startDate.toISOString(),
+    endDate: trip.data.endDate?.toISOString(),
+    location: trip.data.location,
+    summary: trip.data.summary,
+    stops: trip.data.stops,
+  },
+];
+
+const ogImage = orderedStops.find((s) => s.data.cover)?.data.cover ?? "/static/bg_2.jpg";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "TouristTrip",
+  name: trip.data.title,
+  description: trip.data.summary,
+  itinerary: orderedStops.map((s, i) => ({
+    "@type": "Place",
+    position: i + 1,
+    name: s.data.title,
+    address: s.data.location,
+  })),
+};
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={trip.data.summary ?? trip.data.title}
+  canonical={`/travels/trip/${slug}/`}
+  ogType="article"
+  ogImage={ogImage}
+>
+  <main class="container mx-auto max-w-4xl px-4 py-12">
+    <a
+      href={withBase("/travels/")}
+      class="inline-flex items-center gap-1 text-sm font-medium text-teal-700 hover:text-teal-900 dark:text-teal-300 dark:hover:text-teal-100"
+    >
+      ← All travels
+    </a>
+
+    <header class="mt-6 mb-8">
+      <p class="text-xs font-semibold uppercase tracking-wide text-teal-700 dark:text-teal-300">
+        Trip · {orderedStops.length} stop{orderedStops.length === 1 ? "" : "s"}
+      </p>
+      <h1 class="mt-1 text-3xl font-semibold text-black dark:text-white sm:text-4xl">
+        {trip.data.title}
+      </h1>
+      <div class="mt-2 flex flex-wrap items-center gap-3 text-sm text-gray-600 dark:text-gray-300">
+        <time>{fmtDateRange(trip.data.startDate, trip.data.endDate)}</time>
+        <span class="rounded-full bg-gray-100 px-2 py-0.5 text-xs font-medium text-gray-700 dark:bg-gray-800 dark:text-gray-200">
+          {trip.data.location}
+        </span>
+      </div>
+    </header>
+
+    {mapTrips.length > 0 && (
+      <div class="mb-10">
+        <TravelMap
+          client:only="react"
+          trips={mapTrips}
+          tripGroups={mapTripGroups}
+          activeSlug={null}
+          onSelect={() => undefined}
+          alwaysShowTrip={slug}
+        />
+      </div>
+    )}
+
+    {trip.data.summary && (
+      <article class="prose prose-teal mb-10 max-w-none dark:prose-invert">
+        <Content />
+      </article>
+    )}
+
+    <section>
+      <h2 class="mb-4 text-xl font-semibold text-black dark:text-white">Itinerary</h2>
+      <ol class="space-y-3">
+        {orderedStops.map((stop, i) => {
+          const stopSlug = stop.id.replace(/\.md$/, "");
+          return (
+            <li>
+              <a
+                href={withBase(`/travels/${stopSlug}/`)}
+                class="group flex gap-4 overflow-hidden rounded-lg border border-gray-200 bg-white p-3 transition hover:border-teal-500/50 dark:border-gray-800 dark:bg-gray-900/40 dark:hover:border-teal-400/50"
+              >
+                <div class="relative shrink-0">
+                  {stop.data.cover ? (
+                    <img
+                      src={withBase(stop.data.cover)}
+                      alt=""
+                      class="h-24 w-24 rounded-md object-cover sm:h-28 sm:w-40"
+                      loading="lazy"
+                    />
+                  ) : (
+                    <div class="flex h-24 w-24 items-center justify-center rounded-md bg-teal-500/10 text-2xl sm:h-28 sm:w-40">
+                      <span aria-hidden="true">🗺️</span>
+                    </div>
+                  )}
+                  <span
+                    aria-hidden="true"
+                    class="absolute -left-1 -top-1 flex h-6 w-6 items-center justify-center rounded-full bg-teal-500 text-xs font-semibold text-white ring-2 ring-white dark:ring-gray-900"
+                  >
+                    {i + 1}
+                  </span>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="flex items-center justify-between gap-2 text-xs text-gray-500 dark:text-gray-400">
+                    <time>{fmtDate(stop.data.date)}</time>
+                    <span class="truncate">{stop.data.location}</span>
+                  </div>
+                  <h3 class="mt-0.5 text-base font-semibold text-black group-hover:text-teal-700 dark:text-white dark:group-hover:text-teal-300">
+                    {stop.data.title}
+                  </h3>
+                  {stop.data.excerpt && (
+                    <p class="mt-0.5 line-clamp-2 text-sm text-gray-600 dark:text-gray-300">
+                      {stop.data.excerpt}
+                    </p>
+                  )}
+                </div>
+              </a>
+            </li>
+          );
+        })}
+      </ol>
+    </section>
+
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </main>
+</BaseLayout>

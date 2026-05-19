@@ -19,13 +19,19 @@ export default function TravelsView({
   const [activeSlug, setActiveSlug] = React.useState<string | null>(null);
   const [activeTag, setActiveTag] = React.useState<string | null>(null);
   const [activeCountry, setActiveCountry] = React.useState<string | null>(null);
+  const [activeTrip, setActiveTrip] = React.useState<string | null>(null);
 
-  // Collect the union of all tags/countries across trips so the filter chips
-  // always show the full vocabulary, not just what's currently visible.
+  // Tag vocabulary narrows to the active trip's stops when one is selected,
+  // so "Davao trip + #coffee" shows only the coffee stop in that trip rather
+  // than every coffee stop ever. Country list does the same; trip list is
+  // always the full set.
   const { allTags, allCountries } = React.useMemo(() => {
+    const inScope = activeTrip
+      ? trips.filter((t) => t.trip === activeTrip)
+      : trips;
     const tagSet = new Set<string>();
     const countrySet = new Set<string>();
-    for (const trip of trips) {
+    for (const trip of inScope) {
       trip.tags.forEach((t) => tagSet.add(t));
       if (trip.country) countrySet.add(trip.country);
     }
@@ -33,15 +39,28 @@ export default function TravelsView({
       allTags: Array.from(tagSet).sort(),
       allCountries: Array.from(countrySet).sort(),
     };
-  }, [trips]);
+  }, [trips, activeTrip]);
+
+  // Reset tag/country when they leave the active trip's vocabulary, so a
+  // stale filter doesn't silently hide everything after switching trips.
+  React.useEffect(() => {
+    if (activeTag && !allTags.includes(activeTag)) setActiveTag(null);
+    if (activeCountry && !allCountries.includes(activeCountry)) setActiveCountry(null);
+  }, [allTags, allCountries, activeTag, activeCountry]);
+
+  const tripChoices = React.useMemo(
+    () => tripGroups.map((g) => ({ slug: g.slug, title: g.title })),
+    [tripGroups],
+  );
 
   const filteredTrips = React.useMemo(() => {
     return trips.filter((t) => {
+      if (activeTrip && t.trip !== activeTrip) return false;
       if (activeTag && !t.tags.includes(activeTag)) return false;
       if (activeCountry && t.country !== activeCountry) return false;
       return true;
     });
-  }, [trips, activeTag, activeCountry]);
+  }, [trips, activeTag, activeCountry, activeTrip]);
 
   // Chronological index (1-based, oldest first) so the pins read like waypoints
   // on a journey rather than mirroring the newest-first list order.
@@ -68,10 +87,13 @@ export default function TravelsView({
       <TravelFilters
         tags={allTags}
         countries={allCountries}
+        trips={tripChoices}
         activeTag={activeTag}
         activeCountry={activeCountry}
+        activeTrip={activeTrip}
         onTagChange={setActiveTag}
         onCountryChange={setActiveCountry}
+        onTripChange={setActiveTrip}
       />
       {/* Desktop: map on the left sticks while the feed scrolls on the right.
           Mobile: single column, map renders first then the feed below. */}

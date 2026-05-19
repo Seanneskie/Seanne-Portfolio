@@ -8,17 +8,20 @@ export async function getStaticPaths() {
   const entries = (await getCollection("travels")).sort(
     (a, b) => b.data.date.getTime() - a.data.date.getTime(),
   );
+  const trips = await getCollection("trips");
   return entries.map((entry, index) => ({
     params: { slug: entry.id.replace(/\.md$/, "") },
     props: {
       entry,
       prev: entries[index - 1] ?? null,
       next: entries[index + 1] ?? null,
+      parentTrip:
+        trips.find((t) => t.id.replace(/\.md$/, "") === entry.data.trip) ?? null,
     },
   }));
 }
 
-const { entry, prev, next } = Astro.props;
+const { entry, prev, next, parentTrip } = Astro.props;
 const { Content } = await render(entry);
 
 const fmtDate = (d: Date) =>
@@ -74,7 +77,15 @@ const singleTrip = entry.data.coords
     </a>
 
     <header class="mt-6 mb-6">
-      <h1 class="text-3xl font-semibold text-black dark:text-white sm:text-4xl">
+      {parentTrip && (
+        <a
+          href={withBase(`/travels/trip/${parentTrip.id.replace(/\.md$/, "")}/`)}
+          class="inline-flex items-center gap-1 rounded-full bg-teal-500/10 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-teal-800 hover:bg-teal-500/20 dark:bg-teal-400/10 dark:text-teal-200 dark:hover:bg-teal-400/20"
+        >
+          Part of: {parentTrip.data.title} →
+        </a>
+      )}
+      <h1 class={`text-3xl font-semibold text-black dark:text-white sm:text-4xl ${parentTrip ? "mt-2" : ""}`}>
         {entry.data.title}
       </h1>
       <div class="mt-2 flex flex-wrap items-center gap-3 text-sm text-gray-600 dark:text-gray-300">

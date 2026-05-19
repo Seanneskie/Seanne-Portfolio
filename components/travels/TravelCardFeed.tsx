@@ -3,6 +3,7 @@
 import * as React from "react";
 import type { TravelEntry, TripGroup } from "./types";
 import { withBasePath } from "@/lib/utils";
+import { useTravelSections } from "./useTravelSections";
 
 interface TravelCardFeedProps {
   trips: TravelEntry[];
@@ -15,48 +16,6 @@ interface TravelCardFeedProps {
 const fmtDate = (iso: string): string =>
   new Date(iso).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
 
-const fmtDateRange = (startIso: string, endIso?: string): string => {
-  const start = new Date(startIso);
-  if (!endIso) return fmtDate(startIso);
-  const end = new Date(endIso);
-  const sameMonth =
-    start.getFullYear() === end.getFullYear() && start.getMonth() === end.getMonth();
-  if (sameMonth) {
-    const monthDay = start.toLocaleDateString("en-US", { month: "short", day: "numeric" });
-    const endDay = end.getDate();
-    return `${monthDay}–${endDay}, ${end.getFullYear()}`;
-  }
-  return `${fmtDate(startIso)} – ${fmtDate(endIso)}`;
-};
-
-// Sort trip stops by the itinerary order in `stops:`, then fall back to date
-// (oldest first — narrative order within the trip). Items not listed in
-// `stops` go to the end. Empty `stops` → pure date ascending.
-function sortByItinerary(items: TravelEntry[], stops: string[]): TravelEntry[] {
-  const rank = new Map(stops.map((slug, i) => [slug, i]));
-  return [...items].sort((a, b) => {
-    const ra = rank.has(a.slug) ? rank.get(a.slug)! : Number.MAX_SAFE_INTEGER;
-    const rb = rank.has(b.slug) ? rank.get(b.slug)! : Number.MAX_SAFE_INTEGER;
-    if (ra !== rb) return ra - rb;
-    return new Date(a.date).getTime() - new Date(b.date).getTime();
-  });
-}
-
-// One feed section — either a multi-stop trip or a year bucket of one-offs.
-interface FeedSection {
-  key: string;
-  kind: "trip" | "year";
-  // The headline for the section heading.
-  heading: string;
-  // Optional secondary label (date range / location / summary).
-  meta?: string;
-  summary?: string;
-  // Sorted newest → oldest so each section reads top-down chronologically.
-  items: TravelEntry[];
-  // Representative date used to sort sections newest → oldest.
-  sortDate: number;
-}
-
 export default function TravelCardFeed({
   trips,
   tripGroups = [],
@@ -64,61 +23,7 @@ export default function TravelCardFeed({
   onSelect,
   indexBySlug,
 }: TravelCardFeedProps): React.ReactElement {
-  // Bucket entries: known trip slug → trip section; everything else → year.
-  // Trip sections always render even when the trip has only one current entry,
-  // so the trip framing is visible as soon as it's been authored.
-  const sections = React.useMemo<FeedSection[]>(() => {
-    const groupsBySlug = new Map(tripGroups.map((g) => [g.slug, g]));
-    const tripBuckets = new Map<string, TravelEntry[]>();
-    const yearBuckets = new Map<number, TravelEntry[]>();
-
-    for (const trip of trips) {
-      const tripSlug = trip.trip;
-      if (tripSlug && groupsBySlug.has(tripSlug)) {
-        const bucket = tripBuckets.get(tripSlug) ?? [];
-        bucket.push(trip);
-        tripBuckets.set(tripSlug, bucket);
-      } else {
-        const year = new Date(trip.date).getFullYear();
-        const bucket = yearBuckets.get(year) ?? [];
-        bucket.push(trip);
-        yearBuckets.set(year, bucket);
-      }
-    }
-
-    const tripSections: FeedSection[] = Array.from(tripBuckets.entries()).map(
-      ([slug, items]) => {
-        const group = groupsBySlug.get(slug)!;
-        const sortedItems = sortByItinerary(items, group.stops);
-        return {
-          key: `trip:${slug}`,
-          kind: "trip",
-          heading: group.title,
-          meta: `${fmtDateRange(group.startDate, group.endDate)} · ${group.location}`,
-          summary: group.summary,
-          items: sortedItems,
-          sortDate: new Date(group.startDate).getTime(),
-        };
-      },
-    );
-
-    const yearSections: FeedSection[] = Array.from(yearBuckets.entries()).map(
-      ([year, items]) => {
-        const sortedItems = [...items].sort(
-          (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
-        );
-        return {
-          key: `year:${year}`,
-          kind: "year",
-          heading: String(year),
-          items: sortedItems,
-          sortDate: new Date(sortedItems[0]?.date ?? `${year}-01-01`).getTime(),
-        };
-      },
-    );
-
-    return [...tripSections, ...yearSections].sort((a, b) => b.sortDate - a.sortDate);
-  }, [trips, tripGroups]);
+  const sections = useTravelSections(trips, tripGroups);
 
   // When the map flips activeSlug (e.g. user hovered a pin), scroll the
   // matching card into view. Only scroll when the change is map-driven —
@@ -153,9 +58,19 @@ export default function TravelCardFeed({
         <section key={section.key} aria-label={section.heading}>
           {section.kind === "trip" ? (
             <header className="mb-3 rounded-lg border border-teal-500/30 bg-teal-500/5 px-3 py-2 dark:border-teal-400/30 dark:bg-teal-400/5">
-              <h2 className="text-sm font-semibold text-teal-800 dark:text-teal-200">
-                {section.heading}
-              </h2>
+              <div className="flex items-baseline justify-between gap-3">
+                <h2 className="text-sm font-semibold text-teal-800 dark:text-teal-200">
+                  {section.heading}
+                </h2>
+                {section.tripSlug && (
+                  <a
+                    href={withBasePath(`/travels/trip/${section.tripSlug}/`)}
+                    className="shrink-0 text-[11px] font-semibold text-teal-700 hover:underline dark:text-teal-300"
+                  >
+                    View trip →
+                  </a>
+                )}
+              </div>
               {section.meta && (
                 <p className="mt-0.5 text-[11px] text-teal-700/80 dark:text-teal-300/80">
                   {section.meta} · {section.items.length} stop

@@ -2,13 +2,21 @@
 
 import * as React from "react";
 
+interface TripChoice {
+  slug: string;
+  title: string;
+}
+
 interface TravelFiltersProps {
   tags: string[];
   countries: string[];
+  trips?: TripChoice[];
   activeTag: string | null;
   activeCountry: string | null;
+  activeTrip: string | null;
   onTagChange: (tag: string | null) => void;
   onCountryChange: (country: string | null) => void;
+  onTripChange: (trip: string | null) => void;
 }
 
 function Chip({
@@ -40,21 +48,40 @@ function Chip({
 export default function TravelFilters({
   tags,
   countries,
+  trips = [],
   activeTag,
   activeCountry,
+  activeTrip,
   onTagChange,
   onCountryChange,
+  onTripChange,
 }: TravelFiltersProps): React.ReactElement | null {
-  if (tags.length === 0 && countries.length <= 1) return null;
+  if (tags.length === 0 && countries.length <= 1 && trips.length === 0) return null;
 
   const reset = () => {
     onTagChange(null);
     onCountryChange(null);
+    onTripChange(null);
   };
-  const isAll = activeTag === null && activeCountry === null;
+  const isAll = activeTag === null && activeCountry === null && activeTrip === null;
 
   return (
     <div className="space-y-2">
+      {trips.length > 0 && (
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
+            Trip
+          </span>
+          {trips.map((trip) => (
+            <Chip
+              key={trip.slug}
+              label={trip.title}
+              active={activeTrip === trip.slug}
+              onClick={() => onTripChange(activeTrip === trip.slug ? null : trip.slug)}
+            />
+          ))}
+        </div>
+      )}
       {countries.length > 1 && (
         <div className="flex flex-wrap items-center gap-2">
           <span className="text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">

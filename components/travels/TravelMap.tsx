@@ -70,6 +70,10 @@ interface TravelMapProps {
   fitBounds?: boolean;
   /** When true, the map sticks to the top on desktop as the page scrolls. */
   sticky?: boolean;
+  /** When set, always render the polyline + sibling halos for this trip, even
+   * when no individual pin is active. Used by the trip-detail page where the
+   * trip is the page's subject, not a transient hover state. */
+  alwaysShowTrip?: string;
 }
 
 // Builds a Leaflet divIcon that renders a circular pin in the brand teal with
@@ -162,6 +166,7 @@ export default function TravelMap({
   onSelect,
   fitBounds = true,
   sticky = false,
+  alwaysShowTrip,
 }: TravelMapProps): React.ReactElement {
   const isDark = useIsDarkMode();
   const tile = isDark ? TILES.dark : TILES.light;
@@ -210,14 +215,20 @@ export default function TravelMap({
     return resolvedCoords.get(activeSlug) ?? null;
   }, [activeSlug, resolvedCoords]);
 
-  // Which trip does the currently-hovered/selected pin belong to (if any)?
-  // Used to draw the trip polyline and highlight sibling pins.
+  // Which trip should the map highlight? Falls back to `alwaysShowTrip`
+  // (used by the trip-detail page) when no pin is hovered.
   const activeTripGroup = React.useMemo<TripGroup | null>(() => {
-    if (!activeSlug) return null;
-    const active = trips.find((t) => t.slug === activeSlug);
-    if (!active?.trip) return null;
-    return tripGroups.find((g) => g.slug === active.trip) ?? null;
-  }, [activeSlug, trips, tripGroups]);
+    if (activeSlug) {
+      const active = trips.find((t) => t.slug === activeSlug);
+      if (active?.trip) {
+        return tripGroups.find((g) => g.slug === active.trip) ?? null;
+      }
+    }
+    if (alwaysShowTrip) {
+      return tripGroups.find((g) => g.slug === alwaysShowTrip) ?? null;
+    }
+    return null;
+  }, [activeSlug, trips, tripGroups, alwaysShowTrip]);
 
   // Set of slugs that should pulse along with the active pin — its trip
   // siblings. Empty when the active pin has no trip or no trip is active.
