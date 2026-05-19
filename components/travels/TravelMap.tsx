@@ -5,6 +5,10 @@ import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import type { TravelEntry } from "./types";
+import { withBasePath } from "@/lib/utils";
+
+const fmtDate = (iso: string): string =>
+  new Date(iso).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
 
 // Watches the `.dark` class on <html> so the map can swap tile providers when
 // the user toggles the site theme. Returns true when dark mode is active.
@@ -62,6 +66,8 @@ interface TravelMapProps {
   fitBounds?: boolean;
   /** Slug -> chronological index (1-based) shown inside the pin. */
   indexBySlug?: Record<string, number>;
+  /** When true, the map sticks to the top on desktop as the page scrolls. */
+  sticky?: boolean;
 }
 
 // Builds a Leaflet divIcon that renders a circular numbered pin in the brand
@@ -125,6 +131,7 @@ export default function TravelMap({
   onSelect,
   fitBounds = true,
   indexBySlug,
+  sticky = false,
 }: TravelMapProps): React.ReactElement {
   const isDark = useIsDarkMode();
   const tile = isDark ? TILES.dark : TILES.light;
@@ -146,7 +153,16 @@ export default function TravelMap({
   }, [activeSlug, pinnedTrips]);
 
   return (
-    <div className="h-[420px] w-full overflow-hidden rounded-lg border border-gray-200 dark:border-gray-800 lg:h-[560px]">
+    <div
+      className={[
+        "w-full overflow-hidden rounded-lg border border-gray-200 dark:border-gray-800",
+        // Mobile keeps a fixed 4:3-ish height; desktop gets a taller fixed
+        // height plus optional sticky behavior so the map persists as the
+        // user scrolls the trip cards.
+        "h-[60vw] max-h-[420px] lg:h-[55vh] lg:max-h-[560px]",
+        sticky ? "lg:sticky lg:top-20 lg:z-10" : "",
+      ].join(" ")}
+    >
       <MapContainer
         center={points[0] ?? [10, 120]}
         zoom={3}
@@ -169,10 +185,27 @@ export default function TravelMap({
               eventHandlers={{ click: () => onSelect(trip.slug) }}
             >
               <Popup>
-                <div className="space-y-1">
-                  <p className="text-sm font-semibold">{trip.title}</p>
-                  <p className="text-xs text-gray-600">{trip.location}</p>
-                  {trip.excerpt && <p className="text-xs">{trip.excerpt}</p>}
+                <div className="w-[180px] space-y-1.5">
+                  {trip.cover && (
+                    <img
+                      src={withBasePath(trip.cover)}
+                      alt=""
+                      className="mb-1 h-24 w-full rounded object-cover"
+                    />
+                  )}
+                  <p className="text-sm font-semibold leading-tight">
+                    {index !== undefined ? `${index}. ` : ""}
+                    {trip.title}
+                  </p>
+                  <p className="text-[11px] text-gray-600">
+                    {fmtDate(trip.date)} · {trip.location}
+                  </p>
+                  <a
+                    href={withBasePath(`/travels/${trip.slug}/`)}
+                    className="mt-1 inline-block text-xs font-semibold text-teal-700 hover:underline"
+                  >
+                    Read full trip →
+                  </a>
                 </div>
               </Popup>
             </Marker>

@@ -83,3 +83,32 @@
 @media (prefers-reduced-motion: reduce) {
   .animate-gradient-x, .animate-shine { animation: none !important; }
 }
+
+/* Leaflet popup + attribution theming.
+   Leaflet ships an inline white popup. In dark mode the default looks out
+   of place against the dark tiles, so we restyle the popup chrome to match
+   the site's gray-900 surface. Light mode is untouched. */
+.dark .leaflet-popup-content-wrapper,
+.dark .leaflet-popup-tip {
+  background: rgb(17 24 39);
+  color: rgb(229 231 235);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.6);
+}
+.dark .leaflet-popup-content a {
+  color: rgb(94 234 212);
+}
+.dark .leaflet-control-attribution {
+  background: rgba(17, 24, 39, 0.7);
+  color: rgb(156 163 175);
+}
+.dark .leaflet-control-attribution a {
+  color: rgb(94 234 212);
+}
+.dark .leaflet-control-zoom a {
+  background: rgb(17 24 39);
+  color: rgb(229 231 235);
+  border-color: rgb(55 65 81);
+}
+.dark .leaflet-control-zoom a:hover {
+  background: rgb(31 41 55);
+}
