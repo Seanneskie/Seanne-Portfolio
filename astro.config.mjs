@@ -18,6 +18,8 @@ const SITEMAP_HINTS = new Map([
   ["/certificates/", { changefreq: "monthly", priority: 0.6 }],
   ["/courses/", { changefreq: "monthly", priority: 0.6 }],
   ["/awards/", { changefreq: "monthly", priority: 0.6 }],
+  ["/blogs/", { changefreq: "weekly", priority: 0.7 }],
+  ["/travels/", { changefreq: "monthly", priority: 0.7 }],
   ["/contact/", { changefreq: "yearly", priority: 0.5 }],
 ]);
 
