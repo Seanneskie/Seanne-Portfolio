@@ -7,10 +7,19 @@ import Toaster from "../components/toaster.tsx";
 import { themeInitScript } from "../lib/theme-init";
 
 interface Props {
+  /** Page title — gets the " | Seanne Cañete" suffix unless `rawTitle` is set. */
   title?: string;
+  /** Use the title verbatim, no suffix. Defaults to false. */
+  rawTitle?: boolean;
   description?: string;
   canonical?: string;
   ogImage?: string;
+  /** Explicit OG title override; defaults to `${title} | Seanne Cañete`. */
+  ogTitle?: string;
+  /** OG type (defaults to "website"). */
+  ogType?: "website" | "article" | "profile";
+  /** Extra <meta name="keywords"> (comma-joined). */
+  keywords?: string[];
 }
 
 const SITE_URL =
@@ -19,10 +28,17 @@ const BASE_PATH = import.meta.env.BASE_URL.replace(/\/$/, "");
 
 const {
   title = "Seanne Cañete | Full-Stack Engineer",
+  rawTitle = false,
   description = "Seanne Cañete is a full-stack engineer and Information Technology graduate from Mindanao State University - General Santos City. Explore projects, experience, and engineering work.",
   canonical = "/",
   ogImage = "/static/bg_2.jpg",
+  ogTitle,
+  ogType = "website",
+  keywords,
 } = Astro.props;
+
+const finalTitle = rawTitle ? title : `${title} | Seanne Cañete`;
+const finalOgTitle = ogTitle ?? finalTitle;
 
 const joinBase = (path: string): string => {
   if (/^https?:\/\//.test(path)) return path;
@@ -67,14 +83,15 @@ const jsonLd = {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     {/* FOUC-safe theme init — must run before paint */}
     <script is:inline set:html={themeInitScript} />
-    <title>{title}</title>
+    <title>{finalTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={absoluteCanonical} />
+    {keywords && keywords.length > 0 && <meta name="keywords" content={keywords.join(", ")} />}
 
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:locale" content="en_US" />
     <meta property="og:site_name" content="Seanne Cañete | Portfolio" />
-    <meta property="og:title" content={title} />
+    <meta property="og:title" content={finalOgTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={absoluteOgImage} />
     <meta property="og:image:width" content="1200" />
@@ -82,7 +99,7 @@ const jsonLd = {
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:creator" content="@Seanneskie" />
-    <meta name="twitter:title" content={title} />
+    <meta name="twitter:title" content={finalOgTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={absoluteOgImage} />
 

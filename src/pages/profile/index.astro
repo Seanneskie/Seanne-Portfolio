@@ -1,0 +1,77 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Profile from "../../../components/profile/Profile.tsx";
+import MyStory from "../../../components/profile/MyStory.tsx";
+import CardCounters from "../../../components/profile/card-counters.tsx";
+import OtherSkills from "../../../components/profile/OtherSkills.tsx";
+
+const skillEntries = await getCollection("skills");
+const serviceEntries = await getCollection("services");
+const skills = skillEntries.map((e) => ({ id: e.id, ...e.data }));
+const services = serviceEntries.map((e) => e.data);
+---
+
+<BaseLayout
+  title="Profile"
+  description="Learn more about Seanne Cañete, a full-stack engineer and IT graduate from Mindanao State University - General Santos City."
+  canonical="/profile/"
+  ogType="profile"
+  keywords={[
+    "Seanne Cañete",
+    "Seanne Canete",
+    "full stack engineer",
+    "software engineer",
+    "Mindanao State University",
+    "Mindanao State University - General Santos",
+    "General Santos City",
+    "information technology graduate",
+  ]}
+>
+  <main
+    class="bg-gradient-to-b from-white via-slate-50/70 to-white dark:from-gray-900 dark:via-gray-950/40 dark:to-gray-900"
+  >
+    <div class="container mx-auto max-w-7xl space-y-16 px-4 py-14">
+      <header class="max-w-3xl space-y-4">
+        <p class="text-xs font-semibold uppercase tracking-[0.3em] text-teal-700/80 dark:text-teal-300/80">
+          Profile
+        </p>
+        <h1 class="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
+          About Seanne and the work behind the projects.
+        </h1>
+        <p class="text-base text-gray-700 dark:text-gray-300">
+          A deeper look at my background, story, and the technologies I enjoy building with.
+        </p>
+      </header>
+
+      <section class="grid items-start gap-10 lg:grid-cols-[1.1fr,0.9fr]">
+        <Profile client:load imagePriority />
+        <div class="space-y-6">
+          <CardCounters client:visible />
+          <div
+            class="rounded-2xl border border-teal-600/10 bg-white/80 p-6 text-sm text-gray-700 shadow-sm backdrop-blur-sm dark:border-teal-400/10 dark:bg-gray-900/60 dark:text-gray-200"
+          >
+            <p class="font-semibold text-teal-700 dark:text-teal-300">Focus right now</p>
+            <p class="mt-2">
+              Shipping reliable product features, polishing UI details, and keeping data dashboards fast and honest.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <MyStory client:visible skills={skills} services={services} />
+
+      <section class="space-y-6">
+        <div class="space-y-2">
+          <h2 class="text-3xl font-bold tracking-tight text-teal-700 dark:text-teal-400">
+            Other Skills
+          </h2>
+          <p class="text-sm text-gray-700 dark:text-gray-300">
+            Supporting tools and workflows that help teams ship with clarity.
+          </p>
+        </div>
+        <OtherSkills client:visible data={skills} />
+      </section>
+    </div>
+  </main>
+</BaseLayout>

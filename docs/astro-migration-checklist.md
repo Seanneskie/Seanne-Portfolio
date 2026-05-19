@@ -153,22 +153,42 @@ Move each non-`[slug]` route. Each ticked box means: page renders at the right
 path, reads from its content collection, matches the visual of the Next page,
 and ships zero JS unless an island is required.
 
-- [ ] `src/pages/index.astro` ← `app/page.tsx` (Home).
-- [ ] `src/pages/projects/index.astro` ← `app/projects/page.tsx`
-      (TagFilter remains an island).
-- [ ] `src/pages/profile/index.astro` ← `app/profile/page.tsx`
-      (ProfileCardCounter + TechComparison are islands).
-- [ ] `src/pages/profile/about-me.astro` ← `app/profile/about-me/page.tsx`.
-- [ ] `src/pages/profile/my-story.astro` ← `app/profile/my-story/page.tsx`.
-- [ ] `src/pages/courses/index.astro` ← `app/courses/page.tsx`.
-- [ ] `src/pages/certificates/index.astro` ← `app/certificates/page.tsx`.
-- [ ] `src/pages/awards/index.astro` ← `app/awards/page.tsx`.
-- [ ] `src/pages/work-experiences/index.astro` ← `app/work-experiences/page.tsx`.
-- [ ] `src/pages/contact/index.astro` ← `app/contact/page.tsx`
-      (form stays an island).
-- [ ] Per page: set `<title>`, meta description, canonical, OG tags via
-      `BaseLayout` props — match what `metadata` exports today.
-- [ ] Per page: side-by-side visual check against the Next dev server.
+- [x] **Strategy: shim Next, not fork components.** Added Vite aliases for
+      `next/image`, `next/link`, `next/navigation`, and the `@/*` path alias
+      so the existing `/components` React tree renders unchanged as Astro
+      islands. See `src/shims/*` and `astro.config.mjs`. The lone runtime
+      tweak was teaching `lib/utils.ts` `withBasePath()` to read
+      `import.meta.env.BASE_URL` as a fallback for `NEXT_PUBLIC_BASE_PATH`.
+- [x] `src/pages/index.astro` ← `app/page.tsx` (Home).
+- [x] `src/pages/projects/index.astro` ← `app/projects/page.tsx`.
+- [x] `src/pages/profile/index.astro` ← `app/profile/page.tsx` (uses
+      `client:visible` for the heavy `MyStory`/`OtherSkills`/`CardCounters`
+      islands so the hero loads first).
+- [x] `src/pages/profile/about-me.astro` ← `app/profile/about-me/page.tsx`.
+- [x] `src/pages/profile/my-story.astro` ← `app/profile/my-story/page.tsx`.
+- [x] `src/pages/courses/index.astro` ← `app/courses/page.tsx`.
+- [x] `src/pages/certificates/index.astro` ← `app/certificates/page.tsx`.
+- [x] `src/pages/awards/index.astro` ← `app/awards/page.tsx`.
+- [x] `src/pages/work-experiences/index.astro` ← `app/work-experiences/page.tsx`.
+- [x] `src/pages/contact/index.astro` ← `app/contact/page.tsx`.
+- [x] Per page SEO matches Next: title, description, canonical (basepath-
+      prefixed), OG title/description/image. Extended `BaseLayout` props
+      with `ogTitle`, `ogType`, `keywords`, `rawTitle` to cover every
+      metadata variation the Next pages exported.
+- [x] Bundle verdict (Astro direct refs vs Next First Load JS):
+      - `/`         ≈ 232 KB vs 572 kB
+      - `/profile`  ≈ 226 KB vs 565 kB
+      - `/courses`  ≈ 208 KB vs 188 kB
+      - `/awards`   ≈ 198 KB vs 153 kB
+      Biggest wins on `/` and `/profile/*` as predicted. Smaller routes
+      pay a small overhead for the React runtime that they don't recoup
+      without islands.
+
+**Known issue, deferred to Phase 6:** `lib/profile-card-counter-data.ts`
+and `components/card/CardCounter.tsx` use `import * as LucideIcons from
+"lucide-react"` to validate icon-name strings, which forces the entire
+595 KB lucide chunk into the build. Only the profile pages pull it
+transitively. Phase 6 should swap this for a name-to-component map.
 
 ---
 
@@ -206,7 +226,14 @@ Round out the long-tail before cutover.
       `astro:build`).
 - [ ] Audit remaining `next/image` / `next/link` usages inside React
       components; rewrite to plain `<img>`/`<a>` (islands) or `astro:assets`
-      (`.astro` files).
+      (`.astro` files). Phase 4 left them shimmed via Vite alias — the shim
+      is fine for parity, but native usage is cleaner long-term.
+- [ ] **Fix lucide tree-shaking.** `lib/profile-card-counter-data.ts` and
+      `components/card/CardCounter.tsx` use `import * as LucideIcons from
+      "lucide-react"` to resolve icon names by string, forcing the entire
+      ~595 KB lucide bundle into a chunk. Replace with an explicit
+      `{ Award: AwardIcon, Code2: CodeIcon, ... }` map so Vite/Rollup can
+      tree-shake.
 - [ ] Run `astro build` — fix all Zod validation errors surfaced from
       Phase 2 schemas.
 - [ ] Compare `dist/` (Astro) vs `out/` (Next):

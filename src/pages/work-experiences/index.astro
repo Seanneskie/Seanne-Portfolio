@@ -1,0 +1,17 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import WorkExperiences from "../../../components/work-experiences/WorkExperiences.tsx";
+
+const entries = await getCollection("work-experiences");
+const data = entries.map((e) => e.data);
+---
+
+<BaseLayout
+  title="Work Experience"
+  description="Explore Seanne Cañete's professional experience across software engineering, analytics, and product delivery, including full-stack roles."
+  canonical="/work-experiences/"
+  ogType="article"
+>
+  <WorkExperiences client:load data={data} />
+</BaseLayout>

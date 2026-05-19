@@ -1,0 +1,17 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Certificates from "../../../components/certificates/Certificates.tsx";
+
+const entries = await getCollection("certificates");
+const data = entries.map((e) => e.data);
+---
+
+<BaseLayout
+  title="Certificates"
+  description="Professional certifications and training completed by Seanne Cañete in data science, cloud, and software development."
+  canonical="/certificates/"
+  ogType="article"
+>
+  <Certificates client:load data={data} />
+</BaseLayout>
