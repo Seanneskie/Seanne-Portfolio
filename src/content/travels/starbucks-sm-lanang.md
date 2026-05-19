@@ -13,6 +13,10 @@ gallery:
   - { src: "/static/travels/starbucks-sm-lanang/06.jpg", alt: "Starbucks SM Lanang — photo 6" }
   - { src: "/static/travels/starbucks-sm-lanang/07.jpg", alt: "Starbucks SM Lanang — photo 7" }
   - { src: "/static/travels/starbucks-sm-lanang/08.jpg", alt: "Starbucks SM Lanang — photo 8" }
+  - { src: "/static/travels/starbucks-sm-lanang/09.jpg", alt: "Starbucks SM Lanang — photo 9" }
+  - { src: "/static/travels/starbucks-sm-lanang/10.jpg", alt: "Starbucks SM Lanang — photo 10" }
+  - { src: "/static/travels/starbucks-sm-lanang/11.jpg", alt: "Starbucks SM Lanang — photo 11" }
+  - { src: "/static/travels/starbucks-sm-lanang/12.jpg", alt: "Starbucks SM Lanang — photo 12" }
 tags: ["coffee", "davao", "ph"]
 excerpt: "A quick stop at the Starbucks inside SM Lanang Premier along J.P. Laurel Avenue."
 draft: false
