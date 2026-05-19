@@ -4,6 +4,7 @@ import {
   Binoculars,
   Car,
   Coffee,
+  Drumstick,
   Gamepad2,
   Landmark,
   MapPin,
@@ -22,6 +23,7 @@ import {
 // no entry — they're filter facets, not place categories.
 const TAG_ICONS: { tags: readonly string[]; icon: LucideIcon }[] = [
   { tags: ["burgers"], icon: Beef },
+  { tags: ["chicken", "wings"], icon: Drumstick },
   { tags: ["coffee", "cafe"], icon: Coffee },
   { tags: ["food", "restaurant", "dining"], icon: UtensilsCrossed },
   { tags: ["arcade", "amusement", "games"], icon: Gamepad2 },

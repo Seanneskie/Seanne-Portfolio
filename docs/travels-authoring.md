@@ -88,6 +88,7 @@ map-pin glyph.
 | Tag(s) | Pin icon (Lucide) |
 | ------ | ----------------- |
 | `burgers` | `Beef` |
+| `chicken`, `wings` | `Drumstick` |
 | `coffee`, `cafe` | `Coffee` |
 | `food`, `restaurant`, `dining` | `UtensilsCrossed` |
 | `arcade`, `amusement`, `games` | `Gamepad2` |
