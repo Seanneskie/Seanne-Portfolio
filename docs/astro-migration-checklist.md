@@ -67,32 +67,45 @@ Replace `public/data/*.json` reads with typed `getCollection()` access. This is
 the headline reason for the migration — do it before porting any data-driven
 page so subsequent phases consume the typed API directly.
 
-- [ ] Create `src/content/config.ts`.
-- [ ] Define a Zod schema for each dataset, mirroring `types/*.ts`:
-  - [ ] `projects`
-  - [ ] `certificates`
-  - [ ] `courses`
-  - [ ] `awards` (sourced from `achievements.json`)
-  - [ ] `work-experiences`
-  - [ ] `services`
-  - [ ] `skills`
-  - [ ] `highlights`
-  - [ ] `testimonials`
-  - [ ] `blog-posts`
-  - [ ] `tech-comparison`
-  - [ ] `profile` (singleton)
-  - [ ] `card-counter` (singleton)
-- [ ] Move each JSON file from `public/data/<name>.json` to
-      `src/content/<name>/data.json` (or per-entry files where it improves
-      maintainability — at minimum `projects/` should be per-entry).
-- [ ] Run `astro sync` and confirm types are generated under `.astro/`.
-- [ ] Write a smoke `.astro` page that calls `getCollection("projects")` and
-      lists titles — verify build-time validation fires on a deliberately
-      malformed entry, then revert.
-- [ ] Add a `tsconfig` path or re-export so React islands can `import` a
-      typed `Project` type from the collection's inferred type.
-- [ ] Document the new pattern at the bottom of [`project-details.md`](./project-details.md)
-      (where to add a new project entry now).
+- [x] Create `src/content.config.ts` (Astro 6's modern location — replaces the
+      legacy `src/content/config.ts`).
+- [x] Define a Zod schema for each dataset, mirroring `types/*.ts` + the
+      shapes inferred from each JSON file:
+  - [x] `projects` (17 entries)
+  - [x] `certificates` (35 entries)
+  - [x] `courses` (20 entries)
+  - [x] `awards` — sourced from `achievements.json` (8 entries)
+  - [x] `work-experiences` (4 entries)
+  - [x] `services` (4 entries)
+  - [x] `skills` (6 top-level groups)
+  - [x] `highlights` (15 entries)
+  - [x] `testimonials` (3 entries)
+  - [x] `blog-posts` (4 entries)
+  - [x] `tech-comparison` (singleton — 25 items inside)
+  - [x] `profile` (singleton)
+  - [x] `card-counter` (singleton — 7 items inside)
+- [x] **Keep JSON in `public/data/`** — used the Astro `file()` loader pointed
+      at the existing files. Zero duplication, Next.js still reads them via
+      `lib/get-data.ts` until Phase 7. Per-entry split-up was deemed
+      unnecessary; the loader handles array sources directly.
+- [x] **Synthesize stable ids** via a custom parser (`arrayWithIds(...)`).
+      Most JSON entries lack an `id` field; the parser derives one from
+      stable fields (e.g. `title`, `details`) with array-index suffixes on
+      collision, so no entry is silently dropped.
+- [x] Run `astro sync` — no warnings, types generated under `.astro/`.
+- [x] Wrote a smoke `.astro` page calling `getCollection()` on every
+      collection. Verified entry counts match the source JSON for all 13.
+      Deleted the page after verification (not meant for prod).
+- [x] **Verified Zod validation fires** — temporarily removed `title` from
+      `services[0]`; `astro sync` reported
+      `[InvalidContentEntryDataError] services → 0 ... title: Required`
+      with the source file location. Restored after.
+- [x] Documented the new pattern in
+      [`project-details.md`](./project-details.md): the JSON now feeds both
+      stacks, and schema updates are required when adding fields.
+- [ ] *(Deferred to Phases 4–5)* Replace `lib/get-data.ts` callers with
+      `await getCollection(...)` as each page is ported — Next still needs
+      `get-data.ts` until the Phase 7 cutover.
 
 ---
 

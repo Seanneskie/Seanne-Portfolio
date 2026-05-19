@@ -5,6 +5,13 @@ This guide explains how to add a new project detail page using the shared
 (title, tags, period, GitHub link, live link, collaborators) is auto-loaded
 from `public/data/projects.json` — your component only owns the body content.
 
+> **Astro migration note (Phase 2+):** the same JSON file is now also exposed
+> as an Astro content collection (`projects`) with a Zod schema in
+> [`src/content.config.ts`](../src/content.config.ts). New fields must be
+> added to both the JSON and the schema, or `astro build` will fail with a
+> validation error. Until the Phase 7 cutover, Next.js still reads the JSON
+> directly via `lib/get-data.ts` — both stacks share the same source file.
+
 ## 1. Add the project to `public/data/projects.json`
 
 ```json
