@@ -10,6 +10,8 @@ import {
   NavigationMenuList,
   NavigationMenuItem,
   NavigationMenuLink,
+  NavigationMenuTrigger,
+  NavigationMenuContent,
 } from "@/components/ui/navigation-menu";
 import { ModeToggle } from "@/components/mode-toggle";
 import { Github, Linkedin, Twitter } from "lucide-react";
@@ -33,6 +35,13 @@ const NAV_LINKS = [
   },
 ] as const satisfies readonly NavLink[];
 
+// Secondary pages — surfaced via a "More" dropdown on desktop and a labeled
+// sub-list on mobile. Easy to extend without crowding the primary nav bar.
+const MORE_LINKS = [
+  { href: "/blogs", label: "Blogs" },
+  { href: "/travels", label: "Travels" },
+] as const satisfies readonly NavLink[];
+
 const SOCIAL_LINKS = [
   {
     href: "https://github.com/Seanneskie",
@@ -54,6 +63,9 @@ const SOCIAL_LINKS = [
 export default function Header(): ReactElement {
   const pathname = usePathname();
   const [hovered, setHovered] = React.useState<string | null>(null);
+  const isMoreActive = MORE_LINKS.some(
+    (link) => pathname === link.href || pathname?.startsWith(`${link.href}/`),
+  );
   const handleLinkFollow = React.useCallback((link: NavLink): void => {
     if (link.external) {
       toast.info("Opening resume…");
@@ -158,6 +170,43 @@ export default function Header(): ReactElement {
                     </NavigationMenuItem>
                   );
                 })}
+
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger
+                    className={[
+                      "relative h-auto bg-transparent px-3 py-1.5 text-sm font-medium",
+                      "text-black dark:text-white",
+                      "hover:bg-transparent hover:text-black focus:bg-transparent focus:text-black",
+                      "dark:hover:bg-transparent dark:hover:text-white dark:focus:bg-transparent dark:focus:text-white",
+                      "data-[state=open]:bg-transparent data-[state=open]:text-black dark:data-[state=open]:bg-transparent dark:data-[state=open]:text-white",
+                      isMoreActive ? "text-teal-700 ring-1 ring-teal-500/40 dark:text-teal-300 dark:ring-teal-400/30" : "",
+                    ].join(" ")}
+                  >
+                    More
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent className="min-w-[10rem]">
+                    <ul className="flex flex-col gap-1">
+                      {MORE_LINKS.map((link) => {
+                        const isActive =
+                          pathname === link.href || pathname?.startsWith(`${link.href}/`);
+                        return (
+                          <li key={link.href}>
+                            <NavigationMenuLink asChild>
+                              <Link
+                                href={link.href}
+                                aria-current={isActive ? "page" : undefined}
+                                data-active={isActive || undefined}
+                                className="block rounded-sm px-3 py-2 text-sm font-medium"
+                              >
+                                {link.label}
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>
 
@@ -186,6 +235,7 @@ export default function Header(): ReactElement {
               socialLinks={SOCIAL_LINKS}
               currentPathname={pathname}
               onLinkFollow={handleLinkFollow}
+              moreLinks={MORE_LINKS}
             />
           </div>
         </div>

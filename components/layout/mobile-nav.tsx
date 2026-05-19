@@ -18,11 +18,70 @@ import {
 import { cn } from "@/lib/utils";
 import type { NavLink, SocialLink } from "@/types/navigation";
 
+function renderLink(
+  link: NavLink,
+  currentPathname: string | null,
+  onSelect: (link: NavLink) => void,
+): ReactElement {
+  const isActive =
+    !link.external &&
+    (currentPathname === link.href ||
+      (link.href !== "/" && (currentPathname?.startsWith(link.href) ?? false)));
+
+  const itemClassName = cn(
+    "flex items-center justify-between rounded-md px-3 py-2 text-base font-medium transition",
+    "text-black hover:bg-teal-500/10 hover:text-teal-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/60",
+    "dark:text-white dark:hover:bg-teal-400/10 dark:hover:text-teal-200",
+    isActive && "bg-teal-500/10 text-teal-700 dark:text-teal-300",
+  );
+
+  const content = (
+    <>
+      <span>{link.label}</span>
+      {link.external ? (
+        <ArrowUpRight className="ml-3 h-4 w-4 text-gray-500 dark:text-gray-400" aria-hidden="true" />
+      ) : null}
+    </>
+  );
+
+  return (
+    <li key={link.href}>
+      {link.external ? (
+        <SheetClose asChild>
+          <a
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => onSelect(link)}
+            className={itemClassName}
+          >
+            {content}
+          </a>
+        </SheetClose>
+      ) : (
+        <SheetClose asChild>
+          <Link
+            href={link.href}
+            prefetch={false}
+            aria-current={isActive ? "page" : undefined}
+            onClick={() => onSelect(link)}
+            className={itemClassName}
+          >
+            {content}
+          </Link>
+        </SheetClose>
+      )}
+    </li>
+  );
+}
+
 interface MobileNavProps {
   navLinks: readonly NavLink[];
   socialLinks: readonly SocialLink[];
   currentPathname: string | null;
   onLinkFollow?: (link: NavLink) => void;
+  /** Secondary nav links rendered under a "More" sub-heading. */
+  moreLinks?: readonly NavLink[];
 }
 
 export function MobileNav({
@@ -30,6 +89,7 @@ export function MobileNav({
   socialLinks,
   currentPathname,
   onLinkFollow,
+  moreLinks,
 }: MobileNavProps): ReactElement {
   const [open, setOpen] = React.useState<boolean>(false);
 
@@ -73,59 +133,18 @@ export function MobileNav({
         </SheetHeader>
         <nav aria-label="Mobile navigation" className="px-2 py-4">
           <ul className="flex flex-col gap-1">
-            {navLinks.map((link) => {
-              const isActive =
-                !link.external &&
-                (currentPathname === link.href ||
-                  (link.href !== "/" && (currentPathname?.startsWith(link.href) ?? false)));
-
-              const itemClassName = cn(
-                "flex items-center justify-between rounded-md px-3 py-2 text-base font-medium transition",
-                "text-black hover:bg-teal-500/10 hover:text-teal-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/60",
-                "dark:text-white dark:hover:bg-teal-400/10 dark:hover:text-teal-200",
-                isActive && "bg-teal-500/10 text-teal-700 dark:text-teal-300",
-              );
-
-              const content = (
-                <>
-                  <span>{link.label}</span>
-                  {link.external ? (
-                    <ArrowUpRight className="ml-3 h-4 w-4 text-gray-500 dark:text-gray-400" aria-hidden="true" />
-                  ) : null}
-                </>
-              );
-
-              return (
-                <li key={link.href}>
-                  {link.external ? (
-                    <SheetClose asChild>
-                      <a
-                        href={link.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={() => handleSelect(link)}
-                        className={itemClassName}
-                      >
-                        {content}
-                      </a>
-                    </SheetClose>
-                  ) : (
-                    <SheetClose asChild>
-                      <Link
-                        href={link.href}
-                        prefetch={false}
-                        aria-current={isActive ? "page" : undefined}
-                        onClick={() => handleSelect(link)}
-                        className={itemClassName}
-                      >
-                        {content}
-                      </Link>
-                    </SheetClose>
-                  )}
-                </li>
-              );
-            })}
+            {navLinks.map((link) => renderLink(link, currentPathname, handleSelect))}
           </ul>
+          {moreLinks && moreLinks.length > 0 && (
+            <div className="mt-4 border-t border-gray-200 pt-4 dark:border-gray-800">
+              <p className="px-3 pb-2 text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
+                More
+              </p>
+              <ul className="flex flex-col gap-1">
+                {moreLinks.map((link) => renderLink(link, currentPathname, handleSelect))}
+              </ul>
+            </div>
+          )}
         </nav>
         <div className="border-t border-gray-200 px-4 py-4 dark:border-gray-800">
           <p className="text-sm font-semibold uppercase tracking-wide text-gray-600 dark:text-gray-300">
