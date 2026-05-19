@@ -6,6 +6,41 @@ import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import type { TravelEntry } from "./types";
 
+// Watches the `.dark` class on <html> so the map can swap tile providers when
+// the user toggles the site theme. Returns true when dark mode is active.
+function useIsDarkMode(): boolean {
+  const [isDark, setIsDark] = React.useState<boolean>(() => {
+    if (typeof document === "undefined") return false;
+    return document.documentElement.classList.contains("dark");
+  });
+
+  React.useEffect(() => {
+    const root = document.documentElement;
+    const update = () => setIsDark(root.classList.contains("dark"));
+    update();
+    const observer = new MutationObserver(update);
+    observer.observe(root, { attributes: true, attributeFilter: ["class"] });
+    return () => observer.disconnect();
+  }, []);
+
+  return isDark;
+}
+
+const TILES = {
+  light: {
+    url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+    attribution:
+      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+  },
+  dark: {
+    // CartoDB "dark_all" — free, OSM-derived, dark muted palette that matches
+    // the site's dark theme. Attribution required by both Carto and OSM.
+    url: "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+    attribution:
+      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+  },
+} as const;
+
 // Leaflet's default marker icon URLs assume a CDN host that breaks under our
 // Vite bundle + base-path setup. Re-point them to the asset URLs Vite emits
 // at build time so the markers render on first paint.
@@ -56,6 +91,9 @@ export default function TravelMap({
   onSelect,
   fitBounds = true,
 }: TravelMapProps): React.ReactElement {
+  const isDark = useIsDarkMode();
+  const tile = isDark ? TILES.dark : TILES.light;
+
   const pinnedTrips = React.useMemo(
     () => trips.filter((t): t is TravelEntry & { coords: [number, number] } => Boolean(t.coords)),
     [trips],
@@ -80,10 +118,9 @@ export default function TravelMap({
         scrollWheelZoom={false}
         className="h-full w-full"
       >
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
+        {/* `key` forces a fresh TileLayer when the theme flips so the new
+           provider's tiles render immediately instead of layering on top. */}
+        <TileLayer key={isDark ? "dark" : "light"} url={tile.url} attribution={tile.attribution} />
         {fitBounds && <FitAll points={points} />}
         <FlyTo coords={activeCoords} />
         {pinnedTrips.map((trip) => (

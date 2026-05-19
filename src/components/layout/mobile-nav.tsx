@@ -17,6 +17,8 @@ export interface NavLinkData {
 interface MobileNavProps {
   navLinks: NavLinkData[];
   currentPathname: string;
+  /** Secondary nav rendered under a "More" sub-heading. */
+  moreLinks?: NavLinkData[];
 }
 
 const SOCIALS: { href: string; label: string; icon: LucideIcon }[] = [
@@ -39,8 +41,38 @@ const itemClass = (isActive: boolean) =>
     .filter(Boolean)
     .join(" ");
 
-export default function MobileNav({ navLinks, currentPathname }: MobileNavProps) {
+function renderLink(
+  link: NavLinkData,
+  currentPathname: string,
+  close: () => void,
+) {
+  const isActive =
+    !link.external &&
+    (currentPathname === link.href ||
+      (link.href !== "/" && currentPathname.startsWith(link.href)));
+
+  return (
+    <li key={link.href}>
+      <a
+        href={link.href}
+        target={link.external ? "_blank" : undefined}
+        rel={link.external ? "noopener noreferrer" : undefined}
+        aria-current={isActive ? "page" : undefined}
+        onClick={close}
+        className={itemClass(isActive)}
+      >
+        <span>{link.label}</span>
+        {link.external ? (
+          <ArrowUpRight className="ml-3 h-4 w-4 text-gray-500 dark:text-gray-400" aria-hidden="true" />
+        ) : null}
+      </a>
+    </li>
+  );
+}
+
+export default function MobileNav({ navLinks, currentPathname, moreLinks }: MobileNavProps) {
   const [open, setOpen] = useState(false);
+  const close = () => setOpen(false);
 
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
@@ -72,31 +104,18 @@ export default function MobileNav({ navLinks, currentPathname }: MobileNavProps)
 
           <nav aria-label="Mobile navigation" className="px-2 py-4">
             <ul className="flex flex-col gap-1">
-              {navLinks.map((link) => {
-                const isActive =
-                  !link.external &&
-                  (currentPathname === link.href ||
-                    (link.href !== "/" && currentPathname.startsWith(link.href)));
-
-                return (
-                  <li key={link.href}>
-                    <a
-                      href={link.href}
-                      target={link.external ? "_blank" : undefined}
-                      rel={link.external ? "noopener noreferrer" : undefined}
-                      aria-current={isActive ? "page" : undefined}
-                      onClick={() => setOpen(false)}
-                      className={itemClass(isActive)}
-                    >
-                      <span>{link.label}</span>
-                      {link.external ? (
-                        <ArrowUpRight className="ml-3 h-4 w-4 text-gray-500 dark:text-gray-400" aria-hidden="true" />
-                      ) : null}
-                    </a>
-                  </li>
-                );
-              })}
+              {navLinks.map((link) => renderLink(link, currentPathname, close))}
             </ul>
+            {moreLinks && moreLinks.length > 0 && (
+              <div className="mt-4 border-t border-gray-200 pt-4 dark:border-gray-800">
+                <p className="px-3 pb-2 text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
+                  More
+                </p>
+                <ul className="flex flex-col gap-1">
+                  {moreLinks.map((link) => renderLink(link, currentPathname, close))}
+                </ul>
+              </div>
+            )}
           </nav>
 
           <div className="border-t border-gray-200 px-4 py-4 dark:border-gray-800">

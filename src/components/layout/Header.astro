@@ -27,6 +27,14 @@ const NAV_LINKS: NavLink[] = [
   },
 ];
 
+// Secondary nav surfaced via a "More" dropdown on desktop and a sub-list on
+// mobile. Keep it short — easy to extend, but the primary nav should stay
+// the dominant signal.
+const MORE_LINKS: NavLink[] = [
+  { href: withBase("/blogs/"), label: "Blogs" },
+  { href: withBase("/travels/"), label: "Travels" },
+];
+
 const SOCIAL_LINKS: { href: string; label: string; icon: SocialName }[] = [
   { href: "https://github.com/Seanneskie", label: "GitHub", icon: "github" },
   { href: "https://x.com/Seanneskie", label: "Twitter", icon: "twitter" },
@@ -42,6 +50,7 @@ const isActive = (href: string): boolean => {
   if (href === withBase("/")) return pathname === href;
   return pathname === href || pathname.startsWith(href);
 };
+const isMoreActive = MORE_LINKS.some((link) => isActive(link.href));
 
 const desktopLinkClass = [
   "relative block rounded-md px-3 py-1.5 text-sm font-medium transition",
@@ -97,8 +106,77 @@ const desktopLinkClass = [
                 );
               })
             }
+            <li class="relative">
+              {/* <details> gives us a zero-JS dropdown that closes on outside
+                 click via a tiny script below. Keyboard-accessible by default. */}
+              <details class="group/more">
+                <summary
+                  aria-current={isMoreActive ? "page" : undefined}
+                  class={[
+                    desktopLinkClass,
+                    "flex cursor-pointer list-none items-center gap-1 [&::-webkit-details-marker]:hidden",
+                  ].join(" ")}
+                >
+                  More
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="h-3 w-3 transition-transform group-open/more:rotate-180"
+                    aria-hidden="true"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </summary>
+                <ul
+                  class="absolute right-0 top-full z-50 mt-2 min-w-[10rem] rounded-md border border-gray-200 bg-white p-1 shadow-md dark:border-gray-800 dark:bg-gray-900"
+                >
+                  {
+                    MORE_LINKS.map((link) => {
+                      const active = isActive(link.href);
+                      return (
+                        <li>
+                          <a
+                            href={link.href}
+                            aria-current={active ? "page" : undefined}
+                            class={[
+                              "block rounded-sm px-3 py-2 text-sm font-medium transition",
+                              "text-black hover:bg-teal-500/10 hover:text-teal-700",
+                              "dark:text-white dark:hover:bg-teal-400/10 dark:hover:text-teal-300",
+                              active
+                                ? "bg-teal-500/10 text-teal-700 dark:bg-teal-400/10 dark:text-teal-300"
+                                : "",
+                            ].join(" ")}
+                          >
+                            {link.label}
+                          </a>
+                        </li>
+                      );
+                    })
+                  }
+                </ul>
+              </details>
+            </li>
           </ul>
         </nav>
+        <script is:inline>
+          // Close the More <details> popover when clicking outside or pressing Escape.
+          document.addEventListener("click", (event) => {
+            document.querySelectorAll("details.group\\/more[open]").forEach((el) => {
+              if (!el.contains(event.target)) el.removeAttribute("open");
+            });
+          });
+          document.addEventListener("keydown", (event) => {
+            if (event.key !== "Escape") return;
+            document.querySelectorAll("details.group\\/more[open]").forEach((el) => {
+              el.removeAttribute("open");
+            });
+          });
+        </script>
 
         <div class="hidden items-center gap-2 lg:flex">
           {
@@ -122,7 +200,12 @@ const desktopLinkClass = [
       {/* Mobile nav */}
       <div class="flex items-center gap-2 md:hidden">
         <ThemeToggle client:idle />
-        <MobileNav client:load navLinks={NAV_LINKS} currentPathname={pathname} />
+        <MobileNav
+          client:load
+          navLinks={NAV_LINKS}
+          moreLinks={MORE_LINKS}
+          currentPathname={pathname}
+        />
       </div>
     </div>
   </div>
