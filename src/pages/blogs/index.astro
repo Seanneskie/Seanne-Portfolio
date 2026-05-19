@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { withBase } from "../../lib/with-base";
+import BlogList from "../../../components/blogs/BlogList.tsx";
 
 const isProd = import.meta.env.PROD;
 
@@ -11,9 +11,8 @@ const native = (await getCollection("blogs"))
     kind: "native" as const,
     slug: e.id.replace(/\.md$/, ""),
     title: e.data.title,
-    date: e.data.date,
+    date: e.data.date.toISOString(),
     description: e.data.description,
-    cover: e.data.cover,
     tags: e.data.tags,
   }));
 
@@ -21,18 +20,15 @@ const external = (await getCollection("blog-posts")).map((e) => ({
   kind: "external" as const,
   slug: e.id,
   title: e.data.title,
-  date: new Date(e.data.date),
+  date: new Date(e.data.date).toISOString(),
   description: e.data.description,
   url: e.data.url,
   tags: [] as string[],
 }));
 
 const posts = [...native, ...external].sort(
-  (a, b) => b.date.getTime() - a.date.getTime(),
+  (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
 );
-
-const fmtDate = (d: Date) =>
-  d.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" });
 ---
 
 <BaseLayout
@@ -41,51 +37,13 @@ const fmtDate = (d: Date) =>
   canonical="/blogs/"
 >
   <main class="container mx-auto max-w-4xl px-4 py-12">
-    <header class="mb-10">
+    <header class="mb-8">
       <h1 class="text-3xl font-semibold text-black dark:text-white sm:text-4xl">Blogs</h1>
       <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">
         Notes on engineering, projects, and the occasional rabbit hole.
       </p>
     </header>
 
-    {posts.length === 0 ? (
-      <p class="text-sm text-gray-600 dark:text-gray-300">No posts yet — check back soon.</p>
-    ) : (
-      <ul class="space-y-4">
-        {posts.map((post) => {
-          const href = post.kind === "native"
-            ? withBase(`/blogs/${post.slug}/`)
-            : post.url;
-          const external = post.kind === "external";
-          return (
-            <li>
-              <a
-                href={href}
-                target={external ? "_blank" : undefined}
-                rel={external ? "noopener noreferrer" : undefined}
-                class="group block rounded-lg border border-gray-200 bg-white p-5 transition hover:border-teal-500/50 hover:shadow-sm dark:border-gray-800 dark:bg-gray-900/40 dark:hover:border-teal-400/50"
-              >
-                <div class="flex items-center justify-between gap-3">
-                  <time class="text-xs font-medium uppercase tracking-wide text-gray-500 dark:text-gray-400">
-                    {fmtDate(post.date)}
-                  </time>
-                  {external && (
-                    <span class="rounded-full bg-gray-100 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wide text-gray-600 dark:bg-gray-800 dark:text-gray-300">
-                      External
-                    </span>
-                  )}
-                </div>
-                <h2 class="mt-1 text-lg font-semibold text-black group-hover:text-teal-700 dark:text-white dark:group-hover:text-teal-300">
-                  {post.title}
-                </h2>
-                {post.description && (
-                  <p class="mt-1 text-sm text-gray-600 dark:text-gray-300">{post.description}</p>
-                )}
-              </a>
-            </li>
-          );
-        })}
-      </ul>
-    )}
+    <BlogList client:load posts={posts} />
   </main>
 </BaseLayout>

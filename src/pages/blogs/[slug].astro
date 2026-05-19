@@ -4,20 +4,45 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import { withBase } from "../../lib/with-base";
 
 export async function getStaticPaths() {
-  const entries = await getCollection("blogs");
-  return entries.map((entry) => ({
+  const entries = (await getCollection("blogs")).sort(
+    (a, b) => b.data.date.getTime() - a.data.date.getTime(),
+  );
+  return entries.map((entry, index) => ({
     params: { slug: entry.id.replace(/\.md$/, "") },
-    props: { entry },
+    props: {
+      entry,
+      // newer = previous in chronological-desc; older = next
+      prev: entries[index - 1] ?? null,
+      next: entries[index + 1] ?? null,
+    },
   }));
 }
 
-const { entry } = Astro.props;
+const { entry, prev, next } = Astro.props;
 const { Content } = await render(entry);
 
 const fmtDate = (d: Date) =>
   d.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
 
 const pageTitle = `${entry.data.title} | Blog`;
+
+// ~200 wpm is a reasonable midpoint for English long-form. body is a string
+// (the raw Markdown source) when the glob loader is used.
+const wordCount = (entry.body ?? "").split(/\s+/).filter(Boolean).length;
+const readingMinutes = Math.max(1, Math.round(wordCount / 200));
+
+const slug = entry.id.replace(/\.md$/, "");
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: entry.data.title,
+  description: entry.data.description,
+  datePublished: entry.data.date.toISOString(),
+  author: { "@type": "Person", name: "Seanne Cañete" },
+  keywords: entry.data.tags.join(", "),
+  image: entry.data.cover,
+  mainEntityOfPage: `/blogs/${slug}/`,
+};
 ---
 
 <BaseLayout
@@ -42,6 +67,8 @@ const pageTitle = `${entry.data.title} | Blog`;
       </h1>
       <div class="mt-2 flex flex-wrap items-center gap-3 text-sm text-gray-600 dark:text-gray-300">
         <time>{fmtDate(entry.data.date)}</time>
+        <span aria-hidden="true">•</span>
+        <span>{readingMinutes} min read</span>
         {entry.data.tags.length > 0 && (
           <ul class="flex flex-wrap gap-1.5">
             {entry.data.tags.map((tag) => (
@@ -65,6 +92,35 @@ const pageTitle = `${entry.data.title} | Blog`;
     <article class="prose prose-teal max-w-none dark:prose-invert">
       <Content />
     </article>
+
+    {(prev || next) && (
+      <nav class="mt-12 grid gap-3 border-t border-gray-200 pt-8 dark:border-gray-800 sm:grid-cols-2" aria-label="Post navigation">
+        {prev ? (
+          <a
+            href={withBase(`/blogs/${prev.id.replace(/\.md$/, "")}/`)}
+            class="group rounded-lg border border-gray-200 p-4 transition hover:border-teal-500/50 dark:border-gray-800 dark:hover:border-teal-400/50"
+          >
+            <p class="text-xs text-gray-500 dark:text-gray-400">Newer post</p>
+            <p class="mt-1 text-sm font-medium text-black group-hover:text-teal-700 dark:text-white dark:group-hover:text-teal-300">
+              ← {prev.data.title}
+            </p>
+          </a>
+        ) : <span />}
+        {next ? (
+          <a
+            href={withBase(`/blogs/${next.id.replace(/\.md$/, "")}/`)}
+            class="group rounded-lg border border-gray-200 p-4 text-right transition hover:border-teal-500/50 dark:border-gray-800 dark:hover:border-teal-400/50"
+          >
+            <p class="text-xs text-gray-500 dark:text-gray-400">Older post</p>
+            <p class="mt-1 text-sm font-medium text-black group-hover:text-teal-700 dark:text-white dark:group-hover:text-teal-300">
+              {next.data.title} →
+            </p>
+          </a>
+        ) : <span />}
+      </nav>
+    )}
+
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </main>
 </BaseLayout>
 

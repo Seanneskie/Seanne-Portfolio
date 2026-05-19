@@ -5,14 +5,20 @@ import TravelMap from "../../../components/travels/TravelMap.tsx";
 import { withBase } from "../../lib/with-base";
 
 export async function getStaticPaths() {
-  const entries = await getCollection("travels");
-  return entries.map((entry) => ({
+  const entries = (await getCollection("travels")).sort(
+    (a, b) => b.data.date.getTime() - a.data.date.getTime(),
+  );
+  return entries.map((entry, index) => ({
     params: { slug: entry.id.replace(/\.md$/, "") },
-    props: { entry },
+    props: {
+      entry,
+      prev: entries[index - 1] ?? null,
+      next: entries[index + 1] ?? null,
+    },
   }));
 }
 
-const { entry } = Astro.props;
+const { entry, prev, next } = Astro.props;
 const { Content } = await render(entry);
 
 const fmtDate = (d: Date) =>
@@ -23,6 +29,19 @@ const pageTitle = `${entry.data.title} | Travels`;
 
 // Single-pin map data — re-uses the same TravelMap island as the listing view,
 // driven by a one-entry trips array so the pin centers automatically.
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: entry.data.title,
+  description: entry.data.excerpt,
+  datePublished: entry.data.date.toISOString(),
+  author: { "@type": "Person", name: "Seanne Cañete" },
+  keywords: entry.data.tags.join(", "),
+  image: entry.data.cover,
+  contentLocation: { "@type": "Place", name: entry.data.location },
+  mainEntityOfPage: `/travels/${slug}/`,
+};
+
 const singleTrip = entry.data.coords
   ? [
       {
@@ -109,5 +128,34 @@ const singleTrip = entry.data.coords
         </div>
       </section>
     )}
+
+    {(prev || next) && (
+      <nav class="mt-12 grid gap-3 border-t border-gray-200 pt-8 dark:border-gray-800 sm:grid-cols-2" aria-label="Travel navigation">
+        {prev ? (
+          <a
+            href={withBase(`/travels/${prev.id.replace(/\.md$/, "")}/`)}
+            class="group rounded-lg border border-gray-200 p-4 transition hover:border-teal-500/50 dark:border-gray-800 dark:hover:border-teal-400/50"
+          >
+            <p class="text-xs text-gray-500 dark:text-gray-400">Newer trip</p>
+            <p class="mt-1 text-sm font-medium text-black group-hover:text-teal-700 dark:text-white dark:group-hover:text-teal-300">
+              ← {prev.data.title}
+            </p>
+          </a>
+        ) : <span />}
+        {next ? (
+          <a
+            href={withBase(`/travels/${next.id.replace(/\.md$/, "")}/`)}
+            class="group rounded-lg border border-gray-200 p-4 text-right transition hover:border-teal-500/50 dark:border-gray-800 dark:hover:border-teal-400/50"
+          >
+            <p class="text-xs text-gray-500 dark:text-gray-400">Older trip</p>
+            <p class="mt-1 text-sm font-medium text-black group-hover:text-teal-700 dark:text-white dark:group-hover:text-teal-300">
+              {next.data.title} →
+            </p>
+          </a>
+        ) : <span />}
+      </nav>
+    )}
+
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </main>
 </BaseLayout>
