@@ -8,6 +8,7 @@ import "leaflet/dist/leaflet.css";
 import type { TravelEntry } from "./types";
 import { withBasePath } from "@/lib/utils";
 import { resolvePinIcon } from "./pinIcon";
+import { jitterPins } from "./jitterPins";
 
 const fmtDate = (iso: string): string =>
   new Date(iso).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
@@ -72,26 +73,40 @@ interface TravelMapProps {
 
 // Builds a Leaflet divIcon that renders a circular pin in the brand teal with
 // a tag-derived Lucide glyph inside. The glyph is serialized to SVG once per
-// (tag, active) pair via renderToStaticMarkup so we avoid shipping a sprite
-// and the pin can still inherit theme colors at runtime.
-function buildPinIcon(tags: string[], active: boolean): L.DivIcon {
+// render via renderToStaticMarkup so we avoid shipping a sprite. Colors swap
+// in dark mode — the CartoDB dark basemap is heavily muted, so the idle pin
+// needs a brighter teal plus a darker outer ring to register against it.
+function buildPinIcon(tags: string[], active: boolean, dark: boolean): L.DivIcon {
   const size = active ? 36 : 28;
   const glyphSize = active ? 18 : 16;
   const Icon = resolvePinIcon(tags);
   const glyph = renderToStaticMarkup(
     <Icon size={glyphSize} strokeWidth={2.25} color="#fff" />,
   );
+  // Light-mode keeps the original teal (500/600 hex). Dark mode pushes idle
+  // pins to teal-400 for higher contrast against the dim basemap, and uses
+  // teal-300 for the active state so the brightness step still reads.
+  const fill = active
+    ? dark
+      ? "#2dd4bf"
+      : "#0d9488"
+    : dark
+      ? "#14b8a6"
+      : "#14b8a6";
+  // Ring: white on light, near-black on dark — the basemap is light grey on
+  // dark, so white-on-dark would blend in.
+  const ringColor = dark ? "rgba(15, 23, 42, 0.85)" : "#fff";
   const html = `
     <div style="
       width: ${size}px;
       height: ${size}px;
       border-radius: 9999px;
-      background: ${active ? "#0d9488" : "#14b8a6"};
+      background: ${fill};
       color: #fff;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 0 0 2px #fff, 0 4px 10px rgba(0,0,0,0.25);
+      box-shadow: 0 0 0 2px ${ringColor}, 0 4px 10px rgba(0,0,0,0.35);
       transform: translateY(${active ? "-2px" : "0"});
       transition: transform 200ms ease, background 200ms ease, width 200ms ease, height 200ms ease;
     ">${glyph}</div>
@@ -157,16 +172,20 @@ export default function TravelMap({
     [trips],
   );
 
+  // Resolved coords account for jitter: pins that share the same source
+  // coords (e.g. two stops inside one mall) fan out around the shared point
+  // so each one is individually clickable.
+  const resolvedCoords = React.useMemo(() => jitterPins(pinnedTrips), [pinnedTrips]);
+
   const points = React.useMemo(
-    () => pinnedTrips.map((t) => t.coords),
-    [pinnedTrips],
+    () => pinnedTrips.map((t) => resolvedCoords.get(t.slug) ?? t.coords),
+    [pinnedTrips, resolvedCoords],
   );
 
   const activeCoords = React.useMemo<[number, number] | null>(() => {
     if (!activeSlug) return null;
-    const active = pinnedTrips.find((t) => t.slug === activeSlug);
-    return active?.coords ?? null;
-  }, [activeSlug, pinnedTrips]);
+    return resolvedCoords.get(activeSlug) ?? null;
+  }, [activeSlug, resolvedCoords]);
 
   return (
     <div
@@ -194,9 +213,9 @@ export default function TravelMap({
           const isActive = trip.slug === activeSlug;
           return (
             <Marker
-              key={`${trip.slug}-${isActive ? "active" : "idle"}`}
-              position={trip.coords}
-              icon={buildPinIcon(trip.tags, isActive)}
+              key={`${trip.slug}-${isActive ? "active" : "idle"}-${isDark ? "d" : "l"}`}
+              position={resolvedCoords.get(trip.slug) ?? trip.coords}
+              icon={buildPinIcon(trip.tags, isActive, isDark)}
               eventHandlers={{
                 click: () => onSelect(trip.slug),
                 mouseover: (event) => {
