@@ -49,6 +49,12 @@ const joinBase = (path: string): string => {
 const absoluteCanonical = joinBase(canonical);
 const absoluteOgImage = joinBase(ogImage);
 
+// Basepath-prefixed favicon URLs (relative to site root, not the absolute SITE_URL).
+const faviconIco = `${BASE_PATH}/static/favicon.ico`;
+const favicon16 = `${BASE_PATH}/static/favicon-16x16.png`;
+const favicon32 = `${BASE_PATH}/static/favicon-32x32.png`;
+const appleTouchIcon = `${BASE_PATH}/static/apple-touch-icon.png`;
+
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
@@ -86,6 +92,11 @@ const jsonLd = {
     <title>{finalTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={absoluteCanonical} />
+
+    <link rel="icon" href={faviconIco} sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href={favicon32} />
+    <link rel="icon" type="image/png" sizes="16x16" href={favicon16} />
+    <link rel="apple-touch-icon" sizes="180x180" href={appleTouchIcon} />
     {keywords && keywords.length > 0 && <meta name="keywords" content={keywords.join(", ")} />}
 
     <meta property="og:type" content={ogType} />
