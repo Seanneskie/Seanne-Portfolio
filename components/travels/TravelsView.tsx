@@ -69,19 +69,23 @@ export default function TravelsView({ trips }: TravelsViewProps): React.ReactEle
         onTagChange={setActiveTag}
         onCountryChange={setActiveCountry}
       />
-      <TravelMap
-        trips={filteredTrips}
-        activeSlug={activeSlug}
-        onSelect={setActiveSlug}
-        indexBySlug={indexBySlug}
-        sticky
-      />
-      <TravelCardFeed
-        trips={filteredTrips}
-        activeSlug={activeSlug}
-        onSelect={setActiveSlug}
-        indexBySlug={indexBySlug}
-      />
+      {/* Desktop: map on the left sticks while the feed scrolls on the right.
+          Mobile: single column, map renders first then the feed below. */}
+      <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-start">
+        <TravelMap
+          trips={filteredTrips}
+          activeSlug={activeSlug}
+          onSelect={setActiveSlug}
+          indexBySlug={indexBySlug}
+          sticky
+        />
+        <TravelCardFeed
+          trips={filteredTrips}
+          activeSlug={activeSlug}
+          onSelect={setActiveSlug}
+          indexBySlug={indexBySlug}
+        />
+      </div>
     </div>
   );
 }

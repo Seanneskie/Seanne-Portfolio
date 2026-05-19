@@ -17,7 +17,10 @@ export function cn(...inputs: ClassValue[]) {
  */
 export function withBasePath(path: string): string {
   if (/^https?:\/\//.test(path)) return path;
-  const nextBase = process.env.NEXT_PUBLIC_BASE_PATH;
+  // `process` is only defined in the Next.js bundle; in Astro's Vite browser
+  // build it's absent, so guard the lookup before reading the env var.
+  const nextBase =
+    typeof process !== "undefined" ? process.env?.NEXT_PUBLIC_BASE_PATH : undefined;
   if (nextBase) {
     // Idempotent: avoid double-prefix when called twice (shimmed
     // next/image/Link also runs withBasePath in Astro builds).
