@@ -38,12 +38,20 @@ export interface LinkProps extends Omit<AnchorHTMLAttributes<HTMLAnchorElement>,
 
 export default function Link({
   href,
+  // Next-only props we intentionally drop in the shim.
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   prefetch: _prefetch,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   scroll: _scroll,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   replace: _replace,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   shallow: _shallow,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   passHref: _passHref,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   legacyBehavior: _legacyBehavior,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   locale: _locale,
   children,
   ...rest

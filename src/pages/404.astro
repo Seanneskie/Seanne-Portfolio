@@ -1,0 +1,28 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { withBase } from "../lib/with-base";
+---
+
+<BaseLayout
+  title="Page not found"
+  description="The requested page could not be found."
+  canonical="/404/"
+>
+  <main class="container mx-auto flex max-w-2xl flex-col items-center px-4 py-24 text-center">
+    <p class="text-xs font-semibold uppercase tracking-[0.3em] text-teal-700/80 dark:text-teal-300/80">
+      404
+    </p>
+    <h1 class="mt-2 text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
+      Page not found
+    </h1>
+    <p class="mt-4 text-base text-gray-700 dark:text-gray-300">
+      The page you're looking for doesn't exist or may have moved.
+    </p>
+    <a
+      href={withBase("/")}
+      class="mt-8 inline-flex items-center gap-2 rounded-md bg-teal-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-teal-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/60"
+    >
+      Back to home
+    </a>
+  </main>
+</BaseLayout>

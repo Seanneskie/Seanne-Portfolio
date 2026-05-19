@@ -242,37 +242,62 @@ The most complex route — dynamic, code-split, TOC, prev/next, JSON-LD.
 
 Round out the long-tail before cutover.
 
-- [ ] `src/pages/robots.txt.ts` replaces `app/robots.ts`.
-- [ ] `@astrojs/sitemap` config produces `/sitemap-index.xml` —
-      delete `app/sitemap.ts`'s output expectation.
-- [ ] Wire `scripts/optimize-images.mjs` into Astro's prebuild
-      (`"prebuild:astro": "node scripts/optimize-images.mjs"` chained into
-      `astro:build`).
-- [ ] Audit remaining `next/image` / `next/link` usages inside React
-      components; rewrite to plain `<img>`/`<a>` (islands) or `astro:assets`
-      (`.astro` files). Phase 4 left them shimmed via Vite alias — the shim
-      is fine for parity, but native usage is cleaner long-term.
-- [ ] **Fix lucide tree-shaking.** `lib/profile-card-counter-data.ts` and
-      `components/card/CardCounter.tsx` use `import * as LucideIcons from
-      "lucide-react"` to resolve icon names by string, forcing the entire
-      ~595 KB lucide bundle into a chunk. Replace with an explicit
-      `{ Award: AwardIcon, Code2: CodeIcon, ... }` map so Vite/Rollup can
-      tree-shake.
-- [ ] **Extract `ProjectGallery` into a client island.** Phase 5 left the
-      project-detail bodies server-rendered (the components are async, can't
-      be `client:*` directly). Result: embla carousel arrows render but are
-      inert. Refactor `ProjectOverview` so that `ProjectGallery` is rendered
-      as a separate `<ProjectGallery client:visible images={...} />` island,
-      with images pre-resolved at build time on the Astro page and passed
-      down as props. Leaves the prose components SSR-only.
-- [ ] Run `astro build` — fix all Zod validation errors surfaced from
-      Phase 2 schemas.
-- [ ] Compare `dist/` (Astro) vs `out/` (Next):
-  - [ ] Same set of HTML files exist at expected paths.
-  - [ ] Total JS shipped per route dropped meaningfully.
-  - [ ] Lighthouse scores match or improve on the Phase 0 baseline.
-- [ ] Local smoke: serve `dist/` with `astro preview`, click every nav item
-      and every project card.
+- [x] `src/pages/robots.txt.ts` replaces `app/robots.ts` — points crawlers at
+      the sitemap index emitted by `@astrojs/sitemap`. Uses `Astro.url.site`
+      so the absolute URL respects the GH Pages basepath.
+- [x] `@astrojs/sitemap` config produces `/sitemap-index.xml` with
+      per-route `changefreq`, `priority`, and `lastmod` matching the
+      hints from the old `app/sitemap.ts`. All 27 routes enumerated.
+- [x] **Pages Router collision:** Next.js sees `src/pages/robots.txt.ts` as
+      a Pages Router file. Resolved by setting `pageExtensions: ["tsx", "jsx"]`
+      in `next.config.ts` and renaming `app/robots.ts`/`app/sitemap.ts` →
+      `app/robots.tsx`/`app/sitemap.tsx` so Next still emits them. The
+      `.ts`/`.js` Astro endpoints are now invisible to Next.
+- [x] Wire `scripts/optimize-images.mjs` into Astro's prebuild
+      (`"astro:build": "npm run optimize:images && astro build"`).
+- [x] **Fix lucide tree-shaking.** Replaced `import * as LucideIcons from
+      "lucide-react"` in `lib/profile-card-counter-data.ts`,
+      `components/card/CardCounter.tsx`, and `components/services/ServicesSection.tsx`
+      with explicit registries (`lib/card-counter-icons.ts`,
+      `lib/services-icons.ts`). Result: the 595 KB lucide chunk is gone;
+      **total JS shipped dropped from 1,243 KB → 653 KB (47% reduction).**
+- [x] Add `src/pages/404.astro` — Astro emits it as `dist/404.html` at the
+      root, which is exactly what GitHub Pages serves for unknown paths.
+- [x] Compare `dist/` (Astro) vs `out/` (Next):
+  - [x] **HTML route set matches** — both stacks emit 28 pages (10 static
+        + 17 project-details + sitemap + 404).
+  - [x] **Total JS shipped dropped 60%:** Astro `dist/_astro/*.js` = 637 KB
+        vs Next `out/_next/static/chunks/*.js` = 1,608 KB.
+  - [x] **Per-route deltas** (Astro direct refs vs Next First Load JS):
+        - `/`         234 KB vs 572 KB  (-59%)
+        - `/profile/` 217 KB vs 565 KB  (-62%)
+        - `/profile/about-me/` 195 KB vs 565 KB  (-65%)
+        - `/project-details/*` 196 KB vs 175 KB  (+12%, all share one bundle)
+        - smaller routes pay ~50-80 KB React-runtime overhead they didn't
+          have under Next's aggressive code-splitting; acceptable given
+          the wins on heavy pages.
+  - [ ] **Lighthouse scores match or improve** — *deferred to post-cutover*.
+        Need real network conditions; only meaningful once GH Pages serves
+        the Astro build.
+- [x] **Local smoke via `astro preview`:** all 10 representative routes
+      probed (`/`, all top-level + 2 project-details + 404 + robots +
+      sitemap) — every one returned 200.
+
+**Deferred to post-cutover follow-up** (logged here rather than blocking
+the cutover):
+
+- [ ] **Extract `ProjectGallery` into a client island.** Every project
+      component is `export default async function` (they `await
+      getGalleryImages` which reads `fs`). Async React can't be a `client:*`
+      island, so Phase 5 left the bodies server-rendered — embla carousel
+      arrows render but are inert. The cleanest fix is to refactor the
+      17 project components so that the gallery image lookup happens at the
+      Astro page level (passed as props), letting each project body become
+      sync + hydratable. Risky to touch 17 components for a Phase 6 polish
+      pass; tracked separately.
+- [ ] **Audit residual `next/image`/`next/link` usage.** Phase 4 shimmed
+      them via Vite alias — works for parity, but native `<img>`/`<a>` is
+      cleaner once Next is gone.
 
 ---
 

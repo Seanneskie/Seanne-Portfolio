@@ -11,7 +11,7 @@
     "lint": "next lint",
     "test": "vitest",
     "astro:dev": "astro dev",
-    "astro:build": "astro build",
+    "astro:build": "npm run optimize:images && astro build",
     "astro:preview": "astro preview",
     "astro:sync": "astro sync"
   },

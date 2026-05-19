@@ -1,7 +1,5 @@
 // components/counter-card.tsx
 import { type ReactElement } from "react";
-import * as LucideIcons from "lucide-react";
-import type { LucideIcon } from "lucide-react";
 import {
   Card,
   CardHeader,
@@ -10,32 +8,11 @@ import {
   CardContent,
 } from "@/components/ui/card";
 import { cn } from "@/lib/cn";
+import { type CounterCardTheme } from "@/types/card-counter";
 import {
-  type CounterCardTheme,
-  type LucideIconName,
-} from "@/types/card-counter";
-
-/**
- * Type guard verifying a Lucide export is a forward-ref icon component.
- */
-const isLucideIconComponent = (value: unknown): value is LucideIcon =>
-  typeof value === "object" &&
-  value !== null &&
-  "render" in (value as Record<string, unknown>) &&
-  typeof (value as { render?: unknown }).render === "function";
-
-/**
- * Resolves a Lucide icon name to a renderable component when available.
- */
-const resolveLucideIcon = (iconName?: LucideIconName): LucideIcon | null => {
-  if (!iconName) {
-    return null;
-  }
-
-  const candidate: unknown = LucideIcons[iconName];
-
-  return isLucideIconComponent(candidate) ? candidate : null;
-};
+  type CardCounterIconName,
+  resolveCardCounterIcon,
+} from "@/lib/card-counter-icons";
 
 const THEME_STYLES: Record<
   CounterCardTheme,
@@ -93,7 +70,7 @@ export type CounterCardProps = {
   /** Optional override to tweak the accent dot per-instance. */
   dotClassName?: string;
   /** Optional icon rendered inside the accent dot. */
-  icon?: LucideIconName;
+  icon?: CardCounterIconName;
 };
 
 export default function CounterCard({
@@ -109,7 +86,7 @@ export default function CounterCard({
     typeof count === "number" ? count.toLocaleString() : String(count);
 
   const style = THEME_STYLES[theme];
-  const IconComponent = resolveLucideIcon(icon);
+  const IconComponent = resolveCardCounterIcon(icon);
 
   return (
     <Card className={cn("relative pt-6 pl-12", className)}>

@@ -14,7 +14,7 @@ describe("parseCardCounterData", () => {
           description: "Example description",
           theme: "ocean",
           order: 1,
-          icon: "Sparkles",
+          icon: "Sparkle",
         },
       ],
     });
@@ -28,7 +28,7 @@ describe("parseCardCounterData", () => {
       description: "Example description",
       theme: "ocean",
       order: 1,
-      icon: "Sparkles",
+      icon: "Sparkle",
     });
   });
 

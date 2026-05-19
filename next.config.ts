@@ -17,6 +17,9 @@ const nextConfig: NextConfig = {
   // errors until the Phase 7 cutover removes Next entirely. Lint + vitest still
   // type-check, so this only suppresses the generated validator noise.
   typescript: { ignoreBuildErrors: true },
+  // Restrict to .tsx so Next ignores src/pages/*.ts files (those belong to
+  // Astro). app/robots.ts and app/sitemap.ts were renamed to .tsx accordingly.
+  pageExtensions: ["tsx", "jsx"],
   env: {
     NEXT_PUBLIC_BASE_PATH: isProd ? "/Seanne-Portfolio" : "",
   },
