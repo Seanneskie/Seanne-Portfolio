@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import type { TravelEntry, TripGroup } from "./types";
-import { withBasePath } from "@/lib/utils";
+import { fmtDate, withBasePath } from "@/lib/utils";
 import { useTravelSections } from "./useTravelSections";
 
 interface TravelCardFeedProps {
@@ -12,9 +12,6 @@ interface TravelCardFeedProps {
   onSelect: (slug: string | null) => void;
   indexBySlug: Record<string, number>;
 }
-
-const fmtDate = (iso: string): string =>
-  new Date(iso).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
 
 const COLLAPSE_STORAGE_KEY = "travels:collapsed-trips";
 

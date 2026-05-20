@@ -7,6 +7,35 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 /**
+ * Formats an ISO date as e.g. "May 20, 2026" in US English.
+ *
+ * Parses date-only strings (YYYY-MM-DD) as local time rather than the UTC
+ * midnight `new Date(iso)` would use, which otherwise renders a day early for
+ * users west of GMT.
+ */
+export function fmtDate(iso: string): string {
+  return parseLocalDate(iso).toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
+}
+
+/**
+ * Parses an ISO string into a Date. Date-only strings (YYYY-MM-DD) are
+ * interpreted in the local timezone to avoid off-by-one display bugs;
+ * strings carrying a time component are left to the native parser.
+ */
+export function parseLocalDate(iso: string): Date {
+  const dateOnly = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso);
+  if (dateOnly) {
+    const [, y, m, d] = dateOnly;
+    return new Date(Number(y), Number(m) - 1, Number(d));
+  }
+  return new Date(iso);
+}
+
+/**
  * Prefixes a relative path with the configured `basePath` (used for GitHub Pages).
  * If the path is already absolute (e.g., starts with http/https), it is returned as-is.
  *

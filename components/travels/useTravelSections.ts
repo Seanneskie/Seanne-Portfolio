@@ -1,5 +1,6 @@
 import * as React from "react";
 import type { TravelEntry, TripGroup } from "./types";
+import { fmtDate, parseLocalDate } from "@/lib/utils";
 
 export interface FeedSection {
   key: string;
@@ -24,13 +25,10 @@ function sortByItinerary(items: TravelEntry[], stops: string[]): TravelEntry[] {
   });
 }
 
-const fmtDate = (iso: string): string =>
-  new Date(iso).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
-
 const fmtDateRange = (startIso: string, endIso?: string): string => {
-  const start = new Date(startIso);
+  const start = parseLocalDate(startIso);
   if (!endIso) return fmtDate(startIso);
-  const end = new Date(endIso);
+  const end = parseLocalDate(endIso);
   const sameMonth =
     start.getFullYear() === end.getFullYear() && start.getMonth() === end.getMonth();
   if (sameMonth) {
@@ -62,7 +60,7 @@ export function useTravelSections(
         bucket.push(trip);
         tripBuckets.set(tripSlug, bucket);
       } else {
-        const year = new Date(trip.date).getFullYear();
+        const year = parseLocalDate(trip.date).getFullYear();
         const bucket = yearBuckets.get(year) ?? [];
         bucket.push(trip);
         yearBuckets.set(year, bucket);
