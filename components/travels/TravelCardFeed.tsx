@@ -157,13 +157,13 @@ export default function TravelCardFeed({
         return (
         <section key={section.key} aria-label={section.heading}>
           {section.kind === "trip" ? (
-            <header className="relative mb-3 overflow-hidden rounded-lg border border-teal-500/30 bg-teal-500/5 dark:border-teal-400/30 dark:bg-teal-400/5">
+            <header className="mb-3 flex items-stretch overflow-hidden rounded-lg border border-teal-500/30 bg-teal-500/5 dark:border-teal-400/30 dark:bg-teal-400/5">
               <button
                 type="button"
                 onClick={() => toggleSection(section.key)}
                 aria-expanded={!isCollapsed}
                 aria-controls={listId}
-                className="flex w-full items-start gap-2 px-3 py-2 pr-24 text-left transition hover:bg-teal-500/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-teal-500/60 dark:hover:bg-teal-400/10"
+                className="flex min-w-0 flex-1 items-start gap-2 px-3 py-2 text-left transition hover:bg-teal-500/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-teal-500/60 dark:hover:bg-teal-400/10"
               >
                 <svg
                   aria-hidden="true"
@@ -198,7 +198,8 @@ export default function TravelCardFeed({
               {section.tripSlug && (
                 <a
                   href={withBasePath(`/travels/trip/${section.tripSlug}/`)}
-                  className="absolute right-3 top-2 z-10 text-[11px] font-semibold text-teal-700 hover:underline dark:text-teal-300"
+                  aria-label={`View trip: ${section.heading}`}
+                  className="flex shrink-0 items-center whitespace-nowrap border-l border-teal-500/30 px-3 text-[11px] font-semibold text-teal-700 transition hover:bg-teal-500/10 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-teal-500/60 dark:border-teal-400/30 dark:text-teal-300 dark:hover:bg-teal-400/10"
                 >
                   View trip →
                 </a>
