@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import type { TravelEntry } from "./types";
+import { parseLocalDate } from "@/lib/utils";
 
 interface TravelStatsProps {
   trips: TravelEntry[];
@@ -17,7 +18,7 @@ export default function TravelStats({ trips }: TravelStatsProps): React.ReactEle
     for (const trip of trips) {
       if (trip.country) countries.add(trip.country);
       if (trip.city) cities.add(trip.city);
-      const year = new Date(trip.date).getFullYear();
+      const year = parseLocalDate(trip.date).getFullYear();
       if (year < minYear) minYear = year;
       if (year > maxYear) maxYear = year;
     }

@@ -6,12 +6,9 @@ import { MapContainer, Marker, Polyline, Popup, TileLayer, useMap } from "react-
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import type { TravelEntry, TripGroup } from "./types";
-import { withBasePath } from "@/lib/utils";
+import { fmtDate, withBasePath } from "@/lib/utils";
 import { resolvePinIcon } from "./pinIcon";
 import { jitterPins } from "./jitterPins";
-
-const fmtDate = (iso: string): string =>
-  new Date(iso).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
 
 // Watches the `.dark` class on <html> so the map can swap tile providers when
 // the user toggles the site theme. Returns true when dark mode is active.
