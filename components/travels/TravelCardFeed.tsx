@@ -15,6 +15,14 @@ interface TravelCardFeedProps {
 
 const COLLAPSE_STORAGE_KEY = "travels:collapsed-trips";
 
+const persistCollapsed = (set: Set<string>): void => {
+  try {
+    window.localStorage.setItem(COLLAPSE_STORAGE_KEY, JSON.stringify([...set]));
+  } catch {
+    // localStorage can throw in private mode / quota — ignore.
+  }
+};
+
 export default function TravelCardFeed({
   trips,
   tripGroups = [],
@@ -62,15 +70,24 @@ export default function TravelCardFeed({
 
   const toggleSection = React.useCallback((key: string) => {
     setCollapsed((prev) => {
-      const base = prev ?? new Set<string>();
-      const next = new Set(base);
+      const next = new Set(prev ?? []);
       if (next.has(key)) next.delete(key);
       else next.add(key);
-      try {
-        window.localStorage.setItem(COLLAPSE_STORAGE_KEY, JSON.stringify([...next]));
-      } catch {
-        // localStorage can throw in private mode / quota — ignore.
-      }
+      persistCollapsed(next);
+      return next;
+    });
+  }, []);
+
+  // Idempotent expand: only ever clears the key from the collapsed set, so
+  // calling it on an already-expanded section is a no-op. The map-hover
+  // effect relies on this — using toggleSection there could re-collapse a
+  // section if the effect re-ran after the user had expanded it.
+  const expandSection = React.useCallback((key: string) => {
+    setCollapsed((prev) => {
+      if (!prev?.has(key)) return prev;
+      const next = new Set(prev);
+      next.delete(key);
+      persistCollapsed(next);
       return next;
     });
   }, []);
@@ -88,19 +105,28 @@ export default function TravelCardFeed({
     lastActiveRef.current = activeSlug;
     const el = cardRefs.current.get(activeSlug);
     if (!el) return;
+
+    const scrollIfNeeded = (): void => {
+      const rect = el.getBoundingClientRect();
+      const inView =
+        rect.top >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight);
+      if (!inView) el.scrollIntoView({ behavior: "smooth", block: "center" });
+    };
+
     // If the card is inside a collapsed trip section, expand it first so
-    // scrolling to it actually lands on something visible.
+    // scrolling to it actually lands on something visible. The <ul> only
+    // un-hides on the next render, so defer the scroll a frame to measure
+    // the card once it's actually laid out.
     const sectionKey = el.dataset.sectionKey;
     if (sectionKey && collapsed?.has(sectionKey)) {
-      toggleSection(sectionKey);
+      expandSection(sectionKey);
+      const raf = requestAnimationFrame(scrollIfNeeded);
+      return () => cancelAnimationFrame(raf);
     }
-    const rect = el.getBoundingClientRect();
-    const inView =
-      rect.top >= 0 && rect.bottom <= (window.innerHeight || document.documentElement.clientHeight);
-    if (!inView) {
-      el.scrollIntoView({ behavior: "smooth", block: "center" });
-    }
-  }, [activeSlug, collapsed, toggleSection]);
+
+    scrollIfNeeded();
+  }, [activeSlug, collapsed, expandSection]);
 
   if (trips.length === 0) {
     return (
