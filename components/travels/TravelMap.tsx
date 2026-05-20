@@ -128,13 +128,46 @@ function buildPinIcon(tags: string[], state: PinState, dark: boolean): L.DivIcon
   });
 }
 
-function FlyTo({ coords }: { coords: [number, number] | null }) {
+// Flies to the active pin, then back to the overview when deselected.
+// `points` is the full pin set so we can restore the original framing
+// instead of leaving the map ratcheted in on the last-hovered pin.
+function FlyTo({
+  coords,
+  points,
+}: {
+  coords: [number, number] | null;
+  points: [number, number][];
+}) {
   const map = useMap();
+  // The zoom the map settled on initially (after FitAll). We never zoom in
+  // past a fixed focus level on hover, and we restore this on deselect.
+  const baseZoomRef = React.useRef<number | null>(null);
+  // Skip the deselect-to-overview animation on the first run — FitAll
+  // already frames the map on mount, so re-flying would double-animate.
+  const hadCoordsRef = React.useRef(false);
+
   React.useEffect(() => {
+    if (baseZoomRef.current === null) baseZoomRef.current = map.getZoom();
+
     if (coords) {
-      map.flyTo(coords, Math.max(map.getZoom(), 6), { duration: 0.8 });
+      hadCoordsRef.current = true;
+      // Focus the pin without ratcheting: clamp to a single focus zoom
+      // rather than max(current, 6), which only ever increased.
+      const focusZoom = Math.max(baseZoomRef.current ?? 6, 6);
+      map.flyTo(coords, focusZoom, { duration: 0.8 });
+      return;
     }
-  }, [coords, map]);
+
+    // Deselected — return to the overview framing, but only if we had
+    // actually flown to a pin (don't fight FitAll on mount).
+    if (!hadCoordsRef.current) return;
+    hadCoordsRef.current = false;
+    if (points.length > 1) {
+      map.flyToBounds(points, { padding: [40, 40], duration: 0.6 });
+    } else if (points.length === 1) {
+      map.flyTo(points[0], baseZoomRef.current ?? 6, { duration: 0.6 });
+    }
+  }, [coords, points, map]);
   return null;
 }
 
@@ -279,7 +312,7 @@ export default function TravelMap({
            provider's tiles render immediately instead of layering on top. */}
         <TileLayer key={isDark ? "dark" : "light"} url={tile.url} attribution={tile.attribution} />
         {fitBounds && <FitAll points={points} />}
-        <FlyTo coords={activeCoords} />
+        <FlyTo coords={activeCoords} points={points} />
         {polylinePath.length >= 2 && (
           <Polyline
             positions={polylinePath}
