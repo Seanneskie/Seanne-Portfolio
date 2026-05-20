@@ -30,6 +30,20 @@ function useIsDarkMode(): boolean {
   return isDark;
 }
 
+// True on coarse-pointer (touch) devices, where single-finger map drag would
+// otherwise compete with page scroll. Evaluated once on mount.
+function useIsTouch(): boolean {
+  const [isTouch, setIsTouch] = React.useState(false);
+  React.useEffect(() => {
+    setIsTouch(
+      typeof window !== "undefined" &&
+        typeof window.matchMedia === "function" &&
+        window.matchMedia("(pointer: coarse)").matches,
+    );
+  }, []);
+  return isTouch;
+}
+
 const TILES = {
   light: {
     url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
@@ -199,6 +213,7 @@ export default function TravelMap({
   alwaysShowTrip,
 }: TravelMapProps): React.ReactElement {
   const isDark = useIsDarkMode();
+  const isTouch = useIsTouch();
   const tile = isDark ? TILES.dark : TILES.light;
   const closeTimers = React.useRef<Map<string, ReturnType<typeof setTimeout>>>(new Map());
   const markerRefs = React.useRef<Map<string, L.Marker>>(new Map());
@@ -294,7 +309,7 @@ export default function TravelMap({
   return (
     <div
       className={[
-        "w-full overflow-hidden rounded-lg border border-gray-200 dark:border-gray-800",
+        "relative w-full overflow-hidden rounded-lg border border-gray-200 dark:border-gray-800",
         // Mobile keeps a fixed 4:3-ish height; desktop gets a taller fixed
         // height plus optional sticky behavior so the map persists as the
         // user scrolls the trip cards.
@@ -306,6 +321,11 @@ export default function TravelMap({
         center={points[0] ?? [10, 120]}
         zoom={3}
         scrollWheelZoom={false}
+        // On touch devices a single-finger drag would otherwise hijack the
+        // page scroll while the user is trying to scroll past the map.
+        // Disable map dragging on touch and let pinch-zoom remain; desktop
+        // keeps full drag. `tap` is left off so taps still hit markers.
+        dragging={!isTouch}
         className="h-full w-full"
       >
         {/* `key` forces a fresh TileLayer when the theme flips so the new
@@ -399,6 +419,25 @@ export default function TravelMap({
           );
         })}
       </MapContainer>
+
+      {/* No pins to show — e.g. a filter excluded everything, or matching
+          stops have no coords. Without this the map sits blank and looks
+          broken. Pointer-events-none so the map underneath stays usable. */}
+      {pinnedTrips.length === 0 && (
+        <div className="pointer-events-none absolute inset-0 z-400 flex items-center justify-center bg-white/70 px-4 text-center backdrop-blur-sm dark:bg-gray-900/70">
+          <p className="text-sm font-medium text-gray-600 dark:text-gray-300">
+            No mapped stops match these filters.
+          </p>
+        </div>
+      )}
+
+      {/* Touch hint: dragging is disabled on touch so the page can scroll
+          past the map, so tell the user how to pan. */}
+      {isTouch && pinnedTrips.length > 0 && (
+        <p className="pointer-events-none absolute bottom-1 left-1 z-400 rounded bg-black/55 px-1.5 py-0.5 text-[10px] font-medium text-white">
+          Tap a pin for details
+        </p>
+      )}
     </div>
   );
 }
