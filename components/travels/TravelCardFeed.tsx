@@ -53,16 +53,30 @@ export default function TravelCardFeed({
     } catch {
       stored = null;
     }
-    if (stored && Array.isArray(stored)) {
-      setCollapsed(new Set(stored));
-    } else {
-      // First visit: collapse every trip section except the newest one.
-      const initial = new Set<string>();
-      for (const s of sections) {
-        if (s.kind === "trip" && s.key !== newestTripKey) initial.add(s.key);
+
+    // The keys we're allowed to collapse — only existing trip sections.
+    const tripKeys = sections.filter((s) => s.kind === "trip").map((s) => s.key);
+    const knownKeys = new Set(tripKeys);
+    const storedSet = new Set(
+      Array.isArray(stored) ? stored.filter((k) => knownKeys.has(k)) : [],
+    );
+
+    const initial = new Set<string>();
+    for (const key of tripKeys) {
+      if (storedSet.has(key)) {
+        // Honor the saved state for trips the user has seen before.
+        initial.add(key);
+      } else if (!stored) {
+        // True first visit (no stored value at all): collapse all but newest.
+        if (key !== newestTripKey) initial.add(key);
       }
-      setCollapsed(initial);
+      // A trip absent from a *non-empty* stored set is new since the last
+      // visit — leave it expanded so the user notices it.
     }
+
+    setCollapsed(initial);
+    // Rewrite storage with the reconciled set so stale keys don't accumulate.
+    persistCollapsed(initial);
     // We only want to seed this once on mount; sections changing later
     // (e.g. filter toggles) shouldn't reset the user's preferences.
     // eslint-disable-next-line react-hooks/exhaustive-deps
