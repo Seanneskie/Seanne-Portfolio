@@ -6,12 +6,9 @@ import { MapContainer, Marker, Polyline, Popup, TileLayer, useMap } from "react-
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import type { TravelEntry, TripGroup } from "./types";
-import { withBasePath } from "@/lib/utils";
+import { fmtDate, withBasePath } from "@/lib/utils";
 import { resolvePinIcon } from "./pinIcon";
 import { jitterPins } from "./jitterPins";
-
-const fmtDate = (iso: string): string =>
-  new Date(iso).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
 
 // Watches the `.dark` class on <html> so the map can swap tile providers when
 // the user toggles the site theme. Returns true when dark mode is active.
@@ -31,6 +28,20 @@ function useIsDarkMode(): boolean {
   }, []);
 
   return isDark;
+}
+
+// True on coarse-pointer (touch) devices, where single-finger map drag would
+// otherwise compete with page scroll. Evaluated once on mount.
+function useIsTouch(): boolean {
+  const [isTouch, setIsTouch] = React.useState(false);
+  React.useEffect(() => {
+    setIsTouch(
+      typeof window !== "undefined" &&
+        typeof window.matchMedia === "function" &&
+        window.matchMedia("(pointer: coarse)").matches,
+    );
+  }, []);
+  return isTouch;
 }
 
 const TILES = {
@@ -131,13 +142,46 @@ function buildPinIcon(tags: string[], state: PinState, dark: boolean): L.DivIcon
   });
 }
 
-function FlyTo({ coords }: { coords: [number, number] | null }) {
+// Flies to the active pin, then back to the overview when deselected.
+// `points` is the full pin set so we can restore the original framing
+// instead of leaving the map ratcheted in on the last-hovered pin.
+function FlyTo({
+  coords,
+  points,
+}: {
+  coords: [number, number] | null;
+  points: [number, number][];
+}) {
   const map = useMap();
+  // The zoom the map settled on initially (after FitAll). We never zoom in
+  // past a fixed focus level on hover, and we restore this on deselect.
+  const baseZoomRef = React.useRef<number | null>(null);
+  // Skip the deselect-to-overview animation on the first run — FitAll
+  // already frames the map on mount, so re-flying would double-animate.
+  const hadCoordsRef = React.useRef(false);
+
   React.useEffect(() => {
+    if (baseZoomRef.current === null) baseZoomRef.current = map.getZoom();
+
     if (coords) {
-      map.flyTo(coords, Math.max(map.getZoom(), 6), { duration: 0.8 });
+      hadCoordsRef.current = true;
+      // Focus the pin without ratcheting: clamp to a single focus zoom
+      // rather than max(current, 6), which only ever increased.
+      const focusZoom = Math.max(baseZoomRef.current ?? 6, 6);
+      map.flyTo(coords, focusZoom, { duration: 0.8 });
+      return;
     }
-  }, [coords, map]);
+
+    // Deselected — return to the overview framing, but only if we had
+    // actually flown to a pin (don't fight FitAll on mount).
+    if (!hadCoordsRef.current) return;
+    hadCoordsRef.current = false;
+    if (points.length > 1) {
+      map.flyToBounds(points, { padding: [40, 40], duration: 0.6 });
+    } else if (points.length === 1) {
+      map.flyTo(points[0], baseZoomRef.current ?? 6, { duration: 0.6 });
+    }
+  }, [coords, points, map]);
   return null;
 }
 
@@ -169,6 +213,7 @@ export default function TravelMap({
   alwaysShowTrip,
 }: TravelMapProps): React.ReactElement {
   const isDark = useIsDarkMode();
+  const isTouch = useIsTouch();
   const tile = isDark ? TILES.dark : TILES.light;
   const closeTimers = React.useRef<Map<string, ReturnType<typeof setTimeout>>>(new Map());
   const markerRefs = React.useRef<Map<string, L.Marker>>(new Map());
@@ -264,7 +309,7 @@ export default function TravelMap({
   return (
     <div
       className={[
-        "w-full overflow-hidden rounded-lg border border-gray-200 dark:border-gray-800",
+        "relative w-full overflow-hidden rounded-lg border border-gray-200 dark:border-gray-800",
         // Mobile keeps a fixed 4:3-ish height; desktop gets a taller fixed
         // height plus optional sticky behavior so the map persists as the
         // user scrolls the trip cards.
@@ -276,13 +321,18 @@ export default function TravelMap({
         center={points[0] ?? [10, 120]}
         zoom={3}
         scrollWheelZoom={false}
+        // On touch devices a single-finger drag would otherwise hijack the
+        // page scroll while the user is trying to scroll past the map.
+        // Disable map dragging on touch and let pinch-zoom remain; desktop
+        // keeps full drag. `tap` is left off so taps still hit markers.
+        dragging={!isTouch}
         className="h-full w-full"
       >
         {/* `key` forces a fresh TileLayer when the theme flips so the new
            provider's tiles render immediately instead of layering on top. */}
         <TileLayer key={isDark ? "dark" : "light"} url={tile.url} attribution={tile.attribution} />
         {fitBounds && <FitAll points={points} />}
-        <FlyTo coords={activeCoords} />
+        <FlyTo coords={activeCoords} points={points} />
         {polylinePath.length >= 2 && (
           <Polyline
             positions={polylinePath}
@@ -305,8 +355,20 @@ export default function TravelMap({
               position={resolvedCoords.get(trip.slug) ?? trip.coords}
               icon={buildPinIcon(trip.tags, state, isDark)}
               ref={(instance) => {
-                if (instance) markerRefs.current.set(trip.slug, instance);
-                else markerRefs.current.delete(trip.slug);
+                if (instance) {
+                  markerRefs.current.set(trip.slug, instance);
+                } else {
+                  markerRefs.current.delete(trip.slug);
+                  // Markers remount whenever their pin state or the theme
+                  // changes (the key includes both). Cancel any pending
+                  // close timer so it can't fire closePopup on the detached
+                  // instance or linger in the map after this marker is gone.
+                  const pending = closeTimers.current.get(trip.slug);
+                  if (pending) {
+                    clearTimeout(pending);
+                    closeTimers.current.delete(trip.slug);
+                  }
+                }
               }}
               eventHandlers={{
                 click: () => onSelect(trip.slug),
@@ -320,6 +382,10 @@ export default function TravelMap({
                 },
                 mouseout: (event) => {
                   const marker = event.target;
+                  // Replace any in-flight timer so repeated mouseouts can't
+                  // orphan an earlier one in the map.
+                  const existing = closeTimers.current.get(trip.slug);
+                  if (existing) clearTimeout(existing);
                   const timer = setTimeout(() => {
                     marker.closePopup();
                     closeTimers.current.delete(trip.slug);
@@ -353,6 +419,25 @@ export default function TravelMap({
           );
         })}
       </MapContainer>
+
+      {/* No pins to show — e.g. a filter excluded everything, or matching
+          stops have no coords. Without this the map sits blank and looks
+          broken. Pointer-events-none so the map underneath stays usable. */}
+      {pinnedTrips.length === 0 && (
+        <div className="pointer-events-none absolute inset-0 z-400 flex items-center justify-center bg-white/70 px-4 text-center backdrop-blur-sm dark:bg-gray-900/70">
+          <p className="text-sm font-medium text-gray-600 dark:text-gray-300">
+            No mapped stops match these filters.
+          </p>
+        </div>
+      )}
+
+      {/* Touch hint: dragging is disabled on touch so the page can scroll
+          past the map, so tell the user how to pan. */}
+      {isTouch && pinnedTrips.length > 0 && (
+        <p className="pointer-events-none absolute bottom-1 left-1 z-400 rounded bg-black/55 px-1.5 py-0.5 text-[10px] font-medium text-white">
+          Tap a pin for details
+        </p>
+      )}
     </div>
   );
 }
