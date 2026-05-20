@@ -106,6 +106,30 @@ export default function TravelCardFeed({
     });
   }, []);
 
+  // Hover-intent for card → map sync. Selecting is immediate, but deselect
+  // is delayed so moving the cursor from a card toward the map doesn't
+  // instantly close the popup the card opened. Mirrors the map popup's own
+  // mouseout linger so the interaction feels symmetric in both directions.
+  const deselectTimer = React.useRef<ReturnType<typeof setTimeout> | null>(null);
+  const clearDeselect = React.useCallback(() => {
+    if (deselectTimer.current) {
+      clearTimeout(deselectTimer.current);
+      deselectTimer.current = null;
+    }
+  }, []);
+  const selectCard = React.useCallback(
+    (slug: string) => {
+      clearDeselect();
+      onSelect(slug);
+    },
+    [clearDeselect, onSelect],
+  );
+  const deselectCard = React.useCallback(() => {
+    clearDeselect();
+    deselectTimer.current = setTimeout(() => onSelect(null), 250);
+  }, [clearDeselect, onSelect]);
+  React.useEffect(() => clearDeselect, [clearDeselect]);
+
   // When the map flips activeSlug (e.g. user hovered a pin), scroll the
   // matching card into view. Only scroll when the change is map-driven —
   // avoid jumping the page when the user is already hovering a card.
@@ -222,12 +246,12 @@ export default function TravelCardFeed({
                     else cardRefs.current.delete(trip.slug);
                   }}
                   data-section-key={section.key}
-                  onMouseEnter={() => onSelect(trip.slug)}
-                  onMouseLeave={() => onSelect(null)}
+                  onMouseEnter={() => selectCard(trip.slug)}
+                  onMouseLeave={deselectCard}
                 >
                   <a
                     href={withBasePath(`/travels/${trip.slug}/`)}
-                    onFocus={() => onSelect(trip.slug)}
+                    onFocus={() => selectCard(trip.slug)}
                     className={[
                       "group flex gap-4 overflow-hidden rounded-lg border bg-white p-3 transition dark:bg-gray-900/40",
                       isActive
