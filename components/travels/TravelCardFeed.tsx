@@ -187,14 +187,14 @@ export default function TravelCardFeed({
                 onClick={() => toggleSection(section.key)}
                 aria-expanded={!isCollapsed}
                 aria-controls={listId}
-                className="flex min-w-0 flex-1 items-start gap-2 px-3 py-2 text-left transition hover:bg-teal-500/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-teal-500/60 dark:hover:bg-teal-400/10"
+                className="flex min-w-0 flex-1 items-start gap-2.5 px-3.5 py-3 text-left transition hover:bg-teal-500/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-teal-500/60 dark:hover:bg-teal-400/10"
               >
                 <svg
                   aria-hidden="true"
                   viewBox="0 0 20 20"
                   fill="currentColor"
                   className={[
-                    "mt-1 h-3.5 w-3.5 shrink-0 text-teal-700 transition-transform dark:text-teal-300",
+                    "mt-0.5 h-4 w-4 shrink-0 text-teal-700 transition-transform duration-200 motion-reduce:transition-none dark:text-teal-300",
                     isCollapsed ? "" : "rotate-90",
                   ].join(" ")}
                 >
@@ -205,17 +205,23 @@ export default function TravelCardFeed({
                   />
                 </svg>
                 <div className="min-w-0 flex-1">
-                  <h2 className="truncate text-sm font-semibold text-teal-800 dark:text-teal-200">
+                  <h2 className="truncate text-sm font-bold text-teal-800 dark:text-teal-100">
                     {section.heading}
                   </h2>
-                  {section.meta && (
-                    <p className="mt-0.5 text-[11px] text-teal-700/80 dark:text-teal-300/80">
-                      {section.meta} · {section.items.length} stop
-                      {section.items.length === 1 ? "" : "s"}
+                  <div className="mt-1 flex flex-wrap items-center gap-1.5">
+                    {section.meta && (
+                      <span className="rounded-full bg-teal-500/15 px-2 py-0.5 text-[10px] font-semibold text-teal-800 dark:bg-teal-400/15 dark:text-teal-200">
+                        {section.meta}
+                      </span>
+                    )}
+                    <span className="rounded-full bg-teal-500/15 px-2 py-0.5 text-[10px] font-semibold text-teal-800 dark:bg-teal-400/15 dark:text-teal-200">
+                      {section.items.length} stop{section.items.length === 1 ? "" : "s"}
+                    </span>
+                  </div>
+                  {section.summary && (
+                    <p className="mt-1.5 line-clamp-2 text-xs text-gray-700 dark:text-gray-300">
+                      {section.summary}
                     </p>
-                  )}
-                  {section.summary && !isCollapsed && (
-                    <p className="mt-1 text-xs text-gray-700 dark:text-gray-300">{section.summary}</p>
                   )}
                 </div>
               </button>
@@ -234,7 +240,19 @@ export default function TravelCardFeed({
               {section.heading}
             </h2>
           )}
-          <ul id={listId} className="space-y-3" hidden={isCollapsed}>
+          <ul
+            id={listId}
+            className={[
+              section.kind === "trip"
+                // Timeline: a continuous connector line runs down the left
+                // behind the numbered waypoint badges, mirroring the map's
+                // itinerary polyline. The line is inset to sit under the
+                // badge centers (badge col is 1.75rem wide).
+                ? "relative space-y-3 before:absolute before:bottom-3 before:left-[0.8125rem] before:top-3 before:w-px before:bg-teal-500/30 dark:before:bg-teal-400/30"
+                : "space-y-3",
+            ].join(" ")}
+            hidden={isCollapsed}
+          >
             {section.items.map((trip) => {
               const isActive = trip.slug === activeSlug;
               const idx = indexBySlug[trip.slug];
@@ -248,66 +266,30 @@ export default function TravelCardFeed({
                   data-section-key={section.key}
                   onMouseEnter={() => selectCard(trip.slug)}
                   onMouseLeave={deselectCard}
+                  className={section.kind === "trip" ? "relative flex items-stretch gap-3" : ""}
                 >
-                  <a
-                    href={withBasePath(`/travels/${trip.slug}/`)}
+                  {section.kind === "trip" && (
+                    // Waypoint badge sits on the connector line. Highlights
+                    // teal-filled when its card is the active one.
+                    <span
+                      aria-hidden="true"
+                      className={[
+                        "relative z-10 mt-3 flex h-[1.625rem] w-[1.625rem] shrink-0 items-center justify-center rounded-full text-xs font-bold ring-2 transition motion-reduce:transition-none",
+                        isActive
+                          ? "scale-110 bg-teal-500 text-white ring-white dark:bg-teal-400 dark:text-gray-900 dark:ring-gray-900"
+                          : "bg-white text-teal-700 ring-teal-500/40 dark:bg-gray-900 dark:text-teal-300 dark:ring-teal-400/40",
+                      ].join(" ")}
+                    >
+                      {idx ?? "·"}
+                    </span>
+                  )}
+                  <StopCard
+                    trip={trip}
+                    isActive={isActive}
+                    showIndexBadge={section.kind !== "trip"}
+                    idx={idx}
                     onFocus={() => selectCard(trip.slug)}
-                    className={[
-                      "group flex gap-4 overflow-hidden rounded-lg border bg-white p-3 transition dark:bg-gray-900/40",
-                      isActive
-                        ? "border-teal-500/60 shadow-sm ring-1 ring-teal-500/20 dark:border-teal-400/60 dark:ring-teal-400/20"
-                        : "border-gray-200 hover:border-teal-500/40 dark:border-gray-800 dark:hover:border-teal-400/40",
-                    ].join(" ")}
-                  >
-                    <div className="relative shrink-0">
-                      {trip.cover ? (
-                        <img
-                          src={withBasePath(trip.cover)}
-                          alt=""
-                          loading="lazy"
-                          className="h-24 w-24 rounded-md object-cover sm:h-28 sm:w-40"
-                        />
-                      ) : (
-                        <div className="flex h-24 w-24 items-center justify-center rounded-md bg-gradient-to-br from-teal-500/20 to-teal-700/20 text-2xl sm:h-28 sm:w-40">
-                          <span aria-hidden="true">🗺️</span>
-                        </div>
-                      )}
-                      {idx !== undefined && (
-                        <span
-                          aria-hidden="true"
-                          className="absolute -left-1 -top-1 flex h-6 w-6 items-center justify-center rounded-full bg-teal-500 text-xs font-semibold text-white ring-2 ring-white dark:ring-gray-900"
-                        >
-                          {idx}
-                        </span>
-                      )}
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <div className="flex items-center justify-between gap-2 text-xs text-gray-500 dark:text-gray-400">
-                        <time>{fmtDate(trip.date)}</time>
-                        <span className="truncate">{trip.location}</span>
-                      </div>
-                      <h3 className="mt-0.5 text-base font-semibold text-black group-hover:text-teal-700 dark:text-white dark:group-hover:text-teal-300">
-                        {trip.title}
-                      </h3>
-                      {trip.excerpt && (
-                        <p className="mt-0.5 line-clamp-2 text-sm text-gray-600 dark:text-gray-300">
-                          {trip.excerpt}
-                        </p>
-                      )}
-                      {trip.tags.length > 0 && (
-                        <ul className="mt-1.5 flex flex-wrap gap-1">
-                          {trip.tags.map((tag) => (
-                            <li
-                              key={tag}
-                              className="rounded-full bg-teal-500/10 px-1.5 py-0.5 text-[10px] font-medium text-teal-700 dark:bg-teal-400/10 dark:text-teal-300"
-                            >
-                              #{tag}
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                    </div>
-                  </a>
+                  />
                 </li>
               );
             })}
@@ -316,5 +298,79 @@ export default function TravelCardFeed({
         );
       })}
     </div>
+  );
+}
+
+interface StopCardProps {
+  trip: TravelEntry;
+  isActive: boolean;
+  /** Year sections overlay the chrono index on the cover; trip sections show
+   * it on the timeline badge instead, so the cover badge is suppressed. */
+  showIndexBadge: boolean;
+  idx: number | undefined;
+  onFocus: () => void;
+}
+
+function StopCard({ trip, isActive, showIndexBadge, idx, onFocus }: StopCardProps) {
+  return (
+    <a
+      href={withBasePath(`/travels/${trip.slug}/`)}
+      onFocus={onFocus}
+      className={[
+        "group flex flex-1 gap-4 overflow-hidden rounded-lg border bg-white p-3 transition duration-200 motion-reduce:transition-none dark:bg-gray-900/40",
+        isActive
+          ? "border-teal-500/60 shadow-md ring-1 ring-teal-500/20 dark:border-teal-400/60 dark:ring-teal-400/20"
+          : "border-gray-200 hover:-translate-y-0.5 hover:border-teal-500/40 hover:shadow-sm motion-reduce:hover:translate-y-0 dark:border-gray-800 dark:hover:border-teal-400/40",
+      ].join(" ")}
+    >
+      <div className="relative shrink-0">
+        {trip.cover ? (
+          <img
+            src={withBasePath(trip.cover)}
+            alt=""
+            loading="lazy"
+            className="h-24 w-24 rounded-md object-cover transition duration-300 group-hover:scale-[1.03] motion-reduce:transition-none motion-reduce:group-hover:scale-100 sm:h-28 sm:w-40"
+          />
+        ) : (
+          <div className="flex h-24 w-24 items-center justify-center rounded-md bg-gradient-to-br from-teal-500/20 to-teal-700/20 text-2xl sm:h-28 sm:w-40">
+            <span aria-hidden="true">🗺️</span>
+          </div>
+        )}
+        {showIndexBadge && idx !== undefined && (
+          <span
+            aria-hidden="true"
+            className="absolute -left-1 -top-1 flex h-6 w-6 items-center justify-center rounded-full bg-teal-500 text-xs font-semibold text-white ring-2 ring-white dark:ring-gray-900"
+          >
+            {idx}
+          </span>
+        )}
+      </div>
+      <div className="min-w-0 flex-1">
+        <div className="flex items-center justify-between gap-2 text-xs text-gray-500 dark:text-gray-400">
+          <time>{fmtDate(trip.date)}</time>
+          <span className="truncate">{trip.location}</span>
+        </div>
+        <h3 className="mt-0.5 text-base font-semibold text-black group-hover:text-teal-700 dark:text-white dark:group-hover:text-teal-300">
+          {trip.title}
+        </h3>
+        {trip.excerpt && (
+          <p className="mt-0.5 line-clamp-2 text-sm text-gray-600 dark:text-gray-300">
+            {trip.excerpt}
+          </p>
+        )}
+        {trip.tags.length > 0 && (
+          <ul className="mt-1.5 flex flex-wrap gap-1">
+            {trip.tags.map((tag) => (
+              <li
+                key={tag}
+                className="rounded-full bg-teal-500/10 px-1.5 py-0.5 text-[10px] font-medium text-teal-700 dark:bg-teal-400/10 dark:text-teal-300"
+              >
+                #{tag}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+    </a>
   );
 }
