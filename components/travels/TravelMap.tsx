@@ -335,8 +335,20 @@ export default function TravelMap({
               position={resolvedCoords.get(trip.slug) ?? trip.coords}
               icon={buildPinIcon(trip.tags, state, isDark)}
               ref={(instance) => {
-                if (instance) markerRefs.current.set(trip.slug, instance);
-                else markerRefs.current.delete(trip.slug);
+                if (instance) {
+                  markerRefs.current.set(trip.slug, instance);
+                } else {
+                  markerRefs.current.delete(trip.slug);
+                  // Markers remount whenever their pin state or the theme
+                  // changes (the key includes both). Cancel any pending
+                  // close timer so it can't fire closePopup on the detached
+                  // instance or linger in the map after this marker is gone.
+                  const pending = closeTimers.current.get(trip.slug);
+                  if (pending) {
+                    clearTimeout(pending);
+                    closeTimers.current.delete(trip.slug);
+                  }
+                }
               }}
               eventHandlers={{
                 click: () => onSelect(trip.slug),
@@ -350,6 +362,10 @@ export default function TravelMap({
                 },
                 mouseout: (event) => {
                   const marker = event.target;
+                  // Replace any in-flight timer so repeated mouseouts can't
+                  // orphan an earlier one in the map.
+                  const existing = closeTimers.current.get(trip.slug);
+                  if (existing) clearTimeout(existing);
                   const timer = setTimeout(() => {
                     marker.closePopup();
                     closeTimers.current.delete(trip.slug);
