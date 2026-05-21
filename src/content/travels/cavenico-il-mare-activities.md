@@ -7,7 +7,7 @@ country: "Philippines"
 coords: [7.0950, 125.7050]
 tags: ["beach", "samal", "banana-boat", "kayak", "sup", "swimming", "ph"]
 trip: "davao-samal-may-2026"
-excerpt: "Morning at Cavenico il Mare — banana boat, kayaking, stand-up paddle, and swimming before checking out."
+excerpt: "A sunlit morning of water toys at Cavenico il Mare — banana boat, kayaks, stand-up paddle, and long swims before checking out."
 cover: "/static/travels/cavenico-il-mare-activities/01.jpg"
 gallery:
   - { src: "/static/travels/cavenico-il-mare-activities/02.jpg", alt: "Cavenico il Mare activities — photo 2" }
@@ -40,9 +40,13 @@ draft: false
 
 ## A morning on the water
 
-Daylight finally showed off what we couldn't see at the night check-in.
-The resort runs the standard menu of water toys, so we cycled through
-most of it: banana-boat pulls behind the speedboat, kayak loops along
-the cove, stand-up paddle on the calmer stretches, and plain swimming
-in between. Easy pacing — rotate, dry off, rinse, queue up the next
-one — then a final swim before heading back to the mainland.
+Daylight finally revealed everything the night check-in had hidden — the
+cove opening up turquoise and calm, the cottages strung along a beach
+that had been just shapes in the dark twelve hours earlier. The resort
+runs the full menu of water toys, and we worked through most of it: the
+banana boat whipping and bouncing behind the speedboat until someone got
+flung off, lazy kayak loops tracing the edge of the cove, stand-up
+paddle wobbling across the glassier stretches, and easy swims filling
+the gaps. The rhythm set itself — ride, spill, dry off in the sun, rinse,
+queue up the next one — capped by one last float in the water before we
+toweled down and pointed the boat back toward the mainland.

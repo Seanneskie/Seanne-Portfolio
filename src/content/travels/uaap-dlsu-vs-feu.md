@@ -7,7 +7,7 @@ country: "Philippines"
 coords: [14.5630, 120.9942]
 tags: ["uaap", "basketball", "sports", "manila", "ph"]
 trip: "manila-feb-2026"
-excerpt: "Catching a UAAP game — De La Salle against FEU — on Saturday."
+excerpt: "A loud Saturday of UAAP college ball — De La Salle against FEU, crowd and chants in full swing."
 cover: "/static/travels/uaap-dlsu-vs-feu/01.jpg"
 gallery:
   - { src: "/static/travels/uaap-dlsu-vs-feu/02.jpg", alt: "UAAP DLSU vs FEU — photo 2" }
@@ -22,6 +22,9 @@ draft: false
 
 ## UAAP — De La Salle vs FEU
 
-A Saturday UAAP matchup, De La Salle Green Archers against the FEU
-Tamaraws. College ball in Manila brings the crowd and the chants — a
-loud, fun break wedged into a packed day.
+A Saturday UAAP matchup — the De La Salle Green Archers against the FEU
+Tamaraws. College ball in Manila is its own kind of spectacle: rival
+sections trading chants across the arena, the band cutting in on every
+break, and the whole crowd rising as one on a fast break or a clutch
+three. Loud, electric, and a welcome jolt of energy wedged into an
+already packed day.

@@ -17,11 +17,14 @@ gallery:
   - { src: "/static/travels/northpoint-camella-davao/08.jpg", alt: "NorthPoint Camella BnB — photo 8" }
 tags: ["bnb", "davao", "ph"]
 trip: "davao-aug-2025"
-excerpt: "Two nights at a NorthPoint by Camella BnB in Davao City."
+excerpt: "Two nights at a quiet NorthPoint by Camella BnB — the August Davao trip's home base."
 draft: false
 ---
 
 ## NorthPoint by Camella
 
-A Camella residential subdivision in Davao City — the BnB unit served as
-the home base for the trip from August 18 to 20, 2025.
+A quiet Camella residential subdivision tucked into Davao City — tidy
+streets, the hush of a neighborhood well away from the traffic, and a
+BnB unit that made an easy place to come back to each evening. It served
+as the home base for the trip from August 18 to 20, 2025: somewhere to
+drop the bags, recharge, and roll out again come morning.

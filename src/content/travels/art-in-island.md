@@ -7,7 +7,7 @@ country: "Philippines"
 coords: [14.6217, 121.0586]
 tags: ["museum", "art", "cubao", "quezon-city", "manila", "ph"]
 trip: "manila-feb-2026"
-excerpt: "Sunday at Art in Island, the 3D interactive trick-art museum in Cubao."
+excerpt: "Sunday at Art in Island, Cubao — barefoot through room after room of 3D trick-art built to be posed with."
 cover: "/static/travels/art-in-island/01.jpg"
 gallery:
   - { src: "/static/travels/art-in-island/02.jpg", alt: "Art in Island — photo 2" }
@@ -25,7 +25,11 @@ draft: false
 
 ## Art in Island
 
-Sunday at Art in Island in Cubao — the big interactive 3D trick-art
-museum where the paintings are made to be posed with. You walk barefoot
-through room after room lining up the optical-illusion shots; an easy,
-playful way to spend the afternoon.
+Sunday at Art in Island in Cubao, the sprawling trick-art museum where
+the paintings reach off the walls and onto the floor, built from the
+ground up to be climbed into rather than just looked at. Shoes come off
+at the door, and from there it's room after room of falling off cliffs,
+riding dragons, and dangling over painted chasms — each one a little
+puzzle of where to stand and how to pose so the flat wall snaps into 3D
+through the camera. Half the fun is watching everyone else contort for
+the perfect angle. An easy, goofy way to lose an afternoon.

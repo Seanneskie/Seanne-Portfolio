@@ -7,7 +7,7 @@ country: "Philippines"
 coords: [7.1034, 125.6266]
 tags: ["chicken", "unli", "food", "davao", "ph"]
 trip: "davao-aug-2025"
-excerpt: "Unlimited fried chicken at Wingboss along Mamay Road in Buhangin, just off the Lanang area."
+excerpt: "Baskets of unlimited fried chicken at Wingboss on Mamay Road in Buhangin — refills until you tap out, just off the Lanang strip."
 cover: "/static/travels/wingboss-lanang/01.jpg"
 gallery:
   - { src: "/static/travels/wingboss-lanang/02.jpg", alt: "Wingboss Lanang — photo 2" }
@@ -23,15 +23,18 @@ draft: false
 
 ## Wingboss Lanang
 
-A casual chicken spot along Mamay Road in Buhangin, easy hop from the
-Lanang strip. The draw is the unlimited fried chicken — order the unli
-set and refills keep coming until you tap out. Flavors range from the
-plain house fry to glazed/sauced variants, served by the basket.
+A casual chicken joint on Mamay Road in Buhangin, an easy hop from the
+Lanang strip. The whole point is the unlimited fried chicken: order the
+unli set and the baskets just keep coming, hot and crackling, until you
+finally wave the kitchen off. Flavors run from the plain house fry —
+crisp skin, juicy inside — to glazed and sauced variants for when you
+want to switch it up, all of it landing by the basket.
 
 ## How the unli works
 
-Each diner orders their own unli set; you can't share one order across
-the table. Refills are bone-in pieces brought out hot, so the pacing
-sits with the kitchen rather than a buffet line. Rice is unlimited too
-on the standard set. Pair it with a soda and pace yourself — the first
-basket is the easy one.
+Each diner orders their own unli set — no sharing one order across the
+table. Refills come out as bone-in pieces straight from the fryer, so
+the pacing sits with the kitchen rather than a buffet line; you eat,
+they bring more, repeat. Rice is bottomless too on the standard set.
+Pair it with a cold soda and pace yourself — the first basket goes down
+easy, but it's the third one that decides the winners.

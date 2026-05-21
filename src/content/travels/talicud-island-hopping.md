@@ -7,7 +7,7 @@ country: "Philippines"
 coords: [6.9756, 125.6883]
 tags: ["island-hopping", "samal", "talicud", "beach", "snorkel", "ph"]
 trip: "davao-samal-may-2026"
-excerpt: "Joiner island-hopping run around Talicud — beach stops, snorkel spots, and the slow loop back toward Samal."
+excerpt: "A joiner island-hopping run around Talicud — clear water, hidden coves, snorkel stops, and a beach-side lunch before the slow ride home."
 cover: "/static/travels/talicud-island-hopping/01.jpg"
 gallery:
   - { src: "/static/travels/talicud-island-hopping/02.jpg", alt: "Talicud Island Hopping — photo 2" }
@@ -32,9 +32,13 @@ draft: false
 
 ## Talicud
 
-Talicud sits off the western side of Samal — quieter than the main
-Samal beaches, with clear water and a string of small coves the
-joiner boats rotate through. The day's loop hit the usual stops:
-swim breaks, a snorkel spot or two, lunch at a beach-side stand, and
-the slow ride back across the channel toward the main Samal coastline
-in the afternoon.
+Talicud sits off the western side of Samal, quieter than the headline
+Samal beaches — water so clear the boat seems to hover over the reef,
+and a string of small coves the joiner boats rotate through one by one.
+The day fell into an easy island-hopping rhythm: cut the engine, drop
+over the side for a swim, pull on a mask at a snorkel spot to watch the
+fish drift through the coral, then climb back aboard and motor to the
+next cove. Lunch came grilled and simple at a beach-side stand, sand
+still on our feet. By afternoon the boat pointed back across the
+channel, the wind picking up and the Samal coastline rising slowly on
+the horizon.
