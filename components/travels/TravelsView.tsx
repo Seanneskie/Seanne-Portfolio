@@ -5,7 +5,7 @@ import TravelMap from "./TravelMap";
 import TravelCardFeed from "./TravelCardFeed";
 import TravelStats from "./TravelStats";
 import TravelFilters from "./TravelFilters";
-import type { TravelEntry, TripGroup } from "./types";
+import type { TravelEntry, TravelSortMode, TripGroup } from "./types";
 
 interface TravelsViewProps {
   trips: TravelEntry[];
@@ -20,6 +20,8 @@ export default function TravelsView({
   const [activeTag, setActiveTag] = React.useState<string | null>(null);
   const [activeCountry, setActiveCountry] = React.useState<string | null>(null);
   const [activeTrip, setActiveTrip] = React.useState<string | null>(null);
+  const [query, setQuery] = React.useState("");
+  const [sortMode, setSortMode] = React.useState<TravelSortMode>("newest");
 
   // Tag vocabulary narrows to the active trip's stops when one is selected,
   // so "Davao trip + #coffee" shows only the coffee stop in that trip rather
@@ -53,14 +55,45 @@ export default function TravelsView({
     [tripGroups],
   );
 
+  const normalizedQuery = query.trim().toLowerCase();
+
   const filteredTrips = React.useMemo(() => {
     return trips.filter((t) => {
       if (activeTrip && t.trip !== activeTrip) return false;
       if (activeTag && !t.tags.includes(activeTag)) return false;
       if (activeCountry && t.country !== activeCountry) return false;
+      if (normalizedQuery) {
+        // Free-text match across the human-readable fields plus tags, so
+        // "samal", "coffee", or "il mare" all find the right stop.
+        const haystack = [
+          t.title,
+          t.location,
+          t.city,
+          t.country,
+          t.excerpt,
+          ...t.tags,
+        ]
+          .filter(Boolean)
+          .join(" ")
+          .toLowerCase();
+        if (!haystack.includes(normalizedQuery)) return false;
+      }
       return true;
     });
-  }, [trips, activeTag, activeCountry, activeTrip]);
+  }, [trips, activeTag, activeCountry, activeTrip, normalizedQuery]);
+
+  const hasActiveFilters =
+    activeTag !== null ||
+    activeCountry !== null ||
+    activeTrip !== null ||
+    normalizedQuery !== "";
+
+  const clearAll = React.useCallback(() => {
+    setActiveTag(null);
+    setActiveCountry(null);
+    setActiveTrip(null);
+    setQuery("");
+  }, []);
 
   // Chronological index (1-based, oldest first) so the pins read like waypoints
   // on a journey rather than mirroring the newest-first list order.
@@ -94,6 +127,14 @@ export default function TravelsView({
         onTagChange={setActiveTag}
         onCountryChange={setActiveCountry}
         onTripChange={setActiveTrip}
+        query={query}
+        onQueryChange={setQuery}
+        sortMode={sortMode}
+        onSortChange={setSortMode}
+        resultCount={filteredTrips.length}
+        totalCount={trips.length}
+        hasActiveFilters={hasActiveFilters}
+        onClearAll={clearAll}
       />
       {/* Desktop: map on the left sticks while the feed scrolls on the right.
           Mobile: single column, map renders first then the feed below. */}
@@ -111,6 +152,7 @@ export default function TravelsView({
           activeSlug={activeSlug}
           onSelect={setActiveSlug}
           indexBySlug={indexBySlug}
+          sortMode={sortMode}
         />
       </div>
     </div>
