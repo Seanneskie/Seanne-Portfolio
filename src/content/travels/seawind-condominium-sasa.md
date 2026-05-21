@@ -17,6 +17,17 @@ gallery:
   - { src: "/static/travels/seawind-condominium-sasa/06.jpg", alt: "Seawind Condominium Sasa — photo 6" }
   - { src: "/static/travels/seawind-condominium-sasa/07.jpg", alt: "Seawind Condominium Sasa — photo 7" }
   - { src: "/static/travels/seawind-condominium-sasa/08.jpg", alt: "Seawind Condominium Sasa — photo 8" }
+videos:
+  - { src: "/static/travels/seawind-condominium-sasa/videos/clip01.mp4", poster: "/static/travels/seawind-condominium-sasa/videos/clip01.jpg", alt: "Seawind Condominium Sasa — clip 1" }
+  - { src: "/static/travels/seawind-condominium-sasa/videos/clip02.mp4", poster: "/static/travels/seawind-condominium-sasa/videos/clip02.jpg", alt: "Seawind Condominium Sasa — clip 2" }
+  - { src: "/static/travels/seawind-condominium-sasa/videos/clip03.mp4", poster: "/static/travels/seawind-condominium-sasa/videos/clip03.jpg", alt: "Seawind Condominium Sasa — clip 3" }
+  - { src: "/static/travels/seawind-condominium-sasa/videos/clip04.mp4", poster: "/static/travels/seawind-condominium-sasa/videos/clip04.jpg", alt: "Seawind Condominium Sasa — clip 4" }
+  - { src: "/static/travels/seawind-condominium-sasa/videos/clip05.mp4", poster: "/static/travels/seawind-condominium-sasa/videos/clip05.jpg", alt: "Seawind Condominium Sasa — clip 5" }
+  - { src: "/static/travels/seawind-condominium-sasa/videos/clip06.mp4", poster: "/static/travels/seawind-condominium-sasa/videos/clip06.jpg", alt: "Seawind Condominium Sasa — clip 6" }
+  - { src: "/static/travels/seawind-condominium-sasa/videos/clip07.mp4", poster: "/static/travels/seawind-condominium-sasa/videos/clip07.jpg", alt: "Seawind Condominium Sasa — clip 7" }
+  - { src: "/static/travels/seawind-condominium-sasa/videos/clip08.mp4", poster: "/static/travels/seawind-condominium-sasa/videos/clip08.jpg", alt: "Seawind Condominium Sasa — clip 8" }
+  - { src: "/static/travels/seawind-condominium-sasa/videos/clip09.mp4", poster: "/static/travels/seawind-condominium-sasa/videos/clip09.jpg", alt: "Seawind Condominium Sasa — clip 9" }
+  - { src: "/static/travels/seawind-condominium-sasa/videos/clip10.mp4", poster: "/static/travels/seawind-condominium-sasa/videos/clip10.jpg", alt: "Seawind Condominium Sasa — clip 10" }
 draft: false
 ---
 

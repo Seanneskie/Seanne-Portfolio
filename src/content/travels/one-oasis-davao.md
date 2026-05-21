@@ -11,6 +11,10 @@ trip: "davao-samal-may-2026"
 excerpt: "A poolside final-night Airbnb at One Oasis Davao in Ecoland — last stop before the road back to General Santos."
 cover: "/static/travels/one-oasis-davao/01.jpg"
 gallery: []
+videos:
+  - { src: "/static/travels/one-oasis-davao/videos/clip01.mp4", poster: "/static/travels/one-oasis-davao/videos/clip01.jpg", alt: "One Oasis Davao — clip 1" }
+  - { src: "/static/travels/one-oasis-davao/videos/clip02.mp4", poster: "/static/travels/one-oasis-davao/videos/clip02.jpg", alt: "One Oasis Davao — clip 2" }
+  - { src: "/static/travels/one-oasis-davao/videos/clip03.mp4", poster: "/static/travels/one-oasis-davao/videos/clip03.jpg", alt: "One Oasis Davao — clip 3" }
 draft: false
 ---
 

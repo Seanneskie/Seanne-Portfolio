@@ -27,6 +27,14 @@ gallery:
   - { src: "/static/travels/talicud-island-hopping/16.jpg", alt: "Talicud Island Hopping — photo 16" }
   - { src: "/static/travels/talicud-island-hopping/17.jpg", alt: "Talicud Island Hopping — photo 17" }
   - { src: "/static/travels/talicud-island-hopping/18.jpg", alt: "Talicud Island Hopping — photo 18" }
+videos:
+  - { src: "/static/travels/talicud-island-hopping/videos/clip01.mp4", poster: "/static/travels/talicud-island-hopping/videos/clip01.jpg", alt: "Talicud island hopping — clip 1" }
+  - { src: "/static/travels/talicud-island-hopping/videos/clip02.mp4", poster: "/static/travels/talicud-island-hopping/videos/clip02.jpg", alt: "Talicud island hopping — clip 2" }
+  - { src: "/static/travels/talicud-island-hopping/videos/clip03.mp4", poster: "/static/travels/talicud-island-hopping/videos/clip03.jpg", alt: "Talicud island hopping — clip 3" }
+  - { src: "/static/travels/talicud-island-hopping/videos/clip04.mp4", poster: "/static/travels/talicud-island-hopping/videos/clip04.jpg", alt: "Talicud island hopping — clip 4" }
+  - { src: "/static/travels/talicud-island-hopping/videos/clip05.mp4", poster: "/static/travels/talicud-island-hopping/videos/clip05.jpg", alt: "Talicud island hopping — clip 5" }
+  - { src: "/static/travels/talicud-island-hopping/videos/clip06.mp4", poster: "/static/travels/talicud-island-hopping/videos/clip06.jpg", alt: "Talicud island hopping — clip 6" }
+  - { src: "/static/travels/talicud-island-hopping/videos/clip07.mp4", poster: "/static/travels/talicud-island-hopping/videos/clip07.jpg", alt: "Talicud island hopping — clip 7" }
 draft: false
 ---
 
