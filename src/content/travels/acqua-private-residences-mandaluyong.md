@@ -8,7 +8,7 @@ country: "Philippines"
 coords: [14.5760, 121.0345]
 tags: ["lodging", "bnb", "mandaluyong", "manila", "ph"]
 trip: "manila-feb-2026"
-excerpt: "Friday check-in at an Acqua Private Residences Airbnb in Mandaluyong — home base for the Manila trip."
+excerpt: "Friday check-in at an Acqua Private Residences Airbnb on the Pasig River — the riverside home base for the whole Manila trip."
 cover: "/static/travels/acqua-private-residences-mandaluyong/01.jpg"
 gallery:
   - { src: "/static/travels/acqua-private-residences-mandaluyong/02.jpg", alt: "Acqua Private Residences Mandaluyong — photo 2" }
@@ -31,8 +31,11 @@ draft: false
 
 ## Acqua Private Residences
 
-Friday check-in at an Airbnb unit in Acqua Private Residences along the
-Pasig River in Mandaluyong — the home base for the whole Manila run from
-the 13th through the 16th. Riverside towers with the city laid out from
-the windows, central enough to bounce out to Rockwell, MOA, and the rest
-of the itinerary without long drives.
+Friday check-in at an Airbnb unit in Acqua Private Residences, where a
+cluster of towers leans over the Pasig River in Mandaluyong. From the
+windows the city sprawls out in a grid of lights, and the river slides
+by below — the kind of view that makes you stand there a minute before
+unpacking. This was home base for the whole Manila run from the 13th
+through the 16th: central enough to slip out to Rockwell, MOA, and the
+rest of the itinerary and still be back before the night thinned out, no
+long drives in between.

@@ -20,7 +20,7 @@ gallery:
   - { src: "/static/travels/starbucks-sm-lanang/12.jpg", alt: "Starbucks SM Lanang — photo 12" }
 tags: ["coffee", "davao", "ph"]
 trip: "davao-aug-2025"
-excerpt: "A quick stop at the Starbucks inside SM Lanang Premier along J.P. Laurel Avenue."
+excerpt: "An hour of caffeine and focus at the Starbucks inside SM Lanang Premier on J.P. Laurel Avenue."
 draft: false
 ---
 
@@ -32,8 +32,10 @@ Convention Center, making it one of the busier weekend spots in the city.
 
 ## The Starbucks
 
-The branch sits inside the mall — easy access from either the main lobby
-or the parking deck. Standard menu, reliable Wi-Fi, plenty of outlets, and
-the usual hum of students grinding through deadlines on laptops. A solid
-default when you need an hour of focus or a meeting spot that's easy to
-find.
+The branch sits inside the mall, an easy walk from either the main lobby
+or the parking deck. Inside it's the familiar scene: the hiss of the
+espresso machine, the smell of roast hanging in the air-conditioning,
+outlets at most tables, and a low hum of students hunched over laptops
+chasing deadlines. Reliable Wi-Fi, a cup that lasts as long as you need
+it to — a solid default when you want an hour of focus or a meeting spot
+nobody can get lost finding.

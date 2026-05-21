@@ -7,7 +7,7 @@ country: "Philippines"
 coords: [7.0617, 125.6048]
 tags: ["food", "sushi", "japanese", "davao", "ph"]
 trip: "davao-samal-may-2026"
-excerpt: "Conveyor-belt sushi at Sushi Station inside SM City Davao to open the trip."
+excerpt: "Color-coded plates gliding by on the belt at Sushi Station inside SM City Davao — an easy first meal to open the trip."
 cover: "/static/travels/sushi-station-sm-davao/01.jpg"
 gallery:
   - { src: "/static/travels/sushi-station-sm-davao/02.jpg", alt: "Sushi Station SM Davao — photo 2" }
@@ -23,8 +23,10 @@ draft: false
 
 ## Sushi Station
 
-A conveyor-belt sushi spot inside SM City Davao — color-coded plates
-glide past on the belt and you grab what you want, with hot dishes and
-sets available off the menu. Easy first-meal pick after rolling into
-the city: low-commitment ordering, quick turnover, and a wide enough
-range to share across the table.
+A conveyor-belt sushi spot inside SM City Davao, where color-coded
+plates glide past in an endless loop and you just reach out and snag
+whatever catches your eye — the price stacking up quietly in the tower
+of empty dishes at your elbow. Hot dishes and sets come off the menu
+when the belt isn't enough. It made an easy first meal after rolling
+into the city: no menu to agonize over, quick turnover, and enough
+variety that everyone at the table found their thing.

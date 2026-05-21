@@ -7,7 +7,7 @@ country: "Philippines"
 coords: [7.0988, 125.6311]
 tags: ["arcade", "amusement", "davao", "ph"]
 trip: "davao-aug-2025"
-excerpt: "An afternoon at Altitude, the rooftop entertainment zone on the 5th floor of SM Lanang Premier."
+excerpt: "An afternoon at Altitude — arcade lights, redemption tickets, and open-air rides on the rooftop sky park of SM Lanang Premier."
 cover: "/static/travels/altitude-sm-lanang/01.jpg"
 gallery:
   - { src: "/static/travels/altitude-sm-lanang/02.jpg", alt: "Altitude SM Lanang — photo 2" }
@@ -20,14 +20,17 @@ draft: false
 
 ## Altitude at SM Lanang
 
-Altitude is the rooftop entertainment zone on the 5th floor of SM Lanang
-Premier — arcade machines, claw games, redemption tickets, and a stretch
-of bigger rides along the open-air sky park side. Easy walk from the
-cinemas, so it's a natural detour before or after a movie.
+Altitude crowns the 5th floor of SM Lanang Premier — a wall of arcade
+machines blinking and chiming inside, claw games dangling their prizes
+just out of reach, and out past the glass doors a stretch of open-air
+rides on the sky park. The arcade din spills into the warm Davao
+afternoon the moment you step outside. An easy walk from the cinemas, so
+it's a natural detour to burn off energy before or after a movie.
 
 ## What we did
 
-A loop through the arcade, a few rounds on the rides, and the usual
-ticket-counting trade-in at the end. The mix of indoor arcade plus
-the open-deck rides keeps things lively even when the weather's hot —
-the breeze on the sky-park side helps.
+We worked a loop through the arcade, traded the joystick for a few turns
+on the rides, then hauled the afternoon's haul of redemption tickets to
+the counter for the ritual trade-in at the end. Cool, dim arcade one
+minute; sun and city skyline the next — the breeze on the sky-park side
+keeps it from ever feeling like the usual sweat-it-out mall heat.

@@ -7,7 +7,7 @@ country: "Philippines"
 coords: [14.5547, 121.0244]
 tags: ["cafe", "food", "manila", "ph"]
 trip: "manila-feb-2026"
-excerpt: "A Mary Grace meal on Monday to close out the Manila trip."
+excerpt: "A warm last meal at Mary Grace — ensaymada and hot chocolate — to close out the Manila trip on Monday."
 cover: "/static/travels/mary-grace-manila/01.jpg"
 gallery:
   - { src: "/static/travels/mary-grace-manila/02.jpg", alt: "Mary Grace Manila — photo 2" }
@@ -17,6 +17,8 @@ draft: false
 
 ## Mary Grace
 
-Monday closed out the trip with a meal at Mary Grace — comfort-food
-classics and their signature ensaymada and hot chocolate. A relaxed
-last stop before heading home from Manila.
+Monday eased the trip to a close at Mary Grace — comfort-food classics
+and the signature pairing everyone comes for: a sugar-dusted ensaymada,
+still soft and buttery, alongside a thick cup of hot chocolate rich
+enough to stand a spoon in. No rush, no itinerary left to chase. Just a
+slow, warm last stop to let Manila settle before the trip home.

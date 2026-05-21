@@ -217,6 +217,21 @@ const travels = defineCollection({
     gallery: z
       .array(z.object({ src: z.string(), alt: z.string() }))
       .default([]),
+    // Optional video clips, rendered as poster + play badge in the gallery and
+    // played in the lightbox. `src` is either a local file path
+    // (e.g. /static/travels/<slug>/clip.mp4) or a YouTube/Vimeo URL — the
+    // gallery detects which and renders a <video> or an embed iframe.
+    // `poster` is an optional thumbnail image; without it, local videos show
+    // their first frame and embeds use the provider's own thumbnail.
+    videos: z
+      .array(
+        z.object({
+          src: z.string(),
+          poster: z.string().optional(),
+          alt: z.string(),
+        }),
+      )
+      .default([]),
     tags: z.array(z.string()).default([]),
     excerpt: z.string().optional(),
     trip: z.string().optional(),

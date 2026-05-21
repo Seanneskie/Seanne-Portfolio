@@ -7,7 +7,7 @@ country: "Philippines"
 coords: [7.0716, 125.6128]
 tags: ["coffee", "cafe", "ghibli", "davao", "ph"]
 trip: "davao-samal-may-2026"
-excerpt: "A Ghibli-themed coffee shop in Davao — Totoro corners, pastel walls, and a slow afternoon stop between meals."
+excerpt: "A Ghibli-themed cafe in Davao where Totoro keeps watch from the shelves, soot sprites scatter the corners, and the afternoon slows to a crawl."
 cover: "/static/travels/cake-gallerie-davao/01.jpg"
 gallery:
   - { src: "/static/travels/cake-gallerie-davao/02.jpg", alt: "Cake Gallerie Davao — photo 2" }
@@ -39,8 +39,10 @@ draft: false
 
 ## Cake Gallerie
 
-A Ghibli-themed coffee shop in Davao — Totoro plushies, soot-sprite
-accents, and pastel walls turn the room into a photo set as much as a
-cafe. Standard coffee menu plus cakes and pastries; the draw is the
-atmosphere more than any single drink. Easy mid-afternoon detour
-between the SM Davao lunch and the Sasa check-in.
+Step inside and Davao's heat falls away. Totoro plushies slouch on the
+shelves, soot sprites dot the corners, and pastel walls wrap the room in
+the soft glow of a Miyazaki frame. The coffee and cakes are solid, but
+nobody's really here for the menu — you come to sit inside the world,
+phone out, while the espresso machine hums in the background. An easy
+mid-afternoon breather wedged between the SM Davao lunch and the Sasa
+check-in.

@@ -2,6 +2,7 @@
 import { getCollection, render } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import TravelMap from "../../../components/travels/TravelMap.tsx";
+import TravelGallery from "../../../components/travels/TravelGallery.tsx";
 import { withBase } from "../../lib/with-base";
 import { travelOgImage } from "../../lib/travel-og";
 
@@ -124,21 +125,14 @@ const singleTrip = entry.data.coords
       <Content />
     </article>
 
-    {entry.data.gallery.length > 0 && (
+    {(entry.data.gallery.length > 0 || entry.data.videos.length > 0) && (
       <section class="mt-12">
         <h2 class="mb-4 text-xl font-semibold text-black dark:text-white">Gallery</h2>
-        <div class="grid grid-cols-2 gap-3 sm:grid-cols-3">
-          {entry.data.gallery.map((img) => (
-            <a href={withBase(img.src)} target="_blank" rel="noopener noreferrer">
-              <img
-                src={withBase(img.src)}
-                alt={img.alt}
-                class="aspect-square w-full rounded-md object-cover transition hover:opacity-90"
-                loading="lazy"
-              />
-            </a>
-          ))}
-        </div>
+        <TravelGallery
+          client:visible
+          gallery={entry.data.gallery}
+          videos={entry.data.videos}
+        />
       </section>
     )}
 

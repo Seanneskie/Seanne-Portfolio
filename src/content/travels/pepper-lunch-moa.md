@@ -7,7 +7,7 @@ country: "Philippines"
 coords: [14.5352, 120.9822]
 tags: ["food", "japanese", "moa", "pasay", "manila", "ph"]
 trip: "manila-feb-2026"
-excerpt: "Dinner at Pepper Lunch in SM Mall of Asia to cap off Saturday."
+excerpt: "Sizzling-plate dinner at Pepper Lunch in SM Mall of Asia — a satisfying cap to a packed Saturday."
 cover: "/static/travels/pepper-lunch-moa/01.jpg"
 gallery:
   - { src: "/static/travels/pepper-lunch-moa/02.jpg", alt: "Pepper Lunch MOA — photo 2" }
@@ -19,6 +19,9 @@ draft: false
 
 ## Pepper Lunch
 
-Dinner at Pepper Lunch in SM Mall of Asia — sizzling-plate beef and rice
-you finish cooking yourself at the table. An easy, satisfying cap to a
-full Saturday of the launch and the UAAP game.
+Dinner at Pepper Lunch in SM Mall of Asia, where the plates come out
+screaming hot and you finish the job yourself — beef and rice hissing
+and spitting on the cast-iron while you press it down and swirl in the
+sauces, the smell of seared meat rising off the table. Hands-on, fast,
+and exactly the kind of hearty you want after a full Saturday of the
+app launch and the UAAP game.
