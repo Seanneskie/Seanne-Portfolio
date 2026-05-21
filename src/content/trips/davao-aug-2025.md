@@ -4,6 +4,9 @@ startDate: 2025-08-18
 endDate: 2025-08-20
 location: "Davao City, Philippines"
 summary: "Three days based at a NorthPoint BnB, with food, coffee, and an afternoon at the SM Lanang arcade."
+author: "Seanne Cañete"
+readTime: "3 min read"
+tags: ["davao", "ph", "food", "city"]
 stops:
   - northpoint-camella-davao
   - starbucks-sm-lanang

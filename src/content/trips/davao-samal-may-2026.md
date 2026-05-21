@@ -4,6 +4,9 @@ startDate: 2026-05-15
 endDate: 2026-05-18
 location: "Davao City & Samal Island, Philippines"
 summary: "Four days across Davao and Samal — sushi and a Ghibli-themed cafe, an Airbnb in Sasa, island hopping out of Sta. Ana Wharf to Talicud, a beach stay at Cavenico il Mare, and a final night at One Oasis before the drive back to GenSan."
+author: "Seanne Cañete"
+readTime: "5 min read"
+tags: ["davao", "samal", "ph", "beach", "food", "island-hopping"]
 stops:
   - sushi-station-sm-davao
   - cake-gallerie-davao
