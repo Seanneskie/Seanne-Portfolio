@@ -14,6 +14,8 @@ gallery:
   - { src: "/static/travels/filipina-meet-launch-rockwell/03.jpg", alt: "Filipina Meet launch Rockwell — photo 3" }
   - { src: "/static/travels/filipina-meet-launch-rockwell/04.jpg", alt: "Filipina Meet launch Rockwell — photo 4" }
   - { src: "/static/travels/filipina-meet-launch-rockwell/05.jpg", alt: "Filipina Meet launch Rockwell — photo 5" }
+videos:
+  - { src: "/static/travels/filipina-meet-launch-rockwell/videos/clip01.mp4", poster: "/static/travels/filipina-meet-launch-rockwell/videos/clip01.jpg", alt: "Filipina Meet app launch — clip 1" }
 draft: false
 ---
 

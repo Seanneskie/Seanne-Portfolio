@@ -35,6 +35,12 @@ gallery:
   - { src: "/static/travels/cavenico-il-mare-activities/24.jpg", alt: "Cavenico il Mare activities — photo 24" }
   - { src: "/static/travels/cavenico-il-mare-activities/25.jpg", alt: "Cavenico il Mare activities — photo 25" }
   - { src: "/static/travels/cavenico-il-mare-activities/26.jpg", alt: "Cavenico il Mare activities — photo 26" }
+videos:
+  - { src: "/static/travels/cavenico-il-mare-activities/videos/clip01.mp4", poster: "/static/travels/cavenico-il-mare-activities/videos/clip01.jpg", alt: "Cavenico il Mare water activities — clip 1" }
+  - { src: "/static/travels/cavenico-il-mare-activities/videos/clip02.mp4", poster: "/static/travels/cavenico-il-mare-activities/videos/clip02.jpg", alt: "Cavenico il Mare water activities — clip 2" }
+  - { src: "/static/travels/cavenico-il-mare-activities/videos/clip03.mp4", poster: "/static/travels/cavenico-il-mare-activities/videos/clip03.jpg", alt: "Cavenico il Mare water activities — clip 3" }
+  - { src: "/static/travels/cavenico-il-mare-activities/videos/clip04.mp4", poster: "/static/travels/cavenico-il-mare-activities/videos/clip04.jpg", alt: "Cavenico il Mare water activities — clip 4" }
+  - { src: "/static/travels/cavenico-il-mare-activities/videos/clip05.mp4", poster: "/static/travels/cavenico-il-mare-activities/videos/clip05.jpg", alt: "Cavenico il Mare water activities — clip 5" }
 draft: false
 ---
 
