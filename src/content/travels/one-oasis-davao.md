@@ -9,6 +9,8 @@ coords: [7.0660, 125.6090]
 tags: ["airbnb", "lodging", "davao", "ecoland", "ph"]
 trip: "davao-samal-may-2026"
 excerpt: "Final-night Airbnb at One Oasis Davao in Ecoland before the drive back to General Santos."
+cover: "/static/travels/one-oasis-davao/01.jpg"
+gallery: []
 draft: false
 ---
 

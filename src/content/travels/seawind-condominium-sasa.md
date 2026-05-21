@@ -8,6 +8,8 @@ coords: [7.1320, 125.6500]
 tags: ["airbnb", "lodging", "davao", "sasa", "ph"]
 trip: "davao-samal-may-2026"
 excerpt: "Night-one Airbnb at Seawind Condominium in Sasa — north Davao base, close to the Sta. Ana wharf run the next morning."
+cover: "/static/travels/seawind-condominium-sasa/01.jpg"
+gallery: []
 draft: false
 ---
 

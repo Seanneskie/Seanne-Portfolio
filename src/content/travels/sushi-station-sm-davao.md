@@ -8,6 +8,16 @@ coords: [7.0617, 125.6048]
 tags: ["food", "sushi", "japanese", "davao", "ph"]
 trip: "davao-samal-may-2026"
 excerpt: "Conveyor-belt sushi at Sushi Station inside SM City Davao to open the trip."
+cover: "/static/travels/sushi-station-sm-davao/01.jpg"
+gallery:
+  - { src: "/static/travels/sushi-station-sm-davao/02.jpg", alt: "Sushi Station SM Davao — photo 2" }
+  - { src: "/static/travels/sushi-station-sm-davao/03.jpg", alt: "Sushi Station SM Davao — photo 3" }
+  - { src: "/static/travels/sushi-station-sm-davao/04.jpg", alt: "Sushi Station SM Davao — photo 4" }
+  - { src: "/static/travels/sushi-station-sm-davao/05.jpg", alt: "Sushi Station SM Davao — photo 5" }
+  - { src: "/static/travels/sushi-station-sm-davao/06.jpg", alt: "Sushi Station SM Davao — photo 6" }
+  - { src: "/static/travels/sushi-station-sm-davao/07.jpg", alt: "Sushi Station SM Davao — photo 7" }
+  - { src: "/static/travels/sushi-station-sm-davao/08.jpg", alt: "Sushi Station SM Davao — photo 8" }
+  - { src: "/static/travels/sushi-station-sm-davao/09.jpg", alt: "Sushi Station SM Davao — photo 9" }
 draft: false
 ---
 

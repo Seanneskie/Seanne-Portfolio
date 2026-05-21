@@ -8,6 +8,16 @@ coords: [7.0988, 125.6311]
 tags: ["food", "wings", "davao", "lanang", "ph"]
 trip: "davao-samal-may-2026"
 excerpt: "Dinner stop at Buffalo's Wings N' Things inside SM Lanang Premier after the Talicud day, before heading across to Cavenico il Mare."
+cover: "/static/travels/buffalos-wings-sm-lanang/01.jpg"
+gallery:
+  - { src: "/static/travels/buffalos-wings-sm-lanang/02.jpg", alt: "Buffalo's Wings SM Lanang — photo 2" }
+  - { src: "/static/travels/buffalos-wings-sm-lanang/03.jpg", alt: "Buffalo's Wings SM Lanang — photo 3" }
+  - { src: "/static/travels/buffalos-wings-sm-lanang/04.jpg", alt: "Buffalo's Wings SM Lanang — photo 4" }
+  - { src: "/static/travels/buffalos-wings-sm-lanang/05.jpg", alt: "Buffalo's Wings SM Lanang — photo 5" }
+  - { src: "/static/travels/buffalos-wings-sm-lanang/06.jpg", alt: "Buffalo's Wings SM Lanang — photo 6" }
+  - { src: "/static/travels/buffalos-wings-sm-lanang/07.jpg", alt: "Buffalo's Wings SM Lanang — photo 7" }
+  - { src: "/static/travels/buffalos-wings-sm-lanang/08.jpg", alt: "Buffalo's Wings SM Lanang — photo 8" }
+  - { src: "/static/travels/buffalos-wings-sm-lanang/09.jpg", alt: "Buffalo's Wings SM Lanang — photo 9" }
 draft: false
 ---
 
