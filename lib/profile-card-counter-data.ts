@@ -39,19 +39,19 @@ const parseCardCounterItem = (item: unknown, index: number): CardCounterItem => 
     item as RawCardCounterItem;
 
   if (typeof id !== "string" || id.trim().length === 0) {
-    throw new Error(`Item at index ${index} is missing a valid \"id\".`);
+    throw new Error(`Item at index ${index} is missing a valid 'id'.`);
   }
 
   if (typeof title !== "string" || title.trim().length === 0) {
-    throw new Error(`Item at index ${index} is missing a valid \"title\".`);
+    throw new Error(`Item at index ${index} is missing a valid 'title'.`);
   }
 
   if (typeof value !== "number" || Number.isNaN(value)) {
-    throw new Error(`Item at index ${index} is missing a valid \"value\".`);
+    throw new Error(`Item at index ${index} is missing a valid 'value'.`);
   }
 
   if (typeof order !== "number" || !Number.isFinite(order)) {
-    throw new Error(`Item at index ${index} is missing a valid \"order\".`);
+    throw new Error(`Item at index ${index} is missing a valid 'order'.`);
   }
 
   if (!isCounterCardTheme(theme)) {
@@ -62,7 +62,7 @@ const parseCardCounterItem = (item: unknown, index: number): CardCounterItem => 
 
   if (description != null && typeof description !== "string") {
     throw new Error(
-      `Item at index ${index} has an invalid \"description\" field.`
+      `Item at index ${index} has an invalid 'description' field.`
     );
   }
 

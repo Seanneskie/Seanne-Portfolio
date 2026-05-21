@@ -27,7 +27,10 @@ export default function ThemeToggle({ className }: ThemeToggleProps) {
     root.style.colorScheme = theme;
     try {
       localStorage.setItem(STORAGE_KEY, theme);
-    } catch {}
+    } catch {
+      // localStorage can throw (private mode / blocked storage) — the theme
+      // still applies for this session, so the persistence failure is ignored.
+    }
   }, [theme]);
 
   const toggle = () => setTheme((prev) => (prev === "dark" ? "light" : "dark"));

@@ -62,14 +62,11 @@ export default function Image(props: ImageProps): ReactElement {
     height,
     fill,
     priority,
-    // Next-only props we intentionally drop in the shim (no image optimization).
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    // Next-only props we intentionally drop in the shim (no image
+    // optimization). The `_`-prefix marks them unused for the lint config.
     quality: _quality,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     placeholder: _placeholder,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     blurDataURL: _blurDataURL,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     unoptimized: _unoptimized,
     style,
     className,
@@ -99,7 +96,6 @@ export default function Image(props: ImageProps): ReactElement {
 
   return (
     // The shim's whole purpose is to degrade next/image to a plain <img>.
-    // eslint-disable-next-line @next/next/no-img-element
     <img
       {...rest}
       {...(fetchPriorityAttr as Record<string, string>)}
