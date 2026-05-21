@@ -19,7 +19,7 @@ import {
   HoverCardContent,
 } from "@/components/ui/hover-card";
 import { withBasePath } from "@/lib/utils";
-import Image from "next/image";
+import Image from "@/src/shims/next-image";
 
 export interface Certificate {
   tags: string[];

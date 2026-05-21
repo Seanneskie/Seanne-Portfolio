@@ -1,7 +1,7 @@
 "use client";
 
 import { type ReactElement } from "react";
-import Image from "next/image";
+import Image from "@/src/shims/next-image";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { withBasePath } from "@/lib/utils";

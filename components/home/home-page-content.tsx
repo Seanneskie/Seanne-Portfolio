@@ -1,5 +1,5 @@
 import type { JSX } from "react";
-import Link from "next/link";
+import Link from "@/src/shims/next-link";
 import { ArrowUpRight, Sparkles } from "lucide-react";
 
 import Banner from "@/components/banner";

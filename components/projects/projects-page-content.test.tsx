@@ -46,7 +46,7 @@ vi.mock("@/lib/utils", () => ({
   cn: (...inputs: unknown[]) => inputs.filter(Boolean).join(" "),
 }));
 
-vi.mock("next/link", () => ({
+vi.mock("@/src/shims/next-link", () => ({
   __esModule: true,
   default: ({ href, children, ...props }: { href: string; children: React.ReactNode }) => (
     <a href={href} {...props}>
@@ -55,7 +55,7 @@ vi.mock("next/link", () => ({
   ),
 }));
 
-vi.mock("next/image", () => ({
+vi.mock("@/src/shims/next-image", () => ({
   __esModule: true,
   default: ({ alt, src }: { alt: string; src: string }) => (
     <span role="img" aria-label={alt} data-src={src} data-testid="next-image-mock" />

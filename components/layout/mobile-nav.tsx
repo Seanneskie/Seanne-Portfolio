@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { type ReactElement } from "react";
-import Link from "next/link";
+import Link from "@/src/shims/next-link";
 import { ArrowUpRight, Menu } from "lucide-react";
 
 import { Button } from "@/components/ui/button";

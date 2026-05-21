@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/src/shims/next-link";
 import { type ReactElement } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { getAdjacentProjects } from "@/lib/project-meta";

@@ -46,7 +46,7 @@ vi.mock("sonner", () => ({
   },
 }));
 
-vi.mock("next/link", () => ({
+vi.mock("@/src/shims/next-link", () => ({
   __esModule: true,
   default: ({ href, children, ...props }: { href: string; children: React.ReactNode }) => (
     <a href={href} {...props}>

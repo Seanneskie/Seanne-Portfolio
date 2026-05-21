@@ -2,7 +2,7 @@
 
 import { type ReactElement } from "react";
 import { motion, type Variants } from "framer-motion";
-import Image from "next/image";
+import Image from "@/src/shims/next-image";
 import { withBasePath } from "@/lib/utils";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";

@@ -1,5 +1,5 @@
 import type { JSX } from "react";
-import Link from "next/link";
+import Link from "@/src/shims/next-link";
 import { ArrowUpRight, Trophy } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";

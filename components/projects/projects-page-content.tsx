@@ -3,8 +3,8 @@
 import type { JSX } from "react";
 import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import Image from "next/image";
-import Link from "next/link";
+import Image from "@/src/shims/next-image";
+import Link from "@/src/shims/next-link";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
