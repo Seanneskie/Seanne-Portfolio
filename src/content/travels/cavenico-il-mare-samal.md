@@ -8,7 +8,7 @@ coords: [7.0950, 125.7050]
 tags: ["resort", "beach", "samal", "lodging", "ph"]
 trip: "davao-samal-may-2026"
 excerpt: "Night check-in at Cavenico il Mare on Samal Island after the island-hopping day."
-cover: "/static/travels/cavenico-il-mare-samal/01.jpg"
+cover: "/static/travels/cavenico-il-mare-samal/28.jpg"
 gallery:
   - { src: "/static/travels/cavenico-il-mare-samal/02.jpg", alt: "Cavenico il Mare Samal — photo 2" }
   - { src: "/static/travels/cavenico-il-mare-samal/03.jpg", alt: "Cavenico il Mare Samal — photo 3" }
@@ -36,7 +36,7 @@ gallery:
   - { src: "/static/travels/cavenico-il-mare-samal/25.jpg", alt: "Cavenico il Mare Samal — photo 25" }
   - { src: "/static/travels/cavenico-il-mare-samal/26.jpg", alt: "Cavenico il Mare Samal — photo 26" }
   - { src: "/static/travels/cavenico-il-mare-samal/27.jpg", alt: "Cavenico il Mare Samal — photo 27" }
-  - { src: "/static/travels/cavenico-il-mare-samal/28.jpg", alt: "Cavenico il Mare Samal — photo 28" }
+  - { src: "/static/travels/cavenico-il-mare-samal/01.jpg", alt: "Cavenico il Mare Samal — photo 1" }
 draft: false
 ---
 

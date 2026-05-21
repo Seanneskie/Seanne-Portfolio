@@ -9,7 +9,14 @@ tags: ["airbnb", "lodging", "davao", "sasa", "ph"]
 trip: "davao-samal-may-2026"
 excerpt: "Night-one Airbnb at Seawind Condominium in Sasa — north Davao base, close to the Sta. Ana wharf run the next morning."
 cover: "/static/travels/seawind-condominium-sasa/01.jpg"
-gallery: []
+gallery:
+  - { src: "/static/travels/seawind-condominium-sasa/02.jpg", alt: "Seawind Condominium Sasa — photo 2" }
+  - { src: "/static/travels/seawind-condominium-sasa/03.jpg", alt: "Seawind Condominium Sasa — photo 3" }
+  - { src: "/static/travels/seawind-condominium-sasa/04.jpg", alt: "Seawind Condominium Sasa — photo 4" }
+  - { src: "/static/travels/seawind-condominium-sasa/05.jpg", alt: "Seawind Condominium Sasa — photo 5" }
+  - { src: "/static/travels/seawind-condominium-sasa/06.jpg", alt: "Seawind Condominium Sasa — photo 6" }
+  - { src: "/static/travels/seawind-condominium-sasa/07.jpg", alt: "Seawind Condominium Sasa — photo 7" }
+  - { src: "/static/travels/seawind-condominium-sasa/08.jpg", alt: "Seawind Condominium Sasa — photo 8" }
 draft: false
 ---
 
