@@ -3,6 +3,7 @@ import { getCollection, render } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import TravelMap from "../../../components/travels/TravelMap.tsx";
 import { withBase } from "../../lib/with-base";
+import { travelOgImage } from "../../lib/travel-og";
 
 export async function getStaticPaths() {
   const entries = (await getCollection("travels")).sort(
@@ -29,6 +30,7 @@ const fmtDate = (d: Date) =>
 
 const slug = entry.id.replace(/\.md$/, "");
 const pageTitle = `${entry.data.title} | Travels`;
+const ogImage = travelOgImage(entry.data);
 
 // Single-pin map data — re-uses the same TravelMap island as the listing view,
 // driven by a one-entry trips array so the pin centers automatically.
@@ -40,7 +42,7 @@ const jsonLd = {
   datePublished: entry.data.date.toISOString(),
   author: { "@type": "Person", name: "Seanne Cañete" },
   keywords: entry.data.tags.join(", "),
-  image: entry.data.cover,
+  image: ogImage,
   contentLocation: { "@type": "Place", name: entry.data.location },
   mainEntityOfPage: `/travels/${slug}/`,
 };
@@ -65,7 +67,7 @@ const singleTrip = entry.data.coords
   description={entry.data.excerpt ?? entry.data.title}
   canonical={`/travels/${slug}/`}
   ogType="article"
-  ogImage={entry.data.cover ?? "/static/bg_2.jpg"}
+  ogImage={ogImage}
   keywords={entry.data.tags}
 >
   <main class="container mx-auto max-w-4xl px-4 py-12">

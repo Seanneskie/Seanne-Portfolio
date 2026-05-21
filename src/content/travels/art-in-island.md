@@ -8,9 +8,18 @@ coords: [14.6217, 121.0586]
 tags: ["museum", "art", "cubao", "quezon-city", "manila", "ph"]
 trip: "manila-feb-2026"
 excerpt: "Sunday at Art in Island, the 3D interactive trick-art museum in Cubao."
-# cover: "/static/travels/art-in-island/cover.jpg"
-# gallery:
-#   - { src: "/static/travels/art-in-island/01.jpg", alt: "art-in-island — photo 1" }
+cover: "/static/travels/art-in-island/01.jpg"
+gallery:
+  - { src: "/static/travels/art-in-island/02.jpg", alt: "Art in Island — photo 2" }
+  - { src: "/static/travels/art-in-island/03.jpg", alt: "Art in Island — photo 3" }
+  - { src: "/static/travels/art-in-island/04.jpg", alt: "Art in Island — photo 4" }
+  - { src: "/static/travels/art-in-island/05.jpg", alt: "Art in Island — photo 5" }
+  - { src: "/static/travels/art-in-island/06.jpg", alt: "Art in Island — photo 6" }
+  - { src: "/static/travels/art-in-island/07.jpg", alt: "Art in Island — photo 7" }
+  - { src: "/static/travels/art-in-island/08.jpg", alt: "Art in Island — photo 8" }
+  - { src: "/static/travels/art-in-island/09.jpg", alt: "Art in Island — photo 9" }
+  - { src: "/static/travels/art-in-island/10.jpg", alt: "Art in Island — photo 10" }
+  - { src: "/static/travels/art-in-island/11.jpg", alt: "Art in Island — photo 11" }
 draft: false
 ---
 

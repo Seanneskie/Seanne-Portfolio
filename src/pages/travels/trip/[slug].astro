@@ -3,6 +3,7 @@ import { getCollection, render } from "astro:content";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import TravelMap from "../../../../components/travels/TravelMap.tsx";
 import { withBase } from "../../../lib/with-base";
+import { travelOgImageFrom } from "../../../lib/travel-og";
 
 export async function getStaticPaths() {
   const trips = await getCollection("trips");
@@ -79,7 +80,9 @@ const mapTripGroups = [
   },
 ];
 
-const ogImage = orderedStops.find((s) => s.data.cover)?.data.cover ?? "/static/bg_2.jpg";
+// First stop (in itinerary order) that has a cover or gallery image wins;
+// falls back to the site default if the whole trip is image-less.
+const ogImage = travelOgImageFrom(orderedStops.map((s) => s.data));
 
 const jsonLd = {
   "@context": "https://schema.org",
