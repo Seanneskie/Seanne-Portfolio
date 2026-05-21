@@ -13,6 +13,8 @@ export interface TravelEntry {
   trip?: string;
 }
 
+export type TravelSortMode = "newest" | "oldest";
+
 export interface TripGroup {
   slug: string;
   title: string;

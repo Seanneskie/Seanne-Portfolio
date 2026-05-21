@@ -4,6 +4,7 @@ import * as React from "react";
 import type { TravelEntry, TripGroup } from "./types";
 import { fmtDate, withBasePath } from "@/lib/utils";
 import { useTravelSections } from "./useTravelSections";
+import type { TravelSortMode } from "./types";
 
 interface TravelCardFeedProps {
   trips: TravelEntry[];
@@ -11,6 +12,7 @@ interface TravelCardFeedProps {
   activeSlug: string | null;
   onSelect: (slug: string | null) => void;
   indexBySlug: Record<string, number>;
+  sortMode?: TravelSortMode;
 }
 
 const COLLAPSE_STORAGE_KEY = "travels:collapsed-trips";
@@ -29,8 +31,20 @@ export default function TravelCardFeed({
   activeSlug,
   onSelect,
   indexBySlug,
+  sortMode = "newest",
 }: TravelCardFeedProps): React.ReactElement {
-  const sections = useTravelSections(trips, tripGroups);
+  const baseSections = useTravelSections(trips, tripGroups);
+
+  // useTravelSections returns newest-first with each section's items in
+  // narrative (oldest-first) order. For the "oldest" view we flip both the
+  // section order and the items inside each section so the whole feed reads
+  // chronologically forward.
+  const sections = React.useMemo(() => {
+    if (sortMode === "newest") return baseSections;
+    return [...baseSections]
+      .reverse()
+      .map((s) => ({ ...s, items: [...s.items].reverse() }));
+  }, [baseSections, sortMode]);
 
   // The first trip section (sections are sorted newest-first in
   // useTravelSections) stays expanded by default; everything older collapses
