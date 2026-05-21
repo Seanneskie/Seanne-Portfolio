@@ -250,6 +250,29 @@ const trips = defineCollection({
     endDate: z.coerce.date().optional(),
     location: z.string(),
     summary: z.string().optional(),
+    // Blog-style metadata for the trip detail page. `author` and `readTime`
+    // render in the article byline; both optional. `cover` is an explicit
+    // hero image — when absent the page falls back to the first stop's image
+    // (see travelOgImageFrom). `tags` group/filter trips and feed "related".
+    author: z.string().optional(),
+    readTime: z.string().optional(),
+    cover: z.string().optional(),
+    tags: z.array(z.string()).default([]),
+    // Trip-level gallery + videos, rendered through the same TravelGallery
+    // island used by individual stops (photos + video lightbox). Optional;
+    // a trip can rely purely on its stops' galleries instead.
+    gallery: z
+      .array(z.object({ src: z.string(), alt: z.string() }))
+      .default([]),
+    videos: z
+      .array(
+        z.object({
+          src: z.string(),
+          poster: z.string().optional(),
+          alt: z.string(),
+        }),
+      )
+      .default([]),
     // Ordered list of travel slugs that make up the trip's itinerary.
     // The map polyline follows this order; the feed and detail page
     // also use it to render stops in narrative sequence. Optional —
