@@ -56,13 +56,11 @@ export default defineConfig({
     plugins: [tailwindcss()],
     resolve: {
       alias: [
-        // Shim Next.js framework imports so the existing /components React
-        // tree can be rendered as Astro islands unchanged. See src/shims/*.
-        { find: "next/image", replacement: resolve(__dirname, "src/shims/next-image.tsx") },
-        { find: "next/link", replacement: resolve(__dirname, "src/shims/next-link.tsx") },
-        { find: "next/navigation", replacement: resolve(__dirname, "src/shims/next-navigation.ts") },
-        // Mirror Next's `@/*` path alias so imports like `@/components/...`
-        // resolve from the repo root in the Astro build too.
+        // Components import the framework-agnostic shims under src/shims/*
+        // directly now that Next has been removed; the old
+        // next/image|link|navigation aliases were dropped in the cutover.
+        // The `@/*` alias mirrors the tsconfig path so `@/components/...`
+        // and `@/shims/...` resolve from the repo root.
         { find: /^@\/(.*)$/, replacement: resolve(__dirname, "$1") },
       ],
     },

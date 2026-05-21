@@ -4,7 +4,7 @@ import { act } from "react-dom/test-utils";
 import { createRoot } from "react-dom/client";
 import { Github } from "lucide-react";
 
-vi.mock("next/link", () => {
+vi.mock("@/src/shims/next-link", () => {
   interface MockLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
     href: string;
     prefetch?: boolean;

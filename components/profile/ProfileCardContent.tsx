@@ -29,7 +29,7 @@ import { toast } from "sonner";
 import { openMailTo, copyEmail } from "@/lib/profile";
 import type { ProfileData, Links } from "./types";
 import { TooltipArrow } from "@radix-ui/react-tooltip";
-import Image from "next/image";
+import Image from "@/src/shims/next-image";
 import { withBasePath } from "@/lib/utils";
 
 const keySkills = [

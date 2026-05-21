@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { type ReactElement } from "react";
-import Image from "next/image";
+import Image from "@/src/shims/next-image";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight, ZoomIn, ZoomOut, RotateCcw } from "lucide-react";
 import { cn, withBasePath } from "@/lib/utils";

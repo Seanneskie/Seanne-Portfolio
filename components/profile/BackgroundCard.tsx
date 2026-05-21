@@ -15,7 +15,7 @@ import {
 import { openMailTo } from "@/lib/profile";
 import { toast } from "sonner";
 import type { ProfileData } from "./types";
-import Image from "next/image";
+import Image from "@/src/shims/next-image";
 import { withBasePath } from "@/lib/utils";
 
 export default function BackgroundCard({ profile }: { profile: ProfileData }): ReactElement {

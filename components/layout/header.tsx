@@ -2,8 +2,8 @@
 
 import * as React from "react";
 import { type ReactElement } from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import Link from "@/src/shims/next-link";
+import { usePathname } from "@/src/shims/next-navigation";
 import { motion } from "framer-motion";
 import {
   NavigationMenu,

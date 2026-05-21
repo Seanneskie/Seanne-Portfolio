@@ -1,7 +1,7 @@
 "use client";
 
 import type { JSX } from "react";
-import Link from "next/link";
+import Link from "@/src/shims/next-link";
 import { toast } from "sonner";
 import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";

@@ -1,7 +1,7 @@
 "use client";
 
 import { type ReactElement } from "react";
-import Image from "next/image";
+import Image from "@/src/shims/next-image";
 import { withBasePath } from "@/lib/utils";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import {

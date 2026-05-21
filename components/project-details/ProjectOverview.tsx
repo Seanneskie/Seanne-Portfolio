@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/src/shims/next-link";
 import { type ReactElement, type ReactNode } from "react";
 import { withBasePath } from "@/lib/utils";
 import { getProjectMeta, type ProjectMeta } from "@/lib/project-meta";

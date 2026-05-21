@@ -1,7 +1,7 @@
 // components/common/Banner.tsx
 
 import { cn, withBasePath } from "@/lib/utils";
-import Image from "next/image";
+import Image from "@/src/shims/next-image";
 import { type ReactElement, type ReactNode } from "react";
 
 type Align = "left" | "center" | "right";

@@ -21,14 +21,14 @@ vi.mock("@/lib/use-data", () => ({
   }),
 }));
 
-vi.mock("next/link", () => ({
+vi.mock("@/src/shims/next-link", () => ({
   __esModule: true,
   default: ({ href, children }: { href: string; children: React.ReactNode }) => (
     <a href={href}>{children}</a>
   ),
 }));
 
-vi.mock("next/image", () => {
+vi.mock("@/src/shims/next-image", () => {
   interface MockNextImageProps {
     alt: string;
     src: string;

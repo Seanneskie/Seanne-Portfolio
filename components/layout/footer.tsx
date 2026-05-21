@@ -1,5 +1,5 @@
 import { type ReactElement } from "react";
-import Link from "next/link";
+import Link from "@/src/shims/next-link";
 import { Github, Linkedin, Twitter } from "lucide-react";
 
 const NAV_LINKS = [
