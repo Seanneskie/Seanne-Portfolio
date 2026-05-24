@@ -34,6 +34,21 @@
   {
     "tags": [
       "SoloLearn",
+      "AI"
+    ],
+    "title": "Agentic Workflows - SoloLearn",
+    "desc": "This certificate demonstrates an understanding of agentic AI workflows, including designing autonomous, goal-directed agents that plan, use tools, and chain actions to accomplish multi-step tasks. Date: May 2026",
+    "link": "/static/certificates/agentic_workflows.jpg",
+    "image": "/static/certificates/agentic_workflows.jpg",
+    "skills": [
+      "Agentic Workflows",
+      "AI Agents",
+      "Prompt Engineering"
+    ]
+  },
+  {
+    "tags": [
+      "SoloLearn",
       "AI",
       "SEO"
     ],
