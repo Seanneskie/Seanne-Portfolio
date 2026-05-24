@@ -49,6 +49,21 @@
   {
     "tags": [
       "SoloLearn",
+      "AI"
+    ],
+    "title": "Generative AI in Practice - SoloLearn",
+    "desc": "This certificate demonstrates practical, hands-on application of generative AI, including using and refining model outputs, integrating AI tools into real workflows, and applying generative techniques to solve everyday tasks. Date: May 2026",
+    "link": "/static/certificates/generative_ai_in_practice.jpg",
+    "image": "/static/certificates/generative_ai_in_practice.jpg",
+    "skills": [
+      "Generative AI",
+      "AI Prompting",
+      "Prompt Engineering"
+    ]
+  },
+  {
+    "tags": [
+      "SoloLearn",
       "AI",
       "SEO"
     ],
