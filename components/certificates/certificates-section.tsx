@@ -20,6 +20,7 @@ import {
 } from "@/components/ui/hover-card";
 import { withBasePath } from "@/lib/utils";
 import Image from "@/src/shims/next-image";
+import { enrichCertificate, stripDate } from "./utils";
 
 export interface Certificate {
   tags: string[];
@@ -29,6 +30,13 @@ export interface Certificate {
   image?: string;
   skills: string[];
 }
+
+type EnrichedCert = Certificate & {
+  date: Date | null;
+  dateLabel: string;
+  year: number | null;
+  issuer: string;
+};
 
 const MAX_BADGES = 6;
 
@@ -40,7 +48,10 @@ export default function CertificatesSection({ data }: CertificatesSectionProps):
   const [search, setSearch] = useState("");
   const [tag, setTag] = useState("");
 
-  const certificates: Certificate[] = data;
+  const certificates = useMemo<EnrichedCert[]>(
+    () => data.map((c) => enrichCertificate(c)),
+    [data]
+  );
 
   const tags = useMemo<string[]>(
     () => Array.from(new Set(certificates.flatMap((c) => c.tags))).sort(),
@@ -141,7 +152,7 @@ export default function CertificatesSection({ data }: CertificatesSectionProps):
           className="grid auto-rows-fr grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
         >
           <AnimatePresence>
-            {filtered.map((c: Certificate, i: number) => (
+            {filtered.map((c, i) => (
               <CertificateCard key={c.title + i} certificate={c} index={i} />
             ))}
           </AnimatePresence>
@@ -152,13 +163,14 @@ export default function CertificatesSection({ data }: CertificatesSectionProps):
 }
 
 interface CertificateCardProps {
-  certificate: Certificate;
+  certificate: EnrichedCert;
   index: number;
 }
 
 function CertificateCard({ certificate: c, index }: CertificateCardProps) {
   const [isExpanded, setIsExpanded] = useState(false);
   const labels = Array.from(new Set([...c.tags, ...c.skills]));
+  const bodyText = stripDate(c.desc);
   const badgeCls =
     "rounded-full bg-teal-50 text-teal-800 ring-1 ring-inset ring-teal-200 dark:bg-teal-900/30 dark:text-teal-200 dark:ring-teal-800";
   const rawLink = c.link ?? c.image ?? "";
@@ -200,6 +212,16 @@ function CertificateCard({ certificate: c, index }: CertificateCardProps) {
                 {c.title}
               </h3>
 
+              <div className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-gray-500 dark:text-gray-400">
+                <span className="font-medium text-gray-700 dark:text-gray-300">{c.issuer}</span>
+                {c.dateLabel && (
+                  <>
+                    <span aria-hidden>•</span>
+                    <time dateTime={c.date?.toISOString().slice(0, 10)}>{c.dateLabel}</time>
+                  </>
+                )}
+              </div>
+
               <div className="mt-2 flex flex-wrap items-center gap-2">
                 {labels
                   .slice(0, isExpanded ? labels.length : MAX_BADGES)
@@ -218,7 +240,7 @@ function CertificateCard({ certificate: c, index }: CertificateCardProps) {
                   .filter(Boolean)
                   .join(" ")}
               >
-                {c.desc}
+                {bodyText}
               </p>
             </div>
 
