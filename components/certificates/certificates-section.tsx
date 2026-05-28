@@ -4,14 +4,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useMemo, useState, type ReactElement } from "react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import {
   HoverCard,
@@ -21,6 +13,7 @@ import {
 import { withBasePath } from "@/lib/utils";
 import Image from "@/src/shims/next-image";
 import { enrichCertificate, stripDate } from "./utils";
+import FilterBar, { type SortKey, type ViewMode } from "./filter-bar";
 
 export interface Certificate {
   tags: string[];
@@ -40,107 +33,136 @@ type EnrichedCert = Certificate & {
 
 const MAX_BADGES = 6;
 
+function countBy<T, K extends string | number>(items: T[], key: (i: T) => K): Map<K, number> {
+  const m = new Map<K, number>();
+  for (const it of items) {
+    const k = key(it);
+    m.set(k, (m.get(k) ?? 0) + 1);
+  }
+  return m;
+}
+
 interface CertificatesSectionProps {
   data: Certificate[];
 }
 
 export default function CertificatesSection({ data }: CertificatesSectionProps): ReactElement {
   const [search, setSearch] = useState("");
-  const [tag, setTag] = useState("");
+  const [selectedIssuers, setSelectedIssuers] = useState<Set<string>>(new Set());
+  const [selectedTags, setSelectedTags] = useState<Set<string>>(new Set());
+  const [selectedYears, setSelectedYears] = useState<Set<number>>(new Set());
+  const [sort, setSort] = useState<SortKey>("newest");
+  const [view, setView] = useState<ViewMode>("grid");
 
   const certificates = useMemo<EnrichedCert[]>(
     () => data.map((c) => enrichCertificate(c)),
     [data]
   );
 
-  const tags = useMemo<string[]>(
-    () => Array.from(new Set(certificates.flatMap((c) => c.tags))).sort(),
-    [certificates]
-  );
+  const issuerOptions = useMemo(() => {
+    const counts = countBy(certificates, (c) => c.issuer);
+    return Array.from(counts.entries())
+      .map(([value, count]) => ({ value, count }))
+      .sort((a, b) => b.count - a.count || a.value.localeCompare(b.value));
+  }, [certificates]);
+
+  const tagOptions = useMemo(() => {
+    const flat = certificates.flatMap((c) => c.tags);
+    const counts = countBy(flat, (t) => t);
+    return Array.from(counts.entries())
+      .map(([value, count]) => ({ value, count }))
+      .sort((a, b) => b.count - a.count || a.value.localeCompare(b.value));
+  }, [certificates]);
+
+  const yearOptions = useMemo(() => {
+    const flat = certificates.map((c) => c.year).filter((y): y is number => y !== null);
+    const counts = countBy(flat, (y) => y);
+    return Array.from(counts.entries())
+      .map(([value, count]) => ({ value, count }))
+      .sort((a, b) => b.value - a.value);
+  }, [certificates]);
 
   const filtered = useMemo(() => {
-    return certificates.filter((c) => {
-      const term = search.toLowerCase();
+    const term = search.trim().toLowerCase();
+    const list = certificates.filter((c) => {
       const matchesSearch =
         !term ||
         c.title.toLowerCase().includes(term) ||
-        c.desc.toLowerCase().includes(term);
-      const matchesTag = !tag || c.tags.includes(tag);
-      return matchesSearch && matchesTag;
+        c.desc.toLowerCase().includes(term) ||
+        c.skills.some((s) => s.toLowerCase().includes(term)) ||
+        c.tags.some((t) => t.toLowerCase().includes(term));
+      const matchesIssuer = selectedIssuers.size === 0 || selectedIssuers.has(c.issuer);
+      const matchesTag =
+        selectedTags.size === 0 || c.tags.some((t) => selectedTags.has(t));
+      const matchesYear =
+        selectedYears.size === 0 || (c.year !== null && selectedYears.has(c.year));
+      return matchesSearch && matchesIssuer && matchesTag && matchesYear;
     });
-  }, [certificates, search, tag]);
+    const sorted = [...list];
+    if (sort === "title") {
+      sorted.sort((a, b) => a.title.localeCompare(b.title));
+    } else {
+      const dir = sort === "newest" ? -1 : 1;
+      sorted.sort((a, b) => {
+        const at = a.date?.getTime() ?? 0;
+        const bt = b.date?.getTime() ?? 0;
+        return (at - bt) * dir;
+      });
+    }
+    return sorted;
+  }, [certificates, search, selectedIssuers, selectedTags, selectedYears, sort]);
 
-  const totalCertificates = certificates.length;
-  const totalTags = tags.length;
+  const hasActiveFilters =
+    !!search || selectedIssuers.size > 0 || selectedTags.size > 0 || selectedYears.size > 0;
+
+  const toggle = <T,>(set: Set<T>, value: T): Set<T> => {
+    const next = new Set(set);
+    if (next.has(value)) next.delete(value);
+    else next.add(value);
+    return next;
+  };
+
+  const clearAll = () => {
+    setSearch("");
+    setSelectedIssuers(new Set());
+    setSelectedTags(new Set());
+    setSelectedYears(new Set());
+  };
 
   return (
-    <div className="space-y-4">
-      <Card className="rounded-2xl border border-teal-200/70 bg-white/85 p-4 shadow-sm backdrop-blur dark:border-teal-800/70 dark:bg-gray-950/60">
-        <div className="flex flex-col gap-4 lg:flex-row lg:items-center">
-          <Input
-            placeholder="Search certificates"
-            aria-label="Search certificates"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="w-full lg:max-w-md focus-visible:border-teal-500 focus-visible:ring-teal-500/50"
-          />
-          {/* 1) Control value using a sentinel when tag is empty */}
-          <Select
-            value={tag ? tag : "__all"}
-            onValueChange={(v) => setTag(v === "__all" ? "" : v)}
-          >
-            <SelectTrigger
-              aria-label="Filter by tag"
-              className="lg:w-64 focus-visible:border-teal-500 focus-visible:ring-teal-500/50"
-            >
-              <SelectValue placeholder="All tags" />
-            </SelectTrigger>
-
-            <SelectContent>
-              {/* 2) Use a non-empty value here */}
-              <SelectItem value="__all">All tags</SelectItem>
-              {tags.map((t) => (
-                <SelectItem key={t} value={t}>
-                  {t}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-          <div className="flex flex-wrap items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
-            <span>
-              Showing {filtered.length} of {totalCertificates}
-            </span>
-            <span className="hidden text-gray-400 dark:text-gray-500 sm:inline">•</span>
-            <span>{totalTags} tags</span>
-            <Button
-              size="sm"
-              variant="outline"
-              onClick={() => {
-                setSearch("");
-                setTag("");
-              }}
-              disabled={!search && !tag}
-              className="border-teal-200 text-teal-700 hover:border-teal-300 hover:text-teal-800 dark:border-teal-800 dark:text-teal-200"
-            >
-              Clear filters
-            </Button>
-          </div>
-        </div>
-      </Card>
+    <div className="space-y-6">
+      <FilterBar
+        search={search}
+        onSearchChange={setSearch}
+        issuers={issuerOptions}
+        selectedIssuers={selectedIssuers}
+        onToggleIssuer={(v) => setSelectedIssuers((s) => toggle(s, v))}
+        tags={tagOptions}
+        selectedTags={selectedTags}
+        onToggleTag={(v) => setSelectedTags((s) => toggle(s, v))}
+        years={yearOptions}
+        selectedYears={selectedYears}
+        onToggleYear={(v) => setSelectedYears((s) => toggle(s, v))}
+        sort={sort}
+        onSortChange={setSort}
+        view={view}
+        onViewChange={setView}
+        shownCount={filtered.length}
+        totalCount={certificates.length}
+        onClear={clearAll}
+        hasActiveFilters={hasActiveFilters}
+      />
 
       {filtered.length === 0 ? (
         <Card className="rounded-2xl border border-dashed border-teal-200 bg-white/80 p-10 text-center text-gray-600 dark:border-teal-800 dark:bg-gray-950/60 dark:text-gray-300">
           <p className="text-lg font-semibold text-gray-900 dark:text-white">
-            No certificates match your search
+            No certificates match your filters
           </p>
-          <p className="mt-2 text-sm">Try a different keyword or reset the filters.</p>
+          <p className="mt-2 text-sm">Try a different keyword or clear active filters.</p>
           <Button
             size="sm"
             variant="outline"
-            onClick={() => {
-              setSearch("");
-              setTag("");
-            }}
+            onClick={clearAll}
             className="mt-4 border-teal-200 text-teal-700 hover:border-teal-300 hover:text-teal-800 dark:border-teal-800 dark:text-teal-200"
           >
             Reset filters
@@ -151,7 +173,7 @@ export default function CertificatesSection({ data }: CertificatesSectionProps):
           role="list"
           className="grid auto-rows-fr grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
         >
-          <AnimatePresence>
+          <AnimatePresence mode="popLayout">
             {filtered.map((c, i) => (
               <CertificateCard key={c.title + i} certificate={c} index={i} />
             ))}
@@ -190,7 +212,7 @@ function CertificateCard({ certificate: c, index }: CertificateCardProps) {
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -12 }}
-      transition={{ delay: index * 0.05, duration: 0.35 }}
+      transition={{ delay: index * 0.04, duration: 0.3 }}
     >
       <HoverCard>
         <HoverCardTrigger asChild>

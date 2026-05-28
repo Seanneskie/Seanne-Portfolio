@@ -1,14 +1,37 @@
 import { type ReactElement } from "react";
 
-import { Card } from "@/components/ui/card";
 import CertificatesSection from "./certificates-section";
 import type { Certificate } from "./certificates-section";
+import { enrichCertificate } from "./utils";
 
 interface CertificatesProps {
   data: Certificate[];
 }
 
+interface StatProps {
+  label: string;
+  value: number | string;
+}
+
+function Stat({ label, value }: StatProps): ReactElement {
+  return (
+    <div className="flex flex-col items-start">
+      <span className="text-2xl font-semibold text-teal-700 dark:text-teal-200 sm:text-3xl">
+        {value}
+      </span>
+      <span className="text-[0.7rem] font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
+        {label}
+      </span>
+    </div>
+  );
+}
+
 export default function Certificates({ data }: CertificatesProps): ReactElement {
+  const enriched = data.map((c) => enrichCertificate(c));
+  const issuerCount = new Set(enriched.map((c) => c.issuer)).size;
+  const yearCount = new Set(enriched.map((c) => c.year).filter((y) => y !== null)).size;
+  const skillCount = new Set(enriched.flatMap((c) => c.skills)).size;
+
   return (
     <main className="relative overflow-hidden">
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
@@ -18,33 +41,24 @@ export default function Certificates({ data }: CertificatesProps): ReactElement 
       </div>
 
       <div className="container mx-auto max-w-6xl px-4 py-12">
-        <section className="mb-10 grid gap-6 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-teal-600 dark:text-teal-400">
-              Credentials
-            </p>
-            <h1 className="mt-2 text-4xl font-semibold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
-              Certificates and training
-            </h1>
-            <p className="mt-3 text-base text-gray-700 dark:text-gray-200 sm:text-lg">
-              Verified learning milestones across data, cloud, and engineering. Hover to preview
-              certificate images or open the source.
-            </p>
-          </div>
+        <section className="mb-8">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-teal-600 dark:text-teal-400">
+            Credentials
+          </p>
+          <h1 className="mt-2 text-4xl font-semibold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
+            Certificates and training
+          </h1>
+          <p className="mt-3 max-w-2xl text-base text-gray-700 dark:text-gray-200 sm:text-lg">
+            Verified learning milestones across data, cloud, AI, and engineering. Filter by issuer,
+            year, or topic — or switch to the timeline view to see them in chronological order.
+          </p>
 
-          <Card className="rounded-2xl border border-teal-200/70 bg-white/80 p-6 shadow-sm backdrop-blur dark:border-teal-800/70 dark:bg-gray-950/60">
-            <h2 className="text-base font-semibold text-gray-900 dark:text-white">
-              Highlights
-            </h2>
-            <p className="mt-2 text-sm text-gray-700 dark:text-gray-200">
-              Certifications showcase real-world tools, specialty tracks, and continuous learning.
-            </p>
-            <div className="mt-4 grid gap-2 text-sm text-gray-600 dark:text-gray-300">
-              <p>• Tag-based filters for quick discovery</p>
-              <p>• Skills and topics captured per credential</p>
-              <p>• External links and previews on hover</p>
-            </div>
-          </Card>
+          <div className="mt-6 grid grid-cols-2 gap-6 rounded-2xl border border-teal-200/70 bg-white/80 px-5 py-4 backdrop-blur sm:grid-cols-4 dark:border-teal-800/70 dark:bg-gray-950/60">
+            <Stat label="Certificates" value={enriched.length} />
+            <Stat label="Issuers" value={issuerCount} />
+            <Stat label="Years" value={yearCount} />
+            <Stat label="Skills" value={skillCount} />
+          </div>
         </section>
 
         <CertificatesSection data={data} />
