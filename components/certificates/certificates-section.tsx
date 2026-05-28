@@ -140,7 +140,20 @@ export default function CertificatesSection({ data }: CertificatesSectionProps):
 
       {filtered.length === 0 ? (
         <Card className="rounded-2xl border border-dashed border-teal-200 bg-white/80 p-10 text-center text-gray-600 dark:border-teal-800 dark:bg-gray-950/60 dark:text-gray-300">
-          <p className="text-lg font-semibold text-gray-900 dark:text-white">
+          <svg
+            aria-hidden
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="mx-auto h-12 w-12 text-teal-500 dark:text-teal-300"
+          >
+            <circle cx="11" cy="11" r="7" />
+            <path d="m20 20-3.5-3.5" />
+          </svg>
+          <p className="mt-3 text-lg font-semibold text-gray-900 dark:text-white">
             No certificates match your filters
           </p>
           <p className="mt-2 text-sm">Try a different keyword or clear active filters.</p>

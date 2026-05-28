@@ -1,6 +1,6 @@
 "use client";
 
-import { type ReactElement } from "react";
+import { useState, type ReactElement } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {
@@ -11,6 +11,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+
+const TOPIC_COLLAPSED_LIMIT = 10;
 
 export type SortKey = "newest" | "oldest" | "title";
 export type ViewMode = "grid" | "timeline";
@@ -179,18 +181,11 @@ export default function FilterBar({
           </ChipGroup>
         )}
         {tags.length > 0 && (
-          <ChipGroup label="Topic">
-            {tags.map((t) => (
-              <Chip
-                key={t.value}
-                active={selectedTags.has(t.value)}
-                onClick={() => onToggleTag(t.value)}
-              >
-                {t.value}
-                <span className="text-[0.65rem] opacity-60">{t.count}</span>
-              </Chip>
-            ))}
-          </ChipGroup>
+          <TopicChips
+            tags={tags}
+            selectedTags={selectedTags}
+            onToggleTag={onToggleTag}
+          />
         )}
       </div>
 
@@ -210,5 +205,51 @@ export default function FilterBar({
         </Button>
       </div>
     </div>
+  );
+}
+
+function TopicChips({
+  tags,
+  selectedTags,
+  onToggleTag,
+}: {
+  tags: { value: string; count: number }[];
+  selectedTags: Set<string>;
+  onToggleTag: (v: string) => void;
+}): ReactElement {
+  const [expanded, setExpanded] = useState(false);
+  const overflow = tags.length - TOPIC_COLLAPSED_LIMIT;
+  // Keep any selected tags visible even when collapsed.
+  const visible =
+    expanded || overflow <= 0
+      ? tags
+      : [
+          ...tags.slice(0, TOPIC_COLLAPSED_LIMIT),
+          ...tags
+            .slice(TOPIC_COLLAPSED_LIMIT)
+            .filter((t) => selectedTags.has(t.value)),
+        ];
+  return (
+    <ChipGroup label="Topic">
+      {visible.map((t) => (
+        <Chip
+          key={t.value}
+          active={selectedTags.has(t.value)}
+          onClick={() => onToggleTag(t.value)}
+        >
+          {t.value}
+          <span className="text-[0.65rem] opacity-60">{t.count}</span>
+        </Chip>
+      ))}
+      {overflow > 0 && (
+        <button
+          type="button"
+          onClick={() => setExpanded((v) => !v)}
+          className="text-xs font-medium text-teal-700 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/50 dark:text-teal-300"
+        >
+          {expanded ? "Show fewer" : `+${overflow} more`}
+        </button>
+      )}
+    </ChipGroup>
   );
 }

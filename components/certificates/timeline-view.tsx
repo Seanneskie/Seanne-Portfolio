@@ -60,7 +60,7 @@ export default function TimelineView({ items }: Props): ReactElement {
               transition={{ duration: 0.25 }}
               aria-labelledby={`year-${g.year}`}
             >
-              <div className="sticky top-[18rem] z-10 -mx-2 mb-4 flex items-center gap-3 sm:top-[16rem]">
+              <div className="mb-4 flex items-center gap-3 scroll-mt-48">
                 <span
                   aria-hidden
                   className="ml-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full border-2 border-teal-400 bg-white text-[10px] font-bold text-teal-700 shadow-sm dark:border-teal-500 dark:bg-gray-950 dark:text-teal-200 sm:ml-1"
