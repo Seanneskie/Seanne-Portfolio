@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { enrichCertificate } from "./utils";
 import FilterBar, { type SortKey, type ViewMode } from "./filter-bar";
 import CertificateCard, { type EnrichedCert } from "./certificate-card";
+import TimelineView from "./timeline-view";
 
 export interface Certificate {
   tags: string[];
@@ -152,6 +153,8 @@ export default function CertificatesSection({ data }: CertificatesSectionProps):
             Reset filters
           </Button>
         </Card>
+      ) : view === "timeline" ? (
+        <TimelineView items={filtered} />
       ) : (
         <ul
           role="list"
