@@ -1,6 +1,21 @@
 [
   {
     "tags": [
+      "SoloLearn",
+      "AI"
+    ],
+    "title": "Project Planning with AI - SoloLearn",
+    "desc": "This certificate demonstrates the use of AI to plan and structure projects, including defining scope, breaking work into tasks, sequencing milestones, and using AI assistance to streamline planning workflows. Date: May 2026",
+    "link": "/static/certificates/project_planning_with_ai.jpg",
+    "image": "/static/certificates/project_planning_with_ai.jpg",
+    "skills": [
+      "Project Planning with AI",
+      "AI Prompting",
+      "Prompt Engineering"
+    ]
+  },
+  {
+    "tags": [
       "Google",
       "AI",
       "Cloud"
