@@ -13,7 +13,7 @@ const PROFILE: ProfileData = {
   address: "General Santos City, Philippines",
   image: withBasePath("/profile/static/image_1.webp"),
   background:
-    "Hello! I'm Seanne Cañete, an Information Technology graduate at Mindanao State University – General Santos City with a passion for full-stack development, data engineering, and clean UI/UX.",
+    "Hello! I'm Seanne Cañete, a full-stack developer with around 2 years of experience specializing in Django/Python on the backend and Next.js/React on the frontend. I design solid data models in PostgreSQL/Supabase, build clean REST (and GraphQL when needed) APIs with Django and DRF, and ship responsive, accessible UIs with TypeScript, Tailwind, and shadcn/ui. I'm comfortable with authentication/RBAC, file uploads, background tasks, and analytics dashboards, and I prioritize readable code, testing, and CI/CD automation so teams ship reliable features fast.",
   education: [
     { level: "Tertiary", institution: "Mindanao State University", year: "A.Y 2021 - 2025" },
     { level: "Senior High School", institution: "Mindanao State University", year: "A.Y 2019 - 2021" },

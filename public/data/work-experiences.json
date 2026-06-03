@@ -104,35 +104,135 @@
     ]
   },
   {
-    "company": "PioneerDev.ai",
-    "project": "SaaS & AI Platform Delivery",
+    "company": "PioneerDev AI LLC",
+    "project": "Dating Platform \u2013 Full-Stack, Performance & Delivery",
     "period": "September 2025 \u2013 Present",
     "images": [
       {
         "src": "/static/pioneer-dev-ai/platform-overview.svg",
-        "alt": "PioneerDev.ai platform overview"
+        "alt": "Platform overview"
       },
       {
         "src": "/static/pioneer-dev-ai/agent-pipeline.svg",
-        "alt": "PioneerDev.ai agent pipeline"
+        "alt": "Backend pipeline overview"
       }
     ],
     "tech": [
-      "Next.js 15",
+      "Remix",
+      "React Native",
       "TypeScript",
-      "LangChain",
-      "OpenAI GPT-4.1",
-      "Supabase",
       "PostgreSQL",
-      "Tailwind CSS",
-      "ShadCN"
+      "Prisma",
+      "Redis",
+      "Cloudflare",
+      "PayPal",
+      "Langfuse"
     ],
-    "summary": "PioneerDev.ai builds scalable SaaS and AI-enabled applications that combine streaming LLM workflows, custom integrations, and enterprise-ready delivery for clients across law, fintech, eCommerce, and startup ecosystems. As a Full Stack Web Developer, I translate domain requirements into maintainable software that blends intuitive UX with resilient backend infrastructure.",
+    "summary": "My primary focus: a high-traffic dating platform spanning a Remix web app and a React Native mobile app. Beyond shipping features, I owned performance optimization, database scaling, billing, and project-management duties\u2014scoping work, tracking tasks, and coordinating priorities across the team.",
     "highlights": [
-      "Architect, develop, and ship end-to-end features that span responsive interfaces, secure APIs, and data infrastructure.",
-      "Implement streaming LLM workflows that orchestrate chained models for real-time, human-in-the-loop product experiences.",
-      "Integrate authentication, payments, and domain-specific business logic into reusable SaaS foundations with strong observability and security guardrails.",
-      "Champion code reviews, CI/CD automation, and production monitoring to uphold reliability while collaborating with AI engineers, designers, and stakeholders."
+      "Drove a sustained performance push\u2014parallelized auth, profile, and search loaders, removed unnecessary transaction wrappers on batch readers, and cached high-traffic endpoints in Redis to cut response times on the busiest flows.",
+      "Designed and shipped read-replica routing with read/write splitting, read-after-write consistency pinned to primary, and a replica-lag and connection monitoring endpoint to scale database reads.",
+      "Built the paid-subscription and billing system around PayPal\u2014server-side entitlement gating, duplicate-charge prevention, reversible suspended-status handling, and alerting on stray charges.",
+      "Engineered an LLM-based trust and moderation layer with a conversation trust scorer, user-level trust-tag aggregation, and full prompt, token, and output tracing via Langfuse."
+    ]
+  },
+  {
+    "company": "PioneerDev AI LLC",
+    "project": "Programmatic SEO \u2013 Static Sites at Scale",
+    "period": "February 2026 \u2013 Present",
+    "images": [
+      {
+        "src": "/static/pioneer-dev-ai/platform-overview.svg",
+        "alt": "SEO site overview"
+      }
+    ],
+    "tech": [
+      "Astro",
+      "TypeScript",
+      "Cloudflare Pages",
+      "Structured Data",
+      "Programmatic SEO"
+    ],
+    "summary": "Led technical SEO for two consumer brands, building statically generated marketing and discovery sites on Astro and Cloudflare with a data-driven approach to organic growth.",
+    "highlights": [
+      "Built statically generated region- and gender-based discovery pages with structured data and persona-targeted meta tags for organic search visibility.",
+      "Hardened pages against crawler load and stayed within Cloudflare asset limits while keeping content fast on mobile.",
+      "Stood up an automated content pipeline publishing 50+ keyword-targeted articles via content collections."
+    ]
+  },
+  {
+    "company": "PioneerDev AI LLC",
+    "project": "AI Agent & LLM Platform \u2013 Generative Flows",
+    "period": "April 2026 \u2013 Present",
+    "images": [
+      {
+        "src": "/static/pioneer-dev-ai/agent-pipeline.svg",
+        "alt": "Agent and LLM pipeline"
+      }
+    ],
+    "tech": [
+      "Next.js",
+      "TypeScript",
+      "Cloudflare Workers",
+      "Trigger.dev",
+      "PostgreSQL",
+      "Google Gemini",
+      "Vertex AI"
+    ],
+    "summary": "Built core AI agent and LLM features for a generative image and video platform, with a strong focus on multi-provider orchestration, prompt optimization, and Cloudflare-based infrastructure.",
+    "highlights": [
+      "Integrated multiple model providers (Google Gemini/Vertex, DeepSeek, Kling) with per-provider token caps, JSON-mode enforcement, and graceful fallbacks.",
+      "Optimized the system prompt for cost and latency with per-turn section gating and prompt-cache telemetry, and made gallery queries sargable via functional Postgres indexes.",
+      "Resolved Cloudflare Worker scaling issues by moving heavy autorun work to Trigger.dev, eliminating out-of-memory 503s, and shipped a hardened analytics proxy worker with rate limiting."
+    ]
+  },
+  {
+    "company": "PioneerDev AI LLC",
+    "project": "Community Backend & Admin Platform",
+    "period": "November 2025 \u2013 December 2025",
+    "images": [
+      {
+        "src": "/static/pioneer-dev-ai/agent-pipeline.svg",
+        "alt": "Backend and admin platform overview"
+      }
+    ],
+    "tech": [
+      "NestJS",
+      "TypeScript",
+      "MongoDB",
+      "AWS S3",
+      "React Native",
+      "Next.js",
+      "React Query"
+    ],
+    "summary": "Built the backend and admin platform for a community-driven product, with a light contribution to the React Native mobile app.",
+    "highlights": [
+      "Developed the NestJS backend\u2014communities, rooms, and posts APIs with CRUD, feed enrichment, S3-backed media uploads, and server-side pagination.",
+      "Hardened authentication and access control with route guards, a rate-limiting throttler, and fixes for unauthorized socket access.",
+      "Built the admin web app with Next.js server actions, React Query, and shadcn/ui for managing communities, rooms, posts, and members."
+    ]
+  },
+  {
+    "company": "PioneerDev AI LLC",
+    "project": "LLM Data Platform \u2013 Queued Processing",
+    "period": "2025",
+    "images": [
+      {
+        "src": "/static/pioneer-dev-ai/agent-pipeline.svg",
+        "alt": "LLM data platform overview"
+      }
+    ],
+    "tech": [
+      "Remix",
+      "TypeScript",
+      "Redis",
+      "LLMs",
+      "Prompt Engineering"
+    ],
+    "summary": "Developed LLM-powered features with prompt engineering on a Remix stack, backed by a Redis queue for reliable asynchronous processing.",
+    "highlights": [
+      "Built LLM features driven by prompt engineering for an information-extraction product.",
+      "Integrated a Redis-backed queue to handle high-volume requests asynchronously and reliably."
     ]
   }
 ]
