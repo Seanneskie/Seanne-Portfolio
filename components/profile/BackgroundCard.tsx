@@ -15,7 +15,6 @@ import {
 import { openMailTo } from "@/lib/profile";
 import { toast } from "sonner";
 import type { ProfileData } from "./types";
-import Image from "@/src/shims/next-image";
 import { withBasePath } from "@/lib/utils";
 
 export default function BackgroundCard({ profile }: { profile: ProfileData }): ReactElement {
@@ -59,10 +58,9 @@ export default function BackgroundCard({ profile }: { profile: ProfileData }): R
       <div className="absolute inset-x-0 top-[52px] h-px bg-gradient-to-r from-teal-600/20 to-transparent dark:from-teal-400/20 dark:to-transparent" />
 
       <CardContent className="relative z-10">
-        {/* Image stacks on mobile, splits on large screens */}
-        <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,320px)] lg:items-start">
-          {/* LEFT: Description carousel (serif, centered, larger) */}
-          <div className="order-2 min-w-0 lg:order-1 relative z-10 flex flex-col gap-6">
+        <div className="grid gap-6">
+          {/* Description carousel (serif, centered, larger) */}
+          <div className="min-w-0 relative z-10 flex flex-col gap-6">
             <Carousel
               opts={{ loop: true, align: "start" }}
               plugins={[autoplay.current]}
@@ -145,20 +143,6 @@ export default function BackgroundCard({ profile }: { profile: ProfileData }): R
                   </a>
                 </Button>
               )}
-            </div>
-          </div>
-
-          {/* RIGHT: Portrait image (fixed crop & position) */}
-          <div className="order-1 rounded-2xl border border-teal-600/10 bg-white/70 p-3 shadow-sm backdrop-blur-sm dark:border-teal-400/10 dark:bg-teal-900/20 lg:order-2">
-            <div className="w-full rounded-xl bg-neutral-50/60 p-2 dark:bg-neutral-900/40">
-              <Image
-                src={withBasePath("/static/image_2.webp")}
-                alt="Profile portrait"
-                width={900}
-                height={1200}
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 45vw, 32vw"
-                className="h-auto w-full rounded-lg object-contain"
-              />
             </div>
           </div>
         </div>

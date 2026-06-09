@@ -5,7 +5,6 @@ import { ArrowUpRight, Sparkles } from "lucide-react";
 import Banner from "@/components/banner";
 import BannerActions from "@/components/home/banner-actions";
 import Highlights from "@/components/highlights";
-import HobbyAchievements from "@/components/hobbies/hobby-achievements";
 import Profile, { MyStory } from "@/components/profile";
 import { WorkExperienceCarousel } from "@/components/work-experiences";
 import {
@@ -47,7 +46,6 @@ export default function HomePageContent(): JSX.Element {
           <MyStory skills={skills} services={services} />
 
           <div className="space-y-10">
-            <HobbyAchievements />
             <Highlights data={highlights} />
           </div>
 
