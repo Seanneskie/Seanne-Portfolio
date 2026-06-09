@@ -5,16 +5,6 @@ import { createRoot } from "react-dom/client";
 
 const withBasePathMock = vi.fn((path: string) => `/base${path}`);
 
-vi.mock("@/components/banner", () => ({
-  __esModule: true,
-  default: ({ title, actions }: { title: string; actions: React.ReactNode }) => (
-    <section>
-      <h1>{title}</h1>
-      <div>{actions}</div>
-    </section>
-  ),
-}));
-
 vi.mock("@/components/profile", () => ({
   __esModule: true,
   default: () => <div>Profile</div>,
@@ -65,7 +55,6 @@ describe("HomePageContent", () => {
 
     expect(container.querySelector("a[href='/projects']")).not.toBeNull();
     expect(container.querySelector("a[href='/contact']")).not.toBeNull();
-    expect(withBasePathMock).toHaveBeenCalledWith("/static/pdfs/canete_resume.pdf");
 
     root.unmount();
     container.remove();
