@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { withBasePath } from "@/lib/utils";
 
 export interface UseDataResult<T> {
   data: T | null;
@@ -38,12 +39,11 @@ export function useData<T>(file: string): UseDataResult<T> {
 
   useEffect(() => {
     const abortController = new AbortController();
-    const base = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
     setLoading(true);
     setError(null);
 
-    fetch(`${base}/data/${file}`, { signal: abortController.signal })
+    fetch(withBasePath(`/data/${file}`), { signal: abortController.signal })
       .then((res) => {
         if (!res.ok) {
           throw new Error(`Failed to load ${file}`);

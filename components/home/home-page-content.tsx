@@ -11,8 +11,6 @@ import {
   Code2,
 } from "lucide-react";
 
-import Banner from "@/components/banner";
-import BannerActions from "@/components/home/banner-actions";
 import Profile from "@/components/profile";
 import ProjectsSection from "@/components/projects/projects-section";
 
@@ -59,17 +57,6 @@ function SectionHeading({
 export default function HomePageContent(): JSX.Element {
   return (
     <main>
-      <Banner
-        title="Build. Ship. Iterate."
-        subtitle="Full-stack apps with Django & Next.js. Data visualization with Python, SQL, and Charting."
-        backgroundImage="/static/bg_2.webp"
-        imageAlt="Clean developer workspace with code and charts"
-        align="left"
-        height="lg"
-        parallax
-        priority
-        actions={<BannerActions />}
-      />
       <div className="bg-gradient-to-b from-white via-slate-50/70 to-white dark:from-gray-900 dark:via-gray-950/40 dark:to-gray-900">
         <div className="container mx-auto max-w-7xl space-y-16 px-4 py-14">
           {/* Who am I — profile, interests, experience, tech stack */}

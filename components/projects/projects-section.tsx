@@ -8,7 +8,10 @@ import Link from "@/src/shims/next-link";
 import Image from "@/src/shims/next-image";
 import { useData } from "@/lib/use-data";
 import { withBasePath } from "@/lib/utils";
-import { useState, type ReactElement } from "react";
+import { useEffect, useRef, useState, type ReactElement } from "react";
+
+/** How many additional cards to reveal each time the sentinel scrolls into view. */
+const INFINITE_SCROLL_BATCH = 6;
 
 interface Project {
   title: string;
@@ -30,6 +33,33 @@ export default function ProjectsSection({ limit }: ProjectsSectionProps = {}): R
   const { data, loading, error } = useData<Project[]>("projects.json");
   const [expanded, setExpanded] = useState<Record<number, boolean>>({});
 
+  // Infinite scroll only applies to the full list (no `limit` — i.e. the
+  // /projects page). The featured home subset renders its fixed slice directly.
+  const infinite = typeof limit !== "number";
+  const [visibleCount, setVisibleCount] = useState<number>(INFINITE_SCROLL_BATCH);
+  const sentinelRef = useRef<HTMLDivElement | null>(null);
+
+  const total = data?.length ?? 0;
+  const hasMore = infinite && visibleCount < total;
+
+  useEffect(() => {
+    if (!hasMore) return;
+    const node = sentinelRef.current;
+    if (!node) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0]?.isIntersecting) {
+          setVisibleCount((prev) => prev + INFINITE_SCROLL_BATCH);
+        }
+      },
+      { rootMargin: "200px" },
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [hasMore, total]);
+
   if (loading) {
     return (
       <div className="grid gap-6 sm:grid-cols-2">
@@ -47,9 +77,12 @@ export default function ProjectsSection({ limit }: ProjectsSectionProps = {}): R
       <p className="text-red-600 dark:text-red-400">Failed to load projects.</p>
     );
 
-  const projects = typeof limit === "number" ? data.slice(0, limit) : data;
+  const projects = infinite
+    ? data.slice(0, visibleCount)
+    : data.slice(0, limit);
 
   return (
+    <>
     <div className="grid gap-6 sm:grid-cols-2">
       {projects.map((p: Project, i: number) => (
         <motion.div
@@ -170,5 +203,21 @@ export default function ProjectsSection({ limit }: ProjectsSectionProps = {}): R
         </motion.div>
       ))}
     </div>
+
+    {hasMore ? (
+      <div
+        ref={sentinelRef}
+        aria-hidden
+        className="mt-6 grid gap-6 sm:grid-cols-2"
+      >
+        {[...Array(2)].map((_, i) => (
+          <Card
+            key={i}
+            className="h-56 animate-pulse rounded-2xl border border-teal-200/60 bg-white/70 dark:border-teal-800/60 dark:bg-gray-950/50"
+          />
+        ))}
+      </div>
+    ) : null}
+    </>
   );
 }

@@ -1,5 +1,106 @@
 [
   {
+    "title": "FilipinaMeetApp / SlavicMeet - Dating Platform",
+    "image": "/static/pioneer-dev-ai/agent-pipeline.svg",
+    "alt": "Dating platform architecture overview",
+    "description": "High-traffic dating platform spanning a Remix web app and a React Native mobile app (FilipinaMeetApp, later SlavicMeet). Owned performance optimization, read-replica database scaling, PayPal billing and entitlement gating, and an LLM-based trust and moderation layer traced end-to-end with Langfuse.",
+    "collaborators": "PioneerDev AI LLC",
+    "tags": [
+      "Remix",
+      "React Native",
+      "TypeScript",
+      "PostgreSQL",
+      "Prisma",
+      "Redis",
+      "Cloudflare",
+      "PayPal",
+      "Langfuse",
+      "LLM"
+    ],
+    "github": null,
+    "githubLabel": "",
+    "details": null,
+    "period": "September 2025 - Present",
+    "images": [
+      "/static/pioneer-dev-ai/agent-pipeline.svg"
+    ]
+  },
+  {
+    "title": "Promptwise - Generative AI Agent Platform",
+    "image": "/static/pioneer-dev-ai/agent-pipeline.svg",
+    "alt": "Agent and LLM pipeline",
+    "description": "Core AI agent and LLM features for Promptwise, a generative image and video platform. Focused on multi-provider orchestration (Gemini/Vertex, DeepSeek, Kling) with per-provider token caps, JSON-mode enforcement, graceful fallbacks, and prompt-cache telemetry, plus sargable gallery queries via functional Postgres indexes.",
+    "collaborators": "PioneerDev AI LLC",
+    "tags": [
+      "TypeScript",
+      "LLM",
+      "AI Agents",
+      "Google Gemini",
+      "Vertex AI",
+      "DeepSeek",
+      "Kling",
+      "Cloudflare",
+      "PostgreSQL"
+    ],
+    "github": null,
+    "githubLabel": "",
+    "details": null,
+    "period": "April 2026 - Present",
+    "images": [
+      "/static/pioneer-dev-ai/agent-pipeline.svg"
+    ]
+  },
+  {
+    "title": "EIP App (Yield) - Operator Enrichment & Matching Platform",
+    "image": "/static/pioneer-dev-ai/agent-pipeline.svg",
+    "alt": "LLM data platform overview",
+    "description": "B2B information-extraction platform (EIP App, rebranding to Yield) that enriches operator records with LLM-extracted data—news sentiment, tags, contacts, addresses, and social URLs—then matches operators to brands and product groups with multi-factor scoring and drafts outreach emails. Built on Remix with a BullMQ + Upstash Redis worker queue for reliable high-volume async processing, multi-provider LLMs (Google GenAI, OpenAI, LangChain), Puppeteer-based scraping, Prisma/PostgreSQL, and Langfuse tracing.",
+    "collaborators": "PioneerDev AI LLC",
+    "tags": [
+      "Remix",
+      "TypeScript",
+      "BullMQ",
+      "Redis",
+      "Google GenAI",
+      "OpenAI",
+      "LangChain",
+      "Puppeteer",
+      "Prisma",
+      "PostgreSQL",
+      "Langfuse",
+      "LLM",
+      "Prompt Engineering"
+    ],
+    "github": null,
+    "githubLabel": "",
+    "details": null,
+    "period": "2025",
+    "images": [
+      "/static/pioneer-dev-ai/agent-pipeline.svg"
+    ]
+  },
+  {
+    "title": "SlavicMeet / FilipinaMeet / MarriageMatchClub - SEO Sites",
+    "image": "/static/pioneer-dev-ai/agent-pipeline.svg",
+    "alt": "Programmatic SEO static sites overview",
+    "description": "Programmatic SEO static sites built at scale for SlavicMeet, FilipinaMeet, and MarriageMatchClub, generating template-driven pages from structured data for organic acquisition.",
+    "collaborators": "PioneerDev AI LLC",
+    "tags": [
+      "Programmatic SEO",
+      "Static Site",
+      "TypeScript",
+      "SEO",
+      "Cloudflare"
+    ],
+    "github": null,
+    "githubLabel": "",
+    "details": null,
+    "period": "February 2026 - Present",
+    "images": [
+      "/static/pioneer-dev-ai/agent-pipeline.svg"
+    ]
+  },
+  {
     "title": "Minerva - Service Status Dashboard",
     "image": "/minerva-project/images/1.png",
     "alt": "Minerva Project screenshot",
