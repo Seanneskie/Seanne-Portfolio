@@ -14,8 +14,6 @@ import {
 import Profile from "@/components/profile";
 import ProjectsSection from "@/components/projects/projects-section";
 
-const FEATURED_PROJECT_COUNT = 4;
-
 const SOCIAL_LINKS = [
   { label: "GitHub", href: "https://github.com/Seanneskie", icon: Github },
   {
@@ -65,19 +63,19 @@ export default function HomePageContent(): JSX.Element {
             <Profile />
           </section>
 
-          {/* Featured projects */}
+          {/* Projects — full list with infinite scroll */}
           <section className="space-y-6">
             <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-              <SectionHeading eyebrow="Work" title="Featured Projects" />
+              <SectionHeading eyebrow="Work" title="Projects" />
               <Link
                 href="/projects"
                 className="inline-flex items-center gap-1 text-sm font-semibold text-teal-700 hover:underline dark:text-teal-300"
               >
-                View all projects
+                Open projects page
                 <ArrowUpRight className="h-4 w-4" />
               </Link>
             </div>
-            <ProjectsSection limit={FEATURED_PROJECT_COUNT} />
+            <ProjectsSection />
           </section>
 
           {/* Social links */}

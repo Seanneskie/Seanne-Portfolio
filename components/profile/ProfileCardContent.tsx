@@ -200,7 +200,7 @@ export default function ProfileCardContent({
                       <Badge
                         key={interest}
                         variant="secondary"
-                        className="rounded-full bg-teal-50 text-teal-800 ring-1 ring-inset ring-teal-200 dark:bg-teal-900/30 dark:text-teal-200 dark:ring-teal-800"
+                        className="rounded-full border-0 bg-teal-50 px-3 py-1 text-teal-800 ring-1 ring-inset ring-teal-200/80 transition-colors hover:bg-teal-100 dark:bg-teal-900/30 dark:text-teal-200 dark:ring-teal-700/60 dark:hover:bg-teal-900/50"
                       >
                         {interest}
                       </Badge>
@@ -222,13 +222,13 @@ export default function ProfileCardContent({
                   {profile.experience.map((item) => (
                     <span
                       key={item.name}
-                      className="inline-flex items-center gap-2 rounded-full border border-neutral-200 px-3 py-1 text-sm dark:border-neutral-800"
+                      className="inline-flex items-center gap-2 rounded-full border border-neutral-200/80 bg-white/70 py-1 pl-3 pr-1 text-sm shadow-sm transition-shadow hover:shadow dark:border-neutral-700/70 dark:bg-neutral-900/50"
                     >
-                      <span className="text-black/80 dark:text-white/80">
+                      <span className="font-medium text-black/80 dark:text-white/80">
                         {item.name}
                       </span>
                       <span
-                        className={`rounded-full px-2 py-0.5 text-xs font-medium ${
+                        className={`rounded-full px-2 py-0.5 text-xs font-semibold ${
                           levelStyles[item.level] ?? levelStyles.Beginner
                         }`}
                       >
@@ -253,7 +253,7 @@ export default function ProfileCardContent({
                     <Badge
                       key={tech}
                       variant="secondary"
-                      className="rounded-full border border-teal-600/20 bg-white/80 text-teal-800 backdrop-blur-sm dark:border-teal-400/20 dark:bg-teal-900/30 dark:text-teal-200"
+                      className="rounded-full border border-teal-600/20 bg-white/80 px-3 py-1 text-teal-800 shadow-sm backdrop-blur-sm transition-colors hover:border-teal-600/40 hover:bg-teal-50 dark:border-teal-400/20 dark:bg-teal-900/30 dark:text-teal-200 dark:hover:border-teal-400/40 dark:hover:bg-teal-900/50"
                     >
                       {tech}
                     </Badge>

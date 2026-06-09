@@ -12,7 +12,7 @@ const PROFILE: ProfileData = {
   address: "General Santos City, Philippines",
   image: withBasePath("/profile/static/image_1.webp"),
   background:
-    "Hi I'm Seanne! Full Stack Developer with a strong foundation in Python, JavaScript, SQL, and modern frameworks. Experienced in building scalable web applications end-to-end, with backend expertise in Django, Laravel, and .NET Core, and frontend proficiency in React, Next.js, and Tailwind CSS. Skilled in REST API design, data modeling, and database integration (MySQL, PostgreSQL, MongoDB, Supabase, SQL Server). Adept at data analytics and visualization with Chart.js, Tableau, and Python libraries, and familiar with AI/ML tools like TensorFlow and LangChain. Recognized for quickly adapting to new technologies, solving complex problems, and delivering clean, maintainable, and high-performing software solutions.",
+    "Hi, I'm Seanne — a Full Stack Developer who builds scalable web applications end-to-end. My backend work spans Django, Laravel, .NET Core, and Remix, paired with React, Next.js, and Tailwind CSS on the frontend. I design REST APIs, model data, and integrate databases across PostgreSQL, MySQL, MongoDB, Supabase, and SQL Server. Lately I've focused on production AI: shipping LLM-powered features and agents with multi-provider orchestration, prompt engineering, and tracing (LangChain, Gemini, OpenAI, Langfuse), plus data analytics and visualization with Chart.js, Tableau, and Python. I adapt quickly, solve hard problems, and deliver clean, maintainable, high-performing software.",
   interests: [
     "Full-stack Web Development",
     "Data Analytics & Visualization",
@@ -29,7 +29,7 @@ const PROFILE: ProfileData = {
     { name: "Laravel / PHP", level: "Intermediate" },
     { name: ".NET Core", level: "Intermediate" },
     { name: "Data Viz (Chart.js, Tableau)", level: "Intermediate" },
-    { name: "AI/ML (TensorFlow, LangChain)", level: "Beginner" },
+    { name: "AI/ML (LLMs, LangChain, Agents)", level: "Advanced" },
   ],
   techStack: [
     "Python",
