@@ -3,7 +3,6 @@
 import { type ReactElement } from "react";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import ProfileCard from "./ProfileCard";
-import BackgroundCard from "./BackgroundCard";
 import type { ProfileData } from "./types";
 import { withBasePath } from "@/lib/utils";
 
@@ -13,7 +12,7 @@ const PROFILE: ProfileData = {
   address: "General Santos City, Philippines",
   image: withBasePath("/profile/static/image_1.webp"),
   background:
-    "Hello! I'm Seanne Cañete, a full-stack developer with around 2 years of experience specializing in Django/Python on the backend and Next.js/React on the frontend. I design solid data models in PostgreSQL/Supabase, build clean REST (and GraphQL when needed) APIs with Django and DRF, and ship responsive, accessible UIs with TypeScript, Tailwind, and shadcn/ui. I'm comfortable with authentication/RBAC, file uploads, background tasks, and analytics dashboards, and I prioritize readable code, testing, and CI/CD automation so teams ship reliable features fast.",
+    "Hi I'm Seanne! Full Stack Developer with a strong foundation in Python, JavaScript, SQL, and modern frameworks. Experienced in building scalable web applications end-to-end, with backend expertise in Django, Laravel, and .NET Core, and frontend proficiency in React, Next.js, and Tailwind CSS. Skilled in REST API design, data modeling, and database integration (MySQL, PostgreSQL, MongoDB, Supabase, SQL Server). Adept at data analytics and visualization with Chart.js, Tableau, and Python libraries, and familiar with AI/ML tools like TensorFlow and LangChain. Recognized for quickly adapting to new technologies, solving complex problems, and delivering clean, maintainable, and high-performing software solutions.",
   education: [
     { level: "Tertiary", institution: "Mindanao State University", year: "A.Y 2021 - 2025" },
     { level: "Senior High School", institution: "Mindanao State University", year: "A.Y 2019 - 2021" },
@@ -37,7 +36,6 @@ export default function Profile({ imagePriority = false }: { imagePriority?: boo
     <TooltipProvider delayDuration={100}>
       <section id="profile" className="space-y-6">
         <ProfileCard profile={PROFILE} imagePriority={imagePriority} />
-        <BackgroundCard profile={PROFILE} />
       </section>
     </TooltipProvider>
   );

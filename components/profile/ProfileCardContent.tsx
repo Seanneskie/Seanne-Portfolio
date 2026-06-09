@@ -131,6 +131,12 @@ export default function ProfileCardContent({
                 {course}, {major}
               </p>
 
+              {profile.background && (
+                <p className="max-w-3xl text-sm leading-relaxed text-black/70 dark:text-white/70">
+                  {profile.background}
+                </p>
+              )}
+
               <div className="flex flex-col gap-1 text-sm">
                 <div className="text-black/80 dark:text-white/80">
                   <span className="font-medium">Email:</span>{" "}
