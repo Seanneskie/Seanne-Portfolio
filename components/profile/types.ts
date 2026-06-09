@@ -14,12 +14,20 @@ export interface Links {
   website?: string;
 }
 
+export interface ExperienceLevel {
+  name: string;
+  level: "Beginner" | "Intermediate" | "Advanced" | "Expert";
+}
+
 export interface ProfileData {
   name: string;
   email: string;
   address: string;
   image: string;
   background: string;
+  interests: string[];
+  experience: ExperienceLevel[];
+  techStack: string[];
   education: Education[];
   links: Links;
 }

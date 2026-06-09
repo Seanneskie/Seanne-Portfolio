@@ -21,7 +21,12 @@ interface Project {
   details?: string | null;
 }
 
-export default function ProjectsSection(): ReactElement {
+interface ProjectsSectionProps {
+  /** When set, render at most this many projects (e.g. a "featured" subset). */
+  limit?: number;
+}
+
+export default function ProjectsSection({ limit }: ProjectsSectionProps = {}): ReactElement {
   const { data, loading, error } = useData<Project[]>("projects.json");
   const [expanded, setExpanded] = useState<Record<number, boolean>>({});
 
@@ -42,9 +47,11 @@ export default function ProjectsSection(): ReactElement {
       <p className="text-red-600 dark:text-red-400">Failed to load projects.</p>
     );
 
+  const projects = typeof limit === "number" ? data.slice(0, limit) : data;
+
   return (
     <div className="grid gap-6 sm:grid-cols-2">
-      {data.map((p: Project, i: number) => (
+      {projects.map((p: Project, i: number) => (
         <motion.div
           key={p.title}
           initial={{ opacity: 0, y: 12 }}

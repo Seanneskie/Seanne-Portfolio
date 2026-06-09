@@ -21,18 +21,9 @@ vi.mock("@/components/profile", () => ({
   MyStory: () => <div>Story</div>,
 }));
 
-vi.mock("@/components/highlights", () => ({
+vi.mock("@/components/projects/projects-section", () => ({
   __esModule: true,
-  default: () => <div>Highlights</div>,
-}));
-
-vi.mock("@/components/hobbies/hobby-achievements", () => ({
-  __esModule: true,
-  default: () => <div>Hobbies</div>,
-}));
-
-vi.mock("@/components/work-experiences", () => ({
-  WorkExperienceCarousel: () => <div>Carousel</div>,
+  default: () => <div>Projects</div>,
 }));
 
 vi.mock("@/lib/utils", () => ({

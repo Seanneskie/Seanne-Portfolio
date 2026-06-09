@@ -31,17 +31,16 @@ import type { ProfileData, Links } from "./types";
 import { TooltipArrow } from "@radix-ui/react-tooltip";
 import { withBasePath } from "@/lib/utils";
 
-const keySkills = [
-  "Web Development",
-  "Frontend UI",
-  "Data & Analytics",
-  "AI/ML Tooling",
-  "Databases",
-  "Geospatial",
-  "Software Design & Docs",
-  "Tooling & Platforms",
-  "Core Strengths",
-];
+const levelStyles: Record<string, string> = {
+  Expert:
+    "bg-teal-600 text-white ring-1 ring-inset ring-teal-700 dark:bg-teal-400 dark:text-teal-950 dark:ring-teal-300",
+  Advanced:
+    "bg-teal-50 text-teal-800 ring-1 ring-inset ring-teal-300 dark:bg-teal-900/40 dark:text-teal-200 dark:ring-teal-700",
+  Intermediate:
+    "bg-amber-50 text-amber-800 ring-1 ring-inset ring-amber-300 dark:bg-amber-900/30 dark:text-amber-200 dark:ring-amber-800",
+  Beginner:
+    "bg-neutral-100 text-neutral-700 ring-1 ring-inset ring-neutral-300 dark:bg-neutral-800/60 dark:text-neutral-200 dark:ring-neutral-700",
+};
 
 const socialList: { key: keyof Links; label: string; icon: LucideIcon }[] = [
   { key: "linkedin", label: "LinkedIn", icon: Linkedin },
@@ -190,23 +189,78 @@ export default function ProfileCardContent({
                 </Button>
               </div>
 
-              <div>
-                <p className="text-sm font-medium text-black/80 dark:text-white/80">
-                  Key Skills
-                </p>
-                <div className="mt-2 flex flex-wrap gap-2">
-                  {keySkills.map((skill) => (
-                    <Badge
-                      key={skill}
-                      variant="secondary"
-                      className="rounded-full bg-teal-50 text-teal-800 ring-1 ring-inset ring-teal-200 dark:bg-teal-900/30 dark:text-teal-200 dark:ring-teal-800"
+              {/* Interests */}
+              {profile.interests?.length > 0 && (
+                <div>
+                  <p className="text-sm font-medium text-black/80 dark:text-white/80">
+                    Interests
+                  </p>
+                  <div className="mt-2 flex flex-wrap gap-2">
+                    {profile.interests.map((interest) => (
+                      <Badge
+                        key={interest}
+                        variant="secondary"
+                        className="rounded-full bg-teal-50 text-teal-800 ring-1 ring-inset ring-teal-200 dark:bg-teal-900/30 dark:text-teal-200 dark:ring-teal-800"
+                      >
+                        {interest}
+                      </Badge>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <Separator />
+
+            {/* Experience levels */}
+            {profile.experience?.length > 0 && (
+              <section className="px-0 sm:px-6">
+                <h3 className="mb-3 text-sm font-semibold uppercase tracking-wide text-black/70 dark:text-white/70">
+                  Experience
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {profile.experience.map((item) => (
+                    <span
+                      key={item.name}
+                      className="inline-flex items-center gap-2 rounded-full border border-neutral-200 px-3 py-1 text-sm dark:border-neutral-800"
                     >
-                      {skill}
+                      <span className="text-black/80 dark:text-white/80">
+                        {item.name}
+                      </span>
+                      <span
+                        className={`rounded-full px-2 py-0.5 text-xs font-medium ${
+                          levelStyles[item.level] ?? levelStyles.Beginner
+                        }`}
+                      >
+                        {item.level}
+                      </span>
+                    </span>
+                  ))}
+                </div>
+              </section>
+            )}
+
+            <Separator />
+
+            {/* Tech stack */}
+            {profile.techStack?.length > 0 && (
+              <section className="px-0 sm:px-6">
+                <h3 className="mb-3 text-sm font-semibold uppercase tracking-wide text-black/70 dark:text-white/70">
+                  Tech Stack
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {profile.techStack.map((tech) => (
+                    <Badge
+                      key={tech}
+                      variant="secondary"
+                      className="rounded-full border border-teal-600/20 bg-white/80 text-teal-800 backdrop-blur-sm dark:border-teal-400/20 dark:bg-teal-900/30 dark:text-teal-200"
+                    >
+                      {tech}
                     </Badge>
                   ))}
                 </div>
-              </div>
-            </div>
+              </section>
+            )}
 
             <Separator />
 
