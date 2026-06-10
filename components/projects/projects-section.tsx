@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Link from "@/src/shims/next-link";
@@ -10,7 +9,7 @@ import { useData } from "@/lib/use-data";
 import { withBasePath } from "@/lib/utils";
 import { useEffect, useRef, useState, type ReactElement } from "react";
 
-/** How many additional cards to reveal each time the sentinel scrolls into view. */
+/** How many additional rows to reveal each time the sentinel scrolls into view. */
 const INFINITE_SCROLL_BATCH = 6;
 
 interface Project {
@@ -62,9 +61,19 @@ export default function ProjectsSection({ limit }: ProjectsSectionProps = {}): R
 
   if (loading) {
     return (
-      <div className="grid gap-6 sm:grid-cols-2">
-        {[...Array(4)].map((_, i) => (
-          <Card key={i} className="h-56 animate-pulse" />
+      <div className="flex flex-col gap-16">
+        {[...Array(3)].map((_, i) => (
+          <div
+            key={i}
+            className="grid items-center gap-8 md:grid-cols-2"
+          >
+            <div className="aspect-video animate-pulse rounded-2xl bg-gray-100 dark:bg-gray-900" />
+            <div className="space-y-4">
+              <div className="h-7 w-2/3 animate-pulse rounded bg-gray-100 dark:bg-gray-900" />
+              <div className="h-4 w-full animate-pulse rounded bg-gray-100 dark:bg-gray-900" />
+              <div className="h-4 w-5/6 animate-pulse rounded bg-gray-100 dark:bg-gray-900" />
+            </div>
+          </div>
         ))}
       </div>
     );
@@ -80,97 +89,122 @@ export default function ProjectsSection({ limit }: ProjectsSectionProps = {}): R
 
   return (
     <>
-    <div className="grid gap-6 sm:grid-cols-2">
-      {projects.map((p: Project, i: number) => (
-        <motion.div
-          key={p.title}
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: (i % INFINITE_SCROLL_BATCH) * 0.05, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <Card className="group h-full overflow-hidden p-4 transition-colors hover:border-teal-500/40 dark:hover:border-teal-400/40">
-            {/* Image */}
-            {p.image ? (
-              <div className="relative mb-4 aspect-video overflow-hidden rounded-xl border border-gray-200 dark:border-gray-800">
-                <Image
-                  src={withBasePath(p.image)}
-                  alt={p.alt}
-                  fill
-                  sizes="(max-width: 640px) 100vw, 50vw"
-                  className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                />
-              </div>
-            ) : null}
+      <div className="flex flex-col gap-16 sm:gap-20 lg:gap-28">
+        {projects.map((p: Project, i: number) => {
+          // Even index (0, 2, 4…) = "odd-numbered" project (1st, 3rd…) → image left.
+          // Odd index = image right. Mobile always stacks image first.
+          const imageRight = i % 2 === 1;
 
-            <h3 className="text-lg font-semibold tracking-tight">
-              {p.title}
-            </h3>
-
-            {p.description ? (
-              <>
-                <p
+          return (
+            <motion.article
+              key={p.title}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              className="group grid items-center gap-8 md:grid-cols-2 lg:gap-12"
+            >
+              {/* Image */}
+              {p.image ? (
+                <div
                   className={[
-                    "mt-1 text-sm text-gray-600 dark:text-gray-400",
-                    expanded[i] ? "" : "line-clamp-2",
+                    "relative aspect-video overflow-hidden rounded-2xl border border-gray-200 shadow-sm transition-all duration-500 group-hover:-translate-y-1 group-hover:border-teal-500/40 group-hover:shadow-xl dark:border-gray-800 dark:group-hover:border-teal-400/40",
+                    imageRight ? "md:order-2" : "md:order-1",
                   ].join(" ")}
                 >
-                  {p.description}
-                </p>
-                <button
-                  type="button"
-                  onClick={() =>
-                    setExpanded((prev) => ({ ...prev, [i]: !prev[i] }))
-                  }
-                  className="mt-1 text-xs font-medium text-teal-600 hover:underline focus:outline-none dark:text-teal-400"
-                >
-                  {expanded[i] ? "Show less" : "Show more"}
-                </button>
-              </>
-            ) : null}
+                  <Image
+                    src={withBasePath(p.image)}
+                    alt={p.alt}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                  />
+                  <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                </div>
+              ) : (
+                <div
+                  className={[
+                    "aspect-video rounded-2xl border border-gray-200 dark:border-gray-800",
+                    imageRight ? "md:order-2" : "md:order-1",
+                  ].join(" ")}
+                />
+              )}
 
-            {/* Tags */}
-            <div className="mt-3 flex flex-wrap gap-2">
-              {p.tags.map((t: string) => (
-                <Badge
-                  key={t}
-                  variant="secondary"
-                  className="rounded-full border border-gray-200 bg-transparent font-normal text-gray-600 dark:border-gray-800 dark:text-gray-400"
-                >
-                  {t}
-                </Badge>
-              ))}
-            </div>
+              {/* Content */}
+              <div className={imageRight ? "md:order-1" : "md:order-2"}>
+                <h3 className="text-2xl font-semibold tracking-tight text-gray-900 transition-colors group-hover:text-teal-600 dark:text-gray-50 dark:group-hover:text-teal-400 sm:text-3xl">
+                  {p.title}
+                </h3>
 
-            {/* Actions */}
-            <div className="mt-4 flex flex-wrap gap-2">
-              {p.details ? (
-                <Button size="sm" asChild>
-                  <Link href={`/${p.details}`}>Project details →</Link>
-                </Button>
-              ) : null}
+                {p.description ? (
+                  <>
+                    <p
+                      className={[
+                        "mt-3 text-base leading-relaxed text-gray-600 dark:text-gray-400",
+                        expanded[i] ? "" : "line-clamp-3",
+                      ].join(" ")}
+                    >
+                      {p.description}
+                    </p>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setExpanded((prev) => ({ ...prev, [i]: !prev[i] }))
+                      }
+                      className="mt-2 text-sm font-medium text-teal-600 hover:underline focus:outline-none dark:text-teal-400"
+                    >
+                      {expanded[i] ? "Show less" : "Show more"}
+                    </button>
+                  </>
+                ) : null}
 
-              {p.github ? (
-                <Button size="sm" variant="outline" asChild>
-                  <Link href={p.github}>{p.githubLabel ?? "View project"}</Link>
-                </Button>
-              ) : null}
-            </div>
-          </Card>
-        </motion.div>
-      ))}
-    </div>
+                {/* Stack */}
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {p.tags.map((t: string) => (
+                    <Badge
+                      key={t}
+                      variant="secondary"
+                      className="rounded-full border border-gray-200 bg-transparent font-normal text-gray-600 transition-colors group-hover:border-teal-500/30 dark:border-gray-800 dark:text-gray-400"
+                    >
+                      {t}
+                    </Badge>
+                  ))}
+                </div>
 
-    {hasMore ? (
-      <div
-        ref={sentinelRef}
-        aria-hidden
-        className="mt-6 grid gap-6 sm:grid-cols-2"
-      >
-        {[...Array(2)].map((_, i) => (
-          <Card key={i} className="h-56 animate-pulse" />
-        ))}
+                {/* Links */}
+                <div className="mt-6 flex flex-wrap gap-3">
+                  {p.details ? (
+                    <Button size="sm" asChild>
+                      <Link href={`/${p.details}`}>Project details →</Link>
+                    </Button>
+                  ) : null}
+
+                  {p.github ? (
+                    <Button size="sm" variant="outline" asChild>
+                      <Link href={p.github}>{p.githubLabel ?? "View project"}</Link>
+                    </Button>
+                  ) : null}
+                </div>
+              </div>
+            </motion.article>
+          );
+        })}
       </div>
-    ) : null}
+
+      {hasMore ? (
+        <div
+          ref={sentinelRef}
+          aria-hidden
+          className="mt-16 grid items-center gap-8 md:grid-cols-2 lg:gap-12"
+        >
+          <div className="aspect-video animate-pulse rounded-2xl bg-gray-100 dark:bg-gray-900" />
+          <div className="space-y-4">
+            <div className="h-7 w-2/3 animate-pulse rounded bg-gray-100 dark:bg-gray-900" />
+            <div className="h-4 w-full animate-pulse rounded bg-gray-100 dark:bg-gray-900" />
+            <div className="h-4 w-5/6 animate-pulse rounded bg-gray-100 dark:bg-gray-900" />
+          </div>
+        </div>
+      ) : null}
     </>
   );
 }

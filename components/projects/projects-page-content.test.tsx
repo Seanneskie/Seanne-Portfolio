@@ -112,6 +112,17 @@ describe("ProjectsPageContent", () => {
 
     const detailsLink = container.querySelector("a[href='/project-details/example']");
     expect(detailsLink).not.toBeNull();
+
+    // Tag filter is collapsed by default; reveal it via the toggle button.
+    expect(container.querySelector("[data-testid='tag-filter']")).toBeNull();
+    const filterToggle = Array.from(container.querySelectorAll("button")).find((b) =>
+      b.textContent?.includes("Filter by tag")
+    );
+    expect(filterToggle).toBeTruthy();
+    await act(async () => {
+      filterToggle!.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+    });
+
     expect(container.querySelector("[data-testid='tag-filter']")?.getAttribute("data-tags")).toBe(
       '["Tag"]'
     );

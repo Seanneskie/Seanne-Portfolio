@@ -34,6 +34,7 @@ export default function ProjectsPageContent({ data }: ProjectsPageContentProps):
   const [search, setSearch] = useState("");
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [page, setPage] = useState(1);
+  const [showFilters, setShowFilters] = useState(false);
 
   const projects: Project[] = data;
 
@@ -136,10 +137,20 @@ export default function ProjectsPageContent({ data }: ProjectsPageContentProps):
               onChange={handleSearch}
               className="w-full lg:max-w-md"
             />
-            <div className="flex flex-wrap items-center gap-3 text-sm text-gray-500 dark:text-gray-400">
+            <div className="flex flex-wrap items-center gap-3 text-sm text-gray-500 dark:text-gray-400 lg:ml-auto">
               <span>
                 Showing {filtered.length} of {projects.length}
               </span>
+              <Button
+                size="sm"
+                variant="outline"
+                onClick={() => setShowFilters((v) => !v)}
+                aria-expanded={showFilters}
+                aria-controls="project-tag-filters"
+              >
+                {showFilters ? "Hide tags" : "Filter by tag"}
+                {selectedTags.length > 0 ? ` (${selectedTags.length})` : ""}
+              </Button>
               <Button
                 size="sm"
                 variant="outline"
@@ -150,15 +161,18 @@ export default function ProjectsPageContent({ data }: ProjectsPageContentProps):
               </Button>
             </div>
           </div>
-          <TagFilter
-            tags={allTags}
-            selected={selectedTags}
-            onChange={(tags) => {
-              setSelectedTags(tags);
-              setPage(1);
-            }}
-            className="mt-3"
-          />
+          {showFilters ? (
+            <TagFilter
+              id="project-tag-filters"
+              tags={allTags}
+              selected={selectedTags}
+              onChange={(tags) => {
+                setSelectedTags(tags);
+                setPage(1);
+              }}
+              className="mt-4 border-t border-gray-200 pt-4 dark:border-gray-800"
+            />
+          ) : null}
         </Card>
 
         {currentProjects.length === 0 ? (

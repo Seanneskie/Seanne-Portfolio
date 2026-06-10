@@ -113,6 +113,9 @@ export default function FilterBar({
   onClear,
   hasActiveFilters,
 }: FilterBarProps): ReactElement {
+  const [showFilters, setShowFilters] = useState(false);
+  const activeFacetCount =
+    selectedIssuers.size + selectedYears.size + selectedTags.size;
   return (
     <div
       role="region"
@@ -148,10 +151,39 @@ export default function FilterBar({
               <TabsTrigger value="timeline">Timeline</TabsTrigger>
             </TabsList>
           </Tabs>
+
+          <Button
+            size="sm"
+            variant="outline"
+            className="h-9"
+            onClick={() => setShowFilters((v) => !v)}
+            aria-expanded={showFilters}
+            aria-controls="certificate-facets"
+          >
+            {showFilters ? "Hide filters" : "Filters"}
+            {activeFacetCount > 0 ? ` (${activeFacetCount})` : ""}
+          </Button>
         </div>
       </div>
 
-      <div className="mt-4 space-y-2">
+      <div className="mt-3 flex flex-wrap items-center justify-between gap-2 text-xs text-gray-600 dark:text-gray-300">
+        <span>
+          Showing{" "}
+          <span className="font-semibold text-gray-900 dark:text-white">{shownCount}</span> of{" "}
+          {totalCount}
+        </span>
+        <Button
+          size="sm"
+          variant="outline"
+          onClick={onClear}
+          disabled={!hasActiveFilters}
+        >
+          Clear filters
+        </Button>
+      </div>
+
+      {showFilters && (
+        <div id="certificate-facets" className="mt-4 space-y-2 border-t border-gray-200 pt-4 dark:border-gray-800">
         {issuers.length > 0 && (
           <ChipGroup label="Issuer">
             {issuers.map((i) => (
@@ -187,22 +219,8 @@ export default function FilterBar({
             onToggleTag={onToggleTag}
           />
         )}
-      </div>
-
-      <div className="mt-3 flex flex-wrap items-center justify-between gap-2 text-xs text-gray-600 dark:text-gray-300">
-        <span>
-          Showing <span className="font-semibold text-gray-900 dark:text-white">{shownCount}</span> of{" "}
-          {totalCount}
-        </span>
-        <Button
-          size="sm"
-          variant="outline"
-          onClick={onClear}
-          disabled={!hasActiveFilters}
-        >
-          Clear filters
-        </Button>
-      </div>
+        </div>
+      )}
     </div>
   );
 }

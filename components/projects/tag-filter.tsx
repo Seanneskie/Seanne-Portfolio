@@ -1,14 +1,17 @@
 "use client";
 
-import { type ReactElement } from "react";
+import { useState, type ReactElement } from "react";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
+
+const COLLAPSED_LIMIT = 12;
 
 interface TagFilterProps {
   tags: string[];
   selected: string[];
   onChange: (tags: string[]) => void;
   className?: string;
+  id?: string;
 }
 
 export default function TagFilter({
@@ -16,7 +19,10 @@ export default function TagFilter({
   selected,
   onChange,
   className,
+  id,
 }: TagFilterProps): ReactElement {
+  const [expanded, setExpanded] = useState(false);
+
   const toggleTag = (tag: string) => {
     onChange(
       selected.includes(tag)
@@ -25,14 +31,25 @@ export default function TagFilter({
     );
   };
 
+  const overflow = tags.length - COLLAPSED_LIMIT;
+  // Keep selected tags visible even when collapsed.
+  const visible =
+    expanded || overflow <= 0
+      ? tags
+      : [
+          ...tags.slice(0, COLLAPSED_LIMIT),
+          ...tags.slice(COLLAPSED_LIMIT).filter((t) => selected.includes(t)),
+        ];
+
   return (
-    <div className={cn("flex flex-wrap gap-2", className)}>
-      {tags.map((tag) => {
+    <div id={id} className={cn("flex flex-wrap items-center gap-2", className)}>
+      {visible.map((tag) => {
         const isSelected = selected.includes(tag);
         return (
           <Badge
             key={tag}
             onClick={() => toggleTag(tag)}
+            aria-pressed={isSelected}
             className={cn(
               "cursor-pointer select-none rounded-full border font-normal transition-colors",
               isSelected
@@ -44,6 +61,15 @@ export default function TagFilter({
           </Badge>
         );
       })}
+      {overflow > 0 && (
+        <button
+          type="button"
+          onClick={() => setExpanded((v) => !v)}
+          className="text-xs font-medium text-teal-600 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/50 dark:text-teal-400"
+        >
+          {expanded ? "Show fewer" : `+${overflow} more`}
+        </button>
+      )}
     </div>
   );
 }
