@@ -46,7 +46,7 @@ export default function ProjectOverview(props: ProjectOverviewProps): ReactEleme
   return (
     <section
       aria-labelledby="project-title"
-      className="group relative overflow-hidden rounded-2xl border border-teal-200/70 bg-white/85 p-4 md:p-6 backdrop-blur dark:border-teal-800/70 dark:bg-gray-950/60 md:grid md:grid-cols-2 md:items-start gap-6 transition-shadow hover:shadow-lg hover:shadow-teal-300/30 dark:hover:shadow-teal-900/20"
+      className="rounded-card border border-gray-200 bg-white p-4 transition-colors hover:border-teal-500/40 md:grid md:grid-cols-2 md:items-start md:gap-6 md:p-6 dark:border-gray-800 dark:bg-gray-900 dark:hover:border-teal-400/40"
     >
       <div className="relative mb-4 md:mb-0">
         {images.length >= 1 ? (
@@ -58,13 +58,13 @@ export default function ProjectOverview(props: ProjectOverviewProps): ReactEleme
         <div className="space-y-2">
           <h1
             id="project-title"
-            className="text-3xl font-bold tracking-tight text-teal-700 dark:text-teal-400"
+            className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white"
           >
             {title}
           </h1>
 
           {(period || collaborators) && (
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-gray-600 dark:text-gray-300">
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-gray-600 dark:text-gray-400">
               {period && (
                 <span className="inline-flex items-center gap-1.5">
                   <CalendarDays className="h-4 w-4" aria-hidden />
@@ -81,7 +81,7 @@ export default function ProjectOverview(props: ProjectOverviewProps): ReactEleme
           )}
 
           {summary && (
-            <p className="text-base text-gray-700 dark:text-gray-200">{summary}</p>
+            <p className="text-base text-gray-600 dark:text-gray-400">{summary}</p>
           )}
         </div>
 
@@ -91,7 +91,7 @@ export default function ProjectOverview(props: ProjectOverviewProps): ReactEleme
               <Badge
                 key={t}
                 variant="secondary"
-                className="rounded-full bg-teal-50 text-teal-800 ring-1 ring-inset ring-teal-200 dark:bg-teal-900/30 dark:text-teal-200 dark:ring-teal-800"
+                className="rounded-full border border-gray-200 bg-transparent font-normal text-gray-600 dark:border-gray-800 dark:text-gray-400"
               >
                 {t}
               </Badge>
@@ -104,11 +104,7 @@ export default function ProjectOverview(props: ProjectOverviewProps): ReactEleme
         {(githubUrl || liveUrl || downloadUrl) && (
           <div className="flex flex-wrap gap-2 pt-1">
             {liveUrl && (
-              <Button
-                size="sm"
-                asChild
-                className="group gap-2 text-white bg-gradient-to-r from-teal-600 via-cyan-500 to-sky-500 bg-[length:200%_200%] animate-gradient-x shadow-md hover:shadow-lg transition-[transform,box-shadow,background-position] duration-300 hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:outline-none"
-              >
+              <Button size="sm" asChild className="gap-2">
                 <Link href={liveUrl} target="_blank" rel="noopener noreferrer">
                   <ExternalLink className="h-4 w-4" />
                   {liveLabel}
@@ -116,11 +112,7 @@ export default function ProjectOverview(props: ProjectOverviewProps): ReactEleme
               </Button>
             )}
             {githubUrl && (
-              <Button
-                size="sm"
-                asChild
-                className="group gap-2 text-white bg-gradient-to-r from-purple-600 via-pink-500 to-rose-500 bg-[length:200%_200%] animate-gradient-x shadow-md hover:shadow-lg transition-[transform,box-shadow,background-position] duration-300 hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:outline-none"
-              >
+              <Button size="sm" variant="outline" asChild className="gap-2">
                 <Link href={githubUrl} target="_blank" rel="noopener noreferrer">
                   <Github className="h-4 w-4" />
                   {linkLabel}
@@ -128,11 +120,7 @@ export default function ProjectOverview(props: ProjectOverviewProps): ReactEleme
               </Button>
             )}
             {downloadUrl && (
-              <Button
-                size="sm"
-                asChild
-                className="group gap-2 text-white bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500 bg-[length:200%_200%] animate-gradient-x shadow-md hover:shadow-lg transition-[transform,box-shadow,background-position] duration-300 hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:outline-none"
-              >
+              <Button size="sm" variant="outline" asChild className="gap-2">
                 <a href={withBasePath(downloadUrl)} download>
                   <FileText className="h-4 w-4" />
                   Download
@@ -142,11 +130,6 @@ export default function ProjectOverview(props: ProjectOverviewProps): ReactEleme
           </div>
         )}
       </div>
-
-      <span
-        aria-hidden
-        className="pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full bg-teal-400/20 blur-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100 dark:bg-teal-500/15"
-      />
     </section>
   );
 }

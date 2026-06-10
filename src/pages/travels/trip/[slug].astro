@@ -139,35 +139,35 @@ const jsonLd = {
   ogType="article"
   ogImage={ogImage}
 >
-  <main class="container mx-auto max-w-4xl px-4 py-12">
+  <main class="container mx-auto max-w-4xl px-4 py-16 sm:py-20">
     <a
       href={withBase("/travels/")}
-      class="inline-flex items-center gap-1 text-sm font-medium text-teal-700 hover:text-teal-900 dark:text-teal-300 dark:hover:text-teal-100"
+      class="inline-flex items-center gap-1 text-sm font-medium text-teal-600 hover:underline dark:text-teal-400"
     >
       ← All travels
     </a>
 
     <header class="mt-6 mb-8">
-      <p class="text-xs font-semibold uppercase tracking-wide text-teal-700 dark:text-teal-300">
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-teal-600 dark:text-teal-400">
         Trip · {orderedStops.length} stop{orderedStops.length === 1 ? "" : "s"}
       </p>
-      <h1 class="mt-1 text-3xl font-semibold text-black dark:text-white sm:text-4xl">
+      <h1 class="mt-1.5 text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
         {trip.data.title}
       </h1>
-      <div class="mt-3 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-gray-600 dark:text-gray-300">
+      <div class="mt-3 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-gray-600 dark:text-gray-400">
         {trip.data.author && (
-          <span class="font-medium text-gray-800 dark:text-gray-100">By {trip.data.author}</span>
+          <span class="font-medium text-gray-800 dark:text-gray-200">By {trip.data.author}</span>
         )}
         <time>{fmtDateRange(trip.data.startDate, trip.data.endDate)}</time>
         {trip.data.readTime && <span>· {trip.data.readTime}</span>}
-        <span class="rounded-full bg-gray-100 px-2 py-0.5 text-xs font-medium text-gray-700 dark:bg-gray-800 dark:text-gray-200">
+        <span class="rounded-full border border-gray-200 px-2 py-0.5 text-xs font-normal text-gray-600 dark:border-gray-800 dark:text-gray-400">
           {trip.data.location}
         </span>
       </div>
       {trip.data.tags.length > 0 && (
         <div class="mt-3 flex flex-wrap gap-2">
           {trip.data.tags.map((tag) => (
-            <span class="rounded-full bg-teal-500/10 px-2.5 py-0.5 text-[11px] font-medium text-teal-800 dark:bg-teal-400/10 dark:text-teal-200">
+            <span class="rounded-full border border-gray-200 px-2.5 py-0.5 text-[11px] font-normal text-gray-600 dark:border-gray-800 dark:text-gray-400">
               #{tag}
             </span>
           ))}
@@ -206,7 +206,7 @@ const jsonLd = {
 
     {(trip.data.gallery.length > 0 || trip.data.videos.length > 0) && (
       <section class="mb-12">
-        <h2 class="mb-4 text-xl font-semibold text-black dark:text-white">Gallery</h2>
+        <h2 class="mb-4 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Gallery</h2>
         <TravelGallery
           client:visible
           gallery={trip.data.gallery}
@@ -216,7 +216,7 @@ const jsonLd = {
     )}
 
     <section>
-      <h2 class="mb-4 text-xl font-semibold text-black dark:text-white">Itinerary</h2>
+      <h2 class="mb-4 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Itinerary</h2>
       <ol class="space-y-3">
         {orderedStops.map((stop, i) => {
           const stopSlug = stop.id.replace(/\.md$/, "");
@@ -224,7 +224,7 @@ const jsonLd = {
             <li>
               <a
                 href={withBase(`/travels/${stopSlug}/`)}
-                class="group flex gap-4 overflow-hidden rounded-lg border border-gray-200 bg-white p-3 transition hover:border-teal-500/50 dark:border-gray-800 dark:bg-gray-900/40 dark:hover:border-teal-400/50"
+                class="group flex gap-4 overflow-hidden rounded-card border border-gray-200 bg-white p-3 transition-colors hover:border-teal-500/40 dark:border-gray-800 dark:bg-gray-900 dark:hover:border-teal-400/40"
               >
                 <div class="relative shrink-0">
                   {stop.data.cover ? (
@@ -235,7 +235,7 @@ const jsonLd = {
                       loading="lazy"
                     />
                   ) : (
-                    <div class="flex h-24 w-24 items-center justify-center rounded-md bg-teal-500/10 text-2xl sm:h-28 sm:w-40">
+                    <div class="flex h-24 w-24 items-center justify-center rounded-md bg-slate-50 text-2xl dark:bg-gray-800 sm:h-28 sm:w-40">
                       <span aria-hidden="true">🗺️</span>
                     </div>
                   )}
@@ -251,11 +251,11 @@ const jsonLd = {
                     <time>{fmtDate(stop.data.date)}</time>
                     <span class="truncate">{stop.data.location}</span>
                   </div>
-                  <h3 class="mt-0.5 text-base font-semibold text-black group-hover:text-teal-700 dark:text-white dark:group-hover:text-teal-300">
+                  <h3 class="mt-0.5 text-base font-semibold tracking-tight text-gray-900 group-hover:text-teal-600 dark:text-white dark:group-hover:text-teal-400">
                     {stop.data.title}
                   </h3>
                   {stop.data.excerpt && (
-                    <p class="mt-0.5 line-clamp-2 text-sm text-gray-600 dark:text-gray-300">
+                    <p class="mt-0.5 line-clamp-2 text-sm text-gray-600 dark:text-gray-400">
                       {stop.data.excerpt}
                     </p>
                   )}
@@ -269,12 +269,12 @@ const jsonLd = {
 
     {relatedTrips.length > 0 && (
       <section class="mt-12 border-t border-gray-200 pt-8 dark:border-gray-800">
-        <h2 class="mb-4 text-xl font-semibold text-black dark:text-white">More trips</h2>
+        <h2 class="mb-4 text-xl font-bold tracking-tight text-gray-900 dark:text-white">More trips</h2>
         <div class="grid gap-4 sm:grid-cols-3">
           {relatedTrips.map((rt) => (
             <a
               href={withBase(`/travels/trip/${rt.slug}/`)}
-              class="group overflow-hidden rounded-lg border border-gray-200 bg-white transition hover:border-teal-500/50 dark:border-gray-800 dark:bg-gray-900/40 dark:hover:border-teal-400/50"
+              class="group overflow-hidden rounded-card border border-gray-200 bg-white transition-colors hover:border-teal-500/40 dark:border-gray-800 dark:bg-gray-900 dark:hover:border-teal-400/40"
             >
               <img
                 src={withBase(rt.image)}
@@ -283,7 +283,7 @@ const jsonLd = {
                 loading="lazy"
               />
               <div class="p-3">
-                <h3 class="text-sm font-semibold text-black group-hover:text-teal-700 dark:text-white dark:group-hover:text-teal-300">
+                <h3 class="text-sm font-semibold tracking-tight text-gray-900 group-hover:text-teal-600 dark:text-white dark:group-hover:text-teal-400">
                   {rt.title}
                 </h3>
                 <div class="mt-1 flex items-center justify-between gap-2 text-xs text-gray-500 dark:text-gray-400">

@@ -12,12 +12,12 @@ import {
   FileText,
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import StorySkills from "./StorySkills";
+import SkillsSection from "./SkillsSection";
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { Sparkles, Rocket } from "lucide-react";
 import ServicesSection from "@/components/services";
-import type { SkillCategory } from "./StorySkills";
+import type { SkillCategory } from "./SkillsSection";
 import type { Service } from "@/components/services/ServicesSection";
 
 interface MyStoryProps {
@@ -84,26 +84,20 @@ export default function MyStory({ skills, services }: MyStoryProps): ReactElemen
       transition={{ duration: 0.5 }}
     >
       <section className="space-y-8">
-        <Card className="relative overflow-hidden rounded-2xl border border-teal-600/10 bg-white/70 shadow-lg backdrop-blur-md dark:border-teal-400/10 dark:bg-teal-900/10">
-          {/* Decorative blobs */}
-          <div className="pointer-events-none absolute -top-24 -right-24 h-72 w-72 rounded-full bg-teal-400/20 blur-3xl dark:bg-teal-300/15" />
-          <div className="pointer-events-none absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-teal-600/10 blur-3xl dark:bg-teal-500/10" />
-
-          <CardHeader className="relative z-10">
-            <CardTitle className="text-3xl font-extrabold tracking-tight">
-              <span className="bg-gradient-to-r from-teal-700 to-teal-500 bg-clip-text text-transparent dark:from-teal-300 dark:to-teal-200">
-                My Story
-              </span>
+        <Card className="overflow-hidden">
+          <CardHeader>
+            <CardTitle className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-3xl">
+              My Story
             </CardTitle>
           </CardHeader>
 
-          <CardContent className="relative z-10">
+          <CardContent>
             <div className="grid gap-8 lg:grid-cols-[1.2fr,0.8fr]">
               {/* Left: narrative */}
-              <div className="space-y-5 text-black/90 leading-relaxed dark:text-white/90">
-                <p className="first:first-letter:float-left first:first-letter:mr-2 first:first-letter:text-5xl first:first-letter:font-extrabold first:first-letter:text-teal-600 dark:first:first-letter:text-teal-300">
+              <div className="space-y-5 leading-relaxed text-gray-600 dark:text-gray-400">
+                <p className="first:first-letter:float-left first:first-letter:mr-2 first:first-letter:text-5xl first:first-letter:font-bold first:first-letter:text-teal-600 dark:first:first-letter:text-teal-400">
                   I’m a BSIT (Major in Database) graduate—
-                  <span className="font-semibold text-teal-700 dark:text-teal-300">
+                  <span className="font-semibold text-teal-600 dark:text-teal-400">
                     cum laude
                   </span>
                   —who found my groove at the intersection of data and
@@ -114,16 +108,16 @@ export default function MyStory({ skills, services }: MyStoryProps): ReactElemen
 
                 <p>
                   I’ve built for conservation, government, and operations:{" "}
-                  <span className="rounded-md bg-teal-500/10 px-1 py-0.5 font-medium text-teal-700 dark:text-teal-300">
+                  <span className="font-medium text-teal-600 dark:text-teal-400">
                     COTSEYE
                   </span>{" "}
                   (a Django + JS crowd-mapping tool for Crown-of-Thorns
                   monitoring),{" "}
-                  <span className="rounded-md bg-teal-500/10 px-1 py-0.5 font-medium text-teal-700 dark:text-teal-300">
+                  <span className="font-medium text-teal-600 dark:text-teal-400">
                     VIMS
                   </span>{" "}
                   (a Next.js + Supabase vessel inventory system), and an{" "}
-                  <span className="rounded-md bg-teal-500/10 px-1 py-0.5 font-medium text-teal-700 dark:text-teal-300">
+                  <span className="font-medium text-teal-600 dark:text-teal-400">
                     LGU fund-utilization & cooperative-profiling platform
                   </span>{" "}
                   (Django). Along the way, I doubled down on clean schemas, fast
@@ -160,7 +154,7 @@ export default function MyStory({ skills, services }: MyStoryProps): ReactElemen
                     <Badge
                       key={t}
                       variant="secondary"
-                      className="border border-teal-600/20 bg-white/80 text-teal-800 backdrop-blur-sm hover:bg-white dark:border-teal-400/20 dark:bg-teal-900/30 dark:text-teal-200"
+                      className="rounded-full border border-gray-200 bg-transparent font-normal text-gray-600 transition-colors hover:border-teal-500/40 hover:text-teal-600 dark:border-gray-800 dark:text-gray-400 dark:hover:border-teal-400/40 dark:hover:text-teal-400"
                     >
                       {t}
                     </Badge>
@@ -169,54 +163,54 @@ export default function MyStory({ skills, services }: MyStoryProps): ReactElemen
               </div>
 
               {/* Right: Highlights panel */}
-              <div className="rounded-xl border border-teal-600/10 bg-white/70 p-5 shadow-sm backdrop-blur-sm dark:border-teal-400/10 dark:bg-teal-900/20">
-                <h3 className="mb-3 flex items-center gap-2 text-lg font-semibold text-teal-700 dark:text-teal-300">
-                  <Sparkles className="h-5 w-5" /> Highlights
+              <div className="rounded-card border border-gray-200 bg-slate-50 p-5 dark:border-gray-800 dark:bg-gray-900/40">
+                <h3 className="mb-3 flex items-center gap-2 text-lg font-semibold text-gray-900 dark:text-white">
+                  <Sparkles className="h-5 w-5 text-teal-600 dark:text-teal-400" /> Highlights
                 </h3>
-                <ul className="space-y-3 text-sm text-black/80 dark:text-white/80">
+                <ul className="space-y-3 text-sm text-gray-600 dark:text-gray-400">
                   <li className="flex items-start gap-3">
-                    <MapPinned className="mt-0.5 h-4 w-4 text-teal-600 dark:text-teal-300" />
+                    <MapPinned className="mt-0.5 h-4 w-4 text-teal-600 dark:text-teal-400" />
                     <span>
-                      <span className="font-medium">COTSEYE:</span>{" "}
+                      <span className="font-medium text-gray-900 dark:text-white">COTSEYE:</span>{" "}
                       crowd-mapping for marine conservation (Django, JS).
                     </span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <Database className="mt-0.5 h-4 w-4 text-teal-600 dark:text-teal-300" />
+                    <Database className="mt-0.5 h-4 w-4 text-teal-600 dark:text-teal-400" />
                     <span>
-                      <span className="font-medium">VIMS:</span> vessel
+                      <span className="font-medium text-gray-900 dark:text-white">VIMS:</span> vessel
                       inventory system (Next.js, Supabase, Tailwind).
                     </span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <FileText className="mt-0.5 h-4 w-4 text-teal-600 dark:text-teal-300" />
+                    <FileText className="mt-0.5 h-4 w-4 text-teal-600 dark:text-teal-400" />
                     <span>
-                      <span className="font-medium">LGU Gensan:</span> fund
+                      <span className="font-medium text-gray-900 dark:text-white">LGU Gensan:</span> fund
                       utilization & cooperative profiling (Django).
                     </span>
                   </li>
                 </ul>
 
-                <div className="mt-5 rounded-lg border border-teal-600/10 bg-teal-500/5 p-4 text-xs leading-relaxed text-black/75 dark:border-teal-400/10 dark:text-white/80">
-                  <p className="mb-1 flex items-center gap-1 font-medium text-teal-700 dark:text-teal-300">
-                    <Rocket className="h-3.5 w-3.5" /> Achievements
+                <div className="mt-5 rounded-card border border-gray-200 bg-white p-4 text-xs leading-relaxed text-gray-600 dark:border-gray-800 dark:bg-gray-900 dark:text-gray-400">
+                  <p className="mb-1 flex items-center gap-1 font-medium text-gray-900 dark:text-white">
+                    <Rocket className="h-3.5 w-3.5 text-teal-600 dark:text-teal-400" /> Achievements
                   </p>
                   <ul className="list-inside space-y-1">
                     <li>
                       Graduated as
-                      <span className="font-semibold text-teal-700 dark:text-teal-300">
+                      <span className="font-semibold text-teal-600 dark:text-teal-400">
                         {" "}
                         Cum Laude
                       </span>{" "}
                       and
-                      <span className="font-semibold text-teal-700 dark:text-teal-300">
+                      <span className="font-semibold text-teal-600 dark:text-teal-400">
                         {" "}
                         PSITE XII Most Outstanding IT Student
                       </span>
                     </li>
                     <li>
                       Hack4Gov3 National Finals –
-                      <span className="font-semibold text-teal-700 dark:text-teal-300">
+                      <span className="font-semibold text-teal-600 dark:text-teal-400">
                         {" "}
                         4th Place
                       </span>{" "}
@@ -224,7 +218,7 @@ export default function MyStory({ skills, services }: MyStoryProps): ReactElemen
                     </li>
                     <li>
                       Hack4Gov3 Region 12 –
-                      <span className="font-semibold text-teal-700 dark:text-teal-300">
+                      <span className="font-semibold text-teal-600 dark:text-teal-400">
                         {" "}
                         Champion & Excellence Awardee
                       </span>{" "}
@@ -232,7 +226,7 @@ export default function MyStory({ skills, services }: MyStoryProps): ReactElemen
                     </li>
                     <li>
                       JITS IT Week Hackathon –
-                      <span className="font-semibold text-teal-700 dark:text-teal-300">
+                      <span className="font-semibold text-teal-600 dark:text-teal-400">
                         {" "}
                         Champion
                       </span>{" "}
@@ -241,8 +235,8 @@ export default function MyStory({ skills, services }: MyStoryProps): ReactElemen
                   </ul>
                 </div>
 
-                <div className="mt-4 rounded-lg border border-teal-600/10 bg-teal-500/5 p-4 text-xs leading-relaxed text-black/75 dark:border-teal-400/10 dark:text-white/80">
-                  <p className="font-medium text-teal-700 dark:text-teal-300">
+                <div className="mt-4 rounded-card border border-gray-200 bg-white p-4 text-xs leading-relaxed text-gray-600 dark:border-gray-800 dark:bg-gray-900 dark:text-gray-400">
+                  <p className="font-medium text-gray-900 dark:text-white">
                     Principles
                   </p>
                   <p>
@@ -256,19 +250,19 @@ export default function MyStory({ skills, services }: MyStoryProps): ReactElemen
         </Card>
 
         <div className="grid gap-6 lg:grid-cols-2">
-          <Card className="border border-teal-600/10 dark:border-teal-400/10">
+          <Card>
             <CardHeader>
-              <CardTitle className="text-xl">What I Do</CardTitle>
+              <CardTitle className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">What I Do</CardTitle>
             </CardHeader>
             <CardContent className="grid gap-12 sm:grid-cols-1 justify-items-start">
               {whatIDo.map((item) => (
                 <div key={item.title} className="flex items-center gap-3">
-                  <div className="mt-0.5 text-teal-700 dark:text-teal-400">
+                  <div className="mt-0.5 text-teal-600 dark:text-teal-400">
                     {item.icon}
                   </div>
                   <div className="text-left">
-                    <p className="font-medium">{item.title}</p>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="font-medium text-gray-900 dark:text-white">{item.title}</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">
                       {item.blurb}
                     </p>
                   </div>
@@ -276,7 +270,7 @@ export default function MyStory({ skills, services }: MyStoryProps): ReactElemen
               ))}
             </CardContent>
           </Card>
-          <StorySkills data={skills} />
+          <SkillsSection data={skills} mode="core" />
         </div>
       </section>
       <ServicesSection data={services} />

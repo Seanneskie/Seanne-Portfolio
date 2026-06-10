@@ -86,46 +86,40 @@ export default function ProjectsPageContent({ data }: ProjectsPageContentProps):
   };
 
   return (
-    <main className="relative overflow-hidden">
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-gradient-to-b from-white via-white to-slate-50 dark:from-gray-950 dark:via-gray-950 dark:to-gray-900" />
-        <div className="absolute -top-20 right-10 h-56 w-56 rounded-full bg-teal-200/40 blur-3xl dark:bg-teal-900/30" />
-        <div className="absolute bottom-0 left-0 h-72 w-72 rounded-full bg-sky-200/40 blur-3xl dark:bg-sky-900/30" />
-      </div>
-
-      <div className="container mx-auto max-w-7xl px-4 py-12">
-        <section className="mb-10 grid gap-6 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+    <main>
+      <div className="container mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+        <section className="mb-12 grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-teal-600 dark:text-teal-400">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-600 dark:text-teal-400">
               Portfolio
             </p>
-            <h1 className="mt-2 text-4xl font-semibold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
+            <h1 className="mt-2 text-4xl font-bold tracking-tight sm:text-5xl">
               Projects with real-world impact
             </h1>
-            <p className="mt-3 text-base text-gray-700 dark:text-gray-200 sm:text-lg">
+            <p className="mt-4 max-w-xl text-base text-gray-600 dark:text-gray-400">
               A curated set of product builds, automation tools, and data-driven workflows. Filter
               by stack or use case to find what you need quickly.
             </p>
           </div>
 
-          <Card className="rounded-2xl border border-teal-200/70 bg-white/80 p-6 shadow-sm backdrop-blur dark:border-teal-800/70 dark:bg-gray-950/60">
-            <div className="grid grid-cols-2 gap-4 text-sm text-gray-600 dark:text-gray-300">
+          <Card className="p-6">
+            <div className="grid grid-cols-2 gap-5 text-sm text-gray-500 dark:text-gray-400">
               <div>
-                <p className="text-2xl font-semibold text-gray-900 dark:text-white">{stats.total}</p>
+                <p className="text-2xl font-bold text-gray-900 dark:text-white">{stats.total}</p>
                 <p>Projects shipped</p>
               </div>
               <div>
-                <p className="text-2xl font-semibold text-gray-900 dark:text-white">{stats.tags}</p>
+                <p className="text-2xl font-bold text-gray-900 dark:text-white">{stats.tags}</p>
                 <p>Tech tags</p>
               </div>
               <div>
-                <p className="text-2xl font-semibold text-gray-900 dark:text-white">
+                <p className="text-2xl font-bold text-gray-900 dark:text-white">
                   {stats.withDetails}
                 </p>
                 <p>Case studies</p>
               </div>
               <div>
-                <p className="text-2xl font-semibold text-gray-900 dark:text-white">
+                <p className="text-2xl font-bold text-gray-900 dark:text-white">
                   {stats.withGithub}
                 </p>
                 <p>Open-source links</p>
@@ -134,7 +128,7 @@ export default function ProjectsPageContent({ data }: ProjectsPageContentProps):
           </Card>
         </section>
 
-        <Card className="mb-8 rounded-2xl border border-teal-200/70 bg-white/85 p-4 shadow-sm backdrop-blur dark:border-teal-800/70 dark:bg-gray-950/60">
+        <Card className="mb-10 p-4">
           <div className="flex flex-col gap-4 lg:flex-row lg:items-center">
             <Input
               placeholder="Search projects..."
@@ -142,7 +136,7 @@ export default function ProjectsPageContent({ data }: ProjectsPageContentProps):
               onChange={handleSearch}
               className="w-full lg:max-w-md"
             />
-            <div className="flex flex-wrap items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
+            <div className="flex flex-wrap items-center gap-3 text-sm text-gray-500 dark:text-gray-400">
               <span>
                 Showing {filtered.length} of {projects.length}
               </span>
@@ -151,7 +145,6 @@ export default function ProjectsPageContent({ data }: ProjectsPageContentProps):
                 variant="outline"
                 onClick={handleClearFilters}
                 disabled={search.length === 0 && selectedTags.length === 0}
-                className="border-teal-200 text-teal-700 hover:border-teal-300 hover:text-teal-800 dark:border-teal-800 dark:text-teal-200"
               >
                 Clear filters
               </Button>
@@ -169,7 +162,7 @@ export default function ProjectsPageContent({ data }: ProjectsPageContentProps):
         </Card>
 
         {currentProjects.length === 0 ? (
-          <Card className="rounded-2xl border border-dashed border-teal-200 bg-white/80 p-10 text-center text-gray-600 dark:border-teal-800 dark:bg-gray-950/60 dark:text-gray-300">
+          <Card className="border-dashed p-10 text-center text-gray-500 dark:text-gray-400">
             <p className="text-lg font-semibold text-gray-900 dark:text-white">
               No projects found
             </p>
@@ -178,7 +171,7 @@ export default function ProjectsPageContent({ data }: ProjectsPageContentProps):
               size="sm"
               variant="outline"
               onClick={handleClearFilters}
-              className="mt-4 border-teal-200 text-teal-700 hover:border-teal-300 hover:text-teal-800 dark:border-teal-800 dark:text-teal-200"
+              className="mt-4"
             >
               Reset filters
             </Button>
@@ -188,22 +181,14 @@ export default function ProjectsPageContent({ data }: ProjectsPageContentProps):
             {currentProjects.map((project, index) => (
               <motion.div
                 key={project.title}
-                initial={{ opacity: 0, y: 12 }}
+                initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.05, duration: 0.35 }}
+                transition={{ delay: (index % ITEMS_PER_PAGE) * 0.05, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                 className="h-full"
               >
-                <Card
-                  className={[
-                    "group relative min-h-[460px] h-full overflow-hidden rounded-2xl p-4",
-                    "border border-teal-200/70 bg-white/85 backdrop-blur",
-                    "dark:border-teal-800/70 dark:bg-gray-950/60",
-                    "transition-shadow hover:shadow-lg hover:shadow-teal-300/30 dark:hover:shadow-teal-900/20",
-                    "focus-within:ring-1 focus-within:ring-teal-500/60",
-                  ].join(" ")}
-                >
+                <Card className="group flex h-full flex-col overflow-hidden p-4 transition-colors hover:border-teal-500/40 dark:hover:border-teal-400/40">
                   {project.image ? (
-                    <div className="relative mb-3 aspect-video overflow-hidden rounded-xl">
+                    <div className="relative mb-4 aspect-video overflow-hidden rounded-xl border border-gray-200 dark:border-gray-800">
                       <Image
                         src={withBasePath(project.image)}
                         alt={project.alt}
@@ -211,16 +196,15 @@ export default function ProjectsPageContent({ data }: ProjectsPageContentProps):
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                       />
-                      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-teal-900/30 to-transparent dark:from-teal-950/40" />
                     </div>
                   ) : null}
 
-                  <h3 className="text-lg font-semibold text-teal-800 dark:text-teal-200">
+                  <h3 className="text-lg font-semibold tracking-tight">
                     {project.title}
                   </h3>
 
                   {project.description ? (
-                    <p className="mt-1 text-sm text-gray-700 dark:text-gray-200">
+                    <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
                       {project.description}
                     </p>
                   ) : null}
@@ -230,7 +214,7 @@ export default function ProjectsPageContent({ data }: ProjectsPageContentProps):
                       <Badge
                         key={tag}
                         variant="secondary"
-                        className="rounded-full bg-teal-50 text-teal-800 ring-1 ring-inset ring-teal-200 dark:bg-teal-900/30 dark:text-teal-200 dark:ring-teal-800"
+                        className="rounded-full border border-gray-200 bg-transparent font-normal text-gray-600 dark:border-gray-800 dark:text-gray-400"
                       >
                         {tag}
                       </Badge>
@@ -239,38 +223,17 @@ export default function ProjectsPageContent({ data }: ProjectsPageContentProps):
 
                   <div className="mt-auto flex flex-wrap gap-2 pt-4">
                     {project.details ? (
-                      <Button
-                        size="sm"
-                        asChild
-                        className={[
-                          "group gap-2 text-white",
-                          "bg-gradient-to-r from-teal-600 via-cyan-500 to-sky-500",
-                          "bg-[length:200%_200%] animate-gradient-x",
-                          "shadow-md hover:shadow-lg transition-[transform,box-shadow,background-position] duration-300",
-                          "hover:-translate-y-0.5",
-                          "focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:outline-none",
-                        ].join(" ")}
-                      >
+                      <Button size="sm" asChild>
                         <Link href={`/${project.details}`}>Project details</Link>
                       </Button>
                     ) : null}
 
                     {project.github ? (
-                      <Button
-                        size="sm"
-                        asChild
-                        variant="outline"
-                        className="border-teal-200 text-teal-700 hover:border-teal-300 hover:text-teal-800 dark:border-teal-800 dark:text-teal-200"
-                      >
+                      <Button size="sm" asChild variant="outline">
                         <Link href={project.github}>{project.githubLabel ?? "View project"}</Link>
                       </Button>
                     ) : null}
                   </div>
-
-                  <span
-                    aria-hidden
-                    className="pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full bg-teal-400/20 blur-2xl transition-opacity duration-300 group-hover:opacity-100 dark:bg-teal-500/15"
-                  />
                 </Card>
               </motion.div>
             ))}

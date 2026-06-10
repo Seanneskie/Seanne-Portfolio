@@ -126,7 +126,7 @@ export default function TravelGallery({ gallery, videos }: TravelGalleryProps): 
             key={`${item.kind}-${item.src}`}
             type="button"
             onClick={() => setOpenIndex(i)}
-            className="group relative block aspect-square w-full overflow-hidden rounded-md ring-1 ring-black/5 dark:ring-white/10"
+            className="group relative block aspect-square w-full overflow-hidden rounded-md border border-gray-200 dark:border-gray-800"
             aria-label={item.kind === "video" ? `Play video: ${item.alt}` : `View photo: ${item.alt}`}
           >
             {item.kind === "image" ? (
@@ -180,7 +180,7 @@ function VideoThumb({ item }: { item: VideoItem }): React.ReactElement {
           preload="metadata"
         />
       ) : (
-        <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-teal-500/20 to-cyan-500/20" />
+        <div className="flex h-full w-full items-center justify-center bg-slate-50 dark:bg-gray-800" />
       )}
       {/* Play badge */}
       <span className="pointer-events-none absolute inset-0 flex items-center justify-center">

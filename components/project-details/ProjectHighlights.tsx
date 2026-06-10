@@ -20,16 +20,16 @@ export default function ProjectHighlights({ items }: ProjectHighlightsProps): Re
       {items.map((h) => (
         <div
           key={h.label}
-          className="rounded-xl border border-teal-200/70 bg-white/85 p-4 backdrop-blur dark:border-teal-800/70 dark:bg-gray-950/60"
+          className="rounded-card border border-gray-200 bg-white p-4 transition-colors hover:border-teal-500/40 dark:border-gray-800 dark:bg-gray-900 dark:hover:border-teal-400/40"
         >
-          <div className="text-2xl font-bold text-teal-700 dark:text-teal-300">
+          <div className="text-2xl font-bold tracking-tight text-teal-600 dark:text-teal-400">
             {h.value}
           </div>
-          <div className="mt-1 text-sm font-medium text-gray-800 dark:text-gray-100">
+          <div className="mt-1 text-sm font-medium text-gray-900 dark:text-white">
             {h.label}
           </div>
           {h.hint && (
-            <div className="mt-0.5 text-xs text-gray-500 dark:text-gray-400">{h.hint}</div>
+            <div className="mt-0.5 text-xs text-gray-600 dark:text-gray-400">{h.hint}</div>
           )}
         </div>
       ))}

@@ -4,7 +4,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import Profile from "../../../components/profile/Profile.tsx";
 import MyStory from "../../../components/profile/MyStory.tsx";
 import CardCounters from "../../../components/profile/card-counters.tsx";
-import OtherSkills from "../../../components/profile/OtherSkills.tsx";
+import SkillsSection from "../../../components/profile/SkillsSection.tsx";
 
 const skillEntries = await getCollection("skills");
 const serviceEntries = await getCollection("services");
@@ -28,18 +28,16 @@ const services = serviceEntries.map((e) => e.data);
     "information technology graduate",
   ]}
 >
-  <main
-    class="bg-gradient-to-b from-white via-slate-50/70 to-white dark:from-gray-900 dark:via-gray-950/40 dark:to-gray-900"
-  >
-    <div class="container mx-auto max-w-7xl space-y-16 px-4 py-14">
-      <header class="max-w-3xl space-y-4">
-        <p class="text-xs font-semibold uppercase tracking-[0.3em] text-teal-700/80 dark:text-teal-300/80">
+  <main class="bg-white dark:bg-gray-950">
+    <div class="container mx-auto max-w-6xl space-y-16 px-4 py-14 sm:px-6">
+      <header class="max-w-3xl space-y-3">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-teal-600 dark:text-teal-400">
           Profile
         </p>
         <h1 class="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
           About Seanne and the work behind the projects.
         </h1>
-        <p class="text-base text-gray-700 dark:text-gray-300">
+        <p class="text-base text-gray-600 dark:text-gray-400">
           A deeper look at my background, story, and the technologies I enjoy building with.
         </p>
       </header>
@@ -49,9 +47,11 @@ const services = serviceEntries.map((e) => e.data);
         <div class="space-y-6">
           <CardCounters client:visible />
           <div
-            class="rounded-2xl border border-teal-600/10 bg-white/80 p-6 text-sm text-gray-700 shadow-sm backdrop-blur-sm dark:border-teal-400/10 dark:bg-gray-900/60 dark:text-gray-200"
+            class="rounded-card border border-gray-200 bg-slate-50 p-6 text-sm text-gray-600 dark:border-gray-800 dark:bg-gray-900/40 dark:text-gray-400"
           >
-            <p class="font-semibold text-teal-700 dark:text-teal-300">Focus right now</p>
+            <p class="text-xs font-semibold uppercase tracking-[0.2em] text-teal-600 dark:text-teal-400">
+              Focus right now
+            </p>
             <p class="mt-2">
               Shipping reliable product features, polishing UI details, and keeping data dashboards fast and honest.
             </p>
@@ -62,15 +62,18 @@ const services = serviceEntries.map((e) => e.data);
       <MyStory client:visible skills={skills} services={services} />
 
       <section class="space-y-6">
-        <div class="space-y-2">
-          <h2 class="text-3xl font-bold tracking-tight text-teal-700 dark:text-teal-400">
+        <div class="space-y-1.5">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-teal-600 dark:text-teal-400">
+            Skills
+          </p>
+          <h2 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-3xl">
             Other Skills
           </h2>
-          <p class="text-sm text-gray-700 dark:text-gray-300">
+          <p class="text-sm text-gray-600 dark:text-gray-400">
             Supporting tools and workflows that help teams ship with clarity.
           </p>
         </div>
-        <OtherSkills client:visible data={skills} />
+        <SkillsSection client:visible data={skills} mode="other" />
       </section>
     </div>
   </main>

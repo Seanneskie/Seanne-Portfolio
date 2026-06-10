@@ -67,11 +67,11 @@ export default function CoursesSection({ data }: CoursesSectionProps): ReactElem
   }, [courses, search, institution, skill]);
 
   const badgeCls =
-    "rounded-full bg-teal-50 text-teal-800 ring-1 ring-inset ring-teal-200 dark:bg-teal-900/30 dark:text-teal-200 dark:ring-teal-800";
+    "rounded-full border border-gray-200 bg-transparent font-normal text-gray-600 dark:border-gray-800 dark:text-gray-400";
 
   return (
     <div className="space-y-4">
-      <Card className="rounded-2xl border border-teal-200/70 bg-white/85 p-4 shadow-sm backdrop-blur dark:border-teal-800/70 dark:bg-gray-950/60">
+      <Card className="p-4">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-center">
           <Input
             placeholder="Search by code or title"
@@ -107,7 +107,7 @@ export default function CoursesSection({ data }: CoursesSectionProps): ReactElem
               ))}
             </SelectContent>
           </Select>
-          <div className="flex flex-wrap items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
+          <div className="flex flex-wrap items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
             <span>
               Showing {filtered.length} of {totalCourses}
             </span>
@@ -124,7 +124,6 @@ export default function CoursesSection({ data }: CoursesSectionProps): ReactElem
                 setSkill("");
               }}
               disabled={!search && !institution && !skill}
-              className="border-teal-200 text-teal-700 hover:border-teal-300 hover:text-teal-800 dark:border-teal-800 dark:text-teal-200"
             >
               Clear filters
             </Button>
@@ -133,7 +132,7 @@ export default function CoursesSection({ data }: CoursesSectionProps): ReactElem
       </Card>
 
       {filtered.length === 0 ? (
-        <Card className="rounded-2xl border border-dashed border-teal-200 bg-white/80 p-10 text-center text-gray-600 dark:border-teal-800 dark:bg-gray-950/60 dark:text-gray-300">
+        <Card className="border-dashed p-10 text-center text-gray-600 dark:text-gray-400">
           <p className="text-lg font-semibold text-gray-900 dark:text-white">
             No courses match your search
           </p>
@@ -146,7 +145,7 @@ export default function CoursesSection({ data }: CoursesSectionProps): ReactElem
               setInstitution("");
               setSkill("");
             }}
-            className="mt-4 border-teal-200 text-teal-700 hover:border-teal-300 hover:text-teal-800 dark:border-teal-800 dark:text-teal-200"
+            className="mt-4"
           >
             Reset filters
           </Button>
@@ -170,11 +169,9 @@ export default function CoursesSection({ data }: CoursesSectionProps): ReactElem
               >
                 <Card
                   className={[
-                    "group relative h-full min-h-[220px] overflow-hidden rounded-2xl p-4",
-                    "border border-teal-200/70 bg-white/85 backdrop-blur",
-                    "dark:border-teal-800/70 dark:bg-gray-950/60",
-                    "transition-shadow hover:shadow-lg hover:shadow-teal-300/30 dark:hover:shadow-teal-900/20",
-                    "focus-within:ring-1 focus-within:ring-teal-500/60",
+                    "group relative h-full min-h-[220px] overflow-hidden p-4",
+                    "transition-colors hover:border-teal-500/40 dark:hover:border-teal-400/40",
+                    "focus-within:border-teal-500/40 dark:focus-within:border-teal-400/40",
                   ].join(" ")}
                 >
                   <Accordion type="single" collapsible>
@@ -184,10 +181,10 @@ export default function CoursesSection({ data }: CoursesSectionProps): ReactElem
                         className="p-0 text-left"
                       >
                         <div className="text-left">
-                          <h3 className="text-lg font-semibold text-teal-800 dark:text-teal-200">
+                          <h3 className="text-lg font-semibold tracking-tight text-gray-900 dark:text-white">
                             {c.code}: {c.title}
                           </h3>
-                          <p className="mt-2 text-sm text-gray-700 dark:text-gray-200">
+                          <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
                             {c.institution}
                           </p>
                           {c.skills?.length ? (
@@ -207,22 +204,18 @@ export default function CoursesSection({ data }: CoursesSectionProps): ReactElem
                       </AccordionTrigger>
                       <AccordionContent>
                         {c.description && (
-                          <p className="text-sm text-gray-700 dark:text-gray-200">
+                          <p className="text-sm text-gray-600 dark:text-gray-400">
                             {c.description}
                           </p>
                         )}
                         {typeof c.credits === "number" && (
-                          <p className="mt-2 text-sm font-medium text-gray-700 dark:text-gray-200">
+                          <p className="mt-2 text-sm font-medium text-gray-600 dark:text-gray-400">
                             Credits: {c.credits}
                           </p>
                         )}
                       </AccordionContent>
                     </AccordionItem>
                   </Accordion>
-                  <span
-                    aria-hidden
-                    className="pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full bg-teal-400/20 blur-2xl transition-opacity duration-300 group-hover:opacity-100 dark:bg-teal-500/15"
-                  />
                 </Card>
               </motion.li>
             ))}

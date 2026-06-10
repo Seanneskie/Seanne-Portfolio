@@ -4,6 +4,9 @@ import { type ReactElement } from "react";
 import { motion, type Variants, type Transition } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Section } from "@/components/ui/section";
+import { SectionHeading } from "@/components/ui/section-heading";
+import { Reveal } from "@/components/ui/reveal";
 export interface Achievement {
   icon: string;
   title: string;
@@ -18,7 +21,7 @@ interface AwardsProps {
 // Framer Motion v11 expects an Easing (function or [x1,y1,x2,y2])
 const EASE_OUT: NonNullable<Transition["ease"]> = [0.16, 1, 0.3, 1];
 const badgeCls =
-  "rounded-full bg-teal-50 text-teal-800 ring-1 ring-inset ring-teal-200 dark:bg-teal-900/30 dark:text-teal-200 dark:ring-teal-800";
+  "rounded-full border border-gray-200 bg-transparent font-normal text-gray-600 dark:border-gray-800 dark:text-gray-400";
 
 const itemVariants: Variants = {
   hidden: { opacity: 0, y: 18 },
@@ -33,46 +36,35 @@ export default function Awards({ data }: AwardsProps): ReactElement {
   const totalAwards = data.length;
 
   return (
-    <main className="relative overflow-hidden">
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-gradient-to-b from-white via-white to-slate-50 dark:from-gray-950 dark:via-gray-950 dark:to-gray-900" />
-        <div className="absolute -top-24 right-6 h-56 w-56 rounded-full bg-teal-200/40 blur-3xl dark:bg-teal-900/30" />
-        <div className="absolute bottom-0 left-0 h-72 w-72 rounded-full bg-sky-200/40 blur-3xl dark:bg-sky-900/30" />
-      </div>
+    <main className="py-16 sm:py-20">
+      <Section className="space-y-8">
+        <section className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+          <Reveal>
+            <SectionHeading
+              eyebrow="Recognition"
+              title="Awards and achievements"
+              description="Highlights that reflect leadership, innovation, and strong delivery in engineering projects."
+            />
+          </Reveal>
 
-      <div className="container mx-auto max-w-6xl px-4 py-12">
-        <section className="mb-10 grid gap-6 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-teal-600 dark:text-teal-400">
-              Recognition
-            </p>
-            <h1 className="mt-2 text-4xl font-semibold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
-              Awards and achievements
-            </h1>
-            <p className="mt-3 text-base text-gray-700 dark:text-gray-200 sm:text-lg">
-              Highlights that reflect leadership, innovation, and strong delivery in engineering
-              projects.
-            </p>
-          </div>
-
-          <Card className="rounded-2xl border border-teal-200/70 bg-white/80 p-6 shadow-sm backdrop-blur dark:border-teal-800/70 dark:bg-gray-950/60">
-            <p className="text-sm text-gray-600 dark:text-gray-300">Awards collected</p>
-            <p className="mt-2 text-4xl font-semibold text-gray-900 dark:text-white">
-              {totalAwards}
-            </p>
-            <p className="mt-2 text-sm text-gray-700 dark:text-gray-200">
-              Timeline showcases key wins across academic and professional stages.
-            </p>
-          </Card>
+          <Reveal delay={0.05}>
+            <Card className="p-6">
+              <p className="text-sm text-gray-600 dark:text-gray-400">Awards collected</p>
+              <p className="mt-2 text-4xl font-bold tracking-tight text-gray-900 dark:text-white">
+                {totalAwards}
+              </p>
+              <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                Timeline showcases key wins across academic and professional stages.
+              </p>
+            </Card>
+          </Reveal>
         </section>
 
         <div className="relative">
-          {/* Gradient timeline spine */}
+          {/* Timeline spine */}
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute left-4 top-0 h-full w-px
-                       bg-gradient-to-b from-teal-500 via-teal-500/40 to-transparent
-                       dark:from-teal-400 dark:via-teal-400/40"
+            className="pointer-events-none absolute left-4 top-0 h-full w-px bg-gray-200 dark:bg-gray-800"
           />
 
           <ol role="list" className="space-y-8">
@@ -85,40 +77,22 @@ export default function Awards({ data }: AwardsProps): ReactElement {
                 viewport={{ once: true, amount: 0.25 }}
                 className="relative pl-12"
               >
-                {/* Pin with glow + subtle pulse */}
+                {/* Timeline pin */}
                 <span
-                  className="absolute left-0 top-2 grid h-8 w-8 place-items-center rounded-full 
-                             bg-gradient-to-tr from-teal-600 to-cyan-500 shadow-lg
-                             ring-8 ring-white dark:ring-gray-900"
+                  className="absolute left-0 top-2 grid h-8 w-8 place-items-center rounded-full bg-teal-600 ring-8 ring-white dark:bg-teal-500 dark:ring-gray-950"
                   aria-hidden="true"
                 >
-                  <span className="absolute h-8 w-8 rounded-full bg-teal-500/30 blur-[6px]" />
-                  <span className="absolute h-8 w-8 rounded-full animate-ping bg-teal-400/40" />
-                  <i className={`${achievement.icon} relative z-[1] text-sm text-white`} />
+                  <i className={`${achievement.icon} relative text-sm text-white`} />
                 </span>
 
                 {/* Card body */}
-                <Card
-                  className="group border border-teal-500/10 bg-white/60 backdrop-blur
-                             transition-all duration-300 hover:-translate-y-0.5
-                             hover:border-teal-500/30 hover:shadow-lg
-                             dark:bg-gray-900/60"
-                >
+                <Card className="group transition-colors hover:border-teal-500/40 dark:hover:border-teal-400/40">
                   <CardContent className="p-5">
-                    <div className="flex items-start justify-between gap-4">
-                      <h3 className="text-lg font-semibold text-teal-800 dark:text-teal-200">
-                        {achievement.title}
-                      </h3>
-                      <span
-                        className="mt-1 h-1 w-14 shrink-0 rounded-full
-                                   bg-gradient-to-r from-teal-500 to-cyan-400
-                                   opacity-70 transition-opacity duration-300
-                                   group-hover:opacity-100"
-                        aria-hidden="true"
-                      />
-                    </div>
+                    <h3 className="text-lg font-semibold tracking-tight text-gray-900 dark:text-white">
+                      {achievement.title}
+                    </h3>
 
-                    <p className="mt-2 text-base text-gray-700 dark:text-gray-200">
+                    <p className="mt-2 text-base text-gray-600 dark:text-gray-400">
                       {achievement.description}
                     </p>
                     {achievement.skills?.length ? (
@@ -134,19 +108,13 @@ export default function Awards({ data }: AwardsProps): ReactElement {
                         ))}
                       </div>
                     ) : null}
-
-                    <div
-                      className="mt-4 h-px w-0 bg-gradient-to-r from-teal-500/50 to-cyan-400/50
-                                 transition-all duration-300 group-hover:w-full"
-                      aria-hidden="true"
-                    />
                   </CardContent>
                 </Card>
               </motion.li>
             ))}
           </ol>
         </div>
-      </div>
+      </Section>
     </main>
   );
 }

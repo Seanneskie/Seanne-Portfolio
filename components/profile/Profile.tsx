@@ -2,7 +2,7 @@
 
 import { type ReactElement } from "react";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import ProfileCard from "./ProfileCard";
+import ProfileCardContent from "./ProfileCardContent";
 import type { ProfileData } from "./types";
 import { withBasePath } from "@/lib/utils";
 
@@ -74,7 +74,7 @@ export default function Profile({ imagePriority = false }: { imagePriority?: boo
   return (
     <TooltipProvider delayDuration={100}>
       <section id="profile" className="space-y-6">
-        <ProfileCard profile={PROFILE} imagePriority={imagePriority} />
+        <ProfileCardContent profile={PROFILE} imagePriority={imagePriority} />
       </section>
     </TooltipProvider>
   );

@@ -42,10 +42,10 @@ export default function BlogList({ posts }: BlogListProps): React.ReactElement {
             onClick={() => setActive(null)}
             aria-pressed={active === null}
             className={[
-              "rounded-full border px-3 py-1 text-xs font-medium transition",
+              "rounded-full border px-3 py-1 text-xs font-medium transition-colors",
               active === null
-                ? "border-teal-500 bg-teal-500/10 text-teal-700 dark:border-teal-400 dark:bg-teal-400/10 dark:text-teal-300"
-                : "border-gray-200 text-gray-600 hover:border-teal-500/40 hover:text-teal-700 dark:border-gray-800 dark:text-gray-300 dark:hover:text-teal-300",
+                ? "border-teal-600 bg-teal-600 text-white dark:border-teal-500 dark:bg-teal-500 dark:text-gray-900"
+                : "border-gray-200 text-gray-600 hover:border-teal-500/40 hover:text-teal-600 dark:border-gray-800 dark:text-gray-400 dark:hover:text-teal-400",
             ].join(" ")}
           >
             All
@@ -57,10 +57,10 @@ export default function BlogList({ posts }: BlogListProps): React.ReactElement {
               onClick={() => setActive(active === tag ? null : tag)}
               aria-pressed={active === tag}
               className={[
-                "rounded-full border px-3 py-1 text-xs font-medium transition",
+                "rounded-full border px-3 py-1 text-xs font-medium transition-colors",
                 active === tag
-                  ? "border-teal-500 bg-teal-500/10 text-teal-700 dark:border-teal-400 dark:bg-teal-400/10 dark:text-teal-300"
-                  : "border-gray-200 text-gray-600 hover:border-teal-500/40 hover:text-teal-700 dark:border-gray-800 dark:text-gray-300 dark:hover:text-teal-300",
+                  ? "border-teal-600 bg-teal-600 text-white dark:border-teal-500 dark:bg-teal-500 dark:text-gray-900"
+                  : "border-gray-200 text-gray-600 hover:border-teal-500/40 hover:text-teal-600 dark:border-gray-800 dark:text-gray-400 dark:hover:text-teal-400",
               ].join(" ")}
             >
               #{tag}
@@ -70,7 +70,7 @@ export default function BlogList({ posts }: BlogListProps): React.ReactElement {
       )}
 
       {filtered.length === 0 ? (
-        <p className="text-sm text-gray-600 dark:text-gray-300">No posts match this tag.</p>
+        <p className="text-sm text-gray-600 dark:text-gray-400">No posts match this tag.</p>
       ) : (
         <ul className="space-y-4">
           {filtered.map((post) => {
@@ -82,30 +82,30 @@ export default function BlogList({ posts }: BlogListProps): React.ReactElement {
                   href={href}
                   target={external ? "_blank" : undefined}
                   rel={external ? "noopener noreferrer" : undefined}
-                  className="group block rounded-lg border border-gray-200 bg-white p-5 transition hover:border-teal-500/50 hover:shadow-sm dark:border-gray-800 dark:bg-gray-900/40 dark:hover:border-teal-400/50"
+                  className="group block rounded-card border border-gray-200 bg-white p-5 transition-colors hover:border-teal-500/40 dark:border-gray-800 dark:bg-gray-900 dark:hover:border-teal-400/40"
                 >
                   <div className="flex items-center justify-between gap-3">
                     <time className="text-xs font-medium uppercase tracking-wide text-gray-500 dark:text-gray-400">
                       {fmtDate(post.date)}
                     </time>
                     {external && (
-                      <span className="rounded-full bg-gray-100 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wide text-gray-600 dark:bg-gray-800 dark:text-gray-300">
+                      <span className="rounded-full border border-gray-200 px-2 py-0.5 text-[10px] font-normal uppercase tracking-wide text-gray-600 dark:border-gray-800 dark:text-gray-400">
                         External
                       </span>
                     )}
                   </div>
-                  <h2 className="mt-1 text-lg font-semibold text-black group-hover:text-teal-700 dark:text-white dark:group-hover:text-teal-300">
+                  <h2 className="mt-1 text-lg font-semibold tracking-tight text-gray-900 group-hover:text-teal-600 dark:text-white dark:group-hover:text-teal-400">
                     {post.title}
                   </h2>
                   {post.description && (
-                    <p className="mt-1 text-sm text-gray-600 dark:text-gray-300">{post.description}</p>
+                    <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">{post.description}</p>
                   )}
                   {post.tags.length > 0 && (
-                    <ul className="mt-2 flex flex-wrap gap-1.5">
+                    <ul className="mt-3 flex flex-wrap gap-1.5">
                       {post.tags.map((tag) => (
                         <li
                           key={tag}
-                          className="rounded-full bg-teal-500/10 px-2 py-0.5 text-[10px] font-medium text-teal-700 dark:bg-teal-400/10 dark:text-teal-300"
+                          className="rounded-full border border-gray-200 px-2 py-0.5 text-[10px] font-normal text-gray-600 dark:border-gray-800 dark:text-gray-400"
                         >
                           #{tag}
                         </li>

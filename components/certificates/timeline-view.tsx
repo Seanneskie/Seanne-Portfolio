@@ -46,7 +46,7 @@ export default function TimelineView({ items }: Props): ReactElement {
     <div className="relative">
       <div
         aria-hidden
-        className="pointer-events-none absolute left-3 top-2 bottom-2 w-px bg-gradient-to-b from-teal-300/60 via-teal-300/30 to-transparent dark:from-teal-700/60 dark:via-teal-700/30 sm:left-4"
+        className="pointer-events-none absolute left-3 top-2 bottom-2 w-px bg-gray-200 dark:bg-gray-800 sm:left-4"
       />
       <div className="space-y-10">
         <AnimatePresence mode="popLayout">
@@ -63,13 +63,13 @@ export default function TimelineView({ items }: Props): ReactElement {
               <div className="mb-4 flex items-center gap-3 scroll-mt-48">
                 <span
                   aria-hidden
-                  className="ml-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full border-2 border-teal-400 bg-white text-[10px] font-bold text-teal-700 shadow-sm dark:border-teal-500 dark:bg-gray-950 dark:text-teal-200 sm:ml-1"
+                  className="ml-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full border border-gray-200 bg-white text-[10px] font-bold text-gray-600 dark:border-gray-800 dark:bg-gray-950 dark:text-gray-300 sm:ml-1"
                 >
                   {String(g.year).slice(-2)}
                 </span>
                 <h2
                   id={`year-${g.year}`}
-                  className="rounded-full bg-white/85 px-3 py-1 text-sm font-semibold text-teal-800 ring-1 ring-teal-200 backdrop-blur dark:bg-gray-950/85 dark:text-teal-200 dark:ring-teal-800"
+                  className="rounded-full border border-gray-200 bg-white px-3 py-1 text-sm font-semibold text-gray-900 dark:border-gray-800 dark:bg-gray-950 dark:text-white"
                 >
                   {g.year} · {g.items.length}
                 </h2>
@@ -116,7 +116,7 @@ function TimelineRow({
   const hasExternalLink = Boolean(c.link && !c.link.startsWith("/"));
 
   const badgeCls =
-    "rounded-full bg-teal-50 text-teal-800 ring-1 ring-inset ring-teal-200 dark:bg-teal-900/30 dark:text-teal-200 dark:ring-teal-800";
+    "rounded-full border border-gray-200 bg-transparent font-normal text-gray-600 dark:border-gray-800 dark:text-gray-400";
 
   return (
     <motion.li
@@ -130,15 +130,13 @@ function TimelineRow({
     >
       <span
         aria-hidden
-        className="absolute -left-[1.85rem] top-5 h-2.5 w-2.5 rounded-full bg-teal-400 ring-4 ring-white dark:bg-teal-500 dark:ring-gray-950 sm:-left-[2.05rem]"
+        className="absolute -left-[1.85rem] top-5 h-2.5 w-2.5 rounded-full bg-teal-500 ring-4 ring-white dark:bg-teal-400 dark:ring-gray-950 sm:-left-[2.05rem]"
       />
       <Sheet open={open} onOpenChange={setOpen}>
         <Card
           className={[
-            "group relative overflow-hidden rounded-xl p-3 sm:p-4",
-            "border border-teal-200/70 bg-white/85 backdrop-blur",
-            "dark:border-teal-800/70 dark:bg-gray-950/60",
-            "transition-shadow hover:shadow-md hover:shadow-teal-300/20 dark:hover:shadow-teal-900/20",
+            "group relative overflow-hidden p-3 sm:p-4",
+            "transition-colors hover:border-teal-500/40 dark:hover:border-teal-400/40",
           ].join(" ")}
         >
           <div className="flex flex-col gap-3 sm:flex-row sm:items-start">
@@ -157,8 +155,8 @@ function TimelineRow({
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 ) : (
-                  <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-teal-100 via-cyan-100 to-sky-100 dark:from-teal-900/40 dark:via-cyan-900/30 dark:to-sky-900/40">
-                    <span className="text-lg font-bold text-teal-700/70 dark:text-teal-200/70">
+                  <div className="absolute inset-0 flex items-center justify-center bg-slate-50 dark:bg-gray-900">
+                    <span className="text-lg font-bold text-gray-400 dark:text-gray-600">
                       {c.issuer.slice(0, 2).toUpperCase()}
                     </span>
                   </div>
@@ -168,7 +166,7 @@ function TimelineRow({
 
             <div className="min-w-0 flex-1">
               <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-gray-500 dark:text-gray-400">
-                <span className="font-semibold text-teal-700 dark:text-teal-300">{c.issuer}</span>
+                <span className="font-semibold text-gray-700 dark:text-gray-300">{c.issuer}</span>
                 {c.dateLabel && (
                   <>
                     <span aria-hidden>•</span>
@@ -176,10 +174,10 @@ function TimelineRow({
                   </>
                 )}
               </div>
-              <h3 className="mt-0.5 text-base font-semibold leading-snug text-teal-800 dark:text-teal-200">
+              <h3 className="mt-0.5 text-base font-semibold leading-snug tracking-tight text-gray-900 dark:text-white">
                 {c.title}
               </h3>
-              <p className="mt-1 line-clamp-2 text-sm text-gray-700 dark:text-gray-200">
+              <p className="mt-1 line-clamp-2 text-sm text-gray-600 dark:text-gray-400">
                 {bodyText}
               </p>
 
@@ -198,11 +196,7 @@ function TimelineRow({
 
               <div className="mt-3 flex items-center gap-2">
                 <SheetTrigger asChild>
-                  <Button
-                    size="sm"
-                    variant="outline"
-                    className="border-teal-200 text-teal-700 hover:border-teal-300 hover:text-teal-800 dark:border-teal-800 dark:text-teal-200"
-                  >
+                  <Button size="sm" variant="outline">
                     Preview
                   </Button>
                 </SheetTrigger>
@@ -211,7 +205,7 @@ function TimelineRow({
                     asChild
                     size="sm"
                     variant="ghost"
-                    className="ml-auto text-teal-700 hover:text-teal-800 dark:text-teal-200"
+                    className="ml-auto text-teal-600 hover:text-teal-500 dark:text-teal-400"
                   >
                     <a
                       href={viewLink}
@@ -235,7 +229,7 @@ function TimelineRow({
               {c.dateLabel ? ` • ${c.dateLabel}` : ""}
             </p>
             <SheetTitle className="text-xl">{c.title}</SheetTitle>
-            <SheetDescription className="text-gray-700 dark:text-gray-200">
+            <SheetDescription className="text-gray-600 dark:text-gray-400">
               {bodyText}
             </SheetDescription>
           </SheetHeader>
@@ -246,7 +240,7 @@ function TimelineRow({
                 href={viewLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block overflow-hidden rounded-xl ring-1 ring-teal-200 dark:ring-teal-800"
+                className="block overflow-hidden rounded-card border border-gray-200 dark:border-gray-800"
                 aria-label={`Open ${c.title} certificate at full size`}
               >
                 <Image
@@ -292,10 +286,7 @@ function TimelineRow({
             )}
 
             {viewLink && (
-              <Button
-                asChild
-                className="w-full border-0 bg-gradient-to-r from-teal-600 via-cyan-500 to-sky-500 text-white focus-visible:border-teal-500 focus-visible:ring-teal-500/50"
-              >
+              <Button asChild className="w-full">
                 <a href={viewLink} target="_blank" rel="noopener noreferrer">
                   {hasExternalLink ? "View source" : "Open full image"}
                 </a>

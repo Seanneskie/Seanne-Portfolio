@@ -44,10 +44,10 @@ function Chip({
       onClick={onClick}
       aria-pressed={active}
       className={[
-        "shrink-0 rounded-full border px-3 py-1 text-xs font-medium transition",
+        "shrink-0 rounded-full border px-3 py-1 text-xs font-medium transition-colors",
         active
-          ? "border-teal-500 bg-teal-500/10 text-teal-700 dark:border-teal-400 dark:bg-teal-400/10 dark:text-teal-300"
-          : "border-gray-200 text-gray-600 hover:border-teal-500/40 hover:text-teal-700 dark:border-gray-800 dark:text-gray-300 dark:hover:text-teal-300",
+          ? "border-teal-600 bg-teal-600 text-white dark:border-teal-500 dark:bg-teal-500 dark:text-gray-900"
+          : "border-gray-200 text-gray-600 hover:border-teal-500/40 hover:text-teal-600 dark:border-gray-800 dark:text-gray-400 dark:hover:text-teal-400",
       ].join(" ")}
     >
       {label}
@@ -112,7 +112,7 @@ export default function TravelFilters({
             onChange={(e) => onQueryChange(e.target.value)}
             placeholder="Search places, cities, tags…"
             aria-label="Search travels"
-            className="w-full rounded-lg border border-gray-200 bg-white py-2 pl-9 pr-3 text-sm text-black placeholder:text-gray-400 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 dark:border-gray-800 dark:bg-gray-900/40 dark:text-white dark:placeholder:text-gray-500"
+            className="w-full rounded-lg border border-gray-200 bg-white py-2 pl-9 pr-3 text-sm text-gray-900 placeholder:text-gray-400 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 dark:border-gray-800 dark:bg-gray-900 dark:text-white dark:placeholder:text-gray-500"
           />
         </div>
 
@@ -123,16 +123,16 @@ export default function TravelFilters({
               onClick={() => setOpen((v) => !v)}
               aria-expanded={open}
               className={[
-                "inline-flex shrink-0 items-center gap-1.5 rounded-lg border px-3 py-2 text-sm font-medium transition",
+                "inline-flex shrink-0 items-center gap-1.5 rounded-lg border px-3 py-2 text-sm font-medium transition-colors",
                 activeChipCount > 0
-                  ? "border-teal-500 bg-teal-500/10 text-teal-700 dark:border-teal-400 dark:bg-teal-400/10 dark:text-teal-300"
-                  : "border-gray-200 text-gray-600 hover:text-teal-700 dark:border-gray-800 dark:text-gray-300 dark:hover:text-teal-300",
+                  ? "border-teal-500/40 text-teal-600 dark:border-teal-400/40 dark:text-teal-400"
+                  : "border-gray-200 text-gray-600 hover:border-teal-500/40 hover:text-teal-600 dark:border-gray-800 dark:text-gray-400 dark:hover:text-teal-400",
               ].join(" ")}
             >
               <SlidersHorizontal aria-hidden="true" size={15} />
               Filters
               {activeChipCount > 0 && (
-                <span className="ml-0.5 inline-flex h-4 min-w-4 items-center justify-center rounded-full bg-teal-500 px-1 text-[10px] font-bold text-white dark:bg-teal-400 dark:text-gray-900">
+                <span className="ml-0.5 inline-flex h-4 min-w-4 items-center justify-center rounded-full bg-teal-600 px-1 text-[10px] font-bold text-white dark:bg-teal-500 dark:text-gray-900">
                   {activeChipCount}
                 </span>
               )}
@@ -146,7 +146,7 @@ export default function TravelFilters({
             id="travel-sort"
             value={sortMode}
             onChange={(e) => onSortChange(e.target.value as TravelSortMode)}
-            className="shrink-0 rounded-lg border border-gray-200 bg-white py-2 pl-3 pr-8 text-sm text-gray-700 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 dark:border-gray-800 dark:bg-gray-900/40 dark:text-gray-200"
+            className="shrink-0 rounded-lg border border-gray-200 bg-white py-2 pl-3 pr-8 text-sm text-gray-700 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 dark:border-gray-800 dark:bg-gray-900 dark:text-gray-200"
           >
             <option value="newest">Newest first</option>
             <option value="oldest">Oldest first</option>
@@ -165,7 +165,7 @@ export default function TravelFilters({
           <button
             type="button"
             onClick={onClearAll}
-            className="inline-flex items-center gap-1 font-medium text-teal-700 hover:underline dark:text-teal-300"
+            className="inline-flex items-center gap-1 font-medium text-teal-600 hover:underline dark:text-teal-400"
           >
             <X aria-hidden="true" size={13} />
             Clear all

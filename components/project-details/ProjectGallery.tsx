@@ -60,8 +60,7 @@ export default function ProjectGallery({
     <>
       <div
         className={cn(
-          "group relative rounded-2xl border border-border/60 bg-card/60 p-3 backdrop-blur",
-          "shadow-sm ring-1 ring-black/[0.03] dark:ring-white/[0.04]",
+          "group relative rounded-card border border-gray-200 bg-white p-3 dark:border-gray-800 dark:bg-gray-900",
           className
         )}
         tabIndex={0}

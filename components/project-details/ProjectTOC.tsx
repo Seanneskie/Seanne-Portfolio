@@ -37,11 +37,11 @@ export default function ProjectTOC({ sections, className }: ProjectTOCProps): Re
     <nav
       aria-label="On this page"
       className={cn(
-        "rounded-xl border border-teal-200/70 bg-white/80 p-4 text-sm backdrop-blur dark:border-teal-800/70 dark:bg-gray-950/60 lg:sticky lg:top-24",
+        "rounded-card border border-gray-200 bg-white p-4 text-sm dark:border-gray-800 dark:bg-gray-900 lg:sticky lg:top-24",
         className
       )}
     >
-      <div className="mb-2 text-xs font-semibold uppercase tracking-wide text-teal-700 dark:text-teal-300">
+      <div className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-teal-600 dark:text-teal-400">
         On this page
       </div>
       <ul className="space-y-1">
@@ -53,10 +53,10 @@ export default function ProjectTOC({ sections, className }: ProjectTOCProps): Re
               <a
                 href={`#${id}`}
                 className={cn(
-                  "block rounded-md border-l-2 px-2 py-1 transition",
+                  "block rounded-md border-l-2 px-2 py-1 transition-colors",
                   isActive
-                    ? "border-teal-500 bg-teal-50 font-medium text-teal-800 dark:bg-teal-900/30 dark:text-teal-100"
-                    : "border-transparent text-gray-600 hover:border-teal-300 hover:text-teal-700 dark:text-gray-300 dark:hover:text-teal-200"
+                    ? "border-teal-500 font-medium text-teal-600 dark:text-teal-400"
+                    : "border-transparent text-gray-600 hover:border-teal-500/40 hover:text-teal-600 dark:text-gray-400 dark:hover:text-teal-400"
                 )}
               >
                 {title}

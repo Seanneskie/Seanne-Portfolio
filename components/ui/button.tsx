@@ -10,13 +10,13 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-teal-600 text-white shadow-xs hover:bg-teal-500 dark:bg-teal-500 dark:hover:bg-teal-400",
+          "bg-teal-600 text-white hover:bg-teal-500 dark:bg-teal-500 dark:hover:bg-teal-400",
         destructive:
-          "bg-red-600 text-white shadow-xs hover:bg-red-500 focus-visible:ring-red-500/20 dark:focus-visible:ring-red-500/40 dark:bg-red-500/60",
+          "bg-red-600 text-white hover:bg-red-500 focus-visible:ring-red-500/20 dark:focus-visible:ring-red-500/40 dark:bg-red-500/60",
         outline:
-          "border border-gray-300 bg-white shadow-xs hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:hover:bg-gray-700",
+          "border border-gray-200 bg-transparent hover:bg-gray-100 dark:border-gray-700 dark:hover:bg-gray-800",
         secondary:
-          "bg-gray-200 text-black shadow-xs hover:bg-gray-300 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600",
+          "bg-gray-100 text-black hover:bg-gray-200 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700",
         ghost:
           "hover:bg-gray-100 hover:text-black dark:hover:bg-gray-800 dark:hover:text-white",
         link: "text-teal-600 underline-offset-4 hover:underline",

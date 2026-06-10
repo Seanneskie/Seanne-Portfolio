@@ -182,7 +182,7 @@ export default function TravelCardFeed({
 
   if (trips.length === 0) {
     return (
-      <p className="text-sm text-gray-600 dark:text-gray-300">No trips match these filters.</p>
+      <p className="text-sm text-gray-600 dark:text-gray-400">No trips match these filters.</p>
     );
   }
 
@@ -195,20 +195,20 @@ export default function TravelCardFeed({
         return (
         <section key={section.key} aria-label={section.heading}>
           {section.kind === "trip" ? (
-            <header className="mb-3 flex items-stretch overflow-hidden rounded-lg border border-teal-500/30 bg-teal-500/5 dark:border-teal-400/30 dark:bg-teal-400/5">
+            <header className="mb-3 flex items-stretch overflow-hidden rounded-card border border-gray-200 bg-white transition-colors hover:border-teal-500/40 dark:border-gray-800 dark:bg-gray-900 dark:hover:border-teal-400/40">
               <button
                 type="button"
                 onClick={() => toggleSection(section.key)}
                 aria-expanded={!isCollapsed}
                 aria-controls={listId}
-                className="flex min-w-0 flex-1 items-start gap-2.5 px-3.5 py-3 text-left transition hover:bg-teal-500/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-teal-500/60 dark:hover:bg-teal-400/10"
+                className="flex min-w-0 flex-1 items-start gap-2.5 px-3.5 py-3 text-left transition focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-teal-500/60"
               >
                 <svg
                   aria-hidden="true"
                   viewBox="0 0 20 20"
                   fill="currentColor"
                   className={[
-                    "mt-0.5 h-4 w-4 shrink-0 text-teal-700 transition-transform duration-200 motion-reduce:transition-none dark:text-teal-300",
+                    "mt-0.5 h-4 w-4 shrink-0 text-teal-600 transition-transform duration-200 motion-reduce:transition-none dark:text-teal-400",
                     isCollapsed ? "" : "rotate-90",
                   ].join(" ")}
                 >
@@ -219,21 +219,21 @@ export default function TravelCardFeed({
                   />
                 </svg>
                 <div className="min-w-0 flex-1">
-                  <h2 className="truncate text-sm font-bold text-teal-800 dark:text-teal-100">
+                  <h2 className="truncate text-sm font-bold tracking-tight text-gray-900 dark:text-white">
                     {section.heading}
                   </h2>
                   <div className="mt-1 flex flex-wrap items-center gap-1.5">
                     {section.meta && (
-                      <span className="rounded-full bg-teal-500/15 px-2 py-0.5 text-[10px] font-semibold text-teal-800 dark:bg-teal-400/15 dark:text-teal-200">
+                      <span className="rounded-full border border-gray-200 px-2 py-0.5 text-[10px] font-normal text-gray-600 dark:border-gray-800 dark:text-gray-400">
                         {section.meta}
                       </span>
                     )}
-                    <span className="rounded-full bg-teal-500/15 px-2 py-0.5 text-[10px] font-semibold text-teal-800 dark:bg-teal-400/15 dark:text-teal-200">
+                    <span className="rounded-full border border-gray-200 px-2 py-0.5 text-[10px] font-normal text-gray-600 dark:border-gray-800 dark:text-gray-400">
                       {section.items.length} stop{section.items.length === 1 ? "" : "s"}
                     </span>
                   </div>
                   {section.summary && (
-                    <p className="mt-1.5 line-clamp-2 text-xs text-gray-700 dark:text-gray-300">
+                    <p className="mt-1.5 line-clamp-2 text-xs text-gray-600 dark:text-gray-400">
                       {section.summary}
                     </p>
                   )}
@@ -243,7 +243,7 @@ export default function TravelCardFeed({
                 <a
                   href={withBasePath(`/travels/trip/${section.tripSlug}/`)}
                   aria-label={`View trip: ${section.heading}`}
-                  className="flex shrink-0 items-center whitespace-nowrap border-l border-teal-500/30 px-3 text-[11px] font-semibold text-teal-700 transition hover:bg-teal-500/10 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-teal-500/60 dark:border-teal-400/30 dark:text-teal-300 dark:hover:bg-teal-400/10"
+                  className="flex shrink-0 items-center whitespace-nowrap border-l border-gray-200 px-3 text-[11px] font-semibold text-teal-600 transition hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-teal-500/60 dark:border-gray-800 dark:text-teal-400"
                 >
                   View trip →
                 </a>
@@ -331,10 +331,10 @@ function StopCard({ trip, isActive, showIndexBadge, idx, onFocus }: StopCardProp
       href={withBasePath(`/travels/${trip.slug}/`)}
       onFocus={onFocus}
       className={[
-        "group flex flex-1 gap-4 overflow-hidden rounded-lg border bg-white p-3 transition duration-200 motion-reduce:transition-none dark:bg-gray-900/40",
+        "group flex flex-1 gap-4 overflow-hidden rounded-card border bg-white p-3 transition-colors duration-200 motion-reduce:transition-none dark:bg-gray-900",
         isActive
-          ? "border-teal-500/60 shadow-md ring-1 ring-teal-500/20 dark:border-teal-400/60 dark:ring-teal-400/20"
-          : "border-gray-200 hover:-translate-y-0.5 hover:border-teal-500/40 hover:shadow-sm motion-reduce:hover:translate-y-0 dark:border-gray-800 dark:hover:border-teal-400/40",
+          ? "border-teal-500/60 dark:border-teal-400/60"
+          : "border-gray-200 hover:border-teal-500/40 dark:border-gray-800 dark:hover:border-teal-400/40",
       ].join(" ")}
     >
       <div className="relative shrink-0">
@@ -346,7 +346,7 @@ function StopCard({ trip, isActive, showIndexBadge, idx, onFocus }: StopCardProp
             className="h-24 w-24 rounded-md object-cover transition duration-300 group-hover:scale-[1.03] motion-reduce:transition-none motion-reduce:group-hover:scale-100 sm:h-28 sm:w-40"
           />
         ) : (
-          <div className="flex h-24 w-24 items-center justify-center rounded-md bg-gradient-to-br from-teal-500/20 to-teal-700/20 text-2xl sm:h-28 sm:w-40">
+          <div className="flex h-24 w-24 items-center justify-center rounded-md bg-slate-50 text-2xl dark:bg-gray-800 sm:h-28 sm:w-40">
             <span aria-hidden="true">🗺️</span>
           </div>
         )}
@@ -364,11 +364,11 @@ function StopCard({ trip, isActive, showIndexBadge, idx, onFocus }: StopCardProp
           <time>{fmtDate(trip.date)}</time>
           <span className="truncate">{trip.location}</span>
         </div>
-        <h3 className="mt-0.5 text-base font-semibold text-black group-hover:text-teal-700 dark:text-white dark:group-hover:text-teal-300">
+        <h3 className="mt-0.5 text-base font-semibold tracking-tight text-gray-900 group-hover:text-teal-600 dark:text-white dark:group-hover:text-teal-400">
           {trip.title}
         </h3>
         {trip.excerpt && (
-          <p className="mt-0.5 line-clamp-2 text-sm text-gray-600 dark:text-gray-300">
+          <p className="mt-0.5 line-clamp-2 text-sm text-gray-600 dark:text-gray-400">
             {trip.excerpt}
           </p>
         )}
@@ -377,7 +377,7 @@ function StopCard({ trip, isActive, showIndexBadge, idx, onFocus }: StopCardProp
             {trip.tags.map((tag) => (
               <li
                 key={tag}
-                className="rounded-full bg-teal-500/10 px-1.5 py-0.5 text-[10px] font-medium text-teal-700 dark:bg-teal-400/10 dark:text-teal-300"
+                className="rounded-full border border-gray-200 px-1.5 py-0.5 text-[10px] font-normal text-gray-600 dark:border-gray-800 dark:text-gray-400"
               >
                 #{tag}
               </li>

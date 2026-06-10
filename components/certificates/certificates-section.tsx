@@ -139,7 +139,7 @@ export default function CertificatesSection({ data }: CertificatesSectionProps):
       />
 
       {filtered.length === 0 ? (
-        <Card className="rounded-2xl border border-dashed border-teal-200 bg-white/80 p-10 text-center text-gray-600 dark:border-teal-800 dark:bg-gray-950/60 dark:text-gray-300">
+        <Card className="border-dashed p-10 text-center text-gray-600 dark:text-gray-400">
           <svg
             aria-hidden
             viewBox="0 0 24 24"
@@ -148,7 +148,7 @@ export default function CertificatesSection({ data }: CertificatesSectionProps):
             strokeWidth="1.5"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="mx-auto h-12 w-12 text-teal-500 dark:text-teal-300"
+            className="mx-auto h-12 w-12 text-gray-400 dark:text-gray-500"
           >
             <circle cx="11" cy="11" r="7" />
             <path d="m20 20-3.5-3.5" />
@@ -157,12 +157,7 @@ export default function CertificatesSection({ data }: CertificatesSectionProps):
             No certificates match your filters
           </p>
           <p className="mt-2 text-sm">Try a different keyword or clear active filters.</p>
-          <Button
-            size="sm"
-            variant="outline"
-            onClick={clearAll}
-            className="mt-4 border-teal-200 text-teal-700 hover:border-teal-300 hover:text-teal-800 dark:border-teal-800 dark:text-teal-200"
-          >
+          <Button size="sm" variant="outline" onClick={clearAll} className="mt-4">
             Reset filters
           </Button>
         </Card>

@@ -56,23 +56,23 @@ const jsonLd = {
   <main class="container mx-auto max-w-3xl px-4 py-12">
     <a
       href={withBase("/blogs/")}
-      class="inline-flex items-center gap-1 text-sm font-medium text-teal-700 hover:text-teal-900 dark:text-teal-300 dark:hover:text-teal-100"
+      class="inline-flex items-center gap-1 text-sm font-medium text-teal-600 hover:underline dark:text-teal-400"
     >
       ← All posts
     </a>
 
     <header class="mt-6 mb-8">
-      <h1 class="text-3xl font-semibold text-black dark:text-white sm:text-4xl">
+      <h1 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
         {entry.data.title}
       </h1>
-      <div class="mt-2 flex flex-wrap items-center gap-3 text-sm text-gray-600 dark:text-gray-300">
+      <div class="mt-3 flex flex-wrap items-center gap-3 text-sm text-gray-600 dark:text-gray-400">
         <time>{fmtDate(entry.data.date)}</time>
         <span aria-hidden="true">•</span>
         <span>{readingMinutes} min read</span>
         {entry.data.tags.length > 0 && (
           <ul class="flex flex-wrap gap-1.5">
             {entry.data.tags.map((tag) => (
-              <li class="rounded-full bg-teal-500/10 px-2 py-0.5 text-xs font-medium text-teal-700 dark:bg-teal-400/10 dark:text-teal-300">
+              <li class="rounded-full border border-gray-200 px-2 py-0.5 text-xs font-normal text-gray-600 dark:border-gray-800 dark:text-gray-400">
                 #{tag}
               </li>
             ))}
@@ -98,10 +98,10 @@ const jsonLd = {
         {prev ? (
           <a
             href={withBase(`/blogs/${prev.id.replace(/\.md$/, "")}/`)}
-            class="group rounded-lg border border-gray-200 p-4 transition hover:border-teal-500/50 dark:border-gray-800 dark:hover:border-teal-400/50"
+            class="group rounded-card border border-gray-200 p-4 transition-colors hover:border-teal-500/40 dark:border-gray-800 dark:hover:border-teal-400/40"
           >
             <p class="text-xs text-gray-500 dark:text-gray-400">Newer post</p>
-            <p class="mt-1 text-sm font-medium text-black group-hover:text-teal-700 dark:text-white dark:group-hover:text-teal-300">
+            <p class="mt-1 text-sm font-medium text-gray-900 group-hover:text-teal-600 dark:text-white dark:group-hover:text-teal-400">
               ← {prev.data.title}
             </p>
           </a>
@@ -109,10 +109,10 @@ const jsonLd = {
         {next ? (
           <a
             href={withBase(`/blogs/${next.id.replace(/\.md$/, "")}/`)}
-            class="group rounded-lg border border-gray-200 p-4 text-right transition hover:border-teal-500/50 dark:border-gray-800 dark:hover:border-teal-400/50"
+            class="group rounded-card border border-gray-200 p-4 text-right transition-colors hover:border-teal-500/40 dark:border-gray-800 dark:hover:border-teal-400/40"
           >
             <p class="text-xs text-gray-500 dark:text-gray-400">Older post</p>
-            <p class="mt-1 text-sm font-medium text-black group-hover:text-teal-700 dark:text-white dark:group-hover:text-teal-300">
+            <p class="mt-1 text-sm font-medium text-gray-900 group-hover:text-teal-600 dark:text-white dark:group-hover:text-teal-400">
               {next.data.title} →
             </p>
           </a>

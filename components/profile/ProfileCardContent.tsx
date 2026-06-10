@@ -33,13 +33,13 @@ import { withBasePath } from "@/lib/utils";
 
 const levelStyles: Record<string, string> = {
   Expert:
-    "bg-teal-600 text-white ring-1 ring-inset ring-teal-700 dark:bg-teal-400 dark:text-teal-950 dark:ring-teal-300",
+    "bg-teal-600 text-white dark:bg-teal-500 dark:text-white",
   Advanced:
-    "bg-teal-50 text-teal-800 ring-1 ring-inset ring-teal-300 dark:bg-teal-900/40 dark:text-teal-200 dark:ring-teal-700",
+    "border border-teal-500/40 text-teal-700 dark:border-teal-400/40 dark:text-teal-400",
   Intermediate:
-    "bg-amber-50 text-amber-800 ring-1 ring-inset ring-amber-300 dark:bg-amber-900/30 dark:text-amber-200 dark:ring-amber-800",
+    "border border-gray-200 text-gray-600 dark:border-gray-800 dark:text-gray-400",
   Beginner:
-    "bg-neutral-100 text-neutral-700 ring-1 ring-inset ring-neutral-300 dark:bg-neutral-800/60 dark:text-neutral-200 dark:ring-neutral-700",
+    "border border-gray-200 text-gray-500 dark:border-gray-800 dark:text-gray-500",
 };
 
 const socialList: { key: keyof Links; label: string; icon: LucideIcon }[] = [
@@ -76,16 +76,10 @@ export default function ProfileCardContent({
     info.phone ?? info.contact ?? info.contactNo ?? info.contact_number ?? null;
 
   return (
-    <Card className="relative overflow-hidden">
-      {/* Left 25% gradient */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-teal-600/15 to-transparent dark:from-teal-400/15 dark:to-transparent"
-      />
-
-      <CardHeader className="relative z-10 p-0">
+    <Card className="overflow-hidden">
+      <CardHeader className="p-0">
         <div className="flex flex-col gap-3 px-6 py-3 sm:flex-row sm:items-center sm:justify-between">
-          <CardTitle className="text-sm font-semibold uppercase tracking-wide text-black/70 dark:text-white/70">
+          <CardTitle className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-600 dark:text-teal-400">
             Profile
           </CardTitle>
 
@@ -108,10 +102,10 @@ export default function ProfileCardContent({
             </Button>
           )}
         </div>
-        <div className="h-px w-full bg-gradient-to-r from-neutral-200 to-transparent dark:from-neutral-800 dark:to-transparent" />
+        <div className="h-px w-full bg-gray-200 dark:bg-gray-800" />
       </CardHeader>
 
-      <CardContent className="relative z-10 p-6">
+      <CardContent className="p-6">
         <motion.div
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
@@ -122,29 +116,29 @@ export default function ProfileCardContent({
           <div className="min-w-0 space-y-6">
             {/* Header block */}
             <div className="space-y-3">
-              <h2 className="text-3xl font-semibold leading-tight text-black dark:text-white">
+              <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
                 {profile.name}
               </h2>
 
-              <p className="text-base text-black/80 dark:text-white/80">
+              <p className="text-base text-gray-600 dark:text-gray-400">
                 {course}, {major}
               </p>
 
               {profile.background && (
-                <p className="max-w-3xl text-sm leading-relaxed text-black/70 dark:text-white/70">
+                <p className="max-w-3xl text-sm leading-relaxed text-gray-600 dark:text-gray-400">
                   {profile.background}
                 </p>
               )}
 
-              <div className="flex flex-col gap-1 text-sm">
-                <div className="text-black/80 dark:text-white/80">
-                  <span className="font-medium">Email:</span>{" "}
+              <div className="flex flex-col gap-1 text-sm text-gray-600 dark:text-gray-400">
+                <div>
+                  <span className="font-medium text-gray-900 dark:text-white">Email:</span>{" "}
                   <span className="break-all">{profile.email}</span>
                 </div>
 
                 {phone && (
-                  <div className="text-black/80 dark:text-white/80">
-                    <span className="font-medium">Contact:</span>{" "}
+                  <div>
+                    <span className="font-medium text-gray-900 dark:text-white">Contact:</span>{" "}
                     <span className="inline-flex items-center gap-1">
                       <Phone className="h-3.5 w-3.5 opacity-80" />
                       {phone}
@@ -152,8 +146,8 @@ export default function ProfileCardContent({
                   </div>
                 )}
 
-                <div className="text-black/80 dark:text-white/80">
-                  <span className="font-medium">Address:</span>{" "}
+                <div>
+                  <span className="font-medium text-gray-900 dark:text-white">Address:</span>{" "}
                   <span>{profile.address}</span>
                 </div>
               </div>
@@ -171,20 +165,10 @@ export default function ProfileCardContent({
                 </Button>
                 <Button
                   size="sm"
+                  className="gap-2"
                   onClick={() => openMailTo(profile.email)}
-                  className={[
-                    "group relative gap-2 text-white",
-                    // animated gradient bg
-                    "bg-gradient-to-r from-teal-600 via-cyan-500 to-sky-500",
-                    "bg-[length:200%_200%] animate-gradient-x",
-                    // polish
-                    "shadow-md hover:shadow-lg transition-[transform,box-shadow] duration-200",
-                    "hover:-translate-y-0.5",
-                    "focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:outline-none",
-                    "rounded-md px-3",
-                  ].join(" ")}
                 >
-                  <Mail className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+                  <Mail className="h-4 w-4" />
                   Hire Me
                 </Button>
               </div>
@@ -192,7 +176,7 @@ export default function ProfileCardContent({
               {/* Interests */}
               {profile.interests?.length > 0 && (
                 <div>
-                  <p className="text-sm font-medium text-black/80 dark:text-white/80">
+                  <p className="text-sm font-medium text-gray-900 dark:text-white">
                     Interests
                   </p>
                   <div className="mt-2 flex flex-wrap gap-2">
@@ -200,7 +184,7 @@ export default function ProfileCardContent({
                       <Badge
                         key={interest}
                         variant="secondary"
-                        className="rounded-full border-0 bg-teal-50 px-3 py-1 text-teal-800 ring-1 ring-inset ring-teal-200/80 transition-colors hover:bg-teal-100 dark:bg-teal-900/30 dark:text-teal-200 dark:ring-teal-700/60 dark:hover:bg-teal-900/50"
+                        className="rounded-full border border-gray-200 bg-transparent px-3 py-1 font-normal text-gray-600 transition-colors hover:border-teal-500/40 hover:text-teal-600 dark:border-gray-800 dark:text-gray-400 dark:hover:border-teal-400/40 dark:hover:text-teal-400"
                       >
                         {interest}
                       </Badge>
@@ -215,16 +199,16 @@ export default function ProfileCardContent({
             {/* Experience levels */}
             {profile.experience?.length > 0 && (
               <section className="px-0 sm:px-6">
-                <h3 className="mb-3 text-sm font-semibold uppercase tracking-wide text-black/70 dark:text-white/70">
+                <h3 className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-teal-600 dark:text-teal-400">
                   Experience
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {profile.experience.map((item) => (
                     <span
                       key={item.name}
-                      className="inline-flex items-center gap-2 rounded-full border border-neutral-200/80 bg-white/70 py-1 pl-3 pr-1 text-sm shadow-sm transition-shadow hover:shadow dark:border-neutral-700/70 dark:bg-neutral-900/50"
+                      className="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-transparent py-1 pl-3 pr-1 text-sm transition-colors hover:border-teal-500/40 dark:border-gray-800 dark:hover:border-teal-400/40"
                     >
-                      <span className="font-medium text-black/80 dark:text-white/80">
+                      <span className="font-medium text-gray-700 dark:text-gray-300">
                         {item.name}
                       </span>
                       <span
@@ -245,7 +229,7 @@ export default function ProfileCardContent({
             {/* Tech stack */}
             {profile.techStack?.length > 0 && (
               <section className="px-0 sm:px-6">
-                <h3 className="mb-3 text-sm font-semibold uppercase tracking-wide text-black/70 dark:text-white/70">
+                <h3 className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-teal-600 dark:text-teal-400">
                   Tech Stack
                 </h3>
                 <div className="flex flex-wrap gap-2">
@@ -253,7 +237,7 @@ export default function ProfileCardContent({
                     <Badge
                       key={tech}
                       variant="secondary"
-                      className="rounded-full border border-teal-600/20 bg-white/80 px-3 py-1 text-teal-800 shadow-sm backdrop-blur-sm transition-colors hover:border-teal-600/40 hover:bg-teal-50 dark:border-teal-400/20 dark:bg-teal-900/30 dark:text-teal-200 dark:hover:border-teal-400/40 dark:hover:bg-teal-900/50"
+                      className="rounded-full border border-gray-200 bg-transparent px-3 py-1 font-normal text-gray-600 transition-colors hover:border-teal-500/40 hover:text-teal-600 dark:border-gray-800 dark:text-gray-400 dark:hover:border-teal-400/40 dark:hover:text-teal-400"
                     >
                       {tech}
                     </Badge>
@@ -266,7 +250,7 @@ export default function ProfileCardContent({
 
             {/* Education */}
             <section className="px-0 sm:px-6">
-              <h3 className="mb-3 text-sm font-semibold uppercase tracking-wide text-black/70 dark:text-white/70">
+              <h3 className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-teal-600 dark:text-teal-400">
                 Education
               </h3>
               <ul className="space-y-3 text-sm">
@@ -276,16 +260,16 @@ export default function ProfileCardContent({
                     className="flex flex-col items-start gap-2 sm:flex-row sm:items-center sm:justify-between"
                   >
                     <div className="min-w-0">
-                      <p className="font-medium text-black dark:text-white sm:truncate">
+                      <p className="font-medium text-gray-900 dark:text-white sm:truncate">
                         {e.level}
                       </p>
-                      <p className="text-black/80 dark:text-white/80 sm:truncate">
+                      <p className="text-gray-600 dark:text-gray-400 sm:truncate">
                         {e.institution}
                       </p>
                     </div>
                     <Badge
                       variant="secondary"
-                      className="rounded-full bg-teal-50 text-teal-800 ring-1 ring-inset ring-teal-200 dark:bg-teal-900/30 dark:text-teal-200 dark:ring-teal-800"
+                      className="rounded-full border border-gray-200 bg-transparent font-normal text-gray-600 dark:border-gray-800 dark:text-gray-400"
                     >
                       {e.year}
                     </Badge>
@@ -314,18 +298,15 @@ export default function ProfileCardContent({
                           target="_blank"
                           rel="noreferrer"
                           aria-label={label}
-                          className="inline-flex h-9 w-9 items-center justify-center rounded-full text-black dark:text-white ring-1 ring-neutral-200 dark:ring-neutral-800 hover:ring-neutral-300 dark:hover:ring-neutral-700 transition"
+                          className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-gray-200 text-gray-600 transition-colors hover:border-teal-500/40 hover:text-teal-600 dark:border-gray-800 dark:text-gray-400 dark:hover:border-teal-400/40 dark:hover:text-teal-400"
                         >
                           <Icon className="h-4 w-4" />
                           <span className="sr-only">{label}</span>
                         </a>
                       </TooltipTrigger>
-                      <TooltipContent
-                        side="top"
-                        className="text-xs border-0 text-white bg-gradient-to-r from-teal-600 via-cyan-500 to-sky-500 shadow-lg"
-                      >
+                      <TooltipContent side="top" className="text-xs">
                         {label}
-                        <TooltipArrow className="fill-teal-700 dark:fill-teal-500" />
+                        <TooltipArrow />
                       </TooltipContent>
                     </Tooltip>
                   );

@@ -18,42 +18,18 @@ const THEME_STYLES: Record<
   CounterCardTheme,
   { dot: string; title?: string; count?: string }
 > = {
-  // Base theme = your current gradient
+  // Flat, monochrome+teal accent — one quiet teal dot for every theme.
   ocean: {
-    dot: [
-      "bg-gradient-to-tr",
-      "from-teal-600",
-      "to-cyan-500",
-      "shadow-lg",
-      "ring-8 ring-white dark:ring-gray-900",
-    ].join(" "),
+    dot: "bg-teal-600 dark:bg-teal-500 ring-4 ring-white dark:ring-gray-900",
   },
   teal: {
-    dot: [
-      "bg-gradient-to-tr",
-      "from-teal-700",
-      "to-teal-400",
-      "shadow-lg",
-      "ring-8 ring-white dark:ring-gray-900",
-    ].join(" "),
+    dot: "bg-teal-600 dark:bg-teal-500 ring-4 ring-white dark:ring-gray-900",
   },
   cyan: {
-    dot: [
-      "bg-gradient-to-tr",
-      "from-cyan-700",
-      "to-cyan-400",
-      "shadow-lg",
-      "ring-8 ring-white dark:ring-gray-900",
-    ].join(" "),
+    dot: "bg-teal-600 dark:bg-teal-500 ring-4 ring-white dark:ring-gray-900",
   },
   ice: {
-    dot: [
-      "bg-gradient-to-tr",
-      "from-cyan-600",
-      "to-sky-400",
-      "shadow-lg",
-      "ring-8 ring-white dark:ring-gray-900",
-    ].join(" "),
+    dot: "bg-teal-600 dark:bg-teal-500 ring-4 ring-white dark:ring-gray-900",
   },
 };
 
@@ -104,15 +80,15 @@ export default function CounterCard({
         ) : null}
       </span>
       <CardHeader className="p-0">
-        <CardTitle className={cn("text-sm font-medium text-muted-foreground", style.title)}>
+        <CardTitle className={cn("text-sm font-medium text-gray-600 dark:text-gray-400", style.title)}>
           {title}
         </CardTitle>
         {description ? (
-          <CardDescription className="mt-0.5">{description}</CardDescription>
+          <CardDescription className="mt-0.5 text-gray-600 dark:text-gray-400">{description}</CardDescription>
         ) : null}
       </CardHeader>
       <CardContent className="p-0 pt-2">
-        <div className={cn("text-4xl font-semibold leading-none tracking-tight", style.count)}>
+        <div className={cn("text-4xl font-bold leading-none tracking-tight text-gray-900 dark:text-white", style.count)}>
           {formatted}
         </div>
       </CardContent>

@@ -85,16 +85,16 @@ export default function TravelStats({ trips }: TravelStatsProps): React.ReactEle
         return (
           <li
             key={card.srLabel}
-            className="flex items-center gap-3 rounded-xl border border-gray-200 bg-white px-3.5 py-3 dark:border-gray-800 dark:bg-gray-900/40"
+            className="flex items-center gap-3 rounded-card border border-gray-200 bg-white px-3.5 py-3 transition-colors hover:border-teal-500/40 dark:border-gray-800 dark:bg-gray-900 dark:hover:border-teal-400/40"
           >
             <span
               aria-hidden="true"
-              className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-teal-500/10 text-teal-700 dark:bg-teal-400/10 dark:text-teal-300"
+              className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-teal-600 dark:text-teal-400"
             >
               <Icon size={18} strokeWidth={2} />
             </span>
             <span className="min-w-0">
-              <span className="block truncate text-lg font-semibold leading-tight text-black dark:text-white">
+              <span className="block truncate text-lg font-semibold leading-tight text-gray-900 dark:text-white">
                 {card.value}
               </span>
               {card.label ? (

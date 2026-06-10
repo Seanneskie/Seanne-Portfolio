@@ -50,7 +50,7 @@ function resolveImage(c: EnrichedCert): string | undefined {
   return undefined;
 }
 
-export default function CertificateCard({ certificate: c, index, layout = "grid" }: Props): ReactElement {
+export default function CertificateCard({ certificate: c, index, layout: _layout = "grid" }: Props): ReactElement {
   const [open, setOpen] = useState(false);
   const bodyText = stripDate(c.desc);
   const viewLink = resolveLink(c);
@@ -60,7 +60,7 @@ export default function CertificateCard({ certificate: c, index, layout = "grid"
   const overflowSkills = c.skills.length - visibleSkills.length;
 
   const badgeCls =
-    "rounded-full bg-teal-50 text-teal-800 ring-1 ring-inset ring-teal-200 dark:bg-teal-900/30 dark:text-teal-200 dark:ring-teal-800";
+    "rounded-full border border-gray-200 bg-transparent font-normal text-gray-600 dark:border-gray-800 dark:text-gray-400";
 
   return (
     <motion.li
@@ -75,11 +75,9 @@ export default function CertificateCard({ certificate: c, index, layout = "grid"
       <Sheet open={open} onOpenChange={setOpen}>
         <Card
           className={[
-            "group relative flex h-full flex-col overflow-hidden rounded-2xl p-0",
-            "border border-teal-200/70 bg-white/85 backdrop-blur",
-            "dark:border-teal-800/70 dark:bg-gray-950/60",
-            "transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-teal-300/30 dark:hover:shadow-teal-900/20",
-            "focus-within:ring-1 focus-within:ring-teal-500/60",
+            "group relative flex h-full flex-col overflow-hidden p-0",
+            "transition-colors hover:border-teal-500/40 dark:hover:border-teal-400/40",
+            "focus-within:border-teal-500/40 dark:focus-within:border-teal-400/40",
           ].join(" ")}
         >
           <SheetTrigger asChild>
@@ -97,18 +95,17 @@ export default function CertificateCard({ certificate: c, index, layout = "grid"
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               ) : (
-                <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-teal-100 via-cyan-100 to-sky-100 dark:from-teal-900/40 dark:via-cyan-900/30 dark:to-sky-900/40">
-                  <span className="text-3xl font-bold text-teal-700/70 dark:text-teal-200/70">
+                <div className="absolute inset-0 flex items-center justify-center bg-slate-50 dark:bg-gray-900">
+                  <span className="text-3xl font-bold text-gray-400 dark:text-gray-600">
                     {c.issuer.slice(0, 2).toUpperCase()}
                   </span>
                 </div>
               )}
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-teal-900/40 via-transparent to-transparent dark:from-teal-950/60" />
-              <span className="absolute left-3 top-3 inline-flex items-center rounded-full bg-white/90 px-2.5 py-0.5 text-[0.65rem] font-semibold uppercase tracking-wider text-teal-800 ring-1 ring-teal-200 dark:bg-gray-950/85 dark:text-teal-100 dark:ring-teal-800">
+              <span className="absolute left-3 top-3 inline-flex items-center rounded-full border border-gray-200 bg-white/90 px-2.5 py-0.5 text-[0.65rem] font-semibold uppercase tracking-wider text-gray-600 dark:border-gray-800 dark:bg-gray-950/85 dark:text-gray-300">
                 {c.issuer}
               </span>
               {c.dateLabel && (
-                <span className="absolute right-3 top-3 inline-flex items-center rounded-full bg-white/90 px-2.5 py-0.5 text-[0.65rem] font-medium text-gray-700 ring-1 ring-teal-200 dark:bg-gray-950/85 dark:text-gray-200 dark:ring-teal-800">
+                <span className="absolute right-3 top-3 inline-flex items-center rounded-full border border-gray-200 bg-white/90 px-2.5 py-0.5 text-[0.65rem] font-medium text-gray-600 dark:border-gray-800 dark:bg-gray-950/85 dark:text-gray-300">
                   {c.dateLabel}
                 </span>
               )}
@@ -116,11 +113,11 @@ export default function CertificateCard({ certificate: c, index, layout = "grid"
           </SheetTrigger>
 
           <div className="flex flex-1 flex-col p-4">
-            <h3 className="text-base font-semibold leading-snug text-teal-800 dark:text-teal-200">
+            <h3 className="text-base font-semibold leading-snug tracking-tight text-gray-900 dark:text-white">
               {c.title}
             </h3>
 
-            <p className="mt-2 line-clamp-3 text-sm text-gray-700 dark:text-gray-200">
+            <p className="mt-2 line-clamp-3 text-sm text-gray-600 dark:text-gray-400">
               {bodyText}
             </p>
 
@@ -141,20 +138,12 @@ export default function CertificateCard({ certificate: c, index, layout = "grid"
 
             <div className="mt-4 flex items-center gap-2">
               <SheetTrigger asChild>
-                <Button
-                  size="sm"
-                  variant="outline"
-                  className="border-teal-200 text-teal-700 hover:border-teal-300 hover:text-teal-800 dark:border-teal-800 dark:text-teal-200"
-                >
+                <Button size="sm" variant="outline">
                   Preview
                 </Button>
               </SheetTrigger>
               {viewLink && hasExternalLink && (
-                <Button
-                  asChild
-                  size="sm"
-                  className="ml-auto border-0 bg-gradient-to-r from-teal-600 via-cyan-500 to-sky-500 text-white focus-visible:border-teal-500 focus-visible:ring-teal-500/50"
-                >
+                <Button asChild size="sm" className="ml-auto">
                   <a
                     href={viewLink}
                     target="_blank"
@@ -167,11 +156,6 @@ export default function CertificateCard({ certificate: c, index, layout = "grid"
               )}
             </div>
           </div>
-
-          <span
-            aria-hidden
-            className="pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full bg-teal-400/20 blur-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100 dark:bg-teal-500/15"
-          />
         </Card>
 
         <SheetContent
@@ -184,7 +168,7 @@ export default function CertificateCard({ certificate: c, index, layout = "grid"
               {c.dateLabel ? ` • ${c.dateLabel}` : ""}
             </p>
             <SheetTitle className="text-xl">{c.title}</SheetTitle>
-            <SheetDescription className="text-gray-700 dark:text-gray-200">
+            <SheetDescription className="text-gray-600 dark:text-gray-400">
               {bodyText}
             </SheetDescription>
           </SheetHeader>
@@ -195,7 +179,7 @@ export default function CertificateCard({ certificate: c, index, layout = "grid"
                 href={viewLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block overflow-hidden rounded-xl ring-1 ring-teal-200 dark:ring-teal-800"
+                className="block overflow-hidden rounded-card border border-gray-200 dark:border-gray-800"
                 aria-label={`Open ${c.title} certificate at full size`}
               >
                 <Image
@@ -241,10 +225,7 @@ export default function CertificateCard({ certificate: c, index, layout = "grid"
             )}
 
             {viewLink && (
-              <Button
-                asChild
-                className="w-full border-0 bg-gradient-to-r from-teal-600 via-cyan-500 to-sky-500 text-white focus-visible:border-teal-500 focus-visible:ring-teal-500/50"
-              >
+              <Button asChild className="w-full">
                 <a href={viewLink} target="_blank" rel="noopener noreferrer">
                   {hasExternalLink ? "View source" : "Open full image"}
                 </a>

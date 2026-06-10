@@ -34,10 +34,10 @@ export default function TagFilter({
             key={tag}
             onClick={() => toggleTag(tag)}
             className={cn(
-              "cursor-pointer select-none",
+              "cursor-pointer select-none rounded-full border font-normal transition-colors",
               isSelected
-                ? "bg-teal-600 text-white"
-                : "bg-teal-50 text-teal-800 ring-1 ring-inset ring-teal-200 dark:bg-teal-900/30 dark:text-teal-200 dark:ring-teal-800"
+                ? "border-teal-600 bg-teal-600 text-white dark:border-teal-500 dark:bg-teal-500"
+                : "border-gray-200 bg-transparent text-gray-600 hover:border-teal-500/40 hover:text-teal-600 dark:border-gray-800 dark:text-gray-400 dark:hover:text-teal-400"
             )}
           >
             {tag}

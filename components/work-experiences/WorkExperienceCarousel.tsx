@@ -29,24 +29,24 @@ export default function WorkExperienceCarousel({ data }: WorkExperienceCarouselP
     <section className="space-y-6" aria-labelledby="work-carousel-title">
       <h2
         id="work-carousel-title"
-        className="text-3xl font-bold tracking-tight text-teal-700 dark:text-teal-400"
+        className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white"
       >
         Work Experiences
       </h2>
-      <p className="text-gray-700 dark:text-gray-300">
+      <p className="text-gray-600 dark:text-gray-400">
         Snapshots from my on-the-job training and key projects.
       </p>
       <div className="grid gap-6 md:grid-cols-2">
         {data.map((exp) => (
           <Card
             key={`${exp.company}-${exp.project}-${exp.period}`}
-            className="overflow-hidden border-teal-600/10 bg-white/70 shadow-sm backdrop-blur-sm dark:border-teal-400/10 dark:bg-teal-900/20"
+            className="overflow-hidden transition-colors hover:border-teal-500/40 dark:hover:border-teal-400/40"
           >
             <CardHeader className="pb-2">
-              <CardTitle className="text-xl text-teal-800 dark:text-teal-200">
+              <CardTitle className="text-xl tracking-tight text-gray-900 dark:text-white">
                 {exp.company}
               </CardTitle>
-              <p className="text-sm text-gray-700 dark:text-gray-300">{exp.project}</p>
+              <p className="text-sm text-gray-600 dark:text-gray-400">{exp.project}</p>
               <p className="text-xs text-gray-500 dark:text-gray-400">{exp.period}</p>
             </CardHeader>
             <CardContent className="space-y-4">
@@ -71,7 +71,7 @@ export default function WorkExperienceCarousel({ data }: WorkExperienceCarouselP
                   <CarouselNext className="right-2 top-1/2 -translate-y-1/2 shadow-sm" />
                 </Carousel>
               )}
-              <p className="text-gray-700 dark:text-gray-300">{exp.summary}</p>
+              <p className="text-gray-600 dark:text-gray-400">{exp.summary}</p>
             </CardContent>
           </Card>
         ))}

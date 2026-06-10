@@ -15,28 +15,24 @@ export default function ProjectSection({
 }: ProjectSectionProps): ReactElement {
   const sectionId = id ?? slugifySection(title);
   return (
-    <Card id={sectionId} className="relative scroll-mt-24 overflow-hidden">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 bg-gradient-to-r from-teal-600/10 via-teal-500/5 to-transparent dark:from-teal-400/10 dark:via-teal-400/5 dark:to-transparent"
-      />
-      <CardHeader className="relative z-10 pb-2">
-        <h2 className="text-2xl font-semibold leading-none">
+    <Card id={sectionId} className="scroll-mt-24 overflow-hidden">
+      <CardHeader className="pb-2">
+        <h2 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
           <a
             href={`#${sectionId}`}
-            className="group/anchor inline-flex items-center gap-2 hover:text-teal-700 dark:hover:text-teal-300"
+            className="group/anchor inline-flex items-center gap-2 hover:text-teal-600 dark:hover:text-teal-400"
           >
             {title}
             <span
               aria-hidden
-              className="text-teal-500 opacity-0 transition-opacity group-hover/anchor:opacity-100"
+              className="text-teal-600 opacity-0 transition-opacity group-hover/anchor:opacity-100 dark:text-teal-400"
             >
               #
             </span>
           </a>
         </h2>
       </CardHeader>
-      <CardContent className="relative z-10 space-y-2">{children}</CardContent>
+      <CardContent className="space-y-2 text-gray-600 dark:text-gray-400">{children}</CardContent>
     </Card>
   );
 }

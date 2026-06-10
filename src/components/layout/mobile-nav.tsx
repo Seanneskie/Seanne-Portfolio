@@ -33,10 +33,10 @@ const SOCIALS: { href: string; label: string; icon: LucideIcon }[] = [
 
 const itemClass = (isActive: boolean) =>
   [
-    "flex items-center justify-between rounded-md px-3 py-2 text-base font-medium transition",
-    "text-black hover:bg-teal-500/10 hover:text-teal-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/60",
-    "dark:text-white dark:hover:bg-teal-400/10 dark:hover:text-teal-200",
-    isActive ? "bg-teal-500/10 text-teal-700 dark:text-teal-300" : "",
+    "flex items-center justify-between rounded-md px-3 py-2 text-base font-medium transition-colors",
+    "text-gray-600 hover:text-teal-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/60",
+    "dark:text-gray-300 dark:hover:text-teal-400",
+    isActive ? "text-teal-600 dark:text-teal-400" : "",
   ]
     .filter(Boolean)
     .join(" ");
@@ -78,7 +78,7 @@ export default function MobileNav({ navLinks, currentPathname, moreLinks }: Mobi
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger
         aria-label="Open navigation"
-        className="inline-flex h-9 w-9 items-center justify-center rounded-md text-black transition hover:bg-teal-500/10 hover:text-teal-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/60 dark:text-white dark:hover:bg-teal-400/10 dark:hover:text-teal-400"
+        className="inline-flex h-9 w-9 items-center justify-center rounded-md text-gray-600 transition-colors hover:text-teal-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/60 dark:text-gray-300 dark:hover:text-teal-400"
       >
         <Menu className="h-5 w-5" />
       </Dialog.Trigger>
@@ -131,7 +131,7 @@ export default function MobileNav({ navLinks, currentPathname, moreLinks }: Mobi
                   rel="noopener noreferrer"
                   aria-label={social.label}
                   onClick={() => setOpen(false)}
-                  className="rounded-md p-2 text-black transition hover:bg-teal-500/10 hover:text-teal-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/60 dark:text-white dark:hover:bg-teal-400/10 dark:hover:text-teal-200"
+                  className="rounded-md p-2 text-gray-500 transition-colors hover:text-teal-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/60 dark:text-gray-400 dark:hover:text-teal-400"
                 >
                   <social.icon className="h-5 w-5" />
                 </a>

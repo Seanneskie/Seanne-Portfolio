@@ -65,8 +65,8 @@ function Chip({
       className={[
         chipBase,
         active
-          ? "border-teal-500/60 bg-teal-500/10 text-teal-800 dark:border-teal-400/60 dark:bg-teal-400/15 dark:text-teal-100"
-          : "border-teal-200/60 bg-white/70 text-gray-700 hover:border-teal-300 hover:text-teal-800 dark:border-teal-800/60 dark:bg-gray-950/50 dark:text-gray-200 dark:hover:border-teal-700 dark:hover:text-teal-100",
+          ? "border-transparent bg-teal-600 text-white dark:bg-teal-500"
+          : "border-gray-200 bg-transparent text-gray-600 hover:border-teal-500/40 hover:text-teal-600 dark:border-gray-800 dark:text-gray-400 dark:hover:border-teal-400/40 dark:hover:text-teal-400",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/50",
       ].join(" ")}
     >
@@ -117,7 +117,7 @@ export default function FilterBar({
     <div
       role="region"
       aria-label="Certificate filters"
-      className="sticky top-16 z-20 -mx-2 rounded-2xl border border-teal-200/70 bg-white/85 p-4 shadow-sm backdrop-blur dark:border-teal-800/70 dark:bg-gray-950/70"
+      className="sticky top-16 z-20 -mx-2 rounded-card border border-gray-200 bg-white/95 p-4 backdrop-blur dark:border-gray-800 dark:bg-gray-950/95"
     >
       <div className="flex flex-col gap-3 lg:flex-row lg:items-center">
         <Input
@@ -199,7 +199,6 @@ export default function FilterBar({
           variant="outline"
           onClick={onClear}
           disabled={!hasActiveFilters}
-          className="border-teal-200 text-teal-700 hover:border-teal-300 hover:text-teal-800 dark:border-teal-800 dark:text-teal-200"
         >
           Clear filters
         </Button>
@@ -245,7 +244,7 @@ function TopicChips({
         <button
           type="button"
           onClick={() => setExpanded((v) => !v)}
-          className="text-xs font-medium text-teal-700 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/50 dark:text-teal-300"
+          className="text-xs font-medium text-teal-600 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/50 dark:text-teal-400"
         >
           {expanded ? "Show fewer" : `+${overflow} more`}
         </button>
