@@ -89,9 +89,16 @@ vi.mock("@/components/ui/button", () => ({
 }));
 
 vi.mock("framer-motion", () => ({
-  motion: {
-    div: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
-  },
+  motion: new Proxy(
+    {},
+    {
+      // Render any motion.<tag> (e.g. motion.div, motion.article) as the
+      // underlying element, dropping animation-only props.
+      get: (_target, tag: string) =>
+        ({ children }: { children: React.ReactNode }) =>
+          React.createElement(tag, null, children),
+    },
+  ),
 }));
 
 vi.mock("@/lib/utils", () => ({
