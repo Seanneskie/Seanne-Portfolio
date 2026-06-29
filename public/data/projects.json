@@ -26,20 +26,16 @@
     ]
   },
   {
-    "title": "Promptwise - Generative AI Agent Platform",
+    "title": "Generative AI Agent Platform",
     "image": "/static/pioneer-dev-ai/agent-pipeline.svg",
     "alt": "Agent and LLM pipeline",
-    "description": "Core AI agent and LLM features for Promptwise, a generative image and video platform. Focused on multi-provider orchestration (Gemini/Vertex, DeepSeek, Kling) with per-provider token caps, JSON-mode enforcement, graceful fallbacks, and prompt-cache telemetry, plus sargable gallery queries via functional Postgres indexes.",
-    "collaborators": "PioneerDev AI LLC",
+    "description": "Core AI agent and LLM features for a generative media platform. Worked on multi-provider model orchestration with usage controls, structured-output enforcement, graceful fallbacks, and telemetry, along with performance-focused database query optimization.",
+    "collaborators": "Private client",
     "tags": [
       "TypeScript",
       "LLM",
       "AI Agents",
-      "Google Gemini",
-      "Vertex AI",
-      "DeepSeek",
-      "Kling",
-      "Cloudflare",
+      "Cloud",
       "PostgreSQL"
     ],
     "github": null,
