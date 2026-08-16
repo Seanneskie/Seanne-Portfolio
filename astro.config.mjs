@@ -7,11 +7,11 @@ import tailwindcss from "@tailwindcss/vite";
 
 const isProd = process.env.NODE_ENV === "production";
 const deployTarget = process.env.DEPLOY_TARGET;
-const isCloudflarePages = deployTarget === "cloudflare-pages";
-const productionBase = isCloudflarePages ? "/" : "/Seanne-Portfolio";
-const productionSite = isCloudflarePages
-  ? "https://seanne-portfolio.pages.dev"
-  : "https://seanneskie.github.io";
+const isGitHubPages = deployTarget === "github-pages";
+const productionBase = isGitHubPages ? "/Seanne-Portfolio" : "/";
+const productionSite = isGitHubPages
+  ? "https://seanneskie.github.io"
+  : "https://seanneskie.com";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 // Matches the priorities + changefreq emitted by the old app/sitemap.ts so
@@ -31,8 +31,8 @@ const SITEMAP_HINTS = new Map([
 
 const SITEMAP_LASTMOD = "2026-02-01";
 
-// Keep the existing GitHub Pages subpath while allowing Cloudflare Pages to
-// serve the same static build from the domain root.
+// The custom domain is served from the root. GitHub Pages is an explicit
+// fallback because its project site remains under `/Seanne-Portfolio/`.
 export default defineConfig({
   site: productionSite,
   base: isProd ? productionBase : "/",

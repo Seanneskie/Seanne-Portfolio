@@ -23,7 +23,9 @@ interface Props {
 }
 
 const SITE_URL =
-  import.meta.env.PUBLIC_SITE_URL ?? "https://seanneskie.github.io";
+  import.meta.env.PUBLIC_SITE_URL ??
+  Astro.site?.toString().replace(/\/$/, "") ??
+  "https://seanneskie.com";
 const BASE_PATH = import.meta.env.BASE_URL.replace(/\/$/, "");
 
 const {

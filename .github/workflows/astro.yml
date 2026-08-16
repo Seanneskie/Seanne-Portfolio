@@ -86,6 +86,7 @@ jobs:
       - name: Build Astro site
         env:
           NODE_ENV: production
+          DEPLOY_TARGET: github-pages
         run: npm run build
 
       - name: Add .nojekyll (skip Jekyll processing on GH Pages)

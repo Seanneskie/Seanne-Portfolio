@@ -2,11 +2,11 @@
  * /robots.txt endpoint — Astro's static-route equivalent of app/robots.ts.
  *
  * Points crawlers at the sitemap index emitted by @astrojs/sitemap.
- * Uses Astro's `site` + `base` config so the URL matches the GH Pages deploy.
+ * Uses Astro's `site` + `base` config so the URL matches the active deployment.
  */
 import type { APIRoute } from "astro";
 
-const SITE_URL = "https://seanneskie.github.io";
+const SITE_URL = "https://seanneskie.com";
 
 export const GET: APIRoute = ({ site }) => {
   const origin = (site ?? new URL(SITE_URL)).origin;
