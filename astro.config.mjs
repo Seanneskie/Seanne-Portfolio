@@ -6,6 +6,12 @@ import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
 
 const isProd = process.env.NODE_ENV === "production";
+const deployTarget = process.env.DEPLOY_TARGET;
+const isCloudflarePages = deployTarget === "cloudflare-pages";
+const productionBase = isCloudflarePages ? "/" : "/Seanne-Portfolio";
+const productionSite = isCloudflarePages
+  ? "https://seanne-portfolio.pages.dev"
+  : "https://seanneskie.github.io";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 // Matches the priorities + changefreq emitted by the old app/sitemap.ts so
@@ -25,10 +31,11 @@ const SITEMAP_HINTS = new Map([
 
 const SITEMAP_LASTMOD = "2026-02-01";
 
-// Mirrors next.config.ts so Astro deploys to the same GitHub Pages path.
+// Keep the existing GitHub Pages subpath while allowing Cloudflare Pages to
+// serve the same static build from the domain root.
 export default defineConfig({
-  site: "https://seanneskie.github.io",
-  base: isProd ? "/Seanne-Portfolio" : "/",
+  site: productionSite,
+  base: isProd ? productionBase : "/",
   trailingSlash: "always",
   output: "static",
   outDir: "./dist",
@@ -37,7 +44,7 @@ export default defineConfig({
     sitemap({
       serialize(entry) {
         const url = new URL(entry.url);
-        const basePath = isProd ? "/Seanne-Portfolio" : "";
+        const basePath = isProd ? productionBase.replace(/\/$/, "") : "";
         const route = url.pathname.startsWith(basePath)
           ? url.pathname.slice(basePath.length) || "/"
           : url.pathname;
