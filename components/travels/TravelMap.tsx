@@ -51,11 +51,12 @@ const TILES = {
       '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
   },
   dark: {
-    // CartoDB "dark_all" — free, OSM-derived, dark muted palette that matches
-    // the site's dark theme. Attribution required by both Carto and OSM.
-    url: "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+    // CARTO's formerly anonymous tiles now require an API key. Keep the map
+    // dependency-free by using the same OSM source, then darken only its tile
+    // layer in CSS so markers, popups, and controls retain their normal colors.
+    url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
     attribution:
-      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
   },
 } as const;
 
@@ -90,7 +91,7 @@ interface TravelMapProps {
 // Builds a Leaflet divIcon that renders a circular pin in the brand teal with
 // a tag-derived Lucide glyph inside. The glyph is serialized to SVG once per
 // render via renderToStaticMarkup so we avoid shipping a sprite. Colors swap
-// in dark mode — the CartoDB dark basemap is heavily muted, so the idle pin
+// in dark mode — the dimmed OSM basemap is heavily muted, so the idle pin
 // needs a brighter teal plus a darker outer ring to register against it.
 type PinState = "idle" | "sibling" | "active";
 
@@ -330,7 +331,12 @@ export default function TravelMap({
       >
         {/* `key` forces a fresh TileLayer when the theme flips so the new
            provider's tiles render immediately instead of layering on top. */}
-        <TileLayer key={isDark ? "dark" : "light"} url={tile.url} attribution={tile.attribution} />
+        <TileLayer
+          key={isDark ? "dark" : "light"}
+          url={tile.url}
+          attribution={tile.attribution}
+          className={isDark ? "travel-map-tiles-dark" : undefined}
+        />
         {fitBounds && <FitAll points={points} />}
         <FlyTo coords={activeCoords} points={points} />
         {polylinePath.length >= 2 && (

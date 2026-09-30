@@ -132,3 +132,10 @@
 .dark .leaflet-control-zoom a:hover {
   background: rgb(31 41 55);
 }
+
+/* CARTO's dark tiles now reject keyless traffic. The map remains token-free
+   by sourcing OSM tiles in both themes and applying the dark treatment to
+   Leaflet's tile layer only, leaving markers and popup content untouched. */
+.dark .travel-map-tiles-dark {
+  filter: brightness(0.55) saturate(0.45) contrast(1.1) hue-rotate(135deg);
+}
