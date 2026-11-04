@@ -51,10 +51,8 @@ const joinBase = (path: string): string => {
 const absoluteCanonical = joinBase(canonical);
 const absoluteOgImage = joinBase(ogImage);
 
-// Basepath-prefixed favicon URLs (relative to site root, not the absolute SITE_URL).
-const faviconIco = `${BASE_PATH}/static/favicon.ico`;
-const favicon16 = `${BASE_PATH}/static/favicon-16x16.png`;
-const favicon32 = `${BASE_PATH}/static/favicon-32x32.png`;
+// Basepath-prefixed brand assets (relative to the site root).
+const faviconSvg = `${BASE_PATH}/static/favicon.svg`;
 const appleTouchIcon = `${BASE_PATH}/static/apple-touch-icon.png`;
 
 const jsonLd = {
@@ -109,9 +107,7 @@ const jsonLd = {
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
     />
 
-    <link rel="icon" href={faviconIco} sizes="any" />
-    <link rel="icon" type="image/png" sizes="32x32" href={favicon32} />
-    <link rel="icon" type="image/png" sizes="16x16" href={favicon16} />
+    <link rel="icon" type="image/svg+xml" href={faviconSvg} />
     <link rel="apple-touch-icon" sizes="180x180" href={appleTouchIcon} />
     {keywords && keywords.length > 0 && <meta name="keywords" content={keywords.join(", ")} />}
 
