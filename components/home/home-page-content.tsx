@@ -49,6 +49,68 @@ export default function HomePageContent(): JSX.Element {
         </Reveal>
       </Section>
 
+      {/* NDA-safe AI engineering focus for prospective collaborators */}
+      <Section className="space-y-8">
+        <Reveal>
+          <SectionHeading
+            eyebrow="Engineering Focus"
+            title="Production AI & Generative Media"
+            description="Building dependable multimodal AI features, image and video generation workflows, and the backend systems that power them."
+            action={
+              <Link
+                href="/work-experiences"
+                className="inline-flex items-center gap-1 text-sm font-semibold text-teal-600 hover:underline dark:text-teal-400"
+              >
+                Explore experience
+                <ArrowUpRight className="h-4 w-4" />
+              </Link>
+            }
+          />
+        </Reveal>
+        <Reveal delay={0.05}>
+          <div className="grid gap-4 md:grid-cols-3">
+            {[
+              {
+                title: "Google Cloud & Vertex AI",
+                description: "Gemini-powered multimodal workflows and grounded model context using hosted media references.",
+                skills: ["Google Cloud", "Vertex AI", "Gemini"],
+              },
+              {
+                title: "Image & Video Generation",
+                description: "Generative media integrations involving Veo, provider-specific inputs, model routing, and error handling.",
+                skills: ["Google Veo", "Multimodal AI", "Provider APIs"],
+              },
+              {
+                title: "AI Workflow Reliability",
+                description: "Asynchronous task orchestration, provider fallback handling, prompt optimization, and model observability.",
+                skills: ["TypeScript", "Trigger.dev", "Langfuse"],
+              },
+            ].map(({ title, description, skills }) => (
+              <article
+                key={title}
+                className="rounded-card border border-gray-200 bg-slate-50 p-6 dark:border-gray-800 dark:bg-gray-900/40"
+              >
+                <h3 className="text-lg font-semibold tracking-tight text-gray-900 dark:text-white">{title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-gray-600 dark:text-gray-400">{description}</p>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {skills.map((skill) => (
+                    <span
+                      key={skill}
+                      className="rounded-full border border-teal-600/20 px-3 py-1 text-xs font-medium text-teal-700 dark:border-teal-400/30 dark:text-teal-300"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+          <p className="mt-4 text-xs text-gray-500 dark:text-gray-400">
+            Selected commercial work is described without confidential client or product identifiers.
+          </p>
+        </Reveal>
+      </Section>
+
       {/* Projects — full list with infinite scroll */}
       <Section className="space-y-8">
         <Reveal>
