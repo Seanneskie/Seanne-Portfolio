@@ -68,13 +68,27 @@ const desktopLinkClass = [
     {/* Brand */}
     <a
       href={withBase("/")}
-      class="inline-flex items-center rounded-sm transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/50"
+      aria-label="Seanne Cañete — Home"
+      class="inline-flex items-center gap-2 rounded-sm transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/50"
     >
       <img
-        src={withBase("/static/seanneskie-logo.png")}
-        alt="Seanneskie"
-        class="h-10 w-auto dark:rounded-sm dark:bg-white dark:p-1 sm:h-12"
+        src={withBase("/static/seanne-mark.svg")}
+        alt=""
+        width="455"
+        height="293"
+        class="h-9 w-auto shrink-0 dark:hidden sm:h-10"
       />
+      <img
+        src={withBase("/static/seanne-mark-dark.svg")}
+        alt=""
+        width="455"
+        height="293"
+        class="hidden h-9 w-auto shrink-0 dark:block sm:h-10"
+      />
+      <span class="flex flex-col text-sm font-extrabold leading-[1.05] tracking-tight md:hidden xl:flex xl:text-base">
+        <span class="text-gray-950 dark:text-white">Seanne</span>
+        <span class="text-sky-500 dark:text-sky-400">Cañete</span>
+      </span>
     </a>
 
     <div class="flex items-center gap-2 md:gap-3">
