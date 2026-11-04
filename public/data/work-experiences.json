@@ -2,7 +2,7 @@
   {
     "company": "TSP Marine Industries",
     "project": "Vessel Inventory Management System (VIMS)",
-    "period": "November 2024 \u2013 June 2025",
+    "period": "November 2024 – June 2025",
     "images": [
       {
         "src": "/vims/images/3.webp",
@@ -32,13 +32,13 @@
       "Implemented role-based access controls for sensitive operations, including PDF generation.",
       "Developed one-click requisition-slip PDF exports using jsPDF and autoTable.",
       "Engineered offline-first sync logic to cache transactions and reconcile upon reconnect.",
-      "Set up CI/CD pipeline (lint \u2192 test \u2192 static export) with GitHub Actions for automated deployments."
+      "Set up CI/CD pipeline (lint → test → static export) with GitHub Actions for automated deployments."
     ]
   },
   {
-    "company": "LGU Gensan \u2013 CEMCDO",
+    "company": "LGU Gensan – CEMCDO",
     "project": "Cooperative Profiling & Fund Utilization System",
-    "period": "January 2025 \u2013 April 2025",
+    "period": "January 2025 – April 2025",
     "images": [
       {
         "src": "/cemcdo-app/images/landing-page.webp",
@@ -50,15 +50,15 @@
       },
       {
         "src": "/photo-carousel/ojt.webp",
-        "alt": "OJT at CEMCDO \u2013 System Presentation Meeting"
+        "alt": "OJT at CEMCDO – System Presentation Meeting"
       },
       {
         "src": "/photo-carousel/ojt_4.webp",
-        "alt": "OJT at CEMCDO \u2013 Workshop and User Testing"
+        "alt": "OJT at CEMCDO – Workshop and User Testing"
       },
       {
         "src": "/photo-carousel/ojt_6.webp",
-        "alt": "OOJT at CEMCDO \u2013 The Team"
+        "alt": "OOJT at CEMCDO – The Team"
       }
     ],
     "tech": [
@@ -70,7 +70,7 @@
       "Render",
       "JavaScript"
     ],
-    "summary": "Delivered a full-stack portal centralising cooperative records, automating fund utilisation, and generating board-ready Excel reports\u2014cutting manual preparation time by 50% and reducing ledger error rates below 1%.",
+    "summary": "Delivered a full-stack portal centralising cooperative records, automating fund utilisation, and generating board-ready Excel reports—cutting manual preparation time by 50% and reducing ledger error rates below 1%.",
     "highlights": [
       "Designed fully-normalised database schema with foreign key enforcement and audit trails.",
       "Created reusable OpenPyXL helpers for multi-sheet spreadsheets with embedded charts.",
@@ -81,7 +81,7 @@
   {
     "company": "COTSEYE Project",
     "project": "Crowd Mapping for Crown of Thorns (COTS) Monitoring",
-    "period": "May 2024 \u2013 August 2024",
+    "period": "May 2024 – August 2024",
     "images": [
       {
         "src": "/cotseye/images/placeholder.svg",
@@ -105,8 +105,8 @@
   },
   {
     "company": "PioneerDev AI LLC",
-    "project": "Dating Platform \u2013 Full-Stack, Performance & Delivery",
-    "period": "September 2025 \u2013 Present",
+    "project": "Dating Platform – Full-Stack, Performance & Delivery",
+    "period": "September 2025 – Present",
     "images": [
       {
         "src": "/static/pioneer-dev-ai/platform-overview.svg",
@@ -128,18 +128,18 @@
       "PayPal",
       "Langfuse"
     ],
-    "summary": "My primary focus: a high-traffic dating platform spanning a Remix web app and a React Native mobile app. Beyond shipping features, I owned performance optimization, database scaling, billing, and project-management duties\u2014scoping work, tracking tasks, and coordinating priorities across the team.",
+    "summary": "My primary focus: a high-traffic dating platform spanning a Remix web app and a React Native mobile app. Beyond shipping features, I owned performance optimization, database scaling, billing, and project-management duties—scoping work, tracking tasks, and coordinating priorities across the team.",
     "highlights": [
-      "Drove a sustained performance push\u2014parallelized auth, profile, and search loaders, removed unnecessary transaction wrappers on batch readers, and cached high-traffic endpoints in Redis to cut response times on the busiest flows.",
+      "Drove a sustained performance push—parallelized auth, profile, and search loaders, removed unnecessary transaction wrappers on batch readers, and cached high-traffic endpoints in Redis to cut response times on the busiest flows.",
       "Designed and shipped read-replica routing with read/write splitting, read-after-write consistency pinned to primary, and a replica-lag and connection monitoring endpoint to scale database reads.",
-      "Built the paid-subscription and billing system around PayPal\u2014server-side entitlement gating, duplicate-charge prevention, reversible suspended-status handling, and alerting on stray charges.",
+      "Built the paid-subscription and billing system around PayPal—server-side entitlement gating, duplicate-charge prevention, reversible suspended-status handling, and alerting on stray charges.",
       "Engineered an LLM-based trust and moderation layer with a conversation trust scorer, user-level trust-tag aggregation, and full prompt, token, and output tracing via Langfuse."
     ]
   },
   {
     "company": "PioneerDev AI LLC",
-    "project": "Programmatic SEO \u2013 Static Sites at Scale",
-    "period": "February 2026 \u2013 Present",
+    "project": "Programmatic SEO – Static Sites at Scale",
+    "period": "February 2026 – Present",
     "images": [
       {
         "src": "/static/pioneer-dev-ai/platform-overview.svg",
@@ -162,8 +162,8 @@
   },
   {
     "company": "PioneerDev AI LLC",
-    "project": "AI Agent & LLM Platform \u2013 Generative Flows",
-    "period": "April 2026 \u2013 Present",
+    "project": "Confidential Generative AI Platform – Multimodal Workflows",
+    "period": "April 2026 – Present",
     "images": [
       {
         "src": "/static/pioneer-dev-ai/agent-pipeline.svg",
@@ -171,25 +171,29 @@
       }
     ],
     "tech": [
-      "Next.js",
+      "Google Cloud",
+      "Vertex AI",
+      "Google Gemini",
+      "Google Veo",
       "TypeScript",
+      "Next.js",
       "Cloudflare Workers",
       "Trigger.dev",
       "PostgreSQL",
-      "Google Gemini",
-      "Vertex AI"
+      "LLM Observability"
     ],
-    "summary": "Built core AI agent and LLM features for a generative image and video platform, with a strong focus on multi-provider orchestration, prompt optimization, and Cloudflare-based infrastructure.",
+    "summary": "Contributed to production AI features for a confidential generative media application, including Gemini-powered multimodal workflows through Google Cloud Vertex AI and image/video generation workflows involving Veo and other model providers.",
     "highlights": [
-      "Integrated multiple model providers (Google Gemini/Vertex, DeepSeek, Kling) with per-provider token caps, JSON-mode enforcement, and graceful fallbacks.",
-      "Optimized the system prompt for cost and latency with per-turn section gating and prompt-cache telemetry, and made gallery queries sargable via functional Postgres indexes.",
-      "Resolved Cloudflare Worker scaling issues by moving heavy autorun work to Trigger.dev, eliminating out-of-memory 503s, and shipped a hardened analytics proxy worker with rate limiting."
+      "Worked on Gemini and Vertex AI multimodal input handling, including hosted media references for grounded model context.",
+      "Integrated and refined image/video generation workflows with model-specific limits, reference inputs, provider routing, error handling, and fallback behavior.",
+      "Helped build reliable AI agent/task orchestration with persistent flows, asynchronous execution, and usage safeguards.",
+      "Optimized prompts, token and prompt-cache telemetry, and PostgreSQL queries; migrated memory-intensive background work from Cloudflare Workers to Trigger.dev."
     ]
   },
   {
     "company": "PioneerDev AI LLC",
     "project": "Community Backend & Admin Platform",
-    "period": "November 2025 \u2013 December 2025",
+    "period": "November 2025 – December 2025",
     "images": [
       {
         "src": "/static/pioneer-dev-ai/agent-pipeline.svg",
@@ -207,14 +211,14 @@
     ],
     "summary": "Built the backend and admin platform for a community-driven product, with a light contribution to the React Native mobile app.",
     "highlights": [
-      "Developed the NestJS backend\u2014communities, rooms, and posts APIs with CRUD, feed enrichment, S3-backed media uploads, and server-side pagination.",
+      "Developed the NestJS backend—communities, rooms, and posts APIs with CRUD, feed enrichment, S3-backed media uploads, and server-side pagination.",
       "Hardened authentication and access control with route guards, a rate-limiting throttler, and fixes for unauthorized socket access.",
       "Built the admin web app with Next.js server actions, React Query, and shadcn/ui for managing communities, rooms, posts, and members."
     ]
   },
   {
     "company": "PioneerDev AI LLC",
-    "project": "LLM Data Platform \u2013 Queued Processing",
+    "project": "LLM Data Platform – Queued Processing",
     "period": "2025",
     "images": [
       {
