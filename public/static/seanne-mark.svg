@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 455 293" role="img" aria-labelledby="title">
+<title id="title">Seanne Cañete SC monogram</title>
+<defs>
+<linearGradient id="sc-blue" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#00C2FF"/>
+<stop offset="1" stop-color="#007EF6"/>
+</linearGradient>
+<linearGradient id="sc-join" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0" stop-color="#14202B"/>
+<stop offset="1" stop-color="#067EFF"/>
+</linearGradient>
+</defs>
+<path fill="#14202B" d="M261 28H116C81 28 58 45 43 81C31 104 39 130 54 146C69 162 86 165 106 165H183C200 165 207 172 218 188L250 232L283 238C264 220 254 200 241 181L229 160C212 132 199 119 171 119H105C94 119 92 112 100 102L111 86C117 77 123 79 136 79H222Z"/>
+<path fill="#14202B" d="M55 210H203C217 210 222 221 225 231C211 251 198 265 171 265H10L43 218C46 213 50 210 55 210Z"/>
+<path fill="url(#sc-blue)" d="M303 28H438L406 74C403 78 399 79 393 79H314C305 79 301 83 296 90L261 143C251 127 239 116 224 109L263 56C276 38 285 28 303 28Z"/>
+<path fill="url(#sc-join)" d="M218 154C240 179 266 211 292 211H443L405 264H305C282 264 266 257 252 238L217 192L199 172C205 164 212 158 218 154Z"/>
+<path fill="none" stroke="#03A9F4" stroke-width="12" stroke-linejoin="miter" d="m313 123-27 27 27 27M339 123l27 27-27 27"/>
+</svg>
