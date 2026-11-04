@@ -55,7 +55,7 @@ export default function MyStory({ skills, services }: MyStoryProps): ReactElemen
       icon: <Brain className="h-5 w-5" />,
       title: "AI Integration",
       blurb:
-        "Prototype AI features using TensorFlow, LangChain, and Teachable Machine for smart workflows.",
+        "Build production multimodal AI workflows with Vertex AI, Gemini, generative media APIs, and reliable provider orchestration.",
     },
     {
       icon: <MapPinned className="h-5 w-5" />,
@@ -125,15 +125,20 @@ export default function MyStory({ skills, services }: MyStoryProps): ReactElemen
                 </p>
 
                 <p>
-                  Today, I focus on shipping practical, well-designed systems—
-                  normalized data models, reliable APIs, and interfaces that
-                  stay out of the way. I move fast, measure impact, and document
-                  everything clearly so teams can build with confidence.
+                  Today, I focus on production AI and full-stack systems, including
+                  multimodal Gemini workflows through Google Cloud Vertex AI,
+                  image and video generation involving Veo, and reliable
+                  asynchronous processing. I keep confidential commercial
+                  work anonymous while sharing the capabilities I build.
                 </p>
 
                 {/* Tech badges */}
                 <div className="mt-4 flex flex-wrap gap-2">
                   {[
+                    "Google Cloud",
+                    "Vertex AI",
+                    "Gemini",
+                    "Veo",
                     "Django",
                     "Laravel",
                     "Next.js",
