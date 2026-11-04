@@ -8,7 +8,7 @@ export default async function HeadlessEcommerceMiniStore() {
   const images = await getGalleryImages(
     SLUG,
     "Headless E-Commerce Mini-Store screenshot",
-    "/static/placeholders/next.webp"
+    "/headless-ecommerce-mini-store/images/banner.webp"
   );
 
   return (

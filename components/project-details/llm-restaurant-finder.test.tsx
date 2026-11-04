@@ -64,7 +64,8 @@ describe("LlmRestaurantFinder", () => {
     const projectImagesModule = await import("@/lib/project-images");
     expect(vi.mocked(projectImagesModule.getGalleryImages)).toHaveBeenCalledWith(
       "llm-restaurant-finder",
-      expect.any(String),
+      "LLM Restaurant Finder screenshot",
+      "/static/project-covers/llm-restaurant-finder.svg",
     );
 
     const textContent = container.textContent ?? "";

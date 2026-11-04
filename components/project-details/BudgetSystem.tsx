@@ -8,7 +8,7 @@ export default async function BudgetSystem() {
   const images = await getGalleryImages(
     SLUG,
     "Budget System screenshot",
-    "/static/placeholders/csharp.webp"
+    "/static/project-covers/budget-system.svg"
   );
 
   return (

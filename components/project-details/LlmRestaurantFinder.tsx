@@ -7,7 +7,8 @@ import { getGalleryImages } from "@/lib/project-images";
 const SLUG = "llm-restaurant-finder";
 
 export default async function LlmRestaurantFinder(): Promise<ReactElement> {
-  const images = await getGalleryImages(SLUG, "LLM Restaurant Finder screenshot");
+  const images = await getGalleryImages(SLUG, "LLM Restaurant Finder screenshot",
+    "/static/project-covers/llm-restaurant-finder.svg");
 
   return (
     <div className="space-y-12">

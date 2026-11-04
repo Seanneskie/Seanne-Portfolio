@@ -1,8 +1,8 @@
 [
   {
     "title": "FilipinaMeetApp / SlavicMeet - Dating Platform",
-    "image": "/static/pioneer-dev-ai/agent-pipeline.svg",
-    "alt": "Dating platform architecture overview",
+    "image": "/static/project-covers/dating-platform.svg",
+    "alt": "Concept artwork for FilipinaMeetApp / SlavicMeet - Dating Platform (not a screenshot)",
     "description": "High-traffic dating platform spanning a Remix web app and a React Native mobile app (FilipinaMeetApp, later SlavicMeet). Owned performance optimization, read-replica database scaling, PayPal billing and entitlement gating, and an LLM-based trust and moderation layer traced end-to-end with Langfuse.",
     "collaborators": "PioneerDev AI LLC",
     "tags": [
@@ -22,13 +22,13 @@
     "details": null,
     "period": "September 2025 - Present",
     "images": [
-      "/static/pioneer-dev-ai/agent-pipeline.svg"
+      "/static/project-covers/dating-platform.svg"
     ]
   },
   {
     "title": "Generative AI Agent Platform",
-    "image": "/static/pioneer-dev-ai/agent-pipeline.svg",
-    "alt": "Generic AI workflow architecture illustration",
+    "image": "/static/project-covers/generative-ai-platform.svg",
+    "alt": "Concept artwork for Generative AI Agent Platform (not a screenshot)",
     "description": "Contributed to a confidential production generative AI application: multimodal Gemini workflows through Google Cloud Vertex AI, image and Veo-related video generation, provider orchestration, and reliable asynchronous processing. Work is described at a capability level without identifying the client or product.",
     "collaborators": "Confidential commercial work",
     "tags": [
@@ -47,13 +47,13 @@
     "details": null,
     "period": "April 2026 - Present",
     "images": [
-      "/static/pioneer-dev-ai/agent-pipeline.svg"
+      "/static/project-covers/generative-ai-platform.svg"
     ]
   },
   {
     "title": "EIP App (Yield) - Operator Enrichment & Matching Platform",
-    "image": "/static/pioneer-dev-ai/agent-pipeline.svg",
-    "alt": "LLM data platform overview",
+    "image": "/static/project-covers/operator-matching-platform.svg",
+    "alt": "Concept artwork for EIP App (Yield) - Operator Enrichment & Matching Platform (not a screenshot)",
     "description": "B2B information-extraction platform (EIP App, rebranding to Yield) that enriches operator records with LLM-extracted data—news sentiment, tags, contacts, addresses, and social URLs—then matches operators to brands and product groups with multi-factor scoring and drafts outreach emails. Built on Remix with a BullMQ + Upstash Redis worker queue for reliable high-volume async processing, multi-provider LLMs (Google GenAI, OpenAI, LangChain), Puppeteer-based scraping, Prisma/PostgreSQL, and Langfuse tracing.",
     "collaborators": "PioneerDev AI LLC",
     "tags": [
@@ -76,13 +76,13 @@
     "details": null,
     "period": "2025",
     "images": [
-      "/static/pioneer-dev-ai/agent-pipeline.svg"
+      "/static/project-covers/operator-matching-platform.svg"
     ]
   },
   {
     "title": "SlavicMeet / FilipinaMeet / MarriageMatchClub - SEO Sites",
-    "image": "/static/pioneer-dev-ai/agent-pipeline.svg",
-    "alt": "Programmatic SEO static sites overview",
+    "image": "/static/project-covers/programmatic-seo-sites.svg",
+    "alt": "Concept artwork for SlavicMeet / FilipinaMeet / MarriageMatchClub - SEO Sites (not a screenshot)",
     "description": "Programmatic SEO static sites built at scale for SlavicMeet, FilipinaMeet, and MarriageMatchClub, generating template-driven pages from structured data for organic acquisition.",
     "collaborators": "PioneerDev AI LLC",
     "tags": [
@@ -97,7 +97,7 @@
     "details": null,
     "period": "February 2026 - Present",
     "images": [
-      "/static/pioneer-dev-ai/agent-pipeline.svg"
+      "/static/project-covers/programmatic-seo-sites.svg"
     ]
   },
   {
@@ -126,8 +126,8 @@
   },
   {
     "title": "AI Coin Detector",
-    "image": "/static/placeholders/ai.webp",
-    "alt": "Coin Detector Image",
+    "image": "/static/project-covers/ai-coin-detector.svg",
+    "alt": "Concept artwork for AI Coin Detector (not a screenshot)",
     "description": "Made with Django and GTM. A requirement in Introduction to AI course.",
     "collaborators": "Kimberly Baylon, Jeric Aminola, Bridget Jose, Azlan Tomindug",
     "tags": [
@@ -144,13 +144,13 @@
     "details": "project-details/ai-coin-detector",
     "period": "March 2024 - May 2025",
     "images": [
-      "/static/placeholders/ai.webp"
+      "/static/project-covers/ai-coin-detector.svg"
     ]
   },
   {
     "title": "NoSQL Project - MERN Stack Website",
-    "image": "/static/placeholders/Mern.webp",
-    "alt": "Image",
+    "image": "/static/project-covers/coffeehub-mern.svg",
+    "alt": "Concept artwork for NoSQL Project - MERN Stack Website (not a screenshot)",
     "description": "Made using MERN Stack. A final requirement in NoSQL Course.",
     "collaborators": null,
     "tags": [
@@ -166,13 +166,13 @@
     "details": "project-details/nosql-project",
     "period": "Sep 2023 - Dec 2023",
     "images": [
-      "/static/placeholders/Mern.webp"
+      "/static/project-covers/coffeehub-mern.svg"
     ]
   },
   {
     "title": "Advance Database Project - CNSM Website",
-    "image": "/static/placeholders/Mern.webp",
-    "alt": "CNSM Image",
+    "image": "/static/project-covers/cnsm-college-portal.svg",
+    "alt": "Concept artwork for Advance Database Project - CNSM Website (not a screenshot)",
     "description": "Made using MERN Stack. A final requirement in Advance Database Course.",
     "collaborators": "Database Major Batch of 2021-2025",
     "tags": [
@@ -189,7 +189,7 @@
     "details": "project-details/cnsm-website",
     "period": "Sep 2023 - Dec 2023",
     "images": [
-      "/static/placeholders/Mern.webp"
+      "/static/project-covers/cnsm-college-portal.svg"
     ]
   },
   {
@@ -406,8 +406,8 @@
   },
   {
     "title": "McDonald's Sentiment Analysis",
-    "image": "/static/placeholders/django.webp",
-    "alt": "McDonald's Sentiment Analysis Image",
+    "image": "/static/project-covers/mcdonalds-sentiment.svg",
+    "alt": "Concept artwork for McDonald's Sentiment Analysis (not a screenshot)",
     "description": "Sentiment analysis of over 33,000 McDonald's Google reviews using Python.",
     "collaborators": null,
     "tags": [
@@ -427,7 +427,7 @@
     "details": "project-details/mcdonalds-sentiment-analysis",
     "period": "Nov 2024 - Dec 2024",
     "images": [
-      "/static/placeholders/django.webp"
+      "/static/project-covers/mcdonalds-sentiment.svg"
     ]
   },
   {
@@ -488,8 +488,8 @@
   },
   {
     "title": "Order & Inventory Management API",
-    "image": "/static/placeholders/csharp.webp",
-    "alt": "Order & Inventory Management API Image",
+    "image": "/static/project-covers/order-inventory-api.svg",
+    "alt": "Concept artwork for Order & Inventory Management API (not a screenshot)",
     "description": "Lightweight ASP.NET Core API with PostgreSQL for products, stock validation, idempotent orders, and audit logging.",
     "collaborators": null,
     "tags": [
@@ -507,13 +507,13 @@
     "details": "project-details/order-inventory-management-api",
     "period": "Aug 2025 - Aug 2025",
     "images": [
-      "/static/placeholders/csharp.webp"
+      "/static/project-covers/order-inventory-api.svg"
     ]
   },
   {
     "title": "Budget System",
-    "image": "/static/placeholders/csharp.webp",
-    "alt": "Budget System screenshot",
+    "image": "/static/project-covers/budget-system.svg",
+    "alt": "Concept artwork for Budget System (not a screenshot)",
     "description": "Layered ASP.NET Core and SQL Server budgeting app with validation, EF Core persistence, and idempotent API middleware.",
     "collaborators": null,
     "tags": [
@@ -530,13 +530,13 @@
     "details": "project-details/budget-system",
     "period": "Aug 2025 - Present",
     "images": [
-      "/static/placeholders/csharp.webp"
+      "/static/project-covers/budget-system.svg"
     ]
   },
   {
     "title": "LLM Restaurant Finder",
-    "image": "/static/placeholders/ai.webp",
-    "alt": "LLM Restaurant Finder results interface",
+    "image": "/static/project-covers/llm-restaurant-finder.svg",
+    "alt": "Concept artwork for LLM Restaurant Finder (not a screenshot)",
     "description": "Chat-led restaurant discovery app where a Next.js client hands prompts to a Hono API that validates Gemini commands before querying Foursquare Places.",
     "collaborators": null,
     "tags": [
@@ -553,7 +553,7 @@
     "details": "project-details/llm-restaurant-finder",
     "period": "2025",
     "images": [
-      "/static/placeholders/ai.webp"
+      "/static/project-covers/llm-restaurant-finder.svg"
     ]
   }
 ]

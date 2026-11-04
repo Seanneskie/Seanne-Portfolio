@@ -9,7 +9,7 @@ export default async function BitcoinAnalysisApp() {
   const images = await getGalleryImages(
     SLUG,
     "Bitcoin Analysis App screenshot",
-    "/static/placeholders/data-analytics.webp"
+    "/bitcoin-analysis-app/images/1.webp"
   );
 
   return (

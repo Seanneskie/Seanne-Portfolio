@@ -8,7 +8,7 @@ export default async function AiPoweredEmailGenerator() {
   const images = await getGalleryImages(
     SLUG,
     "AI Powered Email Generator screenshot",
-    "/static/placeholders/ai.webp"
+    "/ai-powered-email-generator/images/Dashboard.webp"
   );
 
   return (

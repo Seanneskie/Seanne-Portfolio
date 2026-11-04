@@ -84,8 +84,8 @@
     "period": "May 2024 – August 2024",
     "images": [
       {
-        "src": "/cotseye/images/placeholder.svg",
-        "alt": "COTSEYE placeholder image"
+        "src": "/static/project-covers/cotseye-monitoring.svg",
+        "alt": "Conceptual cotseye monitoring illustration, not a product screenshot"
       }
     ],
     "tech": [
@@ -109,12 +109,12 @@
     "period": "September 2025 – Present",
     "images": [
       {
-        "src": "/static/pioneer-dev-ai/platform-overview.svg",
-        "alt": "Platform overview"
+        "src": "/static/project-covers/dating-platform.svg",
+        "alt": "Conceptual dating platform illustration, not a product screenshot"
       },
       {
-        "src": "/static/pioneer-dev-ai/agent-pipeline.svg",
-        "alt": "Backend pipeline overview"
+        "src": "/static/project-covers/dating-trust-moderation.svg",
+        "alt": "Conceptual dating trust moderation illustration, not a product screenshot"
       }
     ],
     "tech": [
@@ -142,8 +142,8 @@
     "period": "February 2026 – Present",
     "images": [
       {
-        "src": "/static/pioneer-dev-ai/platform-overview.svg",
-        "alt": "SEO site overview"
+        "src": "/static/project-covers/programmatic-seo-sites.svg",
+        "alt": "Conceptual programmatic seo sites illustration, not a product screenshot"
       }
     ],
     "tech": [
@@ -166,8 +166,8 @@
     "period": "April 2026 – Present",
     "images": [
       {
-        "src": "/static/pioneer-dev-ai/agent-pipeline.svg",
-        "alt": "Agent and LLM pipeline"
+        "src": "/static/project-covers/generative-ai-platform.svg",
+        "alt": "Conceptual generative AI image and video workflow illustration, not a product screenshot"
       }
     ],
     "tech": [
@@ -196,8 +196,8 @@
     "period": "November 2025 – December 2025",
     "images": [
       {
-        "src": "/static/pioneer-dev-ai/agent-pipeline.svg",
-        "alt": "Backend and admin platform overview"
+        "src": "/static/project-covers/community-platform.svg",
+        "alt": "Conceptual community platform illustration, not a product screenshot"
       }
     ],
     "tech": [
@@ -222,8 +222,8 @@
     "period": "2025",
     "images": [
       {
-        "src": "/static/pioneer-dev-ai/agent-pipeline.svg",
-        "alt": "LLM data platform overview"
+        "src": "/static/project-covers/operator-matching-platform.svg",
+        "alt": "Conceptual operator matching platform illustration, not a product screenshot"
       }
     ],
     "tech": [

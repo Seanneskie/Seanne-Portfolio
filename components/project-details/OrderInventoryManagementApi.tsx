@@ -8,7 +8,7 @@ export default async function OrderInventoryManagementApi() {
   const images = await getGalleryImages(
     SLUG,
     "Order & Inventory Management API screenshot",
-    "/static/placeholders/csharp.webp"
+    "/static/project-covers/order-inventory-api.svg"
   );
 
   return (
