@@ -11,7 +11,7 @@ export default async function McdonaldsSentimentAnalysis() {
   const images = await getGalleryImages(
     SLUG,
     "McDonald's Sentiment Analysis screenshot",
-    "/static/placeholders/django.webp"
+    "/static/project-covers/mcdonalds-sentiment.svg"
   );
   const pdfs = await getProjectPdfs(SLUG);
   const pdf = pdfs[0];

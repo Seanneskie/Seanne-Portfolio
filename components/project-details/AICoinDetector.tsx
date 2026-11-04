@@ -5,7 +5,8 @@ import { getGalleryImages } from "@/lib/project-images";
 const SLUG = "ai-coin-detector";
 
 export default async function AICoinDetector() {
-  const images = await getGalleryImages(SLUG, "AI Coin Detector Screenshot");
+  const images = await getGalleryImages(SLUG, "AI Coin Detector Screenshot",
+    "/static/project-covers/ai-coin-detector.svg");
 
   return (
     <div className="space-y-12">

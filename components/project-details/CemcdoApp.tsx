@@ -8,7 +8,7 @@ export default async function CemcdoApp() {
   const images = await getGalleryImages(
     SLUG,
     "CEMCDO App screenshot",
-    "/static/placeholders/django.webp"
+    "/cemcdo-app/images/landing-page.webp"
   );
 
   return (

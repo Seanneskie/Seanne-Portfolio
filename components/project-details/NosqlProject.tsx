@@ -10,7 +10,7 @@ export default async function NosqlProject(): Promise<ReactElement> {
   const images = await getGalleryImages(
     SLUG,
     "NoSQL Project screenshot",
-    "/static/placeholders/Mern.webp"
+    "/static/project-covers/coffeehub-mern.svg"
   );
 
   return (

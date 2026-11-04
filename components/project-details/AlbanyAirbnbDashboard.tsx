@@ -8,7 +8,7 @@ export default async function AlbanyAirbnbDashboard() {
   const images = await getGalleryImages(
     SLUG,
     "Albany Airbnb Dashboard screenshot",
-    "/static/placeholders/data-analytics.webp"
+    "/albany-airbnb-dashboard/images/1.webp"
   );
 
   return (

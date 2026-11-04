@@ -8,7 +8,7 @@ export default async function CnsmWebsite() {
   const images = await getGalleryImages(
     SLUG,
     "CNSM website screenshot",
-    "/static/placeholders/Mern.webp"
+    "/static/project-covers/cnsm-college-portal.svg"
   );
 
   return (

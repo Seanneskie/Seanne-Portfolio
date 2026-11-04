@@ -8,7 +8,7 @@ export default async function Vims() {
   const images = await getGalleryImages(
     SLUG,
     "Vessel Inventory Management System screenshot",
-    "/static/placeholders/next.webp"
+    "/vims/images/1.webp"
   );
 
   return (

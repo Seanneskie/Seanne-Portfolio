@@ -8,7 +8,7 @@ export default async function DigitalFreelancerProfilingApp() {
   const images = await getGalleryImages(
     SLUG,
     "Digital Freelancer Profiling App screenshot",
-    "/static/placeholders/next.webp"
+    "/digital-freelancer-profiling-app/images/1.webp"
   );
 
   return (

@@ -8,7 +8,7 @@ export default async function ItineraryPlanner() {
   const images = await getGalleryImages(
     SLUG,
     "Itinerary Planner screenshot",
-    "/static/placeholders/php.webp"
+    "/itinerary-planner/images/1.webp"
   );
 
   return (

@@ -7,7 +7,8 @@ import { getGalleryImages } from "@/lib/project-images";
 const SLUG = "minerva-project";
 
 export default async function MinervaProject(): Promise<ReactElement> {
-  const images = await getGalleryImages(SLUG, "Minerva Project screenshot");
+  const images = await getGalleryImages(SLUG, "Minerva Project screenshot",
+    "/minerva-project/images/1.png");
 
   return (
     <div className="space-y-12">

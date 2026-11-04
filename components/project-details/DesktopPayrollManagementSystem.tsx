@@ -8,7 +8,7 @@ export default async function DesktopPayrollManagementSystem() {
   const images = await getGalleryImages(
     SLUG,
     "Desktop Payroll Management System screenshot",
-    "/static/placeholders/next.webp"
+    "/desktop-payroll-management-system/images/1.webp"
   );
 
   return (
