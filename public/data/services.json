@@ -1,5 +1,10 @@
 [
   {
+    "title": "AI Engineering & Generative Media",
+    "description": "Integrating Gemini and Vertex AI, image/video generation APIs, and reliable asynchronous AI workflows.",
+    "icon": "Brain"
+  },
+  {
     "title": "Full-Stack Development",
     "description": "Building responsive web applications with Next.js, Django, and modern tooling.",
     "icon": "Code2"

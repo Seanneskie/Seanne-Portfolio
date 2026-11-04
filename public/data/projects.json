@@ -28,15 +28,19 @@
   {
     "title": "Generative AI Agent Platform",
     "image": "/static/pioneer-dev-ai/agent-pipeline.svg",
-    "alt": "Agent and LLM pipeline",
-    "description": "Core AI agent and LLM features for a generative media platform. Worked on multi-provider model orchestration with usage controls, structured-output enforcement, graceful fallbacks, and telemetry, along with performance-focused database query optimization.",
-    "collaborators": "Private client",
+    "alt": "Generic AI workflow architecture illustration",
+    "description": "Contributed to a confidential production generative AI application: multimodal Gemini workflows through Google Cloud Vertex AI, image and Veo-related video generation, provider orchestration, and reliable asynchronous processing. Work is described at a capability level without identifying the client or product.",
+    "collaborators": "Confidential commercial work",
     "tags": [
+      "Google Cloud",
+      "Vertex AI",
+      "Gemini",
+      "Veo",
+      "Generative AI",
       "TypeScript",
-      "LLM",
       "AI Agents",
-      "Cloud",
-      "PostgreSQL"
+      "Video Generation",
+      "Trigger.dev"
     ],
     "github": null,
     "githubLabel": "",
@@ -459,7 +463,7 @@
     "title": "Headless E-Commerce Mini-Store",
     "image": "/headless-ecommerce-mini-store/images/banner.webp",
     "alt": "Headless E-Commerce Mini-Store Image",
-    "description": "Next.js storefront that fetches product data from Shopify\u2019s Storefront API and renders it with reusable UI components and server-side data fetching.",
+    "description": "Next.js storefront that fetches product data from Shopify’s Storefront API and renders it with reusable UI components and server-side data fetching.",
     "collaborators": null,
     "tags": [
       "NextJS",
