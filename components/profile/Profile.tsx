@@ -12,12 +12,13 @@ const PROFILE: ProfileData = {
   address: "General Santos City, Philippines",
   image: withBasePath("/profile/static/image_1.webp"),
   background:
-    "Hi, I'm Seanne — a Full Stack Developer who builds scalable web applications end-to-end. My backend work spans Django, Laravel, .NET Core, and Remix, paired with React, Next.js, and Tailwind CSS on the frontend. I design REST APIs, model data, and integrate databases across PostgreSQL, MySQL, MongoDB, Supabase, and SQL Server. Lately I've focused on production AI: shipping LLM-powered features and agents with multi-provider orchestration, prompt engineering, and tracing (LangChain, Gemini, OpenAI, Langfuse), plus data analytics and visualization with Chart.js, Tableau, and Python. I adapt quickly, solve hard problems, and deliver clean, maintainable, high-performing software.",
+    "I'm a Full Stack Software Engineer working across production AI features, APIs, and web applications. My AI engineering experience includes Google Cloud Vertex AI and Gemini multimodal workflows, generative image/video capabilities involving Veo, provider orchestration, prompt optimization, and observability. I build reliable applications with TypeScript, React, Remix, PostgreSQL, Redis, and cloud infrastructure. Client and product details remain confidential.",
   interests: [
     "Full-stack Web Development",
     "Data Analytics & Visualization",
     "Database Design",
-    "AI / ML Tooling",
+    "Generative AI & Multimodal Applications",
+    "Google Cloud & Vertex AI",
     "Geospatial / GIS",
     "Competitive Gaming",
   ],
@@ -29,7 +30,8 @@ const PROFILE: ProfileData = {
     { name: "Laravel / PHP", level: "Intermediate" },
     { name: ".NET Core", level: "Intermediate" },
     { name: "Data Viz (Chart.js, Tableau)", level: "Intermediate" },
-    { name: "AI/ML (LLMs, LangChain, Agents)", level: "Advanced" },
+    { name: "LLMs / AI Workflows", level: "Advanced" },
+    { name: "Google Cloud / Vertex AI", level: "Intermediate" },
   ],
   techStack: [
     "Python",
@@ -50,6 +52,12 @@ const PROFILE: ProfileData = {
     "Chart.js",
     "Tableau",
     "TensorFlow",
+    "Google Cloud",
+    "Vertex AI",
+    "Gemini",
+    "Veo",
+    "Trigger.dev",
+    "Langfuse",
     "LangChain",
   ],
   education: [

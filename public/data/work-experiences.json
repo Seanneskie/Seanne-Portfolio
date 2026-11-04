@@ -166,8 +166,8 @@
     "period": "April 2026 – Present",
     "images": [
       {
-        "src": "/static/pioneer-dev-ai/agent-pipeline.svg",
-        "alt": "Agent and LLM pipeline"
+        "src": "/static/project-covers/generative-ai-platform.svg",
+        "alt": "Conceptual generative AI image and video workflow illustration, not a product screenshot"
       }
     ],
     "tech": [

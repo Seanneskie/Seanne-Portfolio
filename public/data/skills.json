@@ -282,6 +282,41 @@
         "title": "AI & Machine Learning",
         "items": [
           {
+            "icon": "devicon-googlecloud-plain colored",
+            "name": "Google Cloud Vertex AI",
+            "description": "Integrate Gemini-backed multimodal features with hosted media references on Vertex AI."
+          },
+          {
+            "icon": "fas fa-brain",
+            "name": "Google Gemini",
+            "description": "Build multimodal LLM workflows with structured outputs and prompt/context controls."
+          },
+          {
+            "icon": "fas fa-film",
+            "name": "Google Veo",
+            "description": "Work with generative video workflows and model-specific input constraints."
+          },
+          {
+            "icon": "fas fa-images",
+            "name": "Image & Video Generation APIs",
+            "description": "Integrate generation providers with reference media, constraints, and async processing."
+          },
+          {
+            "icon": "fas fa-diagram-project",
+            "name": "AI Agent Orchestration",
+            "description": "Coordinate stateful AI tasks, workflow execution, and provider dispatch."
+          },
+          {
+            "icon": "fas fa-code-branch",
+            "name": "Provider Routing & Fallbacks",
+            "description": "Handle model capabilities, errors, fallbacks, and usage boundaries."
+          },
+          {
+            "icon": "fas fa-chart-line",
+            "name": "LLM Observability",
+            "description": "Trace model calls and inspect prompt, token, latency, and error telemetry."
+          },
+          {
             "icon": "fas fa-link",
             "name": "LangChain Integration",
             "description": "Orchestrate LLM chains, tools, and agents with LangChain."
